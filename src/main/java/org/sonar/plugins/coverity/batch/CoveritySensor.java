@@ -21,6 +21,7 @@ package org.sonar.plugins.coverity.batch;
 
 import com.coverity.ws.v6.CovRemoteServiceException_Exception;
 import com.coverity.ws.v6.ProjectDataObj;
+import com.coverity.ws.v6.StreamDataObj;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.sonar.api.batch.Sensor;
@@ -32,6 +33,7 @@ import org.sonar.plugins.coverity.CoverityPlugin;
 import org.sonar.plugins.coverity.ws.CIMClient;
 
 import java.io.IOException;
+import java.util.List;
 
 public class CoveritySensor implements Sensor {
     private static final Logger LOG = LoggerFactory.getLogger(CoveritySensor.class);
@@ -83,9 +85,18 @@ public class CoveritySensor implements Sensor {
             LOG.info("Found project " + covProject + " ...");
             ProjectDataObj pdo = instance.getProject(covProject);
             LOG.info("project key: " + pdo.getProjectKey());
+
+            LOG.info("contains streams: ");
+            List<StreamDataObj> streams = pdo.getStreams();
+            for(StreamDataObj sdo : streams) {
+                LOG.info(sdo.getId().getName());
+            }
+
+            if(streams.size() > 1) {
+                LOG.warn("Project contains more than one stream. Imported defects may not be consistent.");
+            }
         } catch(Exception e) {
             LOG.error("Couldn't find project: " + covProject);
-
         }
     }
 
