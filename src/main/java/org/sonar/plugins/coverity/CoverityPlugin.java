@@ -47,6 +47,7 @@ public final class CoverityPlugin extends SonarPlugin {
                         .description("Enable Coverity defect import")
                         .defaultValue("false")
                         .type(PropertyType.BOOLEAN)
+                        .onQualifiers(Qualifiers.PROJECT)
                         .index(++i)
                         .build(),
                 PropertyDefinition.builder(CoverityPlugin.COVERITY_CONNECT_HOSTNAME)
