@@ -65,8 +65,11 @@ public class CoveritySensor implements Sensor {
         String password = settings.getString(CoverityPlugin.COVERITY_CONNECT_PASSWORD);
         boolean ssl = settings.getBoolean(CoverityPlugin.COVERITY_CONNECT_SSL);
 
+        String covProject = settings.getString(CoverityPlugin.COVERITY_PROJECT);
+
         CIMClient instance = new CIMClient(host, port, user, password, ssl);
         try {
+            LOG.info("All projects:");
             for(ProjectDataObj pdo : instance.getProjects()) {
                 LOG.info(pdo.getId().getName());
             }
@@ -74,6 +77,15 @@ public class CoveritySensor implements Sensor {
             e.printStackTrace();
         } catch(CovRemoteServiceException_Exception e) {
             e.printStackTrace();
+        }
+
+        try {
+            LOG.info("Found project " + covProject + " ...");
+            ProjectDataObj pdo = instance.getProject(covProject);
+            LOG.info("project key: " + pdo.getProjectKey());
+        } catch(Exception e) {
+            LOG.error("Couldn't find project: " + covProject);
+
         }
     }
 
