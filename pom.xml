@@ -77,7 +77,7 @@
 
         <!-- added-->
         <dependency>
-            <groupId>com.sun.xml.xws</groupId>
+            <groupId>com.sun.xml.wss</groupId>
             <artifactId>xws-security</artifactId>
             <version>3.0</version>
         </dependency>
