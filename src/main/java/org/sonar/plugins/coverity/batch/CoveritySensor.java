@@ -100,9 +100,9 @@ public class CoveritySensor implements Sensor {
             return;
         }
 
-        LOG.info(profile.toString());
+        LOG.debug(profile.toString());
         for(ActiveRule ar : profile.getActiveRulesByRepository(CoverityPlugin.REPOSITORY_KEY + "-" + project.getLanguageKey())) {
-            LOG.info(ar.toString());
+            LOG.debug(ar.toString());
         }
 
         try {

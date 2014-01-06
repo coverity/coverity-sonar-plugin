@@ -17,10 +17,11 @@
  * License along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02
  */
-package org.sonar.plugins.coverity;
+package org.sonar.plugins.coverity.util;
 
 import com.coverity.ws.v6.CheckerPropertyDataObj;
 import com.coverity.ws.v6.CheckerPropertyFilterSpecDataObj;
+import org.sonar.plugins.coverity.CoverityUtil;
 import org.sonar.plugins.coverity.ws.CIMClient;
 
 import java.io.File;
@@ -38,12 +39,10 @@ public class FileGenerator {
         languageDomains.put("cs", "STATIC_CS");
     }
 
-    public static void generateRulesFiles(File propsFile, File xmlDir, File htmlDir) throws Exception {
+    public static void generateRulesFiles(File propsFile, File xmlDir, File htmlDir, CIMClient instance) throws Exception {
         propsFile.getParentFile().mkdirs();
         xmlDir.mkdirs();
         PrintWriter propsFileOut = new PrintWriter(propsFile);
-
-        CIMClient instance = new CIMClient("jvinson-wrkst", 14800, "admin", "coverity", false);
 
         for(Map.Entry<String, String> entry : languageDomains.entrySet()) {
             String language = entry.getKey();
@@ -98,6 +97,8 @@ public class FileGenerator {
         System.out.println("xmlDir=" + xmlDir.getAbsolutePath());
         System.out.println("htmlDir=" + htmlDir.getAbsolutePath());
 
-        generateRulesFiles(propsFile, xmlDir, htmlDir);
+        CIMClient instance = new CIMClient("jvinson-wrkst", 14800, "admin", "coverity", false);
+
+        generateRulesFiles(propsFile, xmlDir, htmlDir, instance);
     }
 }
