@@ -21,7 +21,6 @@ package org.sonar.plugins.coverity.util;
 
 import com.coverity.ws.v6.CheckerPropertyDataObj;
 import com.coverity.ws.v6.CheckerPropertyFilterSpecDataObj;
-import org.sonar.plugins.coverity.CoverityUtil;
 import org.sonar.plugins.coverity.ws.CIMClient;
 
 import java.io.File;

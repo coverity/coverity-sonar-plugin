@@ -17,12 +17,15 @@
  * License along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02
  */
-package org.sonar.plugins.coverity;
+package org.sonar.plugins.coverity.util;
 
 import com.coverity.ws.v6.CheckerSubcategoryIdDataObj;
 import com.coverity.ws.v6.DefectInstanceDataObj;
+import org.sonar.api.config.Settings;
 import org.sonar.api.rule.RuleKey;
+import org.sonar.plugins.coverity.CoverityPlugin;
 import org.sonar.plugins.coverity.server.CoverityRulesRepositories;
+import org.sonar.plugins.coverity.ws.CIMClient;
 
 public class CoverityUtil {
     public static RuleKey getRuleKey(DefectInstanceDataObj dido) {
@@ -32,5 +35,24 @@ public class CoverityUtil {
 
     public static String flattenCheckerSubcategoryId(CheckerSubcategoryIdDataObj csido) {
         return csido.getDomain() + "_" + csido.getCheckerName() + "_" + csido.getSubcategory();
+    }
+
+    public static String createURL(CIMClient client) {
+        return createURL(client.getHost(), client.getPort(), client.isUseSSL());
+    }
+
+    public static String createURL(Settings settings) {
+        String host = settings.getString(CoverityPlugin.COVERITY_CONNECT_HOSTNAME);
+        int port = settings.getInt(CoverityPlugin.COVERITY_CONNECT_PORT);
+        boolean ssl = settings.getBoolean(CoverityPlugin.COVERITY_CONNECT_SSL);
+
+        return createURL(host, port, ssl);
+    }
+
+    public static String createURL(String host, int port, boolean ssl) {
+        if(host == null || port == 0) {
+            return null;
+        }
+        return String.format("http%s://%s:%d/", (ssl ? "s" : ""), host, port);
     }
 }
