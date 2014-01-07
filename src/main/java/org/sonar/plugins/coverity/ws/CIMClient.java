@@ -1,6 +1,6 @@
 /*
  * Coverity Sonar Plugin
- * Copyright (C) 2014 Coverity, Inc.
+ * Copyright (C) 2013 Coverity, Inc.
  * support@coverity.com
  *
  * This program is free software; you can redistribute it and/or
@@ -30,7 +30,10 @@ import com.coverity.ws.v6.MergedDefectsPageDataObj;
 import com.coverity.ws.v6.PageSpecDataObj;
 import com.coverity.ws.v6.ProjectDataObj;
 import com.coverity.ws.v6.ProjectFilterSpecDataObj;
+import com.coverity.ws.v6.ProjectIdDataObj;
 import com.coverity.ws.v6.StreamDataObj;
+import com.coverity.ws.v6.StreamDefectDataObj;
+import com.coverity.ws.v6.StreamDefectFilterSpecDataObj;
 import com.coverity.ws.v6.StreamFilterSpecDataObj;
 import com.coverity.ws.v6.StreamIdDataObj;
 
@@ -42,6 +45,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -90,6 +94,26 @@ public class CIMClient {
         this.user = user;
         this.password = password;
         this.useSSL = ssl;
+    }
+
+    public String getHost() {
+        return host;
+    }
+
+    public int getPort() {
+        return port;
+    }
+
+    public String getUser() {
+        return user;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public boolean isUseSSL() {
+        return useSSL;
     }
 
     /**
@@ -180,6 +204,26 @@ public class CIMClient {
         return result;
     }
 
+    public List<MergedDefectDataObj> getDefects(String project) throws IOException, CovRemoteServiceException_Exception {
+        MergedDefectFilterSpecDataObj filterSpec = new MergedDefectFilterSpecDataObj();
+        ProjectIdDataObj projectId = new ProjectIdDataObj();
+        projectId.setName(project);
+        PageSpecDataObj pageSpec = new PageSpecDataObj();
+        pageSpec.setPageSize(2500);
+
+        List<MergedDefectDataObj> result = new ArrayList<MergedDefectDataObj>();
+        int defectCount = 0;
+        MergedDefectsPageDataObj defects = null;
+        do {
+            pageSpec.setStartIndex(defectCount);
+            defects = getDefectService().getMergedDefectsForProject(projectId, filterSpec, pageSpec);
+            result.addAll(defects.getMergedDefects());
+            defectCount += defects.getMergedDefects().size();
+        } while(defectCount < defects.getTotalNumberOfRecords());
+
+        return result;
+    }
+
     public ProjectDataObj getProject(String projectId) throws IOException, CovRemoteServiceException_Exception {
         ProjectFilterSpecDataObj filterSpec = new ProjectFilterSpecDataObj();
         filterSpec.setNamePattern(projectId);
@@ -228,5 +272,26 @@ public class CIMClient {
         } else {
             return streams.get(0);
         }
+    }
+
+    public Map<Long, StreamDefectDataObj> getStreamDefectsForMergedDefects(List<MergedDefectDataObj> defects) throws IOException, CovRemoteServiceException_Exception {
+        Map<Long, MergedDefectDataObj> cids = new HashMap<Long, MergedDefectDataObj>();
+
+        Map<Long, StreamDefectDataObj> sddos = new HashMap<Long, StreamDefectDataObj>();
+
+        for(MergedDefectDataObj mddo : defects) {
+            cids.put(mddo.getCid(), mddo);
+        }
+
+        StreamDefectFilterSpecDataObj filter = new StreamDefectFilterSpecDataObj();
+        filter.setIncludeDefectInstances(true);
+
+        List<StreamDefectDataObj> temp = getDefectService().getStreamDefects(new ArrayList<Long>(cids.keySet()), filter);
+
+        for(StreamDefectDataObj sddo : temp) {
+            sddos.put(sddo.getCid(), sddo);
+        }
+
+        return sddos;
     }
 }

@@ -1,6 +1,6 @@
 /*
  * Coverity Sonar Plugin
- * Copyright (C) 2014 Coverity, Inc.
+ * Copyright (C) 2013 Coverity, Inc.
  * support@coverity.com
  *
  * This program is free software; you can redistribute it and/or
@@ -25,6 +25,7 @@ import org.sonar.api.SonarPlugin;
 import org.sonar.api.config.PropertyDefinition;
 import org.sonar.api.resources.Qualifiers;
 import org.sonar.plugins.coverity.batch.CoveritySensor;
+import org.sonar.plugins.coverity.server.CoverityRulesRepositories;
 
 import java.util.List;
 
@@ -37,7 +38,10 @@ public final class CoverityPlugin extends SonarPlugin {
     public static final String COVERITY_PROJECT = "sonar.coverity.stream";
     public static final String COVERITY_CONNECT_SSL = "sonar.coverity.ssl";
 
-    // This is where you're going to declare all your Sonar extensions
+    public static final String REPOSITORY_KEY = "coverity";
+
+
+	// This is where you're going to declare all your Sonar extensions
     public List getExtensions() {
         int i = 0;
         return ImmutableList.of(
@@ -89,11 +93,11 @@ public final class CoverityPlugin extends SonarPlugin {
                         .index(++i)
                         .build(),
 
-                //Definitions
-                //ExampleMetrics.class,
-
                 //Batch
-                CoveritySensor.class
+                CoveritySensor.class,
+
+                //Server
+                CoverityRulesRepositories.class
 
                 //UI
 

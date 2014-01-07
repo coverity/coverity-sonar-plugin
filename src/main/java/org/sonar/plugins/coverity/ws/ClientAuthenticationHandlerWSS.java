@@ -1,6 +1,6 @@
 /*
  * Coverity Sonar Plugin
- * Copyright (C) 2014 Coverity, Inc.
+ * Copyright (C) 2013 Coverity, Inc.
  * support@coverity.com
  *
  * This program is free software; you can redistribute it and/or
