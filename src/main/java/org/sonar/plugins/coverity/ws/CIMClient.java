@@ -1,0 +1,232 @@
+/*
+ * Coverity Sonar Plugin
+ * Copyright (C) 2014 Coverity, Inc.
+ * support@coverity.com
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public
+ * License as published by the Free Software Foundation; either
+ * version 3 of the License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this program; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02
+ */
+package org.sonar.plugins.coverity.ws;
+
+import com.coverity.ws.v6.ConfigurationService;
+import com.coverity.ws.v6.ConfigurationServiceService;
+import com.coverity.ws.v6.CovRemoteServiceException_Exception;
+import com.coverity.ws.v6.DefectService;
+import com.coverity.ws.v6.DefectServiceService;
+import com.coverity.ws.v6.MergedDefectDataObj;
+import com.coverity.ws.v6.MergedDefectFilterSpecDataObj;
+import com.coverity.ws.v6.MergedDefectsPageDataObj;
+import com.coverity.ws.v6.PageSpecDataObj;
+import com.coverity.ws.v6.ProjectDataObj;
+import com.coverity.ws.v6.ProjectFilterSpecDataObj;
+import com.coverity.ws.v6.StreamDataObj;
+import com.coverity.ws.v6.StreamFilterSpecDataObj;
+import com.coverity.ws.v6.StreamIdDataObj;
+
+import javax.xml.namespace.QName;
+import javax.xml.ws.BindingProvider;
+import javax.xml.ws.handler.Handler;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+
+/**
+ * Represents one Coverity Integrity Manager server. Abstracts functions like getting streams and defects.
+ */
+public class CIMClient {
+    public static final String COVERITY_WS_VERSION = "v6";
+    public static final String COVERITY_NAMESPACE = "http://ws.coverity.com/" + COVERITY_WS_VERSION;
+    public static final String CONFIGURATION_SERVICE_WSDL = "/ws/" + COVERITY_WS_VERSION + "/configurationservice?wsdl";
+    public static final String DEFECT_SERVICE_WSDL = "/ws/" + COVERITY_WS_VERSION + "/defectservice?wsdl";
+    /**
+     * The host name for the CIM server
+     */
+    private final String host;
+    /**
+     * The port for the CIM server (this is the HTTP port and not the data port)
+     */
+    private final int port;
+    /**
+     * Username for connecting to the CIM server
+     */
+    private final String user;
+    /**
+     * Password for connecting to the CIM server
+     */
+    private final String password;
+    /**
+     * Use SSL
+     */
+    private final boolean useSSL;
+    /**
+     * cached webservice port for Defect service
+     */
+    private transient DefectServiceService defectServiceService;
+    /**
+     * cached webservice port for Configuration service
+     */
+    private transient ConfigurationServiceService configurationServiceService;
+    private transient Map<String, Long> projectKeys;
+
+    public CIMClient(String host, int port, String user, String password, boolean ssl) {
+        this.host = host;
+        this.port = port;
+        this.user = user;
+        this.password = password;
+        this.useSSL = ssl;
+    }
+
+    /**
+     * The root URL for the CIM instance
+     *
+     * @return a url
+     * @throws java.net.MalformedURLException should not happen if host is valid
+     */
+    public URL getURL() throws MalformedURLException {
+        return new URL(useSSL ? "https" : "http", host, port, "/");
+    }
+
+    /**
+     * Returns a Defect service client
+     */
+    public DefectService getDefectService() throws IOException {
+        synchronized(this) {
+            if(defectServiceService == null) {
+                defectServiceService = new DefectServiceService(
+                        new URL(getURL(), DEFECT_SERVICE_WSDL),
+                        new QName(COVERITY_NAMESPACE, "DefectServiceService"));
+            }
+        }
+
+        ClassLoader cl = Thread.currentThread().getContextClassLoader();
+        try {
+            DefectService defectService = defectServiceService.getDefectServicePort();
+            attachAuthenticationHandler((BindingProvider)defectService);
+
+            return defectService;
+        } finally {
+            Thread.currentThread().setContextClassLoader(cl);
+        }
+    }
+
+    /**
+     * Attach an authentication handler to the web service, that uses the configured user and password
+     */
+    private void attachAuthenticationHandler(BindingProvider service) {
+        service.getBinding().setHandlerChain(Arrays.<Handler>asList(new ClientAuthenticationHandlerWSS(user, password)));
+    }
+
+    /**
+     * Returns a Configuration service client
+     */
+    public ConfigurationService getConfigurationService() throws IOException {
+        synchronized(this) {
+            if(configurationServiceService == null) {
+                // Create a Web Services port to the server
+                configurationServiceService = new ConfigurationServiceService(
+                        new URL(getURL(), CONFIGURATION_SERVICE_WSDL),
+                        new QName(COVERITY_NAMESPACE, "ConfigurationServiceService"));
+            }
+        }
+
+        ClassLoader cl = Thread.currentThread().getContextClassLoader();
+        try {
+            ConfigurationService configurationService = configurationServiceService.getConfigurationServicePort();
+            attachAuthenticationHandler((BindingProvider)configurationService);
+
+            return configurationService;
+        } finally {
+            Thread.currentThread().setContextClassLoader(cl);
+        }
+    }
+
+    public List<MergedDefectDataObj> getDefects(String streamId, List<Long> defectIds) throws IOException, CovRemoteServiceException_Exception {
+        MergedDefectFilterSpecDataObj filterSpec1 = new MergedDefectFilterSpecDataObj();
+        StreamIdDataObj stream = new StreamIdDataObj();
+        stream.setName(streamId);
+        PageSpecDataObj pageSpec = new PageSpecDataObj();
+        pageSpec.setPageSize(2500);
+
+        List<MergedDefectDataObj> result = new ArrayList<MergedDefectDataObj>();
+        int defectCount = 0;
+        MergedDefectsPageDataObj defects = null;
+        do {
+            pageSpec.setStartIndex(defectCount);
+            defects = getDefectService().getMergedDefectsForStreams(Arrays.asList(stream), filterSpec1, pageSpec);
+            for(MergedDefectDataObj defect : defects.getMergedDefects()) {
+                if(defectIds.contains(defect.getCid())) {
+                    result.add(defect);
+                }
+            }
+            defectCount += defects.getMergedDefects().size();
+        } while(defectCount < defects.getTotalNumberOfRecords());
+
+        return result;
+    }
+
+    public ProjectDataObj getProject(String projectId) throws IOException, CovRemoteServiceException_Exception {
+        ProjectFilterSpecDataObj filterSpec = new ProjectFilterSpecDataObj();
+        filterSpec.setNamePattern(projectId);
+        List<ProjectDataObj> projects = getConfigurationService().getProjects(filterSpec);
+        if(projects.size() == 0) {
+            return null;
+        } else {
+            return projects.get(0);
+        }
+    }
+
+    public Long getProjectKey(String projectId) throws IOException, CovRemoteServiceException_Exception {
+        if(projectKeys == null) {
+            projectKeys = new ConcurrentHashMap<String, Long>();
+        }
+
+        Long result = projectKeys.get(projectId);
+        if(result == null) {
+            result = getProject(projectId).getProjectKey();
+            projectKeys.put(projectId, result);
+        }
+        return result;
+    }
+
+    public List<ProjectDataObj> getProjects() throws IOException, CovRemoteServiceException_Exception {
+        return getConfigurationService().getProjects(new ProjectFilterSpecDataObj());
+    }
+
+    public List<StreamDataObj> getStaticStreams(String projectId) throws IOException, CovRemoteServiceException_Exception {
+        ProjectDataObj project = getProject(projectId);
+        List<StreamDataObj> result = new ArrayList<StreamDataObj>();
+        for(StreamDataObj stream : project.getStreams()) {
+            result.add(stream);
+        }
+
+        return result;
+    }
+
+    public StreamDataObj getStream(String streamId) throws IOException, CovRemoteServiceException_Exception {
+        StreamFilterSpecDataObj filter = new StreamFilterSpecDataObj();
+        filter.setNamePattern(streamId);
+
+        List<StreamDataObj> streams = getConfigurationService().getStreams(filter);
+        if(streams.isEmpty()) {
+            return null;
+        } else {
+            return streams.get(0);
+        }
+    }
+}

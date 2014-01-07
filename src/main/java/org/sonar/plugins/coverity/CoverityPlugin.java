@@ -1,6 +1,6 @@
 /*
  * Coverity Sonar Plugin
- * Copyright (C) 2013 Coverity, Inc.
+ * Copyright (C) 2014 Coverity, Inc.
  * support@coverity.com
  *
  * This program is free software; you can redistribute it and/or
@@ -19,7 +19,83 @@
  */
 package org.sonar.plugins.coverity;
 
-class CoverityPlugin {
-    static void main(String[] args){
+import com.google.common.collect.ImmutableList;
+import org.sonar.api.PropertyType;
+import org.sonar.api.SonarPlugin;
+import org.sonar.api.config.PropertyDefinition;
+import org.sonar.api.resources.Qualifiers;
+import org.sonar.plugins.coverity.batch.CoveritySensor;
+
+import java.util.List;
+
+public final class CoverityPlugin extends SonarPlugin {
+    public static final String COVERITY_ENABLE = "sonar.coverity.enable";
+    public static final String COVERITY_CONNECT_HOSTNAME = "sonar.coverity.connect.hostname";
+    public static final String COVERITY_CONNECT_PORT = "sonar.coverity.connect.port";
+    public static final String COVERITY_CONNECT_USERNAME = "sonar.coverity.connect.username";
+    public static final String COVERITY_CONNECT_PASSWORD = "sonar.coverity.connect.password";
+    public static final String COVERITY_PROJECT = "sonar.coverity.stream";
+    public static final String COVERITY_CONNECT_SSL = "sonar.coverity.ssl";
+
+    // This is where you're going to declare all your Sonar extensions
+    public List getExtensions() {
+        int i = 0;
+        return ImmutableList.of(
+                //Properties
+                PropertyDefinition.builder(CoverityPlugin.COVERITY_ENABLE)
+                        .name("Enable Coverity")
+                        .description("Enable Coverity defect import")
+                        .defaultValue("false")
+                        .type(PropertyType.BOOLEAN)
+                        .index(++i)
+                        .build(),
+                PropertyDefinition.builder(CoverityPlugin.COVERITY_CONNECT_HOSTNAME)
+                        .name("Connect Hostname")
+                        .description("Hostname of the Connect server to import defects from")
+                        .type(PropertyType.STRING)
+                        .index(++i)
+                        .build(),
+                PropertyDefinition.builder(CoverityPlugin.COVERITY_CONNECT_PORT)
+                        .name("Connect Port")
+                        .description("Port of the Connect server to import defects from")
+                        .type(PropertyType.INTEGER)
+                        .index(++i)
+                        .build(),
+                PropertyDefinition.builder(CoverityPlugin.COVERITY_CONNECT_USERNAME)
+                        .name("Connect Username")
+                        .description("Username to access defects in Connect with")
+                        .type(PropertyType.STRING)
+                        .index(++i)
+                        .build(),
+                PropertyDefinition.builder(CoverityPlugin.COVERITY_CONNECT_PASSWORD)
+                        .name("Connect Password")
+                        .description("Password to access defects in Connect with")
+                        .type(PropertyType.PASSWORD)
+                        .index(++i)
+                        .build(),
+                PropertyDefinition.builder(CoverityPlugin.COVERITY_CONNECT_SSL)
+                        .name("Use SSL")
+                        .description("Use SSL to interact with Coverity Connect")
+                        .defaultValue("false")
+                        .type(PropertyType.BOOLEAN)
+                        .index(++i)
+                        .build(),
+                PropertyDefinition.builder(CoverityPlugin.COVERITY_PROJECT)
+                        .name("Coverity Project")
+                        .description("Coverity project corresponding to this Sonar project")
+                        .type(PropertyType.STRING)
+                        .onlyOnQualifiers(Qualifiers.PROJECT)
+                        .index(++i)
+                        .build(),
+
+                //Definitions
+                //ExampleMetrics.class,
+
+                //Batch
+                CoveritySensor.class
+
+                //UI
+
+        );
     }
 }
