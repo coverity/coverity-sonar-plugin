@@ -17,7 +17,7 @@
 	<name>Coverity</name>
 	<description>Imports Coverity defects into SonarQube</description>
 	<url>http://docs.codehaus.org/display/SONAR/Coverity+Plugin</url>
-	<inceptionYear>2013</inceptionYear>
+	<inceptionYear>2014</inceptionYear>
 
 
 	<properties>
