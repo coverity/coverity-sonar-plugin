@@ -22,16 +22,19 @@ package org.sonar.plugins.coverity.server;
 import com.coverity.ws.v6.CheckerPropertyDataObj;
 import com.coverity.ws.v6.CheckerPropertyFilterSpecDataObj;
 import com.coverity.ws.v6.CovRemoteServiceException_Exception;
+import org.apache.commons.lang.StringEscapeUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.sonar.api.config.Settings;
 import org.sonar.api.rules.Rule;
 import org.sonar.api.rules.RuleRepository;
+import org.sonar.api.rules.XMLRuleParser;
 import org.sonar.plugins.coverity.CoverityPlugin;
 import org.sonar.plugins.coverity.CoverityUtil;
 import org.sonar.plugins.coverity.ws.CIMClient;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,18 +44,28 @@ public class CoverityRules extends RuleRepository {
     String domain;
 
     public CoverityRules(String language, String domain, Settings settings) {
-        super(CoverityPlugin.REPOSITORY_KEY, language);
+        super(CoverityPlugin.REPOSITORY_KEY + "-" + language, language);
         this.domain = domain;
         this.settings = settings;
     }
 
     @Override
     public List<Rule> createRules() {
-        return new ArrayList<Rule>();
+        return createRulesFromDisk();
     }
 
     public List<Rule> createRulesFromDisk() {
-        return null;
+        List<Rule> rules;
+        try {
+            InputStream is = getClass().getResourceAsStream("/org/sonar/plugins/coverity/server/coverity-" + getLanguage() + ".xml");
+            rules = new XMLRuleParser().parse(is);
+            is.close();
+        } catch(IOException e) {
+            LOG.error("Failed to parse rules xml for language: " + getLanguage());
+            e.printStackTrace();
+            return new ArrayList<Rule>();
+        }
+        return rules;
     }
 
     public List<Rule> createRulesFromServer() {
@@ -64,11 +77,7 @@ public class CoverityRules extends RuleRepository {
         boolean ssl = settings.getBoolean(CoverityPlugin.COVERITY_CONNECT_SSL);
 
         if(host == null || port == 0 || user == null || password == null) {
-            host = "jvinson-wrkst";
-            port = 14800;
-            user = "admin";
-            password = "coverity";
-            //return new ArrayList<Rule>();
+            return new ArrayList<Rule>();
         }
 
         CIMClient instance = new CIMClient(host, port, user, password, ssl);

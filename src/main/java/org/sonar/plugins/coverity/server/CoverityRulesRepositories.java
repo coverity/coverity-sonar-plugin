@@ -25,6 +25,7 @@ import org.slf4j.LoggerFactory;
 import org.sonar.api.ExtensionProvider;
 import org.sonar.api.ServerExtension;
 import org.sonar.api.config.Settings;
+import org.sonar.api.resources.Language;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -32,26 +33,37 @@ import java.util.List;
 import java.util.Map;
 
 public class CoverityRulesRepositories extends ExtensionProvider implements ServerExtension {
-    private static final Logger LOG = LoggerFactory.getLogger(CoverityRulesRepositories.class);
-    private static Map<String, String> languageDomains = new HashMap<String, String>();
+    public static final Map<String, String> languageDomains = new HashMap<String, String>();
+    public static final Map<String, String> domainLanguages = new HashMap<String, String>();
 
     static {
         languageDomains.put("java", "STATIC_JAVA");
         languageDomains.put("cpp", "STATIC_C");
         languageDomains.put("cs", "STATIC_CS");
+
+        domainLanguages.put("STATIC_JAVA", "java");
+        domainLanguages.put("STATIC_C", "cpp");
+        domainLanguages.put("STATIC_CS", "cs");
     }
 
+    private static final Logger LOG = LoggerFactory.getLogger(CoverityRulesRepositories.class);
     Settings settings;
+    Language[] languages;
 
-    public CoverityRulesRepositories(Settings settings) {
+    public CoverityRulesRepositories(Language[] languages, Settings settings) {
         this.settings = settings;
+        this.languages = languages;
     }
 
     @Override
     public List<CoverityRules> provide() {
         List<CoverityRules> rules = new ArrayList<CoverityRules>();
-        for(Map.Entry<String, String> entry : languageDomains.entrySet()) {
-            rules.add(new CoverityRules(entry.getKey(), entry.getValue(), settings));
+        for(Language lang : languages) {
+            String langKey = lang.getKey();
+            String domain = languageDomains.get(lang.getKey());
+            if(domain != null) {
+                rules.add(new CoverityRules(langKey, domain, settings));
+            }
         }
         return rules;
     }

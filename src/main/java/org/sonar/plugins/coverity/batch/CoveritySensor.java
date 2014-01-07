@@ -19,9 +19,6 @@
  */
 package org.sonar.plugins.coverity.batch;
 
-import com.coverity.ws.v6.CheckerPropertyDataObj;
-import com.coverity.ws.v6.CheckerPropertyFilterSpecDataObj;
-import com.coverity.ws.v6.CheckerSubcategoryIdDataObj;
 import com.coverity.ws.v6.CovRemoteServiceException_Exception;
 import com.coverity.ws.v6.DefectInstanceDataObj;
 import com.coverity.ws.v6.EventDataObj;
@@ -40,7 +37,6 @@ import org.sonar.api.profiles.RulesProfile;
 import org.sonar.api.resources.Project;
 import org.sonar.api.resources.ProjectFileSystem;
 import org.sonar.api.resources.Resource;
-import org.sonar.api.rule.RuleKey;
 import org.sonar.api.rules.ActiveRule;
 import org.sonar.api.rules.Rule;
 import org.sonar.plugins.coverity.CoverityPlugin;
@@ -66,7 +62,7 @@ public class CoveritySensor implements Sensor {
 
     public boolean shouldExecuteOnProject(Project project) {
         boolean enabled = settings.getBoolean(CoverityPlugin.COVERITY_ENABLE);
-        int active = profile.getActiveRulesByRepository(CoverityPlugin.REPOSITORY_KEY).size();
+        int active = profile.getActiveRulesByRepository(CoverityPlugin.REPOSITORY_KEY + "-" + project.getLanguageKey()).size();
         return enabled && active > 0;
     }
 
@@ -104,10 +100,10 @@ public class CoveritySensor implements Sensor {
             return;
         }
 
-		LOG.info(profile.toString());
-		for(ActiveRule ar : profile.getActiveRulesByRepository(CoverityPlugin.REPOSITORY_KEY)) {
-			LOG.info(ar.toString());
-		}
+        LOG.info(profile.toString());
+        for(ActiveRule ar : profile.getActiveRulesByRepository(CoverityPlugin.REPOSITORY_KEY + "-" + project.getLanguageKey())) {
+            LOG.info(ar.toString());
+        }
 
         try {
             LOG.info("Fetching defects for project: " + covProject);
@@ -131,47 +127,36 @@ public class CoveritySensor implements Sensor {
 
                     Issuable issuable = resourcePerspectives.as(Issuable.class, res);
 
-                    String message = getIssueMessage(instance, covProjectObj, mddo, dido);
+                    ActiveRule ar = profile.getActiveRule(CoverityUtil.getRuleKey(dido).repository(), CoverityUtil.getRuleKey(dido).rule());
 
-					ActiveRule ar = profile.getActiveRule(CoverityUtil.getRuleKey(dido).repository(), CoverityUtil.getRuleKey(dido).rule());
+                    String message = getIssueMessage(instance, ar.getRule(), covProjectObj, mddo, dido);
 
+                    LOG.debug("mainEvent=" + mainEvent);
+                    LOG.debug("issuable=" + issuable);
+                    LOG.debug("ar=" + ar);
                     if(mainEvent != null && issuable != null && ar != null) {
                         Issue issue = issuable.newIssueBuilder()
                                 .ruleKey(ar.getRule().ruleKey())
                                 .line(mainEvent.getLineNumber())
                                 .message(message)
                                 .build();
-                        issuable.addIssue(issue);
+                        boolean result = issuable.addIssue(issue);
+                        LOG.debug("result=" + result);
+                    } else {
+                        LOG.info("Couldn't create issue: " + mddo.getCid());
                     }
                 }
             }
         } catch(Exception e) {
             LOG.error("Error fetching defects");
-			e.printStackTrace();
+            e.printStackTrace();
         }
     }
 
-    protected String getIssueMessage(CIMClient instance, ProjectDataObj covProjectObj, MergedDefectDataObj mddo, DefectInstanceDataObj dido) throws CovRemoteServiceException_Exception, IOException {
-        CheckerPropertyDataObj checker = getCheckerProperties(instance, dido);
-
+    protected String getIssueMessage(CIMClient instance, Rule rule, ProjectDataObj covProjectObj, MergedDefectDataObj mddo, DefectInstanceDataObj dido) throws CovRemoteServiceException_Exception, IOException {
         String url = getDefectURL(instance, covProjectObj, mddo);
 
-        return checker.getSubcategoryLongDescription() + "\n\nView in Coverity Connect: \n" + url;
-    }
-
-    protected CheckerPropertyDataObj getCheckerProperties(CIMClient instance, DefectInstanceDataObj dido) throws CovRemoteServiceException_Exception, IOException {
-        CheckerPropertyFilterSpecDataObj filter = new CheckerPropertyFilterSpecDataObj();
-        filter.getCheckerNameList().add(dido.getCheckerSubcategoryId().getCheckerName());
-        filter.getSubcategoryList().add(dido.getCheckerSubcategoryId().getSubcategory());
-        filter.getDomainList().add(dido.getCheckerSubcategoryId().getDomain());
-        List<CheckerPropertyDataObj> checkers = instance.getConfigurationService().getCheckerProperties(filter);
-
-        if(checkers.size() > 1) {
-            LOG.warn("warning: checkers list is larger than 1 element");
-        }
-
-        CheckerPropertyDataObj checker = checkers.get(0);
-        return checker;
+        return rule.getDescription() + "\n\nView in Coverity Connect: \n" + url;
     }
 
     protected String getDefectURL(CIMClient instance, ProjectDataObj covProjectObj, MergedDefectDataObj mddo) {

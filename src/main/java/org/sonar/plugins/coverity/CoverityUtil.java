@@ -22,10 +22,12 @@ package org.sonar.plugins.coverity;
 import com.coverity.ws.v6.CheckerSubcategoryIdDataObj;
 import com.coverity.ws.v6.DefectInstanceDataObj;
 import org.sonar.api.rule.RuleKey;
+import org.sonar.plugins.coverity.server.CoverityRulesRepositories;
 
 public class CoverityUtil {
     public static RuleKey getRuleKey(DefectInstanceDataObj dido) {
-        return RuleKey.of(CoverityPlugin.REPOSITORY_KEY, flattenCheckerSubcategoryId(dido.getCheckerSubcategoryId()));
+        String language = CoverityRulesRepositories.domainLanguages.get(dido.getCheckerSubcategoryId().getDomain());
+        return RuleKey.of(CoverityPlugin.REPOSITORY_KEY + "-" + language, flattenCheckerSubcategoryId(dido.getCheckerSubcategoryId()));
     }
 
     public static String flattenCheckerSubcategoryId(CheckerSubcategoryIdDataObj csido) {
