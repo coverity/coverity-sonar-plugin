@@ -14,7 +14,7 @@
 	<packaging>sonar-plugin</packaging>
 	<version>1.0-SNAPSHOT</version>
 
-	<name>Coverity Plugin</name>
+	<name>Coverity</name>
 	<description>Imports Coverity defects into SonarQube</description>
 	<url>http://docs.codehaus.org/display/SONAR/Coverity+Plugin</url>
 	<inceptionYear>2013</inceptionYear>

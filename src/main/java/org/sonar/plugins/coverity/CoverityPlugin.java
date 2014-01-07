@@ -17,6 +17,7 @@
  * License along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02
  */
+
 package org.sonar.plugins.coverity;
 
 import com.google.common.collect.ImmutableList;
@@ -48,33 +49,33 @@ public final class CoverityPlugin extends SonarPlugin {
                 //Properties
                 PropertyDefinition.builder(CoverityPlugin.COVERITY_ENABLE)
                         .name("Enable Coverity")
-                        .description("Enable Coverity defect import")
+                        .description("Enables Coverity issue import")
                         .defaultValue("false")
                         .type(PropertyType.BOOLEAN)
                         .onQualifiers(Qualifiers.PROJECT)
                         .index(++i)
                         .build(),
                 PropertyDefinition.builder(CoverityPlugin.COVERITY_CONNECT_HOSTNAME)
-                        .name("Connect Hostname")
-                        .description("Hostname of the Connect server to import defects from")
+                        .name("Coverity Connect Hostname")
+                        .description("Hostname of the Coverity Connect server from which to import issues")
                         .type(PropertyType.STRING)
                         .index(++i)
                         .build(),
                 PropertyDefinition.builder(CoverityPlugin.COVERITY_CONNECT_PORT)
-                        .name("Connect Port")
-                        .description("Port of the Connect server to import defects from")
+                        .name("Coverity Connect Port")
+                        .description("Port of the Coverity Connect server from which to import issues")
                         .type(PropertyType.INTEGER)
                         .index(++i)
                         .build(),
                 PropertyDefinition.builder(CoverityPlugin.COVERITY_CONNECT_USERNAME)
-                        .name("Connect Username")
-                        .description("Username to access defects in Connect with")
+                        .name("Coverity Connect Username")
+                        .description("Username to access issues in Coverity Connect")
                         .type(PropertyType.STRING)
                         .index(++i)
                         .build(),
                 PropertyDefinition.builder(CoverityPlugin.COVERITY_CONNECT_PASSWORD)
-                        .name("Connect Password")
-                        .description("Password to access defects in Connect with")
+                        .name("Coverity Connect Password")
+                        .description("Password to access issues in Coverity Connect")
                         .type(PropertyType.PASSWORD)
                         .index(++i)
                         .build(),
@@ -87,7 +88,7 @@ public final class CoverityPlugin extends SonarPlugin {
                         .build(),
                 PropertyDefinition.builder(CoverityPlugin.COVERITY_PROJECT)
                         .name("Coverity Project")
-                        .description("Coverity project corresponding to this Sonar project")
+                        .description("The project in Coverity Connect corresponding to this Sonar project")
                         .type(PropertyType.STRING)
                         .onlyOnQualifiers(Qualifiers.PROJECT)
                         .index(++i)
