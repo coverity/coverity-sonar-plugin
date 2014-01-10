@@ -76,6 +76,13 @@ public class CoveritySensor implements Sensor {
             return;
         }
 
+        //make sure to use the right SAAJ library. The one included with some JREs is missing a required file (a
+        // LocalStrings bundle)
+        ClassLoader oldCL = Thread.currentThread().getContextClassLoader();
+        Thread.currentThread().setContextClassLoader(getClass().getClassLoader());
+
+        System.setProperty("javax.xml.soap.MetaFactory", "com.sun.xml.messaging.saaj.soap.SAAJMetaFactoryImpl");
+
         String host = settings.getString(CoverityPlugin.COVERITY_CONNECT_HOSTNAME);
         int port = settings.getInt(CoverityPlugin.COVERITY_CONNECT_PORT);
         String user = settings.getString(CoverityPlugin.COVERITY_CONNECT_USERNAME);
@@ -152,6 +159,8 @@ public class CoveritySensor implements Sensor {
             LOG.error("Error fetching defects");
             e.printStackTrace();
         }
+
+        Thread.currentThread().setContextClassLoader(oldCL);
     }
 
     protected String getIssueMessage(CIMClient instance, Rule rule, ProjectDataObj covProjectObj, MergedDefectDataObj mddo, DefectInstanceDataObj dido) throws CovRemoteServiceException_Exception, IOException {
