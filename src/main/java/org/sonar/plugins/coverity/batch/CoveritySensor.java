@@ -137,12 +137,12 @@ public class CoveritySensor implements Sensor {
 
                     ActiveRule ar = profile.getActiveRule(CoverityUtil.getRuleKey(dido).repository(), CoverityUtil.getRuleKey(dido).rule());
 
-                    String message = getIssueMessage(instance, ar.getRule(), covProjectObj, mddo, dido);
-
                     LOG.debug("mainEvent=" + mainEvent);
                     LOG.debug("issuable=" + issuable);
                     LOG.debug("ar=" + ar);
                     if(mainEvent != null && issuable != null && ar != null) {
+                        String message = getIssueMessage(instance, ar.getRule(), covProjectObj, mddo, dido);
+
                         Issue issue = issuable.newIssueBuilder()
                                 .ruleKey(ar.getRule().ruleKey())
                                 .line(mainEvent.getLineNumber())
@@ -165,6 +165,9 @@ public class CoveritySensor implements Sensor {
 
     protected String getIssueMessage(CIMClient instance, Rule rule, ProjectDataObj covProjectObj, MergedDefectDataObj mddo, DefectInstanceDataObj dido) throws CovRemoteServiceException_Exception, IOException {
         String url = getDefectURL(instance, covProjectObj, mddo);
+
+        LOG.debug("rule:" + rule);
+        LOG.debug("description:" + rule.getDescription());
 
         return rule.getDescription() + "\n\nView in Coverity Connect: \n" + url;
     }
