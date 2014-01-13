@@ -59,6 +59,9 @@ public class CIMClient {
     public static final String COVERITY_NAMESPACE = "http://ws.coverity.com/" + COVERITY_WS_VERSION;
     public static final String CONFIGURATION_SERVICE_WSDL = "/ws/" + COVERITY_WS_VERSION + "/configurationservice?wsdl";
     public static final String DEFECT_SERVICE_WSDL = "/ws/" + COVERITY_WS_VERSION + "/defectservice?wsdl";
+
+    private static final int GET_STREAM_DEFECTS_MAX_CIDS = 100;
+
     /**
      * The host name for the CIM server
      */
@@ -287,10 +290,16 @@ public class CIMClient {
         StreamDefectFilterSpecDataObj filter = new StreamDefectFilterSpecDataObj();
         filter.setIncludeDefectInstances(true);
 
-        List<StreamDefectDataObj> temp = getDefectService().getStreamDefects(new ArrayList<Long>(cids.keySet()), filter);
+        List<Long> cidList = new ArrayList<Long>(cids.keySet());
 
-        for(StreamDefectDataObj sddo : temp) {
-            sddos.put(sddo.getCid(), sddo);
+        for(int i = 0; i < cidList.size(); i += GET_STREAM_DEFECTS_MAX_CIDS) {
+            List<Long> slice = cidList.subList(i, i + Math.min(GET_STREAM_DEFECTS_MAX_CIDS, cidList.size() - i));
+
+            List<StreamDefectDataObj> temp = getDefectService().getStreamDefects(slice, filter);
+
+            for(StreamDefectDataObj sddo : temp) {
+                sddos.put(sddo.getCid(), sddo);
+            }
         }
 
         return sddos;
