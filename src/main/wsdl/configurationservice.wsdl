@@ -7,7 +7,7 @@
 	<types>
 		<xsd:schema>
 			<xsd:import namespace="http://ws.coverity.com/v6"
-						schemaLocation="http://cimpop:8008/ws/v6/configurationservice?xsd=1"/>
+						schemaLocation="configurationservice.xml"/>
 		</xsd:schema>
 	</types>
 	<message name="deleteGroup">
@@ -1494,7 +1494,6 @@
 	</binding>
 	<service name="ConfigurationServiceService">
 		<port name="ConfigurationServicePort" binding="tns:ConfigurationServicePortBinding">
-			<soap:address location="http://cimpop:8008/ws/v6/configurationservice"/>
 		</port>
 	</service>
 </definitions>

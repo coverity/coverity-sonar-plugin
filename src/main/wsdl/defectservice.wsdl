@@ -13,7 +13,7 @@
 	<types>
 		<xsd:schema>
 			<xsd:import namespace="http://ws.coverity.com/v6"
-						schemaLocation="http://cimpop:8008/ws/v6/defectservice?xsd=1"/>
+						schemaLocation="defectservice.xml"/>
 		</xsd:schema>
 	</types>
 	<message name="updateStreamDefects">
@@ -495,7 +495,6 @@
 	</binding>
 	<service name="DefectServiceService">
 		<port name="DefectServicePort" binding="tns:DefectServicePortBinding">
-			<soap:address location="http://cimpop:8008/ws/v6/defectservice"/>
 		</port>
 	</service>
 </definitions>
