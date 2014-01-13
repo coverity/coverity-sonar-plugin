@@ -126,7 +126,8 @@ public class CoveritySensor implements Sensor {
                 Resource res = getResourceForFile(filePath, project.getFileSystem());
 
                 if(res == null) {
-                    LOG.info("Skipping defect (CID " + mddo.getCid() + " because the source file could not be found.");
+                    LOG.info("Skipping defect (CID " + mddo.getCid() + ") because the source file could not be found.");
+                    continue;
                 }
 
                 for(DefectInstanceDataObj dido : streamDefects.get(mddo.getCid()).getDefectInstances()) {
