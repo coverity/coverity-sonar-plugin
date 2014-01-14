@@ -48,8 +48,8 @@ public class FileGenerator {
             String language = entry.getKey();
             String domain = entry.getValue();
 
-            File htmlDirDir = new File(htmlDir, "coverity-" + language);
-            htmlDirDir.mkdirs();
+            //File htmlDirDir = new File(htmlDir, "coverity-" + language);
+            //htmlDirDir.mkdirs();
 
             File xmlFile = new File(xmlDir, "coverity-" + language + ".xml");
             PrintWriter xmlFileOut = new PrintWriter(xmlFile);
@@ -62,23 +62,25 @@ public class FileGenerator {
             for(CheckerPropertyDataObj cpdo : checkers) {
                 String key = CoverityUtil.flattenCheckerSubcategoryId(cpdo.getCheckerSubcategoryId());
 
-                File htmlFile = new File(htmlDirDir, key + ".html");
+                //File htmlFile = new File(htmlDirDir, key + ".html");
 
-                PrintWriter htmlFileOut = new PrintWriter(htmlFile);
+                //PrintWriter htmlFileOut = new PrintWriter(htmlFile);
 
                 //xml
                 xmlFileOut.println("<rule>");
                 xmlFileOut.println("<key>" + key + "</key>");
                 xmlFileOut.println("<priority>" + "MAJOR" + "</priority>");
+                //xmlFileOut.println("<configKey>" + key + "</configKey>");
+                xmlFileOut.println("<description><![CDATA[ " + cpdo.getSubcategoryLongDescription() + "]]></description>");
                 xmlFileOut.println("</rule>");
 
                 //props
                 propsFileOut.println("rule.coverity-java." + key + ".name=" + cpdo.getSubcategoryShortDescription());
 
                 //html
-                htmlFileOut.println(cpdo.getSubcategoryLongDescription());
+                //htmlFileOut.println(cpdo.getSubcategoryLongDescription());
 
-                htmlFileOut.close();
+                //htmlFileOut.close();
             }
 
             xmlFileOut.println("</rules>");

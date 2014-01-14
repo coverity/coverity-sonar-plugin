@@ -142,6 +142,12 @@ public class CoveritySensor implements Sensor {
                     LOG.debug("issuable=" + issuable);
                     LOG.debug("ar=" + ar);
                     if(mainEvent != null && issuable != null && ar != null) {
+                        LOG.debug("instance=" + instance);
+                        LOG.debug("ar.getRule()=" + ar.getRule());
+                        LOG.debug("covProjectObj=" + covProjectObj);
+                        LOG.debug("mddo=" + mddo);
+                        LOG.debug("dido=" + dido);
+                        LOG.debug("ar.getRule().getDescription()=" + ar.getRule().getDescription());
                         String message = getIssueMessage(instance, ar.getRule(), covProjectObj, mddo, dido);
 
                         Issue issue = issuable.newIssueBuilder()
@@ -149,6 +155,7 @@ public class CoveritySensor implements Sensor {
                                 .line(mainEvent.getLineNumber())
                                 .message(message)
                                 .build();
+                        LOG.debug("issue=" + issue);
                         boolean result = issuable.addIssue(issue);
                         LOG.debug("result=" + result);
                     } else {
