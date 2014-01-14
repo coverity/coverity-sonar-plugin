@@ -10,15 +10,14 @@
 	</parent>
 
 	<groupId>org.sonar.plugins.coverity</groupId>
-	<artifactId>sonar-coverity-plugin</artifactId>
+	<artifactId>coverity-sonar-plugin</artifactId>
 	<packaging>sonar-plugin</packaging>
-	<version>1.0</version>
+	<version>1.0.1-SNAPSHOT</version>
 
 	<name>Coverity</name>
 	<description>Imports Coverity defects into SonarQube</description>
 	<url>http://docs.codehaus.org/display/SONAR/Coverity+Plugin</url>
 	<inceptionYear>2014</inceptionYear>
-
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
