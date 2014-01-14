@@ -66,12 +66,21 @@ public class FileGenerator {
 
                 //PrintWriter htmlFileOut = new PrintWriter(htmlFile);
 
+                String desc = cpdo.getSubcategoryLongDescription();
+                {
+                    String linkRegex = "\\(<a href=\"([^\"]*?)\" target=\"_blank\">(.*?)</a>\\)";
+                    String codeRegex = "<code>(.*?)</code>";
+
+                    desc = desc.replaceAll(linkRegex, "");
+                    desc = desc.replaceAll(codeRegex, "$1");
+                }
+
                 //xml
                 xmlFileOut.println("<rule>");
                 xmlFileOut.println("<key>" + key + "</key>");
                 xmlFileOut.println("<priority>" + "MAJOR" + "</priority>");
-                //xmlFileOut.println("<configKey>" + key + "</configKey>");
-                xmlFileOut.println("<description><![CDATA[ " + cpdo.getSubcategoryLongDescription() + "]]></description>");
+                xmlFileOut.println("<configKey>" + key + "</configKey>");
+                xmlFileOut.println("<description><![CDATA[ " + desc + "]]></description>");
                 xmlFileOut.println("</rule>");
 
                 //props
