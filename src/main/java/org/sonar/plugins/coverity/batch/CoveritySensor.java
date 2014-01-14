@@ -101,10 +101,12 @@ public class CoveritySensor implements Sensor {
 
             if(covProjectObj == null) {
                 LOG.error("Couldn't find project: " + covProject);
+                Thread.currentThread().setContextClassLoader(oldCL);
                 return;
             }
         } catch(Exception e) {
             LOG.error("Error while trying to find project: " + covProject);
+            Thread.currentThread().setContextClassLoader(oldCL);
             return;
         }
 
