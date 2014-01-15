@@ -11,7 +11,7 @@
 	<groupId>org.sonar.plugins.coverity</groupId>
 	<artifactId>coverity-sonar-plugin</artifactId>
 	<packaging>sonar-plugin</packaging>
-	<version>1.0.1</version>
+	<version>1.0.2-SNAPSHOT</version>
 
 	<name>Coverity</name>
 	<description>Imports Coverity defects into SonarQube</description>
@@ -52,7 +52,7 @@
 		<connection>scm:git:git://github.com/coverity/coverity-sonar-plugin</connection>
 		<developerConnection>scm:git:git@github.com:coverity/coverity-sonar-plugin</developerConnection>
 		<url>https://github.com/coverity/coverity-sonar-plugin</url>
-		<tag>coverity-sonar-plugin-1.0.1</tag>
+		<tag>HEAD</tag>
 	</scm>
 
 	<dependencies>
