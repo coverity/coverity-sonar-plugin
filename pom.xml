@@ -50,8 +50,8 @@
 	</developers>
 
 	<scm>
-		<connection>scm:git:https://github.com/coverity/coverity-sonar-plugin</connection>
-		<developerConnection>scm:git:https://github.com/coverity/coverity-sonar-plugin</developerConnection>
+		<connection>scm:git:git://github.com/coverity/coverity-sonar-plugin</connection>
+		<developerConnection>scm:git:git@github.com:coverity/coverity-sonar-plugin</developerConnection>
 		<url>https://github.com/coverity/coverity-sonar-plugin</url>
 		<tag>HEAD</tag>
 	</scm>
