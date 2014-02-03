@@ -1,0 +1,5 @@
+{
+  "project_id" : "sonar_plugin",
+  "conduit_uri" : "https://codereview.sf.coverity.com/",
+  "https.blindly-trust-domains" : ["codereview.sf.coverity.com"]
+}
