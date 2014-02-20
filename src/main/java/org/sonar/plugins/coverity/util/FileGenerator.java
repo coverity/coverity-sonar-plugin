@@ -52,7 +52,7 @@ public class FileGenerator {
             //htmlDirDir.mkdirs();
 
             File xmlFile = new File(xmlDir, "coverity-" + language + ".xml");
-            PrintWriter xmlFileOut = new PrintWriter(xmlFile);
+            PrintWriter xmlFileOut = new PrintWriter(xmlFile,"UTF-8" );
             xmlFileOut.println("<rules>");
 
             CheckerPropertyFilterSpecDataObj filter = new CheckerPropertyFilterSpecDataObj();
