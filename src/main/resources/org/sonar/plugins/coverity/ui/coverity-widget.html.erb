@@ -1,0 +1,33 @@
+<style>
+    .coverity-inner {
+        font-style: normal;
+        font-variant: normal;
+        font-weight: normal;
+        font-size: 10pt;
+        color: #444;
+        margin: 0;
+        padding: 1pt;
+        border: 0;
+    }
+</style>
+
+<table width="100%">
+
+    <tr>
+        <td width="10">
+            <div class="CoverityPluginMetrics">
+                <%="Hello" %> <%=format_measure('URL-CIM-METRIC', {:skip_span_id => true}) %><a href="<%=
+                             # @return [String]
+
+                              mystring=format_measure('URL-CIM-METRIC', {:skip_span_id => true})
+                              mystring.gsub(/<span[^>]*>(.*)<\/span>/,'\1')
+                              
+                        -%>">
+
+                    <img src="<%= url_for_static(:plugin => 'coverity', :path => 'coverity-logo.png') -%>" alt="Coverity Logo" width="215" height="42">
+                </a>
+            </div>
+        </td>
+    </tr>
+</table>
+

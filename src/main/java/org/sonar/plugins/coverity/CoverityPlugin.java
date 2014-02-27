@@ -25,10 +25,12 @@ import org.sonar.api.PropertyType;
 import org.sonar.api.SonarPlugin;
 import org.sonar.api.config.PropertyDefinition;
 import org.sonar.api.resources.Qualifiers;
+import org.sonar.plugins.coverity.base.CoverityPluginMetrics;
 import org.sonar.plugins.coverity.batch.CoveritySensor;
 import org.sonar.plugins.coverity.server.CoverityProfiles;
 import org.sonar.plugins.coverity.server.CoverityRulesRepositories;
 import org.sonar.plugins.coverity.ui.CoverityFooter;
+import org.sonar.plugins.coverity.ui.CoverityWidget;
 
 import java.util.List;
 
@@ -41,6 +43,7 @@ public final class CoverityPlugin extends SonarPlugin {
     public static final String COVERITY_PROJECT = "sonar.coverity.stream";
     public static final String COVERITY_CONNECT_SSL = "sonar.coverity.ssl";
     public static final String REPOSITORY_KEY = "coverity";
+    //public static final String COVERITY_WIDGET = "coverity";
 
     // This is where you're going to declare all your Sonar extensions
     public List getExtensions() {
@@ -93,6 +96,11 @@ public final class CoverityPlugin extends SonarPlugin {
                         .onlyOnQualifiers(Qualifiers.PROJECT)
                         .index(++i)
                         .build(),
+                /*PropertyDefinition.builder(CoverityPlugin.COVERITY_WIDGET)
+                        .name("Coverity Widget")
+                        .description("Widget that displays Coverity's logo and provides clickable access to CIM")
+                        .type(PropertyType.STRING) .index(++i)
+                        .build(),*/
 
                 //Batch
                 CoveritySensor.class,
@@ -102,7 +110,13 @@ public final class CoverityPlugin extends SonarPlugin {
                 CoverityProfiles.class,
 
                 //UI
-                CoverityFooter.class
+                CoverityFooter.class,
+
+                //UI
+                CoverityWidget.class,
+
+                //Base
+                CoverityPluginMetrics.class
         );
     }
 }

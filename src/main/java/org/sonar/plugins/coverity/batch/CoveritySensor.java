@@ -26,6 +26,7 @@ import com.coverity.ws.v6.EventDataObj;
 import com.coverity.ws.v6.MergedDefectDataObj;
 import com.coverity.ws.v6.ProjectDataObj;
 import com.coverity.ws.v6.StreamDefectDataObj;
+import com.google.common.collect.ImmutableMap;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.sonar.api.batch.Sensor;
@@ -34,6 +35,8 @@ import org.sonar.api.component.ResourcePerspectives;
 import org.sonar.api.config.Settings;
 import org.sonar.api.issue.Issuable;
 import org.sonar.api.issue.Issue;
+import org.sonar.api.measures.Measure;
+import org.sonar.api.measures.Metric;
 import org.sonar.api.profiles.RulesProfile;
 import org.sonar.api.resources.Project;
 import org.sonar.api.resources.ProjectFileSystem;
@@ -41,6 +44,7 @@ import org.sonar.api.resources.Resource;
 import org.sonar.api.rules.ActiveRule;
 import org.sonar.api.rules.Rule;
 import org.sonar.plugins.coverity.CoverityPlugin;
+import org.sonar.plugins.coverity.base.CoverityPluginMetrics;
 import org.sonar.plugins.coverity.util.CoverityUtil;
 import org.sonar.plugins.coverity.ws.CIMClient;
 
@@ -48,6 +52,10 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
+
+import org.sonar.plugins.coverity.util.*;
+
+import static org.sonar.plugins.coverity.util.CoverityUtil.createURL;
 
 public class CoveritySensor implements Sensor {
     private static final Logger LOG = LoggerFactory.getLogger(CoveritySensor.class);
@@ -92,6 +100,9 @@ public class CoveritySensor implements Sensor {
         String covProject = settings.getString(CoverityPlugin.COVERITY_PROJECT);
 
         CIMClient instance = new CIMClient(host, port, user, password, ssl);
+
+        //Display a clickable Coverity Logo
+        getCoverityLogoMeasures(sensorContext, instance);        
 
         //find the configured project
         ProjectDataObj covProjectObj = null;
@@ -212,5 +223,22 @@ public class CoveritySensor implements Sensor {
     @Override
     public String toString() {
         return getClass().getSimpleName();
+    }
+
+    private void getCoverityLogoMeasures(SensorContext sensorContext, CIMClient client) {
+        Map<String, Metric> mapping = measureKeyToMetrics();
+        for (Map.Entry<String, Metric> entry : mapping.entrySet()) {
+            Measure measure = new Measure(entry.getValue());
+            String CIM_URL = createURL(client);
+            LOG.info("This is CIM_URL: " + CIM_URL);
+            measure.setUrl(CIM_URL);
+            //measure.setData(CIM_URL);
+            sensorContext.saveMeasure(measure);
+        }
+    }
+
+    private Map<String, Metric> measureKeyToMetrics() {
+        // List here the indicators to download
+        return ImmutableMap.of("URL-CIM-METRIC", CoverityPluginMetrics.URL_CIM_METRIC);
     }
 }
