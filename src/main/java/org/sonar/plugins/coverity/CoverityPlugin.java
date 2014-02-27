@@ -96,11 +96,6 @@ public final class CoverityPlugin extends SonarPlugin {
                         .onlyOnQualifiers(Qualifiers.PROJECT)
                         .index(++i)
                         .build(),
-                /*PropertyDefinition.builder(CoverityPlugin.COVERITY_WIDGET)
-                        .name("Coverity Widget")
-                        .description("Widget that displays Coverity's logo and provides clickable access to CIM")
-                        .type(PropertyType.STRING) .index(++i)
-                        .build(),*/
 
                 //Batch
                 CoveritySensor.class,

@@ -36,7 +36,13 @@ public class CoverityPluginMetrics implements Metrics{
             .setDomain(DOMAIN)
             .create();
 
+    public static final Metric PROJECT_NAME = new Metric.Builder("PROJECT-NAME", "Project Name", Metric.ValueType.STRING)
+            .setDirection(Metric.DIRECTION_NONE)
+            .setQualitative(true)
+            .setDomain(DOMAIN)
+            .create();
+
     public List<Metric> getMetrics() {
-        return Arrays.asList(URL_CIM_METRIC);
+        return Arrays.asList(URL_CIM_METRIC, PROJECT_NAME);
     }
 }
