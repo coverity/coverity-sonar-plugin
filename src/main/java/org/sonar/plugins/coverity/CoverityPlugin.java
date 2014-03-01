@@ -43,7 +43,6 @@ public final class CoverityPlugin extends SonarPlugin {
     public static final String COVERITY_PROJECT = "sonar.coverity.stream";
     public static final String COVERITY_CONNECT_SSL = "sonar.coverity.ssl";
     public static final String REPOSITORY_KEY = "coverity";
-    //public static final String COVERITY_WIDGET = "coverity";
 
     // This is where you're going to declare all your Sonar extensions
     public List getExtensions() {

@@ -15,13 +15,11 @@
     <tr>
         <td width="10">
             <div class="CoverityPluginMetrics">
-                <a href="<%=
-                # @return [String]
-
-                mystring=format_measure('URL-CIM-METRIC', {:skip_span_id => true})
-                mystring.gsub(/<span[^>]*>(.*)<\/span>/,'\1')
-
-            -%>">
+                <a href='<%=
+                    # @return [String]
+                    mystring=format_measure('URL-CIM-METRIC', {:skip_span_id => true})
+                    mystring.gsub(/<span[^>]*>(.*)<\/span>/,'\1')
+                -%>'>
 
                 <img src="<%= url_for_static(:plugin => 'coverity', :path => 'coverity-logo.png') -%>" alt="Coverity Logo" width="215" height="42">
             </a>
@@ -30,22 +28,23 @@
     </tr>
     <tr>
         <td>
-            <p>Coverity Project: </p>
             <div class="CoverityPluginMetrics">
-                <a href="<%=
+                <p>Coverity Project:
+                <a href='<%=
                     # @return [String]
 
-                    mystring=format_measure('URL-CIM-METRIC', {:skip_span_id => true})
-                    mystring.gsub(/<span[^>]*>(.*)<\/span>/,'\1')
-                -%>">
+                    mystring1=format_measure('PROJECT-URL', {:skip_span_id => true})
+                    mystring1.gsub(/<span[^>]*>(.*)<\/span>/,'\1')
+                -%>'>
                     <%=
                         # @return [String]
 
-                        mystring=format_measure('PROJECT-NAME', {:skip_span_id => true})
-                        mystring.gsub(/<span[^>]*>(.*)<\/span>/,'\1')
+                        mystring2=format_measure('PROJECT-NAME', {:skip_span_id => true})
+                        mystring2.gsub(/<span[^>]*>(.*)<\/span>/,'\1')
 
                     -%>
                 </a>
+                </p>
             </div>
         </td>
     </tr>

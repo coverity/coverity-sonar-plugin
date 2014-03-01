@@ -56,6 +56,7 @@ import java.util.Map;
 import org.sonar.plugins.coverity.util.*;
 
 import static org.sonar.plugins.coverity.base.CoverityPluginMetrics.PROJECT_NAME;
+import static org.sonar.plugins.coverity.base.CoverityPluginMetrics.PROJECT_URL;
 import static org.sonar.plugins.coverity.base.CoverityPluginMetrics.URL_CIM_METRIC;
 import static org.sonar.plugins.coverity.util.CoverityUtil.createURL;
 
@@ -103,9 +104,6 @@ public class CoveritySensor implements Sensor {
 
         CIMClient instance = new CIMClient(host, port, user, password, ssl);
 
-        //Display a clickable Coverity Logo
-        getCoverityLogoMeasures(sensorContext, instance);        
-
         //find the configured project
         ProjectDataObj covProjectObj = null;
         try {
@@ -122,6 +120,9 @@ public class CoveritySensor implements Sensor {
             Thread.currentThread().setContextClassLoader(oldCL);
             return;
         }
+
+        //Display a clickable Coverity Logo
+        getCoverityLogoMeasures(sensorContext, instance, covProjectObj);
 
         LOG.debug(profile.toString());
         for(ActiveRule ar : profile.getActiveRulesByRepository(CoverityPlugin.REPOSITORY_KEY + "-" + project.getLanguageKey())) {
@@ -227,14 +228,16 @@ public class CoveritySensor implements Sensor {
         return getClass().getSimpleName();
     }
 
-    private void getCoverityLogoMeasures(SensorContext sensorContext, CIMClient client) {
+    /*This method constructs measures from metrics. It adds the required data to the measures, such as a URL, and then
+    saves the measures into sensorContext. This method is called by analyse().*/
+    private void getCoverityLogoMeasures(SensorContext sensorContext, CIMClient client, ProjectDataObj covProjectObj) {
         Map<String, Metric> mapping = measureKeyToMetrics();
         for (Map.Entry<String, Metric> entry : mapping.entrySet()) {
             if(entry.getKey().equals("URL-CIM-METRIC")){
                 Measure measure = new Measure(entry.getValue());
                 String CIM_URL = createURL(client);
                 LOG.info("This is CIM_URL: " + CIM_URL);
-                measure.setUrl(CIM_URL);
+                measure.setData(CIM_URL);
                 sensorContext.saveMeasure(measure);
             }
 
@@ -244,7 +247,16 @@ public class CoveritySensor implements Sensor {
                 /*Notice that this is no an actual URL, it's just a string containing the name of the project.
                 The Reason for using this method is that method 'feature_measure' or the 'coverity-widget.html.erb'
                 will look for a URL in the measure and return that string.*/
-                measure.setUrl(covProject);
+                measure.setData(covProject);
+                sensorContext.saveMeasure(measure);
+            }
+
+            if(entry.getKey().equals("PROJECT-URL")){
+                Measure measure = new Measure(entry.getValue());
+                String ProjectUrl = createURL(client);
+                String ProductKey = (covProjectObj.getProjectKey()).toString();
+                ProjectUrl = ProjectUrl+"reports.htm#p"+ProductKey;
+                measure.setData(ProjectUrl);
                 sensorContext.saveMeasure(measure);
             }
         }
@@ -254,7 +266,8 @@ public class CoveritySensor implements Sensor {
         // List here the indicators to download
         return ImmutableMap.of(
                 "URL-CIM-METRIC", URL_CIM_METRIC,
-                "PROJECT-NAME", PROJECT_NAME
+                "PROJECT-NAME", PROJECT_NAME,
+                "PROJECT-URL", PROJECT_URL
         );
     }
 }

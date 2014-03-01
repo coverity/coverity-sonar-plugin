@@ -30,6 +30,8 @@ public class CoverityPluginMetrics implements Metrics{
 
     public static String DOMAIN = new String("Coverity");
 
+    /*This metric will contain the URL to CIM.
+    See org/sonar/plugins/coverity/batch/CoveritySensor.java*/
     public static final Metric URL_CIM_METRIC = new Metric.Builder("URL-CIM-METRIC", "Url cim metric", Metric.ValueType.STRING)
             .setDirection(Metric.DIRECTION_NONE)
             .setQualitative(true)
@@ -42,7 +44,13 @@ public class CoverityPluginMetrics implements Metrics{
             .setDomain(DOMAIN)
             .create();
 
+    public static final Metric PROJECT_URL = new Metric.Builder("PROJECT-URL", "Project Url", Metric.ValueType.STRING)
+            .setDirection(Metric.DIRECTION_NONE)
+            .setQualitative(true)
+            .setDomain(DOMAIN)
+            .create();
+
     public List<Metric> getMetrics() {
-        return Arrays.asList(URL_CIM_METRIC, PROJECT_NAME);
+        return Arrays.asList(URL_CIM_METRIC, PROJECT_NAME, PROJECT_URL);
     }
 }

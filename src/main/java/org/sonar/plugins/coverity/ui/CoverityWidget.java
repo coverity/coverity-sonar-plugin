@@ -29,10 +29,6 @@ public class CoverityWidget extends AbstractRubyTemplate implements RubyRailsWid
 
     private static final Logger LOG = LoggerFactory.getLogger(CoverityWidget.class);
 
-    public CoverityWidget(){
-        LOG.info("Widget is being instantiated");
-    }
-
     public String getId() {
         return "coverity";
     }
@@ -42,8 +38,8 @@ public class CoverityWidget extends AbstractRubyTemplate implements RubyRailsWid
     }
 
     @Override
+    /*It specifies the template in which the ruby code will be added*/
     protected String getTemplatePath() {
-
         return "/org/sonar/plugins/coverity/ui/coverity-widget.html.erb";
     }
 
