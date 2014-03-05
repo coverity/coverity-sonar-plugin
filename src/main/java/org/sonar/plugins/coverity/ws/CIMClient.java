@@ -20,23 +20,7 @@
 
 package org.sonar.plugins.coverity.ws;
 
-import com.coverity.ws.v6.ConfigurationService;
-import com.coverity.ws.v6.ConfigurationServiceService;
-import com.coverity.ws.v6.CovRemoteServiceException_Exception;
-import com.coverity.ws.v6.DefectService;
-import com.coverity.ws.v6.DefectServiceService;
-import com.coverity.ws.v6.MergedDefectDataObj;
-import com.coverity.ws.v6.MergedDefectFilterSpecDataObj;
-import com.coverity.ws.v6.MergedDefectsPageDataObj;
-import com.coverity.ws.v6.PageSpecDataObj;
-import com.coverity.ws.v6.ProjectDataObj;
-import com.coverity.ws.v6.ProjectFilterSpecDataObj;
-import com.coverity.ws.v6.ProjectIdDataObj;
-import com.coverity.ws.v6.StreamDataObj;
-import com.coverity.ws.v6.StreamDefectDataObj;
-import com.coverity.ws.v6.StreamDefectFilterSpecDataObj;
-import com.coverity.ws.v6.StreamFilterSpecDataObj;
-import com.coverity.ws.v6.StreamIdDataObj;
+import com.coverity.ws.v6.*;
 
 import javax.xml.namespace.QName;
 import javax.xml.ws.BindingProvider;
@@ -303,5 +287,34 @@ public class CIMClient {
         }
 
         return sddos;
+    }
+
+    //Returns a map with all the CheckerPropertyDataObj, by using TripleFromDefects as keys
+    public Map<TripleFromDefects, CheckerPropertyDataObj> getMapOfCheckerPropertyDataObj(){
+        Map<TripleFromDefects, CheckerPropertyDataObj> mapOfCheckerPropertyDataObj = new HashMap<TripleFromDefects,
+                CheckerPropertyDataObj>();
+
+        try {
+            CheckerPropertyFilterSpecDataObj checkerPropertyFilterSpecDataObj = new CheckerPropertyFilterSpecDataObj();
+            List<CheckerPropertyDataObj> checkerSubcategoryList = getConfigurationService()
+                    .getCheckerProperties(checkerPropertyFilterSpecDataObj);
+
+            for (CheckerPropertyDataObj checkerPropertyDataObj : checkerSubcategoryList) {
+                TripleFromDefects keyInMapOfCheckerPropertyDataObj = new TripleFromDefects(
+                        checkerPropertyDataObj.getCheckerSubcategoryId().getCheckerName(),
+                        checkerPropertyDataObj.getCheckerSubcategoryId().getSubcategory(),
+                        checkerPropertyDataObj.getCheckerSubcategoryId().getDomain()
+                        );
+
+                mapOfCheckerPropertyDataObj.put(keyInMapOfCheckerPropertyDataObj, checkerPropertyDataObj);
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (CovRemoteServiceException_Exception e) {
+            e.printStackTrace();
+        }
+
+        return mapOfCheckerPropertyDataObj;
     }
 }

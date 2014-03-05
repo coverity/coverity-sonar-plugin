@@ -20,12 +20,7 @@
 
 package org.sonar.plugins.coverity.batch;
 
-import com.coverity.ws.v6.CovRemoteServiceException_Exception;
-import com.coverity.ws.v6.DefectInstanceDataObj;
-import com.coverity.ws.v6.EventDataObj;
-import com.coverity.ws.v6.MergedDefectDataObj;
-import com.coverity.ws.v6.ProjectDataObj;
-import com.coverity.ws.v6.StreamDefectDataObj;
+import com.coverity.ws.v6.*;
 import com.google.common.collect.ImmutableMap;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -50,14 +45,15 @@ import org.sonar.plugins.coverity.ws.CIMClient;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.sonar.plugins.coverity.util.*;
+import org.sonar.plugins.coverity.ws.TripleFromDefects;
 
-import static org.sonar.plugins.coverity.base.CoverityPluginMetrics.PROJECT_NAME;
-import static org.sonar.plugins.coverity.base.CoverityPluginMetrics.PROJECT_URL;
-import static org.sonar.plugins.coverity.base.CoverityPluginMetrics.URL_CIM_METRIC;
+import static org.sonar.plugins.coverity.base.CoverityPluginMetrics.*;
 import static org.sonar.plugins.coverity.util.CoverityUtil.createURL;
 
 public class CoveritySensor implements Sensor {
@@ -65,6 +61,20 @@ public class CoveritySensor implements Sensor {
     private final ResourcePerspectives resourcePerspectives;
     private Settings settings;
     private RulesProfile profile;
+
+    String HIGH = new String("High");
+    String MEDIUM = new String("Medium");
+    String LOW = new String("Low");
+
+    private Map<TripleFromDefects, CheckerPropertyDataObj> mapOfCheckerPropertyDataObj =null;
+    private int totalDefects = 0;
+    private int highImpactDefects = 0;
+    private int mediumImpactDefects = 0;
+    private int lowImpactDefects = 0;
+    private String TOTALDEFECTS = null;
+    private String HIGHIMPACTDEFECTS = null;
+    private String MEDIUMIMPACTDEFECTS = null;
+    private String LOWIMPACTDEFECTS = null;
 
     public CoveritySensor(Settings settings, RulesProfile profile, ResourcePerspectives resourcePerspectives) {
         this.settings = settings;
@@ -103,6 +113,7 @@ public class CoveritySensor implements Sensor {
         String covProject = settings.getString(CoverityPlugin.COVERITY_PROJECT);
 
         CIMClient instance = new CIMClient(host, port, user, password, ssl);
+        mapOfCheckerPropertyDataObj=instance.getMapOfCheckerPropertyDataObj();
 
         //find the configured project
         ProjectDataObj covProjectObj = null;
@@ -121,9 +132,6 @@ public class CoveritySensor implements Sensor {
             return;
         }
 
-        //Display a clickable Coverity Logo
-        getCoverityLogoMeasures(sensorContext, instance, covProjectObj);
-
         LOG.debug(profile.toString());
         for(ActiveRule ar : profile.getActiveRulesByRepository(CoverityPlugin.REPOSITORY_KEY + "-" + project.getLanguageKey())) {
             LOG.debug(ar.toString());
@@ -140,6 +148,25 @@ public class CoveritySensor implements Sensor {
             for(MergedDefectDataObj mddo : defects) {
                 String filePath = mddo.getFilePathname();
                 Resource res = getResourceForFile(filePath, project.getFileSystem());
+
+                TripleFromDefects tripleFromMddo = new TripleFromDefects(mddo.getCheckerName(),
+                        mddo.getCheckerSubcategory(), mddo.getDomain());
+
+                CheckerPropertyDataObj checkerPropertyDataObj=mapOfCheckerPropertyDataObj.get(tripleFromMddo);
+                String impact = checkerPropertyDataObj.getImpact();
+
+                //if(checkerPropertyDataObj!=null){
+                    totalDefects++; 
+                    if (impact.equals(HIGH)) {
+                        highImpactDefects++;
+                    }
+                    if (impact.equals(MEDIUM)) {
+                        mediumImpactDefects++;
+                    }
+                    if (impact.equals(LOW)) {
+                        lowImpactDefects++;
+                    }
+                //}
 
                 if(res == null) {
                     LOG.info("Skipping defect (CID " + mddo.getCid() + ") because the source file could not be found.");
@@ -184,7 +211,14 @@ public class CoveritySensor implements Sensor {
             e.printStackTrace();
         }
 
+        TOTALDEFECTS= String.valueOf(totalDefects);
+        HIGHIMPACTDEFECTS= String.valueOf(highImpactDefects);
+        MEDIUMIMPACTDEFECTS= String.valueOf(mediumImpactDefects);
+        LOWIMPACTDEFECTS= String.valueOf(lowImpactDefects);
+
         Thread.currentThread().setContextClassLoader(oldCL);
+        //Display a clickable Coverity Logo
+        getCoverityLogoMeasures(sensorContext, instance, covProjectObj);
     }
 
     protected String getIssueMessage(CIMClient instance, Rule rule, ProjectDataObj covProjectObj, MergedDefectDataObj mddo, DefectInstanceDataObj dido) throws CovRemoteServiceException_Exception, IOException {
@@ -228,46 +262,57 @@ public class CoveritySensor implements Sensor {
         return getClass().getSimpleName();
     }
 
-    /*This method constructs measures from metrics. It adds the required data to the measures, such as a URL, and then
-    saves the measures into sensorContext. This method is called by analyse().*/
+    /*
+    * This method constructs measures from metrics. It adds the required data to the measures, such as a URL, and then
+    * saves the measures into sensorContext. This method is called by analyse().
+    * */
     private void getCoverityLogoMeasures(SensorContext sensorContext, CIMClient client, ProjectDataObj covProjectObj) {
-        Map<String, Metric> mapping = measureKeyToMetrics();
-        for (Map.Entry<String, Metric> entry : mapping.entrySet()) {
-            if(entry.getKey().equals("URL-CIM-METRIC")){
-                Measure measure = new Measure(entry.getValue());
-                String CIM_URL = createURL(client);
-                LOG.info("This is CIM_URL: " + CIM_URL);
-                measure.setData(CIM_URL);
-                sensorContext.saveMeasure(measure);
-            }
-
-            if(entry.getKey().equals("PROJECT-NAME")){
-                Measure measure = new Measure(entry.getValue());
-                String covProject = settings.getString(CoverityPlugin.COVERITY_PROJECT);
-                /*Notice that this is no an actual URL, it's just a string containing the name of the project.
-                The Reason for using this method is that method 'feature_measure' or the 'coverity-widget.html.erb'
-                will look for a URL in the measure and return that string.*/
-                measure.setData(covProject);
-                sensorContext.saveMeasure(measure);
-            }
-
-            if(entry.getKey().equals("PROJECT-URL")){
-                Measure measure = new Measure(entry.getValue());
-                String ProjectUrl = createURL(client);
-                String ProductKey = (covProjectObj.getProjectKey()).toString();
-                ProjectUrl = ProjectUrl+"reports.htm#p"+ProductKey;
-                measure.setData(ProjectUrl);
-                sensorContext.saveMeasure(measure);
-            }
+        {
+            Measure measure = new Measure(COVERITY_URL_CIM_METRIC);
+            String CIM_URL = createURL(client);
+            measure.setData(CIM_URL);
+            sensorContext.saveMeasure(measure);
         }
-    }
 
-    private Map<String, Metric> measureKeyToMetrics() {
-        // List here the indicators to download
-        return ImmutableMap.of(
-                "URL-CIM-METRIC", URL_CIM_METRIC,
-                "PROJECT-NAME", PROJECT_NAME,
-                "PROJECT-URL", PROJECT_URL
-        );
+        {
+            Measure measure = new Measure(COVERITY_PROJECT_NAME);
+            String covProject = settings.getString(CoverityPlugin.COVERITY_PROJECT);
+            measure.setData(covProject);
+            sensorContext.saveMeasure(measure);
+        }
+
+        {
+            Measure measure = new Measure(COVERITY_PROJECT_URL);
+            String ProjectUrl = createURL(client);
+            String ProductKey = null;
+            ProductKey= String.valueOf(covProjectObj.getProjectKey());
+            ProjectUrl = ProjectUrl+"reports.htm#p"+ProductKey;
+            measure.setData(ProjectUrl);
+            sensorContext.saveMeasure(measure);
+        }
+
+        {
+            Measure measure = new Measure(COVERITY_OUTSTANDING_ISSUES);
+            measure.setData(TOTALDEFECTS);
+            sensorContext.saveMeasure(measure);
+        }
+
+        {
+            Measure measure = new Measure(COVERITY_HIGH_IMPACT);
+            measure.setData(HIGHIMPACTDEFECTS);
+            sensorContext.saveMeasure(measure);
+        }
+
+        {
+            Measure measure = new Measure(COVERITY_MEDIUM_IMPACT);
+            measure.setData(MEDIUMIMPACTDEFECTS);
+            sensorContext.saveMeasure(measure);
+        }
+
+        {
+            Measure measure = new Measure(COVERITY_LOW_IMPACT);
+            measure.setData(LOWIMPACTDEFECTS);
+            sensorContext.saveMeasure(measure);
+        }
     }
 }

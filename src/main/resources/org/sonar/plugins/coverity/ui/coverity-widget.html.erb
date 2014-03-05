@@ -14,38 +14,85 @@
 <table width="100%">
     <tr>
         <td width="10">
-            <div class="CoverityPluginMetrics">
                 <a href='<%=
                     # @return [String]
-                    mystring=format_measure('URL-CIM-METRIC', {:skip_span_id => true})
+                    mystring=format_measure('COVERITY-URL-CIM-METRIC', {:skip_span_id => true})
                     mystring.gsub(/<span[^>]*>(.*)<\/span>/,'\1')
                 -%>'>
 
-                <img src="<%= url_for_static(:plugin => 'coverity', :path => 'coverity-logo.png') -%>" alt="Coverity Logo" width="215" height="42">
+                <img src="<%= url_for_static(:plugin => 'coverity', :path => 'coverity-logo.png') -%>" alt="Coverity Logo" >
             </a>
-            </div>
         </td>
     </tr>
     <tr>
         <td>
-            <div class="CoverityPluginMetrics">
-                <p>Coverity Project:
+                <p><b>Coverity Project:</b>
                 <a href='<%=
                     # @return [String]
 
-                    mystring1=format_measure('PROJECT-URL', {:skip_span_id => true})
+                    mystring1=format_measure('COVERITY-PROJECT-URL', {:skip_span_id => true})
                     mystring1.gsub(/<span[^>]*>(.*)<\/span>/,'\1')
                 -%>'>
                     <%=
                         # @return [String]
 
-                        mystring2=format_measure('PROJECT-NAME', {:skip_span_id => true})
+                        mystring2=format_measure('COVERITY-PROJECT-NAME', {:skip_span_id => true})
                         mystring2.gsub(/<span[^>]*>(.*)<\/span>/,'\1')
 
                     -%>
                 </a>
                 </p>
-            </div>
+                <br>
+        </td>
+    </tr>
+    <tr>
+        <td>
+                <p>Outstanding Issues:</p>
+                <p>
+                        <%=
+                            # @return [String]
+
+                            mystring3=format_measure('COVERITY-OUTSTANDING-ISSUES', {:skip_span_id => true})
+                            mystring3.gsub(/<span[^>]*>(.*)<\/span>/,'\1')
+
+                        -%>
+                </p>
+        </td>
+        <td>
+                <p>High Impact:</p>
+                <p>
+                    <%=
+                        # @return [String]
+
+                        mystring4=format_measure('COVERITY-HIGH-IMPACT', {:skip_span_id => true})
+                        mystring4.gsub(/<span[^>]*>(.*)<\/span>/,'\1')
+
+                    -%>
+                </p>
+        </td>
+        <td>
+                <p>Medium Impact:</p>
+                <p>
+                    <%=
+                        # @return [String]
+
+                        mystring5=format_measure('COVERITY-MEDIUM-IMPACT', {:skip_span_id => true})
+                        mystring5.gsub(/<span[^>]*>(.*)<\/span>/,'\1')
+
+                    -%>
+                </p>
+        </td>
+        <td>
+                <p>Low Impact:</p>
+                <p>
+                    <%=
+                        # @return [String]
+
+                        mystring6=format_measure('COVERITY-LOW-IMPACT', {:skip_span_id => true})
+                        mystring6.gsub(/<span[^>]*>(.*)<\/span>/,'\1')
+
+                    -%>
+                </p>
         </td>
     </tr>
 </table>

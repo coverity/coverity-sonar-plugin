@@ -30,27 +30,53 @@ public class CoverityPluginMetrics implements Metrics{
 
     public static String DOMAIN = new String("Coverity");
 
-    /*This metric will contain the URL to CIM.
-    See org/sonar/plugins/coverity/batch/CoveritySensor.java*/
-    public static final Metric URL_CIM_METRIC = new Metric.Builder("URL-CIM-METRIC", "Url cim metric", Metric.ValueType.STRING)
+    // This metric will contain the URL to CIM.
+    // See org/sonar/plugins/coverity/batch/CoveritySensor.java
+    public static final Metric COVERITY_URL_CIM_METRIC = new Metric.Builder("COVERITY-URL-CIM-METRIC", "Url cim metric", Metric.ValueType.STRING)
             .setDirection(Metric.DIRECTION_NONE)
             .setQualitative(true)
             .setDomain(DOMAIN)
             .create();
 
-    public static final Metric PROJECT_NAME = new Metric.Builder("PROJECT-NAME", "Project Name", Metric.ValueType.STRING)
+    public static final Metric COVERITY_PROJECT_NAME = new Metric.Builder("COVERITY-PROJECT-NAME", "Project Name", Metric.ValueType.STRING)
             .setDirection(Metric.DIRECTION_NONE)
             .setQualitative(true)
             .setDomain(DOMAIN)
             .create();
 
-    public static final Metric PROJECT_URL = new Metric.Builder("PROJECT-URL", "Project Url", Metric.ValueType.STRING)
+    public static final Metric COVERITY_PROJECT_URL = new Metric.Builder("COVERITY-PROJECT-URL", "Project Url", Metric.ValueType.STRING)
             .setDirection(Metric.DIRECTION_NONE)
             .setQualitative(true)
             .setDomain(DOMAIN)
             .create();
+
+    public static final Metric COVERITY_OUTSTANDING_ISSUES = new Metric.Builder("COVERITY-OUTSTANDING-ISSUES", "Outstanding Issues", Metric.ValueType.STRING)
+            .setDirection(Metric.DIRECTION_NONE)
+            .setQualitative(true)
+            .setDomain(DOMAIN)
+            .create();
+
+    public static final Metric COVERITY_HIGH_IMPACT  = new Metric.Builder("COVERITY-HIGH-IMPACT", "High Impact", Metric.ValueType.STRING)
+            .setDirection(Metric.DIRECTION_WORST)
+            .setQualitative(false)
+            .setDomain(DOMAIN)
+            .create();
+
+    public static final Metric COVERITY_MEDIUM_IMPACT  = new Metric.Builder("COVERITY-MEDIUM-IMPACT", "Medium Impact", Metric.ValueType.STRING)
+            .setDirection(Metric.DIRECTION_WORST)
+            .setQualitative(false)
+            .setDomain(DOMAIN)
+            .create();
+
+    public static final Metric COVERITY_LOW_IMPACT  = new Metric.Builder("COVERITY-LOW-IMPACT", "Low Impact", Metric.ValueType.STRING)
+            .setDirection(Metric.DIRECTION_WORST)
+            .setQualitative(false)
+            .setDomain(DOMAIN)
+            .create();
+
 
     public List<Metric> getMetrics() {
-        return Arrays.asList(URL_CIM_METRIC, PROJECT_NAME, PROJECT_URL);
+        return Arrays.asList(COVERITY_URL_CIM_METRIC, COVERITY_PROJECT_NAME, COVERITY_PROJECT_URL, COVERITY_OUTSTANDING_ISSUES, COVERITY_HIGH_IMPACT,
+                COVERITY_MEDIUM_IMPACT, COVERITY_LOW_IMPACT);
     }
 }
