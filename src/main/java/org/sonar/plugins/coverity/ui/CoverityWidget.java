@@ -38,7 +38,7 @@ public class CoverityWidget extends AbstractRubyTemplate implements RubyRailsWid
     }
 
     @Override
-    //It specifies the template in which the ruby code will be added
+    // It specifies the template in which the ruby code will be added
     protected String getTemplatePath() {
         return "/org/sonar/plugins/coverity/ui/coverity-widget.html.erb";
     }

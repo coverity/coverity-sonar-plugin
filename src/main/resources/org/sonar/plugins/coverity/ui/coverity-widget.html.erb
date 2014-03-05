@@ -10,7 +10,14 @@
         border: 0;
     }
 </style>
-
+<%
+=begin
+    In the following table we will use the method format_measure() repeatedly, this method requires the key of a measure
+    and also admits another optional parameters. If none of these parameters are specified it will return by default an
+    string with the data stored in the metric. This data will be enclosed under a <span> tag, which is why we need to
+    use the method gsub() in order to get the string enclosed by this tag.
+=end
+%>
 <table width="100%">
     <tr>
         <td width="10">

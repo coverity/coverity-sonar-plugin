@@ -21,7 +21,7 @@
 package org.sonar.plugins.coverity.batch;
 
 import com.coverity.ws.v6.*;
-import com.google.common.collect.ImmutableMap;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.sonar.api.batch.Sensor;
@@ -62,19 +62,14 @@ public class CoveritySensor implements Sensor {
     private Settings settings;
     private RulesProfile profile;
 
-    String HIGH = new String("High");
-    String MEDIUM = new String("Medium");
-    String LOW = new String("Low");
+    private final String HIGH = new String("High");
+    private final String MEDIUM = new String("Medium");
+    private final String LOW = new String("Low");
 
-    private Map<TripleFromDefects, CheckerPropertyDataObj> mapOfCheckerPropertyDataObj =null;
-    private int totalDefects = 0;
-    private int highImpactDefects = 0;
-    private int mediumImpactDefects = 0;
-    private int lowImpactDefects = 0;
-    private String TOTALDEFECTS = null;
-    private String HIGHIMPACTDEFECTS = null;
-    private String MEDIUMIMPACTDEFECTS = null;
-    private String LOWIMPACTDEFECTS = null;
+    private String totalDefects = null;
+    private String highImpactDefects = null;
+    private String mediumImpactDefects = null;
+    private String lowImpactDefects = null;
 
     public CoveritySensor(Settings settings, RulesProfile profile, ResourcePerspectives resourcePerspectives) {
         this.settings = settings;
@@ -90,6 +85,12 @@ public class CoveritySensor implements Sensor {
 
     public void analyse(Project project, SensorContext sensorContext) {
         boolean enabled = settings.getBoolean(CoverityPlugin.COVERITY_ENABLE);
+
+        Map<TripleFromDefects, CheckerPropertyDataObj> mapOfCheckerPropertyDataObj =null;
+        int totalDefectsCounter = 0;
+        int highImpactDefectsCounter = 0;
+        int mediumImpactDefectsCounter = 0;
+        int lowImpactDefectsCounter = 0;
 
         LOG.info(CoverityPlugin.COVERITY_ENABLE + "=" + enabled);
 
@@ -113,7 +114,7 @@ public class CoveritySensor implements Sensor {
         String covProject = settings.getString(CoverityPlugin.COVERITY_PROJECT);
 
         CIMClient instance = new CIMClient(host, port, user, password, ssl);
-        mapOfCheckerPropertyDataObj=instance.getMapOfCheckerPropertyDataObj();
+        mapOfCheckerPropertyDataObj = instance.getMapOfCheckerPropertyDataObj();
 
         //find the configured project
         ProjectDataObj covProjectObj = null;
@@ -155,18 +156,18 @@ public class CoveritySensor implements Sensor {
                 CheckerPropertyDataObj checkerPropertyDataObj=mapOfCheckerPropertyDataObj.get(tripleFromMddo);
                 String impact = checkerPropertyDataObj.getImpact();
 
-                //if(checkerPropertyDataObj!=null){
-                    totalDefects++; 
+                if(checkerPropertyDataObj!=null){
+                    totalDefectsCounter++;
                     if (impact.equals(HIGH)) {
-                        highImpactDefects++;
+                        highImpactDefectsCounter++;
                     }
                     if (impact.equals(MEDIUM)) {
-                        mediumImpactDefects++;
+                        mediumImpactDefectsCounter++;
                     }
                     if (impact.equals(LOW)) {
-                        lowImpactDefects++;
+                        lowImpactDefectsCounter++;
                     }
-                //}
+                }
 
                 if(res == null) {
                     LOG.info("Skipping defect (CID " + mddo.getCid() + ") because the source file could not be found.");
@@ -211,13 +212,13 @@ public class CoveritySensor implements Sensor {
             e.printStackTrace();
         }
 
-        TOTALDEFECTS= String.valueOf(totalDefects);
-        HIGHIMPACTDEFECTS= String.valueOf(highImpactDefects);
-        MEDIUMIMPACTDEFECTS= String.valueOf(mediumImpactDefects);
-        LOWIMPACTDEFECTS= String.valueOf(lowImpactDefects);
+        totalDefects= String.valueOf(totalDefectsCounter);
+        highImpactDefects= String.valueOf(highImpactDefectsCounter);
+        mediumImpactDefects= String.valueOf(mediumImpactDefectsCounter);
+        lowImpactDefects= String.valueOf(lowImpactDefectsCounter);
 
         Thread.currentThread().setContextClassLoader(oldCL);
-        //Display a clickable Coverity Logo
+        // Display a clickable Coverity Logo
         getCoverityLogoMeasures(sensorContext, instance, covProjectObj);
     }
 
@@ -251,7 +252,7 @@ public class CoveritySensor implements Sensor {
         if(ret == null) {
             ret = org.sonar.api.resources.File.fromIOFile(f, fileSystem.getSourceDirs());
         } else {
-            //LOG.info("java file! : " + ret);
+            // LOG.info("java file! : " + ret);
         }
 
         return ret;
@@ -293,25 +294,25 @@ public class CoveritySensor implements Sensor {
 
         {
             Measure measure = new Measure(COVERITY_OUTSTANDING_ISSUES);
-            measure.setData(TOTALDEFECTS);
+            measure.setData(totalDefects);
             sensorContext.saveMeasure(measure);
         }
 
         {
             Measure measure = new Measure(COVERITY_HIGH_IMPACT);
-            measure.setData(HIGHIMPACTDEFECTS);
+            measure.setData(highImpactDefects);
             sensorContext.saveMeasure(measure);
         }
 
         {
             Measure measure = new Measure(COVERITY_MEDIUM_IMPACT);
-            measure.setData(MEDIUMIMPACTDEFECTS);
+            measure.setData(mediumImpactDefects);
             sensorContext.saveMeasure(measure);
         }
 
         {
             Measure measure = new Measure(COVERITY_LOW_IMPACT);
-            measure.setData(LOWIMPACTDEFECTS);
+            measure.setData(lowImpactDefects);
             sensorContext.saveMeasure(measure);
         }
     }
