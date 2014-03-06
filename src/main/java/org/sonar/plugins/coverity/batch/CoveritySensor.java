@@ -62,9 +62,9 @@ public class CoveritySensor implements Sensor {
     private Settings settings;
     private RulesProfile profile;
 
-    private final String HIGH = new String("High");
-    private final String MEDIUM = new String("Medium");
-    private final String LOW = new String("Low");
+    private final String HIGH = "High";
+    private final String MEDIUM = "Medium";
+    private final String LOW = "Low";
 
     private String totalDefects = null;
     private String highImpactDefects = null;
@@ -153,10 +153,10 @@ public class CoveritySensor implements Sensor {
                 TripleFromDefects tripleFromMddo = new TripleFromDefects(mddo.getCheckerName(),
                         mddo.getCheckerSubcategory(), mddo.getDomain());
 
-                CheckerPropertyDataObj checkerPropertyDataObj=mapOfCheckerPropertyDataObj.get(tripleFromMddo);
+                CheckerPropertyDataObj checkerPropertyDataObj = mapOfCheckerPropertyDataObj.get(tripleFromMddo);
                 String impact = checkerPropertyDataObj.getImpact();
 
-                if(checkerPropertyDataObj!=null){
+                if(checkerPropertyDataObj != null){
                     totalDefectsCounter++;
                     if (impact.equals(HIGH)) {
                         highImpactDefectsCounter++;
@@ -212,10 +212,10 @@ public class CoveritySensor implements Sensor {
             e.printStackTrace();
         }
 
-        totalDefects= String.valueOf(totalDefectsCounter);
-        highImpactDefects= String.valueOf(highImpactDefectsCounter);
-        mediumImpactDefects= String.valueOf(mediumImpactDefectsCounter);
-        lowImpactDefects= String.valueOf(lowImpactDefectsCounter);
+        totalDefects = String.valueOf(totalDefectsCounter);
+        highImpactDefects = String.valueOf(highImpactDefectsCounter);
+        mediumImpactDefects = String.valueOf(mediumImpactDefectsCounter);
+        lowImpactDefects = String.valueOf(lowImpactDefectsCounter);
 
         Thread.currentThread().setContextClassLoader(oldCL);
         // Display a clickable Coverity Logo

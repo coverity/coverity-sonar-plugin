@@ -20,19 +20,26 @@
 
 package org.sonar.plugins.coverity.batch;
 
+import com.coverity.ws.v6.CheckerPropertyDataObj;
 import com.coverity.ws.v6.DefectInstanceDataObj;
 import com.coverity.ws.v6.EventDataObj;
 import com.coverity.ws.v6.MergedDefectDataObj;
 import com.coverity.ws.v6.ProjectDataObj;
 import org.junit.Before;
 import org.junit.Test;
+import org.sonar.api.batch.SensorContext;
 import org.sonar.api.component.ResourcePerspectives;
 import org.sonar.api.config.Settings;
+import org.sonar.api.measures.Measure;
+import org.sonar.api.measures.Metric;
 import org.sonar.api.profiles.RulesProfile;
 import org.sonar.api.resources.Project;
 import org.sonar.plugins.coverity.ws.CIMClient;
+import org.sonar.plugins.coverity.ws.TripleFromDefects;
 
 import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -110,5 +117,20 @@ public class CoveritySensorTest {
     @Test
     public void testGetResourceForFile() throws Exception {
         //
+    }
+
+    @Test
+    public void getCoverityLogoMeasures() throws Exception {
+
+        SensorContext sensorContextTest = mock(SensorContext.class);
+        Metric coverityUrlCimMetricTest = mock(Metric.class);
+        Measure measure = new Measure(coverityUrlCimMetricTest);
+        final String CIM_URL = "testUrl";
+        measure.setData(CIM_URL);
+        sensorContextTest.saveMeasure(measure);
+
+        when(sensorContextTest.getMeasure(coverityUrlCimMetricTest)).thenReturn(measure);
+
+        assertEquals(CIM_URL, (sensorContextTest.getMeasure(coverityUrlCimMetricTest)).getData());
     }
 }
