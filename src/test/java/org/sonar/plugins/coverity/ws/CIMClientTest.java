@@ -40,7 +40,7 @@ import static org.mockito.Mockito.when;
 public class CIMClientTest {
 
     @Test
-    public void getMapOfCheckerPropertyDataObj() throws Exception {
+    public void testGetMapOfCheckerPropertyDataObj() throws Exception {
 
         CIMClient cimClient = mock(CIMClient.class);
         CheckerPropertyFilterSpecDataObj checkerPropertyFilterSpecDataObj = mock(CheckerPropertyFilterSpecDataObj.class);

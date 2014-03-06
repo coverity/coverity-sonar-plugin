@@ -120,7 +120,7 @@ public class CoveritySensorTest {
     }
 
     @Test
-    public void getCoverityLogoMeasures() throws Exception {
+    public void testGetCoverityLogoMeasures() throws Exception {
 
         SensorContext sensorContextTest = mock(SensorContext.class);
         Metric coverityUrlCimMetricTest = mock(Metric.class);
