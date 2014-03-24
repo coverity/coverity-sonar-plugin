@@ -1,22 +1,22 @@
 /*
- * Coverity Sonar Plugin
- * Copyright (C) 2014 Coverity, Inc.
- * support@coverity.com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public
- * License along with this program; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02
- */
+ * Coverity Plugin
+ * Copyright (C) 2013 Coverity, Inc.
+ * support@coverity.com
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public
+ * License as published by the Free Software Foundation; either
+ * version 3 of the License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this program; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02
+ */
 
 package org.sonar.plugins.coverity.batch;
 
@@ -269,13 +269,6 @@ public class CoveritySensor implements Sensor {
     * */
     private void getCoverityLogoMeasures(SensorContext sensorContext, CIMClient client, ProjectDataObj covProjectObj) {
         {
-            Measure measure = new Measure(COVERITY_URL_CIM_METRIC);
-            String CIM_URL = createURL(client);
-            measure.setData(CIM_URL);
-            sensorContext.saveMeasure(measure);
-        }
-
-        {
             Measure measure = new Measure(COVERITY_PROJECT_NAME);
             String covProject = settings.getString(CoverityPlugin.COVERITY_PROJECT);
             measure.setData(covProject);
@@ -285,8 +278,16 @@ public class CoveritySensor implements Sensor {
         {
             Measure measure = new Measure(COVERITY_PROJECT_URL);
             String ProjectUrl = createURL(client);
-            String ProductKey = null;
-            ProductKey= String.valueOf(covProjectObj.getProjectKey());
+            String ProductKey= String.valueOf(covProjectObj.getProjectKey());
+            ProjectUrl = ProjectUrl+"reports.htm#p"+ProductKey;
+            measure.setData(ProjectUrl);
+            sensorContext.saveMeasure(measure);
+        }
+
+        {
+            Measure measure = new Measure(COVERITY_URL_CIM_METRIC);
+            String ProjectUrl = createURL(client);
+            String ProductKey= String.valueOf(covProjectObj.getProjectKey());
             ProjectUrl = ProjectUrl+"reports.htm#p"+ProductKey;
             measure.setData(ProjectUrl);
             sensorContext.saveMeasure(measure);
