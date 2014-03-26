@@ -90,6 +90,7 @@ public class CoveritySensor implements Sensor {
         boolean ssl = settings.getBoolean(CoverityPlugin.COVERITY_CONNECT_SSL);
 
         String covProject = settings.getString(CoverityPlugin.COVERITY_PROJECT);
+        String stripPrefix = settings.getString(CoverityPlugin.COVERITY_PREFIX);
 
         CIMClient instance = new CIMClient(host, port, user, password, ssl);
 
@@ -125,10 +126,12 @@ public class CoveritySensor implements Sensor {
 
             for(MergedDefectDataObj mddo : defects) {
                 String filePath = mddo.getFilePathname();
+                if (stripPrefix != null && !stripPrefix.isEmpty() && filePath.startsWith(stripPrefix))
+                    filePath = "./" + filePath.substring(stripPrefix.length());
                 Resource res = getResourceForFile(filePath, project.getFileSystem());
 
                 if(res == null) {
-                    LOG.info("Skipping defect (CID " + mddo.getCid() + ") because the source file could not be found.");
+                    LOG.info("Cannot find the file '" + filePath + "', skipping defect (CID " + mddo.getCid() + ")");
                     continue;
                 }
 
@@ -166,8 +169,7 @@ public class CoveritySensor implements Sensor {
                 }
             }
         } catch(Exception e) {
-            LOG.error("Error fetching defects");
-            e.printStackTrace();
+            LOG.error("Error fetching defects", e);
         }
 
         Thread.currentThread().setContextClassLoader(oldCL);
