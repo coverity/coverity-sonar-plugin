@@ -84,7 +84,7 @@ public class FileGenerator {
                 xmlFileOut.println("</rule>");
 
                 //props
-                propsFileOut.println("rule.coverity-java." + key + ".name=" + cpdo.getSubcategoryShortDescription());
+                propsFileOut.println("rule.coverity-" + language + "." + key + ".name=" + cpdo.getSubcategoryShortDescription());
 
                 //html
                 //htmlFileOut.println(cpdo.getSubcategoryLongDescription());
