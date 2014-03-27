@@ -50,17 +50,23 @@ public final class CoverityFooter implements Footer {
             e.printStackTrace();
         }
 
-        String url = CoverityUtil.createURL(settings)+"reports.htm#p"+ covProjectObj.getProjectKey();
-        String text = "Coverity Connect";
+        String serverUrl = CoverityUtil.createURL(settings);
+        String url;
+        String text;
 
-        if(url == null) {
+        if(serverUrl == null) {
             url = "http://coverity.com";
+            serverUrl = url + "/";
             text = "Coverity";
+        }
+        else {
+            url = serverUrl + "reports.htm#p" + covProjectObj.getProjectKey();
+            text = "Coverity Connect";
         }
 
         return String.format(
                 "<div style=\"text-align:center\">" +
-                "<a href=\"%s\"><img src=\"http://www.coverity.com/favicon.ico\" />%s</a>" +
+                "<a href=\"%s\"><img src=\"" + serverUrl + "favicon.ico\" />%s</a>" +
                 "</div>",
                 url, text);
     }
