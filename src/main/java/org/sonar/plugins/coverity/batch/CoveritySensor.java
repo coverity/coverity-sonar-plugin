@@ -183,8 +183,8 @@ public class CoveritySensor implements Sensor {
     }
 
     protected String getDefectURL(CIMClient instance, ProjectDataObj covProjectObj, MergedDefectDataObj mddo) {
-        return String.format("http://%s:%d/sourcebrowser.htm?projectId=%s#mergedDefectId=%d",
-                instance.getHost(), instance.getPort(), covProjectObj.getProjectKey(), mddo.getCid());
+        return String.format("%s://%s:%d/sourcebrowser.htm?projectId=%s#mergedDefectId=%d",
+                instance.isUseSSL() ? "https" : "http", instance.getHost(), instance.getPort(), covProjectObj.getProjectKey(), mddo.getCid());
     }
 
     protected EventDataObj getMainEvent(DefectInstanceDataObj dido) {
