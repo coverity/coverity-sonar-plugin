@@ -29,8 +29,7 @@ import org.sonar.plugins.coverity.server.CoverityRulesRepositories;
 import org.sonar.plugins.coverity.ws.CIMClient;
 
 public class CoverityUtil {
-    public static RuleKey getRuleKey(DefectInstanceDataObj dido) {
-        String language = CoverityRulesRepositories.domainLanguages.get(dido.getCheckerSubcategoryId().getDomain());
+    public static RuleKey getRuleKey(String language, DefectInstanceDataObj dido) {
         return RuleKey.of(CoverityPlugin.REPOSITORY_KEY + "-" + language, flattenCheckerSubcategoryId(dido.getCheckerSubcategoryId()));
     }
 

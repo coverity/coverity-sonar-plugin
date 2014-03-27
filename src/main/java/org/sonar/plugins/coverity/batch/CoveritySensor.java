@@ -138,7 +138,12 @@ public class CoveritySensor implements Sensor {
 
                     Issuable issuable = resourcePerspectives.as(Issuable.class, res);
 
-                    ActiveRule ar = profile.getActiveRule(CoverityUtil.getRuleKey(dido).repository(), CoverityUtil.getRuleKey(dido).rule());
+                    org.sonar.api.resources.Language lang = res.getLanguage();
+                    if (lang == null) {
+                        lang = project.getLanguage();
+                    }
+                    org.sonar.api.rule.RuleKey rk = CoverityUtil.getRuleKey(lang.getKey(), dido);
+                    ActiveRule ar = profile.getActiveRule(rk.repository(), rk.rule());
 
                     LOG.debug("mainEvent=" + mainEvent);
                     LOG.debug("issuable=" + issuable);

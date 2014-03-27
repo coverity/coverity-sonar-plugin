@@ -35,16 +35,11 @@ import java.util.Map;
 
 public class CoverityRulesRepositories extends ExtensionProvider implements ServerExtension {
     public static final Map<String, String> languageDomains = new HashMap<String, String>();
-    public static final Map<String, String> domainLanguages = new HashMap<String, String>();
-
     static {
         languageDomains.put("java", "STATIC_JAVA");
         languageDomains.put("cpp", "STATIC_C");
+        languageDomains.put("c++", "STATIC_C");
         languageDomains.put("cs", "STATIC_CS");
-
-        domainLanguages.put("STATIC_JAVA", "java");
-        domainLanguages.put("STATIC_C", "cpp");
-        domainLanguages.put("STATIC_CS", "cs");
     }
 
     private static final Logger LOG = LoggerFactory.getLogger(CoverityRulesRepositories.class);
