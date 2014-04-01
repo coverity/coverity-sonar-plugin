@@ -17,10 +17,11 @@ mvn install:install-file -Dfile=xmldsig-1.0.jar -DgroupId=javax.xml.crypto -Dart
   
 ## Changelog
 
+* __1.0.2__
+  * Implement a Coverity widget that shows the count of defects at each Coverity impact level. A link to the Coverity project is included.
 * __1.0.1__
   * Fix a classloader issue that caused issue import to fail in some environments. (BZ 60318)
   * Remove hardcoded URLs from WSDL files. (BZ 60390)
   * Fix a bug that caused issue import to fail with large amounts of issues. (BZ 60393)
   * Fix issue descriptions that were appearing as null. (BZ 60508)
-* __1.0.2__
-  * Implement a Coverity widget that shows the count of defects at each Coverity impact level. A link to the Coverity project is included.
+
