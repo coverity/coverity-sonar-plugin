@@ -81,11 +81,12 @@ public class FileGenerator {
                 xmlFileOut.println("<key>" + key + "</key>");
                 xmlFileOut.println("<priority>" + "MAJOR" + "</priority>");
                 xmlFileOut.println("<configKey>" + key + "</configKey>");
+                xmlFileOut.println("<name><![CDATA[ " + cpdo.getSubcategoryShortDescription() + "]]></name>");
                 xmlFileOut.println("<description><![CDATA[ " + desc + "]]></description>");
                 xmlFileOut.println("</rule>");
 
                 //props
-                propsFileOut.println("rule.coverity-" + language + "." + key + ".name=" + cpdo.getSubcategoryShortDescription());
+                //propsFileOut.println("rule.coverity-" + language + "." + key + ".name=" + cpdo.getSubcategoryShortDescription());
 
                 //html
                 //htmlFileOut.println(cpdo.getSubcategoryLongDescription());
