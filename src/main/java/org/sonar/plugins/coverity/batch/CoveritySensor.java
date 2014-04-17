@@ -57,10 +57,10 @@ public class CoveritySensor implements Sensor {
     private final String MEDIUM = "Medium";
     private final String LOW = "Low";
 
-    private String totalDefects = null;
-    private String highImpactDefects = null;
-    private String mediumImpactDefects = null;
-    private String lowImpactDefects = null;
+    private int totalDefects;
+    private int highImpactDefects;
+    private int mediumImpactDefects;
+    private int lowImpactDefects;
 
     public CoveritySensor(Settings settings, RulesProfile profile, ResourcePerspectives resourcePerspectives) {
         this.settings = settings;
@@ -203,10 +203,10 @@ public class CoveritySensor implements Sensor {
             e.printStackTrace();
         }
 
-        totalDefects = String.valueOf(totalDefectsCounter);
-        highImpactDefects = String.valueOf(highImpactDefectsCounter);
-        mediumImpactDefects = String.valueOf(mediumImpactDefectsCounter);
-        lowImpactDefects = String.valueOf(lowImpactDefectsCounter);
+        totalDefects = totalDefectsCounter;
+        highImpactDefects = highImpactDefectsCounter;
+        mediumImpactDefects = mediumImpactDefectsCounter;
+        lowImpactDefects = lowImpactDefectsCounter;
 
         Thread.currentThread().setContextClassLoader(oldCL);
         // Display a clickable Coverity Logo
@@ -259,52 +259,40 @@ public class CoveritySensor implements Sensor {
     * saves the measures into sensorContext. This method is called by analyse().
     * */
     private void getCoverityLogoMeasures(SensorContext sensorContext, CIMClient client, ProjectDataObj covProjectObj) {
+        String projectUrl = createURL(client);
+        String productKey= String.valueOf(covProjectObj.getProjectKey());
+        projectUrl = projectUrl+"reports.htm#p"+productKey;
+
         {
             Measure measure = new Measure(COVERITY_PROJECT_NAME);
             String covProject = settings.getString(CoverityPlugin.COVERITY_PROJECT);
             measure.setData(covProject);
-            sensorContext.saveMeasure(measure);
-        }
-
-        {
-            Measure measure = new Measure(COVERITY_PROJECT_URL);
-            String ProjectUrl = createURL(client);
-            String ProductKey= String.valueOf(covProjectObj.getProjectKey());
-            ProjectUrl = ProjectUrl+"reports.htm#p"+ProductKey;
-            measure.setData(ProjectUrl);
-            sensorContext.saveMeasure(measure);
-        }
-
-        {
-            Measure measure = new Measure(COVERITY_URL_CIM_METRIC);
-            String ProjectUrl = createURL(client);
-            String ProductKey= String.valueOf(covProjectObj.getProjectKey());
-            ProjectUrl = ProjectUrl+"reports.htm#p"+ProductKey;
-            measure.setData(ProjectUrl);
+            measure.setUrl(projectUrl);
             sensorContext.saveMeasure(measure);
         }
 
         {
             Measure measure = new Measure(COVERITY_OUTSTANDING_ISSUES);
-            measure.setData(totalDefects);
+            measure.setIntValue(totalDefects);
+            measure.setUrl(projectUrl);
             sensorContext.saveMeasure(measure);
         }
 
         {
             Measure measure = new Measure(COVERITY_HIGH_IMPACT);
-            measure.setData(highImpactDefects);
+            measure.setIntValue(highImpactDefects);
             sensorContext.saveMeasure(measure);
         }
 
         {
             Measure measure = new Measure(COVERITY_MEDIUM_IMPACT);
-            measure.setData(mediumImpactDefects);
+            measure.setIntValue(mediumImpactDefects);
             sensorContext.saveMeasure(measure);
         }
 
         {
             Measure measure = new Measure(COVERITY_LOW_IMPACT);
-            measure.setData(lowImpactDefects);
+            measure.setIntValue(lowImpactDefects);
             sensorContext.saveMeasure(measure);
         }
     }
