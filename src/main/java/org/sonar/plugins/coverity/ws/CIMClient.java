@@ -203,6 +203,25 @@ public class CIMClient {
         return result;
     }
 
+    public List<MergedDefectDataObj> getDefects(String project, MergedDefectFilterSpecDataObj filterSpec) throws IOException, CovRemoteServiceException_Exception {
+      ProjectIdDataObj projectId = new ProjectIdDataObj();
+      projectId.setName(project);
+      PageSpecDataObj pageSpec = new PageSpecDataObj();
+      pageSpec.setPageSize(2500);
+
+      List<MergedDefectDataObj> result = new ArrayList<MergedDefectDataObj>();
+      int defectCount = 0;
+      MergedDefectsPageDataObj defects = null;
+      do {
+        pageSpec.setStartIndex(defectCount);
+        defects = getDefectService().getMergedDefectsForProject(projectId, filterSpec, pageSpec);
+        result.addAll(defects.getMergedDefects());
+        defectCount += defects.getMergedDefects().size();
+      } while(defectCount < defects.getTotalNumberOfRecords());
+
+      return result;
+    }
+
     public ProjectDataObj getProject(String projectId) throws IOException, CovRemoteServiceException_Exception {
         ProjectFilterSpecDataObj filterSpec = new ProjectFilterSpecDataObj();
         filterSpec.setNamePattern(projectId);
