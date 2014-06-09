@@ -68,6 +68,7 @@ public class FileGenerator {
 
                 //xml
                 xmlFileOut.println("<rule>");
+                xmlFileOut.println("<name>" + key + "</name>");
                 xmlFileOut.println("<key>" + key + "</key>");
                 xmlFileOut.println("<priority>" + "MAJOR" + "</priority>");
                 xmlFileOut.println("<configKey>" + key + "</configKey>");
@@ -99,7 +100,7 @@ public class FileGenerator {
         System.out.println("xmlDir=" + xmlDir.getAbsolutePath());
         System.out.println("htmlDir=" + htmlDir.getAbsolutePath());
 
-        CIMClient instance = new CIMClient("jvinson-wrkst", 14800, "admin", "coverity", false);
+        CIMClient instance = new CIMClient("frossi-wrkst", 8081, "admin", "coverity", false);
 
         generateRulesFiles(propsFile, xmlDir, htmlDir, instance);
     }
