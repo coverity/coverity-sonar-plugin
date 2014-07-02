@@ -1,554 +1,554 @@
 <rules>
 <rule>
-<name>STATIC_CS_FORWARD_CLASSCAST_generic</name>
+<name>Downcast exception</name>
 <key>STATIC_CS_FORWARD_CLASSCAST_generic</key>
-<priority>MAJOR</priority>
+<severity>CRITICAL</severity>
 <configKey>STATIC_CS_FORWARD_CLASSCAST_generic</configKey>
 <description><![CDATA[ Object is checked for compatibility with a particular subtype, but then later downcast without a check]]></description>
 </rule>
 <rule>
-<name>STATIC_CS_FORWARD_CLASSCAST_none</name>
+<name>Downcast exception</name>
 <key>STATIC_CS_FORWARD_CLASSCAST_none</key>
-<priority>MAJOR</priority>
+<severity>CRITICAL</severity>
 <configKey>STATIC_CS_FORWARD_CLASSCAST_none</configKey>
 <description><![CDATA[ Object is checked for compatibility with a particular subtype, but then later downcast without a check]]></description>
 </rule>
 <rule>
-<name>STATIC_CS_CALL_SUPER_generic</name>
+<name>Missing call to base class</name>
 <key>STATIC_CS_CALL_SUPER_generic</key>
-<priority>MAJOR</priority>
+<severity>CRITICAL</severity>
 <configKey>STATIC_CS_CALL_SUPER_generic</configKey>
 <description><![CDATA[ Overrider does not call the base class method, even though most other overriders do]]></description>
 </rule>
 <rule>
-<name>STATIC_CS_CALL_SUPER_none</name>
+<name>Missing call to base class</name>
 <key>STATIC_CS_CALL_SUPER_none</key>
-<priority>MAJOR</priority>
+<severity>CRITICAL</severity>
 <configKey>STATIC_CS_CALL_SUPER_none</configKey>
 <description><![CDATA[ Overrider does not call the base class method, even though most other overriders do]]></description>
 </rule>
 <rule>
-<name>STATIC_CS_MUTABLE_COMPARISON_generic</name>
+<name>Comparison might change</name>
 <key>STATIC_CS_MUTABLE_COMPARISON_generic</key>
-<priority>MAJOR</priority>
+<severity>MAJOR</severity>
 <configKey>STATIC_CS_MUTABLE_COMPARISON_generic</configKey>
 <description><![CDATA[ The CompareTo method should not read from non-constant fields]]></description>
 </rule>
 <rule>
-<name>STATIC_CS_MUTABLE_COMPARISON_none</name>
+<name>Comparison might change</name>
 <key>STATIC_CS_MUTABLE_COMPARISON_none</key>
-<priority>MAJOR</priority>
+<severity>MAJOR</severity>
 <configKey>STATIC_CS_MUTABLE_COMPARISON_none</configKey>
 <description><![CDATA[ The CompareTo method should not read from non-constant fields]]></description>
 </rule>
 <rule>
-<name>STATIC_CS_MUTABLE_HASHCODE_generic</name>
+<name>GetHashCode might change</name>
 <key>STATIC_CS_MUTABLE_HASHCODE_generic</key>
-<priority>MAJOR</priority>
+<severity>MAJOR</severity>
 <configKey>STATIC_CS_MUTABLE_HASHCODE_generic</configKey>
 <description><![CDATA[ The GetHashCode method should not read from non-constant fields]]></description>
 </rule>
 <rule>
-<name>STATIC_CS_MUTABLE_HASHCODE_none</name>
+<name>GetHashCode might change</name>
 <key>STATIC_CS_MUTABLE_HASHCODE_none</key>
-<priority>MAJOR</priority>
+<severity>MAJOR</severity>
 <configKey>STATIC_CS_MUTABLE_HASHCODE_none</configKey>
 <description><![CDATA[ The GetHashCode method should not read from non-constant fields]]></description>
 </rule>
 <rule>
-<name>STATIC_CS_GUARDED_BY_VIOLATION_generic</name>
+<name>Data race condition</name>
 <key>STATIC_CS_GUARDED_BY_VIOLATION_generic</key>
-<priority>MAJOR</priority>
+<severity>CRITICAL</severity>
 <configKey>STATIC_CS_GUARDED_BY_VIOLATION_generic</configKey>
 <description><![CDATA[ Thread shared data is accessed without holding an appropriate lock, possibly causing a race condition]]></description>
 </rule>
 <rule>
-<name>STATIC_CS_GUARDED_BY_VIOLATION_none</name>
+<name>Data race condition</name>
 <key>STATIC_CS_GUARDED_BY_VIOLATION_none</key>
-<priority>MAJOR</priority>
+<severity>CRITICAL</severity>
 <configKey>STATIC_CS_GUARDED_BY_VIOLATION_none</configKey>
 <description><![CDATA[ Thread shared data is accessed without holding an appropriate lock, possibly causing a race condition]]></description>
 </rule>
 <rule>
-<name>STATIC_CS_INDIRECT_GUARDED_BY_VIOLATION_generic</name>
+<name>Data race condition</name>
 <key>STATIC_CS_INDIRECT_GUARDED_BY_VIOLATION_generic</key>
-<priority>MAJOR</priority>
+<severity>CRITICAL</severity>
 <configKey>STATIC_CS_INDIRECT_GUARDED_BY_VIOLATION_generic</configKey>
 <description><![CDATA[ Thread shared data is accessed without holding an appropriate lock, possibly causing a race condition]]></description>
 </rule>
 <rule>
-<name>STATIC_CS_INDIRECT_GUARDED_BY_VIOLATION_none</name>
+<name>Data race condition</name>
 <key>STATIC_CS_INDIRECT_GUARDED_BY_VIOLATION_none</key>
-<priority>MAJOR</priority>
+<severity>CRITICAL</severity>
 <configKey>STATIC_CS_INDIRECT_GUARDED_BY_VIOLATION_none</configKey>
 <description><![CDATA[ Thread shared data is accessed without holding an appropriate lock, possibly causing a race condition]]></description>
 </rule>
 <rule>
-<name>STATIC_CS_NON_STATIC_GUARDING_STATIC_generic</name>
+<name>Data race condition</name>
 <key>STATIC_CS_NON_STATIC_GUARDING_STATIC_generic</key>
-<priority>MAJOR</priority>
+<severity>CRITICAL</severity>
 <configKey>STATIC_CS_NON_STATIC_GUARDING_STATIC_generic</configKey>
 <description><![CDATA[ Static field is protected by a per-instance lock]]></description>
 </rule>
 <rule>
-<name>STATIC_CS_NON_STATIC_GUARDING_STATIC_none</name>
+<name>Data race condition</name>
 <key>STATIC_CS_NON_STATIC_GUARDING_STATIC_none</key>
-<priority>MAJOR</priority>
+<severity>CRITICAL</severity>
 <configKey>STATIC_CS_NON_STATIC_GUARDING_STATIC_none</configKey>
 <description><![CDATA[ Static field is protected by a per-instance lock]]></description>
 </rule>
 <rule>
-<name>STATIC_CS_ATOMICITY_generic</name>
+<name>Value not atomically updated</name>
 <key>STATIC_CS_ATOMICITY_generic</key>
-<priority>MAJOR</priority>
+<severity>CRITICAL</severity>
 <configKey>STATIC_CS_ATOMICITY_generic</configKey>
 <description><![CDATA[ Critical section does not protect read-update-write of a concurrently shared value]]></description>
 </rule>
 <rule>
-<name>STATIC_CS_ATOMICITY_none</name>
+<name>Value not atomically updated</name>
 <key>STATIC_CS_ATOMICITY_none</key>
-<priority>MAJOR</priority>
+<severity>CRITICAL</severity>
 <configKey>STATIC_CS_ATOMICITY_none</configKey>
 <description><![CDATA[ Critical section does not protect read-update-write of a concurrently shared value]]></description>
 </rule>
 <rule>
-<name>STATIC_CS_BAD_EQ_TYPES_generic</name>
+<name>Equality test on different types</name>
 <key>STATIC_CS_BAD_EQ_TYPES_generic</key>
-<priority>MAJOR</priority>
+<severity>CRITICAL</severity>
 <configKey>STATIC_CS_BAD_EQ_TYPES_generic</configKey>
 <description><![CDATA[ Structural equality is never true for objects of different types]]></description>
 </rule>
 <rule>
-<name>STATIC_CS_BAD_EQ_TYPES_none</name>
+<name>Equality test on different types</name>
 <key>STATIC_CS_BAD_EQ_TYPES_none</key>
-<priority>MAJOR</priority>
+<severity>CRITICAL</severity>
 <configKey>STATIC_CS_BAD_EQ_TYPES_none</configKey>
 <description><![CDATA[ Structural equality is never true for objects of different types]]></description>
 </rule>
 <rule>
-<name>STATIC_CS_BAD_EQ_referential</name>
+<name>Wrong equality (referential)</name>
 <key>STATIC_CS_BAD_EQ_referential</key>
-<priority>MAJOR</priority>
+<severity>CRITICAL</severity>
 <configKey>STATIC_CS_BAD_EQ_referential</configKey>
 <description><![CDATA[ Using referential equality when value equality is the norm for this type]]></description>
 </rule>
 <rule>
-<name>STATIC_CS_BAD_EQ_structural</name>
+<name>Wrong equality (structural)</name>
 <key>STATIC_CS_BAD_EQ_structural</key>
-<priority>MAJOR</priority>
+<severity>CRITICAL</severity>
 <configKey>STATIC_CS_BAD_EQ_structural</configKey>
 <description><![CDATA[ Using Equals (or equivalent method) equality when "==" is the norm for this type]]></description>
 </rule>
 <rule>
-<name>STATIC_CS_BAD_EQ_generic</name>
+<name>Wrong kind of equality</name>
 <key>STATIC_CS_BAD_EQ_generic</key>
-<priority>MAJOR</priority>
+<severity>CRITICAL</severity>
 <configKey>STATIC_CS_BAD_EQ_generic</configKey>
 <description><![CDATA[ Using wrong equality operation (Equals or the equivalent method vs "==") for this type]]></description>
 </rule>
 <rule>
-<name>STATIC_CS_BAD_EQ_none</name>
+<name>Wrong kind of equality</name>
 <key>STATIC_CS_BAD_EQ_none</key>
-<priority>MAJOR</priority>
+<severity>CRITICAL</severity>
 <configKey>STATIC_CS_BAD_EQ_none</configKey>
 <description><![CDATA[ Using wrong equality operation (Equals or the equivalent method vs "==") for this type]]></description>
 </rule>
 <rule>
-<name>STATIC_CS_FORWARD_NULL_generic</name>
+<name>Dereference a null reference</name>
 <key>STATIC_CS_FORWARD_NULL_generic</key>
-<priority>MAJOR</priority>
+<severity>CRITICAL</severity>
 <configKey>STATIC_CS_FORWARD_NULL_generic</configKey>
 <description><![CDATA[ Reference may be null but is then dereferenced anyway]]></description>
 </rule>
 <rule>
-<name>STATIC_CS_FORWARD_NULL_none</name>
+<name>Dereference after null check</name>
 <key>STATIC_CS_FORWARD_NULL_none</key>
-<priority>MAJOR</priority>
+<severity>CRITICAL</severity>
 <configKey>STATIC_CS_FORWARD_NULL_none</configKey>
 <description><![CDATA[ Reference is checked against null but then dereferenced anyway]]></description>
 </rule>
 <rule>
-<name>STATIC_CS_REVERSE_INULL_generic</name>
+<name>Dereference before null check</name>
 <key>STATIC_CS_REVERSE_INULL_generic</key>
-<priority>MAJOR</priority>
+<severity>CRITICAL</severity>
 <configKey>STATIC_CS_REVERSE_INULL_generic</configKey>
 <description><![CDATA[ All paths that lead to this null reference comparison already dereference the pointer earlier]]></description>
 </rule>
 <rule>
-<name>STATIC_CS_REVERSE_INULL_none</name>
+<name>Dereference before null check</name>
 <key>STATIC_CS_REVERSE_INULL_none</key>
-<priority>MAJOR</priority>
+<severity>CRITICAL</severity>
 <configKey>STATIC_CS_REVERSE_INULL_none</configKey>
 <description><![CDATA[ All paths that lead to this null reference comparison already dereference the pointer earlier]]></description>
 </rule>
 <rule>
-<name>STATIC_CS_NULL_RETURNS_generic</name>
+<name>Dereference null return value</name>
 <key>STATIC_CS_NULL_RETURNS_generic</key>
-<priority>MAJOR</priority>
+<severity>CRITICAL</severity>
 <configKey>STATIC_CS_NULL_RETURNS_generic</configKey>
 <description><![CDATA[ Return value of function which returns null is dereferenced without checking]]></description>
 </rule>
 <rule>
-<name>STATIC_CS_NULL_RETURNS_none</name>
+<name>Dereference null return value</name>
 <key>STATIC_CS_NULL_RETURNS_none</key>
-<priority>MAJOR</priority>
+<severity>CRITICAL</severity>
 <configKey>STATIC_CS_NULL_RETURNS_none</configKey>
 <description><![CDATA[ Return value of function which returns null is dereferenced without checking]]></description>
 </rule>
 <rule>
-<name>STATIC_CS_FORWARD_NULL_deref_constant_zero</name>
+<name>Explicit null dereferenced</name>
 <key>STATIC_CS_FORWARD_NULL_deref_constant_zero</key>
-<priority>MAJOR</priority>
+<severity>CRITICAL</severity>
 <configKey>STATIC_CS_FORWARD_NULL_deref_constant_zero</configKey>
 <description><![CDATA[ Dereference of an explicit null value]]></description>
 </rule>
 <rule>
-<name>STATIC_CS_FORWARD_NULL_null_from_as</name>
+<name>Unchecked &quot;as&quot; conversion</name>
 <key>STATIC_CS_FORWARD_NULL_null_from_as</key>
-<priority>MAJOR</priority>
+<severity>CRITICAL</severity>
 <configKey>STATIC_CS_FORWARD_NULL_null_from_as</configKey>
 <description><![CDATA[ The "as" conversion may fail and return null if the type cast is incompatible]]></description>
 </rule>
 <rule>
-<name>STATIC_CS_LOCK_INVERSION_generic</name>
+<name>Thread deadlock</name>
 <key>STATIC_CS_LOCK_INVERSION_generic</key>
-<priority>MAJOR</priority>
+<severity>CRITICAL</severity>
 <configKey>STATIC_CS_LOCK_INVERSION_generic</configKey>
 <description><![CDATA[ Threads may try to acquire two locks in different orders, potentially causing deadlock]]></description>
 </rule>
 <rule>
-<name>STATIC_CS_LOCK_INVERSION_none</name>
+<name>Thread deadlock</name>
 <key>STATIC_CS_LOCK_INVERSION_none</key>
-<priority>MAJOR</priority>
+<severity>CRITICAL</severity>
 <configKey>STATIC_CS_LOCK_INVERSION_none</configKey>
 <description><![CDATA[ Threads may try to acquire two locks in different orders, potentially causing deadlock]]></description>
 </rule>
 <rule>
-<name>STATIC_CS_LOCK_ORDERING_generic</name>
+<name>Thread deadlock</name>
 <key>STATIC_CS_LOCK_ORDERING_generic</key>
-<priority>MAJOR</priority>
+<severity>CRITICAL</severity>
 <configKey>STATIC_CS_LOCK_ORDERING_generic</configKey>
 <description><![CDATA[ Threads may try to acquire three or more locks in different orders, potentially causing deadlock]]></description>
 </rule>
 <rule>
-<name>STATIC_CS_LOCK_ORDERING_none</name>
+<name>Thread deadlock</name>
 <key>STATIC_CS_LOCK_ORDERING_none</key>
-<priority>MAJOR</priority>
+<severity>CRITICAL</severity>
 <configKey>STATIC_CS_LOCK_ORDERING_none</configKey>
 <description><![CDATA[ Threads may try to acquire three or more locks in different orders, potentially causing deadlock]]></description>
 </rule>
 <rule>
-<name>STATIC_CS_RESOURCE_LEAK_channel</name>
+<name>Channel leak</name>
 <key>STATIC_CS_RESOURCE_LEAK_channel</key>
-<priority>MAJOR</priority>
+<severity>BLOCKER</severity>
 <configKey>STATIC_CS_RESOURCE_LEAK_channel</configKey>
 <description><![CDATA[ Leak of a channel object]]></description>
 </rule>
 <rule>
-<name>STATIC_CS_RESOURCE_LEAK_database</name>
+<name>Database connection leak</name>
 <key>STATIC_CS_RESOURCE_LEAK_database</key>
-<priority>MAJOR</priority>
+<severity>BLOCKER</severity>
 <configKey>STATIC_CS_RESOURCE_LEAK_database</configKey>
 <description><![CDATA[ Leak of a database connection]]></description>
 </rule>
 <rule>
-<name>STATIC_CS_RESOURCE_LEAK_generic</name>
+<name>Resource leak</name>
 <key>STATIC_CS_RESOURCE_LEAK_generic</key>
-<priority>MAJOR</priority>
+<severity>BLOCKER</severity>
 <configKey>STATIC_CS_RESOURCE_LEAK_generic</configKey>
 <description><![CDATA[ Leak of a system resource such as streams, channels, or other resources]]></description>
 </rule>
 <rule>
-<name>STATIC_CS_RESOURCE_LEAK_none</name>
+<name>Resource leak</name>
 <key>STATIC_CS_RESOURCE_LEAK_none</key>
-<priority>MAJOR</priority>
+<severity>BLOCKER</severity>
 <configKey>STATIC_CS_RESOURCE_LEAK_none</configKey>
 <description><![CDATA[ Leak of a system resource such as streams, channels, or other resources]]></description>
 </rule>
 <rule>
-<name>STATIC_CS_RESOURCE_LEAK_socket</name>
+<name>Socket leak</name>
 <key>STATIC_CS_RESOURCE_LEAK_socket</key>
-<priority>MAJOR</priority>
+<severity>BLOCKER</severity>
 <configKey>STATIC_CS_RESOURCE_LEAK_socket</configKey>
 <description><![CDATA[ Leak of a socket resource]]></description>
 </rule>
 <rule>
-<name>STATIC_CS_RESOURCE_LEAK_stream</name>
+<name>Stream leak</name>
 <key>STATIC_CS_RESOURCE_LEAK_stream</key>
-<priority>MAJOR</priority>
+<severity>BLOCKER</severity>
 <configKey>STATIC_CS_RESOURCE_LEAK_stream</configKey>
 <description><![CDATA[ Leak of a stream representing a file or other resource]]></description>
 </rule>
 <rule>
-<name>STATIC_CS_INFINITE_LOOP_no_escape</name>
+<name>Infinite loop</name>
 <key>STATIC_CS_INFINITE_LOOP_no_escape</key>
-<priority>MAJOR</priority>
+<severity>CRITICAL</severity>
 <configKey>STATIC_CS_INFINITE_LOOP_no_escape</configKey>
 <description><![CDATA[ Infinite loop with no exit condition]]></description>
 </rule>
 <rule>
-<name>STATIC_CS_MS.*_none</name>
+<name>MS Code Analysis warning</name>
 <key>STATIC_CS_MS.*_none</key>
-<priority>MAJOR</priority>
+<severity>MAJOR</severity>
 <configKey>STATIC_CS_MS.*_none</configKey>
 <description><![CDATA[ Unclassified warning from Microsoft Code Analysis]]></description>
 </rule>
 <rule>
-<name>STATIC_CS_RESOURCE_LEAK_exceptional_path</name>
+<name>Resource leak on an exceptional path</name>
 <key>STATIC_CS_RESOURCE_LEAK_exceptional_path</key>
-<priority>MAJOR</priority>
+<severity>MAJOR</severity>
 <configKey>STATIC_CS_RESOURCE_LEAK_exceptional_path</configKey>
 <description><![CDATA[ Leak of a system resource such as streams, channels, or other resources on an exception path (probably error handling)]]></description>
 </rule>
 <rule>
-<name>STATIC_CS_CHECKED_RETURN_none</name>
+<name>Unchecked return value</name>
 <key>STATIC_CS_CHECKED_RETURN_none</key>
-<priority>MAJOR</priority>
+<severity>CRITICAL</severity>
 <configKey>STATIC_CS_CHECKED_RETURN_none</configKey>
 <description><![CDATA[ Value returned from a function is not checked for errors before being used]]></description>
 </rule>
 <rule>
-<name>STATIC_CS_CONSTANT_EXPRESSION_RESULT_none</name>
+<name>Constant expression result</name>
 <key>STATIC_CS_CONSTANT_EXPRESSION_RESULT_none</key>
-<priority>MAJOR</priority>
+<severity>CRITICAL</severity>
 <configKey>STATIC_CS_CONSTANT_EXPRESSION_RESULT_none</configKey>
 <description><![CDATA[ An operation with non-constant operands that computes a result with constant value]]></description>
 </rule>
 <rule>
-<name>STATIC_CS_COPY_PASTE_ERROR_none</name>
+<name>Copy-paste error</name>
 <key>STATIC_CS_COPY_PASTE_ERROR_none</key>
-<priority>MAJOR</priority>
+<severity>CRITICAL</severity>
 <configKey>STATIC_CS_COPY_PASTE_ERROR_none</configKey>
 <description><![CDATA[ A copied piece of code is inconsistent with the original]]></description>
 </rule>
 <rule>
-<name>STATIC_CS_FORWARD_NULL_deref_constant_null</name>
+<name>Explicit null dereferenced</name>
 <key>STATIC_CS_FORWARD_NULL_deref_constant_null</key>
-<priority>MAJOR</priority>
+<severity>CRITICAL</severity>
 <configKey>STATIC_CS_FORWARD_NULL_deref_constant_null</configKey>
 <description><![CDATA[ Dereference of an explicit null value]]></description>
 </rule>
 <rule>
-<name>STATIC_CS_FORWARD_NULL_dynamic_cast</name>
+<name>Unchecked dynamic_cast</name>
 <key>STATIC_CS_FORWARD_NULL_dynamic_cast</key>
-<priority>MAJOR</priority>
+<severity>CRITICAL</severity>
 <configKey>STATIC_CS_FORWARD_NULL_dynamic_cast</configKey>
 <description><![CDATA[ Dynamic_cast may fail and return null if the type cast is incompatible]]></description>
 </rule>
 <rule>
-<name>STATIC_CS_INFINITE_LOOP_none</name>
+<name>Infinite loop</name>
 <key>STATIC_CS_INFINITE_LOOP_none</key>
-<priority>MAJOR</priority>
+<severity>CRITICAL</severity>
 <configKey>STATIC_CS_INFINITE_LOOP_none</configKey>
 <description><![CDATA[ Infinite loop with unsatisfiable exit condition]]></description>
 </rule>
 <rule>
-<name>STATIC_CS_NESTING_INDENT_MISMATCH_none</name>
+<name>Nesting level does not match indentation</name>
 <key>STATIC_CS_NESTING_INDENT_MISMATCH_none</key>
-<priority>MAJOR</priority>
+<severity>CRITICAL</severity>
 <configKey>STATIC_CS_NESTING_INDENT_MISMATCH_none</configKey>
 <description><![CDATA[ The indentation of this code suggests it is nested when it is not.]]></description>
 </rule>
 <rule>
-<name>STATIC_CS_OVERFLOW_BEFORE_WIDEN_none</name>
+<name>Unintentional integer overflow</name>
 <key>STATIC_CS_OVERFLOW_BEFORE_WIDEN_none</key>
-<priority>MAJOR</priority>
+<severity>CRITICAL</severity>
 <configKey>STATIC_CS_OVERFLOW_BEFORE_WIDEN_none</configKey>
 <description><![CDATA[ An integer overflow occurs, with the result converted to a wider integer type]]></description>
 </rule>
 <rule>
-<name>STATIC_CS_STRAY_SEMICOLON_none</name>
+<name>Stray semicolon</name>
 <key>STATIC_CS_STRAY_SEMICOLON_none</key>
-<priority>MAJOR</priority>
+<severity>CRITICAL</severity>
 <configKey>STATIC_CS_STRAY_SEMICOLON_none</configKey>
 <description><![CDATA[ A semicolon was erroneously inserted at a wrong point in the code, e.g. after an if, lock, while, or for construct and before the block]]></description>
 </rule>
 <rule>
-<name>STATIC_CS_SWAPPED_ARGUMENTS_none</name>
+<name>Arguments in wrong order</name>
 <key>STATIC_CS_SWAPPED_ARGUMENTS_none</key>
-<priority>MAJOR</priority>
+<severity>CRITICAL</severity>
 <configKey>STATIC_CS_SWAPPED_ARGUMENTS_none</configKey>
 <description><![CDATA[ The arguments to a function call are provided in the wrong order.]]></description>
 </rule>
 <rule>
-<name>STATIC_CS_UNREACHABLE_none</name>
+<name>Structurally dead code</name>
 <key>STATIC_CS_UNREACHABLE_none</key>
-<priority>MAJOR</priority>
+<severity>CRITICAL</severity>
 <configKey>STATIC_CS_UNREACHABLE_none</configKey>
 <description><![CDATA[ Code block is unreachable because of the syntactic structure of the code]]></description>
 </rule>
 <rule>
-<name>STATIC_CS_VOLATILE_ATOMICITY_none</name>
+<name>Volatile not atomically updated</name>
 <key>STATIC_CS_VOLATILE_ATOMICITY_none</key>
-<priority>MAJOR</priority>
+<severity>CRITICAL</severity>
 <configKey>STATIC_CS_VOLATILE_ATOMICITY_none</configKey>
 <description><![CDATA[ A volatile variable is updated in a non-atomic manner]]></description>
 </rule>
 <rule>
-<name>STATIC_CS_CONSTANT_EXPRESSION_RESULT_bit_and_with_zero</name>
+<name>Bitwise-and with zero</name>
 <key>STATIC_CS_CONSTANT_EXPRESSION_RESULT_bit_and_with_zero</key>
-<priority>MAJOR</priority>
+<severity>CRITICAL</severity>
 <configKey>STATIC_CS_CONSTANT_EXPRESSION_RESULT_bit_and_with_zero</configKey>
 <description><![CDATA[ Bitwise-and ('&amp;') operation applied to zero always produces zero]]></description>
 </rule>
 <rule>
-<name>STATIC_CS_CONSTANT_EXPRESSION_RESULT_extra_high_bits</name>
+<name>Extra high-order bits</name>
 <key>STATIC_CS_CONSTANT_EXPRESSION_RESULT_extra_high_bits</key>
-<priority>MAJOR</priority>
+<severity>CRITICAL</severity>
 <configKey>STATIC_CS_CONSTANT_EXPRESSION_RESULT_extra_high_bits</configKey>
 <description><![CDATA[ In an operation, the high-order bits of wider operand do not affect the narrower operand]]></description>
 </rule>
 <rule>
-<name>STATIC_CS_CONSTANT_EXPRESSION_RESULT_logical_vs_bitwise</name>
+<name>Logical vs. bitwise operator</name>
 <key>STATIC_CS_CONSTANT_EXPRESSION_RESULT_logical_vs_bitwise</key>
-<priority>MAJOR</priority>
+<severity>CRITICAL</severity>
 <configKey>STATIC_CS_CONSTANT_EXPRESSION_RESULT_logical_vs_bitwise</configKey>
 <description><![CDATA[ Logical operator used in place of bitwise operator or vice versa]]></description>
 </rule>
 <rule>
-<name>STATIC_CS_CONSTANT_EXPRESSION_RESULT_missing_parentheses</name>
+<name>Missing parentheses</name>
 <key>STATIC_CS_CONSTANT_EXPRESSION_RESULT_missing_parentheses</key>
-<priority>MAJOR</priority>
+<severity>CRITICAL</severity>
 <configKey>STATIC_CS_CONSTANT_EXPRESSION_RESULT_missing_parentheses</configKey>
 <description><![CDATA[ Missing parentheses caused unintended operator precedence]]></description>
 </rule>
 <rule>
-<name>STATIC_CS_CONSTANT_EXPRESSION_RESULT_operator_confusion</name>
+<name>Wrong operator used</name>
 <key>STATIC_CS_CONSTANT_EXPRESSION_RESULT_operator_confusion</key>
-<priority>MAJOR</priority>
+<severity>CRITICAL</severity>
 <configKey>STATIC_CS_CONSTANT_EXPRESSION_RESULT_operator_confusion</configKey>
 <description><![CDATA[ Wrong operator used in expression]]></description>
 </rule>
 <rule>
-<name>STATIC_CS_CONSTANT_EXPRESSION_RESULT_result_independent_of_operands</name>
+<name>Operands don&apos;t affect result</name>
 <key>STATIC_CS_CONSTANT_EXPRESSION_RESULT_result_independent_of_operands</key>
-<priority>MAJOR</priority>
+<severity>CRITICAL</severity>
 <configKey>STATIC_CS_CONSTANT_EXPRESSION_RESULT_result_independent_of_operands</configKey>
 <description><![CDATA[ An operation with non-constant operands that computes a result with constant value]]></description>
 </rule>
 <rule>
-<name>STATIC_CS_CONSTANT_EXPRESSION_RESULT_same_on_both_sides</name>
+<name>Same on both sides</name>
 <key>STATIC_CS_CONSTANT_EXPRESSION_RESULT_same_on_both_sides</key>
-<priority>MAJOR</priority>
+<severity>CRITICAL</severity>
 <configKey>STATIC_CS_CONSTANT_EXPRESSION_RESULT_same_on_both_sides</configKey>
 <description><![CDATA[ The same expression occurs on both sides of an operator.]]></description>
 </rule>
 <rule>
-<name>STATIC_CS_CONSTANT_EXPRESSION_RESULT_unnecessary_op_assign</name>
+<name>Suspicious &amp;= or |=</name>
 <key>STATIC_CS_CONSTANT_EXPRESSION_RESULT_unnecessary_op_assign</key>
-<priority>MAJOR</priority>
+<severity>CRITICAL</severity>
 <configKey>STATIC_CS_CONSTANT_EXPRESSION_RESULT_unnecessary_op_assign</configKey>
 <description><![CDATA[ Using a bitwise assignment operator to assign a constant value]]></description>
 </rule>
 <rule>
-<name>STATIC_CS_CHECKED_RETURN_library_function</name>
+<name>Unchecked return value from library</name>
 <key>STATIC_CS_CHECKED_RETURN_library_function</key>
-<priority>MAJOR</priority>
+<severity>CRITICAL</severity>
 <configKey>STATIC_CS_CHECKED_RETURN_library_function</configKey>
 <description><![CDATA[ Value returned from a library function is not checked for errors before being used.  This value may indicate an error condition.]]></description>
 </rule>
 <rule>
-<name>STATIC_CS_CHECKED_RETURN_short_read</name>
+<name>Ignoring number of bytes read</name>
 <key>STATIC_CS_CHECKED_RETURN_short_read</key>
-<priority>MAJOR</priority>
+<severity>CRITICAL</severity>
 <configKey>STATIC_CS_CHECKED_RETURN_short_read</configKey>
 <description><![CDATA[ Value returned from a function and indicating the number of bytes read is ignored.]]></description>
 </rule>
 <rule>
-<name>STATIC_CS_CHECKED_RETURN_unchecked_arg</name>
+<name>Unchecked return value as arg</name>
 <key>STATIC_CS_CHECKED_RETURN_unchecked_arg</key>
-<priority>MAJOR</priority>
+<severity>CRITICAL</severity>
 <configKey>STATIC_CS_CHECKED_RETURN_unchecked_arg</configKey>
 <description><![CDATA[ Value returned from a function is not checked for errors, and passed directly to another function as an argument]]></description>
 </rule>
 <rule>
-<name>STATIC_CS_CHECKED_RETURN_user_required</name>
+<name>Unchecked return value from user code</name>
 <key>STATIC_CS_CHECKED_RETURN_user_required</key>
-<priority>MAJOR</priority>
+<severity>CRITICAL</severity>
 <configKey>STATIC_CS_CHECKED_RETURN_user_required</configKey>
 <description><![CDATA[ Value returned from a program function is not checked before being used.  It has been marked that its return value should always be checked.]]></description>
 </rule>
 <rule>
-<name>STATIC_CS_BAD_SHIFT_none</name>
+<name>Bad bit shift operation</name>
 <key>STATIC_CS_BAD_SHIFT_none</key>
-<priority>MAJOR</priority>
+<severity>CRITICAL</severity>
 <configKey>STATIC_CS_BAD_SHIFT_none</configKey>
 <description><![CDATA[ A bit shift operation has a shift amount which is too large or has a negative value.]]></description>
 </rule>
 <rule>
-<name>STATIC_CS_NULL_RETURNS_unimpl</name>
+<name>Dereference null return (stat)</name>
 <key>STATIC_CS_NULL_RETURNS_unimpl</key>
-<priority>MAJOR</priority>
+<severity>CRITICAL</severity>
 <configKey>STATIC_CS_NULL_RETURNS_unimpl</configKey>
 <description><![CDATA[ Return value of function, which is statistically inferred to return null, but with no source code available, is dereferenced]]></description>
 </rule>
 <rule>
-<name>STATIC_CS_DEADCODE_dead_case_in_switch</name>
+<name>Dead case in switch</name>
 <key>STATIC_CS_DEADCODE_dead_case_in_switch</key>
-<priority>MAJOR</priority>
+<severity>CRITICAL</severity>
 <configKey>STATIC_CS_DEADCODE_dead_case_in_switch</configKey>
 <description><![CDATA[ Switch never goes directly to this case]]></description>
 </rule>
 <rule>
-<name>STATIC_CS_DEADCODE_dead_default_in_switch</name>
+<name>Dead default in switch</name>
 <key>STATIC_CS_DEADCODE_dead_default_in_switch</key>
-<priority>MAJOR</priority>
+<severity>CRITICAL</severity>
 <configKey>STATIC_CS_DEADCODE_dead_default_in_switch</configKey>
 <description><![CDATA[ Default in switch statement is dead code]]></description>
 </rule>
 <rule>
-<name>STATIC_CS_DEADCODE_none</name>
+<name>Logically dead code</name>
 <key>STATIC_CS_DEADCODE_none</key>
-<priority>MAJOR</priority>
+<severity>CRITICAL</severity>
 <configKey>STATIC_CS_DEADCODE_none</configKey>
 <description><![CDATA[ Code can never be reached because of a logical contradiction]]></description>
 </rule>
 <rule>
-<name>STATIC_CS_DEADCODE_generic</name>
+<name>Logically dead code</name>
 <key>STATIC_CS_DEADCODE_generic</key>
-<priority>MAJOR</priority>
+<severity>CRITICAL</severity>
 <configKey>STATIC_CS_DEADCODE_generic</configKey>
 <description><![CDATA[ Code can never be reached because of a logical contradiction]]></description>
 </rule>
 <rule>
-<name>STATIC_CS_DEADCODE_redundant_test</name>
+<name>Redundant test</name>
 <key>STATIC_CS_DEADCODE_redundant_test</key>
-<priority>MAJOR</priority>
+<severity>CRITICAL</severity>
 <configKey>STATIC_CS_DEADCODE_redundant_test</configKey>
 <description><![CDATA[ Test always evaluates the same]]></description>
 </rule>
 <rule>
-<name>STATIC_CS_TA.*_none</name>
+<name>Test policy violation</name>
 <key>STATIC_CS_TA.*_none</key>
-<priority>MAJOR</priority>
+<severity>MAJOR</severity>
 <configKey>STATIC_CS_TA.*_none</configKey>
 <description><![CDATA[ Code does not satisfy the testing policy established by your organization.]]></description>
 </rule>
 <rule>
-<name>STATIC_CS_TA.INSUFFICIENT_COVERAGE_none</name>
+<name>Insufficient function coverage</name>
 <key>STATIC_CS_TA.INSUFFICIENT_COVERAGE_none</key>
-<priority>MAJOR</priority>
+<severity>MAJOR</severity>
 <configKey>STATIC_CS_TA.INSUFFICIENT_COVERAGE_none</configKey>
 <description><![CDATA[ Function does not reach coverage threshold required by the policy]]></description>
 </rule>
 <rule>
-<name>STATIC_CS_TA.INSUFFICIENT_FILE_COVERAGE_none</name>
+<name>Insufficient file coverage</name>
 <key>STATIC_CS_TA.INSUFFICIENT_FILE_COVERAGE_none</key>
-<priority>MAJOR</priority>
+<severity>MAJOR</severity>
 <configKey>STATIC_CS_TA.INSUFFICIENT_FILE_COVERAGE_none</configKey>
 <description><![CDATA[ File does not reach coverage threshold required by the policy]]></description>
 </rule>
 <rule>
-<name>STATIC_CS_TA.NO_COVERAGE_none</name>
+<name>Uncovered function</name>
 <key>STATIC_CS_TA.NO_COVERAGE_none</key>
-<priority>MAJOR</priority>
+<severity>MAJOR</severity>
 <configKey>STATIC_CS_TA.NO_COVERAGE_none</configKey>
 <description><![CDATA[ Function is not covered by any test]]></description>
 </rule>
 <rule>
-<name>STATIC_CS_TA.UNCALLED_none</name>
+<name>Uncalled function</name>
 <key>STATIC_CS_TA.UNCALLED_none</key>
-<priority>MAJOR</priority>
+<severity>MAJOR</severity>
 <configKey>STATIC_CS_TA.UNCALLED_none</configKey>
 <description><![CDATA[ Function is not called from any test]]></description>
 </rule>

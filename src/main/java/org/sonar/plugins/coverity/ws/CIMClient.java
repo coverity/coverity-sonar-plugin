@@ -12,6 +12,9 @@
 package org.sonar.plugins.coverity.ws;
 
 import com.coverity.ws.v6.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.sonar.plugins.coverity.server.CoverityRules;
 
 import javax.xml.namespace.QName;
 import javax.xml.ws.BindingProvider;
@@ -159,29 +162,7 @@ public class CIMClient {
         }
     }
 
-    public List<MergedDefectDataObj> getDefects(String streamId, List<Long> defectIds) throws IOException, CovRemoteServiceException_Exception {
-        MergedDefectFilterSpecDataObj filterSpec1 = new MergedDefectFilterSpecDataObj();
-        StreamIdDataObj stream = new StreamIdDataObj();
-        stream.setName(streamId);
-        PageSpecDataObj pageSpec = new PageSpecDataObj();
-        pageSpec.setPageSize(2500);
 
-        List<MergedDefectDataObj> result = new ArrayList<MergedDefectDataObj>();
-        int defectCount = 0;
-        MergedDefectsPageDataObj defects = null;
-        do {
-            pageSpec.setStartIndex(defectCount);
-            defects = getDefectService().getMergedDefectsForStreams(Arrays.asList(stream), filterSpec1, pageSpec);
-            for(MergedDefectDataObj defect : defects.getMergedDefects()) {
-                if(defectIds.contains(defect.getCid())) {
-                    result.add(defect);
-                }
-            }
-            defectCount += defects.getMergedDefects().size();
-        } while(defectCount < defects.getTotalNumberOfRecords());
-
-        return result;
-    }
 
     public List<MergedDefectDataObj> getDefects(String project) throws IOException, CovRemoteServiceException_Exception {
         MergedDefectFilterSpecDataObj filterSpec = new MergedDefectFilterSpecDataObj();

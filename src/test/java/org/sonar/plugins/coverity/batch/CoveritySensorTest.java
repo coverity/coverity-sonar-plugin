@@ -74,7 +74,7 @@ public class CoveritySensorTest {
         ProjectDataObj projectObj = mock(ProjectDataObj.class);
         MergedDefectDataObj mddo = mock(MergedDefectDataObj.class);
 
-        String target = "http://&&HOST&&:999999/sourcebrowser.htm?projectId=888888#mergedDefectId=777777";
+        String target = "http://&&HOST&&:999999/sourcebrowser.htm?projectId=888888&mergedDefectId=777777";
 
         when(instance.getHost()).thenReturn("&&HOST&&");
         when(instance.getPort()).thenReturn(999999);

@@ -31,6 +31,7 @@ import org.sonar.api.rules.ActiveRule;
 import org.sonar.api.rules.Rule;
 import org.sonar.plugins.coverity.CoverityPlugin;
 import org.sonar.plugins.coverity.base.CoverityPluginMetrics;
+import org.sonar.plugins.coverity.ui.CoverityFooter;
 import org.sonar.plugins.coverity.util.CoverityUtil;
 import org.sonar.plugins.coverity.ws.CIMClient;
 
@@ -111,6 +112,7 @@ public class CoveritySensor implements Sensor {
         ProjectDataObj covProjectObj = null;
         try {
             covProjectObj = instance.getProject(covProject);
+            CoverityFooter.covProjectObjFooter = covProjectObj;
             LOG.info("Found project: " + covProject + " (" + covProjectObj.getProjectKey() + ")");
 
             if(covProjectObj == null) {
@@ -139,7 +141,7 @@ public class CoveritySensor implements Sensor {
 
             for(MergedDefectDataObj mddo : defects) {
                 String filePath = mddo.getFilePathname();
-                Resource res = getResourceForFile(filePath, project.getFileSystem());
+                Resource res = getResourceForFile(filePath, project);
 
                 TripleFromDefects tripleFromMddo = new TripleFromDefects(mddo.getCheckerName(),
                         mddo.getCheckerSubcategory(), mddo.getDomain());
@@ -222,8 +224,9 @@ public class CoveritySensor implements Sensor {
         return rule.getDescription() + "\n\nView in Coverity Connect: \n" + url;
     }
 
+    //Replacing "#" for "&" in order to fix bug 62066.
     protected String getDefectURL(CIMClient instance, ProjectDataObj covProjectObj, MergedDefectDataObj mddo) {
-        return String.format("http://%s:%d/sourcebrowser.htm?projectId=%s#mergedDefectId=%d",
+        return String.format("http://%s:%d/sourcebrowser.htm?projectId=%s&mergedDefectId=%d",
                 instance.getHost(), instance.getPort(), covProjectObj.getProjectKey(), mddo.getCid());
     }
 
@@ -236,16 +239,10 @@ public class CoveritySensor implements Sensor {
         return null;
     }
 
-    protected Resource getResourceForFile(String filePath, ProjectFileSystem fileSystem) {
+    protected Resource getResourceForFile(String filePath, Project module) {
         File f = new File(filePath);
         Resource ret;
-        ret = org.sonar.api.resources.JavaFile.fromIOFile(f, fileSystem.getSourceDirs(), false);
-        if(ret == null) {
-            ret = org.sonar.api.resources.File.fromIOFile(f, fileSystem.getSourceDirs());
-        } else {
-            // LOG.info("java file! : " + ret);
-        }
-
+        ret = org.sonar.api.resources.File.fromIOFile(f, module);
         return ret;
     }
 

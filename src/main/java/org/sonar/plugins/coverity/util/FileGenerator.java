@@ -17,12 +17,15 @@ import org.sonar.plugins.coverity.ws.CIMClient;
 
 import java.io.File;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class FileGenerator {
     public static Map<String, String> languageDomains = new HashMap<String, String>();
+    static String name;
 
     static {
         languageDomains.put("java", "STATIC_JAVA");
@@ -36,11 +39,9 @@ public class FileGenerator {
         PrintWriter propsFileOut = new PrintWriter(propsFile);
 
         for(Map.Entry<String, String> entry : languageDomains.entrySet()) {
+            List<String> lineList = new ArrayList<String>();
             String language = entry.getKey();
             String domain = entry.getValue();
-
-            //File htmlDirDir = new File(htmlDir, "coverity-" + language);
-            //htmlDirDir.mkdirs();
 
             File xmlFile = new File(xmlDir, "coverity-" + language + ".xml");
             PrintWriter xmlFileOut = new PrintWriter(xmlFile,"UTF-8" );
@@ -53,10 +54,6 @@ public class FileGenerator {
             for(CheckerPropertyDataObj cpdo : checkers) {
                 String key = CoverityUtil.flattenCheckerSubcategoryId(cpdo.getCheckerSubcategoryId());
 
-                //File htmlFile = new File(htmlDirDir, key + ".html");
-
-                //PrintWriter htmlFileOut = new PrintWriter(htmlFile);
-
                 String desc = cpdo.getSubcategoryLongDescription();
                 {
                     String linkRegex = "\\(<a href=\"([^\"]*?)\" target=\"_blank\">(.*?)</a>\\)";
@@ -68,24 +65,39 @@ public class FileGenerator {
 
                 //xml
                 xmlFileOut.println("<rule>");
-                xmlFileOut.println("<name>" + key + "</name>");
+                name = cpdo.getSubcategoryShortDescription();
+                if(name.isEmpty() || name == null){
+                    xmlFileOut.println("<name>" + key + "</name>");
+                } else {
+                    name = org.apache.commons.lang.StringEscapeUtils.escapeXml(name);
+                    xmlFileOut.println("<name>" + name + "</name>");
+                }
                 xmlFileOut.println("<key>" + key + "</key>");
-                xmlFileOut.println("<priority>" + "MAJOR" + "</priority>");
+                String severity = "MAJOR";
+                String impact = cpdo.getImpact();
+                if(impact.equals("High")){
+                    severity = "BLOCKER";
+                }
+                if(impact.equals("Medium")){
+                    severity = "CRITICAL";
+                }
+                xmlFileOut.println("<severity>" + severity + "</severity>");
                 xmlFileOut.println("<configKey>" + key + "</configKey>");
                 xmlFileOut.println("<description><![CDATA[ " + desc + "]]></description>");
                 xmlFileOut.println("</rule>");
 
                 //props
-                propsFileOut.println("rule.coverity-java." + key + ".name=" + cpdo.getSubcategoryShortDescription());
-
-                //html
-                //htmlFileOut.println(cpdo.getSubcategoryLongDescription());
-
-                //htmlFileOut.close();
+                lineList.add("rule.coverity-java." + key + ".name=" + cpdo.getSubcategoryShortDescription());
             }
 
             xmlFileOut.println("</rules>");
             xmlFileOut.close();
+
+            Collections.sort(lineList);
+
+            for(String line : lineList){
+                propsFileOut.println(line);
+            }
         }
 
         propsFileOut.close();

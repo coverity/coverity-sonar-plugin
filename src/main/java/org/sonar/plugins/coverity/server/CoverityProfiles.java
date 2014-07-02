@@ -22,26 +22,33 @@ import org.sonar.api.rules.Rule;
 import org.sonar.api.rules.RuleFinder;
 import org.sonar.api.rules.RulePriority;
 import org.sonar.api.rules.RuleQuery;
+import org.sonar.api.server.rule.RulesDefinition;
+import org.sonar.api.server.rule.RulesDefinitionXmlLoader;
 import org.sonar.api.utils.ValidationMessages;
+import org.sonar.plugins.coverity.CoverityPlugin;
+import org.sonar.plugins.coverity.util.FileGenerator;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.sonar.plugins.coverity.util.FileGenerator.main;
+
 public class CoverityProfiles extends ExtensionProvider implements ServerExtension {
     private static final Logger LOG = LoggerFactory.getLogger(CoverityProfiles.class);
-    Language[] languages;
-    RuleFinder finder;
+    List<String> languages = new ArrayList<String>();
 
-    public CoverityProfiles(Language[] languages, RuleFinder finder) {
-        this.languages = languages;
-        this.finder = finder;
+    public CoverityProfiles() {
+        languages.add("java");
+        languages.add("cpp");
+        languages.add("cs");
     }
 
     @Override
     public List<CoverityProfile> provide() {
         List<CoverityProfile> list = new ArrayList<CoverityProfile>();
-        for(Language language : languages) {
-            list.add(new CoverityProfile(language.getKey()));
+        for(String language : languages) {
+            list.add(new CoverityProfile(language));
         }
         return list;
     }
@@ -55,13 +62,24 @@ public class CoverityProfiles extends ExtensionProvider implements ServerExtensi
 
         @Override
         public RulesProfile createProfile(ValidationMessages validation) {
-            RulesProfile profile = RulesProfile.create("Coverity (" + language + ")", language);
+            final RulesProfile profile = RulesProfile.create("Coverity(" + language + ")", language);
 
-            for(Rule r : finder.findAll(RuleQuery.create().withRepositoryKey("coverity-" + language))) {
-                profile.activateRule(r, RulePriority.MAJOR);
+            for(Object rule1 : CoverityRules.mapOfRuleLists.get(language)){
+                CoverityRules.InternalRule rule = (CoverityRules.InternalRule) rule1;
+                profile.activateRule(Rule.create("coverity-" + language, rule.key), RulePriority.valueOf(rule.severity) );
             }
 
             return profile;
         }
+
+        @Override
+        public String toString() {
+            return "Coverity(" + language + ")";
+        }
+    }
+
+    @Override
+    public String toString() {
+        return "Coverity";
     }
 }

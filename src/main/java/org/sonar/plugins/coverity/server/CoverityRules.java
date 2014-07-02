@@ -13,40 +13,172 @@ package org.sonar.plugins.coverity.server;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.sonar.api.Extension;
+import org.sonar.api.ExtensionProvider;
+import org.sonar.api.ServerExtension;
+import org.sonar.api.batch.rule.Rules;
 import org.sonar.api.config.Settings;
 import org.sonar.api.rules.Rule;
-import org.sonar.api.rules.RuleRepository;
-import org.sonar.api.rules.XMLRuleParser;
+//import org.sonar.api.rules.RuleRepository;
+//import org.sonar.api.rules.XMLRuleParser;
+import org.sonar.api.server.rule.RulesDefinition;
+import org.sonar.api.server.rule.RulesDefinitionXmlLoader;
 import org.sonar.plugins.coverity.CoverityPlugin;
+import org.sonar.plugins.coverity.util.FileGenerator;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+import org.xml.sax.SAXException;
 
-import java.io.IOException;
-import java.io.InputStream;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+import java.io.*;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
-public class CoverityRules extends RuleRepository {
+/* From Sonarqube-4.3+ the interface RulesDefinition replaces the (previously deprecated and currently dropped) RulesRepository.
+ * This class loads rules into the server by means of an XmlLoader. However we still need to activate these rules under
+ * a profile and then again in CoveritySensor.
+ */
+
+public class CoverityRules implements RulesDefinition, Extension {
+
+    private RulesDefinitionXmlLoader xmlLoader = new RulesDefinitionXmlLoader();
     private static final Logger LOG = LoggerFactory.getLogger(CoverityRules.class);
-    Settings settings;
-    String domain;
 
-    public CoverityRules(String language, String domain, Settings settings) {
-        super(CoverityPlugin.REPOSITORY_KEY + "-" + language, language);
-        this.domain = domain;
-        this.settings = settings;
+    public CoverityRules(RulesDefinitionXmlLoader xmlLoader) {
+        this.xmlLoader = xmlLoader;
+    }
+
+    Map<String, NodeList> mapOfNodeLists = new HashMap<String, NodeList>();
+
+    NodeList javaNodes;
+    NodeList cppNodes;
+    NodeList csNodes;
+
+    static List<String> languages = new ArrayList<String>();
+    static{
+        languages.add("java");
+        languages.add("cpp");
+        languages.add("cs");
+    }
+
+    public static List<InternalRule> javaRulesToBeActivated = new ArrayList<InternalRule>();
+    public static List<InternalRule> cppRulesToBeActivated = new ArrayList<InternalRule>();
+    public static List<InternalRule> csRulesToBeActivated = new ArrayList<InternalRule>();
+
+    static Map<String, List> mapOfRuleLists = new HashMap<String, List>();
+
+    static {
+        mapOfRuleLists.put("java",javaRulesToBeActivated);
+        mapOfRuleLists.put("cpp",cppRulesToBeActivated);
+        mapOfRuleLists.put("cs",csRulesToBeActivated);
+    }
+
+    public void parseRules(){
+
+        for(String language : languages){
+
+            String fileDir = "coverity-" + language + ".xml";
+            InputStream in = getClass().getResourceAsStream(fileDir);
+
+            LOG.info("This is the absolute path for rules: " + in.toString());
+            DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder dBuilder = null;
+            Document doc = null;
+            try {
+                dBuilder = dbFactory.newDocumentBuilder();
+                doc = dBuilder.parse(in);
+            } catch (ParserConfigurationException e) {
+                LOG.error("Error parsing rules." + e.getCause());
+            }
+             catch (SAXException e) {
+                 LOG.error("Error parsing rules." + e.getCause());
+             } catch (IOException e) {
+                LOG.error("Error parsing rules." + e.getCause());
+            }
+            doc.getDocumentElement().normalize();
+
+            NodeList nodes = doc.getElementsByTagName("rule");
+
+            if(language.equals("java")){
+                javaNodes = nodes;
+                mapOfNodeLists.put("java", javaNodes);
+            } else if (language.equals("cpp")){
+                cppNodes = nodes;
+                mapOfNodeLists.put("cpp", cppNodes);
+            } else if (language.equals("cs")){
+                csNodes = nodes;
+                mapOfNodeLists.put("cs", csNodes);
+            }
+        }
+
+    }
+
+    private static String getValue(String tag, Element element) {
+        NodeList nodes = element.getElementsByTagName(tag).item(0).getChildNodes();
+        Node node = (Node) nodes.item(0);
+        return node.getNodeValue();
     }
 
     @Override
-    public List<Rule> createRules() {
-        List<Rule> rules;
-        try {
-            InputStream is = getClass().getResourceAsStream("/org/sonar/plugins/coverity/server/coverity-" + getLanguage() + ".xml");
-            rules = new XMLRuleParser().parse(is);
-            is.close();
-        } catch(IOException e) {
-            LOG.error("Failed to parse rules xml for language: " + getLanguage());
-            e.printStackTrace();
-            return new ArrayList<Rule>();
+    public void define(Context context) {
+        parseRules();
+
+        for(String language : languages){
+
+            NewRepository repository = context.createRepository(CoverityPlugin.REPOSITORY_KEY + "-" + language, language).setName(language + "-repository");
+
+            NodeList nodes = mapOfNodeLists.get(language);
+            for (int i = 0; i < nodes.getLength(); i++) {
+                Node node = nodes.item(i);
+
+                String key = "";
+                String name = "";
+                String severity = "";
+                String description = "";
+
+                if (node.getNodeType() == Node.ELEMENT_NODE) {
+                    Element element = (Element) node;
+                    key = getValue("key", element);
+                    name = getValue("name", element);
+                    severity = getValue("severity", element);
+                    description = getValue("description", element);
+                }
+
+                InternalRule internalRule = new InternalRule(key, name, severity, description, language);
+
+                mapOfRuleLists.get(language).add(internalRule);
+            }
+
+            String fileDir = "coverity-" + language + ".xml";
+            InputStream in = getClass().getResourceAsStream(fileDir);
+            xmlLoader.load(repository, in, "UTF-8");
+            repository.done();
         }
-        return rules;
+    }
+
+    class InternalRule{
+        String key;
+        String name;
+        String severity;
+        String description;
+        String language;
+
+        InternalRule(String key, String name, String severity, String description, String language){
+            this.key = key;
+            this.name = name;
+            this.severity = severity;
+            this.description = description;
+            this.language = language;
+        }
+
     }
 }
+
+
