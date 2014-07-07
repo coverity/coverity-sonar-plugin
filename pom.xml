@@ -109,6 +109,13 @@
             <version>2.6</version>
         </dependency>
 
+        <dependency>
+            <groupId>javax.xml</groupId>
+            <artifactId>xmldsig</artifactId>
+            <version>1.0</version>
+        </dependency>
+
+
     </dependencies>
 
 	<build>
@@ -216,7 +223,12 @@
 			<id>sonar</id>
 			<name>SonarSource</name>
 			<url>http://repository.sonarsource.org/content/repositories/sonar</url>
-                </repository>
+        </repository>
+        <repository>
+            <id>sonar-plugin-local</id>
+            <name>sonar-plugin-local</name>
+            <url>http://artifactory.sf.coverity.com:8081/artifactory/simple/sonar-plugin-local</url>
+        </repository>
 	</repositories>
 
 	<pluginRepositories>
