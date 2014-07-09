@@ -219,15 +219,15 @@
 	</build>
 
 	<repositories>
-		<repository>
-			<id>sonar</id>
-			<name>SonarSource</name>
-			<url>http://repository.sonarsource.org/content/repositories/sonar</url>
-        </repository>
         <repository>
             <id>sonar-plugin-local</id>
             <name>sonar-plugin-local</name>
             <url>http://artifactory.sf.coverity.com:8081/artifactory/simple/sonar-plugin-local</url>
+        </repository>
+		<repository>
+			<id>sonar</id>
+			<name>SonarSource</name>
+			<url>http://repository.sonarsource.org/content/repositories/sonar</url>
         </repository>
 	</repositories>
 
