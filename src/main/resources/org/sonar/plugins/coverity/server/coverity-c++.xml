@@ -1,0 +1,2294 @@
+<rules>
+<rule>
+<key>STATIC_C_SWAPPED_ARGUMENTS_none</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_SWAPPED_ARGUMENTS_none</configKey>
+<description><![CDATA[ The arguments to a function call are provided in the wrong order.]]></description>
+</rule>
+<rule>
+<key>STATIC_C_COM.BSTR.BAD_COMPARE_none</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_COM.BSTR.BAD_COMPARE_none</configKey>
+<description><![CDATA[ Comparison of two BSTRs for other than equality]]></description>
+</rule>
+<rule>
+<key>STATIC_C_COM.BSTR.NE_NON_BSTR_none</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_COM.BSTR.NE_NON_BSTR_none</configKey>
+<description><![CDATA[ Comparison of BSTR to other than BSTR]]></description>
+</rule>
+<rule>
+<key>STATIC_C_USE_AFTER_FREE_double_close</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_USE_AFTER_FREE_double_close</configKey>
+<description><![CDATA[ A resource handle or descriptor is closed more than once]]></description>
+</rule>
+<rule>
+<key>STATIC_C_ALLOC_FREE_MISMATCH_none</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_ALLOC_FREE_MISMATCH_none</configKey>
+<description><![CDATA[ A resource is freed using the wrong deallocator]]></description>
+</rule>
+<rule>
+<key>STATIC_C_CHROOT_generic</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_CHROOT_generic</configKey>
+<description><![CDATA[ A call to chroot followed by an operation that may escape from the chroot jail]]></description>
+</rule>
+<rule>
+<key>STATIC_C_CHROOT_none</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_CHROOT_none</configKey>
+<description><![CDATA[ A call to chroot followed by an operation that may escape from the chroot jail]]></description>
+</rule>
+<rule>
+<key>STATIC_C_OPEN_ARGS_generic</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_OPEN_ARGS_generic</configKey>
+<description><![CDATA[ The open system call may create a file, but no permissions are specified]]></description>
+</rule>
+<rule>
+<key>STATIC_C_OPEN_ARGS_none</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_OPEN_ARGS_none</configKey>
+<description><![CDATA[ The open system call may create a file, but no permissions are specified]]></description>
+</rule>
+<rule>
+<key>STATIC_C_LOCK_lock_assert</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_LOCK_lock_assert</configKey>
+<description><![CDATA[ A lock assertion fails because a lock is not held on a path where it is asserted]]></description>
+</rule>
+<rule>
+<key>STATIC_C_VARARGS_generic</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_VARARGS_generic</configKey>
+<description><![CDATA[ Incorrect usage of variable argument macros; use va_start or va_copy to begin processing and va_end to finish]]></description>
+</rule>
+<rule>
+<key>STATIC_C_VARARGS_none</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_VARARGS_none</configKey>
+<description><![CDATA[ Incorrect usage of variable argument macros; use va_start or va_copy to begin processing and va_end to finish]]></description>
+</rule>
+<rule>
+<key>STATIC_C_BAD_COMPARE_comparator_misuse</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_BAD_COMPARE_comparator_misuse</configKey>
+<description><![CDATA[ A memcmp-style function is used assuming that it returns -1, 0, or 1.]]></description>
+</rule>
+<rule>
+<key>STATIC_C_STREAM_FORMAT_STATE_none</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_STREAM_FORMAT_STATE_none</configKey>
+<description><![CDATA[ Not restoring the stream format state of an ostream]]></description>
+</rule>
+<rule>
+<key>STATIC_C_PW.TOO_FEW_PRINTF_ARGS_generic</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_PW.TOO_FEW_PRINTF_ARGS_generic</configKey>
+<description><![CDATA[ The number of arguments to printf does not match the format string]]></description>
+</rule>
+<rule>
+<key>STATIC_C_PW.TOO_FEW_PRINTF_ARGS_none</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_PW.TOO_FEW_PRINTF_ARGS_none</configKey>
+<description><![CDATA[ The number of arguments to printf does not match the format string]]></description>
+</rule>
+<rule>
+<key>STATIC_C_PW.TOO_MANY_PRINTF_ARGS_generic</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_PW.TOO_MANY_PRINTF_ARGS_generic</configKey>
+<description><![CDATA[ The number of arguments to printf does not match the format string]]></description>
+</rule>
+<rule>
+<key>STATIC_C_PW.TOO_MANY_PRINTF_ARGS_none</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_PW.TOO_MANY_PRINTF_ARGS_none</configKey>
+<description><![CDATA[ The number of arguments to printf does not match the format string]]></description>
+</rule>
+<rule>
+<key>STATIC_C_PW.PRINTF_ARG_MISMATCH_generic</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_PW.PRINTF_ARG_MISMATCH_generic</configKey>
+<description><![CDATA[ A printf format string does not match the types of one of the arguments]]></description>
+</rule>
+<rule>
+<key>STATIC_C_PW.PRINTF_ARG_MISMATCH_none</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_PW.PRINTF_ARG_MISMATCH_none</configKey>
+<description><![CDATA[ A printf format string does not match the types of one of the arguments]]></description>
+</rule>
+<rule>
+<key>STATIC_C_PW.BAD_PRINTF_FORMAT_STRING_generic</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_PW.BAD_PRINTF_FORMAT_STRING_generic</configKey>
+<description><![CDATA[ A printf format string contains an unrecognized format specifier]]></description>
+</rule>
+<rule>
+<key>STATIC_C_PW.BAD_PRINTF_FORMAT_STRING_none</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_PW.BAD_PRINTF_FORMAT_STRING_none</configKey>
+<description><![CDATA[ A printf format string contains an unrecognized format specifier]]></description>
+</rule>
+<rule>
+<key>STATIC_C_STREAM_FORMAT_STATE_generic</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_STREAM_FORMAT_STATE_generic</configKey>
+<description><![CDATA[ Not restoring the stream format state of an ostream or setf called with invalid format state]]></description>
+</rule>
+<rule>
+<key>STATIC_C_SYMBIAN.CLEANUP_STACK_multiple_pushes</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_SYMBIAN.CLEANUP_STACK_multiple_pushes</configKey>
+<description><![CDATA[ A function pushes more than one object onto the cleanup stack in at least one possible execution]]></description>
+</rule>
+<rule>
+<key>STATIC_C_SYMBIAN.CLEANUP_STACK_bad_pop_arg</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_SYMBIAN.CLEANUP_STACK_bad_pop_arg</configKey>
+<description><![CDATA[ The cleanup stack is not empty at the end of the function, or function pops elements incorrectly]]></description>
+</rule>
+<rule>
+<key>STATIC_C_CHAR_IO_generic</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_CHAR_IO_generic</configKey>
+<description><![CDATA[ Stdio character-oriented I/O functions return int values such as EOF not representable by char variables]]></description>
+</rule>
+<rule>
+<key>STATIC_C_CHAR_IO_none</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_CHAR_IO_none</configKey>
+<description><![CDATA[ Stdio character-oriented I/O functions return int values such as EOF not representable by char variables]]></description>
+</rule>
+<rule>
+<key>STATIC_C_STREAM_FORMAT_STATE_suspicious_setf_mask</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_STREAM_FORMAT_STATE_suspicious_setf_mask</configKey>
+<description><![CDATA[ setf (or a similar) was called, but the argument was not recognized as being composed of valid format state bits]]></description>
+</rule>
+<rule>
+<key>STATIC_C_USE_AFTER_FREE_use_after_close</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_USE_AFTER_FREE_use_after_close</configKey>
+<description><![CDATA[ A resource handle or descriptor is used after being closed]]></description>
+</rule>
+<rule>
+<key>STATIC_C_INVALIDATE_ITERATOR_generic</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_INVALIDATE_ITERATOR_generic</configKey>
+<description><![CDATA[ An invalid or past-the-end iterator is being used]]></description>
+</rule>
+<rule>
+<key>STATIC_C_INVALIDATE_ITERATOR_none</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_INVALIDATE_ITERATOR_none</configKey>
+<description><![CDATA[ An invalid or past-the-end iterator is being used]]></description>
+</rule>
+<rule>
+<key>STATIC_C_PW.INCLUDE_RECURSION_generic</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_PW.INCLUDE_RECURSION_generic</configKey>
+<description><![CDATA[ Recursion in included header files]]></description>
+</rule>
+<rule>
+<key>STATIC_C_PW.INCLUDE_RECURSION_none</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_PW.INCLUDE_RECURSION_none</configKey>
+<description><![CDATA[ Recursion in included header files]]></description>
+</rule>
+<rule>
+<key>STATIC_C_HFA_generic</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_HFA_generic</configKey>
+<description><![CDATA[ A header file was included but none of its contents were used in the rest of the source file]]></description>
+</rule>
+<rule>
+<key>STATIC_C_HFA_none</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_HFA_none</configKey>
+<description><![CDATA[ A header file was included but none of its contents were used in the rest of the source file]]></description>
+</rule>
+<rule>
+<key>STATIC_C_BAD_OVERRIDE_generic</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_BAD_OVERRIDE_generic</configKey>
+<description><![CDATA[ Virtual function does not override parent method because of type signature mismatch, usually due to const]]></description>
+</rule>
+<rule>
+<key>STATIC_C_BAD_OVERRIDE_none</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_BAD_OVERRIDE_none</configKey>
+<description><![CDATA[ Virtual function does not override parent method because of type signature mismatch, usually due to const]]></description>
+</rule>
+<rule>
+<key>STATIC_C_VIRTUAL_DTOR_empty_dtor</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_VIRTUAL_DTOR_empty_dtor</configKey>
+<description><![CDATA[ The correct derived class destructor that happens to be empty is not invoked due to the absence of a virtual destructor in the base class]]></description>
+</rule>
+<rule>
+<key>STATIC_C_MISSING_RETURN_multiple_returns</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_MISSING_RETURN_multiple_returns</configKey>
+<description><![CDATA[ Multiple return statements violates local coding standard]]></description>
+</rule>
+<rule>
+<key>STATIC_C_SIZEOF_MISMATCH_sizeof_punning</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_SIZEOF_MISMATCH_sizeof_punning</configKey>
+<description><![CDATA[ The sizeof operator is used on a wrong argument that incidentally has the same size]]></description>
+</rule>
+<rule>
+<key>STATIC_C_SYMBIAN.NAMING_naming_L</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_SYMBIAN.NAMING_naming_L</configKey>
+<description><![CDATA[ Violation of the Symbian naming convention: leaving functions should contain L in their suffix]]></description>
+</rule>
+<rule>
+<key>STATIC_C_SYMBIAN.NAMING_naming_LC</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_SYMBIAN.NAMING_naming_LC</configKey>
+<description><![CDATA[ Violation of the Symbian naming convention: functions that push an element to the cleanup stack should contain LC in their suffix]]></description>
+</rule>
+<rule>
+<key>STATIC_C_SYMBIAN.NAMING_generic</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_SYMBIAN.NAMING_generic</configKey>
+<description><![CDATA[ Violation of the Symbian naming convention]]></description>
+</rule>
+<rule>
+<key>STATIC_C_SYMBIAN.NAMING_none</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_SYMBIAN.NAMING_none</configKey>
+<description><![CDATA[ Violation of the Symbian naming convention]]></description>
+</rule>
+<rule>
+<key>STATIC_C_UNUSED_VALUE_generic</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_UNUSED_VALUE_generic</configKey>
+<description><![CDATA[ Pointer returned from a function was never used]]></description>
+</rule>
+<rule>
+<key>STATIC_C_UNUSED_VALUE_none</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_UNUSED_VALUE_none</configKey>
+<description><![CDATA[ Pointer returned from a function was never used]]></description>
+</rule>
+<rule>
+<key>STATIC_C_DELETE_ARRAY_scalar</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_DELETE_ARRAY_scalar</configKey>
+<description><![CDATA[ Using non-array delete on an array of scalars or pointers allocated with new[]]]></description>
+</rule>
+<rule>
+<key>STATIC_C_MISSING_LOCK_generic</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_MISSING_LOCK_generic</configKey>
+<description><![CDATA[ Thread shared data is accessed without holding an appropriate lock, possibly causing a race condition]]></description>
+</rule>
+<rule>
+<key>STATIC_C_MISSING_LOCK_none</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_MISSING_LOCK_none</configKey>
+<description><![CDATA[ Thread shared data is accessed without holding an appropriate lock, possibly causing a race condition]]></description>
+</rule>
+<rule>
+<key>STATIC_C_ATOMICITY_generic</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_ATOMICITY_generic</configKey>
+<description><![CDATA[ Non-atomic update of a concurrently shared value]]></description>
+</rule>
+<rule>
+<key>STATIC_C_ATOMICITY_none</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_ATOMICITY_none</configKey>
+<description><![CDATA[ Non-atomic update of a concurrently shared value]]></description>
+</rule>
+<rule>
+<key>STATIC_C_PW.BRANCH_PAST_INITIALIZATION_generic</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_PW.BRANCH_PAST_INITIALIZATION_generic</configKey>
+<description><![CDATA[ A goto jumps past the initialization of a variable]]></description>
+</rule>
+<rule>
+<key>STATIC_C_PW.BRANCH_PAST_INITIALIZATION_none</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_PW.BRANCH_PAST_INITIALIZATION_none</configKey>
+<description><![CDATA[ A goto jumps past the initialization of a variable]]></description>
+</rule>
+<rule>
+<key>STATIC_C_DEADCODE_dead_case_in_switch</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_DEADCODE_dead_case_in_switch</configKey>
+<description><![CDATA[ Switch never goes directly to this case]]></description>
+</rule>
+<rule>
+<key>STATIC_C_DEADCODE_dead_default_in_switch</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_DEADCODE_dead_default_in_switch</configKey>
+<description><![CDATA[ Default in switch statement is dead code]]></description>
+</rule>
+<rule>
+<key>STATIC_C_MISSING_RESTORE_likely</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_MISSING_RESTORE_likely</configKey>
+<description><![CDATA[ Handles classes of flow where a function is either saving some external value, modifying the external value, and then clearly intending to restore it to its original state but failing to do so along one of many paths; or else is checking whether an external has some expected value, modifying the external value, then clearly intending to restore it to the expected value but failing to do so along a path.]]></description>
+</rule>
+<rule>
+<key>STATIC_C_MISSING_RESTORE_none</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_MISSING_RESTORE_none</configKey>
+<description><![CDATA[ Handles classes of flow where a function is either saving some external value, modifying the external value, and then clearly intending to restore it to its original state but failing to do so along one of many paths; or else is checking whether an external has some expected value, modifying the external value, then clearly intending to restore it to the expected value but failing to do so along a path.]]></description>
+</rule>
+<rule>
+<key>STATIC_C_MISMATCHED_ITERATOR_mismatched_comparison</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_MISMATCHED_ITERATOR_mismatched_comparison</configKey>
+<description><![CDATA[ Iterators that point to different containers are compared]]></description>
+</rule>
+<rule>
+<key>STATIC_C_DEADCODE_generic</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_DEADCODE_generic</configKey>
+<description><![CDATA[ Code can never be reached because of a logical contradiction]]></description>
+</rule>
+<rule>
+<key>STATIC_C_DEADCODE_none</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_DEADCODE_none</configKey>
+<description><![CDATA[ Code can never be reached because of a logical contradiction]]></description>
+</rule>
+<rule>
+<key>STATIC_C_MISSING_BREAK_generic</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_MISSING_BREAK_generic</configKey>
+<description><![CDATA[ Missing break statement between cases in switch statement]]></description>
+</rule>
+<rule>
+<key>STATIC_C_MISSING_BREAK_none</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_MISSING_BREAK_none</configKey>
+<description><![CDATA[ Missing break statement between cases in switch statement]]></description>
+</rule>
+<rule>
+<key>STATIC_C_NESTING_INDENT_MISMATCH_none</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_NESTING_INDENT_MISMATCH_none</configKey>
+<description><![CDATA[ The indentation of this code suggests it is nested when it is not.]]></description>
+</rule>
+<rule>
+<key>STATIC_C_DEADCODE_redundant_test</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_DEADCODE_redundant_test</configKey>
+<description><![CDATA[ Test always evaluates the same]]></description>
+</rule>
+<rule>
+<key>STATIC_C_STRAY_SEMICOLON_generic</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_STRAY_SEMICOLON_generic</configKey>
+<description><![CDATA[ A semicolon was erroneously inserted at a wrong point in the code, e.g. after an if, while, or for construct and before the block]]></description>
+</rule>
+<rule>
+<key>STATIC_C_STRAY_SEMICOLON_none</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_STRAY_SEMICOLON_none</configKey>
+<description><![CDATA[ A semicolon was erroneously inserted at a wrong point in the code, e.g. after an if, while, or for construct and before the block]]></description>
+</rule>
+<rule>
+<key>STATIC_C_UNREACHABLE_generic</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_UNREACHABLE_generic</configKey>
+<description><![CDATA[ Code block is unreachable because of the syntactic structure of the code]]></description>
+</rule>
+<rule>
+<key>STATIC_C_UNREACHABLE_none</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_UNREACHABLE_none</configKey>
+<description><![CDATA[ Code block is unreachable because of the syntactic structure of the code]]></description>
+</rule>
+<rule>
+<key>STATIC_C_NO_EFFECT_unsigned_compare</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_NO_EFFECT_unsigned_compare</configKey>
+<description><![CDATA[ An unsigned value can never be less than 0]]></description>
+</rule>
+<rule>
+<key>STATIC_C_NEGATIVE_RETURNS_critical_argument</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_NEGATIVE_RETURNS_critical_argument</configKey>
+<description><![CDATA[ Negative value used as  argument to a function expecting a positive value (for example, size of buffer or allocation)]]></description>
+</rule>
+<rule>
+<key>STATIC_C_CHECKED_RETURN_short_read</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_CHECKED_RETURN_short_read</configKey>
+<description><![CDATA[ Value returned from a function and indicating the number of bytes read is ignored.]]></description>
+</rule>
+<rule>
+<key>STATIC_C_UNCAUGHT_EXCEPT_generic</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_UNCAUGHT_EXCEPT_generic</configKey>
+<description><![CDATA[ A C++ exception is thrown but never caught]]></description>
+</rule>
+<rule>
+<key>STATIC_C_UNCAUGHT_EXCEPT_none</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_UNCAUGHT_EXCEPT_none</configKey>
+<description><![CDATA[ A C++ exception is thrown but never caught]]></description>
+</rule>
+<rule>
+<key>STATIC_C_CHECKED_RETURN_generic</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_CHECKED_RETURN_generic</configKey>
+<description><![CDATA[ Value returned from a function is not checked for errors before being used]]></description>
+</rule>
+<rule>
+<key>STATIC_C_CHECKED_RETURN_none</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_CHECKED_RETURN_none</configKey>
+<description><![CDATA[ Value returned from a function is not checked for errors before being used]]></description>
+</rule>
+<rule>
+<key>STATIC_C_CHECKED_RETURN_unchecked_arg</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_CHECKED_RETURN_unchecked_arg</configKey>
+<description><![CDATA[ Value returned from a function is not checked for errors, and passed directly to another function as an argument]]></description>
+</rule>
+<rule>
+<key>STATIC_C_CHECKED_RETURN_library_function</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_CHECKED_RETURN_library_function</configKey>
+<description><![CDATA[ Value returned from a library function is not checked for errors before being used.  This value may indicate an error condition.]]></description>
+</rule>
+<rule>
+<key>STATIC_C_CHECKED_RETURN_user_required</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_CHECKED_RETURN_user_required</configKey>
+<description><![CDATA[ Value returned from a program function is not checked before being used.  It has been marked that its return value should always be checked.]]></description>
+</rule>
+<rule>
+<key>STATIC_C_RESOURCE_LEAK_exceptional_path</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_RESOURCE_LEAK_exceptional_path</configKey>
+<description><![CDATA[ Leak of a system resource on an exception path (probably error handling)]]></description>
+</rule>
+<rule>
+<key>STATIC_C_NO_EFFECT_array_null</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_NO_EFFECT_array_null</configKey>
+<description><![CDATA[ Array compared against NULL pointer]]></description>
+</rule>
+<rule>
+<key>STATIC_C_PW.ASSIGN_WHERE_COMPARE_MEANT_generic</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_PW.ASSIGN_WHERE_COMPARE_MEANT_generic</configKey>
+<description><![CDATA[ An assignment (=) occurs where compare (==) is probably intended]]></description>
+</rule>
+<rule>
+<key>STATIC_C_PW.ASSIGN_WHERE_COMPARE_MEANT_none</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_PW.ASSIGN_WHERE_COMPARE_MEANT_none</configKey>
+<description><![CDATA[ An assignment (=) occurs where compare (==) is probably intended]]></description>
+</rule>
+<rule>
+<key>STATIC_C_COPY_PASTE_ERROR_generic</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_COPY_PASTE_ERROR_generic</configKey>
+<description><![CDATA[ A copied piece of code is inconsistent with the original]]></description>
+</rule>
+<rule>
+<key>STATIC_C_COPY_PASTE_ERROR_none</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_COPY_PASTE_ERROR_none</configKey>
+<description><![CDATA[ A copied piece of code is inconsistent with the original]]></description>
+</rule>
+<rule>
+<key>STATIC_C_DIVIDE_BY_ZERO_float_divisor</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_DIVIDE_BY_ZERO_float_divisor</configKey>
+<description><![CDATA[ An expression which may be zero is used as a divisor in floating-point arithmetic.]]></description>
+</rule>
+<rule>
+<key>STATIC_C_EVALUATION_ORDER_generic</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_EVALUATION_ORDER_generic</configKey>
+<description><![CDATA[ Statement contains multiple side-effects on the same value with an undefined evaluation order]]></description>
+</rule>
+<rule>
+<key>STATIC_C_EVALUATION_ORDER_none</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_EVALUATION_ORDER_none</configKey>
+<description><![CDATA[ Statement contains multiple side-effects on the same value with an undefined evaluation order]]></description>
+</rule>
+<rule>
+<key>STATIC_C_NO_EFFECT_generic</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_NO_EFFECT_generic</configKey>
+<description><![CDATA[ An expression with no side-effect or unintended effect indicates a possible logic flaw]]></description>
+</rule>
+<rule>
+<key>STATIC_C_NO_EFFECT_none</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_NO_EFFECT_none</configKey>
+<description><![CDATA[ An expression with no side-effect or unintended effect indicates a possible logic flaw]]></description>
+</rule>
+<rule>
+<key>STATIC_C_PW.EXPR_HAS_NO_EFFECT_generic</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_PW.EXPR_HAS_NO_EFFECT_generic</configKey>
+<description><![CDATA[ An expression with no side-effect or unintended effect indicates a possible logic flaw]]></description>
+</rule>
+<rule>
+<key>STATIC_C_PW.EXPR_HAS_NO_EFFECT_none</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_PW.EXPR_HAS_NO_EFFECT_none</configKey>
+<description><![CDATA[ An expression with no side-effect or unintended effect indicates a possible logic flaw]]></description>
+</rule>
+<rule>
+<key>STATIC_C_SIZEOF_MISMATCH_extra_sizeof</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_SIZEOF_MISMATCH_extra_sizeof</configKey>
+<description><![CDATA[ The sizeof operator is not required in the expression]]></description>
+</rule>
+<rule>
+<key>STATIC_C_BAD_COMPARE_generic</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_BAD_COMPARE_generic</configKey>
+<description><![CDATA[ Address of function compared to zero]]></description>
+</rule>
+<rule>
+<key>STATIC_C_BAD_COMPARE_none</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_BAD_COMPARE_none</configKey>
+<description><![CDATA[ Address of function compared to zero]]></description>
+</rule>
+<rule>
+<key>STATIC_C_ASSERT_SIDE_EFFECT_side_effect_is_function</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_ASSERT_SIDE_EFFECT_side_effect_is_function</configKey>
+<description><![CDATA[ Assertion contains a function call which may have a side effect]]></description>
+</rule>
+<rule>
+<key>STATIC_C_NO_EFFECT_no_effect_deref</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_NO_EFFECT_no_effect_deref</configKey>
+<description><![CDATA[ Increment (or decrement) of pointer value, not the value pointed-to]]></description>
+</rule>
+<rule>
+<key>STATIC_C_BAD_SIZEOF_generic</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_BAD_SIZEOF_generic</configKey>
+<description><![CDATA[ The sizeof operator was applied to an unintended variable or expression, such as a pointer variable instead of its target]]></description>
+</rule>
+<rule>
+<key>STATIC_C_BAD_SIZEOF_none</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_BAD_SIZEOF_none</configKey>
+<description><![CDATA[ The sizeof operator was applied to an unintended variable or expression, such as a pointer variable instead of its target]]></description>
+</rule>
+<rule>
+<key>STATIC_C_BAD_COMPARE_null_misuse</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_BAD_COMPARE_null_misuse</configKey>
+<description><![CDATA[ Comparing a pointer against NULL using an operator such as < or >=.]]></description>
+</rule>
+<rule>
+<key>STATIC_C_MIXED_ENUMS_inferred</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_MIXED_ENUMS_inferred</configKey>
+<description><![CDATA[ An integer expression which was inferred to have an enum type is mixed with a different enum type]]></description>
+</rule>
+<rule>
+<key>STATIC_C_MISSING_COMMA_none</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_MISSING_COMMA_none</configKey>
+<description><![CDATA[ A comma is suspiciously missing between lines in a string array initialization.]]></description>
+</rule>
+<rule>
+<key>STATIC_C_CONSTANT_EXPRESSION_RESULT_missing_parentheses</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_CONSTANT_EXPRESSION_RESULT_missing_parentheses</configKey>
+<description><![CDATA[ Missing parentheses caused unintended operator precedence]]></description>
+</rule>
+<rule>
+<key>STATIC_C_ENUM_AS_BOOLEAN_generic</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_ENUM_AS_BOOLEAN_generic</configKey>
+<description><![CDATA[ An enum-typed expression is used in a Boolean conditional context.  The enum type does not appear to have a distinguished false (zero) value]]></description>
+</rule>
+<rule>
+<key>STATIC_C_ENUM_AS_BOOLEAN_none</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_ENUM_AS_BOOLEAN_none</configKey>
+<description><![CDATA[ An enum-typed expression is used in a Boolean conditional context.  The enum type does not appear to have a distinguished false (zero) value]]></description>
+</rule>
+<rule>
+<key>STATIC_C_NO_EFFECT_extra_comma</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_NO_EFFECT_extra_comma</configKey>
+<description><![CDATA[ Comma operator has a left sub-expression with no side-effects]]></description>
+</rule>
+<rule>
+<key>STATIC_C_SIZEOF_MISMATCH_generic</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_SIZEOF_MISMATCH_generic</configKey>
+<description><![CDATA[ The sizeof operator is used erroneously in an expression or is invoked on the wrong argument]]></description>
+</rule>
+<rule>
+<key>STATIC_C_SIZEOF_MISMATCH_none</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_SIZEOF_MISMATCH_none</configKey>
+<description><![CDATA[ The sizeof operator is used erroneously in an expression or is invoked on the wrong argument]]></description>
+</rule>
+<rule>
+<key>STATIC_C_MIXED_ENUMS_generic</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_MIXED_ENUMS_generic</configKey>
+<description><![CDATA[ An enum-typed expression is mixed with a different enum type]]></description>
+</rule>
+<rule>
+<key>STATIC_C_MIXED_ENUMS_none</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_MIXED_ENUMS_none</configKey>
+<description><![CDATA[ An enum-typed expression is mixed with a different enum type]]></description>
+</rule>
+<rule>
+<key>STATIC_C_BAD_COMPARE_string_lit_comparison</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_BAD_COMPARE_string_lit_comparison</configKey>
+<description><![CDATA[ Comparing against the address of a string literal.]]></description>
+</rule>
+<rule>
+<key>STATIC_C_CONSTANT_EXPRESSION_RESULT_pointless_string_compare</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_CONSTANT_EXPRESSION_RESULT_pointless_string_compare</configKey>
+<description><![CDATA[ A string is compared against itself with strcmp or strncmp.]]></description>
+</rule>
+<rule>
+<key>STATIC_C_CONSTANT_EXPRESSION_RESULT_same_on_both_sides</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_CONSTANT_EXPRESSION_RESULT_same_on_both_sides</configKey>
+<description><![CDATA[ The same expression occurs on both sides of an operator.]]></description>
+</rule>
+<rule>
+<key>STATIC_C_NO_EFFECT_self_assign</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_NO_EFFECT_self_assign</configKey>
+<description><![CDATA[ Assignment of a variable or expression to itself has no effect]]></description>
+</rule>
+<rule>
+<key>STATIC_C_ASSERT_SIDE_EFFECT_generic</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_ASSERT_SIDE_EFFECT_generic</configKey>
+<description><![CDATA[ Assertion contains an operation with a side effect]]></description>
+</rule>
+<rule>
+<key>STATIC_C_ASSERT_SIDE_EFFECT_none</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_ASSERT_SIDE_EFFECT_none</configKey>
+<description><![CDATA[ Assertion contains an operation with a side effect]]></description>
+</rule>
+<rule>
+<key>STATIC_C_BAD_SIZEOF_sizeof_ptr_expr</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_BAD_SIZEOF_sizeof_ptr_expr</configKey>
+<description><![CDATA[ The sizeof operator was applied to a pointer expression, which may not be intended]]></description>
+</rule>
+<rule>
+<key>STATIC_C_NO_EFFECT_bool_switch</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_NO_EFFECT_bool_switch</configKey>
+<description><![CDATA[ A boolean test within a switch condition is likely an intended assignment]]></description>
+</rule>
+<rule>
+<key>STATIC_C_NO_EFFECT_no_effect_test</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_NO_EFFECT_no_effect_test</configKey>
+<description><![CDATA[ A test that is an isolated statement with no effect is likely an intended assignment]]></description>
+</rule>
+<rule>
+<key>STATIC_C_SIZEOF_MISMATCH_wrong_size_value</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_SIZEOF_MISMATCH_wrong_size_value</configKey>
+<description><![CDATA[ The wrong size value is passed to a function]]></description>
+</rule>
+<rule>
+<key>STATIC_C_SIZEOF_MISMATCH_wrong_sizeof</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_SIZEOF_MISMATCH_wrong_sizeof</configKey>
+<description><![CDATA[ The sizeof operator is invoked on the wrong argument]]></description>
+</rule>
+<rule>
+<key>STATIC_C_TAINTED_STRING_format_string</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_TAINTED_STRING_format_string</configKey>
+<description><![CDATA[ An unscrutinized value from an untrusted source used to construct a format string]]></description>
+</rule>
+<rule>
+<key>STATIC_C_INTEGER_OVERFLOW_generic</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_INTEGER_OVERFLOW_generic</configKey>
+<description><![CDATA[ An integer overflow occurs, with the overflowed value used in a sensitive operation]]></description>
+</rule>
+<rule>
+<key>STATIC_C_INTEGER_OVERFLOW_none</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_INTEGER_OVERFLOW_none</configKey>
+<description><![CDATA[ An integer overflow occurs, with the overflowed value used in a sensitive operation]]></description>
+</rule>
+<rule>
+<key>STATIC_C_INTEGER_OVERFLOW_critical_argument</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_INTEGER_OVERFLOW_critical_argument</configKey>
+<description><![CDATA[ An integer overflow occurs, with the overflowed value used as an argument to a function]]></description>
+</rule>
+<rule>
+<key>STATIC_C_INTEGER_OVERFLOW_return_value_error</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_INTEGER_OVERFLOW_return_value_error</configKey>
+<description><![CDATA[ An integer overflow occurs, with the overflowed value used as the return value of the function]]></description>
+</rule>
+<rule>
+<key>STATIC_C_TAINTED_SCALAR_array_index_read</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_TAINTED_SCALAR_array_index_read</configKey>
+<description><![CDATA[ Read from array at index computed using an unscrutinized value from an untrusted source]]></description>
+</rule>
+<rule>
+<key>STATIC_C_TAINTED_SCALAR_array_index_write</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_TAINTED_SCALAR_array_index_write</configKey>
+<description><![CDATA[ Write to array at index computed using an unscrutinized value from an untrusted source]]></description>
+</rule>
+<rule>
+<key>STATIC_C_TAINTED_SCALAR_loop_bound</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_TAINTED_SCALAR_loop_bound</configKey>
+<description><![CDATA[ An unscrutinzed value from an untrusted source used as a loop upper bound]]></description>
+</rule>
+<rule>
+<key>STATIC_C_TAINTED_SCALAR_pointer_deref_read</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_TAINTED_SCALAR_pointer_deref_read</configKey>
+<description><![CDATA[ Reads target of a pointer computed using an unscrutinized value from an untrusted source]]></description>
+</rule>
+<rule>
+<key>STATIC_C_TAINTED_SCALAR_pointer_deref_write</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_TAINTED_SCALAR_pointer_deref_write</configKey>
+<description><![CDATA[ Write to target of pointer computed using an unscrutinized value from an untrusted source]]></description>
+</rule>
+<rule>
+<key>STATIC_C_TAINTED_SCALAR_critical_argument</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_TAINTED_SCALAR_critical_argument</configKey>
+<description><![CDATA[ An unscrutinized value from an untrusted source used as argument to a function (for example, a buffer size)]]></description>
+</rule>
+<rule>
+<key>STATIC_C_TAINTED_SCALAR_none</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_TAINTED_SCALAR_none</configKey>
+<description><![CDATA[ An unscrutinized value from an untrusted source used in a trusted context]]></description>
+</rule>
+<rule>
+<key>STATIC_C_TAINTED_STRING_generic</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_TAINTED_STRING_generic</configKey>
+<description><![CDATA[ An unscrutinized string from an untrusted source used in a trusted context]]></description>
+</rule>
+<rule>
+<key>STATIC_C_TAINTED_STRING_none</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_TAINTED_STRING_none</configKey>
+<description><![CDATA[ An unscrutinized string from an untrusted source used in a trusted context]]></description>
+</rule>
+<rule>
+<key>STATIC_C_TAINTED_SCALAR_generic</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_TAINTED_SCALAR_generic</configKey>
+<description><![CDATA[ An unscrutinized value from an untrusted source used in a trusted context]]></description>
+</rule>
+<rule>
+<key>STATIC_C_BAD_SHIFT_none</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_BAD_SHIFT_none</configKey>
+<description><![CDATA[ A bit shift operation has a shift amount which is too large or has a negative value.]]></description>
+</rule>
+<rule>
+<key>STATIC_C_CONSTANT_EXPRESSION_RESULT_bit_and_with_zero</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_CONSTANT_EXPRESSION_RESULT_bit_and_with_zero</configKey>
+<description><![CDATA[ Bitwise-and ('&amp;') operation applied to zero always produces zero]]></description>
+</rule>
+<rule>
+<key>STATIC_C_CONSTANT_EXPRESSION_RESULT_generic</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_CONSTANT_EXPRESSION_RESULT_generic</configKey>
+<description><![CDATA[ An operation with non-constant operands that computes a result with constant value]]></description>
+</rule>
+<rule>
+<key>STATIC_C_CONSTANT_EXPRESSION_RESULT_none</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_CONSTANT_EXPRESSION_RESULT_none</configKey>
+<description><![CDATA[ An operation with non-constant operands that computes a result with constant value]]></description>
+</rule>
+<rule>
+<key>STATIC_C_PW.DIVIDE_BY_ZERO_generic</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_PW.DIVIDE_BY_ZERO_generic</configKey>
+<description><![CDATA[ Divide by zero]]></description>
+</rule>
+<rule>
+<key>STATIC_C_PW.DIVIDE_BY_ZERO_none</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_PW.DIVIDE_BY_ZERO_none</configKey>
+<description><![CDATA[ Divide by zero]]></description>
+</rule>
+<rule>
+<key>STATIC_C_DIVIDE_BY_ZERO_generic</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_DIVIDE_BY_ZERO_generic</configKey>
+<description><![CDATA[ Division or modulo by zero results in undefined behavior.]]></description>
+</rule>
+<rule>
+<key>STATIC_C_DIVIDE_BY_ZERO_none</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_DIVIDE_BY_ZERO_none</configKey>
+<description><![CDATA[ Division or modulo by zero results in undefined behavior.]]></description>
+</rule>
+<rule>
+<key>STATIC_C_NO_EFFECT_unsigned_enums</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_NO_EFFECT_unsigned_enums</configKey>
+<description><![CDATA[ An enumeration value is usually not less than 0]]></description>
+</rule>
+<rule>
+<key>STATIC_C_CONSTANT_EXPRESSION_RESULT_extra_high_bits</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_CONSTANT_EXPRESSION_RESULT_extra_high_bits</configKey>
+<description><![CDATA[ In an operation, the high-order bits of wider operand do not affect the narrower operand]]></description>
+</rule>
+<rule>
+<key>STATIC_C_MISRA_CAST_integer_to_float_conversion</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_MISRA_CAST_integer_to_float_conversion</configKey>
+<description><![CDATA[ Implicitly converting complex expression with integer type to floating type (MISRA 2004 Rule 10.1)]]></description>
+</rule>
+<rule>
+<key>STATIC_C_MISRA_CAST_float_complex_conversion</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_MISRA_CAST_float_complex_conversion</configKey>
+<description><![CDATA[ Implicitly converting complex expression from float to double (MISRA 2004 Rule 10.2)]]></description>
+</rule>
+<rule>
+<key>STATIC_C_MISRA_CAST_float_narrowing_conversion</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_MISRA_CAST_float_narrowing_conversion</configKey>
+<description><![CDATA[ Implicitly converting a double expression to narrower float type may lose precision (MISRA 2004 Rule 10.2)]]></description>
+</rule>
+<rule>
+<key>STATIC_C_MISRA_CAST_float_non_constant_arg_conversion</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_MISRA_CAST_float_non_constant_arg_conversion</configKey>
+<description><![CDATA[ Implicit conversion from float to double in a function argument (MISRA 2004 Rule 10.2)]]></description>
+</rule>
+<rule>
+<key>STATIC_C_MISRA_CAST_float_non_constant_rtn_conversion</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_MISRA_CAST_float_non_constant_rtn_conversion</configKey>
+<description><![CDATA[ Implicit conversion from float to double in a return expression (MISRA 2004 Rule 10.2)]]></description>
+</rule>
+<rule>
+<key>STATIC_C_MISRA_CAST_float_to_integer_conversion</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_MISRA_CAST_float_to_integer_conversion</configKey>
+<description><![CDATA[ Implicit conversion from float to 16-bit integer type (MISRA 2004 Rule 10.2)]]></description>
+</rule>
+<rule>
+<key>STATIC_C_MISRA_CAST_integer_complex_conversion</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_MISRA_CAST_integer_complex_conversion</configKey>
+<description><![CDATA[ Implicitly converting the type of a complex expression (MISRA 2004 Rule 10.1)]]></description>
+</rule>
+<rule>
+<key>STATIC_C_MISRA_CAST_integer_narrowing_conversion</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_MISRA_CAST_integer_narrowing_conversion</configKey>
+<description><![CDATA[ Implicitly converting an integer expression to a narrower integer type may truncate value (MISRA 2004 Rule 10.1)]]></description>
+</rule>
+<rule>
+<key>STATIC_C_MISRA_CAST_integer_non_constant_arg_conversion</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_MISRA_CAST_integer_non_constant_arg_conversion</configKey>
+<description><![CDATA[ Implicitly converting the integer type of a non-constant function argument expression (MISRA 2004 Rule 10.1)]]></description>
+</rule>
+<rule>
+<key>STATIC_C_MISRA_CAST_integer_non_constant_rtn_conversion</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_MISRA_CAST_integer_non_constant_rtn_conversion</configKey>
+<description><![CDATA[ Implicitly converting the integer type of a non-constant return expression (MISRA 2004 Rule 10.1)]]></description>
+</rule>
+<rule>
+<key>STATIC_C_MISRA_CAST_integer_signedness_changing_conversion</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_MISRA_CAST_integer_signedness_changing_conversion</configKey>
+<description><![CDATA[ Implicitly converting the signedness of an integer value (MISRA 2004 Rule 10.1)]]></description>
+</rule>
+<rule>
+<key>STATIC_C_NEGATIVE_RETURNS_generic</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_NEGATIVE_RETURNS_generic</configKey>
+<description><![CDATA[ Negative value returned from function is not being checked before being used improperly]]></description>
+</rule>
+<rule>
+<key>STATIC_C_NEGATIVE_RETURNS_none</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_NEGATIVE_RETURNS_none</configKey>
+<description><![CDATA[ Negative value can be returned from function is not being checked before being used improperly]]></description>
+</rule>
+<rule>
+<key>STATIC_C_REVERSE_NEGATIVE_generic</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_REVERSE_NEGATIVE_generic</configKey>
+<description><![CDATA[ Negative value used incorrectly where positive value is expected]]></description>
+</rule>
+<rule>
+<key>STATIC_C_REVERSE_NEGATIVE_none</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_REVERSE_NEGATIVE_none</configKey>
+<description><![CDATA[ Negative value used incorrectly where positive value is expected]]></description>
+</rule>
+<rule>
+<key>STATIC_C_INCOMPATIBLE_CAST_float_vs_integral</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_INCOMPATIBLE_CAST_float_vs_integral</configKey>
+<description><![CDATA[ Cast between floating-point and integral pointers]]></description>
+</rule>
+<rule>
+<key>STATIC_C_INCOMPATIBLE_CAST_generic</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_INCOMPATIBLE_CAST_generic</configKey>
+<description><![CDATA[ Cast between incompatible pointer types]]></description>
+</rule>
+<rule>
+<key>STATIC_C_INCOMPATIBLE_CAST_none</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_INCOMPATIBLE_CAST_none</configKey>
+<description><![CDATA[ Cast between incompatible pointer types]]></description>
+</rule>
+<rule>
+<key>STATIC_C_PW.INTEGER_OVERFLOW_generic</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_PW.INTEGER_OVERFLOW_generic</configKey>
+<description><![CDATA[ An integer overflow occurs at compile time when parsing this expression]]></description>
+</rule>
+<rule>
+<key>STATIC_C_PW.INTEGER_OVERFLOW_none</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_PW.INTEGER_OVERFLOW_none</configKey>
+<description><![CDATA[ An integer overflow occurs at compile time when parsing this expression]]></description>
+</rule>
+<rule>
+<key>STATIC_C_PW.INTEGER_TOO_LARGE_generic</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_PW.INTEGER_TOO_LARGE_generic</configKey>
+<description><![CDATA[ An integer overflow occurs at compile time when parsing this expression]]></description>
+</rule>
+<rule>
+<key>STATIC_C_PW.INTEGER_TOO_LARGE_none</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_PW.INTEGER_TOO_LARGE_none</configKey>
+<description><![CDATA[ An integer overflow occurs at compile time when parsing this expression]]></description>
+</rule>
+<rule>
+<key>STATIC_C_PW.SHIFT_COUNT_TOO_LARGE_generic</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_PW.SHIFT_COUNT_TOO_LARGE_generic</configKey>
+<description><![CDATA[ An integer overflow occurs at compile time when parsing this expression]]></description>
+</rule>
+<rule>
+<key>STATIC_C_PW.SHIFT_COUNT_TOO_LARGE_none</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_PW.SHIFT_COUNT_TOO_LARGE_none</configKey>
+<description><![CDATA[ An integer overflow occurs at compile time when parsing this expression]]></description>
+</rule>
+<rule>
+<key>STATIC_C_CONSTANT_EXPRESSION_RESULT_logical_vs_bitwise</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_CONSTANT_EXPRESSION_RESULT_logical_vs_bitwise</configKey>
+<description><![CDATA[ Logical operator used in place of bitwise operator or vice versa]]></description>
+</rule>
+<rule>
+<key>STATIC_C_PW.BAD_CAST_generic</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_PW.BAD_CAST_generic</configKey>
+<description><![CDATA[ A cast from an integer to a pointer of narrower precision]]></description>
+</rule>
+<rule>
+<key>STATIC_C_PW.BAD_CAST_none</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_PW.BAD_CAST_none</configKey>
+<description><![CDATA[ A cast from an integer to a pointer of narrower precision]]></description>
+</rule>
+<rule>
+<key>STATIC_C_PW.CONVERSION_TO_POINTER_LOSES_BITS_generic</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_PW.CONVERSION_TO_POINTER_LOSES_BITS_generic</configKey>
+<description><![CDATA[ A cast from an integer to a pointer of narrower precision]]></description>
+</rule>
+<rule>
+<key>STATIC_C_PW.CONVERSION_TO_POINTER_LOSES_BITS_none</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_PW.CONVERSION_TO_POINTER_LOSES_BITS_none</configKey>
+<description><![CDATA[ A cast from an integer to a pointer of narrower precision]]></description>
+</rule>
+<rule>
+<key>STATIC_C_NO_EFFECT_unsigned_compare_macros</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_NO_EFFECT_unsigned_compare_macros</configKey>
+<description><![CDATA[ An unsigned value can never be less than 0]]></description>
+</rule>
+<rule>
+<key>STATIC_C_MISRA_CAST_bitwise_op_bad_cast</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_MISRA_CAST_bitwise_op_bad_cast</configKey>
+<description><![CDATA[ Bitwise operator << applies to operand with underlying type unsigned short is cast to int (MISRA 2004 Rule 10.5)]]></description>
+</rule>
+<rule>
+<key>STATIC_C_MISRA_CAST_bitwise_op_no_cast</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_MISRA_CAST_bitwise_op_no_cast</configKey>
+<description><![CDATA[ Bitwise operator << applies to operand with underlying type unsigned short is not being immediately cast to that type (MISRA 2004 Rule 10.5)]]></description>
+</rule>
+<rule>
+<key>STATIC_C_MISRA_CAST_float_to_integer_cast</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_MISRA_CAST_float_to_integer_cast</configKey>
+<description><![CDATA[ Complex expression cast from 64-bit float to 16-bit int (MISRA 2004 Rule 10.4)]]></description>
+</rule>
+<rule>
+<key>STATIC_C_MISRA_CAST_float_widening_cast</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_MISRA_CAST_float_widening_cast</configKey>
+<description><![CDATA[ Complex expression cast from 32-bit float to 64-bit float (MISRA 2004 Rule 10.4)]]></description>
+</rule>
+<rule>
+<key>STATIC_C_MISRA_CAST_generic</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_MISRA_CAST_generic</configKey>
+<description><![CDATA[ Cast operation violates MISRA standard (MISRA 2004 Rules 10.1 - 10.5)]]></description>
+</rule>
+<rule>
+<key>STATIC_C_MISRA_CAST_integer_signedness_changing_cast</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_MISRA_CAST_integer_signedness_changing_cast</configKey>
+<description><![CDATA[ Complex expression cast from 32-bit int to 32-bit unsigned int (MISRA 2004 Rule 10.3)]]></description>
+</rule>
+<rule>
+<key>STATIC_C_MISRA_CAST_integer_to_float_cast</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_MISRA_CAST_integer_to_float_cast</configKey>
+<description><![CDATA[ Complex expression cast from int to 64-bit float (MISRA 2004 Rule 10.3)]]></description>
+</rule>
+<rule>
+<key>STATIC_C_MISRA_CAST_integer_widening_cast</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_MISRA_CAST_integer_widening_cast</configKey>
+<description><![CDATA[ Complex expression with underlying type 16-bit unsigned value cast to wider type 32-bit unsigned value (MISRA 2004 Rule 10.3)]]></description>
+</rule>
+<rule>
+<key>STATIC_C_MISRA_CAST_none</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_MISRA_CAST_none</configKey>
+<description><![CDATA[ Cast operation violates MISRA standard (MISRA 2004 Rules 10.1 - 10.5)]]></description>
+</rule>
+<rule>
+<key>STATIC_C_CONSTANT_EXPRESSION_RESULT_result_independent_of_operands</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_CONSTANT_EXPRESSION_RESULT_result_independent_of_operands</configKey>
+<description><![CDATA[ An operation with non-constant operands that computes a result with constant value]]></description>
+</rule>
+<rule>
+<key>STATIC_C_INTEGER_OVERFLOW_const_overflow</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_INTEGER_OVERFLOW_const_overflow</configKey>
+<description><![CDATA[ Integer overflow  occurs in arithmetic on constant operands]]></description>
+</rule>
+<rule>
+<key>STATIC_C_INCOMPATIBLE_CAST_endianness</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_INCOMPATIBLE_CAST_endianness</configKey>
+<description><![CDATA[ Reliance on integer endianness]]></description>
+</rule>
+<rule>
+<key>STATIC_C_CONSTANT_EXPRESSION_RESULT_unnecessary_op_assign</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_CONSTANT_EXPRESSION_RESULT_unnecessary_op_assign</configKey>
+<description><![CDATA[ Using a bitwise assignment operator to assign a constant value]]></description>
+</rule>
+<rule>
+<key>STATIC_C_SIGN_EXTENSION_generic</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_SIGN_EXTENSION_generic</configKey>
+<description><![CDATA[ Value may be sign extended unintentionally]]></description>
+</rule>
+<rule>
+<key>STATIC_C_SIGN_EXTENSION_none</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_SIGN_EXTENSION_none</configKey>
+<description><![CDATA[ Value may be sign extended unintentionally]]></description>
+</rule>
+<rule>
+<key>STATIC_C_OVERFLOW_BEFORE_WIDEN_generic</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_OVERFLOW_BEFORE_WIDEN_generic</configKey>
+<description><![CDATA[ An integer overflow occurs, with the result converted to a wider integer type]]></description>
+</rule>
+<rule>
+<key>STATIC_C_OVERFLOW_BEFORE_WIDEN_none</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_OVERFLOW_BEFORE_WIDEN_none</configKey>
+<description><![CDATA[ An integer overflow occurs, with the result converted to a wider integer type]]></description>
+</rule>
+<rule>
+<key>STATIC_C_PW.UNSIGNED_COMPARE_WITH_NEGATIVE_generic</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_PW.UNSIGNED_COMPARE_WITH_NEGATIVE_generic</configKey>
+<description><![CDATA[ An unsigned value, which can never be less than 0, is compared with a negative value]]></description>
+</rule>
+<rule>
+<key>STATIC_C_PW.UNSIGNED_COMPARE_WITH_NEGATIVE_none</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_PW.UNSIGNED_COMPARE_WITH_NEGATIVE_none</configKey>
+<description><![CDATA[ An unsigned value, which can never be less than 0, is compared with a negative value]]></description>
+</rule>
+<rule>
+<key>STATIC_C_CONSTANT_EXPRESSION_RESULT_operator_confusion</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_CONSTANT_EXPRESSION_RESULT_operator_confusion</configKey>
+<description><![CDATA[ Wrong operator used in expression]]></description>
+</rule>
+<rule>
+<key>STATIC_C_OVERRUN_strlen</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_OVERRUN_strlen</configKey>
+<description><![CDATA[ Allocation size does not include space for the null-terminator needed for a string]]></description>
+</rule>
+<rule>
+<key>STATIC_C_OVERRUN_DYNAMIC_strlen</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_OVERRUN_DYNAMIC_strlen</configKey>
+<description><![CDATA[ Allocation size does not include space for the null-terminator needed for a string]]></description>
+</rule>
+<rule>
+<key>STATIC_C_SIZECHECK_incorrect_multiplication</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_SIZECHECK_incorrect_multiplication</configKey>
+<description><![CDATA[ Allocation size is not a multiple of the target pointer's pointed-to type]]></description>
+</rule>
+<rule>
+<key>STATIC_C_SIZECHECK_ampersand_in_size</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_SIZECHECK_ampersand_in_size</configKey>
+<description><![CDATA[ Allocation size is computed using the bitwise-and operator (&amp;), which is likely to be a typo]]></description>
+</rule>
+<rule>
+<key>STATIC_C_SIZECHECK_no_null_terminator</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_SIZECHECK_no_null_terminator</configKey>
+<description><![CDATA[ Allocation size for a string is equal to the strlen of another string, which does not include extra byte for null termination]]></description>
+</rule>
+<rule>
+<key>STATIC_C_SIZECHECK_likely_overflow</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_SIZECHECK_likely_overflow</configKey>
+<description><![CDATA[ Allocation size is too small for the type of object being allocated]]></description>
+</rule>
+<rule>
+<key>STATIC_C_REVERSE_NEGATIVE_critical_argument</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_REVERSE_NEGATIVE_critical_argument</configKey>
+<description><![CDATA[ Negative value used as argument to a function expecting a positive value (for example, size of buffer or allocation)]]></description>
+</rule>
+<rule>
+<key>STATIC_C_STRING_OVERFLOW_generic</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_STRING_OVERFLOW_generic</configKey>
+<description><![CDATA[ Size of destination buffer is smaller than the size of the source buffer or size of the source buffer is unknown]]></description>
+</rule>
+<rule>
+<key>STATIC_C_STRING_OVERFLOW_none</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_STRING_OVERFLOW_none</configKey>
+<description><![CDATA[ Size of destination buffer is smaller than the size of the source buffer or size of the source buffer is unknown]]></description>
+</rule>
+<rule>
+<key>STATIC_C_COM.BSTR.CONV_generic</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_COM.BSTR.CONV_generic</configKey>
+<description><![CDATA[ A wide character string cannot be converted to a BSTR because it lacks the hidden length field]]></description>
+</rule>
+<rule>
+<key>STATIC_C_COM.BSTR.CONV_none</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_COM.BSTR.CONV_none</configKey>
+<description><![CDATA[ A wide character string cannot be converted to a BSTR because it lacks the hidden length field]]></description>
+</rule>
+<rule>
+<key>STATIC_C_BUFFER_SIZE_likely_overflow</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_BUFFER_SIZE_likely_overflow</configKey>
+<description><![CDATA[ Size of destination buffer is smaller than the size argument specified]]></description>
+</rule>
+<rule>
+<key>STATIC_C_STRING_OVERFLOW_likely_overflow</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_STRING_OVERFLOW_likely_overflow</configKey>
+<description><![CDATA[ Size of destination buffer is smaller than the size of the source buffer]]></description>
+</rule>
+<rule>
+<key>STATIC_C_USE_AFTER_FREE_double_free</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_USE_AFTER_FREE_double_free</configKey>
+<description><![CDATA[ Memory is deallocated more than once]]></description>
+</rule>
+<rule>
+<key>STATIC_C_BAD_FREE_address</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_BAD_FREE_address</configKey>
+<description><![CDATA[ Free of an address-of expression, which can never be heap allocated]]></description>
+</rule>
+<rule>
+<key>STATIC_C_BAD_FREE_first_field_address</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_BAD_FREE_first_field_address</configKey>
+<description><![CDATA[ Free of an address-of the first field of a struct]]></description>
+</rule>
+<rule>
+<key>STATIC_C_BAD_FREE_array</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_BAD_FREE_array</configKey>
+<description><![CDATA[ Free of array-typed value]]></description>
+</rule>
+<rule>
+<key>STATIC_C_BAD_FREE_function_pointer</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_BAD_FREE_function_pointer</configKey>
+<description><![CDATA[ Free of function pointer]]></description>
+</rule>
+<rule>
+<key>STATIC_C_BAD_FREE_generic</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_BAD_FREE_generic</configKey>
+<description><![CDATA[ Free of an pointer that was not returned from an allocation function]]></description>
+</rule>
+<rule>
+<key>STATIC_C_BAD_FREE_none</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_BAD_FREE_none</configKey>
+<description><![CDATA[ Free of an pointer that was not returned from an allocation function]]></description>
+</rule>
+<rule>
+<key>STATIC_C_BAD_FREE_alloca</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_BAD_FREE_alloca</configKey>
+<description><![CDATA[ Free of stack-allocated buffer]]></description>
+</rule>
+<rule>
+<key>STATIC_C_WRAPPER_ESCAPE_COM_deref_write_after_free</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_WRAPPER_ESCAPE_COM_deref_write_after_free</configKey>
+<description><![CDATA[ Write to target of a freed internal pointer of a COM object]]></description>
+</rule>
+<rule>
+<key>STATIC_C_WRAPPER_ESCAPE_deref_write_after_free</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_WRAPPER_ESCAPE_deref_write_after_free</configKey>
+<description><![CDATA[ Write to target of a freed internal pointer]]></description>
+</rule>
+<rule>
+<key>STATIC_C_OVERRUN_illegal_address</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_OVERRUN_illegal_address</configKey>
+<description><![CDATA[ An illegal address is computed, which either precedes a buffer or is more than just-past its end]]></description>
+</rule>
+<rule>
+<key>STATIC_C_SIZECHECK_improper_new</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_SIZECHECK_improper_new</configKey>
+<description><![CDATA[ This invocation of operator new only creates one value, not an array of values]]></description>
+</rule>
+<rule>
+<key>STATIC_C_MISMATCHED_ITERATOR_generic</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_MISMATCHED_ITERATOR_generic</configKey>
+<description><![CDATA[ Using iterator from one container in operations on another container]]></description>
+</rule>
+<rule>
+<key>STATIC_C_MISMATCHED_ITERATOR_none</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_MISMATCHED_ITERATOR_none</configKey>
+<description><![CDATA[ Using iterator from one container in operations on another container]]></description>
+</rule>
+<rule>
+<key>STATIC_C_READONLY_BUFFER_none</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_READONLY_BUFFER_none</configKey>
+<description><![CDATA[ Modification of read-only buffer]]></description>
+</rule>
+<rule>
+<key>STATIC_C_NEGATIVE_RETURNS_array_index_write</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_NEGATIVE_RETURNS_array_index_write</configKey>
+<description><![CDATA[ Negative value used to index an array in a write operation]]></description>
+</rule>
+<rule>
+<key>STATIC_C_REVERSE_NEGATIVE_array_index_write</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_REVERSE_NEGATIVE_array_index_write</configKey>
+<description><![CDATA[ Write to array at negative index]]></description>
+</rule>
+<rule>
+<key>STATIC_C_ARRAY_VS_SINGLETON_generic</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_ARRAY_VS_SINGLETON_generic</configKey>
+<description><![CDATA[ Access of memory past the end of a memory buffer]]></description>
+</rule>
+<rule>
+<key>STATIC_C_ARRAY_VS_SINGLETON_none</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_ARRAY_VS_SINGLETON_none</configKey>
+<description><![CDATA[ Access of memory past the end of a memory buffer]]></description>
+</rule>
+<rule>
+<key>STATIC_C_OVERRUN_generic</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_OVERRUN_generic</configKey>
+<description><![CDATA[ Out-of-bounds access to a buffer]]></description>
+</rule>
+<rule>
+<key>STATIC_C_OVERRUN_none</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_OVERRUN_none</configKey>
+<description><![CDATA[ Out-of-bounds access to a buffer]]></description>
+</rule>
+<rule>
+<key>STATIC_C_OVERRUN_DYNAMIC_generic</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_OVERRUN_DYNAMIC_generic</configKey>
+<description><![CDATA[ Out-of-bounds access to an array]]></description>
+</rule>
+<rule>
+<key>STATIC_C_OVERRUN_DYNAMIC_none</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_OVERRUN_DYNAMIC_none</configKey>
+<description><![CDATA[ Out-of-bounds access to an array]]></description>
+</rule>
+<rule>
+<key>STATIC_C_OVERRUN_STATIC_generic</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_OVERRUN_STATIC_generic</configKey>
+<description><![CDATA[ Out-of-bounds access to an array]]></description>
+</rule>
+<rule>
+<key>STATIC_C_OVERRUN_STATIC_none</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_OVERRUN_STATIC_none</configKey>
+<description><![CDATA[ Out-of-bounds access to an array]]></description>
+</rule>
+<rule>
+<key>STATIC_C_OVERRUN_write</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_OVERRUN_write</configKey>
+<description><![CDATA[ Out-of-bounds write to a buffer]]></description>
+</rule>
+<rule>
+<key>STATIC_C_OVERRUN_DYNAMIC_write</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_OVERRUN_DYNAMIC_write</configKey>
+<description><![CDATA[ Out-of-bounds write to a dynamically allocated buffer]]></description>
+</rule>
+<rule>
+<key>STATIC_C_OVERRUN_STATIC_write</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_OVERRUN_STATIC_write</configKey>
+<description><![CDATA[ Out-of-bounds write to an array]]></description>
+</rule>
+<rule>
+<key>STATIC_C_INTEGER_OVERFLOW_array_index_write</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_INTEGER_OVERFLOW_array_index_write</configKey>
+<description><![CDATA[ Write to array at integer-overflowed index]]></description>
+</rule>
+<rule>
+<key>STATIC_C_INTEGER_OVERFLOW_pointer_deref_write</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_INTEGER_OVERFLOW_pointer_deref_write</configKey>
+<description><![CDATA[ Write to target of an integer-overflowed pointer]]></description>
+</rule>
+<rule>
+<key>STATIC_C_MISMATCHED_ITERATOR_splice_iterator_mismatch</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_MISMATCHED_ITERATOR_splice_iterator_mismatch</configKey>
+<description><![CDATA[ Using iterator from the wrong container as argument to the splice method]]></description>
+</rule>
+<rule>
+<key>STATIC_C_BAD_ALLOC_ARITHMETIC_generic</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_BAD_ALLOC_ARITHMETIC_generic</configKey>
+<description><![CDATA[ Pointer arithmetic performed on freshly allocated memory]]></description>
+</rule>
+<rule>
+<key>STATIC_C_BAD_ALLOC_ARITHMETIC_none</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_BAD_ALLOC_ARITHMETIC_none</configKey>
+<description><![CDATA[ Pointer arithmetic performed on freshly allocated memory]]></description>
+</rule>
+<rule>
+<key>STATIC_C_BAD_ALLOC_STRLEN_generic</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_BAD_ALLOC_STRLEN_generic</configKey>
+<description><![CDATA[ String length miscalculation]]></description>
+</rule>
+<rule>
+<key>STATIC_C_BAD_ALLOC_STRLEN_none</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_BAD_ALLOC_STRLEN_none</configKey>
+<description><![CDATA[ String length miscalculation]]></description>
+</rule>
+<rule>
+<key>STATIC_C_SYMBIAN.CLEANUP_STACK_double_free</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_SYMBIAN.CLEANUP_STACK_double_free</configKey>
+<description><![CDATA[ An object is freed twice because it is explicitly freed twice, on the cleanup stack more than once, or it is deallocated but still on the cleanup stack]]></description>
+</rule>
+<rule>
+<key>STATIC_C_STRING_SIZE_generic</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_STRING_SIZE_generic</configKey>
+<description><![CDATA[ A source buffer of arbitrarily large size is used where a fixed-size destination buffer is expected]]></description>
+</rule>
+<rule>
+<key>STATIC_C_STRING_SIZE_none</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_STRING_SIZE_none</configKey>
+<description><![CDATA[ A source buffer of arbitrarily large size is used where a fixed-size destination buffer is expected]]></description>
+</rule>
+<rule>
+<key>STATIC_C_UNINIT_array_index_write</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_UNINIT_array_index_write</configKey>
+<description><![CDATA[ Write to array at uninitialized index]]></description>
+</rule>
+<rule>
+<key>STATIC_C_UNINIT_pointer_deref_write</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_UNINIT_pointer_deref_write</configKey>
+<description><![CDATA[ Write to target of an uninitialized pointer]]></description>
+</rule>
+<rule>
+<key>STATIC_C_USE_AFTER_FREE_deref_write_after_free</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_USE_AFTER_FREE_deref_write_after_free</configKey>
+<description><![CDATA[ Write to target of a freed pointer]]></description>
+</rule>
+<rule>
+<key>STATIC_C_SIZECHECK_generic</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_SIZECHECK_generic</configKey>
+<description><![CDATA[ The allocation size is computed incorrectly]]></description>
+</rule>
+<rule>
+<key>STATIC_C_SIZECHECK_none</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_SIZECHECK_none</configKey>
+<description><![CDATA[ The allocation size is computed incorrectly]]></description>
+</rule>
+<rule>
+<key>STATIC_C_DELETE_ARRAY_non_array_delete</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_DELETE_ARRAY_non_array_delete</configKey>
+<description><![CDATA[ Using array delete on a non-array]]></description>
+</rule>
+<rule>
+<key>STATIC_C_BUFFER_SIZE_no_null_terminator</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_BUFFER_SIZE_no_null_terminator</configKey>
+<description><![CDATA[ The string buffer may not have a null terminator if the source string's length is equal to the buffer size]]></description>
+</rule>
+<rule>
+<key>STATIC_C_BUFFER_SIZE_WARNING_generic</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_BUFFER_SIZE_WARNING_generic</configKey>
+<description><![CDATA[ The string buffer may not have a null terminator if the source string's length is equal to the buffer size]]></description>
+</rule>
+<rule>
+<key>STATIC_C_BUFFER_SIZE_WARNING_no_null_terminator</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_BUFFER_SIZE_WARNING_no_null_terminator</configKey>
+<description><![CDATA[ The string buffer may not have a null terminator if the source string's length is equal to the buffer size]]></description>
+</rule>
+<rule>
+<key>STATIC_C_BUFFER_SIZE_WARNING_none</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_BUFFER_SIZE_WARNING_none</configKey>
+<description><![CDATA[ The string buffer may not have a null terminator if the source string's length is equal to the buffer size]]></description>
+</rule>
+<rule>
+<key>STATIC_C_COM.BSTR.ALLOC_double_free</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_COM.BSTR.ALLOC_double_free</configKey>
+<description><![CDATA[ Violation of the COM coding standard by freeing a BSTR more than once]]></description>
+</rule>
+<rule>
+<key>STATIC_C_COM.BSTR.ALLOC_generic</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_COM.BSTR.ALLOC_generic</configKey>
+<description><![CDATA[ Violation of the COM coding standard by not freeing a BSTR, by using an uninitialized BSTR, or by freeing a non-owned BSTR]]></description>
+</rule>
+<rule>
+<key>STATIC_C_COM.BSTR.ALLOC_none</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_COM.BSTR.ALLOC_none</configKey>
+<description><![CDATA[ Violation of the COM coding standard by not freeing a BSTR, or by freeing a non-owned BSTR]]></description>
+</rule>
+<rule>
+<key>STATIC_C_COM.BSTR.ALLOC_free_uninit</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_COM.BSTR.ALLOC_free_uninit</configKey>
+<description><![CDATA[ Violation of the COM coding standard by freeing an uninitialized BSTR]]></description>
+</rule>
+<rule>
+<key>STATIC_C_COM.BSTR.ALLOC_use_uninit</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_COM.BSTR.ALLOC_use_uninit</configKey>
+<description><![CDATA[ Violation of the COM coding standard by using an uninitialized BSTR]]></description>
+</rule>
+<rule>
+<key>STATIC_C_WRAPPER_ESCAPE_COM_use_after_free</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_WRAPPER_ESCAPE_COM_use_after_free</configKey>
+<description><![CDATA[ An internal pointer of a COM string object remains available after the object is freed]]></description>
+</rule>
+<rule>
+<key>STATIC_C_DELETE_VOID_generic</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_DELETE_VOID_generic</configKey>
+<description><![CDATA[ Deleting a void pointer (void*)]]></description>
+</rule>
+<rule>
+<key>STATIC_C_DELETE_VOID_none</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_DELETE_VOID_none</configKey>
+<description><![CDATA[ Deleting a void pointer (void*)]]></description>
+</rule>
+<rule>
+<key>STATIC_C_COM.BAD_FREE_generic</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_COM.BAD_FREE_generic</configKey>
+<description><![CDATA[ A COM interface is explicitly freed instead of using the recommended Release method]]></description>
+</rule>
+<rule>
+<key>STATIC_C_COM.BAD_FREE_none</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_COM.BAD_FREE_none</configKey>
+<description><![CDATA[ A COM interface is explicitly freed instead of using the recommended Release method]]></description>
+</rule>
+<rule>
+<key>STATIC_C_WRAPPER_ESCAPE_COM_deref_read_after_free</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_WRAPPER_ESCAPE_COM_deref_read_after_free</configKey>
+<description><![CDATA[ Reads target of a freed internal pointer of a COM object]]></description>
+</rule>
+<rule>
+<key>STATIC_C_WRAPPER_ESCAPE_deref_read_after_free</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_WRAPPER_ESCAPE_deref_read_after_free</configKey>
+<description><![CDATA[ Reads target of a freed internal pointer]]></description>
+</rule>
+<rule>
+<key>STATIC_C_COM.BSTR.ALLOC_use_after_free</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_COM.BSTR.ALLOC_use_after_free</configKey>
+<description><![CDATA[ Violation of the COM coding standard by freeing a non-owned BSTR]]></description>
+</rule>
+<rule>
+<key>STATIC_C_DELETE_ARRAY_generic</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_DELETE_ARRAY_generic</configKey>
+<description><![CDATA[ Using non-array delete on an array of objects, scalars, or pointers allocated with new[]]]></description>
+</rule>
+<rule>
+<key>STATIC_C_DELETE_ARRAY_none</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_DELETE_ARRAY_none</configKey>
+<description><![CDATA[ Using non-array delete on an array of objects, scalars, or pointers allocated with new[]]]></description>
+</rule>
+<rule>
+<key>STATIC_C_NO_EFFECT_bad_memset_zero_size</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_NO_EFFECT_bad_memset_zero_size</configKey>
+<description><![CDATA[ A memset buffer size of 0 may indicate confusing the size and fill parameters]]></description>
+</rule>
+<rule>
+<key>STATIC_C_NO_EFFECT_bad_memset_truncated_fill</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_NO_EFFECT_bad_memset_truncated_fill</configKey>
+<description><![CDATA[ The memset fill value must be between -1 and 255, other values will be truncated]]></description>
+</rule>
+<rule>
+<key>STATIC_C_NO_EFFECT_bad_memset_fill_value</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_NO_EFFECT_bad_memset_fill_value</configKey>
+<description><![CDATA[ A memset fill value of ASCII character '0' is likely intended to be 0]]></description>
+</rule>
+<rule>
+<key>STATIC_C_SIZEOF_MISMATCH_missing_parentheses</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_SIZEOF_MISMATCH_missing_parentheses</configKey>
+<description><![CDATA[ Missing parentheses caused unintended operator precedence of casting before the pointer arithmetic]]></description>
+</rule>
+<rule>
+<key>STATIC_C_NEGATIVE_RETURNS_array_index_read</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_NEGATIVE_RETURNS_array_index_read</configKey>
+<description><![CDATA[ Negative value used to index an array in a read operation]]></description>
+</rule>
+<rule>
+<key>STATIC_C_REVERSE_NEGATIVE_array_index_read</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_REVERSE_NEGATIVE_array_index_read</configKey>
+<description><![CDATA[ Read from array at negative index]]></description>
+</rule>
+<rule>
+<key>STATIC_C_INCOMPATIBLE_CAST_overrun</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_INCOMPATIBLE_CAST_overrun</configKey>
+<description><![CDATA[ Out-of-bounds access to a scalar]]></description>
+</rule>
+<rule>
+<key>STATIC_C_OVERRUN_read</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_OVERRUN_read</configKey>
+<description><![CDATA[ Out-of-bounds read from a buffer]]></description>
+</rule>
+<rule>
+<key>STATIC_C_OVERRUN_DYNAMIC_read</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_OVERRUN_DYNAMIC_read</configKey>
+<description><![CDATA[ Out-of-bounds read from a dynamically allocated buffer]]></description>
+</rule>
+<rule>
+<key>STATIC_C_OVERRUN_STATIC_read</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_OVERRUN_STATIC_read</configKey>
+<description><![CDATA[ Out-of-bounds read from an array]]></description>
+</rule>
+<rule>
+<key>STATIC_C_INTEGER_OVERFLOW_array_index_read</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_INTEGER_OVERFLOW_array_index_read</configKey>
+<description><![CDATA[ Read from array at integer overflowed index]]></description>
+</rule>
+<rule>
+<key>STATIC_C_INTEGER_OVERFLOW_pointer_deref_read</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_INTEGER_OVERFLOW_pointer_deref_read</configKey>
+<description><![CDATA[ Reads target of an integer-overflowed pointer]]></description>
+</rule>
+<rule>
+<key>STATIC_C_RETURN_LOCAL_generic</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_RETURN_LOCAL_generic</configKey>
+<description><![CDATA[ Pointer to a local stack variable returned or used outside scope]]></description>
+</rule>
+<rule>
+<key>STATIC_C_RETURN_LOCAL_none</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_RETURN_LOCAL_none</configKey>
+<description><![CDATA[ Pointer to a local stack variable returned or used outside scope]]></description>
+</rule>
+<rule>
+<key>STATIC_C_USE_AFTER_FREE_deref_read_after_free</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_USE_AFTER_FREE_deref_read_after_free</configKey>
+<description><![CDATA[ Reads target of a freed pointer]]></description>
+</rule>
+<rule>
+<key>STATIC_C_READLINK_generic</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_READLINK_generic</configKey>
+<description><![CDATA[ The readlink system call may return a value equal to the buffer size, which causes an access one past the end]]></description>
+</rule>
+<rule>
+<key>STATIC_C_READLINK_none</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_READLINK_none</configKey>
+<description><![CDATA[ The readlink system call may return a value equal to the buffer size, which causes an access one past the end]]></description>
+</rule>
+<rule>
+<key>STATIC_C_PW.RETURN_PTR_TO_LOCAL_TEMP_generic</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_PW.RETURN_PTR_TO_LOCAL_TEMP_generic</configKey>
+<description><![CDATA[ Returning a pointer to a temporary variable, which will be destroyed on function exit]]></description>
+</rule>
+<rule>
+<key>STATIC_C_PW.RETURN_PTR_TO_LOCAL_TEMP_none</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_PW.RETURN_PTR_TO_LOCAL_TEMP_none</configKey>
+<description><![CDATA[ Returning a pointer to a temporary variable, which will be destroyed on function exit]]></description>
+</rule>
+<rule>
+<key>STATIC_C_STRING_NULL_generic</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_STRING_NULL_generic</configKey>
+<description><![CDATA[ A character buffer that has not been null terminated is passed to a function expecting a null terminated string]]></description>
+</rule>
+<rule>
+<key>STATIC_C_STRING_NULL_none</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_STRING_NULL_none</configKey>
+<description><![CDATA[ A character buffer that has not been null terminated is passed to a function expecting a null terminated string]]></description>
+</rule>
+<rule>
+<key>STATIC_C_UNINIT_array_index_read</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_UNINIT_array_index_read</configKey>
+<description><![CDATA[ Read from array at uninitialized index]]></description>
+</rule>
+<rule>
+<key>STATIC_C_UNINIT_pointer_deref_read</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_UNINIT_pointer_deref_read</configKey>
+<description><![CDATA[ Reads an uninitialized pointer or its target]]></description>
+</rule>
+<rule>
+<key>STATIC_C_USE_AFTER_FREE_generic</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_USE_AFTER_FREE_generic</configKey>
+<description><![CDATA[ A pointer to freed memory is  dereferenced, used as a function argument, or otherwise used]]></description>
+</rule>
+<rule>
+<key>STATIC_C_USE_AFTER_FREE_none</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_USE_AFTER_FREE_none</configKey>
+<description><![CDATA[ A pointer to freed memory is  dereferenced, used as a function argument, or otherwise used]]></description>
+</rule>
+<rule>
+<key>STATIC_C_WRAPPER_ESCAPE_generic</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_WRAPPER_ESCAPE_generic</configKey>
+<description><![CDATA[ An internal pointer of a wrapper object remains available after the object is freed]]></description>
+</rule>
+<rule>
+<key>STATIC_C_WRAPPER_ESCAPE_none</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_WRAPPER_ESCAPE_none</configKey>
+<description><![CDATA[ An internal pointer of a wrapper object remains available after the object is freed]]></description>
+</rule>
+<rule>
+<key>STATIC_C_FORWARD_NULL_none</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_FORWARD_NULL_none</configKey>
+<description><![CDATA[ Pointer is checked against null but then dereferenced anyway]]></description>
+</rule>
+<rule>
+<key>STATIC_C_REVERSE_INULL_generic</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_REVERSE_INULL_generic</configKey>
+<description><![CDATA[ All paths that lead to this null pointer comparison already dereference the pointer earlier]]></description>
+</rule>
+<rule>
+<key>STATIC_C_REVERSE_INULL_none</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_REVERSE_INULL_none</configKey>
+<description><![CDATA[ All paths that lead to this null pointer comparison already dereference the pointer earlier]]></description>
+</rule>
+<rule>
+<key>STATIC_C_NULL_RETURNS_unimpl</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_NULL_RETURNS_unimpl</configKey>
+<description><![CDATA[ Return value of function, which is statistically inferred to return null, but with no source code available, is dereferenced]]></description>
+</rule>
+<rule>
+<key>STATIC_C_NULL_RETURNS_generic</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_NULL_RETURNS_generic</configKey>
+<description><![CDATA[ Return value of function which returns null is dereferenced without checking]]></description>
+</rule>
+<rule>
+<key>STATIC_C_NULL_RETURNS_none</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_NULL_RETURNS_none</configKey>
+<description><![CDATA[ Return value of function which returns null is dereferenced without checking]]></description>
+</rule>
+<rule>
+<key>STATIC_C_FORWARD_NULL_deref_constant_null</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_FORWARD_NULL_deref_constant_null</configKey>
+<description><![CDATA[ Dereference of an explicit null value]]></description>
+</rule>
+<rule>
+<key>STATIC_C_FORWARD_NULL_generic</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_FORWARD_NULL_generic</configKey>
+<description><![CDATA[ Pointer is checked against null or assigned to null and then dereferenced]]></description>
+</rule>
+<rule>
+<key>STATIC_C_FORWARD_NULL_dynamic_cast</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_FORWARD_NULL_dynamic_cast</configKey>
+<description><![CDATA[ Dynamic_cast may fail and return null if the type cast is incompatible]]></description>
+</rule>
+<rule>
+<key>STATIC_C_RW.*_generic</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_RW.*_generic</configKey>
+<description><![CDATA[ A parse error caused a function to be skipped by Coverity Static Analysis]]></description>
+</rule>
+<rule>
+<key>STATIC_C_RW.*_none</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_RW.*_none</configKey>
+<description><![CDATA[ A parse error caused a function to be skipped by Coverity Static Analysis]]></description>
+</rule>
+<rule>
+<key>STATIC_C_SW.*_generic</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_SW.*_generic</configKey>
+<description><![CDATA[ The function contains a non-portable or non-standard construct forcing the Coverity parser to guess the meaning]]></description>
+</rule>
+<rule>
+<key>STATIC_C_SW.*_none</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_SW.*_none</configKey>
+<description><![CDATA[ The function contains a non-portable or non-standard construct forcing the Coverity parser to guess the meaning]]></description>
+</rule>
+<rule>
+<key>STATIC_C_PW.*_generic</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_PW.*_generic</configKey>
+<description><![CDATA[ A parse warning from the Coverity parser may indicate a bug, or poor coding practice]]></description>
+</rule>
+<rule>
+<key>STATIC_C_PW.*_none</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_PW.*_none</configKey>
+<description><![CDATA[ A parse warning from the Coverity parser may indicate a bug, or poor coding practice]]></description>
+</rule>
+<rule>
+<key>STATIC_C_PARSE_ERROR_generic</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_PARSE_ERROR_generic</configKey>
+<description><![CDATA[ A parse error caused an entire compilation unit to be skipped by Coverity Static Analysis]]></description>
+</rule>
+<rule>
+<key>STATIC_C_PARSE_ERROR_none</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_PARSE_ERROR_none</configKey>
+<description><![CDATA[ A parse error caused an entire compilation unit to be skipped by Coverity Static Analysis]]></description>
+</rule>
+<rule>
+<key>STATIC_C_PASS_BY_VALUE_generic</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_PASS_BY_VALUE_generic</configKey>
+<description><![CDATA[ A large function call parameter or exception catch statement is passed by value]]></description>
+</rule>
+<rule>
+<key>STATIC_C_PASS_BY_VALUE_none</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_PASS_BY_VALUE_none</configKey>
+<description><![CDATA[ A large function call parameter or exception catch statement is passed by value]]></description>
+</rule>
+<rule>
+<key>STATIC_C_STACK_USE_generic</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_STACK_USE_generic</configKey>
+<description><![CDATA[ Excessive use of stack memory by local variables or parameters]]></description>
+</rule>
+<rule>
+<key>STATIC_C_STACK_USE_none</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_STACK_USE_none</configKey>
+<description><![CDATA[ Excessive use of stack memory by local variables or parameters]]></description>
+</rule>
+<rule>
+<key>STATIC_C_MISSING_RESTORE_possible</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_MISSING_RESTORE_possible</configKey>
+<description><![CDATA[ Handles classes of flow where a function is either saving some external value, modifying the external value, and then possibly intending to restore it to its original state but not doing so along one of many paths; or else is checking whether an external has some expected value, modifying the external value, then possibly intending to restore it to the expected value but not doing so along a path.  Such code is only incorrect if the intent really was to restore along all paths.]]></description>
+</rule>
+<rule>
+<key>STATIC_C_LOCK_double_lock</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_LOCK_double_lock</configKey>
+<description><![CDATA[ Attempt to acquire a lock more than once on a non-recursive lock]]></description>
+</rule>
+<rule>
+<key>STATIC_C_LOCK_none</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_LOCK_none</configKey>
+<description><![CDATA[ Missing a release of a lock on a path, or an attempt to acquire a lock more than once]]></description>
+</rule>
+<rule>
+<key>STATIC_C_INFINITE_LOOP_generic</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_INFINITE_LOOP_generic</configKey>
+<description><![CDATA[ Infinite loop with unsatisfiable or no exit condition]]></description>
+</rule>
+<rule>
+<key>STATIC_C_INFINITE_LOOP_none</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_INFINITE_LOOP_none</configKey>
+<description><![CDATA[ Infinite loop with unsatisfiable exit condition]]></description>
+</rule>
+<rule>
+<key>STATIC_C_INFINITE_LOOP_no_escape</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_INFINITE_LOOP_no_escape</configKey>
+<description><![CDATA[ Infinite loop with no exit condition]]></description>
+</rule>
+<rule>
+<key>STATIC_C_LOCK_missing_unlock</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_LOCK_missing_unlock</configKey>
+<description><![CDATA[ Missing a release of a lock on a path]]></description>
+</rule>
+<rule>
+<key>STATIC_C_LOCK_generic</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_LOCK_generic</configKey>
+<description><![CDATA[ Missing a release or acquire of a lock on a path, or an attempt to acquire a lock more than once]]></description>
+</rule>
+<rule>
+<key>STATIC_C_NEGATIVE_RETURNS_loop_bound</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_NEGATIVE_RETURNS_loop_bound</configKey>
+<description><![CDATA[ Negative value used as a loop upper bound]]></description>
+</rule>
+<rule>
+<key>STATIC_C_ORDER_REVERSAL_generic</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_ORDER_REVERSAL_generic</configKey>
+<description><![CDATA[ Threads may try to acquire two locks in different orders, potentially causing deadlock]]></description>
+</rule>
+<rule>
+<key>STATIC_C_ORDER_REVERSAL_none</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_ORDER_REVERSAL_none</configKey>
+<description><![CDATA[ Threads may try to acquire two locks in different orders, potentially causing deadlock]]></description>
+</rule>
+<rule>
+<key>STATIC_C_SLEEP_generic</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_SLEEP_generic</configKey>
+<description><![CDATA[ A lock is held while waiting for a long running or blocking operation to complete]]></description>
+</rule>
+<rule>
+<key>STATIC_C_SLEEP_none</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_SLEEP_none</configKey>
+<description><![CDATA[ A lock is held while waiting for a long running or blocking operation to complete]]></description>
+</rule>
+<rule>
+<key>STATIC_C_COM.BSTR.ALLOC_leak</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_COM.BSTR.ALLOC_leak</configKey>
+<description><![CDATA[ Violation of the COM coding standard by not freeing a BSTR whose last reference is lost in this function]]></description>
+</rule>
+<rule>
+<key>STATIC_C_NO_EFFECT_incomplete_delete</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_NO_EFFECT_incomplete_delete</configKey>
+<description><![CDATA[ Delete operator only applies to one argument in a comma expression, may cause memory leak]]></description>
+</rule>
+<rule>
+<key>STATIC_C_RESOURCE_LEAK_fds_handles</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_RESOURCE_LEAK_fds_handles</configKey>
+<description><![CDATA[ Leak of a system resource with an integer descriptor such as a file descriptor or a handle in Windows]]></description>
+</rule>
+<rule>
+<key>STATIC_C_COM.ADDROF_LEAK_none</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_COM.ADDROF_LEAK_none</configKey>
+<description><![CDATA[ A non-null pointer managed by a CComBSTR or CComPtr instance is passed by address to a function call. The value of the pointer can potentially be overwritten during the function call causing allocated memory to be leaked.]]></description>
+</rule>
+<rule>
+<key>STATIC_C_DELETE_ARRAY_object</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_DELETE_ARRAY_object</configKey>
+<description><![CDATA[ Using non-array delete on an array of objects; should be using delete[]]]></description>
+</rule>
+<rule>
+<key>STATIC_C_VIRTUAL_DTOR_generic</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_VIRTUAL_DTOR_generic</configKey>
+<description><![CDATA[ The correct derived class destructor is not invoked due to the absence of a virtual destructor in the base class]]></description>
+</rule>
+<rule>
+<key>STATIC_C_VIRTUAL_DTOR_none</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_VIRTUAL_DTOR_none</configKey>
+<description><![CDATA[ The correct derived class destructor is not invoked due to the absence of a virtual destructor in the base class]]></description>
+</rule>
+<rule>
+<key>STATIC_C_RESOURCE_LEAK_generic</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_RESOURCE_LEAK_generic</configKey>
+<description><![CDATA[ Leak of a system resource such as memory, file handles, or sockets]]></description>
+</rule>
+<rule>
+<key>STATIC_C_RESOURCE_LEAK_none</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_RESOURCE_LEAK_none</configKey>
+<description><![CDATA[ Leak of memory or pointers to system resources]]></description>
+</rule>
+<rule>
+<key>STATIC_C_CTOR_DTOR_LEAK_generic</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_CTOR_DTOR_LEAK_generic</configKey>
+<description><![CDATA[ Constructor allocates memory but destructor does not free it]]></description>
+</rule>
+<rule>
+<key>STATIC_C_CTOR_DTOR_LEAK_none</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_CTOR_DTOR_LEAK_none</configKey>
+<description><![CDATA[ Constructor allocates memory but destructor does not free it]]></description>
+</rule>
+<rule>
+<key>STATIC_C_SYMBIAN.CLEANUP_STACK_generic</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_SYMBIAN.CLEANUP_STACK_generic</configKey>
+<description><![CDATA[ Error in the interaction of the code with the Symbian cleanup stack API]]></description>
+</rule>
+<rule>
+<key>STATIC_C_SYMBIAN.CLEANUP_STACK_none</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_SYMBIAN.CLEANUP_STACK_none</configKey>
+<description><![CDATA[ Error in the interaction of the code with the Symbian cleanup stack API]]></description>
+</rule>
+<rule>
+<key>STATIC_C_SYMBIAN.CLEANUP_STACK_leak</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_SYMBIAN.CLEANUP_STACK_leak</configKey>
+<description><![CDATA[ An object is not on the cleanup stack when a leave occurs or an allocated object goes out of scope, causing a leak]]></description>
+</rule>
+<rule>
+<key>STATIC_C_ASSIGN_NOT_RETURNING_STAR_THIS_none</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_ASSIGN_NOT_RETURNING_STAR_THIS_none</configKey>
+<description><![CDATA[ A user-written assignment operator does not return a reference to *this]]></description>
+</rule>
+<rule>
+<key>STATIC_C_COPY_WITHOUT_ASSIGN_none</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_COPY_WITHOUT_ASSIGN_none</configKey>
+<description><![CDATA[ Class has user-written copy constructor but no user-written assignment operator]]></description>
+</rule>
+<rule>
+<key>STATIC_C_MISSING_ASSIGN_none</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_MISSING_ASSIGN_none</configKey>
+<description><![CDATA[ Class that owns resources lacks a user-written assignment operator]]></description>
+</rule>
+<rule>
+<key>STATIC_C_MISSING_COPY_none</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_MISSING_COPY_none</configKey>
+<description><![CDATA[ Class that owns resources lacks a user-written copy constructor]]></description>
+</rule>
+<rule>
+<key>STATIC_C_SELF_ASSIGN_none</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_SELF_ASSIGN_none</configKey>
+<description><![CDATA[ Assignment operator does not check for self-assignment]]></description>
+</rule>
+<rule>
+<key>STATIC_C_SECURE_CODING_generic</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_SECURE_CODING_generic</configKey>
+<description><![CDATA[ Calling a function which may pose a security risk if it is used inappropriately]]></description>
+</rule>
+<rule>
+<key>STATIC_C_SECURE_CODING_none</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_SECURE_CODING_none</configKey>
+<description><![CDATA[ Calling a function which may pose a security risk if it is used inappropriately]]></description>
+</rule>
+<rule>
+<key>STATIC_C_BUFFER_SIZE_fixed_size_dest</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_BUFFER_SIZE_fixed_size_dest</configKey>
+<description><![CDATA[ A source buffer of statically unknown size is copied into a fixed-size destination buffer]]></description>
+</rule>
+<rule>
+<key>STATIC_C_STRING_OVERFLOW_fixed_size_dest</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_STRING_OVERFLOW_fixed_size_dest</configKey>
+<description><![CDATA[ A source buffer of statically unknown size is copied into a fixed-size destination buffer]]></description>
+</rule>
+<rule>
+<key>STATIC_C_TAINTED_STRING_WARNING_format_string</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_TAINTED_STRING_WARNING_format_string</configKey>
+<description><![CDATA[ A non-constant string used to construct a format string]]></description>
+</rule>
+<rule>
+<key>STATIC_C_TAINTED_STRING_WARNING_generic</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_TAINTED_STRING_WARNING_generic</configKey>
+<description><![CDATA[ A non-constant string used to construct a format string]]></description>
+</rule>
+<rule>
+<key>STATIC_C_TAINTED_STRING_WARNING_none</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_TAINTED_STRING_WARNING_none</configKey>
+<description><![CDATA[ A non-constant string used to construct a format string]]></description>
+</rule>
+<rule>
+<key>STATIC_C_SECURE_TEMP_generic</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_SECURE_TEMP_generic</configKey>
+<description><![CDATA[ Using an insecure temporary file creation function]]></description>
+</rule>
+<rule>
+<key>STATIC_C_SECURE_TEMP_none</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_SECURE_TEMP_none</configKey>
+<description><![CDATA[ Using an insecure temporary file creation function]]></description>
+</rule>
+<rule>
+<key>STATIC_C_PW.NON_CONST_PRINTF_FORMAT_STRING_generic</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_PW.NON_CONST_PRINTF_FORMAT_STRING_generic</configKey>
+<description><![CDATA[ A non-constant printf format string may be susceptible to format string attacks]]></description>
+</rule>
+<rule>
+<key>STATIC_C_PW.NON_CONST_PRINTF_FORMAT_STRING_none</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_PW.NON_CONST_PRINTF_FORMAT_STRING_none</configKey>
+<description><![CDATA[ A non-constant printf format string may be susceptible to format string attacks]]></description>
+</rule>
+<rule>
+<key>STATIC_C_BUFFER_SIZE_generic</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_BUFFER_SIZE_generic</configKey>
+<description><![CDATA[ Incorrect buffer manipulation using the wrong sizes may result in buffer overflow]]></description>
+</rule>
+<rule>
+<key>STATIC_C_BUFFER_SIZE_none</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_BUFFER_SIZE_none</configKey>
+<description><![CDATA[ Incorrect buffer manipulation may result in buffer overflow]]></description>
+</rule>
+<rule>
+<key>STATIC_C_TOCTOU_generic</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_TOCTOU_generic</configKey>
+<description><![CDATA[ A check occurs on a file's attributes before the file is used in a privileged operation, but things may have changed]]></description>
+</rule>
+<rule>
+<key>STATIC_C_TOCTOU_none</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_TOCTOU_none</configKey>
+<description><![CDATA[ A check occurs on a file's attributes before the file is used in a privileged operation, but things may have changed]]></description>
+</rule>
+<rule>
+<key>STATIC_C_USER_POINTER_generic</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_USER_POINTER_generic</configKey>
+<description><![CDATA[ A user-land pointer is dereferenced without safety checks in the kernel]]></description>
+</rule>
+<rule>
+<key>STATIC_C_USER_POINTER_none</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_USER_POINTER_none</configKey>
+<description><![CDATA[ A user-land pointer is dereferenced without safety checks in the kernel]]></description>
+</rule>
+<rule>
+<key>STATIC_C_ASSIGN_NOT_RETURNING_STAR_THIS_indirect</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_ASSIGN_NOT_RETURNING_STAR_THIS_indirect</configKey>
+<description><![CDATA[ A user-written assignment operator does not return a reference to *this]]></description>
+</rule>
+<rule>
+<key>STATIC_C_ASSIGN_NOT_RETURNING_STAR_THIS_usable_for_chained_assignment</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_ASSIGN_NOT_RETURNING_STAR_THIS_usable_for_chained_assignment</configKey>
+<description><![CDATA[ A user-written assignment operator does not return a reference to *this]]></description>
+</rule>
+<rule>
+<key>STATIC_C_TA.INSUFFICIENT_FILE_COVERAGE_none</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_TA.INSUFFICIENT_FILE_COVERAGE_none</configKey>
+<description><![CDATA[ File does not reach coverage threshold required by the policy]]></description>
+</rule>
+<rule>
+<key>STATIC_C_TA.INSUFFICIENT_COVERAGE_none</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_TA.INSUFFICIENT_COVERAGE_none</configKey>
+<description><![CDATA[ Function does not reach coverage threshold required by the policy]]></description>
+</rule>
+<rule>
+<key>STATIC_C_TA.*_none</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_TA.*_none</configKey>
+<description><![CDATA[ Code does not satisfy the testing policy established by your organization.]]></description>
+</rule>
+<rule>
+<key>STATIC_C_TA.UNCALLED_none</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_TA.UNCALLED_none</configKey>
+<description><![CDATA[ Function is not called from any test]]></description>
+</rule>
+<rule>
+<key>STATIC_C_TA.NO_COVERAGE_none</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_TA.NO_COVERAGE_none</configKey>
+<description><![CDATA[ Function is not covered by any test]]></description>
+</rule>
+<rule>
+<key>STATIC_C_UNINIT_CTOR_generic</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_UNINIT_CTOR_generic</configKey>
+<description><![CDATA[ A class member is not initialized by the constructor]]></description>
+</rule>
+<rule>
+<key>STATIC_C_UNINIT_CTOR_pointer</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_UNINIT_CTOR_pointer</configKey>
+<description><![CDATA[ A pointer field is not initialized in the constructor]]></description>
+</rule>
+<rule>
+<key>STATIC_C_UNINIT_CTOR_none</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_UNINIT_CTOR_none</configKey>
+<description><![CDATA[ A scalar field is not initialized by the constructor]]></description>
+</rule>
+<rule>
+<key>STATIC_C_MISSING_RETURN_none</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_MISSING_RETURN_none</configKey>
+<description><![CDATA[ Function that returns non-void is missing a return value]]></description>
+</rule>
+<rule>
+<key>STATIC_C_MISSING_RETURN_generic</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_MISSING_RETURN_generic</configKey>
+<description><![CDATA[ Function that returns non-void is missing a return value or multiple return statements violate local coding standard]]></description>
+</rule>
+<rule>
+<key>STATIC_C_UNINIT_none</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_UNINIT_none</configKey>
+<description><![CDATA[ Use of an uninitialized variable]]></description>
+</rule>
+<rule>
+<key>STATIC_C_UNINIT_generic</key>
+<priority>MAJOR</priority>
+<configKey>STATIC_C_UNINIT_generic</configKey>
+<description><![CDATA[ Use of an uninitialized value]]></description>
+</rule>
+</rules>
