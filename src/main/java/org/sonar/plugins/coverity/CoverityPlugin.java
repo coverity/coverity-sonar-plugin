@@ -33,6 +33,7 @@ public final class CoverityPlugin extends SonarPlugin {
     public static final String COVERITY_CONNECT_USERNAME = "sonar.coverity.connect.username";
     public static final String COVERITY_CONNECT_PASSWORD = "sonar.coverity.connect.password";
     public static final String COVERITY_PROJECT = "sonar.coverity.stream";
+    public static final String COVERITY_PREFIX = "sonar.coverity.prefix";
     public static final String COVERITY_CONNECT_SSL = "sonar.coverity.ssl";
     public static final String REPOSITORY_KEY = "coverity";
 
@@ -83,6 +84,19 @@ public final class CoverityPlugin extends SonarPlugin {
                 PropertyDefinition.builder(CoverityPlugin.COVERITY_PROJECT)
                         .name("Coverity Project")
                         .description("The project in Coverity Connect corresponding to this Sonar project")
+                        .type(PropertyType.STRING)
+                        .onlyOnQualifiers(Qualifiers.PROJECT)
+                        .index(++i)
+                        .build(),
+                /*
+                * Coverity analysis may not be performed on the same directory as Sonar analysis,
+                * so in some case we need to remove the beginning of the filename to make it
+                * relative to Sonar's project root.This can be done by specifying the prefix to remove from filenames
+                * with the 'sonar.coverity.prefix' key.
+                * */
+                PropertyDefinition.builder(CoverityPlugin.COVERITY_PREFIX)
+                        .name("Coverity Files Prefix")
+                        .description("Prefix to strip from filenames to match this Sonar project")
                         .type(PropertyType.STRING)
                         .onlyOnQualifiers(Qualifiers.PROJECT)
                         .index(++i)
