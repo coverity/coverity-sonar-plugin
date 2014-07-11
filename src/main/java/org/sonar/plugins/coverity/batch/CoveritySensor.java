@@ -149,9 +149,8 @@ public class CoveritySensor implements Sensor {
                         mddo.getCheckerSubcategory(), mddo.getDomain());
 
                 CheckerPropertyDataObj checkerPropertyDataObj = mapOfCheckerPropertyDataObj.get(tripleFromMddo);
-                String impact = checkerPropertyDataObj.getImpact();
-
                 if(checkerPropertyDataObj != null){
+                    String impact = checkerPropertyDataObj.getImpact();
                     totalDefectsCounter++;
                     if (impact.equals(HIGH)) {
                         highImpactDefectsCounter++;
