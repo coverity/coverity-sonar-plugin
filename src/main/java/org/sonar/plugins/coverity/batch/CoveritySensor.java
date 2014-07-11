@@ -45,6 +45,8 @@ import java.util.Map;
 import org.sonar.plugins.coverity.util.*;
 import org.sonar.plugins.coverity.ws.TripleFromDefects;
 
+import javax.xml.datatype.DatatypeConfigurationException;
+
 import static org.sonar.plugins.coverity.base.CoverityPluginMetrics.*;
 import static org.sonar.plugins.coverity.util.CoverityUtil.createURL;
 
@@ -132,15 +134,49 @@ public class CoveritySensor implements Sensor {
             LOG.debug(ar.toString());
         }
 
+        javax.xml.datatype.XMLGregorianCalendar analysisDate = null;
+        if (project.getAnalysisDate() != null) {
+          try {
+            java.util.GregorianCalendar gcal = new java.util.GregorianCalendar();
+            gcal.setTime(project.getAnalysisDate());
+            analysisDate = javax.xml.datatype.DatatypeFactory.newInstance().newXMLGregorianCalendar(gcal);
+          } catch (DatatypeConfigurationException e) {
+            LOG.error("Could not convert date: " + project.getAnalysisDate());
+            Thread.currentThread().setContextClassLoader(oldCL);
+            return;
+          }
+        }
+
         try {
             LOG.info("Fetching defects for project: " + covProject);
-            List<MergedDefectDataObj> defects = instance.getDefects(covProject);
+
+            MergedDefectFilterSpecDataObj filter = new MergedDefectFilterSpecDataObj();
+            if (analysisDate != null) {
+                //get only the defects introduced before the specified date
+                filter.setFirstDetectedEndDate(analysisDate);
+            }
+            List<MergedDefectDataObj> defects = instance.getDefects(covProject, filter);
 
             Map<Long, StreamDefectDataObj> streamDefects = instance.getStreamDefectsForMergedDefects(defects);
 
             LOG.info("Found " + streamDefects.size() + " defects");
 
             for(MergedDefectDataObj mddo : defects) {
+                String status = mddo.getStatus();
+
+                //Skip dismissed defects
+                if ("Dismissed".equals(status)) {
+                  LOG.info("Skipping dismissed defect (CID " + mddo.getCid() + "')");
+                  continue;
+                }
+
+                //Skip fixed defects (but keep them if they were fixed after specified date)
+                if ("Fixed".equals(status) &&
+                    (analysisDate == null || mddo.getLastDetected().compare(analysisDate) <= 0)) {
+                  LOG.info("Skipping fixed defect (CID " + mddo.getCid() + "')");
+                  continue;
+                }
+
                 String filePath = mddo.getFilePathname();
                 if (stripPrefix != null && !stripPrefix.isEmpty() && filePath.startsWith(stripPrefix))
                     filePath = "./" + filePath.substring(stripPrefix.length());
