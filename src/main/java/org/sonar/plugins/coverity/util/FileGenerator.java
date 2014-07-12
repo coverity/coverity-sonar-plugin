@@ -84,7 +84,6 @@ public class FileGenerator {
                 }
                 xmlFileOut.println("<severity>" + severity + "</severity>");
                 xmlFileOut.println("<configKey>" + key + "</configKey>");
-                //xmlFileOut.println("<name><![CDATA[ " + cpdo.getSubcategoryShortDescription() + "]]></name>");
                 xmlFileOut.println("<description><![CDATA[ " + desc + "]]></description>");
                 xmlFileOut.println("</rule>");
 
