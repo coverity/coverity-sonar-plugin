@@ -70,6 +70,8 @@ public class CoverityRules implements RulesDefinition, Extension {
 
     public static List<InternalRule> javaRulesToBeActivated = new ArrayList<InternalRule>();
     public static List<InternalRule> cppRulesToBeActivated = new ArrayList<InternalRule>();
+    public static List<InternalRule> cRulesToBeActivated = new ArrayList<InternalRule>();
+    public static List<InternalRule> cppComunityRulesToBeActivated = new ArrayList<InternalRule>();
     public static List<InternalRule> csRulesToBeActivated = new ArrayList<InternalRule>();
 
     static Map<String, List> mapOfRuleLists = new HashMap<String, List>();
@@ -77,9 +79,17 @@ public class CoverityRules implements RulesDefinition, Extension {
     static {
         mapOfRuleLists.put("java",javaRulesToBeActivated);
         mapOfRuleLists.put("cpp",cppRulesToBeActivated);
+        mapOfRuleLists.put("c++",cppComunityRulesToBeActivated);
+        mapOfRuleLists.put("c",cRulesToBeActivated);
         mapOfRuleLists.put("cs",csRulesToBeActivated);
     }
 
+    /* The interface RulesDefinition provides a default parser: "XmlLoader". However, XmlLoader stores rules as
+    *  "NewRules" a class that does not provides getters for certain fields such as severity. We need to access these
+    *  fields later on when activating rules in CoverityProfiles. So in order to have more control over our rules we
+    *  define "InternalRule.class" and we complete its fields by doing a parsing by ourselves. This is the propose of
+    *  "parseRules()".
+    * */
     public void parseRules(){
 
         for(String language : languages){
@@ -116,25 +126,7 @@ public class CoverityRules implements RulesDefinition, Extension {
                 csNodes = nodes;
                 mapOfNodeLists.put("cs", csNodes);
             }
-        }
 
-    }
-
-    private static String getValue(String tag, Element element) {
-        NodeList nodes = element.getElementsByTagName(tag).item(0).getChildNodes();
-        Node node = (Node) nodes.item(0);
-        return node.getNodeValue();
-    }
-
-    @Override
-    public void define(Context context) {
-        parseRules();
-
-        for(String language : languages){
-
-            NewRepository repository = context.createRepository(CoverityPlugin.REPOSITORY_KEY + "-" + language, language).setName(language + "-repository");
-
-            NodeList nodes = mapOfNodeLists.get(language);
             for (int i = 0; i < nodes.getLength(); i++) {
                 Node node = nodes.item(i);
 
@@ -154,13 +146,47 @@ public class CoverityRules implements RulesDefinition, Extension {
                 InternalRule internalRule = new InternalRule(key, name, severity, description, language);
 
                 mapOfRuleLists.get(language).add(internalRule);
+                if(language.equals("cpp")){
+                    mapOfRuleLists.get("c++").add(internalRule);
+                    mapOfRuleLists.get("c").add(internalRule);
+                }
             }
+        }
+    }
 
+    private static String getValue(String tag, Element element) {
+        NodeList nodes = element.getElementsByTagName(tag).item(0).getChildNodes();
+        Node node = (Node) nodes.item(0);
+        return node.getNodeValue();
+    }
+
+    @Override
+    public void define(Context context) {
+        parseRules();
+
+        /* These extra repositories are added in order to support the community version of c++ plugin and the licensed
+        *  version (called cpp). Also we create a "c profile", although rules for c, cpp and c++ are the same.
+        */
+        List<String> otherLanguages = new ArrayList<String>();
+        otherLanguages.add("c++");
+        otherLanguages.add("c");
+
+        for(String language : otherLanguages){
+            NewRepository repository = context.createRepository(CoverityPlugin.REPOSITORY_KEY + "-" + language, language).setName(language + "-repository");
+            String fileDir = "coverity-cpp.xml";
+            InputStream in = getClass().getResourceAsStream(fileDir);
+            xmlLoader.load(repository, in, "UTF-8");
+            repository.done();
+        }
+
+        for(String language : languages){
+            NewRepository repository = context.createRepository(CoverityPlugin.REPOSITORY_KEY + "-" + language, language).setName(language + "-repository");
             String fileDir = "coverity-" + language + ".xml";
             InputStream in = getClass().getResourceAsStream(fileDir);
             xmlLoader.load(repository, in, "UTF-8");
             repository.done();
         }
+
     }
 
     class InternalRule{

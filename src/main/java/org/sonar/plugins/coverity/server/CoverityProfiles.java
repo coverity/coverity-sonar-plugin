@@ -42,6 +42,8 @@ public class CoverityProfiles extends ExtensionProvider implements ServerExtensi
         languages.add("java");
         languages.add("cpp");
         languages.add("cs");
+        languages.add("c++");
+        languages.add("c");
     }
 
     @Override
