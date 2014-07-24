@@ -30,7 +30,6 @@ public class FileGenerator {
     static {
         languageDomains.put("java", "STATIC_JAVA");
         languageDomains.put("cpp", "STATIC_C");
-        languageDomains.put("c++", "STATIC_C");
         languageDomains.put("cs", "STATIC_CS");
     }
 

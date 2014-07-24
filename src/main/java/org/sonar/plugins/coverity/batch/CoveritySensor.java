@@ -181,6 +181,7 @@ public class CoveritySensor implements Sensor {
                 if (stripPrefix != null && !stripPrefix.isEmpty() && filePath.startsWith(stripPrefix))
                     filePath = "./" + filePath.substring(stripPrefix.length());
                 Resource res = getResourceForFile(filePath, project);
+
                 TripleFromDefects tripleFromMddo = new TripleFromDefects(mddo.getCheckerName(),
                         mddo.getCheckerSubcategory(), mddo.getDomain());
 
@@ -202,7 +203,7 @@ public class CoveritySensor implements Sensor {
                 if(res == null) {
                     LOG.info("Cannot find the file '" + filePath + "', skipping defect (CID " + mddo.getCid() + ")");
                     continue;
-                }
+                }   
 
                 for(DefectInstanceDataObj dido : streamDefects.get(mddo.getCid()).getDefectInstances()) {
                     //find the main event, so we can use its line number
