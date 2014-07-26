@@ -17,11 +17,15 @@ mvn install:install-file -Dfile=xmldsig-1.0.jar -DgroupId=javax.xml.crypto -Dart
   
 ## Changelog
 
-* __1.0.2__
-  * Implement a Coverity widget that shows the count of defects at each Coverity impact level. A link to the Coverity project is included.
-* __1.0.1__
-  * Fix a classloader issue that caused issue import to fail in some environments. (BZ 60318)
-  * Remove hardcoded URLs from WSDL files. (BZ 60390)
-  * Fix a bug that caused issue import to fail with large amounts of issues. (BZ 60393)
-  * Fix issue descriptions that were appearing as null. (BZ 60508)
+* __1.2.0__
+  * Upgrade to Sonarqube 4.3.2.
+  * Added the ability to remove a prefix on a defect's path in order to perform Coverity's analysis and Sonar's analysis on different directories.
+* __1.2.0__
+  * Added description to the widget (BZ 65058)
+  * Defects now have the right 'severity' which can be seen under Quality Profiles (BZ 62490)
+  * Fixed url link to Cim page (BZ 62066)
+  * Fixed problems when starting up the server (BZ 65055)
+  * Added support for c++ plugins, both community and license version. Also, a profile with rules for C have been added. (BZ 62892)
+
+
 
