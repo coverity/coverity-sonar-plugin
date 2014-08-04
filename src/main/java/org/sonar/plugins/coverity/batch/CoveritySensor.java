@@ -141,6 +141,8 @@ public class CoveritySensor implements Sensor {
 
             LOG.info("Found " + streamDefects.size() + " defects");
 
+            int notIssuableCounter = 0;
+
             for(MergedDefectDataObj mddo : defects) {
                 String status = mddo.getStatus();
 
@@ -175,13 +177,20 @@ public class CoveritySensor implements Sensor {
                 if(res == null) {
                     LOG.info("Cannot find the file '" + filePath + "', skipping defect (CID " + mddo.getCid() + ")");
                     continue;
-                }   
+                }
+
+                Issuable issuable = null;
 
                 for(DefectInstanceDataObj dido : streamDefects.get(mddo.getCid()).getDefectInstances()) {
                     //find the main event, so we can use its line number
                     EventDataObj mainEvent = getMainEvent(dido);
 
-                    Issuable issuable = resourcePerspectives.as(Issuable.class, res);
+                    issuable = resourcePerspectives.as(Issuable.class, res);
+
+                    if(issuable == null){
+                        notIssuableCounter = ++notIssuableCounter;
+                        LOG.info("This defect is not issuable: "+ mddo.getCid() + ":" + dido.getId().getId() + ":" + notIssuableCounter);
+                    }
 
                     org.sonar.api.resources.Language lang = res.getLanguage();
                     // This is a way to introduce support for community c++
@@ -198,10 +207,10 @@ public class CoveritySensor implements Sensor {
                         LOG.debug("instance=" + instance);
                         LOG.debug("ar.getRule()=" + ar.getRule());
                         LOG.debug("covProjectObj=" + covProjectObj);
-                        LOG.debug("mddo=" + mddo);
-                        LOG.debug("dido=" + dido);
+                        LOG.debug("mddo=" + mddo.getCid());
+                        LOG.debug("dido=" + dido.getId());
                         LOG.debug("ar.getRule().getDescription()=" + ar.getRule().getDescription());
-                        String message = getIssueMessage(instance, ar.getRule(), covProjectObj, mddo, dido);
+                        String message = getIssueMessage(instance, ar.getRule(), covProjectObj, mddo);
 
                         Issue issue = issuable.newIssueBuilder()
                                 .ruleKey(ar.getRule().ruleKey())
@@ -230,7 +239,7 @@ public class CoveritySensor implements Sensor {
         getCoverityLogoMeasures(sensorContext, instance, covProjectObj);
     }
 
-    protected String getIssueMessage(CIMClient instance, Rule rule, ProjectDataObj covProjectObj, MergedDefectDataObj mddo, DefectInstanceDataObj dido) throws CovRemoteServiceException_Exception, IOException {
+    protected String getIssueMessage(CIMClient instance, Rule rule, ProjectDataObj covProjectObj, MergedDefectDataObj mddo) throws CovRemoteServiceException_Exception, IOException {
         String url = getDefectURL(instance, covProjectObj, mddo);
 
         LOG.debug("rule:" + rule);
