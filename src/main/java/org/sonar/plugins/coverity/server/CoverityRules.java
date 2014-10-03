@@ -172,7 +172,7 @@ public class CoverityRules implements RulesDefinition, Extension {
         otherLanguages.add("c");
 
         for(String language : otherLanguages){
-            NewRepository repository = context.createRepository(CoverityPlugin.REPOSITORY_KEY + "-" + language, language).setName(language + "-repository");
+            NewRepository repository = context.createRepository(CoverityPlugin.REPOSITORY_KEY + "-" + language, language).setName("coverity-" + language);
             String fileDir = "coverity-cpp.xml";
             InputStream in = getClass().getResourceAsStream(fileDir);
             xmlLoader.load(repository, in, "UTF-8");
@@ -180,7 +180,7 @@ public class CoverityRules implements RulesDefinition, Extension {
         }
 
         for(String language : languages){
-            NewRepository repository = context.createRepository(CoverityPlugin.REPOSITORY_KEY + "-" + language, language).setName(language + "-repository");
+            NewRepository repository = context.createRepository(CoverityPlugin.REPOSITORY_KEY + "-" + language, language).setName("coverity-" + language);
             String fileDir = "coverity-" + language + ".xml";
             InputStream in = getClass().getResourceAsStream(fileDir);
             xmlLoader.load(repository, in, "UTF-8");
