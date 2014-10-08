@@ -13,6 +13,7 @@ package org.sonar.plugins.coverity.batch;
 
 import com.coverity.ws.v6.*;
 
+import com.google.common.collect.Sets;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.sonar.api.batch.Sensor;
@@ -22,7 +23,6 @@ import org.sonar.api.config.Settings;
 import org.sonar.api.issue.Issuable;
 import org.sonar.api.issue.Issue;
 import org.sonar.api.measures.Measure;
-import org.sonar.api.measures.Metric;
 import org.sonar.api.profiles.RulesProfile;
 import org.sonar.api.resources.Project;
 import org.sonar.api.resources.ProjectFileSystem;
@@ -30,19 +30,14 @@ import org.sonar.api.resources.Resource;
 import org.sonar.api.rules.ActiveRule;
 import org.sonar.api.rules.Rule;
 import org.sonar.plugins.coverity.CoverityPlugin;
-import org.sonar.plugins.coverity.base.CoverityPluginMetrics;
 import org.sonar.plugins.coverity.ui.CoverityFooter;
 import org.sonar.plugins.coverity.util.CoverityUtil;
 import org.sonar.plugins.coverity.ws.CIMClient;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
-import org.sonar.plugins.coverity.util.*;
 import org.sonar.plugins.coverity.ws.TripleFromDefects;
 
 import static org.sonar.plugins.coverity.base.CoverityPluginMetrics.*;
@@ -143,6 +138,8 @@ public class CoveritySensor implements Sensor {
 
             int notIssuableCounter = 0;
 
+            Set<String> uniqueIssues = Sets.newHashSet();
+
             for(MergedDefectDataObj mddo : defects) {
                 String status = mddo.getStatus();
 
@@ -218,8 +215,13 @@ public class CoveritySensor implements Sensor {
                                 .message(message)
                                 .build();
                         LOG.debug("issue=" + issue);
-                        boolean result = issuable.addIssue(issue);
-                        LOG.debug("result=" + result);
+
+                        if (uniqueIssues.add(filePath + mainEvent.getLineNumber() + ar.getRule().ruleKey() + mddo.getCid())) {
+                            boolean result = issuable.addIssue(issue);
+                            LOG.debug("result=" + result);
+                        } else {
+                            LOG.debug("result=already added");
+                        }
                     } else {
                         LOG.info("Couldn't create issue: " + mddo.getCid());
                     }
