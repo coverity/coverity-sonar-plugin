@@ -1,0 +1,47 @@
+package org.sonar.plugins.coverity.server;
+
+import org.sonar.api.Extension;
+import org.sonar.api.resources.AbstractLanguage;
+
+/**
+ * Fix Bug 71347. When adding a new profile Sonarqube's server checks if the language of that profile is on a list of
+ * accepted languages. If not, it will not store rules for that profile, but it will try to create a profile anyway,
+ * resulting on a null pointer exception when trying to access the rules for that profile. This can cause the server to
+ * crash at star up.
+ * This class defines a language that will be added to that list of accepted languages.
+ */
+public class CppLanguage extends AbstractLanguage implements Extension {
+    public static final CppLanguage INSTANCE = new CppLanguage();
+
+    /**
+     * Cpp key
+     */
+    public static final String KEY = "cpp";
+
+    /**
+     * Cpp name
+     */
+    public static final String NAME = "C++";
+
+    /**
+     * Default package name for classes without package def
+     */
+    public static final String DEFAULT_PACKAGE_NAME = "[default]";
+
+    /**
+     * Cpp files knows suffixes
+     */
+    public static final String[] SUFFIXES = {".cpp", ".cc", ".c++", ".cp", ".cxx"};
+
+    /**
+     * Default constructor
+     */
+    public CppLanguage() {
+        super(KEY, NAME);
+    }
+
+    @Override
+    public String[] getFileSuffixes() {
+        return SUFFIXES;
+    }
+}

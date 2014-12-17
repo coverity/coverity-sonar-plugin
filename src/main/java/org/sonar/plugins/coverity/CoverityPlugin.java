@@ -23,6 +23,10 @@ import org.sonar.plugins.coverity.server.CoverityRules;
 import org.sonar.plugins.coverity.server.CoverityRulesRepositories;
 import org.sonar.plugins.coverity.ui.CoverityFooter;
 import org.sonar.plugins.coverity.ui.CoverityWidget;
+import org.sonar.plugins.coverity.server.CsLanguage;
+import org.sonar.plugins.coverity.server.CppLanguage;
+import org.sonar.plugins.coverity.server.CxxLanguage;
+import org.sonar.plugins.coverity.server.CLanguage;
 
 import java.util.List;
 
@@ -32,7 +36,7 @@ public final class CoverityPlugin extends SonarPlugin {
     public static final String COVERITY_CONNECT_PORT = "sonar.coverity.connect.port";
     public static final String COVERITY_CONNECT_USERNAME = "sonar.coverity.connect.username";
     public static final String COVERITY_CONNECT_PASSWORD = "sonar.coverity.connect.password";
-    public static final String COVERITY_PROJECT = "sonar.coverity.stream";
+    public static final String COVERITY_PROJECT = "sonar.coverity.project";
     public static final String COVERITY_PREFIX = "sonar.coverity.prefix";
     public static final String COVERITY_CONNECT_SSL = "sonar.coverity.ssl";
     public static final String REPOSITORY_KEY = "coverity";
@@ -109,6 +113,10 @@ public final class CoverityPlugin extends SonarPlugin {
                 CoverityRules.class,
                 CoverityRulesRepositories.class,
                 CoverityProfiles.class,
+                CsLanguage.class,
+                CppLanguage.class,
+                CxxLanguage.class,
+                CLanguage.class,
 
                 //UI
                 CoverityFooter.class,

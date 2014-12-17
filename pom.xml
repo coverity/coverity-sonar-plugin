@@ -20,7 +20,7 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<sonar.version>4.3.2</sonar.version>
+		<sonar.version>4.5.1</sonar.version>
 		<jdk.min.version>1.6</jdk.min.version>
 		<cxf.version>2.6.1</cxf.version>
 		<license.title>Coverity Sonar Plugin</license.title>

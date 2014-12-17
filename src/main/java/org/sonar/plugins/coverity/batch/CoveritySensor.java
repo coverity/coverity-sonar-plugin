@@ -65,7 +65,14 @@ public class CoveritySensor implements Sensor {
 
     public CoveritySensor(Settings settings, RulesProfile profile, ResourcePerspectives resourcePerspectives) {
         this.settings = settings;
-        this.profile = profile;
+        /**
+         * Instead of a "RulesProfile" object, "CoveritySensor" gets a "RulesProfileWrapper" with name and language
+         * set to null. In order to fix this issue we get to "RulesProfile" contained on the wrapper.
+         */
+        List<ActiveRule> rules = profile.getActiveRules();
+        RulesProfile innerProfile = RulesProfile.create(profile.getName(), profile.getLanguage());
+        innerProfile.setActiveRules(rules);
+        this.profile = innerProfile;
         this.resourcePerspectives = resourcePerspectives;
     }
 
