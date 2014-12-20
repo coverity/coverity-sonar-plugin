@@ -11,44 +11,49 @@
 
 package org.sonar.plugins.coverity.ui;
 
+import com.coverity.ws.v6.CovRemoteServiceException_Exception;
 import com.coverity.ws.v6.ProjectDataObj;
 import org.sonar.api.config.Settings;
 import org.sonar.api.web.Footer;
+import org.sonar.plugins.coverity.CoverityPlugin;
 import org.sonar.plugins.coverity.util.CoverityUtil;
+import org.sonar.plugins.coverity.ws.CIMClient;
+import java.io.IOException;
 
-public final class CoverityFooter implements Footer {
+public final class CoverityFooter implements Footer{
     Settings settings;
-    // This object is set up by CoveritySensor and then used to create a footer sending the user to his cim instance.
-    // If this object is null, the footer will redirect the user to www.coverity.com.
-    public static ProjectDataObj covProjectObjFooter;
 
     public CoverityFooter(Settings settings) {
         this.settings = settings;
     }
 
     public String getHtml() {
+        String host = settings.getString(CoverityPlugin.COVERITY_CONNECT_HOSTNAME);
+        int port = settings.getInt(CoverityPlugin.COVERITY_CONNECT_PORT);
 
-        String url = null;
-        String text = null;
-
-        if(covProjectObjFooter != null){
-
-            url = CoverityUtil.createURL(settings)+"reports.htm#p"+ covProjectObjFooter.getProjectKey();
-            text = "Coverity Connect";
-            if(url == null) {
-                url = "http://www.coverity.com";
-            }
-        } else {
-            url = "http://www.coverity.com";
-            text = "Coverity";
+        /**
+         * After the server has been started but before we run the command "sonar-runner" (or setting properties from
+         * the GUI), the properties for "settings" are not set yet.
+         * Because of this we cannot make the footer to redirect the user to his CIM instance. In this case we will
+         * send him to "www.coverity.com".
+         */
+        if(host == null || port == 0 ){
+            String url = "http://www.coverity.com";
+            String text = "Coverity";
+            return String.format(
+                    "<div style=\"text-align:center\">" +
+                            "<a href=\"%s\"><img src=\"http://www.coverity.com/favicon.ico\" />%s</a>" +
+                            "</div>",
+                    url, text);
         }
+
+        String url = CoverityUtil.createURL(settings)+"reports.htm#p";
+        String text = "Coverity Connect";
 
         return String.format(
                 "<div style=\"text-align:center\">" +
-                "<a href=\"%s\"><img src=\"http://www.coverity.com/favicon.ico\" />%s</a>" +
-                "</div>",
+                        "<a href=\"%s\"><img src=\"http://www.coverity.com/favicon.ico\" />%s</a>" +
+                        "</div>",
                 url, text);
     }
-
-
 }

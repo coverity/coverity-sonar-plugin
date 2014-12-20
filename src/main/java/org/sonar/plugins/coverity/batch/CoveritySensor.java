@@ -85,7 +85,7 @@ public class CoveritySensor implements Sensor {
     public void analyse(Project project, SensorContext sensorContext) {
         boolean enabled = settings.getBoolean(CoverityPlugin.COVERITY_ENABLE);
 
-        Map<TripleFromDefects, CheckerPropertyDataObj> mapOfCheckerPropertyDataObj =null;
+        Map<TripleFromDefects, CheckerPropertyDataObj> mapOfCheckerPropertyDataObj = null;
         int totalDefectsCounter = 0;
         int highImpactDefectsCounter = 0;
         int mediumImpactDefectsCounter = 0;
@@ -120,7 +120,6 @@ public class CoveritySensor implements Sensor {
         ProjectDataObj covProjectObj = null;
         try {
             covProjectObj = instance.getProject(covProject);
-            CoverityFooter.covProjectObjFooter = covProjectObj;
             LOG.info("Found project: " + covProject + " (" + covProjectObj.getProjectKey() + ")");
 
             if(covProjectObj == null) {
