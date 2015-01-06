@@ -17,15 +17,10 @@ mvn install:install-file -Dfile=xmldsig-1.0.jar -DgroupId=javax.xml.crypto -Dart
   
 ## Changelog
 
-* __1.2.0__
-  * Upgrade to Sonarqube 4.3.2.
-  * Added the ability to remove a prefix on a defect's path in order to perform Coverity's analysis and Sonar's analysis on different directories.
-* __1.2.0__
-  * Added description to the widget (BZ 65058)
-  * Defects now have the right 'severity' which can be seen under Quality Profiles (BZ 62490)
-  * Fixed url link to Cim page (BZ 62066)
-  * Fixed problems when starting up the server (BZ 65055)
-  * Added support for c++ plugins, both community and license version. Also, a profile with rules for C have been added. (BZ 62892)
+* __1.3.0__
+  * Upgrade to Sonarqube 4.5.1.
+* __1.3.0__
+  * The footer now says "Coverity Connect" and it redirects users to their CIM instance (BZ 66712)
 
 
 
