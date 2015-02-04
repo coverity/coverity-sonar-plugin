@@ -17,6 +17,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.sonar.api.batch.Sensor;
 import org.sonar.api.batch.SensorContext;
+import org.sonar.api.batch.fs.FileSystem;
 import org.sonar.api.component.ResourcePerspectives;
 import org.sonar.api.config.Settings;
 import org.sonar.api.issue.Issuable;
@@ -39,6 +40,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -53,6 +55,7 @@ public class CoveritySensor implements Sensor {
     private final ResourcePerspectives resourcePerspectives;
     private Settings settings;
     private RulesProfile profile;
+    private final FileSystem fileSystem;
 
     private final String HIGH = "High";
     private final String MEDIUM = "Medium";
@@ -62,11 +65,14 @@ public class CoveritySensor implements Sensor {
     private String highImpactDefects = null;
     private String mediumImpactDefects = null;
     private String lowImpactDefects = null;
+    private String osName = null;
 
-    public CoveritySensor(Settings settings, RulesProfile profile, ResourcePerspectives resourcePerspectives) {
+    public CoveritySensor(Settings settings, RulesProfile profile, ResourcePerspectives resourcePerspectives, FileSystem fileSystem) {
         this.settings = settings;
         this.profile = profile;
         this.resourcePerspectives = resourcePerspectives;
+        this.fileSystem = fileSystem;
+        this.osName = System.getProperty("os.name");
     }
 
     public boolean shouldExecuteOnProject(Project project) {
@@ -151,10 +157,27 @@ public class CoveritySensor implements Sensor {
                     continue;
                 }
 
-                String filePath = mddo.getFilePathname();
-                if (stripPrefix != null && !stripPrefix.isEmpty() && filePath.startsWith(stripPrefix))
-                    filePath = "./" + filePath.substring(stripPrefix.length());
-                Resource res = getResourceForFile(filePath, project);
+                String coverityFilePath = mddo.getFilePathname();
+                if (stripPrefix != null && !stripPrefix.isEmpty() && coverityFilePath.startsWith(stripPrefix))
+                    coverityFilePath = "./" + coverityFilePath.substring(stripPrefix.length());
+
+                Resource res = null;
+                if (osName.startsWith("Windows")) {
+                    Iterable<File> sourceFiles = this.fileSystem.files(fileSystem.predicates().all());
+                    Iterator<File> it = sourceFiles.iterator();
+                    while (it.hasNext()) {
+                        File file = it.next();
+                        String sonarFilePath = file.getCanonicalPath();
+                        sonarFilePath = sonarFilePath.substring(2); // remove driver letter
+                        sonarFilePath = sonarFilePath.replace("\\", "/");
+                        if (sonarFilePath.equalsIgnoreCase(coverityFilePath)) {
+                            res = getResourceForFile(sonarFilePath, project);
+                            break;
+                        }
+                    }
+                } else {
+                    res = getResourceForFile(coverityFilePath, project);
+                }
 
                 TripleFromDefects tripleFromMddo = new TripleFromDefects(mddo.getCheckerName(),
                         mddo.getCheckerSubcategory(), mddo.getDomain());
@@ -174,8 +197,8 @@ public class CoveritySensor implements Sensor {
                     }
                 }
 
-                if(res == null) {
-                    LOG.info("Cannot find the file '" + filePath + "', skipping defect (CID " + mddo.getCid() + ")");
+                if (res == null) {
+                    LOG.info("Cannot find the file '" + coverityFilePath + "', skipping defect (CID " + mddo.getCid() + ")");
                     continue;
                 }
 
