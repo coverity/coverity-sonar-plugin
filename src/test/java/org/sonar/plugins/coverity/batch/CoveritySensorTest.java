@@ -19,6 +19,7 @@ import com.coverity.ws.v6.ProjectDataObj;
 import org.junit.Before;
 import org.junit.Test;
 import org.sonar.api.batch.SensorContext;
+import org.sonar.api.batch.fs.FileSystem;
 import org.sonar.api.component.ResourcePerspectives;
 import org.sonar.api.config.Settings;
 import org.sonar.api.measures.Measure;
@@ -42,14 +43,16 @@ public class CoveritySensorTest {
     RulesProfile profile;
     ResourcePerspectives resourcePerspectives;
     CoveritySensor sensor;
+    FileSystem fileSystem;
 
     @Before
     public void setUp() throws Exception {
         settings = mock(Settings.class);
         profile = mock(RulesProfile.class);
         resourcePerspectives = mock(ResourcePerspectives.class);
+        fileSystem = mock(FileSystem.class);
 
-        sensor = new CoveritySensor(settings, profile, resourcePerspectives);
+        sensor = new CoveritySensor(settings, profile, resourcePerspectives, fileSystem);
     }
 
     @Test
