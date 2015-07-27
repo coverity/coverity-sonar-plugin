@@ -71,8 +71,7 @@ public class CoveritySensor implements Sensor {
 
     public boolean shouldExecuteOnProject(Project project) {
         boolean enabled = settings.getBoolean(CoverityPlugin.COVERITY_ENABLE);
-        int active = profile.getActiveRulesByRepository(CoverityPlugin.REPOSITORY_KEY + "-" + project.getLanguageKey()).size();
-        return enabled && active > 0;
+        return enabled;
     }
 
     public void analyse(Project project, SensorContext sensorContext) {
