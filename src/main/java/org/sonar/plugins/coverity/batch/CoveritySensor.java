@@ -38,6 +38,7 @@ import org.sonar.plugins.coverity.ws.CIMClient;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -175,6 +176,25 @@ public class CoveritySensor implements Sensor {
                     }
                     if (impact.equals(LOW)) {
                         lowImpactDefectsCounter++;
+                    }
+                }
+
+                List<File> listOfFiles = new ArrayList<File>();
+                String sonarSourcesString = settings.getString("sonar.sources");
+                if(sonarSourcesString != null && !sonarSourcesString.isEmpty()){
+                    List<String> sonarSources = Arrays.asList(sonarSourcesString.split(","));
+                    for(String dir : sonarSources){
+                        File folder = new File(dir);
+                        listOfFiles.addAll(CoverityUtil.listFiles(folder));
+                    }
+                }
+
+                if(res == null) {
+                    for(File possibleFile : listOfFiles){
+                        if(possibleFile.getAbsolutePath().endsWith(filePath)){
+                            res = getResourceForFile(possibleFile.getAbsolutePath(), project);
+                            break;
+                        }
                     }
                 }
 

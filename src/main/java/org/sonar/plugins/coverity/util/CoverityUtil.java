@@ -20,6 +20,11 @@ import org.sonar.plugins.coverity.CoverityPlugin;
 import org.sonar.plugins.coverity.server.CoverityRulesRepositories;
 import org.sonar.plugins.coverity.ws.CIMClient;
 
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class CoverityUtil {
     public static RuleKey getRuleKey(String language, DefectInstanceDataObj dido) {
         return RuleKey.of(CoverityPlugin.REPOSITORY_KEY + "-" + language, flattenCheckerSubcategoryId(dido.getCheckerSubcategoryId()));
@@ -46,5 +51,21 @@ public class CoverityUtil {
             return null;
         }
         return String.format("http%s://%s:%d/", (ssl ? "s" : ""), host, port);
+    }
+
+    public static List<File> listFiles(File dir, List<File> listOfFiles){
+        List<File> tmpList = Arrays.asList(dir.listFiles());
+        for(File possibleFile : tmpList){
+            if(possibleFile.isFile()){
+                listOfFiles.add(possibleFile);
+            } else if (possibleFile.isDirectory()){
+                listFiles(possibleFile, listOfFiles);
+            }
+        }
+        return listOfFiles;
+    }
+
+    public static List<File> listFiles(File dir){
+        return listFiles(dir, new ArrayList<File>());
     }
 }
