@@ -22,16 +22,13 @@ import org.sonar.api.config.Settings;
 import org.sonar.api.issue.Issuable;
 import org.sonar.api.issue.Issue;
 import org.sonar.api.measures.Measure;
-import org.sonar.api.measures.Metric;
 import org.sonar.api.profiles.RulesProfile;
 import org.sonar.api.resources.Project;
-import org.sonar.api.resources.ProjectFileSystem;
 import org.sonar.api.resources.Resource;
 import org.sonar.api.rules.ActiveRule;
 import org.sonar.api.rules.Rule;
 import org.sonar.plugins.coverity.CoverityPlugin;
-import org.sonar.plugins.coverity.base.CoverityPluginMetrics;
-import org.sonar.plugins.coverity.ui.CoverityFooter;
+import org.sonar.plugins.coverity.server.CoverityRules;
 import org.sonar.plugins.coverity.util.CoverityUtil;
 import org.sonar.plugins.coverity.ws.CIMClient;
 
@@ -39,11 +36,9 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.sonar.plugins.coverity.util.*;
 import org.sonar.plugins.coverity.ws.TripleFromDefects;
 
 import static org.sonar.plugins.coverity.base.CoverityPluginMetrics.*;
@@ -201,7 +196,23 @@ public class CoveritySensor implements Sensor {
                 if(res == null) {
                     LOG.info("Cannot find the file '" + filePath + "', skipping defect (CID " + mddo.getCid() + ")");
                     continue;
-                }   
+                }
+
+                org.sonar.api.resources.Language lang = res.getLanguage();
+                // This is a way to introduce support for community c++
+                if (lang == null) {
+                    lang = project.getLanguage();
+                }
+
+                /**
+                 * Sonarqube doesn't add rules properly to our profile. Instead of having rules with the fields that
+                 * were included on their definition, we get "activeRules" with have a copy of our rules with some
+                 * missing field such as "description". Because of this we must parse rules again during analysis and
+                 * then search for rules based on their keys.
+                 */
+                CoverityRules coverityRules = new CoverityRules();
+                Map<String, Map<String, Rule>> rulesByLangaugeMap = coverityRules.parseRules();
+                Map<String, Rule> rulesMap = rulesByLangaugeMap.get(lang.getKey());
 
                 for(DefectInstanceDataObj dido : streamDefects.get(mddo.getCid()).getDefectInstances()) {
                     //find the main event, so we can use its line number
@@ -209,13 +220,10 @@ public class CoveritySensor implements Sensor {
 
                     Issuable issuable = resourcePerspectives.as(Issuable.class, res);
 
-                    org.sonar.api.resources.Language lang = res.getLanguage();
-                    // This is a way to introduce support for community c++
-                    if (lang == null) {
-                        lang = project.getLanguage();
-                    }
+
                     org.sonar.api.rule.RuleKey rk = CoverityUtil.getRuleKey(lang.getKey(), dido);
                     ActiveRule ar = profile.getActiveRule(rk.repository(), rk.rule());
+                    Rule rule = rulesMap.get(rk.rule());
 
                     LOG.debug("mainEvent=" + mainEvent);
                     LOG.debug("issuable=" + issuable);
@@ -226,8 +234,8 @@ public class CoveritySensor implements Sensor {
                         LOG.debug("covProjectObj=" + covProjectObj);
                         LOG.debug("mddo=" + mddo);
                         LOG.debug("dido=" + dido);
-                        LOG.debug("ar.getRule().getDescription()=" + ar.getRule().getDescription());
-                        String message = getIssueMessage(instance, ar.getRule(), covProjectObj, mddo, dido);
+                        LOG.debug("ar.getRule().getDescription()=" + rule.getDescription());
+                        String message = getIssueMessage(instance, rule, covProjectObj, mddo, dido);
 
                         Issue issue = issuable.newIssueBuilder()
                                 .ruleKey(ar.getRule().ruleKey())

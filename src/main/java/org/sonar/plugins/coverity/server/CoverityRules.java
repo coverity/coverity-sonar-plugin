@@ -14,17 +14,13 @@ package org.sonar.plugins.coverity.server;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.sonar.api.Extension;
-import org.sonar.api.ExtensionProvider;
-import org.sonar.api.ServerExtension;
-import org.sonar.api.batch.rule.Rules;
-import org.sonar.api.config.Settings;
-import org.sonar.api.rules.Rule;
 //import org.sonar.api.rules.RuleRepository;
 //import org.sonar.api.rules.XMLRuleParser;
+import org.sonar.api.rules.Rule;
+import org.sonar.api.rules.RulePriority;
 import org.sonar.api.server.rule.RulesDefinition;
 import org.sonar.api.server.rule.RulesDefinitionXmlLoader;
 import org.sonar.plugins.coverity.CoverityPlugin;
-import org.sonar.plugins.coverity.util.FileGenerator;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -35,7 +31,6 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.*;
-import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -68,20 +63,27 @@ public class CoverityRules implements RulesDefinition, Extension {
         languages.add("cs");
     }
 
-    public static List<InternalRule> javaRulesToBeActivated = new ArrayList<InternalRule>();
-    public static List<InternalRule> cppRulesToBeActivated = new ArrayList<InternalRule>();
-    public static List<InternalRule> cRulesToBeActivated = new ArrayList<InternalRule>();
-    public static List<InternalRule> cppComunityRulesToBeActivated = new ArrayList<InternalRule>();
-    public static List<InternalRule> csRulesToBeActivated = new ArrayList<InternalRule>();
+    public static Map<String, org.sonar.api.rules.Rule> javaRulesToBeActivated = new HashMap<String, org.sonar.api.rules.Rule>();
+    public static Map<String, org.sonar.api.rules.Rule> cppRulesToBeActivated = new HashMap<String, org.sonar.api.rules.Rule>();
+    public static Map<String, org.sonar.api.rules.Rule> cRulesToBeActivated = new HashMap<String, org.sonar.api.rules.Rule>();
+    public static Map<String, org.sonar.api.rules.Rule> cppComunityRulesToBeActivated = new HashMap<String, org.sonar.api.rules.Rule>();
+    public static Map<String, org.sonar.api.rules.Rule> csRulesToBeActivated = new HashMap<String, org.sonar.api.rules.Rule>();
 
-    static Map<String, List> mapOfRuleLists = new HashMap<String, List>();
+    public static Map<String, Map<String, org.sonar.api.rules.Rule>> getMapOfRuleMaps() {
+        return mapOfRuleMaps;
+    }
+
+    public static Map<String, Map<String, org.sonar.api.rules.Rule>> mapOfRuleMaps = new HashMap<String, Map<String, org.sonar.api.rules.Rule>>();
 
     static {
-        mapOfRuleLists.put("java",javaRulesToBeActivated);
-        mapOfRuleLists.put("cpp",cppRulesToBeActivated);
-        mapOfRuleLists.put("c++",cppComunityRulesToBeActivated);
-        mapOfRuleLists.put("c",cRulesToBeActivated);
-        mapOfRuleLists.put("cs",csRulesToBeActivated);
+        mapOfRuleMaps.put("java", javaRulesToBeActivated);
+        mapOfRuleMaps.put("cpp", cppRulesToBeActivated);
+        mapOfRuleMaps.put("c++", cppComunityRulesToBeActivated);
+        mapOfRuleMaps.put("c", cRulesToBeActivated);
+        mapOfRuleMaps.put("cs", csRulesToBeActivated);
+    }
+
+    public CoverityRules() {
     }
 
     /* The interface RulesDefinition provides a default parser: "XmlLoader". However, XmlLoader stores rules as
@@ -90,14 +92,13 @@ public class CoverityRules implements RulesDefinition, Extension {
     *  define "InternalRule.class" and we complete its fields by doing a parsing by ourselves. This is the propose of
     *  "parseRules()".
     * */
-    public void parseRules(){
+    public Map<String, Map<String, org.sonar.api.rules.Rule>> parseRules(){
 
         for(String language : languages){
 
             String fileDir = "coverity-" + language + ".xml";
             InputStream in = getClass().getResourceAsStream(fileDir);
 
-            LOG.info("This is the absolute path for rules: " + in.toString());
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder dBuilder = null;
             Document doc = null;
@@ -143,15 +144,21 @@ public class CoverityRules implements RulesDefinition, Extension {
                     description = getValue("description", element);
                 }
 
-                InternalRule internalRule = new InternalRule(key, name, severity, description, language);
+                org.sonar.api.rules.Rule covRule = org.sonar.api.rules.Rule.create("coverity-" + language, key);
+                covRule.setName(name);
+                covRule.setLanguage(language);
+                covRule.setDescription(description);
+                covRule.setSeverity(RulePriority.valueOf(severity));
 
-                mapOfRuleLists.get(language).add(internalRule);
+                mapOfRuleMaps.get(language).put(key, covRule);
                 if(language.equals("cpp")){
-                    mapOfRuleLists.get("c++").add(internalRule);
-                    mapOfRuleLists.get("c").add(internalRule);
+                    mapOfRuleMaps.get("c++").put(key, covRule);
+                    mapOfRuleMaps.get("c").put(key, covRule);
                 }
             }
         }
+
+        return mapOfRuleMaps;
     }
 
     private static String getValue(String tag, Element element) {

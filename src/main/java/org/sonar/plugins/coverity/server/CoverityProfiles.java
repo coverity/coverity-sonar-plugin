@@ -17,22 +17,11 @@ import org.sonar.api.ExtensionProvider;
 import org.sonar.api.ServerExtension;
 import org.sonar.api.profiles.ProfileDefinition;
 import org.sonar.api.profiles.RulesProfile;
-import org.sonar.api.resources.Language;
 import org.sonar.api.rules.Rule;
-import org.sonar.api.rules.RuleFinder;
-import org.sonar.api.rules.RulePriority;
-import org.sonar.api.rules.RuleQuery;
-import org.sonar.api.server.rule.RulesDefinition;
-import org.sonar.api.server.rule.RulesDefinitionXmlLoader;
 import org.sonar.api.utils.ValidationMessages;
-import org.sonar.plugins.coverity.CoverityPlugin;
-import org.sonar.plugins.coverity.util.FileGenerator;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
-
-import static org.sonar.plugins.coverity.util.FileGenerator.main;
 
 public class CoverityProfiles extends ExtensionProvider implements ServerExtension {
     private static final Logger LOG = LoggerFactory.getLogger(CoverityProfiles.class);
@@ -66,9 +55,9 @@ public class CoverityProfiles extends ExtensionProvider implements ServerExtensi
         public RulesProfile createProfile(ValidationMessages validation) {
             final RulesProfile profile = RulesProfile.create("Coverity(" + language + ")", language);
 
-            for(Object rule1 : CoverityRules.mapOfRuleLists.get(language)){
-                CoverityRules.InternalRule rule = (CoverityRules.InternalRule) rule1;
-                profile.activateRule(Rule.create("coverity-" + language, rule.key), RulePriority.valueOf(rule.severity) );
+            for(Object rule1 : CoverityRules.mapOfRuleMaps.get(language).values()){
+                Rule rule = (Rule) rule1;
+                profile.activateRule(rule,rule.getSeverity());
             }
 
             return profile;
