@@ -152,8 +152,19 @@ public class CoverityRules implements RulesDefinition, Extension {
 
                 mapOfRuleMaps.get(language).put(key, covRule);
                 if(language.equals("cpp")){
-                    mapOfRuleMaps.get("c++").put(key, covRule);
-                    mapOfRuleMaps.get("c").put(key, covRule);
+                    org.sonar.api.rules.Rule covRuleCPlusPlus = org.sonar.api.rules.Rule.create("coverity-" + "c++", key);
+                    covRuleCPlusPlus.setName(name);
+                    covRuleCPlusPlus.setLanguage("c++");
+                    covRuleCPlusPlus.setDescription(description);
+                    covRuleCPlusPlus.setSeverity(RulePriority.valueOf(severity));
+                    mapOfRuleMaps.get("c++").put(key, covRuleCPlusPlus);
+
+                    org.sonar.api.rules.Rule covRuleC = org.sonar.api.rules.Rule.create("coverity-" + "c", key);
+                    covRuleC.setName(name);
+                    covRuleC.setLanguage("c");
+                    covRuleC.setDescription(description);
+                    covRuleC.setSeverity(RulePriority.valueOf(severity));
+                    mapOfRuleMaps.get("c").put(key, covRuleC);
                 }
             }
         }

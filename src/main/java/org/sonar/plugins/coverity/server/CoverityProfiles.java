@@ -57,7 +57,8 @@ public class CoverityProfiles extends ExtensionProvider implements ServerExtensi
 
             for(Object rule1 : CoverityRules.mapOfRuleMaps.get(language).values()){
                 Rule rule = (Rule) rule1;
-                profile.activateRule(rule,rule.getSeverity());
+                //Fix Bug 80500
+                profile.activateRule(Rule.create("coverity-" + language, rule.getKey()), rule.getSeverity() );
             }
 
             return profile;
