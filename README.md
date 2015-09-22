@@ -17,10 +17,12 @@ mvn install:install-file -Dfile=xmldsig-1.0.jar -DgroupId=javax.xml.crypto -Dart
   
 ## Changelog
 
-* __1.3.0__
-  * Upgrade to Sonarqube 4.5.1.
-* __1.3.0__
-  * The footer now says "Coverity Connect" and it redirects users to their CIM instance (BZ 66712)
+* __1.4.0__
+  * Supporting Sonarqube 5.1.2.
+* __1.4.0__
+  * Fix bug when importing defects after --strip-path option had been used during analysis or commit.
+* __1.4.0__
+  * Description for issues are now being properly displayed.
 
 
 
