@@ -11,12 +11,28 @@
 	<groupId>org.sonar.plugins.coverity</groupId>
 	<artifactId>coverity-sonar-plugin</artifactId>
 	<packaging>sonar-plugin</packaging>
-	<version>1.4.0</version>
+	<version>1.4.1</version>
 
 	<name>Coverity</name>
 	<description>Imports Coverity defects into SonarQube</description>
 	<url>http://docs.codehaus.org/display/SONAR/Coverity+Plugin</url>
 	<inceptionYear>2014</inceptionYear>
+
+	<!--<profiles>
+		<profile>
+			<id>QualityProfileOne</id>
+			<properties>
+				<sonar.profile>Coverity(java)</sonar.profile>
+                <sourceDirectory>${project.basedir}</sourceDirectory>
+			</properties>
+		</profile>
+		<profile>
+			<id>QualityProfileTwo</id>
+			<properties>
+				<sonar.profile>Coverity(cpp)</sonar.profile>
+			</properties>
+		</profile>
+	</profiles>-->
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -25,6 +41,9 @@
 		<cxf.version>2.6.1</cxf.version>
 		<license.title>Coverity Sonar Plugin</license.title>
 		<license.mailto>support@coverity.com</license.mailto>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <sonar.language>java</sonar.language>
+		<!--<sonar.branch>Dev_${sonar.profile}</sonar.branch>-->
 	</properties>
 
 	<organization>
@@ -113,10 +132,43 @@
             <artifactId>xmldsig</artifactId>
             <version>1.0</version>
         </dependency>
+		<dependency>
+			<groupId>org.codehaus.mojo</groupId>
+			<artifactId>sonar-maven-plugin</artifactId>
+			<version>2.2</version>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>1.7.12</version>
+		</dependency>
+		<dependency>
+			<groupId>org.codehaus.sonar</groupId>
+			<artifactId>sonar-maven-plugin</artifactId>
+			<version>5.1</version>
+		</dependency>
     </dependencies>
 
 	<build>
+        <!--<sourceDirectory>${project.basedir}</sourceDirectory>-->
+        <!--<sourceDirectory>${project.basedir}/src/main/java</sourceDirectory>-->
+        <!--<testSourceDirectory>${project.basedir}/src/test/java</testSourceDirectory>-->
 		<plugins>
+            <!--<plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>build-helper-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <phase>generate-sources</phase>
+                        <goals><goal>add-source</goal></goals>
+                        <configuration>
+                            <sources>
+                                <source>${project.basedir}/src/test/java</source>
+                            </sources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>-->
 			<plugin>
 				<groupId>org.apache.cxf</groupId>
 				<artifactId>cxf-codegen-plugin</artifactId>
@@ -211,6 +263,11 @@
                     <skip>true</skip>
                 </configuration>
             </plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>sonar-maven-plugin</artifactId>
+				<version>2.6</version>
+			</plugin>
 
 		</plugins>
 	</build>

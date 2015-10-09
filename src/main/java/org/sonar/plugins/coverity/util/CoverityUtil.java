@@ -66,6 +66,12 @@ public class CoverityUtil {
     }
 
     public static List<File> listFiles(File dir){
-        return listFiles(dir, new ArrayList<File>());
+        if(dir.isFile()){
+            List<File> tmpList = new ArrayList<File>();
+            tmpList.add(dir);
+            return tmpList;
+        } else {
+            return listFiles(dir, new ArrayList<File>());
+        }
     }
 }
