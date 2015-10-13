@@ -17,23 +17,6 @@
 	<description>Imports Coverity defects into SonarQube</description>
 	<url>http://docs.codehaus.org/display/SONAR/Coverity+Plugin</url>
 	<inceptionYear>2014</inceptionYear>
-
-	<!--<profiles>
-		<profile>
-			<id>QualityProfileOne</id>
-			<properties>
-				<sonar.profile>Coverity(java)</sonar.profile>
-                <sourceDirectory>${project.basedir}</sourceDirectory>
-			</properties>
-		</profile>
-		<profile>
-			<id>QualityProfileTwo</id>
-			<properties>
-				<sonar.profile>Coverity(cpp)</sonar.profile>
-			</properties>
-		</profile>
-	</profiles>-->
-
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<sonar.version>4.5.1</sonar.version>
@@ -41,9 +24,6 @@
 		<cxf.version>2.6.1</cxf.version>
 		<license.title>Coverity Sonar Plugin</license.title>
 		<license.mailto>support@coverity.com</license.mailto>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <sonar.language>java</sonar.language>
-		<!--<sonar.branch>Dev_${sonar.profile}</sonar.branch>-->
 	</properties>
 
 	<organization>
@@ -150,25 +130,7 @@
     </dependencies>
 
 	<build>
-        <!--<sourceDirectory>${project.basedir}</sourceDirectory>-->
-        <!--<sourceDirectory>${project.basedir}/src/main/java</sourceDirectory>-->
-        <!--<testSourceDirectory>${project.basedir}/src/test/java</testSourceDirectory>-->
 		<plugins>
-            <!--<plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>build-helper-maven-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <phase>generate-sources</phase>
-                        <goals><goal>add-source</goal></goals>
-                        <configuration>
-                            <sources>
-                                <source>${project.basedir}/src/test/java</source>
-                            </sources>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>-->
 			<plugin>
 				<groupId>org.apache.cxf</groupId>
 				<artifactId>cxf-codegen-plugin</artifactId>

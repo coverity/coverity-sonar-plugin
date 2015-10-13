@@ -17,12 +17,9 @@ mvn install:install-file -Dfile=xmldsig-1.0.jar -DgroupId=javax.xml.crypto -Dart
   
 ## Changelog
 
-* __1.4.0__
-  * Supporting Sonarqube 5.1.2.
-* __1.4.0__
-  * Fix bug when importing defects after --strip-path option had been used during analysis or commit.
-* __1.4.0__
-  * Description for issues are now being properly displayed.
+* __1.4.1__
+  * Fixing issues when using maven as executor instead of sonar-runner.
+
 
 
 
