@@ -108,6 +108,7 @@ public class CoveritySensor implements Sensor {
 
         String covProject = settings.getString(CoverityPlugin.COVERITY_PROJECT);
         String stripPrefix = settings.getString(CoverityPlugin.COVERITY_PREFIX);
+        String covSrcDir = settings.getString(CoverityPlugin.COVERITY_SOURCE_DIRECTORY);
 
         CIMClient instance = new CIMClient(host, port, user, password, ssl);
         mapOfCheckerPropertyDataObj = instance.getMapOfCheckerPropertyDataObj();
@@ -143,6 +144,25 @@ public class CoveritySensor implements Sensor {
 
             LOG.info("Found " + streamDefects.size() + " defects");
 
+            String currentDir = System.getProperty("user.dir");
+            File currenDirFile = new File(currentDir);
+            LOG.info("Current Directory: " + currentDir);
+
+            List<File> listOfFiles = new ArrayList<File>();
+            String sonarSourcesString = null;
+            if(covSrcDir != null && !covSrcDir.isEmpty()){
+                sonarSourcesString = covSrcDir;
+            } else {
+                sonarSourcesString = settings.getString("sonar.sources");
+            }
+            if(sonarSourcesString != null && !sonarSourcesString.isEmpty()){
+                List<String> sonarSources = Arrays.asList(sonarSourcesString.split(","));
+                for(String dir : sonarSources){
+                    File folder = new File(dir);
+                    listOfFiles.addAll(CoverityUtil.listFiles(folder));
+                }
+            }
+
             for(MergedDefectDataObj mddo : defects) {
                 String status = mddo.getStatus();
 
@@ -151,10 +171,16 @@ public class CoveritySensor implements Sensor {
                     continue;
                 }
 
+                Resource res = null;
                 String filePath = mddo.getFilePathname();
-                if (stripPrefix != null && !stripPrefix.isEmpty() && filePath.startsWith(stripPrefix))
-                    filePath = "./" + filePath.substring(stripPrefix.length());
-                Resource res = getResourceForFile(filePath, project);
+                if (stripPrefix != null && !stripPrefix.isEmpty() && filePath.startsWith(stripPrefix)){
+                    filePath = filePath.substring(stripPrefix.length());
+                    File newPathFile = new File(currenDirFile, filePath);
+                    LOG.info("Full path after prefix being stripped: " + newPathFile.getAbsolutePath());
+                    res = getResourceForFile(newPathFile.getAbsolutePath(), project);
+                } else {
+                    res = getResourceForFile(filePath, project);
+                }
 
                 TripleFromDefects tripleFromMddo = new TripleFromDefects(mddo.getCheckerName(),
                         mddo.getCheckerSubcategory(), mddo.getDomain());
@@ -171,16 +197,6 @@ public class CoveritySensor implements Sensor {
                     }
                     if (impact.equals(LOW)) {
                         lowImpactDefectsCounter++;
-                    }
-                }
-
-                List<File> listOfFiles = new ArrayList<File>();
-                String sonarSourcesString = settings.getString("sonar.sources");
-                if(sonarSourcesString != null && !sonarSourcesString.isEmpty()){
-                    List<String> sonarSources = Arrays.asList(sonarSourcesString.split(","));
-                    for(String dir : sonarSources){
-                        File folder = new File(dir);
-                        listOfFiles.addAll(CoverityUtil.listFiles(folder));
                     }
                 }
 

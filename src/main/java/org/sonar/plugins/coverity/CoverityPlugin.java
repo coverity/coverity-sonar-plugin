@@ -38,6 +38,7 @@ public final class CoverityPlugin extends SonarPlugin {
     public static final String COVERITY_CONNECT_PASSWORD = "sonar.coverity.connect.password";
     public static final String COVERITY_PROJECT = "sonar.coverity.project";
     public static final String COVERITY_PREFIX = "sonar.coverity.prefix";
+    public static final String COVERITY_SOURCE_DIRECTORY = "sonar.coverity.sources.directory";
     public static final String COVERITY_CONNECT_SSL = "sonar.coverity.ssl";
     public static final String REPOSITORY_KEY = "coverity";
 
@@ -101,6 +102,24 @@ public final class CoverityPlugin extends SonarPlugin {
                 PropertyDefinition.builder(CoverityPlugin.COVERITY_PREFIX)
                         .name("Coverity Files Prefix")
                         .description("Prefix to strip from filenames to match this Sonar project")
+                        .type(PropertyType.STRING)
+                        .onlyOnQualifiers(Qualifiers.PROJECT)
+                        .index(++i)
+                        .build(),
+                /**
+                 * When importing defects from cim into sonar, our plugin needs to create "issuable" objects for sonarqube.
+                 * This is accomplished my matching the path of a defect on CIM with the path of a file under the sources
+                 * directory used by sonar. By default, this value is "sonar.sources" which is set up on a properties
+                 * file if sonar-runner is being used as executor. However, if maven is being used as executor it will
+                 * not use a properties file. Instead, this property will be maven's "sourceDirectory" which might
+                 * conflict with files under maven tests folder. In other words, if a file under tests has been analyzed
+                 * by coverity analisis, running this executor will result in that file not being indexed by sonar.
+                 * The solution for this problem is to add a property that will tell coverity which are the sources that
+                 * were analyzed by coverity, which my defer from the ones scanned by the sonar executor.
+                 */
+                PropertyDefinition.builder(CoverityPlugin.COVERITY_SOURCE_DIRECTORY)
+                        .name("Coverity Sources Directory")
+                        .description("Directory that sonar will scan for sources that match defects path on CIM")
                         .type(PropertyType.STRING)
                         .onlyOnQualifiers(Qualifiers.PROJECT)
                         .index(++i)
