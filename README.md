@@ -17,8 +17,9 @@ mvn install:install-file -Dfile=xmldsig-1.0.jar -DgroupId=javax.xml.crypto -Dart
   
 ## Changelog
 
-* __1.4.1__
-  * Fixing issues when using maven as executor instead of sonar-runner.
+* __1.4.2__
+  * Adding "sonar.coverity.sources.directory" property that overrides "sonar.sources" on coverity's plugin.
+  * Enhancing mechanism for handling stripped paths.
 
 
 
