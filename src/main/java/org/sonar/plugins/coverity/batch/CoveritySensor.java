@@ -166,7 +166,7 @@ public class CoveritySensor implements Sensor {
             for(MergedDefectDataObj mddo : defects) {
                 String status = mddo.getStatus();
 
-                if ("Dismissed".equals(status) || "Fixed".equals(status)) {
+                if ("Dismissed".equals(status) || "Fixed".equals(status) || "Absent Dismissed".equals(status)) {
                     LOG.info("Skipping resolved defect (CID " + mddo.getCid() + ", status '" + mddo.getStatus() + "')");
                     continue;
                 }
