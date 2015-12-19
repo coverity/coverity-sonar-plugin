@@ -1,3 +1,11 @@
+<%
+    outstanding_measure = @snapshot.measure('COVERITY-OUTSTANDING-ISSUES')
+    highimpact_measure = @snapshot.measure('COVERITY-HIGH-IMPACT')
+    mediumimpact_measure = @snapshot.measure('COVERITY-MEDIUM-IMPACT')
+    lowimpact_measure = @snapshot.measure('COVERITY-LOW-IMPACT')
+
+    if outstanding_measure || highimpact_measure || mediumimpact_measure || lowimpact_measure
+%>
 <style>
     .coverity-inner {
         font-style: normal;
@@ -10,97 +18,43 @@
         border: 0;
     }
 </style>
-<%
-=begin
-    In the following table we will use the method format_measure() repeatedly, this method requires the key of a measure
-    and also admits another optional parameters. If none of these parameters are specified it will return by default an
-    string with the data stored in the metric. This data will be enclosed under a <span> tag, which is why we need to
-    use the method gsub() in order to get the string enclosed by this tag.
-=end
-%>
 <table width="100%">
-    <tr>
-        <td width="10">
-                <a href='<%=
-                    # @return [String]
-                    mystring=format_measure('COVERITY-URL-CIM-METRIC', {:skip_span_id => true})
-                    mystring.gsub(/<span[^>]*>(.*)<\/span>/,'\1')
-                -%>'>
-
-                <img src="<%= url_for_static(:plugin => 'coverity', :path => 'coverity-logo.png') -%>" alt="Coverity Logo" >
-            </a>
-        </td>
-    </tr>
-    <tr>
-        <td>
-                <p><b>Coverity Project:</b>
-                <a href='<%=
-                    # @return [String]
-
-                    mystring1=format_measure('COVERITY-PROJECT-URL', {:skip_span_id => true})
-                    mystring1.gsub(/<span[^>]*>(.*)<\/span>/,'\1')
-                -%>'>
-                    <%=
-                        # @return [String]
-
-                        mystring2=format_measure('COVERITY-PROJECT-NAME', {:skip_span_id => true})
-                        mystring2.gsub(/<span[^>]*>(.*)<\/span>/,'\1')
-
-                    -%>
-                </a>
-                </p>
-                <br>
-        </td>
-    </tr>
-    <tr>
-        <td>
-                <p>Outstanding Issues:</p>
-                <p>
-                        <%=
-                            # @return [String]
-
-                            mystring3=format_measure('COVERITY-OUTSTANDING-ISSUES', {:skip_span_id => true})
-                            mystring3.gsub(/<span[^>]*>(.*)<\/span>/,'\1')
-
-                        -%>
-                </p>
-        </td>
-        <td>
-                <p>High Impact:</p>
-                <p>
-                    <%=
-                        # @return [String]
-
-                        mystring4=format_measure('COVERITY-HIGH-IMPACT', {:skip_span_id => true})
-                        mystring4.gsub(/<span[^>]*>(.*)<\/span>/,'\1')
-
-                    -%>
-                </p>
-        </td>
-        <td>
-                <p>Medium Impact:</p>
-                <p>
-                    <%=
-                        # @return [String]
-
-                        mystring5=format_measure('COVERITY-MEDIUM-IMPACT', {:skip_span_id => true})
-                        mystring5.gsub(/<span[^>]*>(.*)<\/span>/,'\1')
-
-                    -%>
-                </p>
-        </td>
-        <td>
-                <p>Low Impact:</p>
-                <p>
-                    <%=
-                        # @return [String]
-
-                        mystring6=format_measure('COVERITY-LOW-IMPACT', {:skip_span_id => true})
-                        mystring6.gsub(/<span[^>]*>(.*)<\/span>/,'\1')
-
-                    -%>
-                </p>
-        </td>
-    </tr>
+  <td width="50%" valign="top">
+    <div class="dashbox">
+	  <h3>Coverity Issues</h3>
+      <span class="big">
+        <p>
+          <%= format_measure(outstanding_measure, {:url => outstanding_measure.url}) -%>
+          <%= dashboard_configuration.selected_period? ? format_variation(outstanding_measure) : trend_icon(outstanding_measure) -%>
+        </p>
+      </span>
+    </div>
+  </td>
+  <td valign="top">
+    <div class="dashbox">
+      <p class="title">By Impact</p>
+      <table>
+        <%
+		  distribution = nil
+          [highimpact_measure, mediumimpact_measure, lowimpact_measure].each do |measure|
+            measure_name = measure.short_name.chomp(" Impact")
+            distribution = (distribution ? distribution + ";" : "") + measure_name + "=" + measure.value.to_s
+        %>
+          <tr>
+            <td align="left">
+              <%= measure_name -%>
+            </td>
+            <td align="right" style="padding-left: 10px;">
+              <%= format_measure(measure) -%>
+              <%= dashboard_configuration.selected_period? ? format_variation(measure) : trend_icon(measure) -%>
+            </td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+  </td>
+  <td valign="center">
+    <%= piechart( distribution ) -%>
+  </td>
 </table>
-
+<% end %>
