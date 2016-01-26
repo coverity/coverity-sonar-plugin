@@ -11,17 +11,13 @@
 
 package org.sonar.plugins.coverity.util;
 
-import com.coverity.ws.v6.CheckerPropertyDataObj;
-import com.coverity.ws.v6.CheckerPropertyFilterSpecDataObj;
+import com.coverity.ws.v9.MergedDefectDataObj;
+import com.coverity.ws.v9.ProjectDataObj;
 import org.sonar.plugins.coverity.ws.CIMClient;
 
 import java.io.File;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class FileGenerator {
     public static Map<String, String> languageDomains = new HashMap<String, String>();
@@ -38,6 +34,12 @@ public class FileGenerator {
         xmlDir.mkdirs();
         PrintWriter propsFileOut = new PrintWriter(propsFile);
 
+        Set<MergedDefectDataObj> defectsOnCIMInstance = new HashSet<MergedDefectDataObj>();
+
+        for(ProjectDataObj covProject : instance.getProjects()){
+            defectsOnCIMInstance.addAll(instance.getDefects(covProject.getId().getName()));
+        }
+
         for(Map.Entry<String, String> entry : languageDomains.entrySet()) {
             List<String> lineList = new ArrayList<String>();
             String language = entry.getKey();
@@ -47,14 +49,9 @@ public class FileGenerator {
             PrintWriter xmlFileOut = new PrintWriter(xmlFile,"UTF-8" );
             xmlFileOut.println("<rules>");
 
-            CheckerPropertyFilterSpecDataObj filter = new CheckerPropertyFilterSpecDataObj();
-            filter.getDomainList().add(domain);
-            List<CheckerPropertyDataObj> checkers = instance.getConfigurationService().getCheckerProperties(filter);
-
-            for(CheckerPropertyDataObj cpdo : checkers) {
-                String key = CoverityUtil.flattenCheckerSubcategoryId(cpdo.getCheckerSubcategoryId());
-
-                String desc = cpdo.getSubcategoryLongDescription();
+            for(MergedDefectDataObj mddo : defectsOnCIMInstance) {
+                String key = CoverityUtil.flattenMergedDefectCheckerName(mddo);
+                String desc = mddo.getDisplayCategory();
                 {
                     String linkRegex = "\\(<a href=\"([^\"]*?)\" target=\"_blank\">(.*?)</a>\\)";
                     String codeRegex = "<code>(.*?)</code>";
@@ -65,7 +62,7 @@ public class FileGenerator {
 
                 //xml
                 xmlFileOut.println("<rule>");
-                name = cpdo.getSubcategoryShortDescription();
+                name = mddo.getDisplayType();
                 if(name.isEmpty() || name == null){
                     xmlFileOut.println("<name>" + key + "</name>");
                 } else {
@@ -74,7 +71,7 @@ public class FileGenerator {
                 }
                 xmlFileOut.println("<key>" + key + "</key>");
                 String severity = "MAJOR";
-                String impact = cpdo.getImpact();
+                String impact = mddo.getDisplayImpact();
                 if(impact.equals("High")){
                     severity = "BLOCKER";
                 }
@@ -87,7 +84,7 @@ public class FileGenerator {
                 xmlFileOut.println("</rule>");
 
                 //props
-                lineList.add("rule.coverity-java." + key + ".name=" + cpdo.getSubcategoryShortDescription());
+                lineList.add("rule.coverity-java." + key + ".name=" + mddo.getDisplayType());
             }
 
             xmlFileOut.println("</rules>");
@@ -112,7 +109,7 @@ public class FileGenerator {
         System.out.println("xmlDir=" + xmlDir.getAbsolutePath());
         System.out.println("htmlDir=" + htmlDir.getAbsolutePath());
 
-        CIMClient instance = new CIMClient("frossi-wrkst", 8081, "admin", "coverity", false);
+        CIMClient instance = new CIMClient("frossi-wrkst", 8082, "admin", "coverity", false);
 
         generateRulesFiles(propsFile, xmlDir, htmlDir, instance);
     }

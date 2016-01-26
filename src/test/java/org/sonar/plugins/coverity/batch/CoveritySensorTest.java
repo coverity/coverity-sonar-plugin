@@ -11,11 +11,10 @@
 
 package org.sonar.plugins.coverity.batch;
 
-import com.coverity.ws.v6.CheckerPropertyDataObj;
-import com.coverity.ws.v6.DefectInstanceDataObj;
-import com.coverity.ws.v6.EventDataObj;
-import com.coverity.ws.v6.MergedDefectDataObj;
-import com.coverity.ws.v6.ProjectDataObj;
+import com.coverity.ws.v9.DefectInstanceDataObj;
+import com.coverity.ws.v9.EventDataObj;
+import com.coverity.ws.v9.MergedDefectDataObj;
+import com.coverity.ws.v9.ProjectDataObj;
 import org.junit.Before;
 import org.junit.Test;
 import org.sonar.api.batch.SensorContext;
@@ -26,14 +25,10 @@ import org.sonar.api.measures.Metric;
 import org.sonar.api.profiles.RulesProfile;
 import org.sonar.api.resources.Project;
 import org.sonar.plugins.coverity.ws.CIMClient;
-import org.sonar.plugins.coverity.ws.TripleFromDefects;
 
 import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 

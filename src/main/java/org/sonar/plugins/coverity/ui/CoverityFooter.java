@@ -11,8 +11,8 @@
 
 package org.sonar.plugins.coverity.ui;
 
-import com.coverity.ws.v6.CovRemoteServiceException_Exception;
-import com.coverity.ws.v6.ProjectDataObj;
+import com.coverity.ws.v9.CovRemoteServiceException_Exception;
+import com.coverity.ws.v9.ProjectDataObj;
 import org.sonar.api.config.Settings;
 import org.sonar.api.web.Footer;
 import org.sonar.plugins.coverity.CoverityPlugin;

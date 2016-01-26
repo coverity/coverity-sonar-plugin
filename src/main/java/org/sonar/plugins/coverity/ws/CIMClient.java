@@ -11,10 +11,7 @@
 
 package org.sonar.plugins.coverity.ws;
 
-import com.coverity.ws.v6.*;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.sonar.plugins.coverity.server.CoverityRules;
+import com.coverity.ws.v9.*;
 
 import javax.xml.namespace.QName;
 import javax.xml.ws.BindingProvider;
@@ -27,13 +24,12 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * Represents one Coverity Integrity Manager server. Abstracts functions like getting streams and defects.
  */
 public class CIMClient {
-    public static final String COVERITY_WS_VERSION = "v6";
+    public static final String COVERITY_WS_VERSION = "v9";
     public static final String COVERITY_NAMESPACE = "http://ws.coverity.com/" + COVERITY_WS_VERSION;
     public static final String CONFIGURATION_SERVICE_WSDL = "/ws/" + COVERITY_WS_VERSION + "/configurationservice?wsdl";
     public static final String DEFECT_SERVICE_WSDL = "/ws/" + COVERITY_WS_VERSION + "/defectservice?wsdl";
@@ -163,9 +159,11 @@ public class CIMClient {
     }
 
 
-
+    /**
+     * Returns all merged defects on a given project.
+     */
     public List<MergedDefectDataObj> getDefects(String project) throws IOException, CovRemoteServiceException_Exception {
-        MergedDefectFilterSpecDataObj filterSpec = new MergedDefectFilterSpecDataObj();
+        ProjectScopeDefectFilterSpecDataObj filterSpec = new ProjectScopeDefectFilterSpecDataObj();
         ProjectIdDataObj projectId = new ProjectIdDataObj();
         projectId.setName(project);
         PageSpecDataObj pageSpec = new PageSpecDataObj();
@@ -176,7 +174,7 @@ public class CIMClient {
         MergedDefectsPageDataObj defects = null;
         do {
             pageSpec.setStartIndex(defectCount);
-            defects = getDefectService().getMergedDefectsForProject(projectId, filterSpec, pageSpec);
+            defects = getDefectService().getMergedDefectsForProjectScope(projectId, filterSpec, pageSpec);
             result.addAll(defects.getMergedDefects());
             defectCount += defects.getMergedDefects().size();
         } while(defectCount < defects.getTotalNumberOfRecords());
@@ -184,25 +182,9 @@ public class CIMClient {
         return result;
     }
 
-    public List<MergedDefectDataObj> getDefects(String project, MergedDefectFilterSpecDataObj filterSpec) throws IOException, CovRemoteServiceException_Exception {
-      ProjectIdDataObj projectId = new ProjectIdDataObj();
-      projectId.setName(project);
-      PageSpecDataObj pageSpec = new PageSpecDataObj();
-      pageSpec.setPageSize(2500);
-
-      List<MergedDefectDataObj> result = new ArrayList<MergedDefectDataObj>();
-      int defectCount = 0;
-      MergedDefectsPageDataObj defects = null;
-      do {
-        pageSpec.setStartIndex(defectCount);
-        defects = getDefectService().getMergedDefectsForProject(projectId, filterSpec, pageSpec);
-        result.addAll(defects.getMergedDefects());
-        defectCount += defects.getMergedDefects().size();
-      } while(defectCount < defects.getTotalNumberOfRecords());
-
-      return result;
-    }
-
+    /**
+     * Returns a ProjectDataObj for a given project id.
+     */
     public ProjectDataObj getProject(String projectId) throws IOException, CovRemoteServiceException_Exception {
         ProjectFilterSpecDataObj filterSpec = new ProjectFilterSpecDataObj();
         filterSpec.setNamePattern(projectId);
@@ -214,52 +196,31 @@ public class CIMClient {
         }
     }
 
-    public Long getProjectKey(String projectId) throws IOException, CovRemoteServiceException_Exception {
-        if(projectKeys == null) {
-            projectKeys = new ConcurrentHashMap<String, Long>();
-        }
-
-        Long result = projectKeys.get(projectId);
-        if(result == null) {
-            result = getProject(projectId).getProjectKey();
-            projectKeys.put(projectId, result);
-        }
-        return result;
-    }
-
+    /**
+     * Returns all projects on the current cim instance.
+     */
     public List<ProjectDataObj> getProjects() throws IOException, CovRemoteServiceException_Exception {
         return getConfigurationService().getProjects(new ProjectFilterSpecDataObj());
     }
 
-    public List<StreamDataObj> getStaticStreams(String projectId) throws IOException, CovRemoteServiceException_Exception {
-        ProjectDataObj project = getProject(projectId);
-        List<StreamDataObj> result = new ArrayList<StreamDataObj>();
-        for(StreamDataObj stream : project.getStreams()) {
-            result.add(stream);
-        }
-
-        return result;
-    }
-
-    public StreamDataObj getStream(String streamId) throws IOException, CovRemoteServiceException_Exception {
-        StreamFilterSpecDataObj filter = new StreamFilterSpecDataObj();
-        filter.setNamePattern(streamId);
-
-        List<StreamDataObj> streams = getConfigurationService().getStreams(filter);
-        if(streams.isEmpty()) {
-            return null;
-        } else {
-            return streams.get(0);
-        }
-    }
-
+    /**
+     * Returns a map of <CID, StreamDefectDataObj>. It essentially calls getDefectService().getStreamDefects() on a
+     * specific list of MergedDefectDataObj. Then it takes the resulting List<StreamDefectDataObj> and creates a map
+     * with the CID of each element on that list as the key, and the actual object as value.
+     */
     public Map<Long, StreamDefectDataObj> getStreamDefectsForMergedDefects(List<MergedDefectDataObj> defects) throws IOException, CovRemoteServiceException_Exception {
         Map<Long, MergedDefectDataObj> cids = new HashMap<Long, MergedDefectDataObj>();
 
         Map<Long, StreamDefectDataObj> sddos = new HashMap<Long, StreamDefectDataObj>();
 
+        Map<Long, MergedDefectIdDataObj> mdidos = new HashMap<Long, MergedDefectIdDataObj>();
+
         for(MergedDefectDataObj mddo : defects) {
             cids.put(mddo.getCid(), mddo);
+            MergedDefectIdDataObj mdido = new MergedDefectIdDataObj();
+            mdido.setCid(mddo.getCid());
+            mdido.setMergeKey(mddo.getMergeKey());
+            mdidos.put(mddo.getCid(), mdido);
         }
 
         StreamDefectFilterSpecDataObj filter = new StreamDefectFilterSpecDataObj();
@@ -269,8 +230,12 @@ public class CIMClient {
 
         for(int i = 0; i < cidList.size(); i += GET_STREAM_DEFECTS_MAX_CIDS) {
             List<Long> slice = cidList.subList(i, i + Math.min(GET_STREAM_DEFECTS_MAX_CIDS, cidList.size() - i));
+            List<MergedDefectIdDataObj> sliceMergedDefectIdDataObj = new ArrayList<MergedDefectIdDataObj>();
+            for(Long cid : slice){
+                sliceMergedDefectIdDataObj.add(mdidos.get(cid));
+            }
 
-            List<StreamDefectDataObj> temp = getDefectService().getStreamDefects(slice, filter);
+            List<StreamDefectDataObj> temp = getDefectService().getStreamDefects(sliceMergedDefectIdDataObj, filter);
 
             for(StreamDefectDataObj sddo : temp) {
                 sddos.put(sddo.getCid(), sddo);
@@ -278,34 +243,5 @@ public class CIMClient {
         }
 
         return sddos;
-    }
-
-    //Returns a map with all the CheckerPropertyDataObj, by using TripleFromDefects as keys
-    public Map<TripleFromDefects, CheckerPropertyDataObj> getMapOfCheckerPropertyDataObj(){
-        Map<TripleFromDefects, CheckerPropertyDataObj> mapOfCheckerPropertyDataObj = new HashMap<TripleFromDefects,
-                CheckerPropertyDataObj>();
-
-        try {
-            CheckerPropertyFilterSpecDataObj checkerPropertyFilterSpecDataObj = new CheckerPropertyFilterSpecDataObj();
-            List<CheckerPropertyDataObj> checkerSubcategoryList = getConfigurationService()
-                    .getCheckerProperties(checkerPropertyFilterSpecDataObj);
-
-            for (CheckerPropertyDataObj checkerPropertyDataObj : checkerSubcategoryList) {
-                TripleFromDefects keyInMapOfCheckerPropertyDataObj = new TripleFromDefects(
-                        checkerPropertyDataObj.getCheckerSubcategoryId().getCheckerName(),
-                        checkerPropertyDataObj.getCheckerSubcategoryId().getSubcategory(),
-                        checkerPropertyDataObj.getCheckerSubcategoryId().getDomain()
-                        );
-
-                mapOfCheckerPropertyDataObj.put(keyInMapOfCheckerPropertyDataObj, checkerPropertyDataObj);
-            }
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (CovRemoteServiceException_Exception e) {
-            e.printStackTrace();
-        }
-
-        return mapOfCheckerPropertyDataObj;
     }
 }

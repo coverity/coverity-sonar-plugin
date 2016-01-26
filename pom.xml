@@ -11,7 +11,7 @@
 	<groupId>org.sonar.plugins.coverity</groupId>
 	<artifactId>coverity-sonar-plugin</artifactId>
 	<packaging>sonar-plugin</packaging>
-	<version>1.4.2</version>
+	<version>1.4.3</version>
 
 	<name>Coverity</name>
 	<description>Imports Coverity defects into SonarQube</description>
@@ -131,41 +131,6 @@
 
 	<build>
 		<plugins>
-			<plugin>
-				<groupId>org.apache.cxf</groupId>
-				<artifactId>cxf-codegen-plugin</artifactId>
-				<version>${cxf.version}</version>
-				<executions>
-					<execution>
-						<goals>
-							<goal>wsdl2java</goal>
-						</goals>
-						<configuration>
-							<sourceRoot>${basedir}/target/generated-sources</sourceRoot>
-							<wsdlOptions>
-								<wsdlOption>
-									<wsdl>
-										${project.basedir}/src/main/wsdl/configurationservice.wsdl
-									</wsdl>
-									<extraargs>
-										<extraarg>-client</extraarg>
-										<extraarg>-mark-generated</extraarg>
-									</extraargs>
-								</wsdlOption>
-								<wsdlOption>
-									<wsdl>
-										${project.basedir}/src/main/wsdl/defectservice.wsdl
-									</wsdl>
-									<extraargs>
-										<extraarg>-client</extraarg>
-										<extraarg>-mark-generated</extraarg>
-									</extraargs>
-								</wsdlOption>
-							</wsdlOptions>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>build-helper-maven-plugin</artifactId>

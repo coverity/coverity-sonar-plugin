@@ -11,7 +11,7 @@
 
 package org.sonar.plugins.coverity.batch;
 
-import com.coverity.ws.v6.*;
+import com.coverity.ws.v9.*;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -38,8 +38,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
-
-import org.sonar.plugins.coverity.ws.TripleFromDefects;
 
 import static org.sonar.plugins.coverity.base.CoverityPluginMetrics.*;
 import static org.sonar.plugins.coverity.util.CoverityUtil.createURL;
@@ -81,7 +79,6 @@ public class CoveritySensor implements Sensor {
     public void analyse(Project project, SensorContext sensorContext) {
         boolean enabled = settings.getBoolean(CoverityPlugin.COVERITY_ENABLE);
 
-        Map<TripleFromDefects, CheckerPropertyDataObj> mapOfCheckerPropertyDataObj = null;
         int totalDefectsCounter = 0;
         int highImpactDefectsCounter = 0;
         int mediumImpactDefectsCounter = 0;
@@ -111,7 +108,6 @@ public class CoveritySensor implements Sensor {
         String covSrcDir = settings.getString(CoverityPlugin.COVERITY_SOURCE_DIRECTORY);
 
         CIMClient instance = new CIMClient(host, port, user, password, ssl);
-        mapOfCheckerPropertyDataObj = instance.getMapOfCheckerPropertyDataObj();
 
         //find the configured project
         ProjectDataObj covProjectObj = null;
@@ -164,10 +160,20 @@ public class CoveritySensor implements Sensor {
             }
 
             for(MergedDefectDataObj mddo : defects) {
-                String status = mddo.getStatus();
+
+                String status = null;
+                String impact = null;
+
+                List<DefectStateAttributeValueDataObj> listOfAttributes = mddo.getDefectStateAttributeValues();
+
+                for(DefectStateAttributeValueDataObj defectAttribute : listOfAttributes){
+                    if(defectAttribute.getAttributeDefinitionId().getName().equals("Severity")){
+                        impact = defectAttribute.getAttributeValueId().getName();
+                    }
+                }
 
                 if ("Dismissed".equals(status) || "Fixed".equals(status)) {
-                    LOG.info("Skipping resolved defect (CID " + mddo.getCid() + ", status '" + mddo.getStatus() + "')");
+                    LOG.info("Skipping resolved defect (CID " + mddo.getCid() + ", status '" + status + "')");
                     continue;
                 }
 
@@ -182,12 +188,7 @@ public class CoveritySensor implements Sensor {
                     res = getResourceForFile(filePath, project);
                 }
 
-                TripleFromDefects tripleFromMddo = new TripleFromDefects(mddo.getCheckerName(),
-                        mddo.getCheckerSubcategory(), mddo.getDomain());
-
-                CheckerPropertyDataObj checkerPropertyDataObj = mapOfCheckerPropertyDataObj.get(tripleFromMddo);
-                if(checkerPropertyDataObj != null){
-                    String impact = checkerPropertyDataObj.getImpact();
+                if(impact != null){
                     totalDefectsCounter++;
                     if (impact.equals(HIGH)) {
                         highImpactDefectsCounter++;
@@ -235,7 +236,6 @@ public class CoveritySensor implements Sensor {
                     EventDataObj mainEvent = getMainEvent(dido);
 
                     Issuable issuable = resourcePerspectives.as(Issuable.class, res);
-
 
                     org.sonar.api.rule.RuleKey rk = CoverityUtil.getRuleKey(lang.getKey(), dido);
                     ActiveRule ar = profile.getActiveRule(rk.repository(), rk.rule());

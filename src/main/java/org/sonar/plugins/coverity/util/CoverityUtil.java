@@ -11,8 +11,8 @@
 
 package org.sonar.plugins.coverity.util;
 
-import com.coverity.ws.v6.CheckerSubcategoryIdDataObj;
-import com.coverity.ws.v6.DefectInstanceDataObj;
+import com.coverity.ws.v9.DefectInstanceDataObj;
+import com.coverity.ws.v9.MergedDefectDataObj;
 import org.sonar.api.config.Settings;
 import org.sonar.api.rule.RuleKey;
 import org.sonar.plugins.coverity.CoverityPlugin;
@@ -27,11 +27,11 @@ import java.util.List;
 
 public class CoverityUtil {
     public static RuleKey getRuleKey(String language, DefectInstanceDataObj dido) {
-        return RuleKey.of(CoverityPlugin.REPOSITORY_KEY + "-" + language, flattenCheckerSubcategoryId(dido.getCheckerSubcategoryId()));
+        return RuleKey.of(CoverityPlugin.REPOSITORY_KEY + "-" + language, dido.getDomain() + "_" + dido.getCheckerName());
     }
 
-    public static String flattenCheckerSubcategoryId(CheckerSubcategoryIdDataObj csido) {
-        return csido.getDomain() + "_" + csido.getCheckerName() + "_" + csido.getSubcategory();
+    public static String flattenMergedDefectCheckerName(MergedDefectDataObj mddo) {
+        return mddo.getDomain() + "_" + mddo.getCheckerName();
     }
 
     public static String createURL(CIMClient client) {
