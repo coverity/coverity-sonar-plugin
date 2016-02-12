@@ -11,8 +11,10 @@
 
 package org.sonar.plugins.coverity.util;
 
+import com.coverity.ws.v9.DefectInstanceDataObj;
 import com.coverity.ws.v9.MergedDefectDataObj;
 import com.coverity.ws.v9.ProjectDataObj;
+import com.coverity.ws.v9.StreamDefectDataObj;
 import org.sonar.plugins.coverity.ws.CIMClient;
 
 import java.io.File;
@@ -21,7 +23,6 @@ import java.util.*;
 
 public class FileGenerator {
     public static Map<String, String> languageDomains = new HashMap<String, String>();
-    static String name;
 
     static {
         languageDomains.put("java", "STATIC_JAVA");
@@ -40,18 +41,27 @@ public class FileGenerator {
             defectsOnCIMInstance.addAll(instance.getDefects(covProject.getId().getName()));
         }
 
+        List<MergedDefectDataObj> mddoList = new ArrayList<MergedDefectDataObj>(defectsOnCIMInstance);
+        Map<Long, StreamDefectDataObj> sddoMap = instance.getStreamDefectsForMergedDefects(mddoList);
+
         for(Map.Entry<String, String> entry : languageDomains.entrySet()) {
             List<String> lineList = new ArrayList<String>();
             String language = entry.getKey();
-            String domain = entry.getValue();
 
             File xmlFile = new File(xmlDir, "coverity-" + language + ".xml");
             PrintWriter xmlFileOut = new PrintWriter(xmlFile,"UTF-8" );
             xmlFileOut.println("<rules>");
 
-            for(MergedDefectDataObj mddo : defectsOnCIMInstance) {
-                String key = CoverityUtil.flattenMergedDefectCheckerName(mddo);
-                String desc = mddo.getDisplayCategory();
+            for(StreamDefectDataObj sddo : sddoMap.values()) {
+                List<DefectInstanceDataObj> defectInstancesList = sddo.getDefectInstances();
+                DefectInstanceDataObj dido = null;
+                if(defectInstancesList != null && !defectInstancesList.isEmpty()){
+                    dido = defectInstancesList.get(0);
+                } else{
+                    continue;
+                }
+                String key = CoverityUtil.flattenDefectInstanceCheckerName(dido);
+                String desc = dido.getLongDescription();
                 {
                     String linkRegex = "\\(<a href=\"([^\"]*?)\" target=\"_blank\">(.*?)</a>\\)";
                     String codeRegex = "<code>(.*?)</code>";
@@ -62,7 +72,8 @@ public class FileGenerator {
 
                 //xml
                 xmlFileOut.println("<rule>");
-                name = mddo.getDisplayType();
+                String name;
+                name = dido.getCheckerName();
                 if(name.isEmpty() || name == null){
                     xmlFileOut.println("<name>" + key + "</name>");
                 } else {
@@ -71,7 +82,7 @@ public class FileGenerator {
                 }
                 xmlFileOut.println("<key>" + key + "</key>");
                 String severity = "MAJOR";
-                String impact = mddo.getDisplayImpact();
+                String impact = dido.getImpact().getDisplayName();
                 if(impact.equals("High")){
                     severity = "BLOCKER";
                 }
@@ -84,7 +95,7 @@ public class FileGenerator {
                 xmlFileOut.println("</rule>");
 
                 //props
-                lineList.add("rule.coverity-java." + key + ".name=" + mddo.getDisplayType());
+                lineList.add("rule.coverity-java." + key + ".name=" + name);
             }
 
             xmlFileOut.println("</rules>");
@@ -101,9 +112,13 @@ public class FileGenerator {
     }
 
     public static void main(String[] args) throws Exception {
-        File propsFile = new File("src/main/resources/org/sonar/l10n/coverity.properties");
+        /*File propsFile = new File("src/main/resources/org/sonar/l10n/coverity.properties");
         File xmlDir = new File("src/main/resources/org/sonar/plugins/coverity/server");
-        File htmlDir = new File("src/main/resources/org/sonar/l10n/coverity/rules");
+        File htmlDir = new File("src/main/resources/org/sonar/l10n/coverity/rules");*/
+
+        File propsFile = new File("/data00/workspace/sonar-feb-2016/fakeFiles/coverity.properties");
+        File xmlDir = new File("/data00/workspace/sonar-feb-2016/fakeFiles");
+        File htmlDir = new File("/data00/workspace/sonar-feb-2016/fakeFiles");
 
         System.out.println("propsFile=" + propsFile.getAbsolutePath());
         System.out.println("xmlDir=" + xmlDir.getAbsolutePath());

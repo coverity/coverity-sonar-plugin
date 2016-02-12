@@ -30,8 +30,8 @@ public class CoverityUtil {
         return RuleKey.of(CoverityPlugin.REPOSITORY_KEY + "-" + language, dido.getDomain() + "_" + dido.getCheckerName());
     }
 
-    public static String flattenMergedDefectCheckerName(MergedDefectDataObj mddo) {
-        return mddo.getDomain() + "_" + mddo.getCheckerName();
+    public static String flattenDefectInstanceCheckerName(DefectInstanceDataObj dido) {
+        return dido.getDomain() + "_" + dido.getCheckerName();
     }
 
     public static String createURL(CIMClient client) {
