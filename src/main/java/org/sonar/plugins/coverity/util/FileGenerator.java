@@ -112,13 +112,9 @@ public class FileGenerator {
     }
 
     public static void main(String[] args) throws Exception {
-        /*File propsFile = new File("src/main/resources/org/sonar/l10n/coverity.properties");
+        File propsFile = new File("src/main/resources/org/sonar/l10n/coverity.properties");
         File xmlDir = new File("src/main/resources/org/sonar/plugins/coverity/server");
-        File htmlDir = new File("src/main/resources/org/sonar/l10n/coverity/rules");*/
-
-        File propsFile = new File("/data00/workspace/sonar-feb-2016/fakeFiles/coverity.properties");
-        File xmlDir = new File("/data00/workspace/sonar-feb-2016/fakeFiles");
-        File htmlDir = new File("/data00/workspace/sonar-feb-2016/fakeFiles");
+        File htmlDir = new File("src/main/resources/org/sonar/l10n/coverity/rules");
 
         System.out.println("propsFile=" + propsFile.getAbsolutePath());
         System.out.println("xmlDir=" + xmlDir.getAbsolutePath());
