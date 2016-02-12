@@ -113,13 +113,13 @@ public class CoveritySensor implements Sensor {
         ProjectDataObj covProjectObj = null;
         try {
             covProjectObj = instance.getProject(covProject);
-            LOG.info("Found project: " + covProject + " (" + covProjectObj.getProjectKey() + ")");
-
             if(covProjectObj == null) {
                 LOG.error("Couldn't find project: " + covProject);
                 Thread.currentThread().setContextClassLoader(oldCL);
                 return;
-            }
+            }            
+            LOG.info("Found project: " + covProject + " (" + covProjectObj.getProjectKey() + ")");
+
         } catch(Exception e) {
             LOG.error("Error while trying to find project: " + covProject);
             Thread.currentThread().setContextClassLoader(oldCL);
