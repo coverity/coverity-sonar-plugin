@@ -161,14 +161,18 @@ public class CoveritySensor implements Sensor {
 
             for(MergedDefectDataObj mddo : defects) {
 
-                String status = null;
-                String impact = null;
+                String status = "";
+                String impact = "";
 
                 List<DefectStateAttributeValueDataObj> listOfAttributes = mddo.getDefectStateAttributeValues();
 
                 for(DefectStateAttributeValueDataObj defectAttribute : listOfAttributes){
-                    if(defectAttribute.getAttributeDefinitionId().getName().equals("Severity")){
+                    String name = defectAttribute.getAttributeDefinitionId().getName();
+                    if(name.equals("Severity")){
                         impact = defectAttribute.getAttributeValueId().getName();
+                    }
+                    if(name.equals("DefectStatus")){
+                        status = defectAttribute.getAttributeValueId().getName();
                     }
                 }
 
