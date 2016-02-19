@@ -46,28 +46,28 @@ public class CoverityPluginMetrics implements Metrics{
 
     // This metric will contain the total number of defects in the project.
     // This also counts defects for which the method getResourceForFile() returned null.
-    public static final Metric COVERITY_OUTSTANDING_ISSUES = new Metric.Builder("COVERITY-OUTSTANDING-ISSUES", "Outstanding Issues", Metric.ValueType.STRING)
-            .setDirection(Metric.DIRECTION_NONE)
-            .setQualitative(true)
+    public static final Metric COVERITY_OUTSTANDING_ISSUES = new Metric.Builder("COVERITY-OUTSTANDING-ISSUES", "Outstanding Issues", Metric.ValueType.INT)
+            .setDirection(Metric.DIRECTION_WORST)
+            .setQualitative(false)
             .setDomain(DOMAIN)
             .create();
 
     // This metric will contain the number of defects with high impact.
-    public static final Metric COVERITY_HIGH_IMPACT  = new Metric.Builder("COVERITY-HIGH-IMPACT", "High Impact", Metric.ValueType.STRING)
+    public static final Metric COVERITY_HIGH_IMPACT  = new Metric.Builder("COVERITY-HIGH-IMPACT", "High Impact", Metric.ValueType.INT)
             .setDirection(Metric.DIRECTION_WORST)
             .setQualitative(false)
             .setDomain(DOMAIN)
             .create();
 
     // This metric will contain the number of defects with medium impact.
-    public static final Metric COVERITY_MEDIUM_IMPACT  = new Metric.Builder("COVERITY-MEDIUM-IMPACT", "Medium Impact", Metric.ValueType.STRING)
+    public static final Metric COVERITY_MEDIUM_IMPACT  = new Metric.Builder("COVERITY-MEDIUM-IMPACT", "Medium Impact", Metric.ValueType.INT)
             .setDirection(Metric.DIRECTION_WORST)
             .setQualitative(false)
             .setDomain(DOMAIN)
             .create();
 
     // This metric will contain the number of defects with low impact.
-    public static final Metric COVERITY_LOW_IMPACT  = new Metric.Builder("COVERITY-LOW-IMPACT", "Low Impact", Metric.ValueType.STRING)
+    public static final Metric COVERITY_LOW_IMPACT  = new Metric.Builder("COVERITY-LOW-IMPACT", "Low Impact", Metric.ValueType.INT)
             .setDirection(Metric.DIRECTION_WORST)
             .setQualitative(false)
             .setDomain(DOMAIN)

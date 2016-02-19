@@ -52,10 +52,10 @@ public class CoveritySensor implements Sensor {
     private final String MEDIUM = "Medium";
     private final String LOW = "Low";
 
-    private String totalDefects = null;
-    private String highImpactDefects = null;
-    private String mediumImpactDefects = null;
-    private String lowImpactDefects = null;
+    private int totalDefects = 0;
+    private int highImpactDefects = 0;
+    private int mediumImpactDefects = 0;
+    private int lowImpactDefects = 0;
 
     public CoveritySensor(Settings settings, RulesProfile profile, ResourcePerspectives resourcePerspectives) {
         this.settings = settings;
@@ -164,14 +164,15 @@ public class CoveritySensor implements Sensor {
                 String status = "";
                 String impact = "";
 
+                List<DefectInstanceDataObj> didos = streamDefects.get(mddo.getCid()).getDefectInstances();
+                if(didos != null && !didos.isEmpty()){
+                    impact = didos.get(0).getImpact().getDisplayName();
+                }
+
                 List<DefectStateAttributeValueDataObj> listOfAttributes = mddo.getDefectStateAttributeValues();
 
                 for(DefectStateAttributeValueDataObj defectAttribute : listOfAttributes){
-                    String name = defectAttribute.getAttributeDefinitionId().getName();
-                    if(name.equals("Severity")){
-                        impact = defectAttribute.getAttributeValueId().getName();
-                    }
-                    if(name.equals("DefectStatus")){
+                    if(defectAttribute.getAttributeDefinitionId().getName().equals("DefectStatus")){
                         status = defectAttribute.getAttributeValueId().getName();
                     }
                 }
@@ -196,11 +197,9 @@ public class CoveritySensor implements Sensor {
                     totalDefectsCounter++;
                     if (impact.equals(HIGH)) {
                         highImpactDefectsCounter++;
-                    }
-                    if (impact.equals(MEDIUM)) {
+                    }else if (impact.equals(MEDIUM)) {
                         mediumImpactDefectsCounter++;
-                    }
-                    if (impact.equals(LOW)) {
+                    }else {
                         lowImpactDefectsCounter++;
                     }
                 }
@@ -235,7 +234,7 @@ public class CoveritySensor implements Sensor {
                 Map<String, Map<String, Rule>> rulesByLangaugeMap = coverityRules.parseRules();
                 Map<String, Rule> rulesMap = rulesByLangaugeMap.get(lang.getKey());
 
-                for(DefectInstanceDataObj dido : streamDefects.get(mddo.getCid()).getDefectInstances()) {
+                for(DefectInstanceDataObj dido : didos) {
                     //find the main event, so we can use its line number
                     EventDataObj mainEvent = getMainEvent(dido);
 
@@ -274,10 +273,10 @@ public class CoveritySensor implements Sensor {
             LOG.error("Error fetching defects", e);
         }
 
-        totalDefects = String.valueOf(totalDefectsCounter);
-        highImpactDefects = String.valueOf(highImpactDefectsCounter);
-        mediumImpactDefects = String.valueOf(mediumImpactDefectsCounter);
-        lowImpactDefects = String.valueOf(lowImpactDefectsCounter);
+        totalDefects = totalDefectsCounter;
+        highImpactDefects = highImpactDefectsCounter;
+        mediumImpactDefects = mediumImpactDefectsCounter;
+        lowImpactDefects = lowImpactDefectsCounter;
 
         Thread.currentThread().setContextClassLoader(oldCL);
         // Display a clickable Coverity Logo
@@ -352,25 +351,25 @@ public class CoveritySensor implements Sensor {
 
         {
             Measure measure = new Measure(COVERITY_OUTSTANDING_ISSUES);
-            measure.setData(totalDefects);
+            measure.setIntValue(totalDefects);
             sensorContext.saveMeasure(measure);
         }
 
         {
             Measure measure = new Measure(COVERITY_HIGH_IMPACT);
-            measure.setData(highImpactDefects);
+            measure.setIntValue(highImpactDefects);
             sensorContext.saveMeasure(measure);
         }
 
         {
             Measure measure = new Measure(COVERITY_MEDIUM_IMPACT);
-            measure.setData(mediumImpactDefects);
+            measure.setIntValue(mediumImpactDefects);
             sensorContext.saveMeasure(measure);
         }
 
         {
             Measure measure = new Measure(COVERITY_LOW_IMPACT);
-            measure.setData(lowImpactDefects);
+            measure.setIntValue(lowImpactDefects);
             sensorContext.saveMeasure(measure);
         }
     }
