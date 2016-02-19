@@ -33,73 +33,65 @@
     </tr>
     <tr>
         <td>
-                <p><b>Coverity Project:</b>
-                <a href='<%=
+            <p><b>Coverity Project:</b>
+            <a href='<%=
+                # @return [String]
+
+                mystring1=format_measure('COVERITY-PROJECT-URL', {:skip_span_id => true})
+                mystring1.gsub(/<span[^>]*>(.*)<\/span>/,'\1')
+            -%>'>
+                <%=
                     # @return [String]
 
-                    mystring1=format_measure('COVERITY-PROJECT-URL', {:skip_span_id => true})
-                    mystring1.gsub(/<span[^>]*>(.*)<\/span>/,'\1')
-                -%>'>
-                    <%=
-                        # @return [String]
+                    mystring2=format_measure('COVERITY-PROJECT-NAME', {:skip_span_id => true})
+                    mystring2.gsub(/<span[^>]*>(.*)<\/span>/,'\1')
 
-                        mystring2=format_measure('COVERITY-PROJECT-NAME', {:skip_span_id => true})
-                        mystring2.gsub(/<span[^>]*>(.*)<\/span>/,'\1')
-
-                    -%>
-                </a>
-                </p>
-                <br>
+                -%>
+            </a>
+            </p>
+            <br>
         </td>
     </tr>
     <tr>
+      <td><p>Outstanding Issues:</p></td>
+      <td><p>High Impact:</p></td>
+      <td><p>Medium Impact:</p></td>
+      <td><p>Low Impact:</p></td>
+    </tr>
+    <tr>
         <td>
-                <p>Outstanding Issues:</p>
-                <p>
-                        <%=
-                            # @return [String]
-
-                            mystring3=format_measure('COVERITY-OUTSTANDING-ISSUES', {:skip_span_id => true})
-                            mystring3.gsub(/<span[^>]*>(.*)<\/span>/,'\1')
-
-                        -%>
-                </p>
+            <p>
+                    <%=
+                        # @return [Measure containing a metric of INT value]
+                        format_measure('COVERITY-OUTSTANDING-ISSUES')
+                    -%>
+            </p>
         </td>
         <td>
-                <p>High Impact:</p>
-                <p>
-                    <%=
-                        # @return [String]
-
-                        mystring4=format_measure('COVERITY-HIGH-IMPACT', {:skip_span_id => true})
-                        mystring4.gsub(/<span[^>]*>(.*)<\/span>/,'\1')
-
-                    -%>
-                </p>
+            <p>
+                <%=
+                    # @return [[Measure containing a metric of INT value]
+                    format_measure('COVERITY-HIGH-IMPACT')
+                -%>
+            </p>
         </td>
         <td>
-                <p>Medium Impact:</p>
-                <p>
-                    <%=
-                        # @return [String]
-
-                        mystring5=format_measure('COVERITY-MEDIUM-IMPACT', {:skip_span_id => true})
-                        mystring5.gsub(/<span[^>]*>(.*)<\/span>/,'\1')
-
-                    -%>
-                </p>
+            <p></p>
+            <p>
+                <%=
+                    # @return [[Measure containing a metric of INT value]
+                    format_measure('COVERITY-MEDIUM-IMPACT')
+                -%>
+            </p>
         </td>
         <td>
-                <p>Low Impact:</p>
-                <p>
-                    <%=
-                        # @return [String]
-
-                        mystring6=format_measure('COVERITY-LOW-IMPACT', {:skip_span_id => true})
-                        mystring6.gsub(/<span[^>]*>(.*)<\/span>/,'\1')
-
-                    -%>
-                </p>
+            <p></p>
+            <p>
+                <%=
+                    # @return [[Measure containing a metric of INT value]
+                    format_measure('COVERITY-LOW-IMPACT')
+                -%>
+            </p>
         </td>
     </tr>
 </table>
