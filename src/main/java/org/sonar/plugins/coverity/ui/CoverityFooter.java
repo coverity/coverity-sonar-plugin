@@ -39,7 +39,7 @@ public final class CoverityFooter implements Footer{
             String text = "Coverity";
             return String.format(
                     "<div style=\"text-align:center\">" +
-                            "<a href=\"%s\"><img src=\"http://www.coverity.com/favicon.ico\" />%s</a>" +
+                            "<a href=\"%s\"><img src=\"http://go.coverity.com/rs/157-LQW-289/images/sig-truly-covered-check-50x50.png\n\" />%s</a>" +
                             "</div>",
                     url, text);
         }
@@ -49,7 +49,7 @@ public final class CoverityFooter implements Footer{
 
         return String.format(
                 "<div style=\"text-align:center\">" +
-                        "<a href=\"%s\"><img src=\"http://www.coverity.com/favicon.ico\" />%s</a>" +
+                        "<a href=\"%s\"><img src=\"http://go.coverity.com/rs/157-LQW-289/images/sig-truly-covered-check-50x50.png\n\" />%s</a>" +
                         "</div>",
                 url, text);
     }
