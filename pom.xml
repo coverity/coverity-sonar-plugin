@@ -203,7 +203,7 @@
         <repository>
             <id>sonar-plugin-local</id>
             <name>sonar-plugin-local</name>
-            <url>http://artifactory.sf.coverity.com:8081/artifactory/simple/sonar-plugin-local</url>
+            <url>http://artifactory.internal.synopsys.com:8081/artifactory/simple/sonar-plugin-local</url>
         </repository>
 		<repository>
 			<id>sonar</id>
