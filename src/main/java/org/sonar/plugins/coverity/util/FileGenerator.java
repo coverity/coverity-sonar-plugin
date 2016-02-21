@@ -11,15 +11,24 @@
 
 package org.sonar.plugins.coverity.util;
 
-import com.coverity.ws.v9.DefectInstanceDataObj;
-import com.coverity.ws.v9.MergedDefectDataObj;
-import com.coverity.ws.v9.ProjectDataObj;
-import com.coverity.ws.v9.StreamDefectDataObj;
-import org.sonar.plugins.coverity.ws.CIMClient;
+import org.sonar.api.rules.RulePriority;
+import org.sonar.plugins.coverity.server.InternalRule;
 
-import java.io.File;
-import java.io.PrintWriter;
+import java.io.*;
 import java.util.*;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.ParseException;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+import org.xml.sax.SAXException;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+import org.sonar.plugins.coverity.server.CoverityRules;
 
 public class FileGenerator {
     public static Map<String, String> languageDomains = new HashMap<String, String>();
@@ -30,98 +39,241 @@ public class FileGenerator {
         languageDomains.put("cs", "STATIC_CS");
     }
 
-    public static void generateRulesFiles(File propsFile, File xmlDir, File htmlDir, CIMClient instance) throws Exception {
-        propsFile.getParentFile().mkdirs();
-        xmlDir.mkdirs();
-        PrintWriter propsFileOut = new PrintWriter(propsFile);
+    public static Map<String, InternalRule> javaCheckerProp = new HashMap<String, InternalRule>();
+    public static Map<String, InternalRule> cppCheckerProp = new HashMap<String, InternalRule>();
+    public static Map<String, InternalRule> csCheckerProp = new HashMap<String, InternalRule>();
 
-        Set<MergedDefectDataObj> defectsOnCIMInstance = new HashSet<MergedDefectDataObj>();
+    public static Map<String, Map<String, InternalRule>> mapOfCheckerPropMaps = new HashMap<String, Map<String, InternalRule>>();
 
-        for(ProjectDataObj covProject : instance.getProjects()){
-            defectsOnCIMInstance.addAll(instance.getDefects(covProject.getId().getName()));
-        }
+    static{
+        mapOfCheckerPropMaps.put("java", javaCheckerProp);
+        mapOfCheckerPropMaps.put("cpp", cppCheckerProp);
+        mapOfCheckerPropMaps.put("cs", csCheckerProp);
+    }
 
-        List<MergedDefectDataObj> mddoList = new ArrayList<MergedDefectDataObj>(defectsOnCIMInstance);
-        Map<Long, StreamDefectDataObj> sddoMap = instance.getStreamDefectsForMergedDefects(mddoList);
+    public static void generateRulesFromJSONFile(File jsonFile) throws Exception {
 
-        for(Map.Entry<String, String> entry : languageDomains.entrySet()) {
-            List<String> lineList = new ArrayList<String>();
-            String language = entry.getKey();
+        /**
+         * Rules are no longer imported from a CIM instance using the deprecated v6 getCheckersProperties().
+         * Instead we parse a JSON file containing all the checker properties. This file can be found at:
+         * http://artifactory.internal.synopsys.com:8081/artifactory/simple/libs-snapshots-local/com/coverity/prevent/prevent-checker-info/8.0.0-SNAPSHOT/
+         */
+        org.json.simple.parser.JSONParser parser = new org.json.simple.parser.JSONParser();
 
-            File xmlFile = new File(xmlDir, "coverity-" + language + ".xml");
-            PrintWriter xmlFileOut = new PrintWriter(xmlFile,"UTF-8" );
-            xmlFileOut.println("<rules>");
+        try {
+            Object obj = parser.parse(new FileReader(jsonFile.getAbsolutePath()));
 
-            for(StreamDefectDataObj sddo : sddoMap.values()) {
-                List<DefectInstanceDataObj> defectInstancesList = sddo.getDefectInstances();
-                DefectInstanceDataObj dido = null;
-                if(defectInstancesList != null && !defectInstancesList.isEmpty()){
-                    dido = defectInstancesList.get(0);
-                } else{
-                    continue;
-                }
-                String key = CoverityUtil.flattenDefectInstanceCheckerName(dido);
-                String desc = dido.getLongDescription();
+            JSONArray jsonObject =  (JSONArray) obj;
+
+            Iterator<JSONObject> iterator = jsonObject.iterator();
+
+            // Count of all checkers found on the given JSON file.
+            int iteratorCount = 0;
+
+            while( iterator.hasNext() ) {
+                iteratorCount++;
+                JSONObject childJSON = (JSONObject)iterator.next();
+
+                String checkerName = (String) childJSON.get("checkerName");
+                String impact = (String) childJSON.get("impact");
+                String domain = (String) childJSON.get("domain");
+                String subcategoryLongDescription = (String) childJSON.get("subcategoryLongDescription");
+                String subcategoryShortDescription = (String) childJSON.get("subcategoryShortDescription");
+                List<String> families = (ArrayList<String>) childJSON.get("families");
+
                 {
                     String linkRegex = "\\(<a href=\"([^\"]*?)\" target=\"_blank\">(.*?)</a>\\)";
                     String codeRegex = "<code>(.*?)</code>";
 
-                    desc = desc.replaceAll(linkRegex, "");
-                    desc = desc.replaceAll(codeRegex, "$1");
+                    subcategoryLongDescription = subcategoryLongDescription.replaceAll(linkRegex, "");
+                    subcategoryLongDescription = subcategoryLongDescription.replaceAll(codeRegex, "$1");
                 }
 
-                //xml
-                xmlFileOut.println("<rule>");
-                String name;
-                name = dido.getCheckerName();
-                if(name.isEmpty() || name == null){
-                    xmlFileOut.println("<name>" + key + "</name>");
-                } else {
-                    name = org.apache.commons.lang.StringEscapeUtils.escapeXml(name);
-                    xmlFileOut.println("<name>" + name + "</name>");
+                /**
+                 * Checkers specify the languages they support by providing a "domain" field or by providing a list of
+                 * langueges under the field "families".
+                 * First we decide what are the languages corresponding for each checker. If this can not be determined,
+                 * an error is printed to the console.
+                 */
+                if(domain == null && families == null){
+                    System.out.println("Language is not defined for checker: " + checkerName);
                 }
-                xmlFileOut.println("<key>" + key + "</key>");
-                String severity = "MAJOR";
-                String impact = dido.getImpact().getDisplayName();
-                if(impact.equals("High")){
-                    severity = "BLOCKER";
-                }
-                if(impact.equals("Medium")){
-                    severity = "CRITICAL";
-                }
-                xmlFileOut.println("<severity>" + severity + "</severity>");
-                xmlFileOut.println("<configKey>" + key + "</configKey>");
-                xmlFileOut.println("<description><![CDATA[ " + desc + "]]></description>");
-                xmlFileOut.println("</rule>");
 
-                //props
-                lineList.add("rule.coverity-java." + key + ".name=" + name);
+                List<String> languages = new ArrayList<String>();
+
+                if((domain != null && domain.equals("STATIC_JAVA")) || (families != null && families.contains("Java"))){
+                    languages.add("java");
+                }
+
+                if((domain != null && domain.equals("STATIC_C")) || (families != null && (families.contains("C/C++") ||
+                        families.contains("Objective-C/C++")))){
+                    languages.add("cpp");
+                }
+
+                if((domain != null && domain.equals("STATIC_CS")) || (families != null && families.contains("C#"))){
+                    languages.add("cs");
+                }
+
+                /**
+                 * Rules are created for each language and store on a hashmap. There is one map per language.
+                 */
+                for(String language : languages){
+                    String key = languageDomains.get(language) + "_" + checkerName ;
+                    InternalRule ir = new InternalRule();
+                    ir.setKey(key);
+                    ir.setName(checkerName);
+                    if(subcategoryShortDescription.isEmpty() || subcategoryShortDescription == null){
+                        ir.setName(key);
+                    } else {
+                        subcategoryShortDescription = org.apache.commons.lang.StringEscapeUtils.escapeXml(subcategoryShortDescription);
+                        ir.setName(subcategoryShortDescription);
+                    }
+                    String severity = "MAJOR";
+                    if(impact.equals("High")){
+                        severity = "BLOCKER";
+                    }
+                    if(impact.equals("Medium")){
+                        severity = "CRITICAL";
+                    }
+                    ir.setSeverity(severity);
+                    ir.setDescription(subcategoryLongDescription);
+                    mapOfCheckerPropMaps.get(language).put(key, ir);
+                }
             }
 
+            /**
+             * Print out to the console the results of the rules generation so that developers can analyze these results.
+             */
+            System.out.println("Number of rules loaded from JSON for java: " + javaCheckerProp.size());
+            System.out.println("Number of rules loaded from JSON for cs: " + csCheckerProp.size());
+            System.out.println("Number of rules loaded from JSON for cpp: " + cppCheckerProp.size());
+            System.out.println("Total number of checkers on JSON: " + iteratorCount);
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Write the result of the rules generation to one xml file per language. This is the step that actually updates the
+     * resources used by the plugin.
+     */
+    public static void writeRulesToFiles(File xmlDir){
+        /**
+         * Print out rules for each language.
+         */
+        for(String language : languageDomains.keySet()){
+            File xmlFile = new File(xmlDir, "coverity-" + language + ".xml");
+            PrintWriter xmlFileOut = null;
+            try {
+                xmlFileOut = new PrintWriter(xmlFile,"UTF-8" );
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+            }
+            xmlFileOut.println("<rules>");
+
+            for(InternalRule rule : mapOfCheckerPropMaps.get(language).values()){
+                //xml
+                xmlFileOut.println("    <rule>");
+                xmlFileOut.println("        <name>" + rule.getName() + "</name>");
+                xmlFileOut.println("        <key>" + rule.getKey() + "</key>");
+                xmlFileOut.println("        <severity>" + rule.getSeverity() + "</severity>");
+                xmlFileOut.println("        <configKey>" + rule.getKey() + "</configKey>");
+                xmlFileOut.println("        <description><![CDATA[ " + rule.getDescription() + "]]></description>");
+                xmlFileOut.println("    </rule>");
+            }
             xmlFileOut.println("</rules>");
             xmlFileOut.close();
-
-            Collections.sort(lineList);
-
-            for(String line : lineList){
-                propsFileOut.println(line);
-            }
+            System.out.println("The following file has been updated: " + xmlFile.getPath());
         }
+    }
 
-        propsFileOut.close();
+    public static void loadRulesFromXMLFiles(File oldXMLDir){
+
+        for(String language : languageDomains.keySet()){
+
+            File oldFile = new File(oldXMLDir.getAbsolutePath(), "old-coverity-" + language + ".xml");
+            Document doc = null;
+
+            try {
+                InputStream in = new FileInputStream(oldFile.getAbsolutePath());
+                DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+                DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+                doc = dBuilder.parse(in);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            doc.getDocumentElement().normalize();
+
+            NodeList nodes = doc.getElementsByTagName("rule");
+
+            int oldRulesloadedPerLanguage = 0;
+            for (int i = 0; i < nodes.getLength(); i++) {
+                Node node = nodes.item(i);
+
+                String key = "";
+                String name = "";
+                String severity = "";
+                String description = "";
+
+                if (node.getNodeType() == Node.ELEMENT_NODE) {
+                    Element element = (Element) node;
+                    key = CoverityUtil.getValue("key", element);
+                    name = CoverityUtil.getValue("name", element);
+                    severity = CoverityUtil.getValue("severity", element);
+                    description = CoverityUtil.getValue("description", element);
+                }
+
+                InternalRule ir = new InternalRule();
+                ir.setName(name);
+                ir.setKey(key);
+                ir.setDescription(description);
+                ir.setSeverity(severity);
+                ir.setLanguage(language);
+
+                mapOfCheckerPropMaps.get(language).put(key, ir);
+                oldRulesloadedPerLanguage++;
+            }
+            System.out.println("Number of rules loaded from old xml for language " + language + ": " + oldRulesloadedPerLanguage);
+        }
     }
 
     public static void main(String[] args) throws Exception {
-        File propsFile = new File("src/main/resources/org/sonar/l10n/coverity.properties");
+
         File xmlDir = new File("src/main/resources/org/sonar/plugins/coverity/server");
-        File htmlDir = new File("src/main/resources/org/sonar/l10n/coverity/rules");
+        File oldXmlDir = new File("/Users/frossi/Desktop/workspace/sonar-feb-2016/sonar2/sonar_plugin/src/main/resources/org/sonar/plugins/coverity/old-list-of-rules/");
+        /**
+         * JSON file containing checker properties. The file can be found at
+         * http://artifactory.internal.synopsys.com:8081/artifactory/simple/libs-snapshots-local/com/coverity/prevent/prevent-checker-info/8.0.0-SNAPSHOT/
+         * Download the jar file: prevent-checker-info-8.0.0-20151212.023543-256.jar.
+         * Extract it and get the file: checker-properties.json
+         * Modify the path given below.
+         */
+        File jsonFile = new File("/Users/frossi/Desktop/workspace/sonar-feb-2016/checker-properties.json");
 
-        System.out.println("propsFile=" + propsFile.getAbsolutePath());
         System.out.println("xmlDir=" + xmlDir.getAbsolutePath());
-        System.out.println("htmlDir=" + htmlDir.getAbsolutePath());
+        System.out.println("OldXmlDir=" + oldXmlDir.getAbsolutePath());
+        System.out.println("JSONFile=" + jsonFile.getAbsolutePath());
 
-        CIMClient instance = new CIMClient("frossi-wrkst", 8082, "admin", "coverity", false);
+        generateRulesFromJSONFile(jsonFile);
+        loadRulesFromXMLFiles(oldXmlDir);
 
-        generateRulesFiles(propsFile, xmlDir, htmlDir, instance);
+        /**
+         * Print out to the console the results of the rules generation so that developers can analyze these results.
+         */
+        System.out.println("Number of rules for Java: " + javaCheckerProp.values().size());
+        System.out.println("Number of rules for C++: " + cppCheckerProp.values().size());
+        System.out.println("Number of rules for C#: " + csCheckerProp.values().size());
+        int totalRulesCount = javaCheckerProp.values().size()
+                + cppCheckerProp.values().size() + csCheckerProp.values().size();
+        System.out.println("Total number of rules: " + totalRulesCount);
+
+        writeRulesToFiles(xmlDir);
     }
 }

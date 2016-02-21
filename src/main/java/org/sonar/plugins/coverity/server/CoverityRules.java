@@ -36,6 +36,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static org.sonar.plugins.coverity.util.CoverityUtil.getValue;
+
 /* From Sonarqube-4.3+ the interface RulesDefinition replaces the (previously deprecated and currently dropped) RulesRepository.
  * This class loads rules into the server by means of an XmlLoader. However we still need to activate these rules under
  * a profile and then again in CoveritySensor.
@@ -96,7 +98,7 @@ public class CoverityRules implements RulesDefinition, Extension {
 
         for(String language : languages){
 
-            String fileDir = "coverity-" + language + ".xml";
+            String fileDir = "/org/sonar/plugins/coverity/server/coverity-" + language + ".xml";
             InputStream in = getClass().getResourceAsStream(fileDir);
 
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
@@ -172,12 +174,6 @@ public class CoverityRules implements RulesDefinition, Extension {
         return mapOfRuleMaps;
     }
 
-    private static String getValue(String tag, Element element) {
-        NodeList nodes = element.getElementsByTagName(tag).item(0).getChildNodes();
-        Node node = (Node) nodes.item(0);
-        return node.getNodeValue();
-    }
-
     @Override
     public void define(Context context) {
         parseRules();
@@ -203,23 +199,6 @@ public class CoverityRules implements RulesDefinition, Extension {
             InputStream in = getClass().getResourceAsStream(fileDir);
             xmlLoader.load(repository, in, "UTF-8");
             repository.done();
-        }
-
-    }
-
-    class InternalRule{
-        String key;
-        String name;
-        String severity;
-        String description;
-        String language;
-
-        InternalRule(String key, String name, String severity, String description, String language){
-            this.key = key;
-            this.name = name;
-            this.severity = severity;
-            this.description = description;
-            this.language = language;
         }
 
     }

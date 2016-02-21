@@ -19,6 +19,9 @@ import org.sonar.plugins.coverity.CoverityPlugin;
 //import org.sonar.plugins.coverity.server.CoverityRulesRepositories;
 import org.sonar.plugins.coverity.server.CoverityRulesRepositories;
 import org.sonar.plugins.coverity.ws.CIMClient;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -26,8 +29,14 @@ import java.util.Arrays;
 import java.util.List;
 
 public class CoverityUtil {
-    public static RuleKey getRuleKey(String language, DefectInstanceDataObj dido) {
-        return RuleKey.of(CoverityPlugin.REPOSITORY_KEY + "-" + language, dido.getDomain() + "_" + dido.getCheckerName());
+    public static RuleKey getRuleKey(String language, String key) {
+        return RuleKey.of(CoverityPlugin.REPOSITORY_KEY + "-" + language, key);
+    }
+
+    public static String getValue(String tag, Element element) {
+        NodeList nodes = element.getElementsByTagName(tag).item(0).getChildNodes();
+        Node node = (Node) nodes.item(0);
+        return node.getNodeValue();
     }
 
     public static String flattenDefectInstanceCheckerName(DefectInstanceDataObj dido) {

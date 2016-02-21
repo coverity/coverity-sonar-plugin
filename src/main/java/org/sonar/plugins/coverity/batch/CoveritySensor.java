@@ -165,9 +165,13 @@ public class CoveritySensor implements Sensor {
                 String impact = "";
 
                 List<DefectInstanceDataObj> didos = streamDefects.get(mddo.getCid()).getDefectInstances();
-                if(didos != null && !didos.isEmpty()){
-                    impact = didos.get(0).getImpact().getDisplayName();
+
+                if (didos == null || didos.isEmpty()) {
+                    LOG.info("The merged defect with CID " + mddo.getCid() + "has no defect instances defined.");
+                    continue;
                 }
+
+                impact = didos.get(0).getImpact().getDisplayName();
 
                 List<DefectStateAttributeValueDataObj> listOfAttributes = mddo.getDefectStateAttributeValues();
 
@@ -240,8 +244,18 @@ public class CoveritySensor implements Sensor {
 
                     Issuable issuable = resourcePerspectives.as(Issuable.class, res);
 
-                    org.sonar.api.rule.RuleKey rk = CoverityUtil.getRuleKey(lang.getKey(), dido);
+                    String key = dido.getDomain() + "_" + dido.getCheckerName();
+                    org.sonar.api.rule.RuleKey rk = CoverityUtil.getRuleKey(lang.getKey(), key);
                     ActiveRule ar = profile.getActiveRule(rk.repository(), rk.rule());
+                    if(ar == null){
+                        rk = CoverityUtil.getRuleKey(lang.getKey(), key + "_" + "generic");
+                        ar = profile.getActiveRule(rk.repository(), rk.rule());
+                    }
+                    if(ar == null){
+                        rk = CoverityUtil.getRuleKey(lang.getKey(), key + "_" + "none");
+                        ar = profile.getActiveRule(rk.repository(), rk.rule());
+                    }
+
                     Rule rule = rulesMap.get(rk.rule());
 
                     LOG.debug("mainEvent=" + mainEvent);
