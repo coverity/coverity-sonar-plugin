@@ -107,6 +107,15 @@ public class CoveritySensor implements Sensor {
         String stripPrefix = settings.getString(CoverityPlugin.COVERITY_PREFIX);
         String covSrcDir = settings.getString(CoverityPlugin.COVERITY_SOURCE_DIRECTORY);
 
+        /**
+         * Checks whether a project has been specified.
+         */
+        if(covProject == null || covProject.isEmpty()) {
+            LOG.error("Couldn't find project: " + covProject);
+            Thread.currentThread().setContextClassLoader(oldCL);
+            return;
+        }
+
         CIMClient instance = new CIMClient(host, port, user, password, ssl);
 
         //find the configured project
