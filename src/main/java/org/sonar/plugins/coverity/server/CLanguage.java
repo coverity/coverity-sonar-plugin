@@ -42,7 +42,7 @@ public class CLanguage extends AbstractLanguage implements Extension {
     /**
      * C files knows suffixes
      */
-    public static final String[] SUFFIXES = {".c"};
+    public static final String[] SUFFIXES = {".c", ".hxx", ".hpp", ".hh", ".h"};
 
     /**
      * Default constructor

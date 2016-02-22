@@ -42,7 +42,7 @@ public class CppLanguage extends AbstractLanguage implements Extension {
     /**
      * Cpp files knows suffixes
      */
-    public static final String[] SUFFIXES = {".cpp", ".cc", ".c++", ".cp", ".cxx"};
+    public static final String[] SUFFIXES = {".cpp", ".cc", ".c++", ".cp", ".cxx", ".hxx", ".hpp", ".hh", ".h"};
 
     /**
      * Default constructor
