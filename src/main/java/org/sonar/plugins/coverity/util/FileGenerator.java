@@ -247,7 +247,7 @@ public class FileGenerator {
     public static void main(String[] args) throws Exception {
 
         File xmlDir = new File("src/main/resources/org/sonar/plugins/coverity/server");
-        File oldXmlDir = new File("/Users/frossi/Desktop/workspace/sonar-feb-2016/sonar2/sonar_plugin/src/main/resources/org/sonar/plugins/coverity/old-list-of-rules/");
+        File oldXmlDir = new File("src/main/resources/org/sonar/plugins/coverity/old-list-of-rules/");
         /**
          * JSON file containing checker properties. The file can be found at
          * http://artifactory.internal.synopsys.com:8081/artifactory/simple/libs-snapshots-local/com/coverity/prevent/prevent-checker-info/8.0.0-SNAPSHOT/
