@@ -322,10 +322,14 @@ public class CoveritySensor implements Sensor {
     }
 
     protected EventDataObj getMainEvent(DefectInstanceDataObj dido) {
-        for(EventDataObj edo : dido.getEvents()) {
-            if(edo.isMain()) {
-                return edo;
+        if(dido.getEvents() != null && !dido.getEvents().isEmpty()){
+            for(EventDataObj edo : dido.getEvents()) {
+                if(edo.isMain()) {
+                    return edo;
+                }
             }
+            // If no event is marked as "main" the first event is returned.
+            return dido.getEvents().get(0);
         }
         return null;
     }
