@@ -87,6 +87,7 @@ public class FileGenerator {
 
                     subcategoryLongDescription = subcategoryLongDescription.replaceAll(linkRegex, "");
                     subcategoryLongDescription = subcategoryLongDescription.replaceAll(codeRegex, "$1");
+                    subcategoryLongDescription = subcategoryLongDescription.trim();
                 }
 
                 /**
@@ -185,7 +186,7 @@ public class FileGenerator {
                 xmlFileOut.println("        <key>" + rule.getKey() + "</key>");
                 xmlFileOut.println("        <severity>" + rule.getSeverity() + "</severity>");
                 xmlFileOut.println("        <configKey>" + rule.getKey() + "</configKey>");
-                xmlFileOut.println("        <description><![CDATA[ " + rule.getDescription() + "]]></description>");
+                xmlFileOut.println("        <description><![CDATA[" + rule.getDescription() + "]]></description>");
                 xmlFileOut.println("    </rule>");
             }
             xmlFileOut.println("</rules>");
@@ -228,6 +229,7 @@ public class FileGenerator {
                     name = CoverityUtil.getValue("name", element);
                     severity = CoverityUtil.getValue("severity", element);
                     description = CoverityUtil.getValue("description", element);
+                    description = description.trim();
                 }
 
                 InternalRule ir = new InternalRule();
@@ -255,7 +257,7 @@ public class FileGenerator {
          * Extract it and get the file: checker-properties.json
          * Modify the path given below.
          */
-        File jsonFile = new File("/Users/frossi/Desktop/workspace/sonar-feb-2016/checker-properties.json");
+        File jsonFile = new File("/data00/workspace/sonar-feb-2016/checker-properties.json");
 
         System.out.println("xmlDir=" + xmlDir.getAbsolutePath());
         System.out.println("OldXmlDir=" + oldXmlDir.getAbsolutePath());
