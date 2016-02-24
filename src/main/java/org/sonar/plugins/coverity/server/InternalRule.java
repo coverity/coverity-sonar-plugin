@@ -7,18 +7,17 @@ package org.sonar.plugins.coverity.server;
  * setters of this class.
  */
 public class InternalRule{
-    String key;
-    String name;
-    String severity;
-    String description;
-    String language;
+    String key = "";
+    String name = "";
+    String severity = "";
+    String description = "";
+    String language = "";
 
     public String getKey() {
         return key;
     }
 
     public void setKey(String key) {
-        key = key.replaceAll("&", "&amp;");
         this.key = key;
     }
 
@@ -27,7 +26,6 @@ public class InternalRule{
     }
 
     public void setName(String name) {
-        name = name.replaceAll("&", "&amp;");
         this.name = name;
     }
 
@@ -36,7 +34,6 @@ public class InternalRule{
     }
 
     public void setSeverity(String severity) {
-        severity = severity.replaceAll("&", "&amp;");
         this.severity = severity;
     }
 
@@ -45,7 +42,6 @@ public class InternalRule{
     }
 
     public void setDescription(String description) {
-        description = description.replaceAll("&", "&amp;");
         this.description = description;
     }
 
@@ -54,7 +50,6 @@ public class InternalRule{
     }
 
     public void setLanguage(String language) {
-        language = language.replaceAll("&", "&amp;");
         this.language = language;
     }
 

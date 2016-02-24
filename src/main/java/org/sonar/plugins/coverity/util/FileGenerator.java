@@ -11,6 +11,7 @@
 
 package org.sonar.plugins.coverity.util;
 
+import org.apache.commons.lang.StringEscapeUtils;
 import org.sonar.api.rules.RulePriority;
 import org.sonar.plugins.coverity.server.InternalRule;
 
@@ -182,11 +183,11 @@ public class FileGenerator {
             for(InternalRule rule : mapOfCheckerPropMaps.get(language).values()){
                 //xml
                 xmlFileOut.println("    <rule>");
-                xmlFileOut.println("        <name>" + rule.getName() + "</name>");
-                xmlFileOut.println("        <key>" + rule.getKey() + "</key>");
-                xmlFileOut.println("        <severity>" + rule.getSeverity() + "</severity>");
-                xmlFileOut.println("        <configKey>" + rule.getKey() + "</configKey>");
-                xmlFileOut.println("        <description><![CDATA[" + rule.getDescription() + "]]></description>");
+                xmlFileOut.println("        <name>" + StringEscapeUtils.escapeXml(rule.getName()) + "</name>");
+                xmlFileOut.println("        <key>" + StringEscapeUtils.escapeXml(rule.getKey()) + "</key>");
+                xmlFileOut.println("        <severity>" + StringEscapeUtils.escapeXml(rule.getSeverity()) + "</severity>");
+                xmlFileOut.println("        <configKey>" + StringEscapeUtils.escapeXml(rule.getKey()) + "</configKey>");
+                xmlFileOut.println("        <description><![CDATA[" + StringEscapeUtils.escapeXml(rule.getDescription()) + "]]></description>");
                 xmlFileOut.println("    </rule>");
             }
             xmlFileOut.println("</rules>");
@@ -251,19 +252,24 @@ public class FileGenerator {
         File xmlDir = new File("src/main/resources/org/sonar/plugins/coverity/server");
         File oldXmlDir = new File("src/main/resources/org/sonar/plugins/coverity/old-list-of-rules/");
         /**
-         * JSON file containing checker properties. The file can be found at
+         * JSON files containing checker properties. JsonFile1 can be found at
          * http://artifactory.internal.synopsys.com:8081/artifactory/simple/libs-snapshots-local/com/coverity/prevent/prevent-checker-info/8.0.0-SNAPSHOT/
          * Download the jar file: prevent-checker-info-8.0.0-20151212.023543-256.jar.
          * Extract it and get the file: checker-properties.json
          * Modify the path given below.
+         * JsonFile2 can be found at: http://docs-sig/repo/prevent-dev/findbugs-ext/config/checker-properties-en.json.
+         * Notice that the file has been renamed.
          */
-        File jsonFile = new File("/data00/workspace/sonar-feb-2016/checker-properties.json");
+        File jsonFile1 = new File("/data00/workspace/sonar-feb-2016/checker-properties.json");
+        File jsonFile2 = new File("/data00/workspace/sonar-feb-2016/findbugs-checker-properties.json");
 
         System.out.println("xmlDir=" + xmlDir.getAbsolutePath());
         System.out.println("OldXmlDir=" + oldXmlDir.getAbsolutePath());
-        System.out.println("JSONFile=" + jsonFile.getAbsolutePath());
+        System.out.println("JSONFile1=" + jsonFile1.getAbsolutePath());
+        System.out.println("JSONFile2=" + jsonFile2.getAbsolutePath());
 
-        generateRulesFromJSONFile(jsonFile);
+        generateRulesFromJSONFile(jsonFile1);
+        generateRulesFromJSONFile(jsonFile2);
         loadRulesFromXMLFiles(oldXmlDir);
 
         /**

@@ -1,10 +1,10 @@
 <rules>
     <rule>
-        <name>Unchecked "as" conversion</name>
+        <name>Unchecked &quot;as&quot; conversion</name>
         <key>STATIC_CS_FORWARD_NULL_null_from_as</key>
         <severity>CRITICAL</severity>
         <configKey>STATIC_CS_FORWARD_NULL_null_from_as</configKey>
-        <description><![CDATA[The "as" conversion may fail and return null if the type cast is incompatible]]></description>
+        <description><![CDATA[The &quot;as&quot; conversion may fail and return null if the type cast is incompatible]]></description>
     </rule>
     <rule>
         <name>Data race condition</name>
@@ -14,7 +14,7 @@
         <description><![CDATA[Thread shared data is accessed without holding an appropriate lock, possibly causing a race condition]]></description>
     </rule>
     <rule>
-        <name>Operands don't affect result</name>
+        <name>Operands don&apos;t affect result</name>
         <key>STATIC_CS_CONSTANT_EXPRESSION_RESULT_result_independent_of_operands</key>
         <severity>CRITICAL</severity>
         <configKey>STATIC_CS_CONSTANT_EXPRESSION_RESULT_result_independent_of_operands</configKey>
@@ -221,7 +221,7 @@
         <key>STATIC_CS_BAD_EQ_structural</key>
         <severity>CRITICAL</severity>
         <configKey>STATIC_CS_BAD_EQ_structural</configKey>
-        <description><![CDATA[Using Equals (or equivalent method) equality when "==" is the norm for this type]]></description>
+        <description><![CDATA[Using Equals (or equivalent method) equality when &quot;==&quot; is the norm for this type]]></description>
     </rule>
     <rule>
         <name>SQL injection</name>
@@ -249,7 +249,7 @@
         <key>STATIC_CS_BAD_EQ_generic</key>
         <severity>CRITICAL</severity>
         <configKey>STATIC_CS_BAD_EQ_generic</configKey>
-        <description><![CDATA[Using wrong equality operation (Equals or the equivalent method vs "==") for this type]]></description>
+        <description><![CDATA[Using wrong equality operation (Equals or the equivalent method vs &quot;==&quot;) for this type]]></description>
     </rule>
     <rule>
         <name>Unchecked return value from user code</name>
@@ -438,14 +438,14 @@
         <key>STATIC_CS_BAD_EQ</key>
         <severity>CRITICAL</severity>
         <configKey>STATIC_CS_BAD_EQ</configKey>
-        <description><![CDATA[Using Equals (or equivalent method) equality when "==" is the norm for this type]]></description>
+        <description><![CDATA[Using Equals (or equivalent method) equality when &quot;==&quot; is the norm for this type]]></description>
     </rule>
     <rule>
         <name>Wrong kind of equality</name>
         <key>STATIC_CS_BAD_EQ_none</key>
         <severity>CRITICAL</severity>
         <configKey>STATIC_CS_BAD_EQ_none</configKey>
-        <description><![CDATA[Using wrong equality operation (Equals or the equivalent method vs "==") for this type]]></description>
+        <description><![CDATA[Using wrong equality operation (Equals or the equivalent method vs &quot;==&quot;) for this type]]></description>
     </rule>
     <rule>
         <name>Wrong operator used</name>
@@ -501,7 +501,7 @@
         <key>STATIC_CS_FORWARD_NULL</key>
         <severity>CRITICAL</severity>
         <configKey>STATIC_CS_FORWARD_NULL</configKey>
-        <description><![CDATA[The "as" conversion may fail and return null if the type cast is incompatible]]></description>
+        <description><![CDATA[The &quot;as&quot; conversion may fail and return null if the type cast is incompatible]]></description>
     </rule>
     <rule>
         <name>Data race condition</name>
@@ -613,7 +613,7 @@
         <key>STATIC_CS_CONSTANT_EXPRESSION_RESULT_bit_and_with_zero</key>
         <severity>CRITICAL</severity>
         <configKey>STATIC_CS_CONSTANT_EXPRESSION_RESULT_bit_and_with_zero</configKey>
-        <description><![CDATA[Bitwise-and ('&amp;amp;') operation applied to zero always produces zero]]></description>
+        <description><![CDATA[Bitwise-and (&apos;&amp;amp;&apos;) operation applied to zero always produces zero]]></description>
     </rule>
     <rule>
         <name>Thread deadlock</name>
@@ -886,6 +886,6 @@
         <key>STATIC_CS_STRAY_SEMICOLON</key>
         <severity>CRITICAL</severity>
         <configKey>STATIC_CS_STRAY_SEMICOLON</configKey>
-        <description><![CDATA[The code contains a semicolon where it is probably not intended, such as between a 'for', 'while', 'if', or 'lock' and a code block.]]></description>
+        <description><![CDATA[The code contains a semicolon where it is probably not intended, such as between a &apos;for&apos;, &apos;while&apos;, &apos;if&apos;, or &apos;lock&apos; and a code block.]]></description>
     </rule>
 </rules>

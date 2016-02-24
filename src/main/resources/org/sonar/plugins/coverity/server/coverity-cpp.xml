@@ -158,7 +158,7 @@
         <key>STATIC_C_MISRA_CAST_bitwise_op_no_cast</key>
         <severity>CRITICAL</severity>
         <configKey>STATIC_C_MISRA_CAST_bitwise_op_no_cast</configKey>
-        <description><![CDATA[Bitwise operator << applies to operand with underlying type unsigned short is not being immediately cast to that type (MISRA 2004 Rule 10.5)]]></description>
+        <description><![CDATA[Bitwise operator &lt;&lt; applies to operand with underlying type unsigned short is not being immediately cast to that type (MISRA 2004 Rule 10.5)]]></description>
     </rule>
     <rule>
         <name>Reliance on integer endianness</name>
@@ -179,7 +179,7 @@
         <key>STATIC_C_SIZECHECK_incorrect_multiplication</key>
         <severity>BLOCKER</severity>
         <configKey>STATIC_C_SIZECHECK_incorrect_multiplication</configKey>
-        <description><![CDATA[Allocation size is not a multiple of the target pointer's pointed-to type]]></description>
+        <description><![CDATA[Allocation size is not a multiple of the target pointer&apos;s pointed-to type]]></description>
     </rule>
     <rule>
         <name>Non-array delete for objects</name>
@@ -235,7 +235,7 @@
         <key>STATIC_C_BUFFER_SIZE_WARNING_none</key>
         <severity>BLOCKER</severity>
         <configKey>STATIC_C_BUFFER_SIZE_WARNING_none</configKey>
-        <description><![CDATA[The string buffer may not have a null terminator if the source string's length is equal to the buffer size]]></description>
+        <description><![CDATA[The string buffer may not have a null terminator if the source string&apos;s length is equal to the buffer size]]></description>
     </rule>
     <rule>
         <name>COM BSTR inequality with non-BSTR</name>
@@ -340,7 +340,7 @@
         <key>STATIC_C_CONSTANT_EXPRESSION_RESULT_bit_and_with_zero</key>
         <severity>CRITICAL</severity>
         <configKey>STATIC_C_CONSTANT_EXPRESSION_RESULT_bit_and_with_zero</configKey>
-        <description><![CDATA[Bitwise-and ('&amp;amp;') operation applied to zero always produces zero]]></description>
+        <description><![CDATA[Bitwise-and (&apos;&amp;amp;&apos;) operation applied to zero always produces zero]]></description>
     </rule>
     <rule>
         <name>Double lock or missing unlock</name>
@@ -553,7 +553,7 @@
         <description><![CDATA[Pointer is checked against null but then dereferenced anyway]]></description>
     </rule>
     <rule>
-        <name>Allocation size with '&amp;'</name>
+        <name>Allocation size with &apos;&amp;&apos;</name>
         <key>STATIC_C_SIZECHECK_ampersand_in_size</key>
         <severity>BLOCKER</severity>
         <configKey>STATIC_C_SIZECHECK_ampersand_in_size</configKey>
@@ -823,7 +823,7 @@
         <key>STATIC_C_STRAY_SEMICOLON</key>
         <severity>CRITICAL</severity>
         <configKey>STATIC_C_STRAY_SEMICOLON</configKey>
-        <description><![CDATA[The code contains a semicolon where it is probably not intended, such as between a 'for', 'while', or 'if' and a code block.]]></description>
+        <description><![CDATA[The code contains a semicolon where it is probably not intended, such as between a &apos;for&apos;, &apos;while&apos;, or &apos;if&apos; and a code block.]]></description>
     </rule>
     <rule>
         <name>Hashing a password with a weak salt</name>
@@ -942,7 +942,7 @@
         <key>STATIC_C_MISRA_CAST_bitwise_op_bad_cast</key>
         <severity>CRITICAL</severity>
         <configKey>STATIC_C_MISRA_CAST_bitwise_op_bad_cast</configKey>
-        <description><![CDATA[Bitwise operator << applies to operand with underlying type unsigned short is cast to int (MISRA 2004 Rule 10.5)]]></description>
+        <description><![CDATA[Bitwise operator &lt;&lt; applies to operand with underlying type unsigned short is cast to int (MISRA 2004 Rule 10.5)]]></description>
     </rule>
     <rule>
         <name>Large stack use</name>
@@ -1344,7 +1344,7 @@
         <description><![CDATA[Implicitly converting a double expression to narrower float type may lose precision (MISRA 2004 Rule 10.2)]]></description>
     </rule>
     <rule>
-        <name>Operands don't affect result</name>
+        <name>Operands don&apos;t affect result</name>
         <key>STATIC_C_CONSTANT_EXPRESSION_RESULT_result_independent_of_operands</key>
         <severity>CRITICAL</severity>
         <configKey>STATIC_C_CONSTANT_EXPRESSION_RESULT_result_independent_of_operands</configKey>
@@ -1922,7 +1922,7 @@
         <key>STATIC_C_TOCTOU</key>
         <severity>MAJOR</severity>
         <configKey>STATIC_C_TOCTOU</configKey>
-        <description><![CDATA[A check occurs on a file's attributes before the file is used in a privileged operation, but things may have changed]]></description>
+        <description><![CDATA[A check occurs on a file&apos;s attributes before the file is used in a privileged operation, but things may have changed]]></description>
     </rule>
     <rule>
         <name>Stray pointer arithmetic</name>
@@ -1985,7 +1985,7 @@
         <key>STATIC_C_BUFFER_SIZE_WARNING_no_null_terminator</key>
         <severity>BLOCKER</severity>
         <configKey>STATIC_C_BUFFER_SIZE_WARNING_no_null_terminator</configKey>
-        <description><![CDATA[The string buffer may not have a null terminator if the source string's length is equal to the buffer size]]></description>
+        <description><![CDATA[The string buffer may not have a null terminator if the source string&apos;s length is equal to the buffer size]]></description>
     </rule>
     <rule>
         <name>Implicit integer conversion</name>
@@ -2167,7 +2167,7 @@
         <key>STATIC_C_TOCTOU_none</key>
         <severity>MAJOR</severity>
         <configKey>STATIC_C_TOCTOU_none</configKey>
-        <description><![CDATA[A check occurs on a file's attributes before the file is used in a privileged operation, but things may have changed]]></description>
+        <description><![CDATA[A check occurs on a file&apos;s attributes before the file is used in a privileged operation, but things may have changed]]></description>
     </rule>
     <rule>
         <name>Value not atomically updated</name>
@@ -2265,7 +2265,7 @@
         <key>STATIC_C_BUFFER_SIZE_WARNING_generic</key>
         <severity>BLOCKER</severity>
         <configKey>STATIC_C_BUFFER_SIZE_WARNING_generic</configKey>
-        <description><![CDATA[The string buffer may not have a null terminator if the source string's length is equal to the buffer size]]></description>
+        <description><![CDATA[The string buffer may not have a null terminator if the source string&apos;s length is equal to the buffer size]]></description>
     </rule>
     <rule>
         <name>Large stack use</name>
@@ -2314,7 +2314,7 @@
         <key>STATIC_C_BUFFER_SIZE_WARNING</key>
         <severity>BLOCKER</severity>
         <configKey>STATIC_C_BUFFER_SIZE_WARNING</configKey>
-        <description><![CDATA[The string buffer may not have a null terminator if the source string's length is equal to the buffer size]]></description>
+        <description><![CDATA[The string buffer may not have a null terminator if the source string&apos;s length is equal to the buffer size]]></description>
     </rule>
     <rule>
         <name>Divide by zero</name>
@@ -2349,7 +2349,7 @@
         <key>STATIC_C_BAD_COMPARE_null_misuse</key>
         <severity>CRITICAL</severity>
         <configKey>STATIC_C_BAD_COMPARE_null_misuse</configKey>
-        <description><![CDATA[Comparing a pointer against NULL using an operator such as < or >=.]]></description>
+        <description><![CDATA[Comparing a pointer against NULL using an operator such as &lt; or &gt;=.]]></description>
     </rule>
     <rule>
         <name>Explicit free of COM interface</name>
@@ -2555,11 +2555,11 @@
         <description><![CDATA[A printf format string does not match the types of one of the arguments]]></description>
     </rule>
     <rule>
-        <name>Memset fill value of '0'</name>
+        <name>Memset fill value of &apos;0&apos;</name>
         <key>STATIC_C_NO_EFFECT_bad_memset_fill_value</key>
         <severity>BLOCKER</severity>
         <configKey>STATIC_C_NO_EFFECT_bad_memset_fill_value</configKey>
-        <description><![CDATA[A memset fill value of ASCII character '0' is likely intended to be 0]]></description>
+        <description><![CDATA[A memset fill value of ASCII character &apos;0&apos; is likely intended to be 0]]></description>
     </rule>
     <rule>
         <name>Non-constant format string</name>
@@ -2790,7 +2790,7 @@
         <key>STATIC_C_BUFFER_SIZE_no_null_terminator</key>
         <severity>BLOCKER</severity>
         <configKey>STATIC_C_BUFFER_SIZE_no_null_terminator</configKey>
-        <description><![CDATA[The string buffer may not have a null terminator if the source string's length is equal to the buffer size]]></description>
+        <description><![CDATA[The string buffer may not have a null terminator if the source string&apos;s length is equal to the buffer size]]></description>
     </rule>
     <rule>
         <name>Misra violating cast</name>
@@ -3462,7 +3462,7 @@
         <key>STATIC_C_TOCTOU_generic</key>
         <severity>MAJOR</severity>
         <configKey>STATIC_C_TOCTOU_generic</configKey>
-        <description><![CDATA[A check occurs on a file's attributes before the file is used in a privileged operation, but things may have changed]]></description>
+        <description><![CDATA[A check occurs on a file&apos;s attributes before the file is used in a privileged operation, but things may have changed]]></description>
     </rule>
     <rule>
         <name>Implicit integer conversion</name>
