@@ -17,9 +17,13 @@ mvn install:install-file -Dfile=xmldsig-1.0.jar -DgroupId=javax.xml.crypto -Dart
   
 ## Changelog
 
-* __1.4.2__
-  * Adding "sonar.coverity.sources.directory" property that overrides "sonar.sources" on coverity's plugin.
-  * Enhancing mechanism for handling stripped paths.
+* __1.5.0__
+  * Upgraded web services from v6 to v9.
+  * Fixed issue of Dismissed defects being counted.
+  * Coverity Metrics are set to have integer values so other plugins can use our information for statistics and other computations.
+  * More rules definitions for all supported languages.
+  * Fixed bug of C++ headers not being scanned.
+  * Fixed bug of Coverity defects with no main event not being counted.
 
 
 
