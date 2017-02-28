@@ -33,9 +33,19 @@
 
 	<developers>
 		<developer>
-			<id>frossi</id>
-			<name>Franco Rossi</name>
-			<timezone>-8</timezone>
+			<id>ahcho0819</id>
+			<name>Andrew Cho</name>
+			<email>acho@synopsys.com</email>
+		</developer>
+		<developer>
+			<id>jbriggs</id>
+			<name>Joel Briggs</name>
+			<email>jbriggs@synopsys.com</email>
+		</developer>
+		<developer>
+			<id>shami</id>
+			<name>Shami Willms</name>
+			<email>kwillms@synopsys.com</email>
 		</developer>
 	</developers>
 
