@@ -21,7 +21,6 @@ public class CoverityPluginTest {
     @Test
     public void testGetExtensions() throws Exception {
         List list = new CoverityPlugin().getExtensions();
-        // Testing purposes
         assertTrue("Plugin doesn't register any extensions", list.size() > 0);
     }
 }
