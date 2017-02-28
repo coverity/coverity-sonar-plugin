@@ -11,7 +11,7 @@
 	<groupId>org.sonar.plugins.coverity</groupId>
 	<artifactId>coverity-sonar-plugin</artifactId>
 	<packaging>sonar-plugin</packaging>
-	<version>1.5.0</version>
+	<version>1.6.0</version>
 
 	<name>Coverity</name>
 	<description>Imports Coverity defects into SonarQube</description>
@@ -19,8 +19,8 @@
 	<inceptionYear>2014</inceptionYear>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<sonar.version>5.1</sonar.version>
-		<jdk.min.version>1.6</jdk.min.version>
+		<sonar.version>5.5</sonar.version>
+		<jdk.min.version>1.7</jdk.min.version>
 		<cxf.version>2.6.1</cxf.version>
 		<license.title>Coverity Sonar Plugin</license.title>
 		<license.mailto>support@coverity.com</license.mailto>
@@ -58,7 +58,7 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>org.codehaus.sonar</groupId>
+			<groupId>org.sonarsource.sonarqube</groupId>
 			<artifactId>sonar-plugin-api</artifactId>
 			<version>${sonar.version}</version>
 			<scope>provided</scope>
@@ -66,7 +66,7 @@
 
 		<!-- unit tests -->
 		<dependency>
-			<groupId>org.codehaus.sonar</groupId>
+			<groupId>org.sonarsource.sonarqube</groupId>
 			<artifactId>sonar-testing-harness</artifactId>
 			<version>${sonar.version}</version>
 			<scope>test</scope>
@@ -133,16 +133,16 @@
 			<version>1.7.12</version>
 		</dependency>
 		<dependency>
-			<groupId>org.codehaus.sonar</groupId>
-			<artifactId>sonar-maven-plugin</artifactId>
-			<version>5.1</version>
-		</dependency>
-		<dependency>
 			<groupId>com.googlecode.json-simple</groupId>
 			<artifactId>json-simple</artifactId>
 			<version>1.1.1</version>
 		</dependency>
-    </dependencies>
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<version>15.0</version>
+		</dependency>
+	</dependencies>
 
 	<build>
 		<plugins>
@@ -166,9 +166,9 @@
 				</executions>
 			</plugin>
 			<plugin>
-				<groupId>org.codehaus.sonar</groupId>
+				<groupId>org.sonarsource.sonar-packaging-maven-plugin</groupId>
 				<artifactId>sonar-packaging-maven-plugin</artifactId>
-				<version>1.9</version>
+				<version>1.17</version>
 				<extensions>true</extensions>
 				<configuration>
 					<pluginClass>org.sonar.plugins.coverity.CoverityPlugin</pluginClass>
