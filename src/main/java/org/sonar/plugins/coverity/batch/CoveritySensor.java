@@ -17,6 +17,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.sonar.api.batch.Sensor;
 import org.sonar.api.batch.SensorContext;
+import org.sonar.api.batch.fs.FileSystem;
 import org.sonar.api.component.ResourcePerspectives;
 import org.sonar.api.config.Settings;
 import org.sonar.api.issue.Issuable;
@@ -47,6 +48,7 @@ public class CoveritySensor implements Sensor {
     private final ResourcePerspectives resourcePerspectives;
     private Settings settings;
     private RulesProfile profile;
+    private final FileSystem fileSystem;
 
     private final String HIGH = "High";
     private final String MEDIUM = "Medium";
@@ -57,7 +59,9 @@ public class CoveritySensor implements Sensor {
     private int mediumImpactDefects = 0;
     private int lowImpactDefects = 0;
 
-    public CoveritySensor(Settings settings, RulesProfile profile, ResourcePerspectives resourcePerspectives) {
+    private String platform = null;
+
+    public CoveritySensor(Settings settings, RulesProfile profile, ResourcePerspectives resourcePerspectives, FileSystem fileSystem) {
         this.settings = settings;
         /**
          * Instead of a "RulesProfile" object, "CoveritySensor" gets a "RulesProfileWrapper" with name and language
@@ -68,6 +72,8 @@ public class CoveritySensor implements Sensor {
         innerProfile.setActiveRules(rules);
         this.profile = innerProfile;
         this.resourcePerspectives = resourcePerspectives;
+        this.fileSystem = fileSystem;
+        platform = System.getProperty("os.name");
     }
 
     public boolean shouldExecuteOnProject(Project project) {
@@ -197,14 +203,18 @@ public class CoveritySensor implements Sensor {
 
                 Resource res = null;
                 String filePath = mddo.getFilePathname();
+                String sonarFilePath = null;
                 if (stripPrefix != null && !stripPrefix.isEmpty() && filePath.startsWith(stripPrefix)){
                     filePath = filePath.substring(stripPrefix.length());
-                    File newPathFile = new File(currenDirFile, filePath);
-                    LOG.info("Full path after prefix being stripped: " + newPathFile.getAbsolutePath());
-                    res = getResourceForFile(newPathFile.getAbsolutePath(), project);
-                } else {
-                    res = getResourceForFile(filePath, project);
+                    sonarFilePath = new File(currenDirFile, filePath).getAbsolutePath();
+                    LOG.info("Full path after prefix being stripped: " + sonarFilePath);
                 }
+
+                if (platform.startsWith("Windows")) {
+                    sonarFilePath = sonarFilePath.replace("\\", "/");
+                }
+
+                res = getResourceForFile(sonarFilePath, project);
 
                 if(impact != null){
                     totalDefectsCounter++;
