@@ -203,7 +203,7 @@ public class CoveritySensor implements Sensor {
 
                 Resource res = null;
                 String filePath = mddo.getFilePathname();
-                String sonarFilePath = null;
+                String sonarFilePath = filePath;
                 if (stripPrefix != null && !stripPrefix.isEmpty() && filePath.startsWith(stripPrefix)){
                     filePath = filePath.substring(stripPrefix.length());
                     sonarFilePath = new File(currenDirFile, filePath).getAbsolutePath();
