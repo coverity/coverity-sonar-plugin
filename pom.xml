@@ -2,16 +2,10 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<parent>
-		<groupId>org.codehaus.sonar-plugins</groupId>
-		<artifactId>parent</artifactId>
-		<version>17</version>
-	</parent>
-
 	<groupId>org.sonar.plugins.coverity</groupId>
 	<artifactId>coverity-sonar-plugin</artifactId>
 	<packaging>sonar-plugin</packaging>
-	<version>1.5.0</version>
+	<version>1.6.0</version>
 
 	<name>Coverity</name>
 	<description>Imports Coverity defects into SonarQube</description>
@@ -19,11 +13,8 @@
 	<inceptionYear>2014</inceptionYear>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<sonar.version>5.1</sonar.version>
-		<jdk.min.version>1.6</jdk.min.version>
-		<cxf.version>2.6.1</cxf.version>
-		<license.title>Coverity Sonar Plugin</license.title>
-		<license.mailto>support@coverity.com</license.mailto>
+		<sonar.version>5.6</sonar.version>
+		<jdk.min.version>1.8</jdk.min.version>
 	</properties>
 
 	<organization>
@@ -33,9 +24,19 @@
 
 	<developers>
 		<developer>
-			<id>frossi</id>
-			<name>Franco Rossi</name>
-			<timezone>-8</timezone>
+			<id>ahcho0819</id>
+			<name>Andrew Cho</name>
+			<email>acho@synopsys.com</email>
+		</developer>
+		<developer>
+			<id>jbriggs</id>
+			<name>Joel Briggs</name>
+			<email>jbriggs@synopsys.com</email>
+		</developer>
+		<developer>
+			<id>shami</id>
+			<name>Shami Willms</name>
+			<email>kwillms@synopsys.com</email>
 		</developer>
 	</developers>
 
@@ -48,7 +49,7 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>org.codehaus.sonar</groupId>
+			<groupId>org.sonarsource.sonarqube</groupId>
 			<artifactId>sonar-plugin-api</artifactId>
 			<version>${sonar.version}</version>
 			<scope>provided</scope>
@@ -56,7 +57,7 @@
 
 		<!-- unit tests -->
 		<dependency>
-			<groupId>org.codehaus.sonar</groupId>
+			<groupId>org.sonarsource.sonarqube</groupId>
 			<artifactId>sonar-testing-harness</artifactId>
 			<version>${sonar.version}</version>
 			<scope>test</scope>
@@ -123,42 +124,24 @@
 			<version>1.7.12</version>
 		</dependency>
 		<dependency>
-			<groupId>org.codehaus.sonar</groupId>
-			<artifactId>sonar-maven-plugin</artifactId>
-			<version>5.1</version>
-		</dependency>
-		<dependency>
 			<groupId>com.googlecode.json-simple</groupId>
 			<artifactId>json-simple</artifactId>
 			<version>1.1.1</version>
 		</dependency>
-    </dependencies>
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<version>15.0</version>
+		</dependency>
+	</dependencies>
 
 	<build>
 		<plugins>
+
 			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>build-helper-maven-plugin</artifactId>
-				<version>1.5</version>
-				<executions>
-					<execution>
-						<id>test</id>
-						<phase>generate-sources</phase>
-						<goals>
-							<goal>add-source</goal>
-						</goals>
-						<configuration>
-							<sources>
-								<source>${project.basedir}/target/generated-sources</source>
-							</sources>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<groupId>org.codehaus.sonar</groupId>
+				<groupId>org.sonarsource.sonar-packaging-maven-plugin</groupId>
 				<artifactId>sonar-packaging-maven-plugin</artifactId>
-				<version>1.9</version>
+				<version>1.15</version>
 				<extensions>true</extensions>
 				<configuration>
 					<pluginClass>org.sonar.plugins.coverity.CoverityPlugin</pluginClass>
@@ -174,7 +157,6 @@
 				</configuration>
 			</plugin>
 			<plugin>
-				<!-- UTF-8 bundles are not supported by Java, so they must be converted during build -->
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>native2ascii-maven-plugin</artifactId>
 				<version>1.0-beta-1</version>
@@ -186,21 +168,6 @@
 					</execution>
 				</executions>
 			</plugin>
-
-            <plugin>
-
-                <groupId>com.mycila.maven-license-plugin</groupId>
-                <artifactId>maven-license-plugin</artifactId>
-                <configuration>
-                    <skip>true</skip>
-                </configuration>
-            </plugin>
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>sonar-maven-plugin</artifactId>
-				<version>2.6</version>
-			</plugin>
-
 		</plugins>
 	</build>
 
