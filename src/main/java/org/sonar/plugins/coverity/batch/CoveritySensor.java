@@ -203,18 +203,17 @@ public class CoveritySensor implements Sensor {
 
                 Resource res = null;
                 String filePath = mddo.getFilePathname();
-                String sonarFilePath = null;
                 if (stripPrefix != null && !stripPrefix.isEmpty() && filePath.startsWith(stripPrefix)){
-                    filePath = filePath.substring(stripPrefix.length());
-                    sonarFilePath = new File(currenDirFile, filePath).getAbsolutePath();
-                    LOG.info("Full path after prefix being stripped: " + sonarFilePath);
+                    String strippedFilePath = filePath.substring(stripPrefix.length());
+                    filePath = new File(currenDirFile, strippedFilePath).getAbsolutePath();
+                    LOG.info("Full path after prefix being stripped: " + filePath);
                 }
 
                 if (platform.startsWith("Windows")) {
-                    sonarFilePath = sonarFilePath.replace("\\", "/");
+                    filePath = filePath.replace("\\", "/");
                 }
 
-                res = getResourceForFile(sonarFilePath, project);
+                res = getResourceForFile(filePath, project);
 
                 if(impact != null){
                     totalDefectsCounter++;
