@@ -878,26 +878,6 @@ public interface ConfigurationService {
 
     /**
      * 
-     * @param fileName
-     * @param snapshotId
-     * @return
-     *     returns com.coverity.ws.v9.OutputFileDataObj
-     * @throws CovRemoteServiceException_Exception
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "getOutputFileForSnapshot", targetNamespace = "http://ws.coverity.com/v9", className = "com.coverity.ws.v9.GetOutputFileForSnapshot")
-    @ResponseWrapper(localName = "getOutputFileForSnapshotResponse", targetNamespace = "http://ws.coverity.com/v9", className = "com.coverity.ws.v9.GetOutputFileForSnapshotResponse")
-    public OutputFileDataObj getOutputFileForSnapshot(
-        @WebParam(name = "snapshotId", targetNamespace = "")
-        SnapshotIdDataObj snapshotId,
-        @WebParam(name = "fileName", targetNamespace = "")
-        String fileName)
-        throws CovRemoteServiceException_Exception
-    ;
-
-    /**
-     * 
      * @return
      *     returns java.util.List<com.coverity.ws.v9.FeatureUpdateTimeDataObj>
      */
