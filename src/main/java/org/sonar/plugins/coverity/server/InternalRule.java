@@ -18,6 +18,7 @@ public class InternalRule{
     private String description = "";
     private List<String> tags;
     private List<String> subcategory;
+    private String ruleType = "";
 
     public InternalRule(String key, String name, String severity, String description){
         this.key = key;
@@ -50,6 +51,14 @@ public class InternalRule{
 
     public List<String> getTags() {
         return tags;
+    }
+
+    public void setRuleType(String type) {
+        this.ruleType = type;
+    }
+
+    public String getRuleType() {
+        return this.ruleType;
     }
 
     @Override
