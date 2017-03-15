@@ -187,7 +187,7 @@ public class FileGenerator {
                 xmlFileOut.println("        <key>" + StringEscapeUtils.escapeXml(rule.getKey()) + "</key>");
                 xmlFileOut.println("        <severity>" + StringEscapeUtils.escapeXml(rule.getSeverity()) + "</severity>");
                 xmlFileOut.println("        <configKey>" + StringEscapeUtils.escapeXml(rule.getKey()) + "</configKey>");
-                xmlFileOut.println("        <description><![CDATA[" + StringEscapeUtils.escapeXml(rule.getDescription()) + "]]></description>");
+//                xmlFileOut.println("        <description><![CDATA[" + StringEscapeUtils.escapeXml(rule.getDescription()) + "]]></description>");
                 xmlFileOut.println("    </rule>");
             }
             xmlFileOut.println("</rules>");

@@ -10,6 +10,7 @@
  */
 package org.sonar.plugins.coverity.util;
 
+import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.commons.lang.StringUtils;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -17,10 +18,7 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import org.sonar.plugins.coverity.server.InternalRule;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.*;
 
 public class RulesGenerator {
@@ -39,6 +37,8 @@ public class RulesGenerator {
      */
     public static void main(String[] args) throws Exception {
 
+        File xmlDir = new File("src/main/resources/org/sonar/plugins/coverity/server");
+
         if (args.length == 0) {
             System.out.println("Need to provide path to the checker-properties.json files or find bugs checker file");
             return;
@@ -53,25 +53,9 @@ public class RulesGenerator {
             }
         }
 
-        int javaRule = 0;
-        int cppRule = 0;
-        int csRule = 0;
+        printRulesList();
 
-        for (String key: rulesList.get(JAVA_LANGUAGE).keySet()) {
-            javaRule += rulesList.get(JAVA_LANGUAGE).get(key).getSubcategory().size();
-        }
-
-        for (String key: rulesList.get(CPP_LANGUAGE).keySet()) {
-            cppRule += rulesList.get(CPP_LANGUAGE).get(key).getSubcategory().size();
-        }
-
-        for (String key: rulesList.get(CS_LANGUAGE).keySet()) {
-            csRule += rulesList.get(CS_LANGUAGE).get(key).getSubcategory().size();
-        }
-
-        System.out.println("Total Java Rules: " + javaRule);
-        System.out.println("Total C/C++ Rules: " + cppRule);
-        System.out.println("Total C# Rules: " + csRule);
+        writeRulesToFiles(xmlDir);
     }
 
     public static void generateRulesForQualityCheckers(File jsonFile) throws Exception {
@@ -100,6 +84,7 @@ public class RulesGenerator {
                 String category = (String) childJSON.get("category");
                 String subcategoryShortDescription = (String) childJSON.get("subcategoryShortDescription");
                 String name = category + " : " + subcategoryShortDescription;
+                String key = checkerName + "_" + subcategory;
 
                 boolean qualityKind;
                 boolean securityKind;
@@ -149,9 +134,9 @@ public class RulesGenerator {
                 }
 
                 for(String lang : languages) {
-                    InternalRule rule = new InternalRule(checkerName, name, getSeverity(impact), getDescription(subcategoryLongDescription));
+                    InternalRule rule = new InternalRule(key, name, getSeverity(impact), subcategory, getDescription(subcategoryLongDescription));
                     setRuleType(rule, qualityKind, securityKind);
-                    putRuleIntoMap(lang, rule, subcategory);
+                    putRuleIntoMap(lang, rule);
 
                     if (lang.equals(JAVA_LANGUAGE)) {
                         javaRule++;
@@ -186,7 +171,7 @@ public class RulesGenerator {
             Object obj = parser.parse(new FileReader(jsonFile.getAbsolutePath()));
             JSONObject root = (JSONObject) obj;
             JSONArray issues =  (JSONArray) root.get("issue_type");
-            System.out.println("File Path : " + jsonFile.getAbsolutePath() + " JSONArray Size: " + issues.size());
+            System.out.println("FilePath : " + jsonFile.getAbsolutePath() + " JSONArray Size: " + issues.size());
 
             Iterator<JSONObject> iterator = issues.iterator();
 
@@ -196,6 +181,9 @@ public class RulesGenerator {
                 String checkerName = (String) childJSON.get("type");
                 String subcategory = (String) childJSON.get("subtype");
 
+                JSONObject name = (JSONObject) childJSON.get("name");
+                String ruleName = (String) name.get("en");
+
                 JSONObject desc = (JSONObject) childJSON.get("description");
                 String description = (String) desc.get("en");
 
@@ -204,10 +192,12 @@ public class RulesGenerator {
                 boolean qualityKind = (boolean) properties.get("qualityKind");
                 boolean securityKind = (boolean) properties.get("securityKind");
 
-                InternalRule rule = new InternalRule(checkerName, checkerName, getSeverity(impact), getDescription(description));
+                String key = checkerName + "_" + subcategory;
+
+                InternalRule rule = new InternalRule(key, ruleName, getSeverity(impact), subcategory, getDescription(description));
                 setRuleType(rule, qualityKind, securityKind);
 
-                putRuleIntoMap(JAVA_LANGUAGE, rule, subcategory);
+                putRuleIntoMap(JAVA_LANGUAGE, rule);
             }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -218,8 +208,62 @@ public class RulesGenerator {
         }
     }
 
+    /**
+     * Write the result of the rules generation to one xml file per language. This is the step that actually updates the
+     * resources used by the plugin.
+     */
+    public static void writeRulesToFiles(File xmlDir){
+        /**
+         * Print out rules for each language.
+         */
+        for(String language : rulesList.keySet()){
+            File xmlFile = new File(xmlDir, "coverity-" + language + ".xml");
+            PrintWriter xmlFileOut = null;
+            try {
+                xmlFileOut = new PrintWriter(xmlFile,"UTF-8" );
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+            }
+            xmlFileOut.println("<rules>");
+            String domain = null;
+            if (language.equals(JAVA_LANGUAGE)) {
+                domain = "STATIC_JAVA";
+            } else if (language.equals(CPP_LANGUAGE)) {
+                domain = "STATIC_C";
+            } else if (language.equals(CS_LANGUAGE)) {
+                domain = "STATIC_CS";
+            }
+
+            for (String key : rulesList.get(language).keySet()) {
+                InternalRule rule = rulesList.get(language).get(key);
+
+                xmlFileOut.println("    <rule>");
+                xmlFileOut.println("        <key>" + StringEscapeUtils.escapeXml(domain + "_" + rule.getKey()) + "</key>");
+                xmlFileOut.println("        <name>" + StringEscapeUtils.escapeXml(rule.getName()) + "</name>");
+                xmlFileOut.println("        <internalKey>" + StringEscapeUtils.escapeXml(domain + "_" + rule.getKey()) + "</internalKey>");
+                xmlFileOut.println("        <description>" + StringEscapeUtils.escapeXml(rule.getDescription()) + "</description>");
+                xmlFileOut.println("        <severity>" + StringEscapeUtils.escapeXml(rule.getSeverity()) + "</severity>");
+                xmlFileOut.println("        <cardinality>SINGLE</cardinality>");
+                xmlFileOut.println("        <status>READY</status>");
+                xmlFileOut.println("        <type>" + StringEscapeUtils.escapeXml(rule.getRuleType()) + "</type>");
+
+                for (String tag : rule.getTags()) {
+                    xmlFileOut.println("        <tag>" + StringEscapeUtils.escapeXml(tag) + "</type>");
+                }
+
+                xmlFileOut.println("    </rule>");
+            }
+
+            xmlFileOut.println("</rules>");
+            xmlFileOut.close();
+            System.out.println("The following file has been updated: " + xmlFile.getPath());
+        }
+    }
+
     public static String findLanguage(String lang) {
-        if (lang.equals("Java") || lang.equals("STATIC_JAVA") || lang.equals("DYNAMIC_JAVA")) {
+        if (lang.equals("Java") || lang.equals("STATIC_JAVA")) {
             return JAVA_LANGUAGE;
         } else if (lang.equals("C/C++")){
             return CPP_LANGUAGE;
@@ -253,7 +297,7 @@ public class RulesGenerator {
         return severity;
     }
 
-    public static void putRuleIntoMap(String language, InternalRule rule, String subcategory) {
+    public static void putRuleIntoMap(String language, InternalRule rule) {
         String key = rule.getKey();
 
         if (!rulesList.containsKey(language)) {
@@ -261,13 +305,7 @@ public class RulesGenerator {
         }
 
         if (!rulesList.get(language).containsKey(key)) {
-            rule.getSubcategory().add(subcategory);
-
             rulesList.get(language).put(key, rule);
-        } else {
-            if (!rulesList.get(language).get(key).getSubcategory().contains(subcategory)) {
-                rulesList.get(language).get(key).getSubcategory().add(subcategory);
-            }
         }
     }
 
@@ -277,6 +315,12 @@ public class RulesGenerator {
         } else {
             rule.setRuleType(BUG);
         }
+    }
+
+    public static void printRulesList() {
+        System.out.println("Total Java Rules: " + rulesList.get(JAVA_LANGUAGE).size());
+        System.out.println("Total C/C++ Rules: " + rulesList.get(CPP_LANGUAGE).size());
+        System.out.println("Total C# Rules: " + rulesList.get(CS_LANGUAGE).size());
     }
 
 }

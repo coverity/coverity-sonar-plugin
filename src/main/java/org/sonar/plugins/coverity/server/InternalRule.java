@@ -3,7 +3,9 @@ package org.sonar.plugins.coverity.server;
 import org.apache.commons.collections4.CollectionUtils;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * InternalRule.class is used to produce objects containing all the information necessary to define a Sonarqube rule.
@@ -15,18 +17,18 @@ public class InternalRule{
     private String key = "";
     private String name = "";
     private String severity = "";
-    private String description = "";
     private List<String> tags;
-    private List<String> subcategory;
+    private String subcategory;
+    private String description;
     private String ruleType = "";
 
-    public InternalRule(String key, String name, String severity, String description){
+    public InternalRule(String key, String name, String severity, String subcategory, String description){
         this.key = key;
         this.name = name;
         this.severity = severity;
+        this.subcategory = subcategory;
         this.description = description;
         this.tags = new ArrayList<>();
-        this.subcategory = new ArrayList<>();
     }
 
     public String getKey() {
@@ -41,12 +43,12 @@ public class InternalRule{
         return severity;
     }
 
-    public String getDescription() {
-        return description;
+    public String getSubcategory() {
+        return subcategory;
     }
 
-    public List<String> getSubcategory() {
-        return subcategory;
+    public String getDescription() {
+        return description;
     }
 
     public List<String> getTags() {
@@ -73,9 +75,7 @@ public class InternalRule{
         if (!this.key.equals(other.key)) {
             return false;
         }
-        if (!CollectionUtils.isEqualCollection(this.subcategory, other.subcategory)) {
-            return false;
-        }
+
         return true;
     }
 
