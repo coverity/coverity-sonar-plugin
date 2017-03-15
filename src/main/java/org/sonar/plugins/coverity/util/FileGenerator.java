@@ -121,25 +121,25 @@ public class FileGenerator {
                  */
                 for(String language : languages){
                     String key = languageDomains.get(language) + "_" + checkerName ;
-                    InternalRule ir = new InternalRule();
-                    ir.setKey(key);
-                    ir.setName(checkerName);
-                    if(subcategoryShortDescription.isEmpty() || subcategoryShortDescription == null){
-                        ir.setName(key);
-                    } else {
-                        subcategoryShortDescription = org.apache.commons.lang.StringEscapeUtils.escapeXml(subcategoryShortDescription);
-                        ir.setName(subcategoryShortDescription);
-                    }
-                    String severity = "MAJOR";
-                    if(impact.equals("High")){
-                        severity = "BLOCKER";
-                    }
-                    if(impact.equals("Medium")){
-                        severity = "CRITICAL";
-                    }
-                    ir.setSeverity(severity);
-                    ir.setDescription(subcategoryLongDescription);
-                    mapOfCheckerPropMaps.get(language).put(key, ir);
+//                    InternalRule ir = new InternalRule();
+//                    ir.setKey(key);
+//                    ir.setName(checkerName);
+//                    if(subcategoryShortDescription.isEmpty() || subcategoryShortDescription == null){
+//                        ir.setName(key);
+//                    } else {
+//                        subcategoryShortDescription = org.apache.commons.lang.StringEscapeUtils.escapeXml(subcategoryShortDescription);
+//                        ir.setName(subcategoryShortDescription);
+//                    }
+//                    String severity = "MAJOR";
+//                    if(impact.equals("High")){
+//                        severity = "BLOCKER";
+//                    }
+//                    if(impact.equals("Medium")){
+//                        severity = "CRITICAL";
+//                    }
+//                    ir.setSeverity(severity);
+//                    ir.setDescription(subcategoryLongDescription);
+//                    mapOfCheckerPropMaps.get(language).put(key, ir);
                 }
             }
 
@@ -233,14 +233,14 @@ public class FileGenerator {
                     description = description.trim();
                 }
 
-                InternalRule ir = new InternalRule();
-                ir.setName(name);
-                ir.setKey(key);
-                ir.setDescription(description);
-                ir.setSeverity(severity);
-                ir.setLanguage(language);
+//                InternalRule ir = new InternalRule();
+//                ir.setName(name);
+//                ir.setKey(key);
+//                ir.setDescription(description);
+//                ir.setSeverity(severity);
+//                ir.setLanguage(language);
 
-                mapOfCheckerPropMaps.get(language).put(key, ir);
+//                mapOfCheckerPropMaps.get(language).put(key, ir);
                 oldRulesloadedPerLanguage++;
             }
             System.out.println("Number of rules loaded from old xml for language " + language + ": " + oldRulesloadedPerLanguage);

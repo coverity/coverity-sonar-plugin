@@ -21,11 +21,11 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 
 public class CheckerGenerator {
+
+    public static Map<String, Map<String, InternalRule>> rulesList = new HashMap<String, Map<String, InternalRule>>();
 
     /*
     CheckerGenerator is used to generate rules based on the coverity quality checker-properties.json files
@@ -42,77 +42,135 @@ public class CheckerGenerator {
         for (String filePath : args) {
             File file = new File(filePath);
             if (filePath.endsWith("findbugs-checker-properties.json")) {
-                generateRulesForFindBugCheckers(file);
+//                generateRulesForFindBugCheckers(file);
             } else {
                 generateRulesForQualityCheckers(file);
             }
         }
 
+        int javaRule = 0;
+        int cppRule = 0;
+        int csRule = 0;
+
+        for (String key: rulesList.get("java").keySet()) {
+            javaRule += rulesList.get("java").get(key).getSubcategory().size();
+        }
+
+        for (String key: rulesList.get("cpp").keySet()) {
+            cppRule += rulesList.get("cpp").get(key).getSubcategory().size();
+        }
+
+        for (String key: rulesList.get("cs").keySet()) {
+            csRule += rulesList.get("cs").get(key).getSubcategory().size();
+        }
+
+        System.out.println("Total Java Rules: " + javaRule);
+        System.out.println("Total C/C++ Rules: " + cppRule);
+        System.out.println("Total C# Rules: " + csRule);
+
     }
 
     public static void generateRulesForQualityCheckers(File jsonFile) throws Exception {
-        List<String> checkerList = new ArrayList<>();
         JSONParser parser = new JSONParser();
+        int javaRule = 0;
+        int cppRule = 0;
+        int csRule = 0;
 
         try {
             Object obj = parser.parse(new FileReader(jsonFile.getAbsolutePath()));
             JSONArray jsonObject =  (JSONArray) obj;
-            System.out.println("File Path : " + jsonFile.getAbsolutePath() + " JSONArray Size: " + jsonObject.size());
 
             Iterator<JSONObject> iterator = jsonObject.iterator();
 
-            // Count of all checkers found on the given JSON file.
-//            int iteratorCount = 0;
-
             while( iterator.hasNext() ) {
-//                iteratorCount++;
                 JSONObject childJSON = (JSONObject)iterator.next();
 
                 String checkerName = (String) childJSON.get("checkerName");
                 String subcategory = (String) childJSON.get("subcategory");
-//                String impact = (String) childJSON.get("impact");
-
-//                String subcategoryLongDescription = (String) childJSON.get("subcategoryLongDescription");
-//                String subcategoryShortDescription = (String) childJSON.get("subcategoryShortDescription");
+                String impact = (String) childJSON.get("impact");
+                String subcategoryLongDescription = (String) childJSON.get("subcategoryLongDescription");
                 List<String> families = (ArrayList<String>) childJSON.get("families");
                 String domain = (String) childJSON.get("domain");
                 String language = (String) childJSON.get("language");
 
+                String category = (String) childJSON.get("category");
+                String subcategoryShortDescription = (String) childJSON.get("subcategoryShortDescription");
+                String name = category + " : " + subcategoryShortDescription;
+
                 String key = null;
+                List<String> languages = new ArrayList<>();
 
                 // Using families
                 if (StringUtils.isEmpty(domain) && StringUtils.isEmpty(language)
                         && families != null && !families.isEmpty()) {
-                    key = checkerName + "_" + families.toString() + "_" + subcategory;
+                    for (String family : families) {
+                        String lang = findLanguage(family);
+                        if (!StringUtils.isEmpty(lang)) {
+                            languages.add(lang);
+                        }
+                    }
                 }
 
                 // Using domain
                 else if (!StringUtils.isEmpty(domain) && StringUtils.isEmpty(language)
                         && (families == null || families.isEmpty())) {
-                    key = checkerName + "_" + domain + "_" + subcategory;
+                    String lang = findLanguage(domain);
+                    if (!StringUtils.isEmpty(lang)) {
+                        languages.add(lang);
+                    }
                 }
 
                 // Using language
                 else if (!StringUtils.isEmpty(language) && StringUtils.isEmpty(domain)
                         && (families == null || families.isEmpty())) {
-                    key = checkerName + "_" + language + "_" + subcategory;
+                    String lang = findLanguage(language);
+                    if (!StringUtils.isEmpty(lang)) {
+                        languages.add(lang);
+                    }
                 }
 
-                if (StringUtils.isEmpty(key)) {
-                    System.out.println("Key cannot be null. Aborting.....");
-                    return;
+                for(String lang : languages) {
+
+                    if (!rulesList.containsKey(lang)) {
+                        rulesList.put(lang, new HashMap<String, InternalRule>());
+                    }
+
+                    if (!rulesList.get(lang).containsKey(checkerName)) {
+                        String severity = "MAJOR";
+                        if(impact.equals("High")){
+                            severity = "BLOCKER";
+                        }
+                        if(impact.equals("Medium")){
+                            severity = "CRITICAL";
+                        }
+
+                        String linkRegex = "\\(<a href=\"([^\"]*?)\" target=\"_blank\">(.*?)</a>\\)";
+                        String codeRegex = "<code>(.*?)</code>";
+
+                        subcategoryLongDescription = subcategoryLongDescription.replaceAll(linkRegex, "");
+                        subcategoryLongDescription = subcategoryLongDescription.replaceAll(codeRegex, "$1");
+                        subcategoryLongDescription = subcategoryLongDescription.trim();
+
+                        InternalRule rule = new InternalRule(checkerName, name, severity, subcategoryLongDescription);
+                        rule.getSubcategory().add(subcategory);
+
+                        rulesList.get(lang).put(checkerName, rule);
+                    } else {
+                        if (!rulesList.get(lang).get(checkerName).getSubcategory().contains(subcategory)) {
+                            rulesList.get(lang).get(checkerName).getSubcategory().add(subcategory);
+                        }
+                    }
+
+                    if (lang.equals("java")) {
+                        javaRule++;
+                    } else if (lang.equals("cpp")) {
+                        cppRule++;
+                    } else if (lang.equals("cs")) {
+                        csRule++;
+                    }
+
                 }
 
-                checkerList.add(key);
-
-//                {
-//                    String linkRegex = "\\(<a href=\"([^\"]*?)\" target=\"_blank\">(.*?)</a>\\)";
-//                    String codeRegex = "<code>(.*?)</code>";
-//
-//                    subcategoryLongDescription = subcategoryLongDescription.replaceAll(linkRegex, "");
-//                    subcategoryLongDescription = subcategoryLongDescription.replaceAll(codeRegex, "$1");
-//                    subcategoryLongDescription = subcategoryLongDescription.trim();
-//                }
 
                 /**
                  * Checkers specify the languages they support by providing a "domain" field or by providing a list of
@@ -173,7 +231,10 @@ public class CheckerGenerator {
 //            System.out.println("Number of rules loaded from JSON for cs: " + csCheckerProp.size());
 //            System.out.println("Number of rules loaded from JSON for cpp: " + cppCheckerProp.size());
 //            System.out.println("Total number of checkers on JSON: " + iteratorCount);
-            System.out.println("Total number of parsed checkers : " + checkerList.size());
+
+            System.out.println("FilePath: " + jsonFile.getAbsolutePath() + " JavaRule: " + javaRule);
+            System.out.println("FilePath: " + jsonFile.getAbsolutePath() + " CppRule: " + cppRule);
+            System.out.println("FilePath: " + jsonFile.getAbsolutePath() + " CsRule: " + csRule);
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -200,7 +261,6 @@ public class CheckerGenerator {
 //            int iteratorCount = 0;
 
             while( iterator.hasNext() ) {
-//                iteratorCount++;
                 JSONObject childJSON = (JSONObject)iterator.next();
 
                 String checkerName = (String) childJSON.get("type");
@@ -295,6 +355,18 @@ public class CheckerGenerator {
         } catch (ParseException e) {
             e.printStackTrace();
         }
+    }
+
+    public static String findLanguage(String lang) {
+        if (lang.equals("Java") || lang.equals("STATIC_JAVA") || lang.equals("DYNAMIC_JAVA")) {
+            return "java";
+        } else if (lang.equals("C/C++")){
+            return "cpp";
+        } else if (lang.equals("C#")) {
+            return "cs";
+        }
+
+        return StringUtils.EMPTY;
     }
 
 }

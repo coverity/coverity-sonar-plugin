@@ -1,5 +1,10 @@
 package org.sonar.plugins.coverity.server;
 
+import org.apache.commons.collections4.CollectionUtils;
+
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * InternalRule.class is used to produce objects containing all the information necessary to define a Sonarqube rule.
  * This informaition will be printed out to an XML file. When reading the resulting file, the DocumentBuilder parser has
@@ -7,60 +12,44 @@ package org.sonar.plugins.coverity.server;
  * setters of this class.
  */
 public class InternalRule{
-    String key = "";
-    String name = "";
-    String severity = "";
-    String description = "";
-    String language = "";
+    private String key = "";
+    private String name = "";
+    private String severity = "";
+    private String description = "";
+    private List<String> tags;
+    private List<String> subcategory;
+
+    public InternalRule(String key, String name, String severity, String description){
+        this.key = key;
+        this.name = name;
+        this.severity = severity;
+        this.description = description;
+        this.tags = new ArrayList<>();
+        this.subcategory = new ArrayList<>();
+    }
 
     public String getKey() {
         return key;
-    }
-
-    public void setKey(String key) {
-        this.key = key;
     }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public String getSeverity() {
         return severity;
-    }
-
-    public void setSeverity(String severity) {
-        this.severity = severity;
     }
 
     public String getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public List<String> getSubcategory() {
+        return subcategory;
     }
 
-    public String getLanguage() {
-        return language;
-    }
-
-    public void setLanguage(String language) {
-        this.language = language;
-    }
-
-    public InternalRule(){};
-
-    public InternalRule(String key, String name, String severity, String description, String language){
-        this.key = key;
-        this.name = name;
-        this.severity = severity;
-        this.description = description;
-        this.language = language;
+    public List<String> getTags() {
+        return tags;
     }
 
     @Override
@@ -73,6 +62,9 @@ public class InternalRule{
         }
         final InternalRule other = (InternalRule) obj;
         if (!this.key.equals(other.key)) {
+            return false;
+        }
+        if (!CollectionUtils.isEqualCollection(this.subcategory, other.subcategory)) {
             return false;
         }
         return true;
