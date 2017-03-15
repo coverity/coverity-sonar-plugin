@@ -12,23 +12,26 @@
 package org.sonar.plugins.coverity.batch;
 
 import com.coverity.ws.v9.*;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.sonar.api.batch.Sensor;
-import org.sonar.api.batch.SensorContext;
-import org.sonar.api.batch.fs.FileSystem;
+import org.sonar.api.CoreProperties;
+import org.sonar.api.batch.fs.*;
+import org.sonar.api.batch.fs.internal.DefaultFilePredicates;
+import org.sonar.api.batch.fs.internal.DefaultInputFile;
+import org.sonar.api.batch.fs.internal.RelativePathPredicate;
+import org.sonar.api.batch.sensor.Sensor;
+import org.sonar.api.batch.sensor.SensorContext;
+import org.sonar.api.batch.sensor.SensorDescriptor;
 import org.sonar.api.component.ResourcePerspectives;
 import org.sonar.api.config.Settings;
 import org.sonar.api.issue.Issuable;
 import org.sonar.api.issue.Issue;
-import org.sonar.api.measures.Measure;
 import org.sonar.api.profiles.RulesProfile;
 import org.sonar.api.resources.Project;
-import org.sonar.api.resources.Resource;
 import org.sonar.api.rules.ActiveRule;
 import org.sonar.api.rules.Rule;
 import org.sonar.plugins.coverity.CoverityPlugin;
+import org.sonar.plugins.coverity.base.CoverityPluginMetrics;
 import org.sonar.plugins.coverity.server.CoverityRules;
 import org.sonar.plugins.coverity.util.CoverityUtil;
 import org.sonar.plugins.coverity.ws.CIMClient;
@@ -40,7 +43,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
-import static org.sonar.plugins.coverity.base.CoverityPluginMetrics.*;
 import static org.sonar.plugins.coverity.util.CoverityUtil.createURL;
 
 public class CoveritySensor implements Sensor {
@@ -76,13 +78,24 @@ public class CoveritySensor implements Sensor {
         platform = System.getProperty("os.name");
     }
 
-    public boolean shouldExecuteOnProject(Project project) {
-        boolean enabled = settings.getBoolean(CoverityPlugin.COVERITY_ENABLE);
-        int active = profile.getActiveRulesByRepository(CoverityPlugin.REPOSITORY_KEY + "-" + project.getLanguageKey()).size();
-        return enabled && active > 0;
+    @Override
+    public void describe(SensorDescriptor descriptor) {
+        descriptor.name(this.toString())
+                .createIssuesForRuleRepositories(
+                        // todo: extract the list of langauges/repositories
+                        CoverityPlugin.REPOSITORY_KEY + "-java",
+                        CoverityPlugin.REPOSITORY_KEY + "-cs",
+                        CoverityPlugin.REPOSITORY_KEY + "-c",
+                        CoverityPlugin.REPOSITORY_KEY + "-cpp",
+                        CoverityPlugin.REPOSITORY_KEY + "-c++")
+                .requireProperties(
+                        // todo: evaluate whether the Connect properties are required here
+                        CoverityPlugin.COVERITY_PROJECT);
+
     }
 
-    public void analyse(Project project, SensorContext sensorContext) {
+    @Override
+    public void execute(SensorContext context) {
         boolean enabled = settings.getBoolean(CoverityPlugin.COVERITY_ENABLE);
 
         int totalDefectsCounter = 0;
@@ -141,8 +154,10 @@ public class CoveritySensor implements Sensor {
             return;
         }
 
+        String projectLanguage = context.settings().getString(CoreProperties.PROJECT_LANGUAGE_PROPERTY);
+
         LOG.debug(profile.toString());
-        for(ActiveRule ar : profile.getActiveRulesByRepository(CoverityPlugin.REPOSITORY_KEY + "-" + project.getLanguageKey())) {
+        for(ActiveRule ar : profile.getActiveRulesByRepository(CoverityPlugin.REPOSITORY_KEY + "-" + projectLanguage)) {
             LOG.debug(ar.toString());
         }
 
@@ -201,7 +216,7 @@ public class CoveritySensor implements Sensor {
                     continue;
                 }
 
-                Resource res = null;
+                InputFile res = null;
                 String filePath = mddo.getFilePathname();
                 if (stripPrefix != null && !stripPrefix.isEmpty() && filePath.startsWith(stripPrefix)){
                     String strippedFilePath = filePath.substring(stripPrefix.length());
@@ -210,10 +225,11 @@ public class CoveritySensor implements Sensor {
                 }
 
                 if (platform.startsWith("Windows")) {
-                    filePath = filePath.replace("\\", "/");
+                    filePath = filePath.replace("/", "\\");
                 }
 
-                res = getResourceForFile(filePath, project);
+                final FileSystem fileSystem = context.fileSystem();
+                res = fileSystem.inputFile(fileSystem.predicates().hasPath(filePath));
 
                 if(impact != null){
                     totalDefectsCounter++;
@@ -229,7 +245,7 @@ public class CoveritySensor implements Sensor {
                 if(res == null) {
                     for(File possibleFile : listOfFiles){
                         if(possibleFile.getAbsolutePath().endsWith(filePath)){
-                            res = getResourceForFile(possibleFile.getAbsolutePath(), project);
+                            res = fileSystem.inputFile(fileSystem.predicates().hasPath(possibleFile.getAbsolutePath()));
                             break;
                         }
                     }
@@ -240,10 +256,10 @@ public class CoveritySensor implements Sensor {
                     continue;
                 }
 
-                org.sonar.api.resources.Language lang = res.getLanguage();
+                String lang = res.language();
                 // This is a way to introduce support for community c++
                 if (lang == null) {
-                    lang = project.getLanguage();
+                    lang = projectLanguage;
                 }
 
                 /**
@@ -254,7 +270,7 @@ public class CoveritySensor implements Sensor {
                  */
                 CoverityRules coverityRules = new CoverityRules();
                 Map<String, Map<String, Rule>> rulesByLangaugeMap = coverityRules.parseRules();
-                Map<String, Rule> rulesMap = rulesByLangaugeMap.get(lang.getKey());
+                Map<String, Rule> rulesMap = rulesByLangaugeMap.get(lang);
 
                 for(DefectInstanceDataObj dido : didos) {
                     //find the main event, so we can use its line number
@@ -263,14 +279,14 @@ public class CoveritySensor implements Sensor {
                     Issuable issuable = resourcePerspectives.as(Issuable.class, res);
 
                     String key = dido.getDomain() + "_" + dido.getCheckerName();
-                    org.sonar.api.rule.RuleKey rk = CoverityUtil.getRuleKey(lang.getKey(), key);
+                    org.sonar.api.rule.RuleKey rk = CoverityUtil.getRuleKey(lang, key);
                     ActiveRule ar = profile.getActiveRule(rk.repository(), rk.rule());
                     if(ar == null){
-                        rk = CoverityUtil.getRuleKey(lang.getKey(), key + "_" + "generic");
+                        rk = CoverityUtil.getRuleKey(lang, key + "_" + "generic");
                         ar = profile.getActiveRule(rk.repository(), rk.rule());
                     }
                     if(ar == null){
-                        rk = CoverityUtil.getRuleKey(lang.getKey(), key + "_" + "none");
+                        rk = CoverityUtil.getRuleKey(lang, key + "_" + "none");
                         ar = profile.getActiveRule(rk.repository(), rk.rule());
                     }
 
@@ -312,7 +328,7 @@ public class CoveritySensor implements Sensor {
 
         Thread.currentThread().setContextClassLoader(oldCL);
         // Display a clickable Coverity Logo
-        getCoverityLogoMeasures(sensorContext, instance, covProjectObj);
+        getCoverityLogoMeasures(context, instance, covProjectObj);
     }
 
     protected String getIssueMessage(CIMClient instance, Rule rule, ProjectDataObj covProjectObj, MergedDefectDataObj mddo, DefectInstanceDataObj dido) throws CovRemoteServiceException_Exception, IOException {
@@ -343,13 +359,6 @@ public class CoveritySensor implements Sensor {
         return null;
     }
 
-    protected Resource getResourceForFile(String filePath, Project module) {
-        File f = new File(filePath);
-        Resource ret;
-        ret = org.sonar.api.resources.File.fromIOFile(f, module);
-        return ret;
-    }
-
     @Override
     public String toString() {
         return getClass().getSimpleName();
@@ -360,53 +369,64 @@ public class CoveritySensor implements Sensor {
     * saves the measures into sensorContext. This method is called by analyse().
     * */
     private void getCoverityLogoMeasures(SensorContext sensorContext, CIMClient client, ProjectDataObj covProjectObj) {
-        {
-            Measure measure = new Measure(COVERITY_PROJECT_NAME);
-            String covProject = settings.getString(CoverityPlugin.COVERITY_PROJECT);
-            measure.setData(covProject);
-            sensorContext.saveMeasure(measure);
+        String covProject = settings.getString(CoverityPlugin.COVERITY_PROJECT);
+        if (covProject != null) {
+            sensorContext
+                    .newMeasure()
+                    .forMetric(CoverityPluginMetrics.COVERITY_PROJECT_NAME)
+                    .on(sensorContext.module())
+                    .withValue(covProject)
+                    .save();
         }
 
-        {
-            Measure measure = new Measure(COVERITY_PROJECT_URL);
-            String ProjectUrl = createURL(client);
-            String ProductKey= String.valueOf(covProjectObj.getProjectKey());
-            ProjectUrl = ProjectUrl+"reports.htm#p"+ProductKey;
-            measure.setData(ProjectUrl);
-            sensorContext.saveMeasure(measure);
+
+        String ProjectUrl = createURL(client);
+        if (ProjectUrl != null) {
+            sensorContext
+                    .newMeasure()
+                    .forMetric(CoverityPluginMetrics.COVERITY_URL_CIM_METRIC)
+                    .on(sensorContext.module())
+                    .withValue(ProjectUrl)
+                    .save();
         }
 
-        {
-            Measure measure = new Measure(COVERITY_URL_CIM_METRIC);
-            String ProjectUrl = createURL(client);
-            String ProductKey= String.valueOf(covProjectObj.getProjectKey());
-            ProjectUrl = ProjectUrl+"reports.htm#p"+ProductKey;
-            measure.setData(ProjectUrl);
-            sensorContext.saveMeasure(measure);
+        String ProductKey= String.valueOf(covProjectObj.getProjectKey());
+        ProjectUrl = ProjectUrl+"reports.htm#p"+ProductKey;
+        if (ProjectUrl != null) {
+            sensorContext
+                .newMeasure()
+                .forMetric(CoverityPluginMetrics.COVERITY_PROJECT_URL)
+                .on(sensorContext.module())
+                .withValue(ProjectUrl)
+                .save();
         }
 
-        {
-            Measure measure = new Measure(COVERITY_OUTSTANDING_ISSUES);
-            measure.setIntValue(totalDefects);
-            sensorContext.saveMeasure(measure);
-        }
+        sensorContext
+                .newMeasure()
+                .forMetric(CoverityPluginMetrics.COVERITY_OUTSTANDING_ISSUES)
+                .on(sensorContext.module())
+                .withValue(totalDefects)
+                .save();
 
-        {
-            Measure measure = new Measure(COVERITY_HIGH_IMPACT);
-            measure.setIntValue(highImpactDefects);
-            sensorContext.saveMeasure(measure);
-        }
+        sensorContext
+                .newMeasure()
+                .forMetric(CoverityPluginMetrics.COVERITY_HIGH_IMPACT)
+                .on(sensorContext.module())
+                .withValue(highImpactDefects)
+                .save();
 
-        {
-            Measure measure = new Measure(COVERITY_MEDIUM_IMPACT);
-            measure.setIntValue(mediumImpactDefects);
-            sensorContext.saveMeasure(measure);
-        }
+        sensorContext
+                .newMeasure()
+                .forMetric(CoverityPluginMetrics.COVERITY_MEDIUM_IMPACT)
+                .on(sensorContext.module())
+                .withValue(mediumImpactDefects)
+                .save();
 
-        {
-            Measure measure = new Measure(COVERITY_LOW_IMPACT);
-            measure.setIntValue(lowImpactDefects);
-            sensorContext.saveMeasure(measure);
-        }
+        sensorContext
+                .newMeasure()
+                .forMetric(CoverityPluginMetrics.COVERITY_LOW_IMPACT)
+                .on(sensorContext.module())
+                .withValue(lowImpactDefects)
+                .save();
     }
 }
