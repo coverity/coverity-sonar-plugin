@@ -23,7 +23,6 @@ import org.sonar.plugins.coverity.server.CoverityRules;
 import org.sonar.plugins.coverity.server.CoverityRulesRepositories;
 import org.sonar.plugins.coverity.ui.CoverityFooter;
 import org.sonar.plugins.coverity.ui.CoverityWidget;
-import org.sonar.plugins.coverity.server.CsLanguage;
 import org.sonar.plugins.coverity.server.CppLanguage;
 import org.sonar.plugins.coverity.server.CxxLanguage;
 import org.sonar.plugins.coverity.server.CLanguage;
@@ -132,7 +131,6 @@ public final class CoverityPlugin extends SonarPlugin {
                 CoverityRules.class,
                 CoverityRulesRepositories.class,
                 CoverityProfiles.class,
-                CsLanguage.class,
                 CppLanguage.class,
                 CxxLanguage.class,
                 CLanguage.class,
