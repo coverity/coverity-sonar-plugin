@@ -40,6 +40,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *         &lt;element name="firstDetectedTarget" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="firstDetectedVersion" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="functionDisplayName" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="functionMergeName" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="functionName" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="issueKind" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="lastDetected" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
@@ -81,6 +82,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "firstDetectedTarget",
     "firstDetectedVersion",
     "functionDisplayName",
+    "functionMergeName",
     "functionName",
     "issueKind",
     "lastDetected",
@@ -117,6 +119,7 @@ public class MergedDefectDataObj {
     protected String firstDetectedTarget;
     protected String firstDetectedVersion;
     protected String functionDisplayName;
+    protected String functionMergeName;
     protected String functionName;
     protected String issueKind;
     @XmlSchemaType(name = "dateTime")
@@ -592,6 +595,30 @@ public class MergedDefectDataObj {
      */
     public void setFunctionDisplayName(String value) {
         this.functionDisplayName = value;
+    }
+
+    /**
+     * Gets the value of the functionMergeName property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getFunctionMergeName() {
+        return functionMergeName;
+    }
+
+    /**
+     * Sets the value of the functionMergeName property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setFunctionMergeName(String value) {
+        this.functionMergeName = value;
     }
 
     /**

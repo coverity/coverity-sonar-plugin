@@ -15,6 +15,8 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<sonar.version>5.6</sonar.version>
 		<jdk.min.version>1.8</jdk.min.version>
+		<cim.url></cim.url>
+		<ws.version>v9</ws.version>
 	</properties>
 
 	<organization>
@@ -277,6 +279,91 @@
 				</plugins>
 			</build>
 		</profile>
+
+		<!--
+		This profile is used to generate webservice calls.
+		The maven command should be as follow:
+		mvn -P wsimport clean generate-sources "Dcim.url=$CIM_URL_WITH_PORT"
+		-->
+
+		<profile>
+			<id>wsimport</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-resources-plugin</artifactId>
+						<version>2.7</version>
+						<executions>
+							<execution>
+								<id>copy-branding-files</id>
+								<phase>generate-sources</phase>
+								<goals>
+									<goal>copy-resources</goal>
+								</goals>
+								<configuration>
+									<outputDirectory>${project.build.directory}/jaxws-bindings</outputDirectory>
+									<resources>
+										<resource>
+											<directory>jaxws</directory>
+											<filtering>true</filtering>
+										</resource>
+									</resources>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+					<plugin>
+						<groupId>org.jvnet.jax-ws-commons</groupId>
+						<artifactId>jaxws-maven-plugin</artifactId>
+						<version>2.3</version>
+						<configuration>
+							<args>
+								<arg>-target</arg>
+								<arg>2.1</arg>
+							</args>
+							<bindingDirectory>${project.build.directory}/jaxws-bindings</bindingDirectory>
+							<sourceDestDir>${project.basedir}/src/main/java</sourceDestDir>
+							<xnoAddressingDataBinding>true</xnoAddressingDataBinding>
+							<vmArgs>
+								<vmArg>-Djavax.xml.accessExternalSchema=all</vmArg>
+							</vmArgs>
+						</configuration>
+						<executions>
+							<execution>
+								<!-- Process files found in webservices-rt.jar/WEB-INF/wsdl first so they aren't processed below. -->
+								<id>wsimport-ignored</id>
+								<goals>
+									<goal>wsimport</goal>
+								</goals>
+								<phase>generate-sources</phase>
+								<configuration>
+									<sourceDestDir>${project.build.directory}/ignored-sources</sourceDestDir>
+								</configuration>
+							</execution>
+							<execution>
+								<id>wsimport-public</id>
+								<goals>
+									<goal>wsimport</goal>
+								</goals>
+								<phase>generate-sources</phase>
+								<configuration>
+									<packageName>com.coverity.ws.v9</packageName>
+									<wsdlUrls>
+										<wsdlUrl>${cim.url}/ws/${ws.version}/configurationservice?wsdl</wsdlUrl>
+										<wsdlUrl>${cim.url}/ws/${ws.version}/defectservice?wsdl</wsdlUrl>
+									</wsdlUrls>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+
 	</profiles>
 
 	<repositories>
