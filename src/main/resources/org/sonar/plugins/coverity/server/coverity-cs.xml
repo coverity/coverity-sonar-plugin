@@ -1,389 +1,19 @@
 <rules>
     <rule>
-        <key>STATIC_CS_IDENTICAL_BRANCHES_chain</key>
-        <name>Incorrect expression : Identical code for different branches of an else-if chain</name>
-        <internalKey>STATIC_CS_IDENTICAL_BRANCHES_chain</internalKey>
-        <description>The same code is executed regardless of the condition</description>
-        <severity>CRITICAL</severity>
-        <cardinality>SINGLE</cardinality>
-        <status>READY</status>
-        <type>BUG</type>
-    </rule>
-    <rule>
-        <key>STATIC_CS_RESOURCE_LEAK_exceptional_path</key>
-        <name>Exceptional resource leaks : Resource leak on an exceptional path</name>
-        <internalKey>STATIC_CS_RESOURCE_LEAK_exceptional_path</internalKey>
-        <description>Leak of a system resource such as streams, channels, or other resources on an exception path (probably error handling)</description>
-        <severity>MAJOR</severity>
-        <cardinality>SINGLE</cardinality>
-        <status>READY</status>
-        <type>BUG</type>
-    </rule>
-    <rule>
-        <key>STATIC_CS_INSECURE_RANDOM_insecure_random_used</key>
-        <name>Insecure random category : Insecure random value used in security context</name>
-        <internalKey>STATIC_CS_INSECURE_RANDOM_insecure_random_used</internalKey>
-        <description>Random value generated using a cryptographically insecure pseudo-random number generator, and used in a security-sensitive context</description>
-        <severity>CRITICAL</severity>
-        <cardinality>SINGLE</cardinality>
-        <status>READY</status>
-        <type>BUG</type>
-    </rule>
-    <rule>
-        <key>STATIC_CS_CSRF_filesystem_modification</key>
-        <name>Medium impact security : Cross-site request forgery</name>
-        <internalKey>STATIC_CS_CSRF_filesystem_modification</internalKey>
-        <description>The web application controller modifies data or state and is unprotected from cross-site request forgery.</description>
+        <key>STATIC_CS_RISKY_CRYPTO_custom</key>
+        <name>Medium impact security : Violation of user-specified RISKY_CRYPTO policy</name>
+        <internalKey>STATIC_CS_RISKY_CRYPTO_custom</internalKey>
+        <description>A cryptographic function was used in such a way as to violate the user-specified RISKY_CRYPTO policy. This violation may indicate that an attacker could decrypt or otherwise interfere with the encrypted or hashed data.</description>
         <severity>CRITICAL</severity>
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>VULNERABILITY</type>
-    </rule>
-    <rule>
-        <key>STATIC_CS_UNENCRYPTED_SENSITIVE_DATA_cleartext_in_cookie</key>
-        <name>High impact security : Cleartext sensitive data in a cookie</name>
-        <internalKey>STATIC_CS_UNENCRYPTED_SENSITIVE_DATA_cleartext_in_cookie</internalKey>
-        <description>Reading unencrypted sensitive data from a cookie.</description>
-        <severity>BLOCKER</severity>
-        <cardinality>SINGLE</cardinality>
-        <status>READY</status>
-        <type>VULNERABILITY</type>
-    </rule>
-    <rule>
-        <key>STATIC_CS_BAD_LOCK_OBJECT_unsafe_assign_to_locked_field</key>
-        <name>Unreliable locking behavior : Bad choice of lock object</name>
-        <internalKey>STATIC_CS_BAD_LOCK_OBJECT_unsafe_assign_to_locked_field</internalKey>
-        <description>The field used as a lock can be assigned a different value while the critical section is operating. This can cause multiple threads to enter the critical section at the same time, which may cause nondeterministic behavior.</description>
-        <severity>BLOCKER</severity>
-        <cardinality>SINGLE</cardinality>
-        <status>READY</status>
-        <type>BUG</type>
-    </rule>
-    <rule>
-        <key>STATIC_CS_TAINT_ASSERT_none</key>
-        <name>High impact security : Untainted assertion violation</name>
-        <internalKey>STATIC_CS_TAINT_ASSERT_none</internalKey>
-        <description>A user assertion is present that states a value is not tainted.  However, the tool taint computation indicates that this value is tainted.  The validity of the assertion should be reviewed and removed if incorrect. If the assertion is valid, review how tainted data is inserted into the value and remove the taint source as appropriate.</description>
-        <severity>BLOCKER</severity>
-        <cardinality>SINGLE</cardinality>
-        <status>READY</status>
-        <type>VULNERABILITY</type>
-    </rule>
-    <rule>
-        <key>STATIC_CS_IDENTICAL_BRANCHES_case</key>
-        <name>Incorrect expression : Identical code for different cases</name>
-        <internalKey>STATIC_CS_IDENTICAL_BRANCHES_case</internalKey>
-        <description>The same code is executed for two cases in the same switch statement</description>
-        <severity>CRITICAL</severity>
-        <cardinality>SINGLE</cardinality>
-        <status>READY</status>
-        <type>BUG</type>
-    </rule>
-    <rule>
-        <key>STATIC_CS_XML_EXTERNAL_ENTITY_external_entities</key>
-        <name>Medium impact security : Unrestricted external entity references</name>
-        <internalKey>STATIC_CS_XML_EXTERNAL_ENTITY_external_entities</internalKey>
-        <description>Passing tainted input data with possibly arbitrary external entity references to a weakly configured XML parser.</description>
-        <severity>CRITICAL</severity>
-        <cardinality>SINGLE</cardinality>
-        <status>READY</status>
-        <type>VULNERABILITY</type>
-    </rule>
-    <rule>
-        <key>STATIC_CS_SENSITIVE_DATA_LEAK_cleartext_storage_in_registry</key>
-        <name>Medium impact security : Cleartext sensitive data in the registry</name>
-        <internalKey>STATIC_CS_SENSITIVE_DATA_LEAK_cleartext_storage_in_registry</internalKey>
-        <description>Storing unencrypted sensitive data in the system registry.</description>
-        <severity>CRITICAL</severity>
-        <cardinality>SINGLE</cardinality>
-        <status>READY</status>
-        <type>VULNERABILITY</type>
-    </rule>
-    <rule>
-        <key>STATIC_CS_UNUSED_VALUE_none</key>
-        <name>Code maintainability issues : Unused value</name>
-        <internalKey>STATIC_CS_UNUSED_VALUE_none</internalKey>
-        <description>A value assigned to a variable is never used.</description>
-        <severity>MAJOR</severity>
-        <cardinality>SINGLE</cardinality>
-        <status>READY</status>
-        <type>BUG</type>
-    </rule>
-    <rule>
-        <key>STATIC_CS_DIVIDE_BY_ZERO_float_divisor</key>
-        <name>Incorrect expression : Division or modulo by float zero</name>
-        <internalKey>STATIC_CS_DIVIDE_BY_ZERO_float_divisor</internalKey>
-        <description>An expression which may be zero is used as a divisor in floating-point arithmetic.</description>
-        <severity>CRITICAL</severity>
-        <cardinality>SINGLE</cardinality>
-        <status>READY</status>
-        <type>BUG</type>
-    </rule>
-    <rule>
-        <key>STATIC_CS_SENSITIVE_DATA_LEAK_cleartext_storage_in_cookie</key>
-        <name>High impact security : Cleartext sensitive data in a cookie</name>
-        <internalKey>STATIC_CS_SENSITIVE_DATA_LEAK_cleartext_storage_in_cookie</internalKey>
-        <description>Storing unencrypted sensitive data in a cookie.</description>
-        <severity>BLOCKER</severity>
-        <cardinality>SINGLE</cardinality>
-        <status>READY</status>
-        <type>VULNERABILITY</type>
-    </rule>
-    <rule>
-        <key>STATIC_CS_FORWARD_NULL_deref_constant_zero</key>
-        <name>Null pointer dereferences : Explicit null dereferenced</name>
-        <internalKey>STATIC_CS_FORWARD_NULL_deref_constant_zero</internalKey>
-        <description>Dereference of an explicit null value</description>
-        <severity>CRITICAL</severity>
-        <cardinality>SINGLE</cardinality>
-        <status>READY</status>
-        <type>BUG</type>
-    </rule>
-    <rule>
-        <key>STATIC_CS_BAD_LOCK_OBJECT_none</key>
-        <name>Concurrent data access violations : Bad choice of lock object</name>
-        <internalKey>STATIC_CS_BAD_LOCK_OBJECT_none</internalKey>
-        <description>Locking upon an object which is a poor choice due to too broad, too narrow, or too unpredictable aliasing behavior.</description>
-        <severity>CRITICAL</severity>
-        <cardinality>SINGLE</cardinality>
-        <status>READY</status>
-        <type>BUG</type>
-    </rule>
-    <rule>
-        <key>STATIC_CS_UNKNOWN_LANGUAGE_INJECTION_none</key>
-        <name>Low impact security : Unknown language injection</name>
-        <internalKey>STATIC_CS_UNKNOWN_LANGUAGE_INJECTION_none</internalKey>
-        <description>A user-controllable string is parsed using a parser generator that is used to create new languages or grammars.</description>
-        <severity>MAJOR</severity>
-        <cardinality>SINGLE</cardinality>
-        <status>READY</status>
-        <type>VULNERABILITY</type>
-    </rule>
-    <rule>
-        <key>STATIC_CS_GUARDED_BY_VIOLATION_none</key>
-        <name>Concurrent data access violations : Data race condition</name>
-        <internalKey>STATIC_CS_GUARDED_BY_VIOLATION_none</internalKey>
-        <description>Thread shared data is accessed without holding an appropriate lock, possibly causing a race condition</description>
-        <severity>CRITICAL</severity>
-        <cardinality>SINGLE</cardinality>
-        <status>READY</status>
-        <type>BUG</type>
-    </rule>
-    <rule>
-        <key>STATIC_CS_CONFIG.COOKIES_MISSING_HTTPONLY_none</key>
-        <name>Low impact security : Missing HttpOnly in cookies</name>
-        <internalKey>STATIC_CS_CONFIG.COOKIES_MISSING_HTTPONLY_none</internalKey>
-        <description>Cookie data is vulnerable to cross-site scripting attacks, and sensitive information, such as session identifiers, could be leaked to a third party.</description>
-        <severity>MAJOR</severity>
-        <cardinality>SINGLE</cardinality>
-        <status>READY</status>
-        <type>VULNERABILITY</type>
-    </rule>
-    <rule>
-        <key>STATIC_CS_STRAY_SEMICOLON_none</key>
-        <name>Control flow issues : Stray semicolon</name>
-        <internalKey>STATIC_CS_STRAY_SEMICOLON_none</internalKey>
-        <description>The code contains a semicolon where it is probably not intended, such as between a &apos;for&apos;, &apos;while&apos;, &apos;if&apos;, or &apos;lock&apos; and a code block.</description>
-        <severity>CRITICAL</severity>
-        <cardinality>SINGLE</cardinality>
-        <status>READY</status>
-        <type>BUG</type>
-    </rule>
-    <rule>
-        <key>STATIC_CS_CONSTANT_EXPRESSION_RESULT_operator_confusion</key>
-        <name>Integer handling issues : Wrong operator used</name>
-        <internalKey>STATIC_CS_CONSTANT_EXPRESSION_RESULT_operator_confusion</internalKey>
-        <description>Wrong operator used in expression</description>
-        <severity>CRITICAL</severity>
-        <cardinality>SINGLE</cardinality>
-        <status>READY</status>
-        <type>BUG</type>
-    </rule>
-    <rule>
-        <key>STATIC_CS_CONSTANT_EXPRESSION_RESULT_unnecessary_op_assign</key>
-        <name>Integer handling issues : Suspicious &amp;= or |=</name>
-        <internalKey>STATIC_CS_CONSTANT_EXPRESSION_RESULT_unnecessary_op_assign</internalKey>
-        <description>Using a bitwise assignment operator to assign a constant value</description>
-        <severity>CRITICAL</severity>
-        <cardinality>SINGLE</cardinality>
-        <status>READY</status>
-        <type>BUG</type>
-    </rule>
-    <rule>
-        <key>STATIC_CS_BAD_LOCK_OBJECT_interned_string_lock</key>
-        <name>Concurrent data access violations : Bad choice of lock object</name>
-        <internalKey>STATIC_CS_BAD_LOCK_OBJECT_interned_string_lock</internalKey>
-        <description>Using an interned string as a lock may cause deadlocks or performance problems if a library also uses the interned string as a lock.</description>
-        <severity>CRITICAL</severity>
-        <cardinality>SINGLE</cardinality>
-        <status>READY</status>
-        <type>BUG</type>
-    </rule>
-    <rule>
-        <key>STATIC_CS_IDENTICAL_BRANCHES_if</key>
-        <name>Incorrect expression : Identical code for different branches</name>
-        <internalKey>STATIC_CS_IDENTICAL_BRANCHES_if</internalKey>
-        <description>The same code is executed regardless of the condition</description>
-        <severity>CRITICAL</severity>
-        <cardinality>SINGLE</cardinality>
-        <status>READY</status>
-        <type>BUG</type>
-    </rule>
-    <rule>
-        <key>STATIC_CS_COPY_PASTE_ERROR_none</key>
-        <name>Incorrect expression : Copy-paste error</name>
-        <internalKey>STATIC_CS_COPY_PASTE_ERROR_none</internalKey>
-        <description>A copied piece of code is inconsistent with the original</description>
-        <severity>CRITICAL</severity>
-        <cardinality>SINGLE</cardinality>
-        <status>READY</status>
-        <type>BUG</type>
-    </rule>
-    <rule>
-        <key>STATIC_CS_MISSING_AUTHZ_none</key>
-        <name>Medium impact security : Missing authorization check</name>
-        <internalKey>STATIC_CS_MISSING_AUTHZ_none</internalKey>
-        <description>Calling a method that performs a sensitive action without first checking authorization, as is done elsewhere.</description>
-        <severity>CRITICAL</severity>
-        <cardinality>SINGLE</cardinality>
-        <status>READY</status>
-        <type>VULNERABILITY</type>
-    </rule>
-    <rule>
-        <key>STATIC_CS_INFINITE_LOOP_none</key>
-        <name>Program hangs : Infinite loop</name>
-        <internalKey>STATIC_CS_INFINITE_LOOP_none</internalKey>
-        <description>Infinite loop with unsatisfiable exit condition</description>
-        <severity>CRITICAL</severity>
-        <cardinality>SINGLE</cardinality>
-        <status>READY</status>
-        <type>BUG</type>
     </rule>
     <rule>
         <key>STATIC_CS_RISKY_CRYPTO_hashing</key>
         <name>Medium impact security : Risky cryptographic hashing function</name>
         <internalKey>STATIC_CS_RISKY_CRYPTO_hashing</internalKey>
         <description>A risky hashing function was used. This may allow an attacker to produce collisions on the hash or execute length extension attacks.</description>
-        <severity>CRITICAL</severity>
-        <cardinality>SINGLE</cardinality>
-        <status>READY</status>
-        <type>VULNERABILITY</type>
-    </rule>
-    <rule>
-        <key>STATIC_CS_DEADCODE_dead_case_in_switch</key>
-        <name>Possible Control flow issues : Dead case in switch</name>
-        <internalKey>STATIC_CS_DEADCODE_dead_case_in_switch</internalKey>
-        <description>Switch never goes directly to this case</description>
-        <severity>MAJOR</severity>
-        <cardinality>SINGLE</cardinality>
-        <status>READY</status>
-        <type>BUG</type>
-    </rule>
-    <rule>
-        <key>STATIC_CS_ASPNET_MVC_VERSION_HEADER_none</key>
-        <name>Low impact security : ASP.NET MVC version header included</name>
-        <internalKey>STATIC_CS_ASPNET_MVC_VERSION_HEADER_none</internalKey>
-        <description>MvcHandler.DisableMvcResponseHeader is not set to true in function Application_Start or its callees.</description>
-        <severity>MAJOR</severity>
-        <cardinality>SINGLE</cardinality>
-        <status>READY</status>
-        <type>VULNERABILITY</type>
-    </rule>
-    <rule>
-        <key>STATIC_CS_OS_CMD_INJECTION_none</key>
-        <name>High impact security : OS Command Injection</name>
-        <internalKey>STATIC_CS_OS_CMD_INJECTION_none</internalKey>
-        <description>Untrusted user-supplied data is inserted into an operating system command without adequate validation, escaping, or filtering. This inserted data can change the intent of the operating system command. The change to the operating system command may result in the unauthorized disclosure, destruction, or modification of sensitive data or operating system resources.</description>
-        <severity>BLOCKER</severity>
-        <cardinality>SINGLE</cardinality>
-        <status>READY</status>
-        <type>VULNERABILITY</type>
-    </rule>
-    <rule>
-        <key>STATIC_CS_RESOURCE_LEAK_channel</key>
-        <name>Resource leaks : Channel leak</name>
-        <internalKey>STATIC_CS_RESOURCE_LEAK_channel</internalKey>
-        <description>Leak of a channel object</description>
-        <severity>BLOCKER</severity>
-        <cardinality>SINGLE</cardinality>
-        <status>READY</status>
-        <type>BUG</type>
-    </rule>
-    <rule>
-        <key>STATIC_CS_SQLI_sink</key>
-        <name>High impact security : SQL injection</name>
-        <internalKey>STATIC_CS_SQLI_sink</internalKey>
-        <description>Untrusted user-supplied data is inserted into a SQL statement without adequate validation, escaping, or filtering</description>
-        <severity>BLOCKER</severity>
-        <cardinality>SINGLE</cardinality>
-        <status>READY</status>
-        <type>VULNERABILITY</type>
-    </rule>
-    <rule>
-        <key>STATIC_CS_CONFIG.DEAD_AUTHORIZATION_RULE_dead_allow_rule</key>
-        <name>Low impact security : Dead Allow Rule</name>
-        <internalKey>STATIC_CS_CONFIG.DEAD_AUTHORIZATION_RULE_dead_allow_rule</internalKey>
-        <description>An allow rule has no effect</description>
-        <severity>MAJOR</severity>
-        <cardinality>SINGLE</cardinality>
-        <status>READY</status>
-        <type>VULNERABILITY</type>
-    </rule>
-    <rule>
-        <key>STATIC_CS_FORWARD_NULL_deref_constant_null</key>
-        <name>Null pointer dereferences : Explicit null dereferenced</name>
-        <internalKey>STATIC_CS_FORWARD_NULL_deref_constant_null</internalKey>
-        <description>Dereference of an explicit null value</description>
-        <severity>CRITICAL</severity>
-        <cardinality>SINGLE</cardinality>
-        <status>READY</status>
-        <type>BUG</type>
-    </rule>
-    <rule>
-        <key>STATIC_CS_SCRIPT_CODE_INJECTION_none</key>
-        <name>High impact security : Script code injection</name>
-        <internalKey>STATIC_CS_SCRIPT_CODE_INJECTION_none</internalKey>
-        <description>Script code interpreted or executed on the server is constructed from user-controllable data.</description>
-        <severity>BLOCKER</severity>
-        <cardinality>SINGLE</cardinality>
-        <status>READY</status>
-        <type>VULNERABILITY</type>
-    </rule>
-    <rule>
-        <key>STATIC_CS_LDAP_INJECTION_none</key>
-        <name>High impact security : LDAP injection</name>
-        <internalKey>STATIC_CS_LDAP_INJECTION_none</internalKey>
-        <description>A user-controllable string is injected into an LDAP query.</description>
-        <severity>BLOCKER</severity>
-        <cardinality>SINGLE</cardinality>
-        <status>READY</status>
-        <type>VULNERABILITY</type>
-    </rule>
-    <rule>
-        <key>STATIC_CS_NULL_RETURNS_unimpl</key>
-        <name>Null pointer dereferences : Dereference null return (stat)</name>
-        <internalKey>STATIC_CS_NULL_RETURNS_unimpl</internalKey>
-        <description>Return value of function, which is statistically inferred to return null, but with no source code available, is dereferenced</description>
-        <severity>CRITICAL</severity>
-        <cardinality>SINGLE</cardinality>
-        <status>READY</status>
-        <type>BUG</type>
-    </rule>
-    <rule>
-        <key>STATIC_CS_XSS_none</key>
-        <name>High impact security : Cross-site scripting</name>
-        <internalKey>STATIC_CS_XSS_none</internalKey>
-        <description>Untrusted user-supplied data is inserted into a context that can execute JavaScript without adequate validation, escaping, or filtering</description>
-        <severity>BLOCKER</severity>
-        <cardinality>SINGLE</cardinality>
-        <status>READY</status>
-        <type>VULNERABILITY</type>
-    </rule>
-    <rule>
-        <key>STATIC_CS_OPEN_REDIRECT_none</key>
-        <name>Medium impact security : Open redirect</name>
-        <internalKey>STATIC_CS_OPEN_REDIRECT_none</internalKey>
-        <description>User-controlled input is used to specify an address that is used as a URL redirect or forward. An attacker can create a link to the trusted site that redirects to a malicious Web site. This could enable the attacker to steal user credentials.</description>
         <severity>CRITICAL</severity>
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
@@ -400,74 +30,174 @@
         <type>VULNERABILITY</type>
     </rule>
     <rule>
-        <key>STATIC_CS_UNENCRYPTED_SENSITIVE_DATA_none</key>
-        <name>High impact security : Missing encryption of sensitive data</name>
-        <internalKey>STATIC_CS_UNENCRYPTED_SENSITIVE_DATA_none</internalKey>
-        <description>Retrieving or receiving unencrypted sensitive data.</description>
-        <severity>BLOCKER</severity>
+        <key>STATIC_CS_RISKY_CRYPTO_ssl_protocol</key>
+        <name>Medium impact security : Risky cryptographic SSL protocol</name>
+        <internalKey>STATIC_CS_RISKY_CRYPTO_ssl_protocol</internalKey>
+        <description>A Secure Sockets Layer (SSL) protocol was enabled that is known to be insecure. This may allow an attacker to decrypt or extract sensitive data that is transmitted over the network.</description>
+        <severity>CRITICAL</severity>
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>VULNERABILITY</type>
     </rule>
     <rule>
-        <key>STATIC_CS_CONSTANT_EXPRESSION_RESULT_logical_vs_bitwise</key>
-        <name>Integer handling issues : Logical vs. bitwise operator</name>
-        <internalKey>STATIC_CS_CONSTANT_EXPRESSION_RESULT_logical_vs_bitwise</internalKey>
-        <description>Logical operator used in place of bitwise operator or vice versa</description>
+        <key>STATIC_CS_DIVIDE_BY_ZERO_float_divisor</key>
+        <name>Incorrect expression : Division or modulo by float zero</name>
+        <internalKey>STATIC_CS_DIVIDE_BY_ZERO_float_divisor</internalKey>
+        <description>An expression which may be zero is used as a divisor in floating-point arithmetic.</description>
         <severity>CRITICAL</severity>
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>BUG</type>
     </rule>
     <rule>
-        <key>STATIC_CS_SQLI_none</key>
-        <name>High impact security : SQL injection</name>
-        <internalKey>STATIC_CS_SQLI_none</internalKey>
-        <description>Untrusted user-supplied data is inserted into a SQL statement without adequate validation, escaping, or filtering</description>
-        <severity>BLOCKER</severity>
-        <cardinality>SINGLE</cardinality>
-        <status>READY</status>
-        <type>VULNERABILITY</type>
-    </rule>
-    <rule>
-        <key>STATIC_CS_SQLI_nosink</key>
-        <name>Medium impact security : SQL injection</name>
-        <internalKey>STATIC_CS_SQLI_nosink</internalKey>
-        <description>Untrusted user-supplied data is inserted into an apparent SQL statement without adequate validation, escaping, or filtering</description>
-        <severity>CRITICAL</severity>
-        <cardinality>SINGLE</cardinality>
-        <status>READY</status>
-        <type>VULNERABILITY</type>
-    </rule>
-    <rule>
-        <key>STATIC_CS_UNENCRYPTED_SENSITIVE_DATA_cleartext_in_database</key>
-        <name>Medium impact security : Cleartext sensitive data in a database</name>
-        <internalKey>STATIC_CS_UNENCRYPTED_SENSITIVE_DATA_cleartext_in_database</internalKey>
-        <description>Reading unencrypted sensitive data from a database.</description>
-        <severity>CRITICAL</severity>
-        <cardinality>SINGLE</cardinality>
-        <status>READY</status>
-        <type>VULNERABILITY</type>
-    </rule>
-    <rule>
-        <key>STATIC_CS_FORWARD_NULL_dynamic_cast</key>
-        <name>Null pointer dereferences : Unchecked dynamic_cast</name>
-        <internalKey>STATIC_CS_FORWARD_NULL_dynamic_cast</internalKey>
-        <description>Dynamic_cast may fail and return null if the type cast is incompatible</description>
+        <key>STATIC_CS_DIVIDE_BY_ZERO_none</key>
+        <name>Integer handling issues : Division or modulo by zero</name>
+        <internalKey>STATIC_CS_DIVIDE_BY_ZERO_none</internalKey>
+        <description>Division or modulo by zero results in an exception.</description>
         <severity>CRITICAL</severity>
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>BUG</type>
     </rule>
     <rule>
-        <key>STATIC_CS_CONFIG.MISSING_CUSTOM_ERROR_PAGE_none</key>
-        <name>Low impact security : Missing custom error page</name>
-        <internalKey>STATIC_CS_CONFIG.MISSING_CUSTOM_ERROR_PAGE_none</internalKey>
-        <description>When a custom error page is not provided, ASP.NET displays detailed information about errors.</description>
+        <key>STATIC_CS_UNINTENDED_INTEGER_DIVISION_none</key>
+        <name>Incorrect expression : Result is not floating-point</name>
+        <internalKey>STATIC_CS_UNINTENDED_INTEGER_DIVISION_none</internalKey>
+        <description>When dividing two values of integer types, integer division is used, which ignores any remainder. When such a result is used in a context expecting a floating-point number, it is likely that floating-point division was intended.</description>
+        <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+    </rule>
+    <rule>
+        <key>STATIC_CS_SCRIPT_CODE_INJECTION_none</key>
+        <name>High impact security : Script code injection</name>
+        <internalKey>STATIC_CS_SCRIPT_CODE_INJECTION_none</internalKey>
+        <description>Script code interpreted or executed on the server is constructed from user-controllable data.</description>
+        <severity>BLOCKER</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+    </rule>
+    <rule>
+        <key>STATIC_CS_UNKNOWN_LANGUAGE_INJECTION_none</key>
+        <name>Low impact security : Unknown language injection</name>
+        <internalKey>STATIC_CS_UNKNOWN_LANGUAGE_INJECTION_none</internalKey>
+        <description>A user-controllable string is parsed using a parser generator that is used to create new languages or grammars.</description>
         <severity>MAJOR</severity>
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>VULNERABILITY</type>
+    </rule>
+    <rule>
+        <key>STATIC_CS_OPEN_REDIRECT_none</key>
+        <name>Medium impact security : Open redirect</name>
+        <internalKey>STATIC_CS_OPEN_REDIRECT_none</internalKey>
+        <description>User-controlled input is used to specify an address that is used as a URL redirect or forward. An attacker can create a link to the trusted site that redirects to a malicious Web site. This could enable the attacker to steal user credentials.</description>
+        <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+    </rule>
+    <rule>
+        <key>STATIC_CS_XML_INJECTION_none</key>
+        <name>Low impact security : XML injection</name>
+        <internalKey>STATIC_CS_XML_INJECTION_none</internalKey>
+        <description>User-controllable data is parsed as XML.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+    </rule>
+    <rule>
+        <key>STATIC_CS_UNSAFE_DESERIALIZATION_none</key>
+        <name>High impact security : Unsafe deserialization</name>
+        <internalKey>STATIC_CS_UNSAFE_DESERIALIZATION_none</internalKey>
+        <description>A user-controllable string is deserialized.</description>
+        <severity>BLOCKER</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+    </rule>
+    <rule>
+        <key>STATIC_CS_BAD_EQ_none</key>
+        <name>Incorrect expression : Wrong kind of equality</name>
+        <internalKey>STATIC_CS_BAD_EQ_none</internalKey>
+        <description>Using wrong equality operation (Equals or the equivalent method vs &quot;==&quot;) for this type</description>
+        <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+    </rule>
+    <rule>
+        <key>STATIC_CS_BAD_EQ_referential</key>
+        <name>Incorrect expression : Wrong equality (referential)</name>
+        <internalKey>STATIC_CS_BAD_EQ_referential</internalKey>
+        <description>Using referential equality when value equality is the norm for this type</description>
+        <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+    </rule>
+    <rule>
+        <key>STATIC_CS_BAD_EQ_structural</key>
+        <name>Incorrect expression : Wrong equality (structural)</name>
+        <internalKey>STATIC_CS_BAD_EQ_structural</internalKey>
+        <description>Using Equals (or equivalent method) equality when &quot;==&quot; is the norm for this type</description>
+        <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+    </rule>
+    <rule>
+        <key>STATIC_CS_BAD_EQ_TYPES_none</key>
+        <name>Incorrect expression : Equality test on different types</name>
+        <internalKey>STATIC_CS_BAD_EQ_TYPES_none</internalKey>
+        <description>Structural equality is never true for objects of different types</description>
+        <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+    </rule>
+    <rule>
+        <key>STATIC_CS_RESOURCE_LEAK_channel</key>
+        <name>Resource leaks : Channel leak</name>
+        <internalKey>STATIC_CS_RESOURCE_LEAK_channel</internalKey>
+        <description>Leak of a channel object</description>
+        <severity>BLOCKER</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+    </rule>
+    <rule>
+        <key>STATIC_CS_RESOURCE_LEAK_database</key>
+        <name>Resource leaks : Database connection leak</name>
+        <internalKey>STATIC_CS_RESOURCE_LEAK_database</internalKey>
+        <description>Leak of a database connection</description>
+        <severity>BLOCKER</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+    </rule>
+    <rule>
+        <key>STATIC_CS_RESOURCE_LEAK_exceptional_path</key>
+        <name>Exceptional resource leaks : Resource leak on an exceptional path</name>
+        <internalKey>STATIC_CS_RESOURCE_LEAK_exceptional_path</internalKey>
+        <description>Leak of a system resource such as streams, channels, or other resources on an exception path (probably error handling)</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+    </rule>
+    <rule>
+        <key>STATIC_CS_RESOURCE_LEAK_none</key>
+        <name>Resource leaks : Resource leak</name>
+        <internalKey>STATIC_CS_RESOURCE_LEAK_none</internalKey>
+        <description>Leak of a system resource such as streams, channels, or other resources</description>
+        <severity>BLOCKER</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
     </rule>
     <rule>
         <key>STATIC_CS_RESOURCE_LEAK_socket</key>
@@ -480,130 +210,20 @@
         <type>BUG</type>
     </rule>
     <rule>
-        <key>STATIC_CS_WEAK_PASSWORD_HASH_weak_hash</key>
-        <name>Medium impact security : Hashing a password with a weak hash function</name>
-        <internalKey>STATIC_CS_WEAK_PASSWORD_HASH_weak_hash</internalKey>
-        <description>Hashing a password using a scheme that is not computationally intensive.</description>
-        <severity>CRITICAL</severity>
-        <cardinality>SINGLE</cardinality>
-        <status>READY</status>
-        <type>VULNERABILITY</type>
-    </rule>
-    <rule>
-        <key>STATIC_CS_SENSITIVE_DATA_LEAK_cleartext_exception_storage_in_gui</key>
-        <name>Medium impact security : Exception leaked to user interface</name>
-        <internalKey>STATIC_CS_SENSITIVE_DATA_LEAK_cleartext_exception_storage_in_gui</internalKey>
-        <description>Displaying an exception message or stack trace in the user interface.</description>
-        <severity>CRITICAL</severity>
-        <cardinality>SINGLE</cardinality>
-        <status>READY</status>
-        <type>VULNERABILITY</type>
-    </rule>
-    <rule>
-        <key>STATIC_CS_CONFIG.ENABLED_DEBUG_MODE_none</key>
-        <name>Low impact security : Debug mode enabled</name>
-        <internalKey>STATIC_CS_CONFIG.ENABLED_DEBUG_MODE_none</internalKey>
-        <description>ASP.NET debug mode is enabled.</description>
-        <severity>MAJOR</severity>
-        <cardinality>SINGLE</cardinality>
-        <status>READY</status>
-        <type>VULNERABILITY</type>
-    </rule>
-    <rule>
-        <key>STATIC_CS_XML_EXTERNAL_ENTITY_entity_expansion</key>
-        <name>Medium impact security : Unrestricted entity expansion</name>
-        <internalKey>STATIC_CS_XML_EXTERNAL_ENTITY_entity_expansion</internalKey>
-        <description>Passing tainted input data with possibly arbitrary entity references to a weakly configured XML parser that does not limit entity expansion.</description>
-        <severity>CRITICAL</severity>
-        <cardinality>SINGLE</cardinality>
-        <status>READY</status>
-        <type>VULNERABILITY</type>
-    </rule>
-    <rule>
-        <key>STATIC_CS_CONFIG.ASP_VIEWSTATE_MAC_none</key>
-        <name>Low impact security : Disabled View State MAC generation</name>
-        <internalKey>STATIC_CS_CONFIG.ASP_VIEWSTATE_MAC_none</internalKey>
-        <description>View State Machine Authentication Code (MAC) generation was disabled</description>
-        <severity>MAJOR</severity>
-        <cardinality>SINGLE</cardinality>
-        <status>READY</status>
-        <type>VULNERABILITY</type>
-    </rule>
-    <rule>
-        <key>STATIC_CS_HARDCODED_CREDENTIALS_none</key>
-        <name>Medium impact security : Use of hard-coded credentials</name>
-        <internalKey>STATIC_CS_HARDCODED_CREDENTIALS_none</internalKey>
-        <description>Credentials are stored directly in the source code</description>
-        <severity>CRITICAL</severity>
-        <cardinality>SINGLE</cardinality>
-        <status>READY</status>
-        <type>VULNERABILITY</type>
-    </rule>
-    <rule>
-        <key>STATIC_CS_INFINITE_LOOP_no_escape</key>
-        <name>Program hangs : Infinite loop</name>
-        <internalKey>STATIC_CS_INFINITE_LOOP_no_escape</internalKey>
-        <description>Infinite loop with no exit condition</description>
-        <severity>CRITICAL</severity>
+        <key>STATIC_CS_RESOURCE_LEAK_stream</key>
+        <name>Resource leaks : Stream leak</name>
+        <internalKey>STATIC_CS_RESOURCE_LEAK_stream</internalKey>
+        <description>Leak of a stream representing a file or other resource</description>
+        <severity>BLOCKER</severity>
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>BUG</type>
     </rule>
     <rule>
-        <key>STATIC_CS_OVERFLOW_BEFORE_WIDEN_none</key>
-        <name>Integer handling issues : Unintentional integer overflow</name>
-        <internalKey>STATIC_CS_OVERFLOW_BEFORE_WIDEN_none</internalKey>
-        <description>An integer overflow occurs, with the result converted to a wider integer type</description>
-        <severity>CRITICAL</severity>
-        <cardinality>SINGLE</cardinality>
-        <status>READY</status>
-        <type>BUG</type>
-    </rule>
-    <rule>
-        <key>STATIC_CS_VOLATILE_ATOMICITY_compare</key>
-        <name>Concurrent data access violations : Volatile not atomically updated</name>
-        <internalKey>STATIC_CS_VOLATILE_ATOMICITY_compare</internalKey>
-        <description>A volatile variable is updated in a non-atomic manner</description>
-        <severity>CRITICAL</severity>
-        <cardinality>SINGLE</cardinality>
-        <status>READY</status>
-        <type>BUG</type>
-    </rule>
-    <rule>
-        <key>STATIC_CS_UNENCRYPTED_SENSITIVE_DATA_cleartext_in_classpath</key>
-        <name>Low impact security : Cleartext sensitive data in a JAR file</name>
-        <internalKey>STATIC_CS_UNENCRYPTED_SENSITIVE_DATA_cleartext_in_classpath</internalKey>
-        <description>Reading sensitive data from a resource in the classpath.</description>
-        <severity>MAJOR</severity>
-        <cardinality>SINGLE</cardinality>
-        <status>READY</status>
-        <type>VULNERABILITY</type>
-    </rule>
-    <rule>
-        <key>STATIC_CS_VOLATILE_ATOMICITY_threshold</key>
-        <name>Concurrent data access violations : Volatile not atomically updated</name>
-        <internalKey>STATIC_CS_VOLATILE_ATOMICITY_threshold</internalKey>
-        <description>A volatile variable is updated in a non-atomic manner</description>
-        <severity>MAJOR</severity>
-        <cardinality>SINGLE</cardinality>
-        <status>READY</status>
-        <type>BUG</type>
-    </rule>
-    <rule>
-        <key>STATIC_CS_CONFIG.CONNECTION_STRING_PASSWORD_none</key>
-        <name>Low impact security : Unencrypted connection string password</name>
-        <internalKey>STATIC_CS_CONFIG.CONNECTION_STRING_PASSWORD_none</internalKey>
-        <description>A configuration file connection string includes a plaintext password.</description>
-        <severity>MAJOR</severity>
-        <cardinality>SINGLE</cardinality>
-        <status>READY</status>
-        <type>VULNERABILITY</type>
-    </rule>
-    <rule>
-        <key>STATIC_CS_UNINTENDED_INTEGER_DIVISION_none</key>
-        <name>Incorrect expression : Result is not floating-point</name>
-        <internalKey>STATIC_CS_UNINTENDED_INTEGER_DIVISION_none</internalKey>
-        <description>When dividing two values of integer types, integer division is used, which ignores any remainder. When such a result is used in a context expecting a floating-point number, it is likely that floating-point division was intended.</description>
+        <key>STATIC_CS_GUARDED_BY_VIOLATION_none</key>
+        <name>Concurrent data access violations : Data race condition</name>
+        <internalKey>STATIC_CS_GUARDED_BY_VIOLATION_none</internalKey>
+        <description>Thread shared data is accessed without holding an appropriate lock, possibly causing a race condition</description>
         <severity>CRITICAL</severity>
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
@@ -620,170 +240,20 @@
         <type>VULNERABILITY</type>
     </rule>
     <rule>
-        <key>STATIC_CS_SENSITIVE_DATA_LEAK_cleartext_storage_in_file</key>
-        <name>Low impact security : Cleartext sensitive data in a file</name>
-        <internalKey>STATIC_CS_SENSITIVE_DATA_LEAK_cleartext_storage_in_file</internalKey>
-        <description>Storing unencrypted sensitive data to a file.</description>
-        <severity>MAJOR</severity>
-        <cardinality>SINGLE</cardinality>
-        <status>READY</status>
-        <type>VULNERABILITY</type>
-    </rule>
-    <rule>
-        <key>STATIC_CS_FORWARD_NULL_null_from_as</key>
-        <name>Null pointer dereferences : Unchecked &quot;as&quot; conversion</name>
-        <internalKey>STATIC_CS_FORWARD_NULL_null_from_as</internalKey>
-        <description>The &quot;as&quot; conversion may fail and return null if the type cast is incompatible</description>
+        <key>STATIC_CS_CALL_SUPER_none</key>
+        <name>Class hierarchy inconsistencies : Missing call to base class</name>
+        <internalKey>STATIC_CS_CALL_SUPER_none</internalKey>
+        <description>Overrider does not call the base class method, even though most other overriders do</description>
         <severity>CRITICAL</severity>
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>BUG</type>
     </rule>
     <rule>
-        <key>STATIC_CS_CSRF_none</key>
-        <name>High impact security : Cross-site request forgery</name>
-        <internalKey>STATIC_CS_CSRF_none</internalKey>
-        <description>The web application controller modifies data or state and is unprotected from cross-site request forgery.</description>
-        <severity>BLOCKER</severity>
-        <cardinality>SINGLE</cardinality>
-        <status>READY</status>
-        <type>VULNERABILITY</type>
-    </rule>
-    <rule>
-        <key>STATIC_CS_XPATH_INJECTION_none</key>
-        <name>Medium impact security : XML Path (XPath) Language injection</name>
-        <internalKey>STATIC_CS_XPATH_INJECTION_none</internalKey>
-        <description>A user-controllable string is injected into an XPath query.</description>
-        <severity>CRITICAL</severity>
-        <cardinality>SINGLE</cardinality>
-        <status>READY</status>
-        <type>VULNERABILITY</type>
-    </rule>
-    <rule>
-        <key>STATIC_CS_WEAK_PASSWORD_HASH_weak_hash_weak_salt</key>
-        <name>High impact security : Weak password hashing</name>
-        <internalKey>STATIC_CS_WEAK_PASSWORD_HASH_weak_hash_weak_salt</internalKey>
-        <description>Hashing a password using a scheme that is not computationally intensive, and without using a random and unique salt as part of the input.</description>
-        <severity>BLOCKER</severity>
-        <cardinality>SINGLE</cardinality>
-        <status>READY</status>
-        <type>VULNERABILITY</type>
-    </rule>
-    <rule>
-        <key>STATIC_CS_MS.*_none</key>
-        <name>Microsoft: Miscellaneous : MS Code Analysis warning</name>
-        <internalKey>STATIC_CS_MS.*_none</internalKey>
-        <description>Unclassified warning from Microsoft Code Analysis</description>
-        <severity>MAJOR</severity>
-        <cardinality>SINGLE</cardinality>
-        <status>READY</status>
-        <type>BUG</type>
-    </rule>
-    <rule>
-        <key>STATIC_CS_XSS_stored_xss</key>
-        <name>High impact security : Cross-site scripting (stored)</name>
-        <internalKey>STATIC_CS_XSS_stored_xss</internalKey>
-        <description>Untrusted user-supplied data is stored in a database and subsequently read back and included in a context that can execute JavaScript without adequate validation, escaping, or filtering</description>
-        <severity>BLOCKER</severity>
-        <cardinality>SINGLE</cardinality>
-        <status>READY</status>
-        <type>VULNERABILITY</type>
-    </rule>
-    <rule>
-        <key>STATIC_CS_CONSTANT_EXPRESSION_RESULT_same_on_both_sides</key>
-        <name>Incorrect expression : Same on both sides</name>
-        <internalKey>STATIC_CS_CONSTANT_EXPRESSION_RESULT_same_on_both_sides</internalKey>
-        <description>The same expression occurs on both sides of an operator.</description>
-        <severity>CRITICAL</severity>
-        <cardinality>SINGLE</cardinality>
-        <status>READY</status>
-        <type>BUG</type>
-    </rule>
-    <rule>
-        <key>STATIC_CS_BAD_LOCK_OBJECT_boxed_lock</key>
-        <name>Unreliable locking behavior : Bad choice of lock object</name>
-        <internalKey>STATIC_CS_BAD_LOCK_OBJECT_boxed_lock</internalKey>
-        <description>Using a boxed primitive as a lock may cause different locking behavior in different versions of the Java VM. locking behavior. It can also cause deadlocks or performance problems if a library also uses the boxed primitive as a lock.</description>
-        <severity>BLOCKER</severity>
-        <cardinality>SINGLE</cardinality>
-        <status>READY</status>
-        <type>BUG</type>
-    </rule>
-    <rule>
-        <key>STATIC_CS_SENSITIVE_DATA_LEAK_none</key>
-        <name>High impact security : Leak of sensitive data</name>
-        <internalKey>STATIC_CS_SENSITIVE_DATA_LEAK_none</internalKey>
-        <description>Sensitive data is stored or transmitted without encrypting it</description>
-        <severity>BLOCKER</severity>
-        <cardinality>SINGLE</cardinality>
-        <status>READY</status>
-        <type>VULNERABILITY</type>
-    </rule>
-    <rule>
-        <key>STATIC_CS_UNSAFE_DESERIALIZATION_none</key>
-        <name>High impact security : Unsafe deserialization</name>
-        <internalKey>STATIC_CS_UNSAFE_DESERIALIZATION_none</internalKey>
-        <description>A user-controllable string is deserialized.</description>
-        <severity>BLOCKER</severity>
-        <cardinality>SINGLE</cardinality>
-        <status>READY</status>
-        <type>VULNERABILITY</type>
-    </rule>
-    <rule>
-        <key>STATIC_CS_DEADCODE_redundant_test</key>
-        <name>Possible Control flow issues : Redundant test</name>
-        <internalKey>STATIC_CS_DEADCODE_redundant_test</internalKey>
-        <description>Test always evaluates the same</description>
-        <severity>MAJOR</severity>
-        <cardinality>SINGLE</cardinality>
-        <status>READY</status>
-        <type>BUG</type>
-    </rule>
-    <rule>
-        <key>STATIC_CS_SENSITIVE_DATA_LEAK_cleartext_storage_in_database</key>
-        <name>Medium impact security : Cleartext sensitive data in a database</name>
-        <internalKey>STATIC_CS_SENSITIVE_DATA_LEAK_cleartext_storage_in_database</internalKey>
-        <description>Storing unencrypted sensitive data to a database.</description>
-        <severity>CRITICAL</severity>
-        <cardinality>SINGLE</cardinality>
-        <status>READY</status>
-        <type>VULNERABILITY</type>
-    </rule>
-    <rule>
-        <key>STATIC_CS_NESTING_INDENT_MISMATCH_bad_indentation</key>
-        <name>Code maintainability issues : Indentation does not match nesting level</name>
-        <internalKey>STATIC_CS_NESTING_INDENT_MISMATCH_bad_indentation</internalKey>
-        <description>The indentation of this code does not reflect its syntactic nesting level.</description>
-        <severity>MAJOR</severity>
-        <cardinality>SINGLE</cardinality>
-        <status>READY</status>
-        <type>BUG</type>
-    </rule>
-    <rule>
-        <key>STATIC_CS_NON_STATIC_GUARDING_STATIC_none</key>
-        <name>Concurrent data access violations : Data race condition</name>
-        <internalKey>STATIC_CS_NON_STATIC_GUARDING_STATIC_none</internalKey>
-        <description>Static field is protected by a per-instance lock</description>
-        <severity>CRITICAL</severity>
-        <cardinality>SINGLE</cardinality>
-        <status>READY</status>
-        <type>BUG</type>
-    </rule>
-    <rule>
-        <key>STATIC_CS_HEADER_INJECTION_none</key>
-        <name>Medium impact security : HTTP header injection</name>
-        <internalKey>STATIC_CS_HEADER_INJECTION_none</internalKey>
-        <description>A user-controllable string is used to construct an HTTP header name.</description>
-        <severity>CRITICAL</severity>
-        <cardinality>SINGLE</cardinality>
-        <status>READY</status>
-        <type>VULNERABILITY</type>
-    </rule>
-    <rule>
-        <key>STATIC_CS_FORWARD_NULL_none</key>
-        <name>Null pointer dereferences : Dereference after null check</name>
-        <internalKey>STATIC_CS_FORWARD_NULL_none</internalKey>
-        <description>Reference is checked against null but then dereferenced anyway</description>
+        <key>STATIC_CS_STRAY_SEMICOLON_none</key>
+        <name>Control flow issues : Stray semicolon</name>
+        <internalKey>STATIC_CS_STRAY_SEMICOLON_none</internalKey>
+        <description>The code contains a semicolon where it is probably not intended, such as between a &apos;for&apos;, &apos;while&apos;, &apos;if&apos;, or &apos;lock&apos; and a code block.</description>
         <severity>CRITICAL</severity>
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
@@ -800,6 +270,186 @@
         <type>VULNERABILITY</type>
     </rule>
     <rule>
+        <key>STATIC_CS_UNENCRYPTED_SENSITIVE_DATA_cleartext_in_classpath</key>
+        <name>Low impact security : Cleartext sensitive data in a JAR file</name>
+        <internalKey>STATIC_CS_UNENCRYPTED_SENSITIVE_DATA_cleartext_in_classpath</internalKey>
+        <description>Reading sensitive data from a resource in the classpath.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+    </rule>
+    <rule>
+        <key>STATIC_CS_UNENCRYPTED_SENSITIVE_DATA_cleartext_in_cookie</key>
+        <name>High impact security : Cleartext sensitive data in a cookie</name>
+        <internalKey>STATIC_CS_UNENCRYPTED_SENSITIVE_DATA_cleartext_in_cookie</internalKey>
+        <description>Reading unencrypted sensitive data from a cookie.</description>
+        <severity>BLOCKER</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+    </rule>
+    <rule>
+        <key>STATIC_CS_UNENCRYPTED_SENSITIVE_DATA_cleartext_in_database</key>
+        <name>Medium impact security : Cleartext sensitive data in a database</name>
+        <internalKey>STATIC_CS_UNENCRYPTED_SENSITIVE_DATA_cleartext_in_database</internalKey>
+        <description>Reading unencrypted sensitive data from a database.</description>
+        <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+    </rule>
+    <rule>
+        <key>STATIC_CS_UNENCRYPTED_SENSITIVE_DATA_cleartext_in_file</key>
+        <name>Low impact security : Cleartext sensitive data in a file</name>
+        <internalKey>STATIC_CS_UNENCRYPTED_SENSITIVE_DATA_cleartext_in_file</internalKey>
+        <description>Reading unencrypted sensitive data from a file.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+    </rule>
+    <rule>
+        <key>STATIC_CS_UNENCRYPTED_SENSITIVE_DATA_cleartext_transmission</key>
+        <name>High impact security : Cleartext transmission of sensitive data</name>
+        <internalKey>STATIC_CS_UNENCRYPTED_SENSITIVE_DATA_cleartext_transmission</internalKey>
+        <description>Receiving sensitive data in cleartext from the network.</description>
+        <severity>BLOCKER</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+    </rule>
+    <rule>
+        <key>STATIC_CS_UNENCRYPTED_SENSITIVE_DATA_none</key>
+        <name>High impact security : Missing encryption of sensitive data</name>
+        <internalKey>STATIC_CS_UNENCRYPTED_SENSITIVE_DATA_none</internalKey>
+        <description>Retrieving or receiving unencrypted sensitive data.</description>
+        <severity>BLOCKER</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+    </rule>
+    <rule>
+        <key>STATIC_CS_NOSQL_QUERY_INJECTION_none</key>
+        <name>Medium impact security : NoSQL query injection</name>
+        <internalKey>STATIC_CS_NOSQL_QUERY_INJECTION_none</internalKey>
+        <description>A user-controllable string is injected into a NoSQL query.</description>
+        <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+    </rule>
+    <rule>
+        <key>STATIC_CS_MISSING_AUTHZ_none</key>
+        <name>Medium impact security : Missing authorization check</name>
+        <internalKey>STATIC_CS_MISSING_AUTHZ_none</internalKey>
+        <description>Calling a method that performs a sensitive action without first checking authorization, as is done elsewhere.</description>
+        <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+    </rule>
+    <rule>
+        <key>STATIC_CS_FORWARD_NULL_deref_constant_null</key>
+        <name>Null pointer dereferences : Explicit null dereferenced</name>
+        <internalKey>STATIC_CS_FORWARD_NULL_deref_constant_null</internalKey>
+        <description>Dereference of an explicit null value</description>
+        <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+    </rule>
+    <rule>
+        <key>STATIC_CS_FORWARD_NULL_deref_constant_zero</key>
+        <name>Null pointer dereferences : Explicit null dereferenced</name>
+        <internalKey>STATIC_CS_FORWARD_NULL_deref_constant_zero</internalKey>
+        <description>Dereference of an explicit null value</description>
+        <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+    </rule>
+    <rule>
+        <key>STATIC_CS_FORWARD_NULL_dynamic_cast</key>
+        <name>Null pointer dereferences : Unchecked dynamic_cast</name>
+        <internalKey>STATIC_CS_FORWARD_NULL_dynamic_cast</internalKey>
+        <description>Dynamic_cast may fail and return null if the type cast is incompatible</description>
+        <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+    </rule>
+    <rule>
+        <key>STATIC_CS_FORWARD_NULL_none</key>
+        <name>Null pointer dereferences : Dereference after null check</name>
+        <internalKey>STATIC_CS_FORWARD_NULL_none</internalKey>
+        <description>Reference is checked against null but then dereferenced anyway</description>
+        <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+    </rule>
+    <rule>
+        <key>STATIC_CS_FORWARD_NULL_null_from_as</key>
+        <name>Null pointer dereferences : Unchecked &quot;as&quot; conversion</name>
+        <internalKey>STATIC_CS_FORWARD_NULL_null_from_as</internalKey>
+        <description>The &quot;as&quot; conversion may fail and return null if the type cast is incompatible</description>
+        <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+    </rule>
+    <rule>
+        <key>STATIC_CS_LDAP_INJECTION_none</key>
+        <name>High impact security : LDAP injection</name>
+        <internalKey>STATIC_CS_LDAP_INJECTION_none</internalKey>
+        <description>A user-controllable string is injected into an LDAP query.</description>
+        <severity>BLOCKER</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+    </rule>
+    <rule>
+        <key>STATIC_CS_UNUSED_VALUE_adjacent</key>
+        <name>Incorrect expression : Unused value</name>
+        <internalKey>STATIC_CS_UNUSED_VALUE_adjacent</internalKey>
+        <description>A value assigned to a variable is never used.</description>
+        <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+    </rule>
+    <rule>
+        <key>STATIC_CS_UNUSED_VALUE_none</key>
+        <name>Code maintainability issues : Unused value</name>
+        <internalKey>STATIC_CS_UNUSED_VALUE_none</internalKey>
+        <description>A value assigned to a variable is never used.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+    </rule>
+    <rule>
+        <key>STATIC_CS_CONFIG.COOKIES_MISSING_HTTPONLY_none</key>
+        <name>Low impact security : Missing HttpOnly in cookies</name>
+        <internalKey>STATIC_CS_CONFIG.COOKIES_MISSING_HTTPONLY_none</internalKey>
+        <description>Cookie data is vulnerable to cross-site scripting attacks, and sensitive information, such as session identifiers, could be leaked to a third party.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+    </rule>
+    <rule>
+        <key>STATIC_CS_ASPNET_MVC_VERSION_HEADER_none</key>
+        <name>Low impact security : ASP.NET MVC version header included</name>
+        <internalKey>STATIC_CS_ASPNET_MVC_VERSION_HEADER_none</internalKey>
+        <description>MvcHandler.DisableMvcResponseHeader is not set to true in function Application_Start or its callees.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+    </rule>
+    <rule>
         <key>STATIC_CS_REVERSE_INULL_none</key>
         <name>Null pointer dereferences : Dereference before null check</name>
         <internalKey>STATIC_CS_REVERSE_INULL_none</internalKey>
@@ -810,71 +460,61 @@
         <type>BUG</type>
     </rule>
     <rule>
-        <key>STATIC_CS_WEAK_PASSWORD_HASH_weak_hash_no_salt</key>
-        <name>High impact security : Very weak password hashing</name>
-        <internalKey>STATIC_CS_WEAK_PASSWORD_HASH_weak_hash_no_salt</internalKey>
-        <description>Hashing a password using a scheme that is not computationally intensive, and without using any salt as part of the input.</description>
-        <severity>BLOCKER</severity>
-        <cardinality>SINGLE</cardinality>
-        <status>READY</status>
-        <type>VULNERABILITY</type>
-    </rule>
-    <rule>
-        <key>STATIC_CS_CONSTANT_EXPRESSION_RESULT_result_independent_of_operands</key>
-        <name>Integer handling issues : Operands don&apos;t affect result</name>
-        <internalKey>STATIC_CS_CONSTANT_EXPRESSION_RESULT_result_independent_of_operands</internalKey>
-        <description>An operation with non-constant operands that computes a result with constant value</description>
+        <key>STATIC_CS_COPY_PASTE_ERROR_none</key>
+        <name>Incorrect expression : Copy-paste error</name>
+        <internalKey>STATIC_CS_COPY_PASTE_ERROR_none</internalKey>
+        <description>A copied piece of code is inconsistent with the original</description>
         <severity>CRITICAL</severity>
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>BUG</type>
     </rule>
     <rule>
-        <key>STATIC_CS_HARDCODED_CREDENTIALS_hardcoded_credential_connection_string</key>
-        <name>Medium impact security : Use of hard-coded connection string password</name>
-        <internalKey>STATIC_CS_HARDCODED_CREDENTIALS_hardcoded_credential_connection_string</internalKey>
-        <description>A connection string password is stored directly in the source code.</description>
-        <severity>CRITICAL</severity>
+        <key>STATIC_CS_CONFIG.MISSING_CUSTOM_ERROR_PAGE_none</key>
+        <name>Low impact security : Missing custom error page</name>
+        <internalKey>STATIC_CS_CONFIG.MISSING_CUSTOM_ERROR_PAGE_none</internalKey>
+        <description>When a custom error page is not provided, ASP.NET displays detailed information about errors.</description>
+        <severity>MAJOR</severity>
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>VULNERABILITY</type>
     </rule>
     <rule>
-        <key>STATIC_CS_CONSTANT_EXPRESSION_RESULT_missing_parentheses</key>
-        <name>Incorrect expression : Missing parentheses</name>
-        <internalKey>STATIC_CS_CONSTANT_EXPRESSION_RESULT_missing_parentheses</internalKey>
-        <description>Missing parentheses caused unintended operator precedence</description>
+        <key>STATIC_CS_NESTING_INDENT_MISMATCH_bad_indentation</key>
+        <name>Code maintainability issues : Indentation does not match nesting level</name>
+        <internalKey>STATIC_CS_NESTING_INDENT_MISMATCH_bad_indentation</internalKey>
+        <description>The indentation of this code does not reflect its syntactic nesting level.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+    </rule>
+    <rule>
+        <key>STATIC_CS_NESTING_INDENT_MISMATCH_none</key>
+        <name>Control flow issues : Nesting level does not match indentation</name>
+        <internalKey>STATIC_CS_NESTING_INDENT_MISMATCH_none</internalKey>
+        <description>The indentation of this code suggests it is nested when it is not.</description>
         <severity>CRITICAL</severity>
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>BUG</type>
     </rule>
     <rule>
-        <key>STATIC_CS_XML_EXTERNAL_ENTITY_unrestricted_dtds</key>
-        <name>Medium impact security : Unrestricted document type definitions</name>
-        <internalKey>STATIC_CS_XML_EXTERNAL_ENTITY_unrestricted_dtds</internalKey>
-        <description>Passing tainted input data with possibly arbitrary DTDs to a weakly configured XML parser.</description>
-        <severity>CRITICAL</severity>
-        <cardinality>SINGLE</cardinality>
-        <status>READY</status>
-        <type>VULNERABILITY</type>
-    </rule>
-    <rule>
-        <key>STATIC_CS_CALL_SUPER_none</key>
-        <name>Class hierarchy inconsistencies : Missing call to base class</name>
-        <internalKey>STATIC_CS_CALL_SUPER_none</internalKey>
-        <description>Overrider does not call the base class method, even though most other overriders do</description>
+        <key>STATIC_CS_USELESS_CALL_none</key>
+        <name>Incorrect expression : Useless call</name>
+        <internalKey>STATIC_CS_USELESS_CALL_none</internalKey>
+        <description>A function is called that is only useful for its return value, and this value is ignored.</description>
         <severity>CRITICAL</severity>
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>BUG</type>
     </rule>
     <rule>
-        <key>STATIC_CS_RESOURCE_LEAK_database</key>
-        <name>Resource leaks : Database connection leak</name>
-        <internalKey>STATIC_CS_RESOURCE_LEAK_database</internalKey>
-        <description>Leak of a database connection</description>
-        <severity>BLOCKER</severity>
+        <key>STATIC_CS_VOLATILE_ATOMICITY_compare</key>
+        <name>Concurrent data access violations : Volatile not atomically updated</name>
+        <internalKey>STATIC_CS_VOLATILE_ATOMICITY_compare</internalKey>
+        <description>A volatile variable is updated in a non-atomic manner</description>
+        <severity>CRITICAL</severity>
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>BUG</type>
@@ -884,86 +524,6 @@
         <name>Concurrent data access violations : Volatile not atomically updated</name>
         <internalKey>STATIC_CS_VOLATILE_ATOMICITY_none</internalKey>
         <description>A volatile variable is updated in a non-atomic manner</description>
-        <severity>CRITICAL</severity>
-        <cardinality>SINGLE</cardinality>
-        <status>READY</status>
-        <type>BUG</type>
-    </rule>
-    <rule>
-        <key>STATIC_CS_DEADCODE_none</key>
-        <name>Control flow issues : Logically dead code</name>
-        <internalKey>STATIC_CS_DEADCODE_none</internalKey>
-        <description>Code can never be reached because of a logical contradiction</description>
-        <severity>CRITICAL</severity>
-        <cardinality>SINGLE</cardinality>
-        <status>READY</status>
-        <type>BUG</type>
-    </rule>
-    <rule>
-        <key>STATIC_CS_BAD_EQ_none</key>
-        <name>Incorrect expression : Wrong kind of equality</name>
-        <internalKey>STATIC_CS_BAD_EQ_none</internalKey>
-        <description>Using wrong equality operation (Equals or the equivalent method vs &quot;==&quot;) for this type</description>
-        <severity>CRITICAL</severity>
-        <cardinality>SINGLE</cardinality>
-        <status>READY</status>
-        <type>BUG</type>
-    </rule>
-    <rule>
-        <key>STATIC_CS_XML_INJECTION_none</key>
-        <name>Low impact security : XML injection</name>
-        <internalKey>STATIC_CS_XML_INJECTION_none</internalKey>
-        <description>User-controllable data is parsed as XML.</description>
-        <severity>MAJOR</severity>
-        <cardinality>SINGLE</cardinality>
-        <status>READY</status>
-        <type>VULNERABILITY</type>
-    </rule>
-    <rule>
-        <key>STATIC_CS_BAD_EQ_structural</key>
-        <name>Incorrect expression : Wrong equality (structural)</name>
-        <internalKey>STATIC_CS_BAD_EQ_structural</internalKey>
-        <description>Using Equals (or equivalent method) equality when &quot;==&quot; is the norm for this type</description>
-        <severity>CRITICAL</severity>
-        <cardinality>SINGLE</cardinality>
-        <status>READY</status>
-        <type>BUG</type>
-    </rule>
-    <rule>
-        <key>STATIC_CS_WEAK_PASSWORD_HASH_weak_salt</key>
-        <name>Low impact security : Hashing a password with a weak salt</name>
-        <internalKey>STATIC_CS_WEAK_PASSWORD_HASH_weak_salt</internalKey>
-        <description>Hashing a password without using a random and unique salt as part of the input.</description>
-        <severity>MAJOR</severity>
-        <cardinality>SINGLE</cardinality>
-        <status>READY</status>
-        <type>VULNERABILITY</type>
-    </rule>
-    <rule>
-        <key>STATIC_CS_CONSTANT_EXPRESSION_RESULT_extra_high_bits</key>
-        <name>Integer handling issues : Extra high-order bits</name>
-        <internalKey>STATIC_CS_CONSTANT_EXPRESSION_RESULT_extra_high_bits</internalKey>
-        <description>In an operation, the high-order bits of wider operand do not affect the narrower operand</description>
-        <severity>CRITICAL</severity>
-        <cardinality>SINGLE</cardinality>
-        <status>READY</status>
-        <type>BUG</type>
-    </rule>
-    <rule>
-        <key>STATIC_CS_INSECURE_RANDOM_insecure_random_value</key>
-        <name>Insecure random category : Cryptographically weak PRNG</name>
-        <internalKey>STATIC_CS_INSECURE_RANDOM_insecure_random_value</internalKey>
-        <description>Random value generated using a cryptographically insecure pseudo-random number generator</description>
-        <severity>CRITICAL</severity>
-        <cardinality>SINGLE</cardinality>
-        <status>READY</status>
-        <type>BUG</type>
-    </rule>
-    <rule>
-        <key>STATIC_CS_ATOMICITY_none</key>
-        <name>Concurrent data access violations : Value not atomically updated</name>
-        <internalKey>STATIC_CS_ATOMICITY_none</internalKey>
-        <description>Critical section does not protect read-update-write of a concurrently shared value</description>
         <severity>CRITICAL</severity>
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
@@ -980,44 +540,64 @@
         <type>BUG</type>
     </rule>
     <rule>
-        <key>STATIC_CS_RISKY_CRYPTO_custom</key>
-        <name>Medium impact security : Violation of user-specified RISKY_CRYPTO policy</name>
-        <internalKey>STATIC_CS_RISKY_CRYPTO_custom</internalKey>
-        <description>A cryptographic function was used in such a way as to violate the user-specified RISKY_CRYPTO policy. This violation may indicate that an attacker could decrypt or otherwise interfere with the encrypted or hashed data.</description>
+        <key>STATIC_CS_VOLATILE_ATOMICITY_threshold</key>
+        <name>Concurrent data access violations : Volatile not atomically updated</name>
+        <internalKey>STATIC_CS_VOLATILE_ATOMICITY_threshold</internalKey>
+        <description>A volatile variable is updated in a non-atomic manner</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+    </rule>
+    <rule>
+        <key>STATIC_CS_OVERFLOW_BEFORE_WIDEN_none</key>
+        <name>Integer handling issues : Unintentional integer overflow</name>
+        <internalKey>STATIC_CS_OVERFLOW_BEFORE_WIDEN_none</internalKey>
+        <description>An integer overflow occurs, with the result converted to a wider integer type</description>
+        <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+    </rule>
+    <rule>
+        <key>STATIC_CS_XML_EXTERNAL_ENTITY_entity_expansion</key>
+        <name>Medium impact security : Unrestricted entity expansion</name>
+        <internalKey>STATIC_CS_XML_EXTERNAL_ENTITY_entity_expansion</internalKey>
+        <description>Passing tainted input data with possibly arbitrary entity references to a weakly configured XML parser that does not limit entity expansion.</description>
         <severity>CRITICAL</severity>
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>VULNERABILITY</type>
     </rule>
     <rule>
-        <key>STATIC_CS_DEADCODE_dead_default_in_switch</key>
-        <name>Possible Control flow issues : Dead default in switch</name>
-        <internalKey>STATIC_CS_DEADCODE_dead_default_in_switch</internalKey>
-        <description>Default in switch statement is dead code</description>
-        <severity>MAJOR</severity>
-        <cardinality>SINGLE</cardinality>
-        <status>READY</status>
-        <type>BUG</type>
-    </rule>
-    <rule>
-        <key>STATIC_CS_LOCK_EVASION_none</key>
-        <name>Data race undermines locking : Check of thread-shared field evades lock acquisition</name>
-        <internalKey>STATIC_CS_LOCK_EVASION_none</internalKey>
-        <description>Checking the value of a thread-shared field outside of a locked region to determine if a locked operation involving that thread shared field has completed.</description>
-        <severity>BLOCKER</severity>
-        <cardinality>SINGLE</cardinality>
-        <status>READY</status>
-        <type>BUG</type>
-    </rule>
-    <rule>
-        <key>STATIC_CS_SENSITIVE_DATA_LEAK_cleartext_storage_in_log</key>
-        <name>Low impact security : Information exposure to log file</name>
-        <internalKey>STATIC_CS_SENSITIVE_DATA_LEAK_cleartext_storage_in_log</internalKey>
-        <description>Logging sensitive data.</description>
-        <severity>MAJOR</severity>
+        <key>STATIC_CS_XML_EXTERNAL_ENTITY_external_entities</key>
+        <name>Medium impact security : Unrestricted external entity references</name>
+        <internalKey>STATIC_CS_XML_EXTERNAL_ENTITY_external_entities</internalKey>
+        <description>Passing tainted input data with possibly arbitrary external entity references to a weakly configured XML parser.</description>
+        <severity>CRITICAL</severity>
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>VULNERABILITY</type>
+    </rule>
+    <rule>
+        <key>STATIC_CS_XML_EXTERNAL_ENTITY_unrestricted_dtds</key>
+        <name>Medium impact security : Unrestricted document type definitions</name>
+        <internalKey>STATIC_CS_XML_EXTERNAL_ENTITY_unrestricted_dtds</internalKey>
+        <description>Passing tainted input data with possibly arbitrary DTDs to a weakly configured XML parser.</description>
+        <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+    </rule>
+    <rule>
+        <key>STATIC_CS_XML_EXTERNAL_ENTITYnone</key>
+        <name>Medium impact security : Unrestricted document type definitions</name>
+        <internalKey>STATIC_CS_XML_EXTERNAL_ENTITYnone</internalKey>
+        <description>Passing tainted input data with possibly arbitrary DTDs to a weakly configured XML parser.</description>
+        <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type></type>
     </rule>
     <rule>
         <key>STATIC_CS_CONSTANT_EXPRESSION_RESULT_bit_and_with_zero</key>
@@ -1030,10 +610,440 @@
         <type>BUG</type>
     </rule>
     <rule>
+        <key>STATIC_CS_CONSTANT_EXPRESSION_RESULT_extra_high_bits</key>
+        <name>Integer handling issues : Extra high-order bits</name>
+        <internalKey>STATIC_CS_CONSTANT_EXPRESSION_RESULT_extra_high_bits</internalKey>
+        <description>In an operation, the high-order bits of wider operand do not affect the narrower operand</description>
+        <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+    </rule>
+    <rule>
+        <key>STATIC_CS_CONSTANT_EXPRESSION_RESULT_logical_vs_bitwise</key>
+        <name>Integer handling issues : Logical vs. bitwise operator</name>
+        <internalKey>STATIC_CS_CONSTANT_EXPRESSION_RESULT_logical_vs_bitwise</internalKey>
+        <description>Logical operator used in place of bitwise operator or vice versa</description>
+        <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+    </rule>
+    <rule>
+        <key>STATIC_CS_CONSTANT_EXPRESSION_RESULT_missing_parentheses</key>
+        <name>Incorrect expression : Missing parentheses</name>
+        <internalKey>STATIC_CS_CONSTANT_EXPRESSION_RESULT_missing_parentheses</internalKey>
+        <description>Missing parentheses caused unintended operator precedence</description>
+        <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+    </rule>
+    <rule>
+        <key>STATIC_CS_CONSTANT_EXPRESSION_RESULT_none</key>
+        <name>Integer handling issues : Constant expression result</name>
+        <internalKey>STATIC_CS_CONSTANT_EXPRESSION_RESULT_none</internalKey>
+        <description>An operation with non-constant operands that computes a result with constant value</description>
+        <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+    </rule>
+    <rule>
+        <key>STATIC_CS_CONSTANT_EXPRESSION_RESULT_operator_confusion</key>
+        <name>Integer handling issues : Wrong operator used</name>
+        <internalKey>STATIC_CS_CONSTANT_EXPRESSION_RESULT_operator_confusion</internalKey>
+        <description>Wrong operator used in expression</description>
+        <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+    </rule>
+    <rule>
+        <key>STATIC_CS_CONSTANT_EXPRESSION_RESULT_result_independent_of_operands</key>
+        <name>Integer handling issues : Operands don&apos;t affect result</name>
+        <internalKey>STATIC_CS_CONSTANT_EXPRESSION_RESULT_result_independent_of_operands</internalKey>
+        <description>An operation with non-constant operands that computes a result with constant value</description>
+        <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+    </rule>
+    <rule>
+        <key>STATIC_CS_CONSTANT_EXPRESSION_RESULT_same_on_both_sides</key>
+        <name>Incorrect expression : Same on both sides</name>
+        <internalKey>STATIC_CS_CONSTANT_EXPRESSION_RESULT_same_on_both_sides</internalKey>
+        <description>The same expression occurs on both sides of an operator.</description>
+        <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+    </rule>
+    <rule>
+        <key>STATIC_CS_CONSTANT_EXPRESSION_RESULT_unnecessary_op_assign</key>
+        <name>Integer handling issues : Suspicious &amp;= or |=</name>
+        <internalKey>STATIC_CS_CONSTANT_EXPRESSION_RESULT_unnecessary_op_assign</internalKey>
+        <description>Using a bitwise assignment operator to assign a constant value</description>
+        <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+    </rule>
+    <rule>
+        <key>STATIC_CS_HARDCODED_CREDENTIALS_hardcoded_credential_crypto</key>
+        <name>Medium impact security : Use of hard-coded cryptographic key</name>
+        <internalKey>STATIC_CS_HARDCODED_CREDENTIALS_hardcoded_credential_crypto</internalKey>
+        <description>A cryptographic key is stored directly in the source code.</description>
+        <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+    </rule>
+    <rule>
+        <key>STATIC_CS_HARDCODED_CREDENTIALS_hardcoded_credential_passwd</key>
+        <name>Medium impact security : Use of hard-coded password</name>
+        <internalKey>STATIC_CS_HARDCODED_CREDENTIALS_hardcoded_credential_passwd</internalKey>
+        <description>A password is stored directly in the source code.</description>
+        <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+    </rule>
+    <rule>
+        <key>STATIC_CS_HARDCODED_CREDENTIALS_hardcoded_credential_token</key>
+        <name>Medium impact security : Use of hard-coded security token</name>
+        <internalKey>STATIC_CS_HARDCODED_CREDENTIALS_hardcoded_credential_token</internalKey>
+        <description>A security token is stored directly in the source code.</description>
+        <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+    </rule>
+    <rule>
+        <key>STATIC_CS_HARDCODED_CREDENTIALS_none</key>
+        <name>Medium impact security : Use of hard-coded credentials</name>
+        <internalKey>STATIC_CS_HARDCODED_CREDENTIALS_none</internalKey>
+        <description>Credentials are stored directly in the source code</description>
+        <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+    </rule>
+    <rule>
+        <key>STATIC_CS_HARDCODED_CREDENTIALS_hardcoded_credential_connection_string</key>
+        <name>Medium impact security : Use of hard-coded connection string password</name>
+        <internalKey>STATIC_CS_HARDCODED_CREDENTIALS_hardcoded_credential_connection_string</internalKey>
+        <description>A connection string password is stored directly in the source code.</description>
+        <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+    </rule>
+    <rule>
         <key>STATIC_CS_LOCK_INVERSION_none</key>
         <name>Program hangs : Thread deadlock</name>
         <internalKey>STATIC_CS_LOCK_INVERSION_none</internalKey>
         <description>Threads may try to acquire two locks in different orders, potentially causing deadlock</description>
+        <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+    </rule>
+    <rule>
+        <key>STATIC_CS_XSS_none</key>
+        <name>High impact security : Cross-site scripting</name>
+        <internalKey>STATIC_CS_XSS_none</internalKey>
+        <description>Untrusted user-supplied data is inserted into a context that can execute JavaScript without adequate validation, escaping, or filtering</description>
+        <severity>BLOCKER</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+    </rule>
+    <rule>
+        <key>STATIC_CS_XSS_stored_xss</key>
+        <name>High impact security : Cross-site scripting (stored)</name>
+        <internalKey>STATIC_CS_XSS_stored_xss</internalKey>
+        <description>Untrusted user-supplied data is stored in a database and subsequently read back and included in a context that can execute JavaScript without adequate validation, escaping, or filtering</description>
+        <severity>BLOCKER</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+    </rule>
+    <rule>
+        <key>STATIC_CS_CSRF_database_update</key>
+        <name>High impact security : Cross-site request forgery</name>
+        <internalKey>STATIC_CS_CSRF_database_update</internalKey>
+        <description>The web application controller modifies data or state and is unprotected from cross-site request forgery.</description>
+        <severity>BLOCKER</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+    </rule>
+    <rule>
+        <key>STATIC_CS_CSRF_filesystem_modification</key>
+        <name>Medium impact security : Cross-site request forgery</name>
+        <internalKey>STATIC_CS_CSRF_filesystem_modification</internalKey>
+        <description>The web application controller modifies data or state and is unprotected from cross-site request forgery.</description>
+        <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+    </rule>
+    <rule>
+        <key>STATIC_CS_CSRF_none</key>
+        <name>High impact security : Cross-site request forgery</name>
+        <internalKey>STATIC_CS_CSRF_none</internalKey>
+        <description>The web application controller modifies data or state and is unprotected from cross-site request forgery.</description>
+        <severity>BLOCKER</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+    </rule>
+    <rule>
+        <key>STATIC_CS_BAD_SHIFT_none</key>
+        <name>Integer handling issues : Bad bit shift operation</name>
+        <internalKey>STATIC_CS_BAD_SHIFT_none</internalKey>
+        <description>A bit shift operation has a shift amount which is too large or has a negative value.</description>
+        <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+    </rule>
+    <rule>
+        <key>STATIC_CS_CONFIG.ASP_VIEWSTATE_MAC_none</key>
+        <name>Low impact security : Disabled View State MAC generation</name>
+        <internalKey>STATIC_CS_CONFIG.ASP_VIEWSTATE_MAC_none</internalKey>
+        <description>View State Machine Authentication Code (MAC) generation was disabled</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+    </rule>
+    <rule>
+        <key>STATIC_CS_INFINITE_LOOP_no_escape</key>
+        <name>Program hangs : Infinite loop</name>
+        <internalKey>STATIC_CS_INFINITE_LOOP_no_escape</internalKey>
+        <description>Infinite loop with no exit condition</description>
+        <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+    </rule>
+    <rule>
+        <key>STATIC_CS_INFINITE_LOOP_none</key>
+        <name>Program hangs : Infinite loop</name>
+        <internalKey>STATIC_CS_INFINITE_LOOP_none</internalKey>
+        <description>Infinite loop with unsatisfiable exit condition</description>
+        <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+    </rule>
+    <rule>
+        <key>STATIC_CS_CONFIG.DEAD_AUTHORIZATION_RULE_dead_deny_rule</key>
+        <name>Medium impact security : Dead Deny Rule</name>
+        <internalKey>STATIC_CS_CONFIG.DEAD_AUTHORIZATION_RULE_dead_deny_rule</internalKey>
+        <description>A deny rule has no effect</description>
+        <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+    </rule>
+    <rule>
+        <key>STATIC_CS_CONFIG.DEAD_AUTHORIZATION_RULE_dead_allow_rule</key>
+        <name>Low impact security : Dead Allow Rule</name>
+        <internalKey>STATIC_CS_CONFIG.DEAD_AUTHORIZATION_RULE_dead_allow_rule</internalKey>
+        <description>An allow rule has no effect</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+    </rule>
+    <rule>
+        <key>STATIC_CS_CONFIG.DEAD_AUTHORIZATION_RULEnone</key>
+        <name>Low impact security : Dead Allow Rule</name>
+        <internalKey>STATIC_CS_CONFIG.DEAD_AUTHORIZATION_RULEnone</internalKey>
+        <description>An allow rule has no effect</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type></type>
+    </rule>
+    <rule>
+        <key>STATIC_CS_MS.*_none</key>
+        <name>Microsoft: Miscellaneous : MS Code Analysis warning</name>
+        <internalKey>STATIC_CS_MS.*_none</internalKey>
+        <description>Unclassified warning from Microsoft Code Analysis</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+    </rule>
+    <rule>
+        <key>STATIC_CS_OS_CMD_INJECTION_command_argument</key>
+        <name>High impact security : OS Command Injection</name>
+        <internalKey>STATIC_CS_OS_CMD_INJECTION_command_argument</internalKey>
+        <description>Untrusted user-supplied data is inserted into an operating system command without adequate validation, escaping, or filtering. This inserted data can change the intent of the operating system command. The change to the operating system command may result in the unauthorized disclosure, destruction, or modification of sensitive data or operating system resources.</description>
+        <severity>BLOCKER</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+    </rule>
+    <rule>
+        <key>STATIC_CS_OS_CMD_INJECTION_executable_file</key>
+        <name>High impact security : OS Command Injection</name>
+        <internalKey>STATIC_CS_OS_CMD_INJECTION_executable_file</internalKey>
+        <description>Untrusted user-supplied data is inserted into an operating system command without adequate validation, escaping, or filtering. This inserted data can change the intent of the operating system command. The change to the operating system command may result in the unauthorized disclosure, destruction, or modification of sensitive data or operating system resources.</description>
+        <severity>BLOCKER</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+    </rule>
+    <rule>
+        <key>STATIC_CS_OS_CMD_INJECTION_none</key>
+        <name>High impact security : OS Command Injection</name>
+        <internalKey>STATIC_CS_OS_CMD_INJECTION_none</internalKey>
+        <description>Untrusted user-supplied data is inserted into an operating system command without adequate validation, escaping, or filtering. This inserted data can change the intent of the operating system command. The change to the operating system command may result in the unauthorized disclosure, destruction, or modification of sensitive data or operating system resources.</description>
+        <severity>BLOCKER</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+    </rule>
+    <rule>
+        <key>STATIC_CS_WEAK_PASSWORD_HASH_none</key>
+        <name>High impact security : Weak password hashing</name>
+        <internalKey>STATIC_CS_WEAK_PASSWORD_HASH_none</internalKey>
+        <description>Hashing a password using a scheme that is not computationally intensive, and/or without using a random and unique salt as part of the input.</description>
+        <severity>BLOCKER</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+    </rule>
+    <rule>
+        <key>STATIC_CS_WEAK_PASSWORD_HASH_weak_hash</key>
+        <name>Medium impact security : Hashing a password with a weak hash function</name>
+        <internalKey>STATIC_CS_WEAK_PASSWORD_HASH_weak_hash</internalKey>
+        <description>Hashing a password using a scheme that is not computationally intensive.</description>
+        <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+    </rule>
+    <rule>
+        <key>STATIC_CS_WEAK_PASSWORD_HASH_weak_hash_no_salt</key>
+        <name>High impact security : Very weak password hashing</name>
+        <internalKey>STATIC_CS_WEAK_PASSWORD_HASH_weak_hash_no_salt</internalKey>
+        <description>Hashing a password using a scheme that is not computationally intensive, and without using any salt as part of the input.</description>
+        <severity>BLOCKER</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+    </rule>
+    <rule>
+        <key>STATIC_CS_WEAK_PASSWORD_HASH_weak_hash_weak_salt</key>
+        <name>High impact security : Weak password hashing</name>
+        <internalKey>STATIC_CS_WEAK_PASSWORD_HASH_weak_hash_weak_salt</internalKey>
+        <description>Hashing a password using a scheme that is not computationally intensive, and without using a random and unique salt as part of the input.</description>
+        <severity>BLOCKER</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+    </rule>
+    <rule>
+        <key>STATIC_CS_WEAK_PASSWORD_HASH_weak_salt</key>
+        <name>Low impact security : Hashing a password with a weak salt</name>
+        <internalKey>STATIC_CS_WEAK_PASSWORD_HASH_weak_salt</internalKey>
+        <description>Hashing a password without using a random and unique salt as part of the input.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+    </rule>
+    <rule>
+        <key>STATIC_CS_PATH_MANIPULATION_none</key>
+        <name>High impact security : Filesystem path, filename, or URI manipulation</name>
+        <internalKey>STATIC_CS_PATH_MANIPULATION_none</internalKey>
+        <description>A user-controllable string is used as part or all of a filesystem path, filename, or URI (uniform resource identifier).</description>
+        <severity>BLOCKER</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+    </rule>
+    <rule>
+        <key>STATIC_CS_IDENTICAL_BRANCHES_case</key>
+        <name>Incorrect expression : Identical code for different cases</name>
+        <internalKey>STATIC_CS_IDENTICAL_BRANCHES_case</internalKey>
+        <description>The same code is executed for two cases in the same switch statement</description>
+        <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+    </rule>
+    <rule>
+        <key>STATIC_CS_IDENTICAL_BRANCHES_chain</key>
+        <name>Incorrect expression : Identical code for different branches of an else-if chain</name>
+        <internalKey>STATIC_CS_IDENTICAL_BRANCHES_chain</internalKey>
+        <description>The same code is executed regardless of the condition</description>
+        <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+    </rule>
+    <rule>
+        <key>STATIC_CS_IDENTICAL_BRANCHES_if</key>
+        <name>Incorrect expression : Identical code for different branches</name>
+        <internalKey>STATIC_CS_IDENTICAL_BRANCHES_if</internalKey>
+        <description>The same code is executed regardless of the condition</description>
+        <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+    </rule>
+    <rule>
+        <key>STATIC_CS_IDENTICAL_BRANCHES_ternary</key>
+        <name>Incorrect expression : Identical code for different branches</name>
+        <internalKey>STATIC_CS_IDENTICAL_BRANCHES_ternary</internalKey>
+        <description>The same code is executed regardless of the condition</description>
+        <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+    </rule>
+    <rule>
+        <key>STATIC_CS_IDENTICAL_BRANCHESnone</key>
+        <name>Incorrect expression : Identical code for different branches</name>
+        <internalKey>STATIC_CS_IDENTICAL_BRANCHESnone</internalKey>
+        <description>The same code is executed regardless of the condition</description>
+        <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type></type>
+    </rule>
+    <rule>
+        <key>STATIC_CS_CONFIG.CONNECTION_STRING_PASSWORD_none</key>
+        <name>Low impact security : Unencrypted connection string password</name>
+        <internalKey>STATIC_CS_CONFIG.CONNECTION_STRING_PASSWORD_none</internalKey>
+        <description>A configuration file connection string includes a plaintext password.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+    </rule>
+    <rule>
+        <key>STATIC_CS_MISSING_THROW_none</key>
+        <name>Error handling issues : Exception not thrown</name>
+        <internalKey>STATIC_CS_MISSING_THROW_none</internalKey>
+        <description>An object of exception type is created but neither thrown nor stored anywhere; the developer likely intended to throw the exception.</description>
+        <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+    </rule>
+    <rule>
+        <key>STATIC_CS_ATOMICITY_none</key>
+        <name>Concurrent data access violations : Value not atomically updated</name>
+        <internalKey>STATIC_CS_ATOMICITY_none</internalKey>
+        <description>Critical section does not protect read-update-write of a concurrently shared value</description>
         <severity>CRITICAL</severity>
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
@@ -1060,24 +1070,84 @@
         <type>BUG</type>
     </rule>
     <rule>
-        <key>STATIC_CS_OS_CMD_INJECTION_executable_file</key>
-        <name>High impact security : OS Command Injection</name>
-        <internalKey>STATIC_CS_OS_CMD_INJECTION_executable_file</internalKey>
-        <description>Untrusted user-supplied data is inserted into an operating system command without adequate validation, escaping, or filtering. This inserted data can change the intent of the operating system command. The change to the operating system command may result in the unauthorized disclosure, destruction, or modification of sensitive data or operating system resources.</description>
+        <key>STATIC_CS_MISSING_RESTORE_possible</key>
+        <name>Possible Control flow issues : Possible failure to restore non-local value</name>
+        <internalKey>STATIC_CS_MISSING_RESTORE_possible</internalKey>
+        <description>Handles classes of flow where a function is either saving some external value, modifying the external value, and then possibly intending to restore it to its original state but not doing so along one of many paths; or else is checking whether an external has some expected value, modifying the external value, then possibly intending to restore it to the expected value but not doing so along a path.  Such code is only incorrect if the intent really was to restore along all paths.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+    </rule>
+    <rule>
+        <key>STATIC_CS_SENSITIVE_DATA_LEAK_cleartext_exception_storage_in_gui</key>
+        <name>Medium impact security : Exception leaked to user interface</name>
+        <internalKey>STATIC_CS_SENSITIVE_DATA_LEAK_cleartext_exception_storage_in_gui</internalKey>
+        <description>Displaying an exception message or stack trace in the user interface.</description>
+        <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+    </rule>
+    <rule>
+        <key>STATIC_CS_SENSITIVE_DATA_LEAK_cleartext_storage_in_cookie</key>
+        <name>High impact security : Cleartext sensitive data in a cookie</name>
+        <internalKey>STATIC_CS_SENSITIVE_DATA_LEAK_cleartext_storage_in_cookie</internalKey>
+        <description>Storing unencrypted sensitive data in a cookie.</description>
         <severity>BLOCKER</severity>
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>VULNERABILITY</type>
     </rule>
     <rule>
-        <key>STATIC_CS_SWAPPED_ARGUMENTS_none</key>
-        <name>API usage errors : Arguments in wrong order</name>
-        <internalKey>STATIC_CS_SWAPPED_ARGUMENTS_none</internalKey>
-        <description>The arguments to a function call are provided in the wrong order.</description>
+        <key>STATIC_CS_SENSITIVE_DATA_LEAK_cleartext_storage_in_database</key>
+        <name>Medium impact security : Cleartext sensitive data in a database</name>
+        <internalKey>STATIC_CS_SENSITIVE_DATA_LEAK_cleartext_storage_in_database</internalKey>
+        <description>Storing unencrypted sensitive data to a database.</description>
         <severity>CRITICAL</severity>
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
-        <type>BUG</type>
+        <type>VULNERABILITY</type>
+    </rule>
+    <rule>
+        <key>STATIC_CS_SENSITIVE_DATA_LEAK_cleartext_storage_in_file</key>
+        <name>Low impact security : Cleartext sensitive data in a file</name>
+        <internalKey>STATIC_CS_SENSITIVE_DATA_LEAK_cleartext_storage_in_file</internalKey>
+        <description>Storing unencrypted sensitive data to a file.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+    </rule>
+    <rule>
+        <key>STATIC_CS_SENSITIVE_DATA_LEAK_cleartext_storage_in_gui</key>
+        <name>High impact security : Display of sensitive data in the user interface</name>
+        <internalKey>STATIC_CS_SENSITIVE_DATA_LEAK_cleartext_storage_in_gui</internalKey>
+        <description>Displaying sensitive data in the user interface.</description>
+        <severity>BLOCKER</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+    </rule>
+    <rule>
+        <key>STATIC_CS_SENSITIVE_DATA_LEAK_cleartext_storage_in_log</key>
+        <name>Low impact security : Information exposure to log file</name>
+        <internalKey>STATIC_CS_SENSITIVE_DATA_LEAK_cleartext_storage_in_log</internalKey>
+        <description>Logging sensitive data.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+    </rule>
+    <rule>
+        <key>STATIC_CS_SENSITIVE_DATA_LEAK_cleartext_storage_in_registry</key>
+        <name>Medium impact security : Cleartext sensitive data in the registry</name>
+        <internalKey>STATIC_CS_SENSITIVE_DATA_LEAK_cleartext_storage_in_registry</internalKey>
+        <description>Storing unencrypted sensitive data in the system registry.</description>
+        <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
     </rule>
     <rule>
         <key>STATIC_CS_SENSITIVE_DATA_LEAK_cleartext_transmission</key>
@@ -1090,10 +1160,20 @@
         <type>VULNERABILITY</type>
     </rule>
     <rule>
-        <key>STATIC_CS_BAD_EQ_referential</key>
-        <name>Incorrect expression : Wrong equality (referential)</name>
-        <internalKey>STATIC_CS_BAD_EQ_referential</internalKey>
-        <description>Using referential equality when value equality is the norm for this type</description>
+        <key>STATIC_CS_SENSITIVE_DATA_LEAK_none</key>
+        <name>High impact security : Leak of sensitive data</name>
+        <internalKey>STATIC_CS_SENSITIVE_DATA_LEAK_none</internalKey>
+        <description>Sensitive data is stored or transmitted without encrypting it</description>
+        <severity>BLOCKER</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+    </rule>
+    <rule>
+        <key>STATIC_CS_NON_STATIC_GUARDING_STATIC_none</key>
+        <name>Concurrent data access violations : Data race condition</name>
+        <internalKey>STATIC_CS_NON_STATIC_GUARDING_STATIC_none</internalKey>
+        <description>Static field is protected by a per-instance lock</description>
         <severity>CRITICAL</severity>
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
@@ -1110,201 +1190,91 @@
         <type>VULNERABILITY</type>
     </rule>
     <rule>
-        <key>STATIC_CS_RISKY_CRYPTO_ssl_protocol</key>
-        <name>Medium impact security : Risky cryptographic SSL protocol</name>
-        <internalKey>STATIC_CS_RISKY_CRYPTO_ssl_protocol</internalKey>
-        <description>A Secure Sockets Layer (SSL) protocol was enabled that is known to be insecure. This may allow an attacker to decrypt or extract sensitive data that is transmitted over the network.</description>
-        <severity>CRITICAL</severity>
-        <cardinality>SINGLE</cardinality>
-        <status>READY</status>
-        <type>VULNERABILITY</type>
-    </rule>
-    <rule>
-        <key>STATIC_CS_IDENTICAL_BRANCHES_ternary</key>
-        <name>Incorrect expression : Identical code for different branches</name>
-        <internalKey>STATIC_CS_IDENTICAL_BRANCHES_ternary</internalKey>
-        <description>The same code is executed regardless of the condition</description>
+        <key>STATIC_CS_NULL_RETURNS_none</key>
+        <name>Null pointer dereferences : Dereference null return value</name>
+        <internalKey>STATIC_CS_NULL_RETURNS_none</internalKey>
+        <description>Return value of function which returns null is dereferenced without checking</description>
         <severity>CRITICAL</severity>
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>BUG</type>
     </rule>
     <rule>
-        <key>STATIC_CS_MISSING_RESTORE_possible</key>
-        <name>Possible Control flow issues : Possible failure to restore non-local value</name>
-        <internalKey>STATIC_CS_MISSING_RESTORE_possible</internalKey>
-        <description>Handles classes of flow where a function is either saving some external value, modifying the external value, and then possibly intending to restore it to its original state but not doing so along one of many paths; or else is checking whether an external has some expected value, modifying the external value, then possibly intending to restore it to the expected value but not doing so along a path.  Such code is only incorrect if the intent really was to restore along all paths.</description>
-        <severity>MAJOR</severity>
-        <cardinality>SINGLE</cardinality>
-        <status>READY</status>
-        <type>BUG</type>
-    </rule>
-    <rule>
-        <key>STATIC_CS_PATH_MANIPULATION_none</key>
-        <name>High impact security : Filesystem path, filename, or URI manipulation</name>
-        <internalKey>STATIC_CS_PATH_MANIPULATION_none</internalKey>
-        <description>A user-controllable string is used as part or all of a filesystem path, filename, or URI (uniform resource identifier).</description>
-        <severity>BLOCKER</severity>
-        <cardinality>SINGLE</cardinality>
-        <status>READY</status>
-        <type>VULNERABILITY</type>
-    </rule>
-    <rule>
-        <key>STATIC_CS_OS_CMD_INJECTION_command_argument</key>
-        <name>High impact security : OS Command Injection</name>
-        <internalKey>STATIC_CS_OS_CMD_INJECTION_command_argument</internalKey>
-        <description>Untrusted user-supplied data is inserted into an operating system command without adequate validation, escaping, or filtering. This inserted data can change the intent of the operating system command. The change to the operating system command may result in the unauthorized disclosure, destruction, or modification of sensitive data or operating system resources.</description>
-        <severity>BLOCKER</severity>
-        <cardinality>SINGLE</cardinality>
-        <status>READY</status>
-        <type>VULNERABILITY</type>
-    </rule>
-    <rule>
-        <key>STATIC_CS_HARDCODED_CREDENTIALS_hardcoded_credential_passwd</key>
-        <name>Medium impact security : Use of hard-coded password</name>
-        <internalKey>STATIC_CS_HARDCODED_CREDENTIALS_hardcoded_credential_passwd</internalKey>
-        <description>A password is stored directly in the source code.</description>
-        <severity>CRITICAL</severity>
-        <cardinality>SINGLE</cardinality>
-        <status>READY</status>
-        <type>VULNERABILITY</type>
-    </rule>
-    <rule>
-        <key>STATIC_CS_CONSTANT_EXPRESSION_RESULT_none</key>
-        <name>Integer handling issues : Constant expression result</name>
-        <internalKey>STATIC_CS_CONSTANT_EXPRESSION_RESULT_none</internalKey>
-        <description>An operation with non-constant operands that computes a result with constant value</description>
+        <key>STATIC_CS_NULL_RETURNS_unimpl</key>
+        <name>Null pointer dereferences : Dereference null return (stat)</name>
+        <internalKey>STATIC_CS_NULL_RETURNS_unimpl</internalKey>
+        <description>Return value of function, which is statistically inferred to return null, but with no source code available, is dereferenced</description>
         <severity>CRITICAL</severity>
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>BUG</type>
     </rule>
     <rule>
-        <key>STATIC_CS_RESOURCE_LEAK_none</key>
-        <name>Resource leaks : Resource leak</name>
-        <internalKey>STATIC_CS_RESOURCE_LEAK_none</internalKey>
-        <description>Leak of a system resource such as streams, channels, or other resources</description>
-        <severity>BLOCKER</severity>
-        <cardinality>SINGLE</cardinality>
-        <status>READY</status>
-        <type>BUG</type>
-    </rule>
-    <rule>
-        <key>STATIC_CS_CSRF_database_update</key>
-        <name>High impact security : Cross-site request forgery</name>
-        <internalKey>STATIC_CS_CSRF_database_update</internalKey>
-        <description>The web application controller modifies data or state and is unprotected from cross-site request forgery.</description>
-        <severity>BLOCKER</severity>
+        <key>STATIC_CS_XPATH_INJECTION_none</key>
+        <name>Medium impact security : XML Path (XPath) Language injection</name>
+        <internalKey>STATIC_CS_XPATH_INJECTION_none</internalKey>
+        <description>A user-controllable string is injected into an XPath query.</description>
+        <severity>CRITICAL</severity>
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>VULNERABILITY</type>
     </rule>
     <rule>
-        <key>STATIC_CS_UNUSED_VALUE_adjacent</key>
-        <name>Incorrect expression : Unused value</name>
-        <internalKey>STATIC_CS_UNUSED_VALUE_adjacent</internalKey>
-        <description>A value assigned to a variable is never used.</description>
+        <key>STATIC_CS_HEADER_INJECTION_none</key>
+        <name>Medium impact security : HTTP header injection</name>
+        <internalKey>STATIC_CS_HEADER_INJECTION_none</internalKey>
+        <description>A user-controllable string is used to construct an HTTP header name.</description>
+        <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+    </rule>
+    <rule>
+        <key>STATIC_CS_SWAPPED_ARGUMENTS_none</key>
+        <name>API usage errors : Arguments in wrong order</name>
+        <internalKey>STATIC_CS_SWAPPED_ARGUMENTS_none</internalKey>
+        <description>The arguments to a function call are provided in the wrong order.</description>
         <severity>CRITICAL</severity>
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>BUG</type>
     </rule>
     <rule>
-        <key>STATIC_CS_SENSITIVE_DATA_LEAK_cleartext_storage_in_gui</key>
-        <name>High impact security : Display of sensitive data in the user interface</name>
-        <internalKey>STATIC_CS_SENSITIVE_DATA_LEAK_cleartext_storage_in_gui</internalKey>
-        <description>Displaying sensitive data in the user interface.</description>
-        <severity>BLOCKER</severity>
-        <cardinality>SINGLE</cardinality>
-        <status>READY</status>
-        <type>VULNERABILITY</type>
-    </rule>
-    <rule>
-        <key>STATIC_CS_UNENCRYPTED_SENSITIVE_DATA_cleartext_in_file</key>
-        <name>Low impact security : Cleartext sensitive data in a file</name>
-        <internalKey>STATIC_CS_UNENCRYPTED_SENSITIVE_DATA_cleartext_in_file</internalKey>
-        <description>Reading unencrypted sensitive data from a file.</description>
+        <key>STATIC_CS_CONFIG.ENABLED_DEBUG_MODE_none</key>
+        <name>Low impact security : Debug mode enabled</name>
+        <internalKey>STATIC_CS_CONFIG.ENABLED_DEBUG_MODE_none</internalKey>
+        <description>ASP.NET debug mode is enabled.</description>
         <severity>MAJOR</severity>
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>VULNERABILITY</type>
     </rule>
     <rule>
-        <key>STATIC_CS_UNREACHABLE_none</key>
-        <name>Control flow issues : Structurally dead code</name>
-        <internalKey>STATIC_CS_UNREACHABLE_none</internalKey>
-        <description>Code block is unreachable because of the syntactic structure of the code</description>
-        <severity>CRITICAL</severity>
-        <cardinality>SINGLE</cardinality>
-        <status>READY</status>
-        <type>BUG</type>
-    </rule>
-    <rule>
-        <key>STATIC_CS_WEAK_PASSWORD_HASH_none</key>
-        <name>High impact security : Weak password hashing</name>
-        <internalKey>STATIC_CS_WEAK_PASSWORD_HASH_none</internalKey>
-        <description>Hashing a password using a scheme that is not computationally intensive, and/or without using a random and unique salt as part of the input.</description>
+        <key>STATIC_CS_BAD_LOCK_OBJECT_boxed_lock</key>
+        <name>Unreliable locking behavior : Bad choice of lock object</name>
+        <internalKey>STATIC_CS_BAD_LOCK_OBJECT_boxed_lock</internalKey>
+        <description>Using a boxed primitive as a lock may cause different locking behavior in different versions of the Java VM. locking behavior. It can also cause deadlocks or performance problems if a library also uses the boxed primitive as a lock.</description>
         <severity>BLOCKER</severity>
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
-        <type>VULNERABILITY</type>
+        <type>BUG</type>
     </rule>
     <rule>
-        <key>STATIC_CS_BAD_EQ_TYPES_none</key>
-        <name>Incorrect expression : Equality test on different types</name>
-        <internalKey>STATIC_CS_BAD_EQ_TYPES_none</internalKey>
-        <description>Structural equality is never true for objects of different types</description>
+        <key>STATIC_CS_BAD_LOCK_OBJECT_interned_string_lock</key>
+        <name>Concurrent data access violations : Bad choice of lock object</name>
+        <internalKey>STATIC_CS_BAD_LOCK_OBJECT_interned_string_lock</internalKey>
+        <description>Using an interned string as a lock may cause deadlocks or performance problems if a library also uses the interned string as a lock.</description>
         <severity>CRITICAL</severity>
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>BUG</type>
     </rule>
     <rule>
-        <key>STATIC_CS_DEADCODE_effectively_constant</key>
-        <name>Possible Control flow issues : &apos;Constant&apos; variable guards dead code</name>
-        <internalKey>STATIC_CS_DEADCODE_effectively_constant</internalKey>
-        <description>Variable assigned once to a constant guards dead code.</description>
-        <severity>MAJOR</severity>
-        <cardinality>SINGLE</cardinality>
-        <status>READY</status>
-        <type>BUG</type>
-    </rule>
-    <rule>
-        <key>STATIC_CS_MISSING_THROW_none</key>
-        <name>Error handling issues : Exception not thrown</name>
-        <internalKey>STATIC_CS_MISSING_THROW_none</internalKey>
-        <description>An object of exception type is created but neither thrown nor stored anywhere; the developer likely intended to throw the exception.</description>
+        <key>STATIC_CS_BAD_LOCK_OBJECT_none</key>
+        <name>Concurrent data access violations : Bad choice of lock object</name>
+        <internalKey>STATIC_CS_BAD_LOCK_OBJECT_none</internalKey>
+        <description>Locking upon an object which is a poor choice due to too broad, too narrow, or too unpredictable aliasing behavior.</description>
         <severity>CRITICAL</severity>
-        <cardinality>SINGLE</cardinality>
-        <status>READY</status>
-        <type>BUG</type>
-    </rule>
-    <rule>
-        <key>STATIC_CS_NESTING_INDENT_MISMATCH_none</key>
-        <name>Control flow issues : Nesting level does not match indentation</name>
-        <internalKey>STATIC_CS_NESTING_INDENT_MISMATCH_none</internalKey>
-        <description>The indentation of this code suggests it is nested when it is not.</description>
-        <severity>CRITICAL</severity>
-        <cardinality>SINGLE</cardinality>
-        <status>READY</status>
-        <type>BUG</type>
-    </rule>
-    <rule>
-        <key>STATIC_CS_HARDCODED_CREDENTIALS_hardcoded_credential_crypto</key>
-        <name>Medium impact security : Use of hard-coded cryptographic key</name>
-        <internalKey>STATIC_CS_HARDCODED_CREDENTIALS_hardcoded_credential_crypto</internalKey>
-        <description>A cryptographic key is stored directly in the source code.</description>
-        <severity>CRITICAL</severity>
-        <cardinality>SINGLE</cardinality>
-        <status>READY</status>
-        <type>VULNERABILITY</type>
-    </rule>
-    <rule>
-        <key>STATIC_CS_RESOURCE_LEAK_stream</key>
-        <name>Resource leaks : Stream leak</name>
-        <internalKey>STATIC_CS_RESOURCE_LEAK_stream</internalKey>
-        <description>Leak of a stream representing a file or other resource</description>
-        <severity>BLOCKER</severity>
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>BUG</type>
@@ -1320,14 +1290,64 @@
         <type>BUG</type>
     </rule>
     <rule>
-        <key>STATIC_CS_NOSQL_QUERY_INJECTION_none</key>
-        <name>Medium impact security : NoSQL query injection</name>
-        <internalKey>STATIC_CS_NOSQL_QUERY_INJECTION_none</internalKey>
-        <description>A user-controllable string is injected into a NoSQL query.</description>
+        <key>STATIC_CS_BAD_LOCK_OBJECT_unsafe_assign_to_locked_field</key>
+        <name>Unreliable locking behavior : Bad choice of lock object</name>
+        <internalKey>STATIC_CS_BAD_LOCK_OBJECT_unsafe_assign_to_locked_field</internalKey>
+        <description>The field used as a lock can be assigned a different value while the critical section is operating. This can cause multiple threads to enter the critical section at the same time, which may cause nondeterministic behavior.</description>
+        <severity>BLOCKER</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+    </rule>
+    <rule>
+        <key>STATIC_CS_DEADCODE_dead_case_in_switch</key>
+        <name>Possible Control flow issues : Dead case in switch</name>
+        <internalKey>STATIC_CS_DEADCODE_dead_case_in_switch</internalKey>
+        <description>Switch never goes directly to this case</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+    </rule>
+    <rule>
+        <key>STATIC_CS_DEADCODE_dead_default_in_switch</key>
+        <name>Possible Control flow issues : Dead default in switch</name>
+        <internalKey>STATIC_CS_DEADCODE_dead_default_in_switch</internalKey>
+        <description>Default in switch statement is dead code</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+    </rule>
+    <rule>
+        <key>STATIC_CS_DEADCODE_effectively_constant</key>
+        <name>Possible Control flow issues : &apos;Constant&apos; variable guards dead code</name>
+        <internalKey>STATIC_CS_DEADCODE_effectively_constant</internalKey>
+        <description>Variable assigned once to a constant guards dead code.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+    </rule>
+    <rule>
+        <key>STATIC_CS_DEADCODE_none</key>
+        <name>Control flow issues : Logically dead code</name>
+        <internalKey>STATIC_CS_DEADCODE_none</internalKey>
+        <description>Code can never be reached because of a logical contradiction</description>
         <severity>CRITICAL</severity>
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
-        <type>VULNERABILITY</type>
+        <type>BUG</type>
+    </rule>
+    <rule>
+        <key>STATIC_CS_DEADCODE_redundant_test</key>
+        <name>Possible Control flow issues : Redundant test</name>
+        <internalKey>STATIC_CS_DEADCODE_redundant_test</internalKey>
+        <description>Test always evaluates the same</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
     </rule>
     <rule>
         <key>STATIC_CS_REGEX_INJECTION_none</key>
@@ -1340,73 +1360,93 @@
         <type>VULNERABILITY</type>
     </rule>
     <rule>
-        <key>STATIC_CS_UNENCRYPTED_SENSITIVE_DATA_cleartext_transmission</key>
-        <name>High impact security : Cleartext transmission of sensitive data</name>
-        <internalKey>STATIC_CS_UNENCRYPTED_SENSITIVE_DATA_cleartext_transmission</internalKey>
-        <description>Receiving sensitive data in cleartext from the network.</description>
+        <key>STATIC_CS_INSECURE_RANDOM_insecure_random_used</key>
+        <name>Insecure random category : Insecure random value used in security context</name>
+        <internalKey>STATIC_CS_INSECURE_RANDOM_insecure_random_used</internalKey>
+        <description>Random value generated using a cryptographically insecure pseudo-random number generator, and used in a security-sensitive context</description>
+        <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+    </rule>
+    <rule>
+        <key>STATIC_CS_INSECURE_RANDOM_insecure_random_value</key>
+        <name>Insecure random category : Cryptographically weak PRNG</name>
+        <internalKey>STATIC_CS_INSECURE_RANDOM_insecure_random_value</internalKey>
+        <description>Random value generated using a cryptographically insecure pseudo-random number generator</description>
+        <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+    </rule>
+    <rule>
+        <key>STATIC_CS_INSECURE_RANDOMnone</key>
+        <name>Insecure random category : Cryptographically weak PRNG</name>
+        <internalKey>STATIC_CS_INSECURE_RANDOMnone</internalKey>
+        <description>Random value generated using a cryptographically insecure pseudo-random number generator</description>
+        <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type></type>
+    </rule>
+    <rule>
+        <key>STATIC_CS_SQLI_none</key>
+        <name>High impact security : SQL injection</name>
+        <internalKey>STATIC_CS_SQLI_none</internalKey>
+        <description>Untrusted user-supplied data is inserted into a SQL statement without adequate validation, escaping, or filtering</description>
         <severity>BLOCKER</severity>
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>VULNERABILITY</type>
     </rule>
     <rule>
-        <key>STATIC_CS_CONFIG.DEAD_AUTHORIZATION_RULE_dead_deny_rule</key>
-        <name>Medium impact security : Dead Deny Rule</name>
-        <internalKey>STATIC_CS_CONFIG.DEAD_AUTHORIZATION_RULE_dead_deny_rule</internalKey>
-        <description>A deny rule has no effect</description>
+        <key>STATIC_CS_SQLI_nosink</key>
+        <name>Medium impact security : SQL injection</name>
+        <internalKey>STATIC_CS_SQLI_nosink</internalKey>
+        <description>Untrusted user-supplied data is inserted into an apparent SQL statement without adequate validation, escaping, or filtering</description>
         <severity>CRITICAL</severity>
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>VULNERABILITY</type>
     </rule>
     <rule>
-        <key>STATIC_CS_BAD_SHIFT_none</key>
-        <name>Integer handling issues : Bad bit shift operation</name>
-        <internalKey>STATIC_CS_BAD_SHIFT_none</internalKey>
-        <description>A bit shift operation has a shift amount which is too large or has a negative value.</description>
-        <severity>CRITICAL</severity>
-        <cardinality>SINGLE</cardinality>
-        <status>READY</status>
-        <type>BUG</type>
-    </rule>
-    <rule>
-        <key>STATIC_CS_USELESS_CALL_none</key>
-        <name>Incorrect expression : Useless call</name>
-        <internalKey>STATIC_CS_USELESS_CALL_none</internalKey>
-        <description>A function is called that is only useful for its return value, and this value is ignored.</description>
-        <severity>CRITICAL</severity>
-        <cardinality>SINGLE</cardinality>
-        <status>READY</status>
-        <type>BUG</type>
-    </rule>
-    <rule>
-        <key>STATIC_CS_DIVIDE_BY_ZERO_none</key>
-        <name>Integer handling issues : Division or modulo by zero</name>
-        <internalKey>STATIC_CS_DIVIDE_BY_ZERO_none</internalKey>
-        <description>Division or modulo by zero results in an exception.</description>
-        <severity>CRITICAL</severity>
-        <cardinality>SINGLE</cardinality>
-        <status>READY</status>
-        <type>BUG</type>
-    </rule>
-    <rule>
-        <key>STATIC_CS_NULL_RETURNS_none</key>
-        <name>Null pointer dereferences : Dereference null return value</name>
-        <internalKey>STATIC_CS_NULL_RETURNS_none</internalKey>
-        <description>Return value of function which returns null is dereferenced without checking</description>
-        <severity>CRITICAL</severity>
-        <cardinality>SINGLE</cardinality>
-        <status>READY</status>
-        <type>BUG</type>
-    </rule>
-    <rule>
-        <key>STATIC_CS_HARDCODED_CREDENTIALS_hardcoded_credential_token</key>
-        <name>Medium impact security : Use of hard-coded security token</name>
-        <internalKey>STATIC_CS_HARDCODED_CREDENTIALS_hardcoded_credential_token</internalKey>
-        <description>A security token is stored directly in the source code.</description>
-        <severity>CRITICAL</severity>
+        <key>STATIC_CS_SQLI_sink</key>
+        <name>High impact security : SQL injection</name>
+        <internalKey>STATIC_CS_SQLI_sink</internalKey>
+        <description>Untrusted user-supplied data is inserted into a SQL statement without adequate validation, escaping, or filtering</description>
+        <severity>BLOCKER</severity>
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>VULNERABILITY</type>
+    </rule>
+    <rule>
+        <key>STATIC_CS_LOCK_EVASION_none</key>
+        <name>Data race undermines locking : Check of thread-shared field evades lock acquisition</name>
+        <internalKey>STATIC_CS_LOCK_EVASION_none</internalKey>
+        <description>Checking the value of a thread-shared field outside of a locked region to determine if a locked operation involving that thread shared field has completed.</description>
+        <severity>BLOCKER</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+    </rule>
+    <rule>
+        <key>STATIC_CS_TAINT_ASSERT_none</key>
+        <name>High impact security : Untainted assertion violation</name>
+        <internalKey>STATIC_CS_TAINT_ASSERT_none</internalKey>
+        <description>A user assertion is present that states a value is not tainted.  However, the tool taint computation indicates that this value is tainted.  The validity of the assertion should be reviewed and removed if incorrect. If the assertion is valid, review how tainted data is inserted into the value and remove the taint source as appropriate.</description>
+        <severity>BLOCKER</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+    </rule>
+    <rule>
+        <key>STATIC_CS_UNREACHABLE_none</key>
+        <name>Control flow issues : Structurally dead code</name>
+        <internalKey>STATIC_CS_UNREACHABLE_none</internalKey>
+        <description>Code block is unreachable because of the syntactic structure of the code</description>
+        <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
     </rule>
 </rules>

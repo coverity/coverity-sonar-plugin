@@ -23,7 +23,7 @@ import java.util.*;
 
 public class RulesGenerator {
 
-    static Map<String, Map<String, InternalRule>> rulesList = new HashMap<String, Map<String, InternalRule>>();
+    static Map<String, Map<String, List<InternalRule>>> rulesList = new HashMap<String, Map<String, List<InternalRule>>>();
     static final String JAVA_LANGUAGE = "java";
     static final String CPP_LANGUAGE = "cpp";
     static final String CS_LANGUAGE = "cs";
@@ -53,6 +53,8 @@ public class RulesGenerator {
             }
         }
 
+        printRulesList();
+        addNoneSubcategory();
         printRulesList();
 
         writeRulesToFiles(xmlDir);
@@ -134,7 +136,7 @@ public class RulesGenerator {
                 }
 
                 for(String lang : languages) {
-                    InternalRule rule = new InternalRule(key, name, getSeverity(impact), subcategory, getDescription(subcategoryLongDescription));
+                    InternalRule rule = new InternalRule(key, name, checkerName, getSeverity(impact), subcategory, getDescription(subcategoryLongDescription));
                     setRuleType(rule, qualityKind, securityKind);
                     putRuleIntoMap(lang, rule);
 
@@ -194,7 +196,7 @@ public class RulesGenerator {
 
                 String key = checkerName + "_" + subcategory;
 
-                InternalRule rule = new InternalRule(key, ruleName, getSeverity(impact), subcategory, getDescription(description));
+                InternalRule rule = new InternalRule(key, ruleName, checkerName, getSeverity(impact), subcategory, getDescription(description));
                 setRuleType(rule, qualityKind, securityKind);
 
                 putRuleIntoMap(JAVA_LANGUAGE, rule);
@@ -237,23 +239,23 @@ public class RulesGenerator {
             }
 
             for (String key : rulesList.get(language).keySet()) {
-                InternalRule rule = rulesList.get(language).get(key);
+                for (InternalRule rule : rulesList.get(language).get(key)) {
+                    xmlFileOut.println("    <rule>");
+                    xmlFileOut.println("        <key>" + StringEscapeUtils.escapeXml(domain + "_" + rule.getKey()) + "</key>");
+                    xmlFileOut.println("        <name>" + StringEscapeUtils.escapeXml(rule.getRuleName()) + "</name>");
+                    xmlFileOut.println("        <internalKey>" + StringEscapeUtils.escapeXml(domain + "_" + rule.getKey()) + "</internalKey>");
+                    xmlFileOut.println("        <description>" + StringEscapeUtils.escapeXml(rule.getDescription()) + "</description>");
+                    xmlFileOut.println("        <severity>" + StringEscapeUtils.escapeXml(rule.getSeverity()) + "</severity>");
+                    xmlFileOut.println("        <cardinality>SINGLE</cardinality>");
+                    xmlFileOut.println("        <status>READY</status>");
+                    xmlFileOut.println("        <type>" + StringEscapeUtils.escapeXml(rule.getRuleType()) + "</type>");
 
-                xmlFileOut.println("    <rule>");
-                xmlFileOut.println("        <key>" + StringEscapeUtils.escapeXml(domain + "_" + rule.getKey()) + "</key>");
-                xmlFileOut.println("        <name>" + StringEscapeUtils.escapeXml(rule.getName()) + "</name>");
-                xmlFileOut.println("        <internalKey>" + StringEscapeUtils.escapeXml(domain + "_" + rule.getKey()) + "</internalKey>");
-                xmlFileOut.println("        <description>" + StringEscapeUtils.escapeXml(rule.getDescription()) + "</description>");
-                xmlFileOut.println("        <severity>" + StringEscapeUtils.escapeXml(rule.getSeverity()) + "</severity>");
-                xmlFileOut.println("        <cardinality>SINGLE</cardinality>");
-                xmlFileOut.println("        <status>READY</status>");
-                xmlFileOut.println("        <type>" + StringEscapeUtils.escapeXml(rule.getRuleType()) + "</type>");
+                    for (String tag : rule.getTags()) {
+                        xmlFileOut.println("        <tag>" + StringEscapeUtils.escapeXml(tag) + "</type>");
+                    }
 
-                for (String tag : rule.getTags()) {
-                    xmlFileOut.println("        <tag>" + StringEscapeUtils.escapeXml(tag) + "</type>");
+                    xmlFileOut.println("    </rule>");
                 }
-
-                xmlFileOut.println("    </rule>");
             }
 
             xmlFileOut.println("</rules>");
@@ -298,14 +300,20 @@ public class RulesGenerator {
     }
 
     public static void putRuleIntoMap(String language, InternalRule rule) {
-        String key = rule.getKey();
+        String key = rule.getCheckerName();
 
         if (!rulesList.containsKey(language)) {
-            rulesList.put(language, new HashMap<String, InternalRule>());
+            rulesList.put(language, new HashMap<String, List<InternalRule>>());
         }
 
         if (!rulesList.get(language).containsKey(key)) {
-            rulesList.get(language).put(key, rule);
+            List<InternalRule> list = new ArrayList<InternalRule>();
+            list.add(rule);
+            rulesList.get(language).put(key, list);
+        } else {
+            if (!rulesList.get(language).get(key).contains(rule)) {
+                rulesList.get(language).get(key).add(rule);
+            }
         }
     }
 
@@ -317,10 +325,72 @@ public class RulesGenerator {
         }
     }
 
+    public static void addNoneSubcategory() {
+        Map<String, List<InternalRule>> missingList = new HashMap<String, List<InternalRule>>();
+        int missingChecker = 0;
+
+        // Find rule without "none" subcategory
+        for (String language : rulesList.keySet()) {
+            for (String key: rulesList.get(language).keySet()) {
+                boolean isNoneIncluded = false;
+                InternalRule rule = null;
+                for (InternalRule currentRule : rulesList.get(language).get(key)) {
+                    if (currentRule.getSubcategory().equals("none")) {
+                        isNoneIncluded = true;
+                    }
+                    rule = currentRule;
+                }
+
+                if (!isNoneIncluded) {
+                    if (!missingList.containsKey(language)) {
+                        missingList.put(language, new ArrayList<>());
+                    }
+                    missingList.get(language).add(rule);
+                    missingChecker++;
+                }
+            }
+        }
+
+        // Print the number of missing rules without "none" subcategory
+        System.out.println("Missing None Subcategory Checerk: " + missingChecker);
+
+        // Add rules with "none" subcategory
+        for (String language : missingList.keySet()) {
+            for (InternalRule rule : missingList.get(language)) {
+                InternalRule newRule = new InternalRule(
+                        rule.getCheckerName() + "none",
+                        rule.getRuleName(),
+                        rule.getCheckerName(),
+                        rule.getSeverity(),
+                        "none",
+                        rule.getDescription());
+
+                rulesList.get(language).get(newRule.getCheckerName()).add(newRule);
+            }
+        }
+    }
+
     public static void printRulesList() {
-        System.out.println("Total Java Rules: " + rulesList.get(JAVA_LANGUAGE).size());
-        System.out.println("Total C/C++ Rules: " + rulesList.get(CPP_LANGUAGE).size());
-        System.out.println("Total C# Rules: " + rulesList.get(CS_LANGUAGE).size());
+
+        int javaRules = 0;
+        int cppRules = 0;
+        int csRules = 0;
+
+        for (String language : rulesList.keySet()) {
+            for (String checkerName : rulesList.get(language).keySet()) {
+                if (language.equals(JAVA_LANGUAGE)) {
+                    javaRules += rulesList.get(language).get(checkerName).size();
+                } else if (language.equals(CPP_LANGUAGE)) {
+                    cppRules += rulesList.get(language).get(checkerName).size();
+                } else if (language.equals(CS_LANGUAGE)) {
+                    csRules += rulesList.get(language).get(checkerName).size();
+                }
+            }
+        }
+
+        System.out.println("Total Java Rules: " + javaRules);
+        System.out.println("Total C/C++ Rules: " + cppRules);
+        System.out.println("Total C# Rules: " + csRules);
     }
 
 }

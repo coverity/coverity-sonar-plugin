@@ -15,19 +15,21 @@ import java.util.Map;
  */
 public class InternalRule{
     private String key = "";
-    private String name = "";
+    private String ruleName = "";
     private String severity = "";
     private List<String> tags;
     private String subcategory;
     private String description;
     private String ruleType = "";
+    private String checkerName = "";
 
-    public InternalRule(String key, String name, String severity, String subcategory, String description){
+    public InternalRule(String key, String ruleName, String checkerName, String severity, String subcategory, String description){
         this.key = key;
-        this.name = name;
+        this.ruleName = ruleName;
         this.severity = severity;
         this.subcategory = subcategory;
         this.description = description;
+        this.checkerName = checkerName;
         this.tags = new ArrayList<>();
     }
 
@@ -35,8 +37,12 @@ public class InternalRule{
         return key;
     }
 
-    public String getName() {
-        return name;
+    public String getRuleName() {
+        return ruleName;
+    }
+
+    public String getCheckerName() {
+        return checkerName;
     }
 
     public String getSeverity() {
@@ -62,6 +68,8 @@ public class InternalRule{
     public String getRuleType() {
         return this.ruleType;
     }
+
+
 
     @Override
     public boolean equals(Object obj) {

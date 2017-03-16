@@ -183,7 +183,7 @@ public class FileGenerator {
             for(InternalRule rule : mapOfCheckerPropMaps.get(language).values()){
                 //xml
                 xmlFileOut.println("    <rule>");
-                xmlFileOut.println("        <name>" + StringEscapeUtils.escapeXml(rule.getName()) + "</name>");
+                xmlFileOut.println("        <name>" + StringEscapeUtils.escapeXml(rule.getRuleName()) + "</name>");
                 xmlFileOut.println("        <key>" + StringEscapeUtils.escapeXml(rule.getKey()) + "</key>");
                 xmlFileOut.println("        <severity>" + StringEscapeUtils.escapeXml(rule.getSeverity()) + "</severity>");
                 xmlFileOut.println("        <configKey>" + StringEscapeUtils.escapeXml(rule.getKey()) + "</configKey>");
