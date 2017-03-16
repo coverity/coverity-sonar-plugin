@@ -1,11 +1,7 @@
 package org.sonar.plugins.coverity.server;
 
-import org.apache.commons.collections4.CollectionUtils;
-
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * InternalRule.class is used to produce objects containing all the information necessary to define a Sonarqube rule.

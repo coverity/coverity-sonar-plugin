@@ -55,6 +55,7 @@ public class RulesGenerator {
 
         printRulesList();
         addNoneSubcategory();
+        addFallbackRuleForLanguage();
         printRulesList();
 
         writeRulesToFiles(xmlDir);
@@ -367,6 +368,23 @@ public class RulesGenerator {
 
                 rulesList.get(language).get(newRule.getCheckerName()).add(newRule);
             }
+        }
+    }
+
+    public static void addFallbackRuleForLanguage() {
+        for (String language : rulesList.keySet()) {
+            InternalRule newRule = new InternalRule(
+                "coverity-" + language,
+                "Coverity General " + StringUtils.upperCase(language),
+                "coverity-" + language,
+                "MAJOR",
+                "none",
+                "Coverity General " + StringUtils.upperCase(language)
+            );
+
+            List<InternalRule> list = new ArrayList<InternalRule>();
+            list.add(newRule);
+            rulesList.get(language).put(newRule.getCheckerName(), list);
         }
     }
 

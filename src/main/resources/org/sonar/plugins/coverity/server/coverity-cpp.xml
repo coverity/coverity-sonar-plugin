@@ -1690,6 +1690,16 @@
         <type>BUG</type>
     </rule>
     <rule>
+        <key>STATIC_C_coverity-cpp</key>
+        <name>Coverity General CPP</name>
+        <internalKey>STATIC_C_coverity-cpp</internalKey>
+        <description>Coverity General CPP</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type></type>
+    </rule>
+    <rule>
         <key>STATIC_C_PW.SHIFT_COUNT_TOO_LARGE_none</key>
         <name>Integer handling issues : Integer overflow warning</name>
         <internalKey>STATIC_C_PW.SHIFT_COUNT_TOO_LARGE_none</internalKey>

@@ -270,6 +270,16 @@
         <type>VULNERABILITY</type>
     </rule>
     <rule>
+        <key>STATIC_CS_coverity-cs</key>
+        <name>Coverity General CS</name>
+        <internalKey>STATIC_CS_coverity-cs</internalKey>
+        <description>Coverity General CS</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type></type>
+    </rule>
+    <rule>
         <key>STATIC_CS_UNENCRYPTED_SENSITIVE_DATA_cleartext_in_classpath</key>
         <name>Low impact security : Cleartext sensitive data in a JAR file</name>
         <internalKey>STATIC_CS_UNENCRYPTED_SENSITIVE_DATA_cleartext_in_classpath</internalKey>

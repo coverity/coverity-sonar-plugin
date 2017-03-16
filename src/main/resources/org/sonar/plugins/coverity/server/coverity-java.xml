@@ -2730,6 +2730,16 @@
         <type>BUG</type>
     </rule>
     <rule>
+        <key>STATIC_JAVA_coverity-java</key>
+        <name>Coverity General JAVA</name>
+        <internalKey>STATIC_JAVA_coverity-java</internalKey>
+        <description>Coverity General JAVA</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type></type>
+    </rule>
+    <rule>
         <key>STATIC_JAVA_CONFIG.UNSAFE_SESSION_TIMEOUT_none</key>
         <name>Low impact security : Unsafe session timeout</name>
         <internalKey>STATIC_JAVA_CONFIG.UNSAFE_SESSION_TIMEOUT_none</internalKey>
