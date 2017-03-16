@@ -277,7 +277,7 @@
         <severity>MAJOR</severity>
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
-        <type></type>
+        <type>BUG</type>
     </rule>
     <rule>
         <key>STATIC_CS_UNENCRYPTED_SENSITIVE_DATA_cleartext_in_classpath</key>
@@ -527,7 +527,7 @@
         <severity>MAJOR</severity>
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
-        <type></type>
+        <type>BUG</type>
     </rule>
     <rule>
         <key>STATIC_CS_VOLATILE_ATOMICITY_compare</key>
@@ -617,7 +617,7 @@
         <severity>CRITICAL</severity>
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
-        <type></type>
+        <type>BUG</type>
     </rule>
     <rule>
         <key>STATIC_CS_CONSTANT_EXPRESSION_RESULT_bit_and_with_zero</key>
@@ -887,7 +887,7 @@
         <severity>MAJOR</severity>
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
-        <type></type>
+        <type>BUG</type>
     </rule>
     <rule>
         <key>STATIC_CS_MS.*_none</key>
@@ -1037,7 +1037,7 @@
         <severity>CRITICAL</severity>
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
-        <type></type>
+        <type>BUG</type>
     </rule>
     <rule>
         <key>STATIC_CS_CONFIG.CONNECTION_STRING_PASSWORD_none</key>
@@ -1407,7 +1407,7 @@
         <severity>CRITICAL</severity>
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
-        <type></type>
+        <type>BUG</type>
     </rule>
     <rule>
         <key>STATIC_CS_SQLI_none</key>

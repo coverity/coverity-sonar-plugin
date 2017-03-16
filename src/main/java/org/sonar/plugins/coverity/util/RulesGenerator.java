@@ -52,7 +52,7 @@ public class RulesGenerator {
                 generateRulesForQualityCheckers(file);
             }
         }
-        
+
         addNoneSubcategory();
         addFallbackRuleForLanguage();
         addDifferentOriginRules();
@@ -136,8 +136,14 @@ public class RulesGenerator {
                 }
 
                 for(String lang : languages) {
-                    InternalRule rule = new InternalRule(key, name, checkerName, getSeverity(impact), subcategory, getDescription(subcategoryLongDescription));
-                    setRuleType(rule, qualityKind, securityKind);
+                    InternalRule rule = new InternalRule(
+                            key,
+                            name,
+                            checkerName,
+                            getSeverity(impact),
+                            subcategory,
+                            getDescription(subcategoryLongDescription),
+                            getRuleType(qualityKind, securityKind));
                     putRuleIntoMap(lang, rule);
 
                     if (lang.equals(JAVA_LANGUAGE)) {
@@ -196,9 +202,14 @@ public class RulesGenerator {
 
                 String key = checkerName + "_" + subcategory;
 
-                InternalRule rule = new InternalRule(key, ruleName, checkerName, getSeverity(impact), subcategory, getDescription(description));
-                setRuleType(rule, qualityKind, securityKind);
-
+                InternalRule rule = new InternalRule(
+                        key,
+                        ruleName,
+                        checkerName,
+                        getSeverity(impact),
+                        subcategory,
+                        getDescription(description),
+                        getRuleType(qualityKind, securityKind));
                 putRuleIntoMap(JAVA_LANGUAGE, rule);
             }
         } catch (FileNotFoundException e) {
@@ -251,7 +262,7 @@ public class RulesGenerator {
                     xmlFileOut.println("        <type>" + StringEscapeUtils.escapeXml(rule.getRuleType()) + "</type>");
 
                     for (String tag : rule.getTags()) {
-                        xmlFileOut.println("        <tag>" + StringEscapeUtils.escapeXml(tag) + "</type>");
+                        xmlFileOut.println("        <tag>" + StringEscapeUtils.escapeXml(tag) + "</tag>");
                     }
 
                     xmlFileOut.println("    </rule>");
@@ -317,11 +328,11 @@ public class RulesGenerator {
         }
     }
 
-    public static void setRuleType(InternalRule rule, boolean qualityKind, boolean securityKind) {
+    public static String getRuleType(boolean qualityKind, boolean securityKind) {
         if (!qualityKind & securityKind) {
-            rule.setRuleType(VULNERABILITY);
+            return VULNERABILITY;
         } else {
-            rule.setRuleType(BUG);
+            return BUG;
         }
     }
 
@@ -363,7 +374,8 @@ public class RulesGenerator {
                         rule.getCheckerName(),
                         rule.getSeverity(),
                         "none",
-                        rule.getDescription());
+                        rule.getDescription(),
+                        BUG);
 
                 rulesList.get(language).get(newRule.getCheckerName()).add(newRule);
             }
@@ -378,7 +390,8 @@ public class RulesGenerator {
                 "coverity-" + language,
                 "MAJOR",
                 "none",
-                "Coverity General " + StringUtils.upperCase(language)
+                "Coverity General " + StringUtils.upperCase(language),
+                BUG
             );
 
             List<InternalRule> list = new ArrayList<InternalRule>();
@@ -396,7 +409,8 @@ public class RulesGenerator {
                 "MISRA.*",
                 "MAJOR",
                 "none",
-                "Coverity MISRA : Coding Standard Violation"
+                "Coverity MISRA : Coding Standard Violation",
+                BUG
         );
         rules.add(misraRule);
 
@@ -406,7 +420,8 @@ public class RulesGenerator {
                 "PW.*",
                 "MAJOR",
                 "none",
-                "Coverity PW : Parse Warnings"
+                "Coverity PW : Parse Warnings",
+                BUG
         );
         rules.add(pwRule);
 
@@ -416,7 +431,8 @@ public class RulesGenerator {
                 "SW.*",
                 "MAJOR",
                 "none",
-                "Coverity SW : Semantic Warnings"
+                "Coverity SW : Semantic Warnings",
+                BUG
         );
         rules.add(swRule);
 
@@ -426,7 +442,8 @@ public class RulesGenerator {
                 "RW.*",
                 "MAJOR",
                 "none",
-                "Coverity RW : Recovery Warnings"
+                "Coverity RW : Recovery Warnings",
+                BUG
         );
         rules.add(rwRule);
 
@@ -436,7 +453,8 @@ public class RulesGenerator {
                 "MSVSCA.*",
                 "MAJOR",
                 "none",
-                "Coverity MSVSCA : Microsoft Visual Studio Code Analysis"
+                "Coverity MSVSCA : Microsoft Visual Studio Code Analysis",
+                BUG
         );
         rules.add(msvscaRule);
 

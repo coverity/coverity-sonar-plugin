@@ -19,13 +19,14 @@ public class InternalRule{
     private String ruleType = "";
     private String checkerName = "";
 
-    public InternalRule(String key, String ruleName, String checkerName, String severity, String subcategory, String description){
+    public InternalRule(String key, String ruleName, String checkerName, String severity, String subcategory, String description, String ruleType){
         this.key = key;
         this.ruleName = ruleName;
         this.severity = severity;
         this.subcategory = subcategory;
         this.description = description;
         this.checkerName = checkerName;
+        this.ruleType = ruleType;
         this.tags = new ArrayList<>();
     }
 
@@ -55,10 +56,6 @@ public class InternalRule{
 
     public List<String> getTags() {
         return tags;
-    }
-
-    public void setRuleType(String type) {
-        this.ruleType = type;
     }
 
     public String getRuleType() {

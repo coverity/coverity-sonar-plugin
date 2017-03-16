@@ -1247,7 +1247,7 @@
         <severity>MAJOR</severity>
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
-        <type></type>
+        <type>BUG</type>
     </rule>
     <rule>
         <key>STATIC_JAVA_FB.OS_OPEN_STREAM_generic</key>
@@ -2367,7 +2367,7 @@
         <severity>CRITICAL</severity>
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
-        <type></type>
+        <type>BUG</type>
     </rule>
     <rule>
         <key>STATIC_JAVA_FB.NS_NON_SHORT_CIRCUIT_generic</key>
@@ -2747,7 +2747,7 @@
         <severity>MAJOR</severity>
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
-        <type></type>
+        <type>BUG</type>
     </rule>
     <rule>
         <key>STATIC_JAVA_CONFIG.UNSAFE_SESSION_TIMEOUT_none</key>
@@ -3257,7 +3257,7 @@
         <severity>CRITICAL</severity>
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
-        <type></type>
+        <type>BUG</type>
     </rule>
     <rule>
         <key>STATIC_JAVA_FB.STCAL_INVOKE_ON_STATIC_CALENDAR_INSTANCE_generic</key>
@@ -3817,7 +3817,7 @@
         <severity>MAJOR</severity>
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
-        <type></type>
+        <type>BUG</type>
     </rule>
     <rule>
         <key>STATIC_JAVA_FB.DLS_DEAD_STORE_OF_CLASS_LITERAL_generic</key>
@@ -5570,10 +5570,10 @@
         <type>BUG</type>
     </rule>
     <rule>
-        <key>STATIC_JAVA_PW.*_none</key>
-        <name>Parse warnings : Parse warning</name>
-        <internalKey>STATIC_JAVA_PW.*_none</internalKey>
-        <description>A parse warning may indicate a bug, or poor coding practice</description>
+        <key>STATIC_JAVA_PW.*</key>
+        <name>Coverity PW : Parse Warnings</name>
+        <internalKey>STATIC_JAVA_PW.*</internalKey>
+        <description>Coverity PW : Parse Warnings</description>
         <severity>MAJOR</severity>
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
@@ -5847,7 +5847,7 @@
         <severity>CRITICAL</severity>
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
-        <type></type>
+        <type>BUG</type>
     </rule>
     <rule>
         <key>STATIC_JAVA_FB.IM_MULTIPLYING_RESULT_OF_IREM_generic</key>
@@ -7547,7 +7547,7 @@
         <severity>CRITICAL</severity>
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
-        <type></type>
+        <type>BUG</type>
     </rule>
     <rule>
         <key>STATIC_JAVA_FB.DMI_DOH_generic</key>
@@ -7637,7 +7637,7 @@
         <severity>MAJOR</severity>
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
-        <type></type>
+        <type>BUG</type>
     </rule>
     <rule>
         <key>STATIC_JAVA_FB.WA_NOT_IN_LOOP_generic</key>
@@ -7897,7 +7897,7 @@
         <severity>CRITICAL</severity>
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
-        <type></type>
+        <type>BUG</type>
     </rule>
     <rule>
         <key>STATIC_JAVA_FB.UNKNOWN_generic</key>
@@ -8227,7 +8227,7 @@
         <severity>MAJOR</severity>
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
-        <type></type>
+        <type>BUG</type>
     </rule>
     <rule>
         <key>STATIC_JAVA_FB.RE_POSSIBLE_UNINTENDED_PATTERN_generic</key>
@@ -9797,7 +9797,7 @@
         <severity>BLOCKER</severity>
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
-        <type></type>
+        <type>BUG</type>
     </rule>
     <rule>
         <key>STATIC_JAVA_FB.MS_MUTABLE_HASHTABLE_generic</key>
@@ -10697,7 +10697,7 @@
         <severity>CRITICAL</severity>
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
-        <type></type>
+        <type>BUG</type>
     </rule>
     <rule>
         <key>STATIC_JAVA_FB.IMSE_DONT_CATCH_IMSE_generic</key>

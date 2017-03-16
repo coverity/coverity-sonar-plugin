@@ -1077,7 +1077,7 @@
         <severity>CRITICAL</severity>
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
-        <type></type>
+        <type>BUG</type>
     </rule>
     <rule>
         <key>STATIC_C_OPEN_ARGS_none</key>
@@ -1697,7 +1697,7 @@
         <severity>MAJOR</severity>
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
-        <type></type>
+        <type>BUG</type>
     </rule>
     <rule>
         <key>STATIC_C_PW.SHIFT_COUNT_TOO_LARGE_none</key>
@@ -2907,7 +2907,7 @@
         <severity>CRITICAL</severity>
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
-        <type></type>
+        <type>BUG</type>
     </rule>
     <rule>
         <key>STATIC_C_DC.STRING_BUFFER_none</key>
