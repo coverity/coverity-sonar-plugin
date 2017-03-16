@@ -520,6 +520,16 @@
         <type>BUG</type>
     </rule>
     <rule>
+        <key>STATIC_CS_MSVSCA.*</key>
+        <name>Coverity MSVSCA : Microsoft Visual Studio Code Analysis</name>
+        <internalKey>STATIC_CS_MSVSCA.*</internalKey>
+        <description>Coverity MSVSCA : Microsoft Visual Studio Code Analysis</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type></type>
+    </rule>
+    <rule>
         <key>STATIC_CS_VOLATILE_ATOMICITY_compare</key>
         <name>Concurrent data access violations : Volatile not atomically updated</name>
         <internalKey>STATIC_CS_VOLATILE_ATOMICITY_compare</internalKey>

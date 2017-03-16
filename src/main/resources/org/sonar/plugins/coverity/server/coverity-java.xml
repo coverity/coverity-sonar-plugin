@@ -1240,6 +1240,16 @@
         <type>BUG</type>
     </rule>
     <rule>
+        <key>STATIC_JAVA_MISRA.*</key>
+        <name>Coverity MISRA : Coding Standard Violation</name>
+        <internalKey>STATIC_JAVA_MISRA.*</internalKey>
+        <description>Coverity MISRA : Coding Standard Violation</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type></type>
+    </rule>
+    <rule>
         <key>STATIC_JAVA_FB.OS_OPEN_STREAM_generic</key>
         <name>OS: Stream not closed on all paths</name>
         <internalKey>STATIC_JAVA_FB.OS_OPEN_STREAM_generic</internalKey>
@@ -7620,6 +7630,16 @@
         <type>VULNERABILITY</type>
     </rule>
     <rule>
+        <key>STATIC_JAVA_RW.*</key>
+        <name>Coverity RW : Recovery Warnings</name>
+        <internalKey>STATIC_JAVA_RW.*</internalKey>
+        <description>Coverity RW : Recovery Warnings</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type></type>
+    </rule>
+    <rule>
         <key>STATIC_JAVA_FB.WA_NOT_IN_LOOP_generic</key>
         <name>Wa: Wait not in loop</name>
         <internalKey>STATIC_JAVA_FB.WA_NOT_IN_LOOP_generic</internalKey>
@@ -8198,6 +8218,16 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>BUG</type>
+    </rule>
+    <rule>
+        <key>STATIC_JAVA_SW.*</key>
+        <name>Coverity SW : Semantic Warnings</name>
+        <internalKey>STATIC_JAVA_SW.*</internalKey>
+        <description>Coverity SW : Semantic Warnings</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type></type>
     </rule>
     <rule>
         <key>STATIC_JAVA_FB.RE_POSSIBLE_UNINTENDED_PATTERN_generic</key>

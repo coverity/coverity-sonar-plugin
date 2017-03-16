@@ -52,11 +52,10 @@ public class RulesGenerator {
                 generateRulesForQualityCheckers(file);
             }
         }
-
-        printRulesList();
+        
         addNoneSubcategory();
         addFallbackRuleForLanguage();
-        printRulesList();
+        addDifferentOriginRules();
 
         writeRulesToFiles(xmlDir);
     }
@@ -385,6 +384,70 @@ public class RulesGenerator {
             List<InternalRule> list = new ArrayList<InternalRule>();
             list.add(newRule);
             rulesList.get(language).put(newRule.getCheckerName(), list);
+        }
+    }
+
+    public static void addDifferentOriginRules() {
+
+        List<InternalRule> rules = new ArrayList<>();
+        InternalRule misraRule = new InternalRule(
+                "MISRA.*",
+                "Coverity MISRA : Coding Standard Violation",
+                "MISRA.*",
+                "MAJOR",
+                "none",
+                "Coverity MISRA : Coding Standard Violation"
+        );
+        rules.add(misraRule);
+
+        InternalRule pwRule = new InternalRule(
+                "PW.*",
+                "Coverity PW : Parse Warnings",
+                "PW.*",
+                "MAJOR",
+                "none",
+                "Coverity PW : Parse Warnings"
+        );
+        rules.add(pwRule);
+
+        InternalRule swRule = new InternalRule(
+                "SW.*",
+                "Coverity SW : Semantic Warnings",
+                "SW.*",
+                "MAJOR",
+                "none",
+                "Coverity SW : Semantic Warnings"
+        );
+        rules.add(swRule);
+
+        InternalRule rwRule = new InternalRule(
+                "RW.*",
+                "Coverity RW : Recovery Warnings",
+                "RW.*",
+                "MAJOR",
+                "none",
+                "Coverity RW : Recovery Warnings"
+        );
+        rules.add(rwRule);
+
+        InternalRule msvscaRule = new InternalRule(
+                "MSVSCA.*",
+                "Coverity MSVSCA : Microsoft Visual Studio Code Analysis",
+                "MSVSCA.*",
+                "MAJOR",
+                "none",
+                "Coverity MSVSCA : Microsoft Visual Studio Code Analysis"
+        );
+        rules.add(msvscaRule);
+
+        for (InternalRule rule : rules) {
+            List<InternalRule> tempList = new ArrayList<InternalRule>();
+            tempList.add(rule);
+            if (rule.getKey().equals("MSVSCA.*")) {
+                rulesList.get(CS_LANGUAGE).put(rule.getCheckerName(), tempList);
+            } else {
+                rulesList.get(JAVA_LANGUAGE).put(rule.getCheckerName(), tempList);
+            }
         }
     }
 
