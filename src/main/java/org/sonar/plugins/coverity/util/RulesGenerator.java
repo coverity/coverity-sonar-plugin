@@ -62,9 +62,6 @@ public class RulesGenerator {
 
     public static void generateRulesForQualityCheckers(File jsonFile) throws Exception {
         JSONParser parser = new JSONParser();
-        int javaRule = 0;
-        int cppRule = 0;
-        int csRule = 0;
 
         try {
             Object obj = parser.parse(new FileReader(jsonFile.getAbsolutePath()));
@@ -145,23 +142,8 @@ public class RulesGenerator {
                             getDescription(subcategoryLongDescription),
                             getRuleType(qualityKind, securityKind));
                     putRuleIntoMap(lang, rule);
-
-                    if (lang.equals(JAVA_LANGUAGE)) {
-                        javaRule++;
-                    } else if (lang.equals(CPP_LANGUAGE)) {
-                        cppRule++;
-                    } else if (lang.equals(CS_LANGUAGE)) {
-                        csRule++;
-                    }
                 }
             }
-
-            /**
-             * Print out to the console the results of the rules generation so that developers can analyze these results.
-             */
-            System.out.println("FilePath: " + jsonFile.getAbsolutePath() + " JavaRule: " + javaRule);
-            System.out.println("FilePath: " + jsonFile.getAbsolutePath() + " CppRule: " + cppRule);
-            System.out.println("FilePath: " + jsonFile.getAbsolutePath() + " CsRule: " + csRule);
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -179,7 +161,6 @@ public class RulesGenerator {
             Object obj = parser.parse(new FileReader(jsonFile.getAbsolutePath()));
             JSONObject root = (JSONObject) obj;
             JSONArray issues =  (JSONArray) root.get("issue_type");
-            System.out.println("FilePath : " + jsonFile.getAbsolutePath() + " JSONArray Size: " + issues.size());
 
             Iterator<JSONObject> iterator = issues.iterator();
 
@@ -338,7 +319,6 @@ public class RulesGenerator {
 
     public static void addNoneSubcategory() {
         Map<String, List<InternalRule>> missingList = new HashMap<String, List<InternalRule>>();
-        int missingChecker = 0;
 
         // Find rule without "none" subcategory
         for (String language : rulesList.keySet()) {
@@ -357,13 +337,9 @@ public class RulesGenerator {
                         missingList.put(language, new ArrayList<>());
                     }
                     missingList.get(language).add(rule);
-                    missingChecker++;
                 }
             }
         }
-
-        // Print the number of missing rules without "none" subcategory
-        System.out.println("Missing None Subcategory Checerk: " + missingChecker);
 
         // Add rules with "none" subcategory
         for (String language : missingList.keySet()) {
@@ -468,28 +444,4 @@ public class RulesGenerator {
             }
         }
     }
-
-    public static void printRulesList() {
-
-        int javaRules = 0;
-        int cppRules = 0;
-        int csRules = 0;
-
-        for (String language : rulesList.keySet()) {
-            for (String checkerName : rulesList.get(language).keySet()) {
-                if (language.equals(JAVA_LANGUAGE)) {
-                    javaRules += rulesList.get(language).get(checkerName).size();
-                } else if (language.equals(CPP_LANGUAGE)) {
-                    cppRules += rulesList.get(language).get(checkerName).size();
-                } else if (language.equals(CS_LANGUAGE)) {
-                    csRules += rulesList.get(language).get(checkerName).size();
-                }
-            }
-        }
-
-        System.out.println("Total Java Rules: " + javaRules);
-        System.out.println("Total C/C++ Rules: " + cppRules);
-        System.out.println("Total C# Rules: " + csRules);
-    }
-
 }
