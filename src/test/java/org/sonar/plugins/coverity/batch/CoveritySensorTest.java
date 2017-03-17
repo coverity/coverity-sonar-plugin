@@ -34,20 +34,11 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 public class CoveritySensorTest {
-    Settings settings;
-    RulesProfile profile;
-    ResourcePerspectives resourcePerspectives;
     CoveritySensor sensor;
-    FileSystem fileSystem;
 
     @Before
     public void setUp() throws Exception {
-        settings = mock(Settings.class);
-        profile = mock(RulesProfile.class);
-        resourcePerspectives = mock(ResourcePerspectives.class);
-        fileSystem = mock(FileSystem.class);
-
-        sensor = new CoveritySensor(settings, profile, resourcePerspectives, fileSystem);
+        sensor = new CoveritySensor();
     }
 
     @Test
