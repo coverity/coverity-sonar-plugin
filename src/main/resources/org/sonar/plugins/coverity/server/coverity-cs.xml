@@ -610,9 +610,9 @@
         <type>VULNERABILITY</type>
     </rule>
     <rule>
-        <key>STATIC_CS_XML_EXTERNAL_ENTITYnone</key>
+        <key>STATIC_CS_XML_EXTERNAL_ENTITY_none</key>
         <name>Medium impact security : Unrestricted document type definitions</name>
-        <internalKey>STATIC_CS_XML_EXTERNAL_ENTITYnone</internalKey>
+        <internalKey>STATIC_CS_XML_EXTERNAL_ENTITY_none</internalKey>
         <description>Passing tainted input data with possibly arbitrary DTDs to a weakly configured XML parser.</description>
         <severity>CRITICAL</severity>
         <cardinality>SINGLE</cardinality>
@@ -880,9 +880,9 @@
         <type>VULNERABILITY</type>
     </rule>
     <rule>
-        <key>STATIC_CS_CONFIG.DEAD_AUTHORIZATION_RULEnone</key>
+        <key>STATIC_CS_CONFIG.DEAD_AUTHORIZATION_RULE_none</key>
         <name>Low impact security : Dead Allow Rule</name>
-        <internalKey>STATIC_CS_CONFIG.DEAD_AUTHORIZATION_RULEnone</internalKey>
+        <internalKey>STATIC_CS_CONFIG.DEAD_AUTHORIZATION_RULE_none</internalKey>
         <description>An allow rule has no effect</description>
         <severity>MAJOR</severity>
         <cardinality>SINGLE</cardinality>
@@ -1030,9 +1030,9 @@
         <type>BUG</type>
     </rule>
     <rule>
-        <key>STATIC_CS_IDENTICAL_BRANCHESnone</key>
+        <key>STATIC_CS_IDENTICAL_BRANCHES_none</key>
         <name>Incorrect expression : Identical code for different branches</name>
-        <internalKey>STATIC_CS_IDENTICAL_BRANCHESnone</internalKey>
+        <internalKey>STATIC_CS_IDENTICAL_BRANCHES_none</internalKey>
         <description>The same code is executed regardless of the condition</description>
         <severity>CRITICAL</severity>
         <cardinality>SINGLE</cardinality>
@@ -1400,9 +1400,9 @@
         <type>BUG</type>
     </rule>
     <rule>
-        <key>STATIC_CS_INSECURE_RANDOMnone</key>
+        <key>STATIC_CS_INSECURE_RANDOM_none</key>
         <name>Insecure random category : Cryptographically weak PRNG</name>
-        <internalKey>STATIC_CS_INSECURE_RANDOMnone</internalKey>
+        <internalKey>STATIC_CS_INSECURE_RANDOM_none</internalKey>
         <description>Random value generated using a cryptographically insecure pseudo-random number generator</description>
         <severity>CRITICAL</severity>
         <cardinality>SINGLE</cardinality>

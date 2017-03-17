@@ -1240,16 +1240,6 @@
         <type>BUG</type>
     </rule>
     <rule>
-        <key>STATIC_JAVA_MISRA.*</key>
-        <name>Coverity MISRA : Coding Standard Violation</name>
-        <internalKey>STATIC_JAVA_MISRA.*</internalKey>
-        <description>Coverity MISRA : Coding Standard Violation</description>
-        <severity>MAJOR</severity>
-        <cardinality>SINGLE</cardinality>
-        <status>READY</status>
-        <type>BUG</type>
-    </rule>
-    <rule>
         <key>STATIC_JAVA_FB.OS_OPEN_STREAM_generic</key>
         <name>OS: Stream not closed on all paths</name>
         <internalKey>STATIC_JAVA_FB.OS_OPEN_STREAM_generic</internalKey>
@@ -2360,9 +2350,9 @@
         <type>BUG</type>
     </rule>
     <rule>
-        <key>STATIC_JAVA_BAD_CHECK_OF_WAIT_CONDnone</key>
+        <key>STATIC_JAVA_BAD_CHECK_OF_WAIT_COND_none</key>
         <name>Concurrent data access violations : Data race condition</name>
-        <internalKey>STATIC_JAVA_BAD_CHECK_OF_WAIT_CONDnone</internalKey>
+        <internalKey>STATIC_JAVA_BAD_CHECK_OF_WAIT_COND_none</internalKey>
         <description>A thread does not re-check its wait condition after waking up from a wait.</description>
         <severity>CRITICAL</severity>
         <cardinality>SINGLE</cardinality>
@@ -3250,9 +3240,9 @@
         <type>VULNERABILITY</type>
     </rule>
     <rule>
-        <key>STATIC_JAVA_XML_EXTERNAL_ENTITYnone</key>
+        <key>STATIC_JAVA_XML_EXTERNAL_ENTITY_none</key>
         <name>Medium impact security : Unrestricted document type definitions</name>
-        <internalKey>STATIC_JAVA_XML_EXTERNAL_ENTITYnone</internalKey>
+        <internalKey>STATIC_JAVA_XML_EXTERNAL_ENTITY_none</internalKey>
         <description>Passing tainted input data with possibly arbitrary DTDs to a weakly configured XML parser.</description>
         <severity>CRITICAL</severity>
         <cardinality>SINGLE</cardinality>
@@ -3810,9 +3800,9 @@
         <type>VULNERABILITY</type>
     </rule>
     <rule>
-        <key>STATIC_JAVA_UNRESTRICTED_ACCESS_TO_FILEnone</key>
+        <key>STATIC_JAVA_UNRESTRICTED_ACCESS_TO_FILE_none</key>
         <name>Low impact security : Exposed file write</name>
-        <internalKey>STATIC_JAVA_UNRESTRICTED_ACCESS_TO_FILEnone</internalKey>
+        <internalKey>STATIC_JAVA_UNRESTRICTED_ACCESS_TO_FILE_none</internalKey>
         <description>Read/write access to this file is not restricted to this application.</description>
         <severity>MAJOR</severity>
         <cardinality>SINGLE</cardinality>
@@ -5570,10 +5560,10 @@
         <type>BUG</type>
     </rule>
     <rule>
-        <key>STATIC_JAVA_PW.*</key>
-        <name>Coverity PW : Parse Warnings</name>
-        <internalKey>STATIC_JAVA_PW.*</internalKey>
-        <description>Coverity PW : Parse Warnings</description>
+        <key>STATIC_JAVA_PW.*_none</key>
+        <name>Parse warnings : Parse warning</name>
+        <internalKey>STATIC_JAVA_PW.*_none</internalKey>
+        <description>A parse warning may indicate a bug, or poor coding practice</description>
         <severity>MAJOR</severity>
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
@@ -5840,9 +5830,9 @@
         <type>VULNERABILITY</type>
     </rule>
     <rule>
-        <key>STATIC_JAVA_URL_MANIPULATIONnone</key>
+        <key>STATIC_JAVA_URL_MANIPULATION_none</key>
         <name>Medium impact security : URL manipulation</name>
-        <internalKey>STATIC_JAVA_URL_MANIPULATIONnone</internalKey>
+        <internalKey>STATIC_JAVA_URL_MANIPULATION_none</internalKey>
         <description>A user-controllable string is used to specify a URL that is used in a connection. An attacker can modify the URL scheme to access a local file. An attacker can also mount a phishing attack by modifying the URL value to point to a malicious website.</description>
         <severity>CRITICAL</severity>
         <cardinality>SINGLE</cardinality>
@@ -7540,9 +7530,9 @@
         <type>VULNERABILITY</type>
     </rule>
     <rule>
-        <key>STATIC_JAVA_PREDICTABLE_RANDOM_SEEDnone</key>
+        <key>STATIC_JAVA_PREDICTABLE_RANDOM_SEED_none</key>
         <name>Medium impact security : System time used as seed in random number generator</name>
-        <internalKey>STATIC_JAVA_PREDICTABLE_RANDOM_SEEDnone</internalKey>
+        <internalKey>STATIC_JAVA_PREDICTABLE_RANDOM_SEED_none</internalKey>
         <description>Generating random number using system time as the seed may completely replace the cryptographically strong default seed causing the instance to return a predictable sequence of numbers unfit for secure use.</description>
         <severity>CRITICAL</severity>
         <cardinality>SINGLE</cardinality>
@@ -7628,16 +7618,6 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>VULNERABILITY</type>
-    </rule>
-    <rule>
-        <key>STATIC_JAVA_RW.*</key>
-        <name>Coverity RW : Recovery Warnings</name>
-        <internalKey>STATIC_JAVA_RW.*</internalKey>
-        <description>Coverity RW : Recovery Warnings</description>
-        <severity>MAJOR</severity>
-        <cardinality>SINGLE</cardinality>
-        <status>READY</status>
-        <type>BUG</type>
     </rule>
     <rule>
         <key>STATIC_JAVA_FB.WA_NOT_IN_LOOP_generic</key>
@@ -7890,9 +7870,9 @@
         <type>BUG</type>
     </rule>
     <rule>
-        <key>STATIC_JAVA_INSECURE_RANDOMnone</key>
+        <key>STATIC_JAVA_INSECURE_RANDOM_none</key>
         <name>Insecure random category : Cryptographically weak PRNG</name>
-        <internalKey>STATIC_JAVA_INSECURE_RANDOMnone</internalKey>
+        <internalKey>STATIC_JAVA_INSECURE_RANDOM_none</internalKey>
         <description>Random value generated using a cryptographically insecure pseudo-random number generator</description>
         <severity>CRITICAL</severity>
         <cardinality>SINGLE</cardinality>
@@ -8215,16 +8195,6 @@
         <internalKey>STATIC_JAVA_FB.IJU_SUITE_NOT_STATIC_none</internalKey>
         <description>Class is a JUnit TestCase and implements the suite() method.</description>
         <severity>CRITICAL</severity>
-        <cardinality>SINGLE</cardinality>
-        <status>READY</status>
-        <type>BUG</type>
-    </rule>
-    <rule>
-        <key>STATIC_JAVA_SW.*</key>
-        <name>Coverity SW : Semantic Warnings</name>
-        <internalKey>STATIC_JAVA_SW.*</internalKey>
-        <description>Coverity SW : Semantic Warnings</description>
-        <severity>MAJOR</severity>
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>BUG</type>
@@ -9790,9 +9760,9 @@
         <type>VULNERABILITY</type>
     </rule>
     <rule>
-        <key>STATIC_JAVA_BAD_CERT_VERIFICATIONnone</key>
+        <key>STATIC_JAVA_BAD_CERT_VERIFICATION_none</key>
         <name>High impact security : Insecure SSL/TLS: bad TrustManager</name>
-        <internalKey>STATIC_JAVA_BAD_CERT_VERIFICATIONnone</internalKey>
+        <internalKey>STATIC_JAVA_BAD_CERT_VERIFICATION_none</internalKey>
         <description>The TrustManager fails to properly authenticate its SSL/TLS peer.</description>
         <severity>BLOCKER</severity>
         <cardinality>SINGLE</cardinality>
@@ -10690,9 +10660,9 @@
         <type>BUG</type>
     </rule>
     <rule>
-        <key>STATIC_JAVA_IDENTICAL_BRANCHESnone</key>
+        <key>STATIC_JAVA_IDENTICAL_BRANCHES_none</key>
         <name>Incorrect expression : Identical code for different branches</name>
-        <internalKey>STATIC_JAVA_IDENTICAL_BRANCHESnone</internalKey>
+        <internalKey>STATIC_JAVA_IDENTICAL_BRANCHES_none</internalKey>
         <description>The same code is executed regardless of the condition</description>
         <severity>CRITICAL</severity>
         <cardinality>SINGLE</cardinality>

@@ -70,10 +70,10 @@
         <type>BUG</type>
     </rule>
     <rule>
-        <key>STATIC_C_SW.*_none</key>
-        <name>Parse warnings : Parse semantic warning</name>
-        <internalKey>STATIC_C_SW.*_none</internalKey>
-        <description>The function contains a non-portable or non-standard construct forcing the Coverity parser to guess the meaning</description>
+        <key>STATIC_C_SW.*</key>
+        <name>Coverity SW : Semantic Warnings</name>
+        <internalKey>STATIC_C_SW.*</internalKey>
+        <description>Coverity SW : Semantic Warnings</description>
         <severity>MAJOR</severity>
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
@@ -340,10 +340,10 @@
         <type>VULNERABILITY</type>
     </rule>
     <rule>
-        <key>STATIC_C_PW.*_none</key>
-        <name>Parse warnings : Parse warning</name>
-        <internalKey>STATIC_C_PW.*_none</internalKey>
-        <description>A parse warning from the Coverity parser may indicate a bug, or poor coding practice</description>
+        <key>STATIC_C_PW.*</key>
+        <name>Coverity PW : Parse Warnings</name>
+        <internalKey>STATIC_C_PW.*</internalKey>
+        <description>Coverity PW : Parse Warnings</description>
         <severity>MAJOR</severity>
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
@@ -1070,9 +1070,9 @@
         <type>BUG</type>
     </rule>
     <rule>
-        <key>STATIC_C_NO_EFFECTnone</key>
+        <key>STATIC_C_NO_EFFECT_none</key>
         <name>Miscellaneous : Unnecessary instance object usage</name>
-        <internalKey>STATIC_C_NO_EFFECTnone</internalKey>
+        <internalKey>STATIC_C_NO_EFFECT_none</internalKey>
         <description>A static field or method is accessed using an instance object</description>
         <severity>CRITICAL</severity>
         <cardinality>SINGLE</cardinality>
@@ -1635,6 +1635,16 @@
         <internalKey>STATIC_C_REVERSE_NEGATIVE_none</internalKey>
         <description>Negative value used incorrectly where positive value is expected</description>
         <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+    </rule>
+    <rule>
+        <key>STATIC_C_MISRA.*</key>
+        <name>Coverity MISRA : Coding Standard Violation</name>
+        <internalKey>STATIC_C_MISRA.*</internalKey>
+        <description>Coverity MISRA : Coding Standard Violation</description>
+        <severity>MAJOR</severity>
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>BUG</type>
@@ -2900,9 +2910,9 @@
         <type>BUG</type>
     </rule>
     <rule>
-        <key>STATIC_C_IDENTICAL_BRANCHESnone</key>
+        <key>STATIC_C_IDENTICAL_BRANCHES_none</key>
         <name>Incorrect expression : Identical code for different branches</name>
-        <internalKey>STATIC_C_IDENTICAL_BRANCHESnone</internalKey>
+        <internalKey>STATIC_C_IDENTICAL_BRANCHES_none</internalKey>
         <description>The same code is executed regardless of the condition</description>
         <severity>CRITICAL</severity>
         <cardinality>SINGLE</cardinality>
@@ -3070,10 +3080,10 @@
         <type>BUG</type>
     </rule>
     <rule>
-        <key>STATIC_C_RW.*_none</key>
-        <name>Parse warnings : Parse recovery warning</name>
-        <internalKey>STATIC_C_RW.*_none</internalKey>
-        <description>A parse error caused a function to be skipped by Coverity Static Analysis</description>
+        <key>STATIC_C_RW.*</key>
+        <name>Coverity RW : Recovery Warnings</name>
+        <internalKey>STATIC_C_RW.*</internalKey>
+        <description>Coverity RW : Recovery Warnings</description>
         <severity>MAJOR</severity>
         <cardinality>SINGLE</cardinality>
         <status>READY</status>

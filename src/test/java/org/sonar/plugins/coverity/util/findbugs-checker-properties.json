@@ -1,0 +1,28 @@
+{
+  "type" : "Coverity Issue Type Definitions",
+  "format_version" : 1,
+  "issue_type" : [
+    {
+      "type" : "FB.AM_CREATES_EMPTY_JAR_FILE_ENTRY",
+      "subtype" : "generic",
+      "code-language" : "java",
+      "name" : {
+        "en" : "AM: API misuse"
+      },
+      "description" : {
+        "en" : "The code calls <code>putNextEntry()</code>, immediately followed by a call to <code>closeEntry()</code>. (<a href=\"/docs/en/findbugs/fb_checker_ref.html#FB.AM_CREATES_EMPTY_JAR_FILE_ENTRY\" target=\"_blank\">From FindBugs&#x2122; description</a>)"
+      },
+      "local_effect" : {
+        "en" : ""
+      },
+      "cim_checker_properties" : {
+        "category" : "FindBugs: Bad practice",
+        "cweCategory" : 227,
+        "impact" : "Low",
+        "qualityKind" : true,
+        "securityKind" : false,
+        "testKind" : false
+      }
+    },
+   ] 
+}

@@ -1,0 +1,52 @@
+[
+  {
+    "category" : "C# Example Checker",
+    "checkerName" : "C# Example Checker",
+    "cweCategory" : "762",
+    "families" : [
+      "C#"
+    ],
+    "eventSetCaptions" : [],
+    "impact" : "Medium",
+    "qualityKind" : "true",
+    "securityKind" : "false",
+    "testKind" : "false",
+    "subcategory" : "test-subcategory",
+    "subcategoryLocalEffect" : "C# Example Checker",
+    "subcategoryLongDescription" : "Long Description",
+    "subcategoryShortDescription" : "Short Description",
+    "isDocumented" : "true"
+  },
+  {
+    "category" : "Java Example Checker",
+    "checkerName" : "Java Example Checker",
+    "cweCategory" : "119",
+    "language" : "Java", 
+    "eventSetCaptions" : [],
+    "impact" : "High",
+    "qualityKind" : "true",
+    "securityKind" : "false",
+    "testKind" : "false",
+    "subcategory" : "none",
+    "subcategoryLocalEffect" : "Java Example Checker",
+    "subcategoryLongDescription" : "Long Description",
+    "subcategoryShortDescription" : "Short Description",
+    "isDocumented" : "true"
+  },
+  {
+    "category" : "CPP Example Checker",
+    "checkerName" : "CPP Example Checker",
+    "cweCategory" : "none",
+    "domain" : "C/C++", 
+    "eventSetCaptions" : [],
+    "impact" : "Medium",
+    "qualityKind" : "false",
+    "securityKind" : "true",
+    "testKind" : "false",
+    "subcategory" : "none",
+    "subcategoryLocalEffect" : "CPP Example Checker",
+    "subcategoryLongDescription" : "Long Description",
+    "subcategoryShortDescription" : "Short Description",
+    "isDocumented" : "true"
+  } 
+]

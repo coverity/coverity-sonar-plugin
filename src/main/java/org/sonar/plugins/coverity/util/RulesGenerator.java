@@ -30,6 +30,8 @@ public class RulesGenerator {
     static final String VULNERABILITY = "VULNERABILITY";
     static final String BUG = "BUG";
 
+    static String outputFilePath = "src/main/resources/org/sonar/plugins/coverity/server";
+
     /*
     RulesGenerator is used to generate rules based on the coverity quality checker-properties.json files
     and Find bug checkers that coverity will understand( required to be named findbugs-checker-properties.json )
@@ -37,7 +39,7 @@ public class RulesGenerator {
      */
     public static void main(String[] args) throws Exception {
 
-        File xmlDir = new File("src/main/resources/org/sonar/plugins/coverity/server");
+        File xmlDir = new File(outputFilePath);
 
         if (args.length == 0) {
             System.out.println("Need to provide path to the checker-properties.json files or find bugs checker file");
@@ -345,7 +347,7 @@ public class RulesGenerator {
         for (String language : missingList.keySet()) {
             for (InternalRule rule : missingList.get(language)) {
                 InternalRule newRule = new InternalRule(
-                        rule.getCheckerName() + "none",
+                        rule.getCheckerName() + "_none",
                         rule.getRuleName(),
                         rule.getCheckerName(),
                         rule.getSeverity(),
@@ -440,8 +442,12 @@ public class RulesGenerator {
             if (rule.getKey().equals("MSVSCA.*")) {
                 rulesList.get(CS_LANGUAGE).put(rule.getCheckerName(), tempList);
             } else {
-                rulesList.get(JAVA_LANGUAGE).put(rule.getCheckerName(), tempList);
+                rulesList.get(CPP_LANGUAGE).put(rule.getCheckerName(), tempList);
             }
         }
+    }
+
+    public static void setOutputFilePath(String filePath) {
+        outputFilePath = filePath;
     }
 }
