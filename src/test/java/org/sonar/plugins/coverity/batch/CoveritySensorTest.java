@@ -17,7 +17,6 @@ import com.coverity.ws.v9.MergedDefectDataObj;
 import com.coverity.ws.v9.ProjectDataObj;
 import org.junit.Before;
 import org.junit.Test;
-import org.sonar.api.batch.SensorContext;
 import org.sonar.api.batch.fs.internal.DefaultInputFile;
 import org.sonar.api.batch.rule.internal.ActiveRulesBuilder;
 import org.sonar.api.batch.rule.internal.DefaultActiveRules;
@@ -25,10 +24,10 @@ import org.sonar.api.batch.rule.internal.NewActiveRule;
 import org.sonar.api.batch.sensor.internal.DefaultSensorDescriptor;
 import org.sonar.api.batch.sensor.internal.SensorContextTester;
 import org.sonar.api.batch.sensor.issue.Issue;
-import org.sonar.api.measures.Measure;
-import org.sonar.api.measures.Metric;
+import org.sonar.api.batch.sensor.measure.Measure;
 import org.sonar.api.rule.RuleKey;
 import org.sonar.plugins.coverity.CoverityPlugin;
+import org.sonar.plugins.coverity.base.CoverityPluginMetrics;
 import org.sonar.plugins.coverity.ws.CIMClient;
 import org.sonar.plugins.coverity.ws.CIMClientFactory;
 import org.sonar.plugins.coverity.ws.TestCIMClient;
@@ -151,17 +150,38 @@ public class CoveritySensorTest {
     }
 
     @Test
-    public void testGetCoverityLogoMeasures() throws Exception {
+    public void testExecute_SetsCoverityLogoMeasures() throws Exception {
 
-        SensorContext sensorContextTest = mock(SensorContext.class);
-        Metric coverityUrlCimMetricTest = mock(Metric.class);
-        Measure measure = new Measure(coverityUrlCimMetricTest);
-        final String CIM_URL = "testUrl";
-        measure.setData(CIM_URL);
-        sensorContextTest.saveMeasure(measure);
+        final SensorContextTester sensorContextTester = SensorContextTester.create(new File("src"));
+        final DefaultInputFile inputFile = new DefaultInputFile("myProjectKey", "src/Foo.java")
+                .setLanguage("java")
+                .initMetadata("public class Foo {\n}");
+        sensorContextTester
+                .fileSystem()
+                .add(inputFile);
 
-        when(sensorContextTest.getMeasure(coverityUrlCimMetricTest)).thenReturn(measure);
+        final String projectName = "my-cov-project";
+        testCimClient.setupProject("first-project");
+        testCimClient.setupProject(projectName);
 
-        assertEquals(CIM_URL, (sensorContextTest.getMeasure(coverityUrlCimMetricTest)).getData());
+        final HashMap<String, String> properties = new HashMap<>();
+        properties.put(CoverityPlugin.COVERITY_PROJECT, projectName);
+        properties.put(CoverityPlugin.COVERITY_ENABLE, "true");
+        sensorContextTester
+                .settings()
+                .addProperties(properties);
+
+        sensor.execute(sensorContextTester);
+
+        String expectedUrl = String.format("%s://%s:%d/", testCimClient.isUseSSL() ? "https" : "http", testCimClient.getHost(), testCimClient.getPort());
+        Measure measure = sensorContextTester.measure("projectKey", CoverityPluginMetrics.COVERITY_URL_CIM_METRIC);
+
+        assertEquals(expectedUrl, measure.value());
+
+        long projectId = testCimClient.getProject(projectName).getProjectKey();
+        expectedUrl = expectedUrl + "reports.htm#p" + projectId;
+        measure = sensorContextTester.measure("projectKey", CoverityPluginMetrics.COVERITY_PROJECT_URL);
+
+        assertEquals(expectedUrl, measure.value());
     }
 }
