@@ -11,7 +11,6 @@
 
 package org.sonar.plugins.coverity.server;
 
-import org.sonar.api.Extension;
 import org.sonar.api.resources.AbstractLanguage;
 
 /**
@@ -21,7 +20,7 @@ import org.sonar.api.resources.AbstractLanguage;
  * crash at star up.
  * This class defines a language that will be added to that list of accepted languages.
  */
-public class CxxLanguage extends AbstractLanguage implements Extension {
+public class CxxLanguage extends AbstractLanguage {
     public static final CxxLanguage INSTANCE = new CxxLanguage();
 
     /**
