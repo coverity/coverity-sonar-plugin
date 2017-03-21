@@ -20,6 +20,7 @@ import org.sonar.api.profiles.RulesProfile;
 import org.sonar.api.rules.Rule;
 import org.sonar.api.server.ServerSide;
 import org.sonar.api.utils.ValidationMessages;
+import org.sonar.plugins.coverity.CoverityPlugin;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,20 +29,11 @@ import java.util.List;
 @ExtensionPoint
 public class CoverityProfiles extends ExtensionProvider {
     private static final Logger LOG = LoggerFactory.getLogger(CoverityProfiles.class);
-    List<String> languages = new ArrayList<String>();
-
-    public CoverityProfiles() {
-        languages.add("java");
-        languages.add("cpp");
-        languages.add("cs");
-        languages.add("c++");
-        languages.add("c");
-    }
 
     @Override
     public List<CoverityProfile> provide() {
         List<CoverityProfile> list = new ArrayList<CoverityProfile>();
-        for(String language : languages) {
+        for(String language : CoverityPlugin.COVERITY_LANGUAGES) {
             list.add(new CoverityProfile(language));
         }
         return list;

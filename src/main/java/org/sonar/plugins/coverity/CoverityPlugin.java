@@ -26,6 +26,7 @@ import org.sonar.plugins.coverity.server.CppLanguage;
 import org.sonar.plugins.coverity.server.CxxLanguage;
 import org.sonar.plugins.coverity.server.CLanguage;
 
+import java.util.Arrays;
 import java.util.List;
 
 public final class CoverityPlugin implements Plugin {
@@ -39,6 +40,14 @@ public final class CoverityPlugin implements Plugin {
     public static final String COVERITY_SOURCE_DIRECTORY = "sonar.coverity.sources.directory";
     public static final String COVERITY_CONNECT_SSL = "sonar.coverity.ssl";
     public static final String REPOSITORY_KEY = "coverity";
+
+    public static List<String> COVERITY_LANGUAGES =
+            Arrays.asList(
+                    "java",
+                    "cs",
+                    CppLanguage.KEY,
+                    CxxLanguage.KEY,
+                    CLanguage.KEY);
 
     // This is where you're going to declare all your Sonar extensions
     private List getExtensions() {
