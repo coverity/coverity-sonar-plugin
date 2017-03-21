@@ -20,18 +20,6 @@
 %>
 <table width="100%">
     <tr>
-        <td width="10">
-                <a href='<%=
-                    # @return [String]
-                    mystring=format_measure('COVERITY-URL-CIM-METRIC', {:skip_span_id => true})
-                    mystring.gsub(/<span[^>]*>(.*)<\/span>/,'\1')
-                -%>'>
-
-                <img src="<%= url_for_static(:plugin => 'coverity', :path => 'SIG-Coverity-symbol.png') -%>" alt="Coverity Logo" >
-            </a>
-        </td>
-    </tr>
-    <tr>
         <td>
             <p><b>Coverity Project:</b>
             <a href='<%=
