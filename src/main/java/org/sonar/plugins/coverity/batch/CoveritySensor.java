@@ -30,6 +30,7 @@ import org.sonar.plugins.coverity.CoverityPlugin;
 import org.sonar.plugins.coverity.base.CoverityPluginMetrics;
 import org.sonar.plugins.coverity.util.CoverityUtil;
 import org.sonar.plugins.coverity.ws.CIMClient;
+import org.sonar.plugins.coverity.ws.CIMClientFactory;
 
 import java.io.File;
 import java.io.IOException;
@@ -53,8 +54,10 @@ public class CoveritySensor implements Sensor {
     private int lowImpactDefects = 0;
 
     private String platform;
+    private CIMClientFactory cimClientFactory;
 
-    public CoveritySensor() {
+    public CoveritySensor(CIMClientFactory cimClientFactory) {
+        this.cimClientFactory = cimClientFactory;
         platform = System.getProperty("os.name");
     }
 
@@ -98,12 +101,6 @@ public class CoveritySensor implements Sensor {
 
         System.setProperty("javax.xml.soap.MetaFactory", "com.sun.xml.messaging.saaj.soap.SAAJMetaFactoryImpl");
 
-        String host = settings.getString(CoverityPlugin.COVERITY_CONNECT_HOSTNAME);
-        int port = settings.getInt(CoverityPlugin.COVERITY_CONNECT_PORT);
-        String user = settings.getString(CoverityPlugin.COVERITY_CONNECT_USERNAME);
-        String password = settings.getString(CoverityPlugin.COVERITY_CONNECT_PASSWORD);
-        boolean ssl = settings.getBoolean(CoverityPlugin.COVERITY_CONNECT_SSL);
-
         String covProject = settings.getString(CoverityPlugin.COVERITY_PROJECT);
         String stripPrefix = settings.getString(CoverityPlugin.COVERITY_PREFIX);
         String covSrcDir = settings.getString(CoverityPlugin.COVERITY_SOURCE_DIRECTORY);
@@ -117,7 +114,7 @@ public class CoveritySensor implements Sensor {
             return;
         }
 
-        CIMClient instance = new CIMClient(host, port, user, password, ssl);
+        CIMClient instance = cimClientFactory.create(settings);
 
         //find the configured project
         ProjectDataObj covProjectObj = null;
@@ -345,7 +342,6 @@ public class CoveritySensor implements Sensor {
                     .withValue(covProject)
                     .save();
         }
-
 
         String ProjectUrl = createURL(client);
         if (ProjectUrl != null) {
