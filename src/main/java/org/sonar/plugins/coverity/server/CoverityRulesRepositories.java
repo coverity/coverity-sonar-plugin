@@ -14,26 +14,17 @@ package org.sonar.plugins.coverity.server;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.sonar.api.ExtensionProvider;
-import org.sonar.api.ServerExtension;
 import org.sonar.api.config.Settings;
-import org.sonar.api.profiles.ProfileDefinition;
-import org.sonar.api.profiles.RulesProfile;
 import org.sonar.api.resources.Language;
-import org.sonar.api.rules.Rule;
-import org.sonar.api.rules.RulePriority;
-import org.sonar.api.server.rule.RulesDefinitionXmlLoader;
-import org.sonar.api.utils.ValidationMessages;
-//import org.sonar.api.server.rule.RulesDefinitionXmlLoader;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
+
+//import org.sonar.api.server.rule.RulesDefinitionXmlLoader;
 
 // This class no longer serves the propose of an actual repository (as in versions < 4.2)
 // Instead it stores maps that are used in other parts of the code.
-public class CoverityRulesRepositories implements ServerExtension {
+public class CoverityRulesRepositories {
     public static final Map<String, String> languageDomains = new HashMap<String, String>();
     static {
         languageDomains.put("java", "STATIC_JAVA");

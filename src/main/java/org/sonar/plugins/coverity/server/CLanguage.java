@@ -11,8 +11,9 @@
 
 package org.sonar.plugins.coverity.server;
 
-import org.sonar.api.Extension;
+import org.sonar.api.ExtensionPoint;
 import org.sonar.api.resources.AbstractLanguage;
+import org.sonar.api.server.ServerSide;
 
 /**
  * Fix Bug 71347. When adding a new profile Sonarqube's server checks if the language of that profile is on a list of
@@ -21,7 +22,9 @@ import org.sonar.api.resources.AbstractLanguage;
  * crash at star up.
  * This class defines a language that will be added to that list of accepted languages.
  */
-public class CLanguage extends AbstractLanguage implements Extension {
+@ServerSide
+@ExtensionPoint
+public class CLanguage extends AbstractLanguage {
     public static final CLanguage INSTANCE = new CLanguage();
 
     /**
