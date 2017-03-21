@@ -25,6 +25,7 @@ import org.sonar.plugins.coverity.ui.CoverityWidget;
 import org.sonar.plugins.coverity.server.CppLanguage;
 import org.sonar.plugins.coverity.server.CxxLanguage;
 import org.sonar.plugins.coverity.server.CLanguage;
+import org.sonar.plugins.coverity.ws.CIMClientFactory;
 
 import java.util.Arrays;
 import java.util.List;
@@ -134,6 +135,7 @@ public final class CoverityPlugin implements Plugin {
 
                 //Batch
                 CoveritySensor.class,
+                CIMClientFactory.class,
 
                 //Server
                 CoverityRules.class,

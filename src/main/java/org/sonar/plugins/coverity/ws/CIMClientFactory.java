@@ -10,9 +10,11 @@
  */
 package org.sonar.plugins.coverity.ws;
 
+import org.sonar.api.batch.BatchSide;
 import org.sonar.api.config.Settings;
 import org.sonar.plugins.coverity.CoverityPlugin;
 
+@BatchSide
 public class CIMClientFactory {
 
     public CIMClient create(Settings settings) {
