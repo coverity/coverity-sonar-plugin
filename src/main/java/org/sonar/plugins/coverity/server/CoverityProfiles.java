@@ -13,6 +13,7 @@ package org.sonar.plugins.coverity.server;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.sonar.api.ExtensionPoint;
 import org.sonar.api.ExtensionProvider;
 import org.sonar.api.profiles.ProfileDefinition;
 import org.sonar.api.profiles.RulesProfile;
@@ -24,6 +25,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @ServerSide
+@ExtensionPoint
 public class CoverityProfiles extends ExtensionProvider {
     private static final Logger LOG = LoggerFactory.getLogger(CoverityProfiles.class);
     List<String> languages = new ArrayList<String>();
