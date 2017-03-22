@@ -12,6 +12,7 @@
 package org.sonar.plugins.coverity.batch;
 
 import com.coverity.ws.v9.*;
+import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.sonar.api.CoreProperties;
@@ -26,6 +27,7 @@ import org.sonar.api.batch.sensor.SensorDescriptor;
 import org.sonar.api.batch.sensor.issue.NewIssue;
 import org.sonar.api.batch.sensor.issue.NewIssueLocation;
 import org.sonar.api.config.Settings;
+import org.sonar.api.rule.RuleKey;
 import org.sonar.plugins.coverity.CoverityPlugin;
 import org.sonar.plugins.coverity.base.CoverityPluginMetrics;
 import org.sonar.plugins.coverity.util.CoverityUtil;
@@ -175,6 +177,7 @@ public class CoveritySensor implements Sensor {
 
                 impact = didos.get(0).getImpact().getDisplayName();
 
+
                 List<DefectStateAttributeValueDataObj> listOfAttributes = mddo.getDefectStateAttributeValues();
 
                 for(DefectStateAttributeValueDataObj defectAttribute : listOfAttributes){
@@ -237,20 +240,13 @@ public class CoveritySensor implements Sensor {
                 for(DefectInstanceDataObj dido : didos) {
                     //find the main event, so we can use its line number
                     EventDataObj mainEvent = getMainEvent(dido);
+                    String subcategory = dido.getSubcategory();
 
-
-                    String key = dido.getDomain() + "_" + dido.getCheckerName();
-                    org.sonar.api.rule.RuleKey rk = CoverityUtil.getRuleKey(lang, key);
-
-                    ActiveRule ar = context.activeRules().find(rk);
-                    if(ar == null){
-                        rk = CoverityUtil.getRuleKey(lang, key + "_" + "generic");
-                        ar = context.activeRules().find(rk);
+                    if (StringUtils.isEmpty(subcategory)) {
+                        subcategory = "none";
                     }
-                    if(ar == null){
-                        rk = CoverityUtil.getRuleKey(lang, key + "_" + "none");
-                        ar = context.activeRules().find(rk);
-                    }
+
+                    ActiveRule ar = findActiveRule(context, dido.getDomain(), dido.getCheckerName(), subcategory, lang);
 
                     LOG.debug("mainEvent=" + mainEvent);
                     LOG.debug("ar=" + ar);
@@ -391,5 +387,51 @@ public class CoveritySensor implements Sensor {
                 .on(sensorContext.module())
                 .withValue(lowImpactDefects)
                 .save();
+    }
+
+    private ActiveRule findActiveRule(SensorContext context, String domain, String checkerName, String subCategory, String lang) {
+        String key = domain + "_" + checkerName;
+        RuleKey rk = CoverityUtil.getRuleKey(lang, key + "_" + subCategory);
+
+        ActiveRule ar = context.activeRules().find(rk);
+
+        if(ar == null && !subCategory.equals("none")){
+            rk = CoverityUtil.getRuleKey(lang, key + "_" + "none");
+            ar = context.activeRules().find(rk);
+        }
+
+        if (ar == null) {
+            if (domain.equals("STATIC_C")) {
+                if (ar == null && checkerName.startsWith("MISRA C")) {
+                    rk = CoverityUtil.getRuleKey(lang, "STATIC_C_MISRA.*");
+                    ar = context.activeRules().find(rk);
+                } else if (ar == null && checkerName.startsWith("PW.")) {
+                    rk = CoverityUtil.getRuleKey(lang, "STATIC_C_PW.*");
+                    ar = context.activeRules().find(rk);
+                } else if (ar == null && checkerName.startsWith("SW.")) {
+                    rk = CoverityUtil.getRuleKey(lang, "STATIC_C_SW.*");
+                    ar = context.activeRules().find(rk);
+                } else if (ar == null && checkerName.startsWith("RW.")) {
+                    rk = CoverityUtil.getRuleKey(lang, "STATIC_C_RW.*");
+                    ar = context.activeRules().find(rk);
+                } else {
+                    rk = CoverityUtil.getRuleKey(lang, "STATIC_C_coverity-cpp");
+                    ar = context.activeRules().find(rk);
+                }
+            } else if (domain.equals("STATIC_CS")) {
+                if ( ar == null && checkerName.startsWith("MSVSCA")) {
+                    rk = CoverityUtil.getRuleKey(lang, "STATIC_CS_MSVSCA.*");
+                    ar = context.activeRules().find(rk);
+                } else {
+                    rk = CoverityUtil.getRuleKey(lang, "STATIC_CS_coverity-cs");
+                    ar = context.activeRules().find(rk);
+                }
+            } else if (domain.equals("STATIC_JAVA")) {
+                rk = CoverityUtil.getRuleKey(lang, "STATIC_JAVA_coverity-java");
+                ar = context.activeRules().find(rk);
+            }
+        }
+
+        return ar;
     }
 }
