@@ -20,7 +20,6 @@ import org.sonar.plugins.coverity.base.CoverityPluginMetrics;
 import org.sonar.plugins.coverity.batch.CoveritySensor;
 import org.sonar.plugins.coverity.server.CoverityProfiles;
 import org.sonar.plugins.coverity.server.CoverityRules;
-import org.sonar.plugins.coverity.ui.CoverityFooter;
 import org.sonar.plugins.coverity.ui.CoverityWidget;
 import org.sonar.plugins.coverity.server.CppLanguage;
 import org.sonar.plugins.coverity.server.CxxLanguage;
@@ -143,9 +142,6 @@ public final class CoverityPlugin implements Plugin {
                 CppLanguage.class,
                 CxxLanguage.class,
                 CLanguage.class,
-
-                //UI
-                CoverityFooter.class,
 
                 //UI
                 CoverityWidget.class,
