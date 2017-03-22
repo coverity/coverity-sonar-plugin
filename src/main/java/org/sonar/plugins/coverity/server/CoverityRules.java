@@ -13,11 +13,9 @@ package org.sonar.plugins.coverity.server;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.sonar.api.Extension;
-//import org.sonar.api.rules.RuleRepository;
-//import org.sonar.api.rules.XMLRuleParser;
-import org.sonar.api.rules.Rule;
+import org.sonar.api.ExtensionPoint;
 import org.sonar.api.rules.RulePriority;
+import org.sonar.api.server.ServerSide;
 import org.sonar.api.server.rule.RulesDefinition;
 import org.sonar.api.server.rule.RulesDefinitionXmlLoader;
 import org.sonar.plugins.coverity.CoverityPlugin;
@@ -42,8 +40,9 @@ import static org.sonar.plugins.coverity.util.CoverityUtil.getValue;
  * This class loads rules into the server by means of an XmlLoader. However we still need to activate these rules under
  * a profile and then again in CoveritySensor.
  */
-
-public class CoverityRules implements RulesDefinition, Extension {
+@ServerSide
+@ExtensionPoint
+public class CoverityRules implements RulesDefinition {
 
     private RulesDefinitionXmlLoader xmlLoader = new RulesDefinitionXmlLoader();
     private static final Logger LOG = LoggerFactory.getLogger(CoverityRules.class);

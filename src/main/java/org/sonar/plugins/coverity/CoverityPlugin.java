@@ -12,23 +12,24 @@
 package org.sonar.plugins.coverity;
 
 import com.google.common.collect.ImmutableList;
+import org.sonar.api.Plugin;
 import org.sonar.api.PropertyType;
-import org.sonar.api.SonarPlugin;
 import org.sonar.api.config.PropertyDefinition;
 import org.sonar.api.resources.Qualifiers;
 import org.sonar.plugins.coverity.base.CoverityPluginMetrics;
 import org.sonar.plugins.coverity.batch.CoveritySensor;
 import org.sonar.plugins.coverity.server.CoverityProfiles;
 import org.sonar.plugins.coverity.server.CoverityRules;
-import org.sonar.plugins.coverity.server.CoverityRulesRepositories;
 import org.sonar.plugins.coverity.ui.CoverityWidget;
 import org.sonar.plugins.coverity.server.CppLanguage;
 import org.sonar.plugins.coverity.server.CxxLanguage;
 import org.sonar.plugins.coverity.server.CLanguage;
+import org.sonar.plugins.coverity.ws.CIMClientFactory;
 
+import java.util.Arrays;
 import java.util.List;
 
-public final class CoverityPlugin extends SonarPlugin {
+public final class CoverityPlugin implements Plugin {
     public static final String COVERITY_ENABLE = "sonar.coverity.enable";
     public static final String COVERITY_CONNECT_HOSTNAME = "sonar.coverity.connect.hostname";
     public static final String COVERITY_CONNECT_PORT = "sonar.coverity.connect.port";
@@ -40,8 +41,16 @@ public final class CoverityPlugin extends SonarPlugin {
     public static final String COVERITY_CONNECT_SSL = "sonar.coverity.ssl";
     public static final String REPOSITORY_KEY = "coverity";
 
+    public static List<String> COVERITY_LANGUAGES =
+            Arrays.asList(
+                    "java",
+                    "cs",
+                    CppLanguage.KEY,
+                    CxxLanguage.KEY,
+                    CLanguage.KEY);
+
     // This is where you're going to declare all your Sonar extensions
-    public List getExtensions() {
+    private List getExtensions() {
         int i = 0;
         return ImmutableList.of(
                 //Properties
@@ -125,10 +134,10 @@ public final class CoverityPlugin extends SonarPlugin {
 
                 //Batch
                 CoveritySensor.class,
+                CIMClientFactory.class,
 
                 //Server
                 CoverityRules.class,
-                CoverityRulesRepositories.class,
                 CoverityProfiles.class,
                 CppLanguage.class,
                 CxxLanguage.class,
@@ -140,5 +149,10 @@ public final class CoverityPlugin extends SonarPlugin {
                 //Base
                 CoverityPluginMetrics.class
         );
+    }
+
+    @Override
+    public void define(Context context) {
+        context.addExtensions(getExtensions());
     }
 }
