@@ -38,9 +38,9 @@ To install the Coverity Sonar plug-in, complete the following steps.
 2.  Download and unzip the Coverity Sonar plug-in to the Sonar plugins
     folder:
 
-&lt;SonarInstallDirectory&gt;/extensions/plugins
+    &lt;SonarInstallDirectory&gt;/extensions/plugins
 
-1.  Restart SonarQube.
+3.  Restart SonarQube.
 
 Configuring the Coverity Sonar Plug-in
 ======================================
