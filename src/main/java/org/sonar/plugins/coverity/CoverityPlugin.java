@@ -20,13 +20,14 @@ import org.sonar.plugins.coverity.base.CoverityPluginMetrics;
 import org.sonar.plugins.coverity.batch.CoveritySensor;
 import org.sonar.plugins.coverity.server.CoverityProfiles;
 import org.sonar.plugins.coverity.server.CoverityRules;
-import org.sonar.plugins.coverity.server.CoverityRulesRepositories;
 import org.sonar.plugins.coverity.ui.CoverityFooter;
 import org.sonar.plugins.coverity.ui.CoverityWidget;
 import org.sonar.plugins.coverity.server.CppLanguage;
 import org.sonar.plugins.coverity.server.CxxLanguage;
 import org.sonar.plugins.coverity.server.CLanguage;
+import org.sonar.plugins.coverity.ws.CIMClientFactory;
 
+import java.util.Arrays;
 import java.util.List;
 
 public final class CoverityPlugin implements Plugin {
@@ -40,6 +41,14 @@ public final class CoverityPlugin implements Plugin {
     public static final String COVERITY_SOURCE_DIRECTORY = "sonar.coverity.sources.directory";
     public static final String COVERITY_CONNECT_SSL = "sonar.coverity.ssl";
     public static final String REPOSITORY_KEY = "coverity";
+
+    public static List<String> COVERITY_LANGUAGES =
+            Arrays.asList(
+                    "java",
+                    "cs",
+                    CppLanguage.KEY,
+                    CxxLanguage.KEY,
+                    CLanguage.KEY);
 
     // This is where you're going to declare all your Sonar extensions
     private List getExtensions() {
@@ -126,10 +135,10 @@ public final class CoverityPlugin implements Plugin {
 
                 //Batch
                 CoveritySensor.class,
+                CIMClientFactory.class,
 
                 //Server
                 CoverityRules.class,
-                CoverityRulesRepositories.class,
                 CoverityProfiles.class,
                 CppLanguage.class,
                 CxxLanguage.class,

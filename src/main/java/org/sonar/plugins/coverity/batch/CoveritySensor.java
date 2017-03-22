@@ -36,10 +36,7 @@ import org.sonar.plugins.coverity.ws.CIMClientFactory;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import static org.sonar.plugins.coverity.util.CoverityUtil.createURL;
 
@@ -65,17 +62,16 @@ public class CoveritySensor implements Sensor {
 
     @Override
     public void describe(SensorDescriptor descriptor) {
+
+        String[] repositories = new String[CoverityPlugin.COVERITY_LANGUAGES.size()];
+        for(int i = 0; i < CoverityPlugin.COVERITY_LANGUAGES.size(); i++) {
+            repositories[i] = CoverityPlugin.REPOSITORY_KEY + "-" + CoverityPlugin.COVERITY_LANGUAGES.get(i);
+        }
+
         descriptor.name(this.toString())
-                .createIssuesForRuleRepositories(
-                        // todo: extract the list of langauges/repositories
-                        CoverityPlugin.REPOSITORY_KEY + "-java",
-                        CoverityPlugin.REPOSITORY_KEY + "-cs",
-                        CoverityPlugin.REPOSITORY_KEY + "-c",
-                        CoverityPlugin.REPOSITORY_KEY + "-cpp",
-                        CoverityPlugin.REPOSITORY_KEY + "-c++")
-                .requireProperties(
-                        // todo: evaluate whether the Connect properties are required here
-                        CoverityPlugin.COVERITY_PROJECT);
+                .createIssuesForRuleRepositories(repositories)
+                // Coverity project is the only required value which does not provide a default (other properties validates at runtime)
+                .requireProperties(CoverityPlugin.COVERITY_PROJECT);
 
     }
 
@@ -332,7 +328,7 @@ public class CoveritySensor implements Sensor {
         String covProject = sensorContext.settings().getString(CoverityPlugin.COVERITY_PROJECT);
         if (covProject != null) {
             sensorContext
-                    .newMeasure()
+                    .<String>newMeasure()
                     .forMetric(CoverityPluginMetrics.COVERITY_PROJECT_NAME)
                     .on(sensorContext.module())
                     .withValue(covProject)
@@ -342,7 +338,7 @@ public class CoveritySensor implements Sensor {
         String ProjectUrl = createURL(client);
         if (ProjectUrl != null) {
             sensorContext
-                    .newMeasure()
+                    .<String>newMeasure()
                     .forMetric(CoverityPluginMetrics.COVERITY_URL_CIM_METRIC)
                     .on(sensorContext.module())
                     .withValue(ProjectUrl)
@@ -351,38 +347,36 @@ public class CoveritySensor implements Sensor {
 
         String ProductKey= String.valueOf(covProjectObj.getProjectKey());
         ProjectUrl = ProjectUrl+"reports.htm#p"+ProductKey;
-        if (ProjectUrl != null) {
-            sensorContext
-                .newMeasure()
-                .forMetric(CoverityPluginMetrics.COVERITY_PROJECT_URL)
-                .on(sensorContext.module())
-                .withValue(ProjectUrl)
-                .save();
-        }
+        sensorContext
+            .<String>newMeasure()
+            .forMetric(CoverityPluginMetrics.COVERITY_PROJECT_URL)
+            .on(sensorContext.module())
+            .withValue(ProjectUrl)
+            .save();
 
         sensorContext
-                .newMeasure()
+                .<Integer>newMeasure()
                 .forMetric(CoverityPluginMetrics.COVERITY_OUTSTANDING_ISSUES)
                 .on(sensorContext.module())
                 .withValue(totalDefects)
                 .save();
 
         sensorContext
-                .newMeasure()
+                .<Integer>newMeasure()
                 .forMetric(CoverityPluginMetrics.COVERITY_HIGH_IMPACT)
                 .on(sensorContext.module())
                 .withValue(highImpactDefects)
                 .save();
 
         sensorContext
-                .newMeasure()
+                .<Integer>newMeasure()
                 .forMetric(CoverityPluginMetrics.COVERITY_MEDIUM_IMPACT)
                 .on(sensorContext.module())
                 .withValue(mediumImpactDefects)
                 .save();
 
         sensorContext
-                .newMeasure()
+                .<Integer>newMeasure()
                 .forMetric(CoverityPluginMetrics.COVERITY_LOW_IMPACT)
                 .on(sensorContext.module())
                 .withValue(lowImpactDefects)
