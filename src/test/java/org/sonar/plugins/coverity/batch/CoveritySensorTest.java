@@ -93,9 +93,10 @@ public class CoveritySensorTest {
 
         final String checkerName = "TEST_CHECKER";
         final String domain = "STATIC_JAVA";
+        final String subcategory = "none";
 
         final ActiveRulesBuilder rulesBuilder = new ActiveRulesBuilder();
-        final RuleKey ruleKey = RuleKey.of("coverity-java", domain + "_" + checkerName);
+        final RuleKey ruleKey = RuleKey.of("coverity-java", domain + "_" + checkerName + "_" + subcategory);
         final NewActiveRule javaTestChecker = rulesBuilder.create(ruleKey);
         sensorContextTester
                 .setActiveRules(new DefaultActiveRules(Arrays.asList(javaTestChecker)));
