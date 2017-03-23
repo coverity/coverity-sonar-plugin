@@ -8,6 +8,9 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>security</tag>
     </rule>
     <rule>
         <key>STATIC_CS_RISKY_CRYPTO_hashing</key>
@@ -18,6 +21,9 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>security</tag>
     </rule>
     <rule>
         <key>STATIC_CS_RISKY_CRYPTO_none</key>
@@ -28,6 +34,9 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>security</tag>
     </rule>
     <rule>
         <key>STATIC_CS_RISKY_CRYPTO_ssl_protocol</key>
@@ -38,6 +47,9 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>security</tag>
     </rule>
     <rule>
         <key>STATIC_CS_DIVIDE_BY_ZERO_float_divisor</key>
@@ -48,6 +60,9 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_DIVIDE_BY_ZERO_none</key>
@@ -58,6 +73,9 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_UNINTENDED_INTEGER_DIVISION_none</key>
@@ -68,6 +86,9 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_SCRIPT_CODE_INJECTION_none</key>
@@ -78,6 +99,9 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>security</tag>
     </rule>
     <rule>
         <key>STATIC_CS_UNKNOWN_LANGUAGE_INJECTION_none</key>
@@ -88,6 +112,9 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>security</tag>
     </rule>
     <rule>
         <key>STATIC_CS_OPEN_REDIRECT_none</key>
@@ -98,6 +125,9 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>security</tag>
     </rule>
     <rule>
         <key>STATIC_CS_XML_INJECTION_none</key>
@@ -108,6 +138,9 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>security</tag>
     </rule>
     <rule>
         <key>STATIC_CS_UNSAFE_DESERIALIZATION_none</key>
@@ -118,6 +151,9 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>security</tag>
     </rule>
     <rule>
         <key>STATIC_CS_BAD_EQ_none</key>
@@ -128,6 +164,9 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_BAD_EQ_referential</key>
@@ -138,6 +177,9 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_BAD_EQ_structural</key>
@@ -148,6 +190,9 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_BAD_EQ_TYPES_none</key>
@@ -158,6 +203,9 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_RESOURCE_LEAK_channel</key>
@@ -168,6 +216,9 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_RESOURCE_LEAK_database</key>
@@ -178,6 +229,9 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_RESOURCE_LEAK_exceptional_path</key>
@@ -188,6 +242,9 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_RESOURCE_LEAK_none</key>
@@ -198,6 +255,9 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_RESOURCE_LEAK_socket</key>
@@ -208,6 +268,9 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_RESOURCE_LEAK_stream</key>
@@ -218,6 +281,9 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_GUARDED_BY_VIOLATION_none</key>
@@ -228,6 +294,9 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_UNRESTRICTED_DISPATCH_none</key>
@@ -238,6 +307,9 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>security</tag>
     </rule>
     <rule>
         <key>STATIC_CS_CALL_SUPER_none</key>
@@ -248,6 +320,9 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_STRAY_SEMICOLON_none</key>
@@ -258,6 +333,9 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_CONFIG.ASPNET_VERSION_HEADER_none</key>
@@ -268,6 +346,9 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>security</tag>
     </rule>
     <rule>
         <key>STATIC_CS_coverity-cs</key>
@@ -278,6 +359,9 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_UNENCRYPTED_SENSITIVE_DATA_cleartext_in_classpath</key>
@@ -288,6 +372,9 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>security</tag>
     </rule>
     <rule>
         <key>STATIC_CS_UNENCRYPTED_SENSITIVE_DATA_cleartext_in_cookie</key>
@@ -298,6 +385,9 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>security</tag>
     </rule>
     <rule>
         <key>STATIC_CS_UNENCRYPTED_SENSITIVE_DATA_cleartext_in_database</key>
@@ -308,6 +398,9 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>security</tag>
     </rule>
     <rule>
         <key>STATIC_CS_UNENCRYPTED_SENSITIVE_DATA_cleartext_in_file</key>
@@ -318,6 +411,9 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>security</tag>
     </rule>
     <rule>
         <key>STATIC_CS_UNENCRYPTED_SENSITIVE_DATA_cleartext_transmission</key>
@@ -328,6 +424,9 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>security</tag>
     </rule>
     <rule>
         <key>STATIC_CS_UNENCRYPTED_SENSITIVE_DATA_none</key>
@@ -338,6 +437,9 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>security</tag>
     </rule>
     <rule>
         <key>STATIC_CS_NOSQL_QUERY_INJECTION_none</key>
@@ -348,6 +450,9 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>security</tag>
     </rule>
     <rule>
         <key>STATIC_CS_MISSING_AUTHZ_none</key>
@@ -358,6 +463,9 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>security</tag>
     </rule>
     <rule>
         <key>STATIC_CS_FORWARD_NULL_deref_constant_null</key>
@@ -368,6 +476,9 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_FORWARD_NULL_deref_constant_zero</key>
@@ -378,6 +489,9 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_FORWARD_NULL_dynamic_cast</key>
@@ -388,6 +502,9 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_FORWARD_NULL_none</key>
@@ -398,6 +515,9 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_FORWARD_NULL_null_from_as</key>
@@ -408,6 +528,9 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_LDAP_INJECTION_none</key>
@@ -418,6 +541,9 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>security</tag>
     </rule>
     <rule>
         <key>STATIC_CS_UNUSED_VALUE_adjacent</key>
@@ -428,6 +554,9 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_UNUSED_VALUE_none</key>
@@ -438,6 +567,9 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_CONFIG.COOKIES_MISSING_HTTPONLY_none</key>
@@ -448,6 +580,9 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>security</tag>
     </rule>
     <rule>
         <key>STATIC_CS_ASPNET_MVC_VERSION_HEADER_none</key>
@@ -458,6 +593,9 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>security</tag>
     </rule>
     <rule>
         <key>STATIC_CS_REVERSE_INULL_none</key>
@@ -468,6 +606,9 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_COPY_PASTE_ERROR_none</key>
@@ -478,6 +619,9 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_CONFIG.MISSING_CUSTOM_ERROR_PAGE_none</key>
@@ -488,6 +632,9 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>security</tag>
     </rule>
     <rule>
         <key>STATIC_CS_NESTING_INDENT_MISMATCH_bad_indentation</key>
@@ -498,6 +645,9 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_NESTING_INDENT_MISMATCH_none</key>
@@ -508,6 +658,9 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_USELESS_CALL_none</key>
@@ -518,6 +671,9 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_MSVSCA.*</key>
@@ -528,6 +684,11 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>msvsca</tag>
+        <tag>c++</tag>
+        <tag>c</tag>
+        <tag>quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_VOLATILE_ATOMICITY_compare</key>
@@ -538,6 +699,9 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_VOLATILE_ATOMICITY_none</key>
@@ -548,6 +712,9 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_VOLATILE_ATOMICITY_semantic</key>
@@ -558,6 +725,9 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_VOLATILE_ATOMICITY_threshold</key>
@@ -568,6 +738,9 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_OVERFLOW_BEFORE_WIDEN_none</key>
@@ -578,6 +751,9 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_XML_EXTERNAL_ENTITY_entity_expansion</key>
@@ -588,6 +764,9 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>security</tag>
     </rule>
     <rule>
         <key>STATIC_CS_XML_EXTERNAL_ENTITY_external_entities</key>
@@ -598,6 +777,9 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>security</tag>
     </rule>
     <rule>
         <key>STATIC_CS_XML_EXTERNAL_ENTITY_unrestricted_dtds</key>
@@ -608,6 +790,9 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>security</tag>
     </rule>
     <rule>
         <key>STATIC_CS_XML_EXTERNAL_ENTITY_none</key>
@@ -618,6 +803,9 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_CONSTANT_EXPRESSION_RESULT_bit_and_with_zero</key>
@@ -628,6 +816,9 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_CONSTANT_EXPRESSION_RESULT_extra_high_bits</key>
@@ -638,6 +829,9 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_CONSTANT_EXPRESSION_RESULT_logical_vs_bitwise</key>
@@ -648,6 +842,9 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_CONSTANT_EXPRESSION_RESULT_missing_parentheses</key>
@@ -658,6 +855,9 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_CONSTANT_EXPRESSION_RESULT_none</key>
@@ -668,6 +868,9 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_CONSTANT_EXPRESSION_RESULT_operator_confusion</key>
@@ -678,6 +881,9 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_CONSTANT_EXPRESSION_RESULT_result_independent_of_operands</key>
@@ -688,6 +894,9 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_CONSTANT_EXPRESSION_RESULT_same_on_both_sides</key>
@@ -698,6 +907,9 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_CONSTANT_EXPRESSION_RESULT_unnecessary_op_assign</key>
@@ -708,6 +920,9 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_HARDCODED_CREDENTIALS_hardcoded_credential_crypto</key>
@@ -718,6 +933,9 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>security</tag>
     </rule>
     <rule>
         <key>STATIC_CS_HARDCODED_CREDENTIALS_hardcoded_credential_passwd</key>
@@ -728,6 +946,9 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>security</tag>
     </rule>
     <rule>
         <key>STATIC_CS_HARDCODED_CREDENTIALS_hardcoded_credential_token</key>
@@ -738,6 +959,9 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>security</tag>
     </rule>
     <rule>
         <key>STATIC_CS_HARDCODED_CREDENTIALS_none</key>
@@ -748,6 +972,9 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>security</tag>
     </rule>
     <rule>
         <key>STATIC_CS_HARDCODED_CREDENTIALS_hardcoded_credential_connection_string</key>
@@ -758,6 +985,9 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>security</tag>
     </rule>
     <rule>
         <key>STATIC_CS_LOCK_INVERSION_none</key>
@@ -768,6 +998,9 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_XSS_none</key>
@@ -778,6 +1011,9 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>security</tag>
     </rule>
     <rule>
         <key>STATIC_CS_XSS_stored_xss</key>
@@ -788,6 +1024,9 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>security</tag>
     </rule>
     <rule>
         <key>STATIC_CS_CSRF_database_update</key>
@@ -798,6 +1037,9 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>security</tag>
     </rule>
     <rule>
         <key>STATIC_CS_CSRF_filesystem_modification</key>
@@ -808,6 +1050,9 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>security</tag>
     </rule>
     <rule>
         <key>STATIC_CS_CSRF_none</key>
@@ -818,6 +1063,9 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>security</tag>
     </rule>
     <rule>
         <key>STATIC_CS_BAD_SHIFT_none</key>
@@ -828,6 +1076,9 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_CONFIG.ASP_VIEWSTATE_MAC_none</key>
@@ -838,6 +1089,9 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>security</tag>
     </rule>
     <rule>
         <key>STATIC_CS_INFINITE_LOOP_no_escape</key>
@@ -848,6 +1102,9 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_INFINITE_LOOP_none</key>
@@ -858,6 +1115,9 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_CONFIG.DEAD_AUTHORIZATION_RULE_dead_deny_rule</key>
@@ -868,6 +1128,9 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>security</tag>
     </rule>
     <rule>
         <key>STATIC_CS_CONFIG.DEAD_AUTHORIZATION_RULE_dead_allow_rule</key>
@@ -878,6 +1141,9 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>security</tag>
     </rule>
     <rule>
         <key>STATIC_CS_CONFIG.DEAD_AUTHORIZATION_RULE_none</key>
@@ -888,6 +1154,9 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_MS.*_none</key>
@@ -898,6 +1167,9 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_OS_CMD_INJECTION_command_argument</key>
@@ -908,6 +1180,9 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>security</tag>
     </rule>
     <rule>
         <key>STATIC_CS_OS_CMD_INJECTION_executable_file</key>
@@ -918,6 +1193,9 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>security</tag>
     </rule>
     <rule>
         <key>STATIC_CS_OS_CMD_INJECTION_none</key>
@@ -928,6 +1206,9 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>security</tag>
     </rule>
     <rule>
         <key>STATIC_CS_WEAK_PASSWORD_HASH_none</key>
@@ -938,6 +1219,9 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>security</tag>
     </rule>
     <rule>
         <key>STATIC_CS_WEAK_PASSWORD_HASH_weak_hash</key>
@@ -948,6 +1232,9 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>security</tag>
     </rule>
     <rule>
         <key>STATIC_CS_WEAK_PASSWORD_HASH_weak_hash_no_salt</key>
@@ -958,6 +1245,9 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>security</tag>
     </rule>
     <rule>
         <key>STATIC_CS_WEAK_PASSWORD_HASH_weak_hash_weak_salt</key>
@@ -968,6 +1258,9 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>security</tag>
     </rule>
     <rule>
         <key>STATIC_CS_WEAK_PASSWORD_HASH_weak_salt</key>
@@ -978,6 +1271,9 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>security</tag>
     </rule>
     <rule>
         <key>STATIC_CS_PATH_MANIPULATION_none</key>
@@ -988,6 +1284,9 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>security</tag>
     </rule>
     <rule>
         <key>STATIC_CS_IDENTICAL_BRANCHES_case</key>
@@ -998,6 +1297,9 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_IDENTICAL_BRANCHES_chain</key>
@@ -1008,6 +1310,9 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_IDENTICAL_BRANCHES_if</key>
@@ -1018,6 +1323,9 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_IDENTICAL_BRANCHES_ternary</key>
@@ -1028,6 +1336,9 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_IDENTICAL_BRANCHES_none</key>
@@ -1038,6 +1349,9 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_CONFIG.CONNECTION_STRING_PASSWORD_none</key>
@@ -1048,6 +1362,9 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>security</tag>
     </rule>
     <rule>
         <key>STATIC_CS_MISSING_THROW_none</key>
@@ -1058,6 +1375,9 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_ATOMICITY_none</key>
@@ -1068,6 +1388,9 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_MISSING_RESTORE_likely</key>
@@ -1078,6 +1401,9 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_MISSING_RESTORE_none</key>
@@ -1088,6 +1414,9 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_MISSING_RESTORE_possible</key>
@@ -1098,6 +1427,9 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_SENSITIVE_DATA_LEAK_cleartext_exception_storage_in_gui</key>
@@ -1108,6 +1440,9 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>security</tag>
     </rule>
     <rule>
         <key>STATIC_CS_SENSITIVE_DATA_LEAK_cleartext_storage_in_cookie</key>
@@ -1118,6 +1453,9 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>security</tag>
     </rule>
     <rule>
         <key>STATIC_CS_SENSITIVE_DATA_LEAK_cleartext_storage_in_database</key>
@@ -1128,6 +1466,9 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>security</tag>
     </rule>
     <rule>
         <key>STATIC_CS_SENSITIVE_DATA_LEAK_cleartext_storage_in_file</key>
@@ -1138,6 +1479,9 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>security</tag>
     </rule>
     <rule>
         <key>STATIC_CS_SENSITIVE_DATA_LEAK_cleartext_storage_in_gui</key>
@@ -1148,6 +1492,9 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>security</tag>
     </rule>
     <rule>
         <key>STATIC_CS_SENSITIVE_DATA_LEAK_cleartext_storage_in_log</key>
@@ -1158,6 +1505,9 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>security</tag>
     </rule>
     <rule>
         <key>STATIC_CS_SENSITIVE_DATA_LEAK_cleartext_storage_in_registry</key>
@@ -1168,6 +1518,9 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>security</tag>
     </rule>
     <rule>
         <key>STATIC_CS_SENSITIVE_DATA_LEAK_cleartext_transmission</key>
@@ -1178,6 +1531,9 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>security</tag>
     </rule>
     <rule>
         <key>STATIC_CS_SENSITIVE_DATA_LEAK_none</key>
@@ -1188,6 +1544,9 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>security</tag>
     </rule>
     <rule>
         <key>STATIC_CS_NON_STATIC_GUARDING_STATIC_none</key>
@@ -1198,6 +1557,9 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_CONFIG.ENABLED_TRACE_MODE_none</key>
@@ -1208,6 +1570,9 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>security</tag>
     </rule>
     <rule>
         <key>STATIC_CS_NULL_RETURNS_none</key>
@@ -1218,6 +1583,9 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_NULL_RETURNS_unimpl</key>
@@ -1228,6 +1596,9 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_XPATH_INJECTION_none</key>
@@ -1238,6 +1609,9 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>security</tag>
     </rule>
     <rule>
         <key>STATIC_CS_HEADER_INJECTION_none</key>
@@ -1248,6 +1622,9 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>security</tag>
     </rule>
     <rule>
         <key>STATIC_CS_SWAPPED_ARGUMENTS_none</key>
@@ -1258,6 +1635,9 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_CONFIG.ENABLED_DEBUG_MODE_none</key>
@@ -1268,6 +1648,9 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>security</tag>
     </rule>
     <rule>
         <key>STATIC_CS_BAD_LOCK_OBJECT_boxed_lock</key>
@@ -1278,6 +1661,9 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_BAD_LOCK_OBJECT_interned_string_lock</key>
@@ -1288,6 +1674,9 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_BAD_LOCK_OBJECT_none</key>
@@ -1298,6 +1687,9 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_BAD_LOCK_OBJECT_single_thread_lock</key>
@@ -1308,6 +1700,9 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_BAD_LOCK_OBJECT_unsafe_assign_to_locked_field</key>
@@ -1318,6 +1713,9 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_DEADCODE_dead_case_in_switch</key>
@@ -1328,6 +1726,9 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_DEADCODE_dead_default_in_switch</key>
@@ -1338,6 +1739,9 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_DEADCODE_effectively_constant</key>
@@ -1348,6 +1752,9 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_DEADCODE_none</key>
@@ -1358,6 +1765,9 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_DEADCODE_redundant_test</key>
@@ -1368,6 +1778,9 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_REGEX_INJECTION_none</key>
@@ -1378,6 +1791,9 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>security</tag>
     </rule>
     <rule>
         <key>STATIC_CS_INSECURE_RANDOM_insecure_random_used</key>
@@ -1388,6 +1804,10 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>quality</tag>
+        <tag>security</tag>
     </rule>
     <rule>
         <key>STATIC_CS_INSECURE_RANDOM_insecure_random_value</key>
@@ -1398,6 +1818,10 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>quality</tag>
+        <tag>security</tag>
     </rule>
     <rule>
         <key>STATIC_CS_INSECURE_RANDOM_none</key>
@@ -1408,6 +1832,9 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_SQLI_none</key>
@@ -1418,6 +1845,9 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>security</tag>
     </rule>
     <rule>
         <key>STATIC_CS_SQLI_nosink</key>
@@ -1428,6 +1858,9 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>security</tag>
     </rule>
     <rule>
         <key>STATIC_CS_SQLI_sink</key>
@@ -1438,6 +1871,9 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>security</tag>
     </rule>
     <rule>
         <key>STATIC_CS_LOCK_EVASION_none</key>
@@ -1448,6 +1884,9 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_TAINT_ASSERT_none</key>
@@ -1458,6 +1897,9 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>security</tag>
     </rule>
     <rule>
         <key>STATIC_CS_UNREACHABLE_none</key>
@@ -1468,5 +1910,8 @@
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>quality</tag>
     </rule>
 </rules>

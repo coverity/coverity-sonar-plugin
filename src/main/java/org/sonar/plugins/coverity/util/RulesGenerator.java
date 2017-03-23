@@ -142,7 +142,10 @@ public class RulesGenerator {
                             getSeverity(impact),
                             subcategory,
                             getDescription(subcategoryLongDescription),
-                            getRuleType(qualityKind, securityKind));
+                            getRuleType(qualityKind, securityKind),
+                            lang);
+                    addLanguageTag(rule);
+                    addRuleTypeTag(rule, qualityKind, securityKind);
                     putRuleIntoMap(lang, rule);
                 }
             }
@@ -192,7 +195,11 @@ public class RulesGenerator {
                         getSeverity(impact),
                         subcategory,
                         getDescription(description),
-                        getRuleType(qualityKind, securityKind));
+                        getRuleType(qualityKind, securityKind),
+                        JAVA_LANGUAGE);
+                addAdditionalTag(rule, "findbugs");
+                addLanguageTag(rule);
+                addRuleTypeTag(rule, qualityKind, securityKind);
                 putRuleIntoMap(JAVA_LANGUAGE, rule);
             }
         } catch (FileNotFoundException e) {
@@ -353,8 +360,10 @@ public class RulesGenerator {
                         rule.getSeverity(),
                         "none",
                         rule.getDescription(),
-                        BUG);
-
+                        BUG,
+                        language);
+                addLanguageTag(newRule);
+                addRuleTypeTag(newRule, true, false);
                 rulesList.get(language).get(newRule.getCheckerName()).add(newRule);
             }
         }
@@ -369,10 +378,13 @@ public class RulesGenerator {
                 "MAJOR",
                 "none",
                 "Coverity General " + StringUtils.upperCase(language),
-                BUG
+                BUG,
+                language
             );
 
             List<InternalRule> list = new ArrayList<InternalRule>();
+            addLanguageTag(newRule);
+            addRuleTypeTag(newRule, true, false);
             list.add(newRule);
             rulesList.get(language).put(newRule.getCheckerName(), list);
         }
@@ -388,8 +400,10 @@ public class RulesGenerator {
                 "MAJOR",
                 "none",
                 "Coverity MISRA : Coding Standard Violation",
-                BUG
+                BUG,
+                CS_LANGUAGE
         );
+        addAdditionalTag(misraRule, "misra");
         rules.add(misraRule);
 
         InternalRule pwRule = new InternalRule(
@@ -399,8 +413,10 @@ public class RulesGenerator {
                 "MAJOR",
                 "none",
                 "Coverity PW : Parse Warnings",
-                BUG
+                BUG,
+                CPP_LANGUAGE
         );
+        addAdditionalTag(pwRule, "parse-warning");
         rules.add(pwRule);
 
         InternalRule swRule = new InternalRule(
@@ -410,8 +426,10 @@ public class RulesGenerator {
                 "MAJOR",
                 "none",
                 "Coverity SW : Semantic Warnings",
-                BUG
+                BUG,
+                CPP_LANGUAGE
         );
+        addAdditionalTag(swRule, "semantic-warning");
         rules.add(swRule);
 
         InternalRule rwRule = new InternalRule(
@@ -421,8 +439,10 @@ public class RulesGenerator {
                 "MAJOR",
                 "none",
                 "Coverity RW : Recovery Warnings",
-                BUG
+                BUG,
+                CPP_LANGUAGE
         );
+        addAdditionalTag(rwRule, "recovery-warning");
         rules.add(rwRule);
 
         InternalRule msvscaRule = new InternalRule(
@@ -432,12 +452,16 @@ public class RulesGenerator {
                 "MAJOR",
                 "none",
                 "Coverity MSVSCA : Microsoft Visual Studio Code Analysis",
-                BUG
+                BUG,
+                CPP_LANGUAGE
         );
+        addAdditionalTag(msvscaRule, "msvsca");
         rules.add(msvscaRule);
 
         for (InternalRule rule : rules) {
             List<InternalRule> tempList = new ArrayList<InternalRule>();
+            addLanguageTag(rule);
+            addRuleTypeTag(rule, true, false);
             tempList.add(rule);
             if (rule.getKey().equals("MSVSCA.*")) {
                 rulesList.get(CS_LANGUAGE).put(rule.getCheckerName(), tempList);
@@ -449,5 +473,32 @@ public class RulesGenerator {
 
     public static void setOutputFilePath(String filePath) {
         outputFilePath = filePath;
+    }
+
+    public static void addAdditionalTag(InternalRule rule, String tag) {
+        if (rule != null && !StringUtils.isEmpty(tag)) {
+            rule.getTags().add(tag);
+        }
+    }
+
+    public static void addLanguageTag(InternalRule rule) {
+        if (rule.getLanguage().equals(JAVA_LANGUAGE)) {
+            rule.getTags().add("java");
+        } else if (rule.getLanguage().equals(CPP_LANGUAGE)) {
+            rule.getTags().add("c++");
+            rule.getTags().add("c");
+        } else if (rule.getLanguage().equals(CS_LANGUAGE)) {
+            rule.getTags().add("c#");
+        }
+    }
+
+    public static void addRuleTypeTag(InternalRule rule, boolean qualityKind, boolean securityKind) {
+        if (qualityKind) {
+            rule.getTags().add("quality");
+        }
+
+        if (securityKind) {
+            rule.getTags().add("security");
+        }
     }
 }
