@@ -670,6 +670,16 @@
         <type>VULNERABILITY</type>
     </rule>
     <rule>
+        <key>STATIC_C_coverity-cov-cpp</key>
+        <name>Coverity General COV-CPP</name>
+        <internalKey>STATIC_C_coverity-cov-cpp</internalKey>
+        <description>Coverity General COV-CPP</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+    </rule>
+    <rule>
         <key>STATIC_C_INVALIDATE_ITERATOR_none</key>
         <name>API usage errors : Using invalid iterator</name>
         <internalKey>STATIC_C_INVALIDATE_ITERATOR_none</internalKey>
@@ -1695,16 +1705,6 @@
         <internalKey>STATIC_C_CHAR_IO_none</internalKey>
         <description>Stdio character-oriented I/O functions return int values such as EOF not representable by char variables</description>
         <severity>CRITICAL</severity>
-        <cardinality>SINGLE</cardinality>
-        <status>READY</status>
-        <type>BUG</type>
-    </rule>
-    <rule>
-        <key>STATIC_C_coverity-cpp</key>
-        <name>Coverity General CPP</name>
-        <internalKey>STATIC_C_coverity-cpp</internalKey>
-        <description>Coverity General CPP</description>
-        <severity>MAJOR</severity>
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>BUG</type>
