@@ -22,7 +22,6 @@ import org.sonar.plugins.coverity.server.CoverityProfiles;
 import org.sonar.plugins.coverity.server.CoverityRules;
 import org.sonar.plugins.coverity.ui.CoverityWidget;
 import org.sonar.plugins.coverity.server.CppLanguage;
-import org.sonar.plugins.coverity.server.CxxLanguage;
 import org.sonar.plugins.coverity.server.CLanguage;
 import org.sonar.plugins.coverity.ws.CIMClientFactory;
 
@@ -46,7 +45,6 @@ public final class CoverityPlugin implements Plugin {
                     "java",
                     "cs",
                     CppLanguage.KEY,
-                    CxxLanguage.KEY,
                     CLanguage.KEY);
 
     // This is where you're going to declare all your Sonar extensions
@@ -140,7 +138,6 @@ public final class CoverityPlugin implements Plugin {
                 CoverityRules.class,
                 CoverityProfiles.class,
                 CppLanguage.class,
-                CxxLanguage.class,
                 CLanguage.class,
 
                 //UI
