@@ -63,7 +63,6 @@ public class CoveritySensorTest {
         final List<String> expectedRepositories = Arrays.asList(CoverityPlugin.REPOSITORY_KEY + "-java",
                 CoverityPlugin.REPOSITORY_KEY + "-cs",
                 CoverityPlugin.REPOSITORY_KEY + "-cpp",
-                CoverityPlugin.REPOSITORY_KEY + "-c++",
                 CoverityPlugin.REPOSITORY_KEY + "-c");
         assertEquals(expectedRepositories, descriptor.ruleRepositories());
         assertEquals(Arrays.asList(CoverityPlugin.COVERITY_PROJECT), descriptor.properties());
