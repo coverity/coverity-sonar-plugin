@@ -18,8 +18,9 @@ public class InternalRule{
     private String description;
     private String ruleType = "";
     private String checkerName = "";
+    private String language = "";
 
-    public InternalRule(String key, String ruleName, String checkerName, String severity, String subcategory, String description, String ruleType){
+    public InternalRule(String key, String ruleName, String checkerName, String severity, String subcategory, String description, String ruleType, String language){
         this.key = key;
         this.ruleName = ruleName;
         this.severity = severity;
@@ -27,7 +28,9 @@ public class InternalRule{
         this.description = description;
         this.checkerName = checkerName;
         this.ruleType = ruleType;
+        this.language = language;
         this.tags = new ArrayList<>();
+        this.tags.add("coverity");
     }
 
     public String getKey() {
@@ -62,7 +65,7 @@ public class InternalRule{
         return this.ruleType;
     }
 
-
+    public String getLanguage() { return this.language; }
 
     @Override
     public boolean equals(Object obj) {
