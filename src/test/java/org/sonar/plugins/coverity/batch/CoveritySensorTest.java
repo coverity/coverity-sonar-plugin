@@ -28,6 +28,7 @@ import org.sonar.api.batch.sensor.measure.Measure;
 import org.sonar.api.rule.RuleKey;
 import org.sonar.plugins.coverity.CoverityPlugin;
 import org.sonar.plugins.coverity.base.CoverityPluginMetrics;
+import org.sonar.plugins.coverity.server.CppLanguage;
 import org.sonar.plugins.coverity.ws.CIMClient;
 import org.sonar.plugins.coverity.ws.CIMClientFactory;
 import org.sonar.plugins.coverity.ws.TestCIMClient;
@@ -62,8 +63,7 @@ public class CoveritySensorTest {
         assertEquals(sensor.toString(), descriptor.name());
         final List<String> expectedRepositories = Arrays.asList(CoverityPlugin.REPOSITORY_KEY + "-java",
                 CoverityPlugin.REPOSITORY_KEY + "-cs",
-                CoverityPlugin.REPOSITORY_KEY + "-cpp",
-                CoverityPlugin.REPOSITORY_KEY + "-c");
+                CoverityPlugin.REPOSITORY_KEY + "-" + CppLanguage.KEY);
         assertEquals(expectedRepositories, descriptor.ruleRepositories());
         assertEquals(Arrays.asList(CoverityPlugin.COVERITY_PROJECT), descriptor.properties());
     }
