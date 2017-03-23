@@ -66,7 +66,6 @@ public class CoverityRules implements RulesDefinition {
 
     public static Map<String, org.sonar.api.rules.Rule> javaRulesToBeActivated = new HashMap<String, org.sonar.api.rules.Rule>();
     public static Map<String, org.sonar.api.rules.Rule> cppRulesToBeActivated = new HashMap<String, org.sonar.api.rules.Rule>();
-    public static Map<String, org.sonar.api.rules.Rule> cRulesToBeActivated = new HashMap<String, org.sonar.api.rules.Rule>();
     public static Map<String, org.sonar.api.rules.Rule> csRulesToBeActivated = new HashMap<String, org.sonar.api.rules.Rule>();
 
     public static Map<String, Map<String, org.sonar.api.rules.Rule>> getMapOfRuleMaps() {
@@ -78,7 +77,6 @@ public class CoverityRules implements RulesDefinition {
     static {
         mapOfRuleMaps.put("java", javaRulesToBeActivated);
         mapOfRuleMaps.put("cpp", cppRulesToBeActivated);
-        mapOfRuleMaps.put("c", cRulesToBeActivated);
         mapOfRuleMaps.put("cs", csRulesToBeActivated);
     }
 
@@ -150,14 +148,6 @@ public class CoverityRules implements RulesDefinition {
                 covRule.setSeverity(RulePriority.valueOf(severity));
 
                 mapOfRuleMaps.get(language).put(key, covRule);
-                if(language.equals("cpp")){
-                    org.sonar.api.rules.Rule covRuleC = org.sonar.api.rules.Rule.create("coverity-" + "c", key);
-                    covRuleC.setName(name);
-                    covRuleC.setLanguage("c");
-                    covRuleC.setDescription(description);
-                    covRuleC.setSeverity(RulePriority.valueOf(severity));
-                    mapOfRuleMaps.get("c").put(key, covRuleC);
-                }
             }
         }
 
@@ -167,20 +157,6 @@ public class CoverityRules implements RulesDefinition {
     @Override
     public void define(Context context) {
         parseRules();
-
-        /* These extra repositories are added in order to support the licensed
-        *  version (called cpp). Also we create a "c profile", although rules for c and cpp are the same.
-        */
-        List<String> otherLanguages = new ArrayList<String>();
-        otherLanguages.add("c");
-
-        for(String language : otherLanguages){
-            NewRepository repository = context.createRepository(CoverityPlugin.REPOSITORY_KEY + "-" + language, language).setName(language + "-repository");
-            String fileDir = "coverity-cpp.xml";
-            InputStream in = getClass().getResourceAsStream(fileDir);
-            xmlLoader.load(repository, in, "UTF-8");
-            repository.done();
-        }
 
         for(String language : languages){
             NewRepository repository = context.createRepository(CoverityPlugin.REPOSITORY_KEY + "-" + language, language).setName(language + "-repository");
