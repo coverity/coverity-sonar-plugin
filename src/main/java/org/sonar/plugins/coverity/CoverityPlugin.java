@@ -37,6 +37,7 @@ public final class CoverityPlugin implements Plugin {
     public static final String COVERITY_PREFIX = "sonar.coverity.prefix";
     public static final String COVERITY_SOURCE_DIRECTORY = "sonar.coverity.sources.directory";
     public static final String COVERITY_CONNECT_SSL = "sonar.coverity.ssl";
+    public static final String COVERITY_C_CPP_SOURCE_FILE_SUFFIXES = "sonar.coverity.cov-cpp.suffixes";
     public static final String REPOSITORY_KEY = "coverity";
 
     public static List<String> COVERITY_LANGUAGES =
@@ -95,6 +96,16 @@ public final class CoverityPlugin implements Plugin {
                         .type(PropertyType.STRING)
                         .onlyOnQualifiers(Qualifiers.PROJECT)
                         .index(++i)
+                        .build(),
+
+                // language properties
+                PropertyDefinition.builder(COVERITY_C_CPP_SOURCE_FILE_SUFFIXES)
+                        .name("C/C++ source files suffixes")
+                        .description("Comma-separated list of source file suffixes to retrieve issues from Coverity Connect.")
+                        .defaultValue(CppLanguage.DEFAULT_SUFFIXES)
+                        .subCategory("Languages")
+                        .type(PropertyType.STRING)
+                        .index(1)
                         .build(),
                 /*
                 * Coverity analysis may not be performed on the same directory as Sonar analysis,
