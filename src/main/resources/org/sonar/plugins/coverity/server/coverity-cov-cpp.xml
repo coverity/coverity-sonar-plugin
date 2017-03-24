@@ -2423,10 +2423,6 @@
         <tag>quality</tag>
     </rule>
     <rule>
-        <tag>coverity</tag>
-        <tag>c++</tag>
-        <tag>c</tag>
-        <tag>quality</tag>
         <key>STATIC_C_PW.SHIFT_COUNT_TOO_LARGE_none</key>
         <name>Integer handling issues : Integer overflow warning</name>
         <internalKey>STATIC_C_PW.SHIFT_COUNT_TOO_LARGE_none</internalKey>
