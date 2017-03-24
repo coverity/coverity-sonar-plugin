@@ -227,12 +227,6 @@ public class CoveritySensor implements Sensor {
                     continue;
                 }
 
-                String lang = inputFile.language();
-                // This is a way to introduce support for community c++
-                if (lang == null) {
-                    lang = context.settings().getString(CoreProperties.PROJECT_LANGUAGE_PROPERTY);
-                }
-
                 for(DefectInstanceDataObj dido : didos) {
                     //find the main event, so we can use its line number
                     EventDataObj mainEvent = getMainEvent(dido);
@@ -242,7 +236,7 @@ public class CoveritySensor implements Sensor {
                         subcategory = "none";
                     }
 
-                    ActiveRule ar = findActiveRule(context, dido.getDomain(), dido.getCheckerName(), subcategory, lang);
+                    ActiveRule ar = findActiveRule(context, dido.getDomain(), dido.getCheckerName(), subcategory, inputFile.language());
 
                     LOG.debug("mainEvent=" + mainEvent);
                     LOG.debug("ar=" + ar);

@@ -12,50 +12,53 @@
 package org.sonar.plugins.coverity.server;
 
 import org.sonar.api.ExtensionPoint;
+import org.sonar.api.config.Settings;
 import org.sonar.api.resources.AbstractLanguage;
 import org.sonar.api.server.ServerSide;
+import org.sonar.plugins.coverity.CoverityPlugin;
 
 /**
- * Fix Bug 71347. When adding a new profile Sonarqube's server checks if the language of that profile is on a list of
- * accepted languages. If not, it will not store rules for that profile, but it will try to create a profile anyway,
- * resulting on a null pointer exception when trying to access the rules for that profile. This can cause the server to
- * crash at star up.
- * This class defines a language that will be added to that list of accepted languages.
+ * This class defines a language that will be added to that list of accepted languages. This language is specific to
+ * the Coverity plugin C/C++ languages. Combining C and C++ was done for simplicity and a unique key/name was chosen
+ * intentionally to avoid conflicts with existing sonar plugins (such as community version, c++, and licensed
+ *  version, cpp).
  */
 @ServerSide
 @ExtensionPoint
 public class CppLanguage extends AbstractLanguage {
-    public static final CppLanguage INSTANCE = new CppLanguage();
+    /**
+     * Coverity C/C++ language key
+     */
+    public static final String KEY = "cov-cpp";
 
     /**
-     * Cpp key
+     * Coverity C/C++ language name
      */
-    public static final String KEY = "cpp";
+    public static final String NAME = "C/C++";
 
     /**
-     * Cpp name
+     * Default Coverity C/C++ file suffixes
      */
-    public static final String NAME = "C++";
+    public static final String DEFAULT_SUFFIXES = ".cpp, .cc, .c++, .cp, .cxx, .c, .hxx, .hpp, .hh, .h";
 
-    /**
-     * Default package name for classes without package def
-     */
-    public static final String DEFAULT_PACKAGE_NAME = "[default]";
-
-    /**
-     * Cpp files knows suffixes
-     */
-    public static final String[] SUFFIXES = {".cpp", ".cc", ".c++", ".cp", ".cxx", ".hxx", ".hpp", ".hh", ".h"};
+    private final String[] covSuffixes;
 
     /**
      * Default constructor
      */
-    public CppLanguage() {
+    public CppLanguage(Settings settings) {
         super(KEY, NAME);
+
+        String[] configuredSuffixes = settings.getStringArray(CoverityPlugin.COVERITY_C_CPP_SOURCE_FILE_SUFFIXES);
+        if (configuredSuffixes != null && configuredSuffixes.length > 0) {
+            covSuffixes = configuredSuffixes;
+        } else {
+            covSuffixes = DEFAULT_SUFFIXES.split(",");
+        }
     }
 
     @Override
     public String[] getFileSuffixes() {
-        return SUFFIXES;
+        return covSuffixes;
     }
 }

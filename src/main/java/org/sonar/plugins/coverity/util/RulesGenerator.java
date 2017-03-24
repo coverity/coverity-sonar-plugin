@@ -16,6 +16,7 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+import org.sonar.plugins.coverity.server.CppLanguage;
 import org.sonar.plugins.coverity.server.InternalRule;
 
 import java.io.*;
@@ -25,7 +26,7 @@ public class RulesGenerator {
 
     static Map<String, Map<String, List<InternalRule>>> rulesList = new HashMap<String, Map<String, List<InternalRule>>>();
     static final String JAVA_LANGUAGE = "java";
-    static final String CPP_LANGUAGE = "cpp";
+    static final String CPP_LANGUAGE = CppLanguage.KEY;
     static final String CS_LANGUAGE = "cs";
     static final String VULNERABILITY = "VULNERABILITY";
     static final String BUG = "BUG";

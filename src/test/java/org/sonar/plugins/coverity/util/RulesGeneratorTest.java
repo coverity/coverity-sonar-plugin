@@ -34,7 +34,7 @@ public class RulesGeneratorTest {
     private final String findbugsJsonFile = "src/test/java/org/sonar/plugins/coverity/util/findbugs-checker-properties.json";
 
     private final String javaOutputFilePath = "./test/coverity-java.xml";
-    private final String cppOutputFilePath = "./test/coverity-cpp.xml";
+    private final String cppOutputFilePath = "./test/coverity-cov-cpp.xml";
     private final String csOutputFilePath = "./test/coverity-cs.xml";
 
     @Before
@@ -199,9 +199,9 @@ public class RulesGeneratorTest {
                 Element element = (Element) node;
                 String key = getValue("key", element);
 
-                // STATIC_C_coverity-cpp
-                if (key.equals("STATIC_C_coverity-cpp")) {
-                    Assert.assertEquals("Coverity General CPP", getValue("name", element));
+                // STATIC_C_coverity-cov-cpp
+                if (key.equals("STATIC_C_coverity-cov-cpp")) {
+                    Assert.assertEquals("Coverity General COV-CPP", getValue("name", element));
                     general = true;
                 }
 

@@ -22,8 +22,6 @@ import org.sonar.plugins.coverity.server.CoverityProfiles;
 import org.sonar.plugins.coverity.server.CoverityRules;
 import org.sonar.plugins.coverity.ui.CoverityWidget;
 import org.sonar.plugins.coverity.server.CppLanguage;
-import org.sonar.plugins.coverity.server.CxxLanguage;
-import org.sonar.plugins.coverity.server.CLanguage;
 import org.sonar.plugins.coverity.ws.CIMClientFactory;
 
 import java.util.Arrays;
@@ -39,15 +37,14 @@ public final class CoverityPlugin implements Plugin {
     public static final String COVERITY_PREFIX = "sonar.coverity.prefix";
     public static final String COVERITY_SOURCE_DIRECTORY = "sonar.coverity.sources.directory";
     public static final String COVERITY_CONNECT_SSL = "sonar.coverity.ssl";
+    public static final String COVERITY_C_CPP_SOURCE_FILE_SUFFIXES = "sonar.coverity.cov-cpp.suffixes";
     public static final String REPOSITORY_KEY = "coverity";
 
     public static List<String> COVERITY_LANGUAGES =
             Arrays.asList(
                     "java",
                     "cs",
-                    CppLanguage.KEY,
-                    CxxLanguage.KEY,
-                    CLanguage.KEY);
+                    CppLanguage.KEY);
 
     // This is where you're going to declare all your Sonar extensions
     private List getExtensions() {
@@ -100,6 +97,16 @@ public final class CoverityPlugin implements Plugin {
                         .onlyOnQualifiers(Qualifiers.PROJECT)
                         .index(++i)
                         .build(),
+
+                // language properties
+                PropertyDefinition.builder(COVERITY_C_CPP_SOURCE_FILE_SUFFIXES)
+                        .name("C/C++ source files suffixes")
+                        .description("Comma-separated list of source file suffixes to retrieve issues from Coverity Connect.")
+                        .defaultValue(CppLanguage.DEFAULT_SUFFIXES)
+                        .subCategory("Languages")
+                        .type(PropertyType.STRING)
+                        .index(1)
+                        .build(),
                 /*
                 * Coverity analysis may not be performed on the same directory as Sonar analysis,
                 * so in some case we need to remove the beginning of the filename to make it
@@ -140,8 +147,6 @@ public final class CoverityPlugin implements Plugin {
                 CoverityRules.class,
                 CoverityProfiles.class,
                 CppLanguage.class,
-                CxxLanguage.class,
-                CLanguage.class,
 
                 //UI
                 CoverityWidget.class,
