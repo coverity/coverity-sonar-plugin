@@ -417,6 +417,9 @@ public class CoveritySensor implements Sensor {
             } else if (domain.equals("STATIC_JAVA")) {
                 rk = CoverityUtil.getRuleKey(lang, "STATIC_JAVA_coverity-java");
                 ar = context.activeRules().find(rk);
+            } else if (domain.equals("OTHER") && lang.equals("js")) {
+                rk = CoverityUtil.getRuleKey(lang, "OTHER_coverity-js");
+                ar = context.activeRules().find(rk);
             }
         }
 

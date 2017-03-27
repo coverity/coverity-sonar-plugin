@@ -28,6 +28,7 @@ public class RulesGenerator {
     static final String JAVA_LANGUAGE = "java";
     static final String CPP_LANGUAGE = CppLanguage.KEY;
     static final String CS_LANGUAGE = "cs";
+    static final String JAVASCRIPT_LANGUAGE = "js";
     static final String VULNERABILITY = "VULNERABILITY";
     static final String BUG = "BUG";
 
@@ -238,6 +239,8 @@ public class RulesGenerator {
                 domain = "STATIC_C";
             } else if (language.equals(CS_LANGUAGE)) {
                 domain = "STATIC_CS";
+            } else if (language.equals(JAVASCRIPT_LANGUAGE)) {
+                domain = "OTHER";
             }
 
             for (String key : rulesList.get(language).keySet()) {
@@ -273,6 +276,8 @@ public class RulesGenerator {
             return CPP_LANGUAGE;
         } else if (lang.equals("C#")) {
             return CS_LANGUAGE;
+        } else if (lang.equals("JavaScript")) {
+            return JAVASCRIPT_LANGUAGE;
         }
 
         return StringUtils.EMPTY;
@@ -490,6 +495,8 @@ public class RulesGenerator {
             rule.getTags().add("c");
         } else if (rule.getLanguage().equals(CS_LANGUAGE)) {
             rule.getTags().add("c#");
+        } else if (rule.getLanguage().equals(JAVASCRIPT_LANGUAGE)) {
+            rule.getTags().add("js");
         }
     }
 
