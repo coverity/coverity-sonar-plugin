@@ -18,6 +18,8 @@ import org.sonar.api.ExtensionProvider;
 import org.sonar.api.profiles.ProfileDefinition;
 import org.sonar.api.profiles.RulesProfile;
 import org.sonar.api.rules.Rule;
+import org.sonar.api.rules.RuleFinder;
+import org.sonar.api.rules.RuleQuery;
 import org.sonar.api.server.ServerSide;
 import org.sonar.api.utils.ValidationMessages;
 import org.sonar.plugins.coverity.CoverityPlugin;
@@ -29,6 +31,11 @@ import java.util.List;
 @ExtensionPoint
 public class CoverityProfiles extends ExtensionProvider {
     private static final Logger LOG = LoggerFactory.getLogger(CoverityProfiles.class);
+    private RuleFinder ruleFinder;
+
+    public CoverityProfiles(RuleFinder ruleFinder) {
+        this.ruleFinder = ruleFinder;
+    }
 
     @Override
     public List<CoverityProfile> provide() {
@@ -50,10 +57,8 @@ public class CoverityProfiles extends ExtensionProvider {
         public RulesProfile createProfile(ValidationMessages validation) {
             final RulesProfile profile = RulesProfile.create("Coverity(" + language + ")", language);
 
-            for(Object rule1 : CoverityRules.mapOfRuleMaps.get(language).values()){
-                Rule rule = (Rule) rule1;
-                //Fix Bug 80500
-                profile.activateRule(Rule.create("coverity-" + language, rule.getKey()), rule.getSeverity() );
+            for(Rule rule : ruleFinder.findAll(RuleQuery.create().withRepositoryKey(CoverityPlugin.REPOSITORY_KEY + "-" + language))){
+                profile.activateRule(Rule.create("coverity-" + language, rule.getKey()), rule.getSeverity());
             }
 
             return profile;
