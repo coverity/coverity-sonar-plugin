@@ -56,16 +56,19 @@ public class CoverityRules implements RulesDefinition {
     NodeList javaNodes;
     NodeList cppNodes;
     NodeList csNodes;
+    NodeList jsNodes;
 
     static List<String> languages = new ArrayList<String>();
     static{
         languages.add("java");
         languages.add("cs");
+        languages.add("js");
         languages.add(CppLanguage.KEY);
     }
 
     public static Map<String, org.sonar.api.rules.Rule> javaRulesToBeActivated = new HashMap<String, org.sonar.api.rules.Rule>();
     public static Map<String, org.sonar.api.rules.Rule> csRulesToBeActivated = new HashMap<String, org.sonar.api.rules.Rule>();
+    public static Map<String, org.sonar.api.rules.Rule> jsRulesToBeActivated = new HashMap<>();
     public static Map<String, org.sonar.api.rules.Rule> cppRulesToBeActivated = new HashMap<String, org.sonar.api.rules.Rule>();
 
     public static Map<String, Map<String, org.sonar.api.rules.Rule>> getMapOfRuleMaps() {
@@ -77,6 +80,7 @@ public class CoverityRules implements RulesDefinition {
     static {
         mapOfRuleMaps.put("java", javaRulesToBeActivated);
         mapOfRuleMaps.put("cs", csRulesToBeActivated);
+        mapOfRuleMaps.put("js", jsRulesToBeActivated);
         mapOfRuleMaps.put(CppLanguage.KEY, cppRulesToBeActivated);
     }
 
@@ -123,6 +127,9 @@ public class CoverityRules implements RulesDefinition {
             } else if (language.equals("cs")){
                 csNodes = nodes;
                 mapOfNodeLists.put("cs", csNodes);
+            } else if (language.equals("js")){
+                jsNodes = nodes;
+                mapOfNodeLists.put("js", jsNodes);
             }
 
             for (int i = 0; i < nodes.getLength(); i++) {
