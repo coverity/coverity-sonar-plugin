@@ -11,28 +11,12 @@
 
 package org.sonar.plugins.coverity.server;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.sonar.api.ExtensionPoint;
-import org.sonar.api.rules.RulePriority;
 import org.sonar.api.server.ServerSide;
 import org.sonar.api.server.rule.RulesDefinition;
 import org.sonar.api.server.rule.RulesDefinitionXmlLoader;
 import org.sonar.plugins.coverity.CoverityPlugin;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
-import org.xml.sax.SAXException;
-
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
 import java.io.*;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 import static org.sonar.plugins.coverity.util.CoverityUtil.getValue;
 
@@ -45,120 +29,14 @@ import static org.sonar.plugins.coverity.util.CoverityUtil.getValue;
 public class CoverityRules implements RulesDefinition {
 
     private RulesDefinitionXmlLoader xmlLoader = new RulesDefinitionXmlLoader();
-    private static final Logger LOG = LoggerFactory.getLogger(CoverityRules.class);
 
     public CoverityRules(RulesDefinitionXmlLoader xmlLoader) {
         this.xmlLoader = xmlLoader;
     }
 
-    Map<String, NodeList> mapOfNodeLists = new HashMap<String, NodeList>();
-
-    NodeList javaNodes;
-    NodeList cppNodes;
-    NodeList csNodes;
-
-    static List<String> languages = new ArrayList<String>();
-    static{
-        languages.add("java");
-        languages.add("cs");
-        languages.add(CppLanguage.KEY);
-    }
-
-    public static Map<String, org.sonar.api.rules.Rule> javaRulesToBeActivated = new HashMap<String, org.sonar.api.rules.Rule>();
-    public static Map<String, org.sonar.api.rules.Rule> csRulesToBeActivated = new HashMap<String, org.sonar.api.rules.Rule>();
-    public static Map<String, org.sonar.api.rules.Rule> cppRulesToBeActivated = new HashMap<String, org.sonar.api.rules.Rule>();
-
-    public static Map<String, Map<String, org.sonar.api.rules.Rule>> getMapOfRuleMaps() {
-        return mapOfRuleMaps;
-    }
-
-    public static Map<String, Map<String, org.sonar.api.rules.Rule>> mapOfRuleMaps = new HashMap<String, Map<String, org.sonar.api.rules.Rule>>();
-
-    static {
-        mapOfRuleMaps.put("java", javaRulesToBeActivated);
-        mapOfRuleMaps.put("cs", csRulesToBeActivated);
-        mapOfRuleMaps.put(CppLanguage.KEY, cppRulesToBeActivated);
-    }
-
-    public CoverityRules() {
-    }
-
-    /* The interface RulesDefinition provides a default parser: "XmlLoader". However, XmlLoader stores rules as
-    *  "NewRules" a class that does not provides getters for certain fields such as severity. We need to access these
-    *  fields later on when activating rules in CoverityProfiles. So in order to have more control over our rules we
-    *  define "InternalRule.class" and we complete its fields by doing a parsing by ourselves. This is the propose of
-    *  "parseRules()".
-    * */
-    public Map<String, Map<String, org.sonar.api.rules.Rule>> parseRules(){
-
-        for(String language : languages){
-
-            String fileDir = "/org/sonar/plugins/coverity/server/coverity-" + language + ".xml";
-            InputStream in = getClass().getResourceAsStream(fileDir);
-
-            DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-            DocumentBuilder dBuilder = null;
-            Document doc = null;
-            try {
-                dBuilder = dbFactory.newDocumentBuilder();
-                doc = dBuilder.parse(in);
-            } catch (ParserConfigurationException e) {
-                LOG.error("Error parsing rules." + e.getCause());
-            }
-             catch (SAXException e) {
-                 LOG.error("Error parsing rules." + e.getCause());
-             } catch (IOException e) {
-                LOG.error("Error parsing rules." + e.getCause());
-            }
-            doc.getDocumentElement().normalize();
-
-            NodeList nodes = doc.getElementsByTagName("rule");
-
-            if(language.equals("java")){
-                javaNodes = nodes;
-                mapOfNodeLists.put("java", javaNodes);
-            } else if (language.equals(CppLanguage.KEY)){
-                cppNodes = nodes;
-                mapOfNodeLists.put(CppLanguage.KEY, cppNodes);
-            } else if (language.equals("cs")){
-                csNodes = nodes;
-                mapOfNodeLists.put("cs", csNodes);
-            }
-
-            for (int i = 0; i < nodes.getLength(); i++) {
-                Node node = nodes.item(i);
-
-                String key = "";
-                String name = "";
-                String severity = "";
-                String description = "";
-
-                if (node.getNodeType() == Node.ELEMENT_NODE) {
-                    Element element = (Element) node;
-                    key = getValue("key", element);
-                    name = getValue("name", element);
-                    severity = getValue("severity", element);
-                    description = getValue("description", element);
-                }
-
-                org.sonar.api.rules.Rule covRule = org.sonar.api.rules.Rule.create("coverity-" + language, key);
-                covRule.setName(name);
-                covRule.setLanguage(language);
-                covRule.setDescription(description);
-                covRule.setSeverity(RulePriority.valueOf(severity));
-
-                mapOfRuleMaps.get(language).put(key, covRule);
-            }
-        }
-
-        return mapOfRuleMaps;
-    }
-
     @Override
     public void define(Context context) {
-        parseRules();
-
-        for(String language : languages){
+        for(String language : CoverityPlugin.COVERITY_LANGUAGES){
             NewRepository repository = context.createRepository(CoverityPlugin.REPOSITORY_KEY + "-" + language, language).setName(language + "-repository");
             String fileDir = "coverity-" + language + ".xml";
             InputStream in = getClass().getResourceAsStream(fileDir);
