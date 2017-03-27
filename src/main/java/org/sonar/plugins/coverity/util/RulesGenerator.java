@@ -30,6 +30,7 @@ public class RulesGenerator {
     static final String CS_LANGUAGE = "cs";
     static final String JAVASCRIPT_LANGUAGE = "js";
     static final String PYTHON_LANGUAGE = "py";
+    static final String PHP_LANGUAGE = "php";
     static final String VULNERABILITY = "VULNERABILITY";
     static final String BUG = "BUG";
 
@@ -240,7 +241,7 @@ public class RulesGenerator {
                 domain = "STATIC_C";
             } else if (language.equals(CS_LANGUAGE)) {
                 domain = "STATIC_CS";
-            } else if (language.equals(JAVASCRIPT_LANGUAGE) || language.equals(PYTHON_LANGUAGE)) {
+            } else if (language.equals(JAVASCRIPT_LANGUAGE) || language.equals(PYTHON_LANGUAGE) || language.equals(PHP_LANGUAGE)) {
                 domain = "OTHER";
             }
 
@@ -281,6 +282,8 @@ public class RulesGenerator {
             return JAVASCRIPT_LANGUAGE;
         } else if (lang.equals("Python")) {
             return PYTHON_LANGUAGE;
+        } else if (lang.equals("PHP")) {
+            return PHP_LANGUAGE;
         }
 
         return StringUtils.EMPTY;
@@ -502,6 +505,8 @@ public class RulesGenerator {
             rule.getTags().add("js");
         } else if (rule.getLanguage().equals(PYTHON_LANGUAGE)) {
             rule.getTags().add("python");
+        } else if (rule.getLanguage().equals(PHP_LANGUAGE)) {
+            rule.getTags().add("php");
         }
     }
 
