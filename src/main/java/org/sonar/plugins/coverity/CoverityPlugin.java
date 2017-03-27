@@ -45,6 +45,7 @@ public final class CoverityPlugin implements Plugin {
                     "java",
                     "cs",
                     "js",
+                    "py",
                     CppLanguage.KEY);
 
     // This is where you're going to declare all your Sonar extensions

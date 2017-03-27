@@ -1,0 +1,405 @@
+<rules>
+    <rule>
+        <key>OTHER_IDENTICAL_BRANCHES_case</key>
+        <name>Incorrect expression : Identical code for different cases</name>
+        <internalKey>OTHER_IDENTICAL_BRANCHES_case</internalKey>
+        <description>The same code is executed for two cases in the same switch statement</description>
+        <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>python</tag>
+        <tag>quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_IDENTICAL_BRANCHES_chain</key>
+        <name>Incorrect expression : Identical code for different branches of an else-if chain</name>
+        <internalKey>OTHER_IDENTICAL_BRANCHES_chain</internalKey>
+        <description>The same code is executed regardless of the condition</description>
+        <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>python</tag>
+        <tag>quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_IDENTICAL_BRANCHES_if</key>
+        <name>Incorrect expression : Identical code for different branches</name>
+        <internalKey>OTHER_IDENTICAL_BRANCHES_if</internalKey>
+        <description>The same code is executed regardless of the condition</description>
+        <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>python</tag>
+        <tag>quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_IDENTICAL_BRANCHES_ternary</key>
+        <name>Incorrect expression : Identical code for different branches</name>
+        <internalKey>OTHER_IDENTICAL_BRANCHES_ternary</internalKey>
+        <description>The same code is executed regardless of the condition</description>
+        <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>python</tag>
+        <tag>quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_IDENTICAL_BRANCHES_none</key>
+        <name>Incorrect expression : Identical code for different branches</name>
+        <internalKey>OTHER_IDENTICAL_BRANCHES_none</internalKey>
+        <description>The same code is executed regardless of the condition</description>
+        <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>python</tag>
+        <tag>quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_FORWARD_NULL_bad_null_value_use</key>
+        <name>Null pointer dereferences : Bad use of null-like value</name>
+        <internalKey>OTHER_FORWARD_NULL_bad_null_value_use</internalKey>
+        <description>Performing an operation that would be invalid on a null or undefined value.</description>
+        <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>python</tag>
+        <tag>quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_FORWARD_NULL_deref_constant_null</key>
+        <name>Null pointer dereferences : Explicit null dereferenced</name>
+        <internalKey>OTHER_FORWARD_NULL_deref_constant_null</internalKey>
+        <description>Dereference of an explicit null value</description>
+        <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>python</tag>
+        <tag>quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_FORWARD_NULL_needs_null_check</key>
+        <name>Null pointer dereferences : Dereference null argument</name>
+        <internalKey>OTHER_FORWARD_NULL_needs_null_check</internalKey>
+        <description>A method parameter that is allowed to be null is dereferenced without a check</description>
+        <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>python</tag>
+        <tag>quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_FORWARD_NULL_none</key>
+        <name>Null pointer dereferences : Dereference after null check</name>
+        <internalKey>OTHER_FORWARD_NULL_none</internalKey>
+        <description>Reference is checked against null but then dereferenced anyway</description>
+        <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>python</tag>
+        <tag>quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_CONSTANT_EXPRESSION_RESULT_bit_and_with_zero</key>
+        <name>Integer handling issues : Bitwise-and with zero</name>
+        <internalKey>OTHER_CONSTANT_EXPRESSION_RESULT_bit_and_with_zero</internalKey>
+        <description>Bitwise-and (&apos;&amp;amp;&apos;) operation applied to zero always produces zero</description>
+        <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>python</tag>
+        <tag>quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_CONSTANT_EXPRESSION_RESULT_extra_high_bits</key>
+        <name>Integer handling issues : Extra high-order bits</name>
+        <internalKey>OTHER_CONSTANT_EXPRESSION_RESULT_extra_high_bits</internalKey>
+        <description>In an operation, the high-order bits of wider operand do not affect the narrower operand</description>
+        <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>python</tag>
+        <tag>quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_CONSTANT_EXPRESSION_RESULT_logical_vs_bitwise</key>
+        <name>Integer handling issues : Logical vs. bitwise operator</name>
+        <internalKey>OTHER_CONSTANT_EXPRESSION_RESULT_logical_vs_bitwise</internalKey>
+        <description>Logical operator used in place of bitwise operator or vice versa</description>
+        <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>python</tag>
+        <tag>quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_CONSTANT_EXPRESSION_RESULT_missing_parentheses</key>
+        <name>Incorrect expression : Missing parentheses</name>
+        <internalKey>OTHER_CONSTANT_EXPRESSION_RESULT_missing_parentheses</internalKey>
+        <description>Missing parentheses caused unintended operator precedence</description>
+        <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>python</tag>
+        <tag>quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_CONSTANT_EXPRESSION_RESULT_none</key>
+        <name>Integer handling issues : Constant expression result</name>
+        <internalKey>OTHER_CONSTANT_EXPRESSION_RESULT_none</internalKey>
+        <description>An operation with non-constant operands that computes a result with constant value</description>
+        <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>python</tag>
+        <tag>quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_CONSTANT_EXPRESSION_RESULT_operator_confusion</key>
+        <name>Integer handling issues : Wrong operator used</name>
+        <internalKey>OTHER_CONSTANT_EXPRESSION_RESULT_operator_confusion</internalKey>
+        <description>Wrong operator used in expression</description>
+        <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>python</tag>
+        <tag>quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_CONSTANT_EXPRESSION_RESULT_pointless_string_compare</key>
+        <name>Incorrect expression : Pointless string comparison</name>
+        <internalKey>OTHER_CONSTANT_EXPRESSION_RESULT_pointless_string_compare</internalKey>
+        <description>A string is compared against itself with strcmp or strncmp.</description>
+        <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>python</tag>
+        <tag>quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_CONSTANT_EXPRESSION_RESULT_result_independent_of_operands</key>
+        <name>Integer handling issues : Operands don&apos;t affect result</name>
+        <internalKey>OTHER_CONSTANT_EXPRESSION_RESULT_result_independent_of_operands</internalKey>
+        <description>An operation with non-constant operands that computes a result with constant value</description>
+        <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>python</tag>
+        <tag>quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_CONSTANT_EXPRESSION_RESULT_same_on_both_sides</key>
+        <name>Incorrect expression : Same on both sides</name>
+        <internalKey>OTHER_CONSTANT_EXPRESSION_RESULT_same_on_both_sides</internalKey>
+        <description>The same expression occurs on both sides of an operator.</description>
+        <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>python</tag>
+        <tag>quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_CONSTANT_EXPRESSION_RESULT_typeof_misuse</key>
+        <name>Incorrect expression : Misuse of typeof</name>
+        <internalKey>OTHER_CONSTANT_EXPRESSION_RESULT_typeof_misuse</internalKey>
+        <description>Meaningless check against the result of a typeof operation</description>
+        <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>python</tag>
+        <tag>quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_CONSTANT_EXPRESSION_RESULT_unnecessary_op_assign</key>
+        <name>Integer handling issues : Suspicious &amp;= or |=</name>
+        <internalKey>OTHER_CONSTANT_EXPRESSION_RESULT_unnecessary_op_assign</internalKey>
+        <description>Using a bitwise assignment operator to assign a constant value</description>
+        <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>python</tag>
+        <tag>quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_CONSTANT_EXPRESSION_RESULT_number_as_truth_value</key>
+        <name>Integer handling issues : Number used as truth value</name>
+        <internalKey>OTHER_CONSTANT_EXPRESSION_RESULT_number_as_truth_value</internalKey>
+        <description>A numerical value is used where a Boolean value is expected, and it will always evaluate to true.</description>
+        <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>python</tag>
+        <tag>quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_DEADCODE_dead_case_in_switch</key>
+        <name>Possible Control flow issues : Dead case in switch</name>
+        <internalKey>OTHER_DEADCODE_dead_case_in_switch</internalKey>
+        <description>Switch never goes directly to this case</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>python</tag>
+        <tag>quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_DEADCODE_dead_default_in_switch</key>
+        <name>Possible Control flow issues : Dead default in switch</name>
+        <internalKey>OTHER_DEADCODE_dead_default_in_switch</internalKey>
+        <description>Default in switch statement is dead code</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>python</tag>
+        <tag>quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_DEADCODE_effectively_constant</key>
+        <name>Possible Control flow issues : &apos;Constant&apos; variable guards dead code</name>
+        <internalKey>OTHER_DEADCODE_effectively_constant</internalKey>
+        <description>Variable assigned once to a constant guards dead code.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>python</tag>
+        <tag>quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_DEADCODE_none</key>
+        <name>Control flow issues : Logically dead code</name>
+        <internalKey>OTHER_DEADCODE_none</internalKey>
+        <description>Code can never be reached because of a logical contradiction</description>
+        <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>python</tag>
+        <tag>quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_DEADCODE_redundant_test</key>
+        <name>Possible Control flow issues : Redundant test</name>
+        <internalKey>OTHER_DEADCODE_redundant_test</internalKey>
+        <description>Test always evaluates the same</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>python</tag>
+        <tag>quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_coverity-py</key>
+        <name>Coverity General PY</name>
+        <internalKey>OTHER_coverity-py</internalKey>
+        <description>Coverity General PY</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>python</tag>
+        <tag>quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_REVERSE_INULL_none</key>
+        <name>Null pointer dereferences : Attribute/item access or function call before check for None or undefined</name>
+        <internalKey>OTHER_REVERSE_INULL_none</internalKey>
+        <description>All paths that lead to this comparison against None or undefined already use the value earlier for accessing an attribute/item or as a function call</description>
+        <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>python</tag>
+        <tag>quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_COPY_PASTE_ERROR_none</key>
+        <name>Incorrect expression : Copy-paste error</name>
+        <internalKey>OTHER_COPY_PASTE_ERROR_none</internalKey>
+        <description>A copied piece of code is inconsistent with the original</description>
+        <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>python</tag>
+        <tag>quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_IDENTIFIER_TYPO_none</key>
+        <name>Incorrect expression : Typo in identifier</name>
+        <internalKey>OTHER_IDENTIFIER_TYPO_none</internalKey>
+        <description>This code uniquely references a named entity that is suspiciously close in spelling to another, more commonly referenced entity.</description>
+        <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>python</tag>
+        <tag>quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_UNREACHABLE_none</key>
+        <name>Control flow issues : Structurally dead code</name>
+        <internalKey>OTHER_UNREACHABLE_none</internalKey>
+        <description>Code block is unreachable because of the syntactic structure of the code</description>
+        <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>python</tag>
+        <tag>quality</tag>
+    </rule>
+</rules>
