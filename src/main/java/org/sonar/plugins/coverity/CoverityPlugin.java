@@ -44,6 +44,7 @@ public final class CoverityPlugin implements Plugin {
             Arrays.asList(
                     "java",
                     "cs",
+                    "js",
                     CppLanguage.KEY);
 
     // This is where you're going to declare all your Sonar extensions
