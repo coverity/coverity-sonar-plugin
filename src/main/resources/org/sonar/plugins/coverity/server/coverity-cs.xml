@@ -686,8 +686,7 @@
         <type>BUG</type>
         <tag>coverity</tag>
         <tag>msvsca</tag>
-        <tag>c++</tag>
-        <tag>c</tag>
+        <tag>c#</tag>
         <tag>quality</tag>
     </rule>
     <rule>

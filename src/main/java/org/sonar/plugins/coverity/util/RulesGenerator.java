@@ -413,7 +413,7 @@ public class RulesGenerator {
                 "none",
                 "Coverity MISRA : Coding Standard Violation",
                 BUG,
-                CS_LANGUAGE
+                CPP_LANGUAGE
         );
         addAdditionalTag(misraRule, "misra");
         rules.add(misraRule);
@@ -465,7 +465,7 @@ public class RulesGenerator {
                 "none",
                 "Coverity MSVSCA : Microsoft Visual Studio Code Analysis",
                 BUG,
-                CPP_LANGUAGE
+                CS_LANGUAGE
         );
         addAdditionalTag(msvscaRule, "msvsca");
         rules.add(msvscaRule);
