@@ -10,14 +10,19 @@
  */
 package org.sonar.plugins.coverity.ws;
 
+import org.apache.commons.lang.Validate;
 import org.sonar.api.batch.BatchSide;
 import org.sonar.api.config.Settings;
 import org.sonar.plugins.coverity.CoverityPlugin;
 
+import javax.annotation.Nonnull;
+
 @BatchSide
 public class CIMClientFactory {
 
-    public CIMClient create(Settings settings) {
+    public CIMClient create(@Nonnull Settings settings) {
+        Validate.notNull(settings);
+
         String host = settings.getString(CoverityPlugin.COVERITY_CONNECT_HOSTNAME);
         int port = settings.getInt(CoverityPlugin.COVERITY_CONNECT_PORT);
         String user = settings.getString(CoverityPlugin.COVERITY_CONNECT_USERNAME);

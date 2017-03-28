@@ -181,7 +181,9 @@ public class CoveritySensorTest {
 
         assertEquals(expectedUrl, measure.value());
 
-        long projectId = testCimClient.getProject(projectName).getProjectKey();
+        final ProjectDataObj project = testCimClient.getProject(projectName);
+        assertNotNull(project);
+        final long projectId = project.getProjectKey();
         expectedUrl = expectedUrl + "reports.htm#p" + projectId;
         measure = sensorContextTester.measure("projectKey", CoverityPluginMetrics.COVERITY_PROJECT_URL);
 
