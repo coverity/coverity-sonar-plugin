@@ -37,9 +37,9 @@ public class CppLanguage extends AbstractLanguage {
     public static final String NAME = "C/C++";
 
     /**
-     * Default Coverity C/C++ file suffixes
+     * Default Coverity C/C++ file suffixes including Objective-C/C++
      */
-    public static final String DEFAULT_SUFFIXES = ".cpp, .cc, .c++, .cp, .cxx, .c, .hxx, .hpp, .hh, .h";
+    public static final String DEFAULT_SUFFIXES = ".cpp, .cc, .c++, .cp, .cxx, .c, .hxx, .hpp, .hh, .h, .m, .mm";
 
     private final String[] covSuffixes;
 

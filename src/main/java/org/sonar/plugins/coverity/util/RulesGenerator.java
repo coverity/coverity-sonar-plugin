@@ -32,6 +32,7 @@ public class RulesGenerator {
     static final String JAVASCRIPT_LANGUAGE = "js";
     static final String PYTHON_LANGUAGE = "py";
     static final String PHP_LANGUAGE = "php";
+    static final String OBJECTIVE_C = "objective-c";
     static final String VULNERABILITY = "VULNERABILITY";
     static final String BUG = "BUG";
 
@@ -226,6 +227,7 @@ public class RulesGenerator {
          * Print out rules for each language.
          */
         for(String language : rulesList.keySet()){
+
             File xmlFile = new File(xmlDir, "coverity-" + language + ".xml");
             PrintWriter xmlFileOut = null;
             try {
@@ -239,7 +241,7 @@ public class RulesGenerator {
             String domain = null;
             if (language.equals(JAVA_LANGUAGE)) {
                 domain = "STATIC_JAVA";
-            } else if (language.equals(CPP_LANGUAGE)) {
+            } else if (language.equals(CPP_LANGUAGE) || language.equals(OBJECTIVE_C)) {
                 domain = "STATIC_C";
             } else if (language.equals(CS_LANGUAGE)) {
                 domain = "STATIC_CS";
@@ -286,6 +288,8 @@ public class RulesGenerator {
             return PYTHON_LANGUAGE;
         } else if (lang.equals("PHP")) {
             return PHP_LANGUAGE;
+        } else if (lang.equals("Objective-C/C++")) {
+            return OBJECTIVE_C;
         }
 
         return StringUtils.EMPTY;
@@ -316,18 +320,34 @@ public class RulesGenerator {
 
     public static void putRuleIntoMap(String language, InternalRule rule) {
         String key = rule.getCheckerName();
-
-        if (!rulesList.containsKey(language)) {
-            rulesList.put(language, new HashMap<String, List<InternalRule>>());
+        String lang;
+        if (language.equals(OBJECTIVE_C)) {
+            lang = CPP_LANGUAGE;
+        } else {
+            lang = language;
         }
 
-        if (!rulesList.get(language).containsKey(key)) {
+        if (!rulesList.containsKey(lang)) {
+            rulesList.put(lang, new HashMap<String, List<InternalRule>>());
+        }
+
+        if (!rulesList.get(lang).containsKey(key)) {
             List<InternalRule> list = new ArrayList<InternalRule>();
             list.add(rule);
-            rulesList.get(language).put(key, list);
+            rulesList.get(lang).put(key, list);
         } else {
-            if (!rulesList.get(language).get(key).contains(rule)) {
-                rulesList.get(language).get(key).add(rule);
+            if (!rulesList.get(lang).get(key).contains(rule)) {
+                rulesList.get(lang).get(key).add(rule);
+            } else {
+                for(InternalRule rule1 : rulesList.get(lang).get(key)) {
+                    if (rule1.equals(rule)) {
+                        for (String tag: rule.getTags()) {
+                            if (!rule1.getTags().contains(tag)) {
+                                rule1.getTags().add(tag);
+                            }
+                        }
+                    }
+                }
             }
         }
     }
@@ -524,6 +544,8 @@ public class RulesGenerator {
             rule.getTags().add("python");
         } else if (rule.getLanguage().equals(PHP_LANGUAGE)) {
             rule.getTags().add("php");
+        } else if (rule.getLanguage().equals(OBJECTIVE_C)) {
+            rule.getTags().add("objective-c");
         }
     }
 

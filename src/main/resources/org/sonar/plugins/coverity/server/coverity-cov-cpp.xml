@@ -26,6 +26,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_HFA_none</key>
@@ -54,6 +55,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_SYMBIAN.NAMING_naming_L</key>
@@ -68,6 +70,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_SYMBIAN.NAMING_naming_LC</key>
@@ -82,6 +85,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_SYMBIAN.NAMING_none</key>
@@ -96,6 +100,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_SW.*</key>
@@ -125,6 +130,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_LOCK_lock_assert</key>
@@ -139,6 +145,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_LOCK_missing_unlock</key>
@@ -153,6 +160,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_LOCK_none</key>
@@ -167,6 +175,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_UNINTENDED_INTEGER_DIVISION_none</key>
@@ -181,6 +190,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_BAD_ALLOC_ARITHMETIC_none</key>
@@ -195,6 +205,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_SIGN_EXTENSION_none</key>
@@ -209,6 +220,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_RESOURCE_LEAK_exceptional_path</key>
@@ -223,6 +235,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_RESOURCE_LEAK_fds_handles</key>
@@ -237,6 +250,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_RESOURCE_LEAK_none</key>
@@ -251,6 +265,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_PW.TOO_MANY_PRINTF_ARGS_none</key>
@@ -279,6 +294,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>security</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_TAINTED_SCALAR_array_index_read</key>
@@ -294,6 +310,7 @@
         <tag>c</tag>
         <tag>quality</tag>
         <tag>security</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_TAINTED_SCALAR_array_index_write</key>
@@ -309,6 +326,7 @@
         <tag>c</tag>
         <tag>quality</tag>
         <tag>security</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_TAINTED_SCALAR_critical_argument</key>
@@ -324,6 +342,7 @@
         <tag>c</tag>
         <tag>quality</tag>
         <tag>security</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_TAINTED_SCALAR_loop_bound</key>
@@ -339,6 +358,7 @@
         <tag>c</tag>
         <tag>quality</tag>
         <tag>security</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_TAINTED_SCALAR_none</key>
@@ -354,6 +374,7 @@
         <tag>c</tag>
         <tag>quality</tag>
         <tag>security</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_TAINTED_SCALAR_pointer_deref_read</key>
@@ -369,6 +390,7 @@
         <tag>c</tag>
         <tag>quality</tag>
         <tag>security</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_TAINTED_SCALAR_pointer_deref_write</key>
@@ -384,6 +406,7 @@
         <tag>c</tag>
         <tag>quality</tag>
         <tag>security</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_PARSE_ERROR_none</key>
@@ -398,6 +421,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_UNENCRYPTED_SENSITIVE_DATA_cleartext_in_classpath</key>
@@ -412,6 +436,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>security</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_UNENCRYPTED_SENSITIVE_DATA_cleartext_in_cookie</key>
@@ -426,6 +451,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>security</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_UNENCRYPTED_SENSITIVE_DATA_cleartext_in_database</key>
@@ -440,6 +466,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>security</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_UNENCRYPTED_SENSITIVE_DATA_cleartext_in_file</key>
@@ -454,6 +481,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>security</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_UNENCRYPTED_SENSITIVE_DATA_cleartext_transmission</key>
@@ -468,6 +496,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>security</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_UNENCRYPTED_SENSITIVE_DATA_none</key>
@@ -482,6 +511,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>security</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_PW.*</key>
@@ -539,6 +569,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_STREAM_FORMAT_STATE_suspicious_setf_mask</key>
@@ -553,6 +584,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_BUFFER_SIZE_WARNING_no_null_terminator</key>
@@ -567,6 +599,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_BUFFER_SIZE_WARNING_none</key>
@@ -581,6 +614,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_MISSING_RETURN_multiple_returns</key>
@@ -595,6 +629,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_MISSING_RETURN_none</key>
@@ -609,6 +644,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_MIXED_ENUMS_inferred</key>
@@ -623,6 +659,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_MIXED_ENUMS_none</key>
@@ -637,6 +674,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_REVERSE_INULL_none</key>
@@ -651,6 +689,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_UNCAUGHT_EXCEPT_none</key>
@@ -665,6 +704,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_MISSING_ASSIGN_none</key>
@@ -679,6 +719,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_MISSING_ASSIGN_uncalled</key>
@@ -693,6 +734,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_USELESS_CALL_none</key>
@@ -707,6 +749,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_COM.BAD_FREE_none</key>
@@ -749,6 +792,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_CONSTANT_EXPRESSION_RESULT_extra_high_bits</key>
@@ -763,6 +807,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_CONSTANT_EXPRESSION_RESULT_logical_vs_bitwise</key>
@@ -777,6 +822,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_CONSTANT_EXPRESSION_RESULT_missing_parentheses</key>
@@ -791,6 +837,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_CONSTANT_EXPRESSION_RESULT_none</key>
@@ -805,6 +852,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_CONSTANT_EXPRESSION_RESULT_operator_confusion</key>
@@ -819,6 +867,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_CONSTANT_EXPRESSION_RESULT_pointless_string_compare</key>
@@ -833,6 +882,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_CONSTANT_EXPRESSION_RESULT_result_independent_of_operands</key>
@@ -847,6 +897,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_CONSTANT_EXPRESSION_RESULT_same_on_both_sides</key>
@@ -861,6 +912,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_CONSTANT_EXPRESSION_RESULT_unnecessary_op_assign</key>
@@ -875,6 +927,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_ORDER_REVERSAL_none</key>
@@ -889,6 +942,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_HARDCODED_CREDENTIALS_hardcoded_credential_crypto</key>
@@ -903,6 +957,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>security</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_HARDCODED_CREDENTIALS_hardcoded_credential_passwd</key>
@@ -917,6 +972,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>security</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_HARDCODED_CREDENTIALS_hardcoded_credential_token</key>
@@ -931,6 +987,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>security</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_HARDCODED_CREDENTIALS_none</key>
@@ -945,6 +1002,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>security</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_coverity-cov-cpp</key>
@@ -973,6 +1031,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_COM.BSTR.CONV_none</key>
@@ -1001,6 +1060,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_ALLOC_FREE_MISMATCH_none</key>
@@ -1015,6 +1075,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_TAINTED_STRING_format_string</key>
@@ -1030,6 +1091,7 @@
         <tag>c</tag>
         <tag>quality</tag>
         <tag>security</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_TAINTED_STRING_none</key>
@@ -1045,6 +1107,7 @@
         <tag>c</tag>
         <tag>quality</tag>
         <tag>security</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_BAD_SHIFT_none</key>
@@ -1059,6 +1122,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_INFINITE_LOOP_no_escape</key>
@@ -1073,6 +1137,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_INFINITE_LOOP_none</key>
@@ -1087,6 +1152,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_MISSING_BREAK_none</key>
@@ -1101,6 +1167,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_STRING_OVERFLOW_fixed_size_dest</key>
@@ -1116,6 +1183,7 @@
         <tag>c</tag>
         <tag>quality</tag>
         <tag>security</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_STRING_OVERFLOW_likely_overflow</key>
@@ -1131,6 +1199,7 @@
         <tag>c</tag>
         <tag>quality</tag>
         <tag>security</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_STRING_OVERFLOW_none</key>
@@ -1146,6 +1215,7 @@
         <tag>c</tag>
         <tag>quality</tag>
         <tag>security</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_BAD_ALLOC_STRLEN_none</key>
@@ -1160,6 +1230,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_SECURE_CODING_none</key>
@@ -1175,6 +1246,7 @@
         <tag>c</tag>
         <tag>quality</tag>
         <tag>security</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_MISSING_COPY_OR_ASSIGN_none</key>
@@ -1189,6 +1261,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_MISSING_COPY_OR_ASSIGN_uncalled</key>
@@ -1203,6 +1276,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_PW.TOO_FEW_PRINTF_ARGS_none</key>
@@ -1231,6 +1305,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>security</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_WEAK_PASSWORD_HASH_weak_hash</key>
@@ -1245,6 +1320,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>security</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_WEAK_PASSWORD_HASH_weak_hash_no_salt</key>
@@ -1259,6 +1335,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>security</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_WEAK_PASSWORD_HASH_weak_hash_weak_salt</key>
@@ -1273,6 +1350,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>security</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_WEAK_PASSWORD_HASH_weak_salt</key>
@@ -1287,6 +1365,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>security</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_MISSING_COPY_none</key>
@@ -1301,6 +1380,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_MISSING_COPY_uncalled</key>
@@ -1315,6 +1395,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_EVALUATION_ORDER_none</key>
@@ -1329,6 +1410,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_NO_EFFECT_array_null</key>
@@ -1343,6 +1425,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_NO_EFFECT_bad_memset_fill_value</key>
@@ -1357,6 +1440,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_NO_EFFECT_bad_memset_truncated_fill</key>
@@ -1371,6 +1455,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_NO_EFFECT_bad_memset_zero_size</key>
@@ -1385,6 +1470,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_NO_EFFECT_bool_switch</key>
@@ -1399,6 +1485,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_NO_EFFECT_extra_comma</key>
@@ -1413,6 +1500,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_NO_EFFECT_incomplete_delete</key>
@@ -1427,6 +1515,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_NO_EFFECT_no_effect_deref</key>
@@ -1441,6 +1530,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_NO_EFFECT_no_effect_test</key>
@@ -1455,6 +1545,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_NO_EFFECT_self_assign</key>
@@ -1469,6 +1560,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_NO_EFFECT_unsigned_compare</key>
@@ -1483,6 +1575,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_NO_EFFECT_unsigned_compare_macros</key>
@@ -1497,6 +1590,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_NO_EFFECT_unsigned_enums</key>
@@ -1511,6 +1605,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_NO_EFFECT_static_through_instance</key>
@@ -1525,6 +1620,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_NO_EFFECT_none</key>
@@ -1554,6 +1650,7 @@
         <tag>c</tag>
         <tag>quality</tag>
         <tag>security</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_UNINIT_array_index_read</key>
@@ -1569,6 +1666,7 @@
         <tag>c</tag>
         <tag>quality</tag>
         <tag>security</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_UNINIT_array_index_write</key>
@@ -1584,6 +1682,7 @@
         <tag>c</tag>
         <tag>quality</tag>
         <tag>security</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_UNINIT_none</key>
@@ -1599,6 +1698,7 @@
         <tag>c</tag>
         <tag>quality</tag>
         <tag>security</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_UNINIT_pointer_deref_read</key>
@@ -1614,6 +1714,7 @@
         <tag>c</tag>
         <tag>quality</tag>
         <tag>security</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_UNINIT_pointer_deref_write</key>
@@ -1629,6 +1730,7 @@
         <tag>c</tag>
         <tag>quality</tag>
         <tag>security</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_CHECKED_RETURN_library_function</key>
@@ -1643,6 +1745,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_CHECKED_RETURN_none</key>
@@ -1657,6 +1760,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_CHECKED_RETURN_short_read</key>
@@ -1671,6 +1775,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_CHECKED_RETURN_unchecked_arg</key>
@@ -1685,6 +1790,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_CHECKED_RETURN_user_required</key>
@@ -1699,6 +1805,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_BAD_SIZEOF_none</key>
@@ -1714,6 +1821,7 @@
         <tag>c</tag>
         <tag>quality</tag>
         <tag>security</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_BAD_SIZEOF_sizeof_ptr_expr</key>
@@ -1729,6 +1837,7 @@
         <tag>c</tag>
         <tag>quality</tag>
         <tag>security</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_SIZEOF_MISMATCH_extra_sizeof</key>
@@ -1743,6 +1852,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_SIZEOF_MISMATCH_missing_parentheses</key>
@@ -1757,6 +1867,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_SIZEOF_MISMATCH_none</key>
@@ -1771,6 +1882,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_SIZEOF_MISMATCH_sizeof_punning</key>
@@ -1785,6 +1897,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_SIZEOF_MISMATCH_wrong_size_value</key>
@@ -1799,6 +1912,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_SIZEOF_MISMATCH_wrong_sizeof</key>
@@ -1813,6 +1927,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_COM.BSTR.ALLOC_double_free</key>
@@ -1911,6 +2026,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_COM.ADDROF_LEAK_none</key>
@@ -1940,6 +2056,7 @@
         <tag>c</tag>
         <tag>quality</tag>
         <tag>security</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_BUFFER_SIZE_likely_overflow</key>
@@ -1955,6 +2072,7 @@
         <tag>c</tag>
         <tag>quality</tag>
         <tag>security</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_BUFFER_SIZE_no_null_terminator</key>
@@ -1970,6 +2088,7 @@
         <tag>c</tag>
         <tag>quality</tag>
         <tag>security</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_BUFFER_SIZE_none</key>
@@ -1985,6 +2104,7 @@
         <tag>c</tag>
         <tag>quality</tag>
         <tag>security</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_BUFFER_SIZE_overlapping_buffer</key>
@@ -2000,6 +2120,7 @@
         <tag>c</tag>
         <tag>quality</tag>
         <tag>security</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_BAD_FREE_address</key>
@@ -2014,6 +2135,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_BAD_FREE_alloca</key>
@@ -2028,6 +2150,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_BAD_FREE_array</key>
@@ -2042,6 +2165,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_BAD_FREE_first_field_address</key>
@@ -2056,6 +2180,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_BAD_FREE_function_pointer</key>
@@ -2070,6 +2195,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_BAD_FREE_none</key>
@@ -2084,6 +2210,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_DC.STREAM_BUFFER_none</key>
@@ -2098,6 +2225,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>security</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_SIZECHECK_ampersand_in_size</key>
@@ -2112,6 +2240,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_SIZECHECK_improper_new</key>
@@ -2126,6 +2255,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_SIZECHECK_incorrect_multiplication</key>
@@ -2140,6 +2270,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_SIZECHECK_likely_overflow</key>
@@ -2154,6 +2285,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_SIZECHECK_no_null_terminator</key>
@@ -2168,6 +2300,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_SIZECHECK_none</key>
@@ -2182,6 +2315,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_VIRTUAL_DTOR_empty_dtor</key>
@@ -2196,6 +2330,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_VIRTUAL_DTOR_none</key>
@@ -2210,6 +2345,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_PW.NON_CONST_PRINTF_FORMAT_STRING_none</key>
@@ -2238,6 +2374,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_NULL_RETURNS_none</key>
@@ -2252,6 +2389,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_NULL_RETURNS_unimpl</key>
@@ -2266,6 +2404,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_READLINK_none</key>
@@ -2281,6 +2420,7 @@
         <tag>c</tag>
         <tag>quality</tag>
         <tag>security</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_REVERSE_NEGATIVE_array_index_read</key>
@@ -2295,6 +2435,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_REVERSE_NEGATIVE_array_index_write</key>
@@ -2309,6 +2450,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_REVERSE_NEGATIVE_critical_argument</key>
@@ -2323,6 +2465,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_REVERSE_NEGATIVE_none</key>
@@ -2337,6 +2480,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_MISRA.*</key>
@@ -2366,6 +2510,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_RETURN_LOCAL_none</key>
@@ -2380,6 +2525,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_PW.RETURN_PTR_TO_LOCAL_TEMP_none</key>
@@ -2408,6 +2554,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_CHAR_IO_none</key>
@@ -2422,6 +2569,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_PW.SHIFT_COUNT_TOO_LARGE_none</key>
@@ -2450,6 +2598,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_DELETE_ARRAY_none</key>
@@ -2464,6 +2613,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_DELETE_ARRAY_object</key>
@@ -2478,6 +2628,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_DELETE_ARRAY_scalar</key>
@@ -2492,6 +2643,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_STRING_SIZE_none</key>
@@ -2507,6 +2659,7 @@
         <tag>c</tag>
         <tag>quality</tag>
         <tag>security</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_UNREACHABLE_none</key>
@@ -2521,6 +2674,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_VARARGS_none</key>
@@ -2535,6 +2689,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_CTOR_DTOR_LEAK_none</key>
@@ -2549,6 +2704,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_RISKY_CRYPTO_custom</key>
@@ -2563,6 +2719,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>security</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_RISKY_CRYPTO_hashing</key>
@@ -2577,6 +2734,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>security</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_RISKY_CRYPTO_none</key>
@@ -2591,6 +2749,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>security</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_WRAPPER_ESCAPE_COM_deref_read_after_free</key>
@@ -2605,6 +2764,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_WRAPPER_ESCAPE_COM_deref_write_after_free</key>
@@ -2619,6 +2779,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_WRAPPER_ESCAPE_COM_use_after_free</key>
@@ -2633,6 +2794,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_WRAPPER_ESCAPE_deref_read_after_free</key>
@@ -2647,6 +2809,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_WRAPPER_ESCAPE_deref_write_after_free</key>
@@ -2661,6 +2824,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_WRAPPER_ESCAPE_none</key>
@@ -2675,6 +2839,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_SYMBIAN.CLEANUP_STACK_bad_pop_arg</key>
@@ -2689,6 +2854,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_SYMBIAN.CLEANUP_STACK_double_free</key>
@@ -2703,6 +2869,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_SYMBIAN.CLEANUP_STACK_leak</key>
@@ -2717,6 +2884,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_SYMBIAN.CLEANUP_STACK_multiple_pushes</key>
@@ -2731,6 +2899,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_SYMBIAN.CLEANUP_STACK_none</key>
@@ -2745,6 +2914,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_DIVIDE_BY_ZERO_float_divisor</key>
@@ -2759,6 +2929,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_DIVIDE_BY_ZERO_none</key>
@@ -2773,6 +2944,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_MISSING_COMMA_none</key>
@@ -2787,6 +2959,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_PW.CONVERSION_TO_POINTER_LOSES_BITS_none</key>
@@ -2815,6 +2988,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_USE_AFTER_FREE_deref_read_after_free</key>
@@ -2830,6 +3004,7 @@
         <tag>c</tag>
         <tag>quality</tag>
         <tag>security</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_USE_AFTER_FREE_deref_write_after_free</key>
@@ -2845,6 +3020,7 @@
         <tag>c</tag>
         <tag>quality</tag>
         <tag>security</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_USE_AFTER_FREE_double_close</key>
@@ -2860,6 +3036,7 @@
         <tag>c</tag>
         <tag>quality</tag>
         <tag>security</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_USE_AFTER_FREE_double_free</key>
@@ -2875,6 +3052,7 @@
         <tag>c</tag>
         <tag>quality</tag>
         <tag>security</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_USE_AFTER_FREE_none</key>
@@ -2890,6 +3068,7 @@
         <tag>c</tag>
         <tag>quality</tag>
         <tag>security</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_USE_AFTER_FREE_use_after_close</key>
@@ -2905,6 +3084,7 @@
         <tag>c</tag>
         <tag>quality</tag>
         <tag>security</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_INTEGER_OVERFLOW_array_index_read</key>
@@ -2920,6 +3100,7 @@
         <tag>c</tag>
         <tag>quality</tag>
         <tag>security</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_INTEGER_OVERFLOW_array_index_write</key>
@@ -2935,6 +3116,7 @@
         <tag>c</tag>
         <tag>quality</tag>
         <tag>security</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_INTEGER_OVERFLOW_const_overflow</key>
@@ -2950,6 +3132,7 @@
         <tag>c</tag>
         <tag>quality</tag>
         <tag>security</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_INTEGER_OVERFLOW_critical_argument</key>
@@ -2965,6 +3148,7 @@
         <tag>c</tag>
         <tag>quality</tag>
         <tag>security</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_INTEGER_OVERFLOW_none</key>
@@ -2980,6 +3164,7 @@
         <tag>c</tag>
         <tag>quality</tag>
         <tag>security</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_INTEGER_OVERFLOW_pointer_deref_read</key>
@@ -2995,6 +3180,7 @@
         <tag>c</tag>
         <tag>quality</tag>
         <tag>security</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_INTEGER_OVERFLOW_pointer_deref_write</key>
@@ -3010,6 +3196,7 @@
         <tag>c</tag>
         <tag>quality</tag>
         <tag>security</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_INTEGER_OVERFLOW_return_value_error</key>
@@ -3025,6 +3212,7 @@
         <tag>c</tag>
         <tag>quality</tag>
         <tag>security</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_MISRA_CAST_bitwise_op_bad_cast</key>
@@ -3039,6 +3227,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_MISRA_CAST_bitwise_op_no_cast</key>
@@ -3053,6 +3242,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_MISRA_CAST_float_complex_conversion</key>
@@ -3067,6 +3257,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_MISRA_CAST_float_narrowing_conversion</key>
@@ -3081,6 +3272,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_MISRA_CAST_float_non_constant_arg_conversion</key>
@@ -3095,6 +3287,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_MISRA_CAST_float_non_constant_conversion</key>
@@ -3109,6 +3302,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_MISRA_CAST_float_non_constant_rtn_conversion</key>
@@ -3123,6 +3317,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_MISRA_CAST_float_to_integer_cast</key>
@@ -3137,6 +3332,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_MISRA_CAST_float_to_integer_conversion</key>
@@ -3151,6 +3347,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_MISRA_CAST_float_widening_cast</key>
@@ -3165,6 +3362,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_MISRA_CAST_integer_complex_conversion</key>
@@ -3179,6 +3377,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_MISRA_CAST_integer_narrowing_conversion</key>
@@ -3193,6 +3392,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_MISRA_CAST_integer_non_constant_arg_conversion</key>
@@ -3207,6 +3407,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_MISRA_CAST_integer_non_constant_conversion</key>
@@ -3221,6 +3422,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_MISRA_CAST_integer_non_constant_rtn_conversion</key>
@@ -3235,6 +3437,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_MISRA_CAST_integer_signedness_changing_cast</key>
@@ -3249,6 +3452,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_MISRA_CAST_integer_signedness_changing_conversion</key>
@@ -3263,6 +3467,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_MISRA_CAST_integer_to_float_cast</key>
@@ -3277,6 +3482,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_MISRA_CAST_integer_to_float_conversion</key>
@@ -3291,6 +3497,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_MISRA_CAST_integer_widening_cast</key>
@@ -3305,6 +3512,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_MISRA_CAST_none</key>
@@ -3319,6 +3527,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_ARRAY_VS_SINGLETON_none</key>
@@ -3333,6 +3542,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_STRAY_SEMICOLON_none</key>
@@ -3347,6 +3557,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_ASSERT_SIDE_EFFECT_none</key>
@@ -3361,6 +3572,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_ASSERT_SIDE_EFFECT_side_effect_is_function</key>
@@ -3375,6 +3587,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_BAD_COMPARE_comparator_misuse</key>
@@ -3390,6 +3603,7 @@
         <tag>c</tag>
         <tag>quality</tag>
         <tag>security</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_BAD_COMPARE_misuse_of_not</key>
@@ -3405,6 +3619,7 @@
         <tag>c</tag>
         <tag>quality</tag>
         <tag>security</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_BAD_COMPARE_none</key>
@@ -3420,6 +3635,7 @@
         <tag>c</tag>
         <tag>quality</tag>
         <tag>security</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_BAD_COMPARE_null_misuse</key>
@@ -3435,6 +3651,7 @@
         <tag>c</tag>
         <tag>quality</tag>
         <tag>security</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_BAD_COMPARE_string_lit_comparison</key>
@@ -3450,6 +3667,7 @@
         <tag>c</tag>
         <tag>quality</tag>
         <tag>security</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_PASS_BY_VALUE_none</key>
@@ -3464,6 +3682,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_FORWARD_NULL_deref_constant_null</key>
@@ -3478,6 +3697,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_FORWARD_NULL_dynamic_cast</key>
@@ -3492,6 +3712,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_FORWARD_NULL_none</key>
@@ -3506,6 +3727,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_UNUSED_VALUE_adjacent</key>
@@ -3520,6 +3742,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_UNUSED_VALUE_none</key>
@@ -3534,6 +3757,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_OVERRUN_illegal_address</key>
@@ -3549,6 +3773,7 @@
         <tag>c</tag>
         <tag>quality</tag>
         <tag>security</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_OVERRUN_none</key>
@@ -3564,6 +3789,7 @@
         <tag>c</tag>
         <tag>quality</tag>
         <tag>security</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_OVERRUN_read</key>
@@ -3579,6 +3805,7 @@
         <tag>c</tag>
         <tag>quality</tag>
         <tag>security</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_OVERRUN_strlen</key>
@@ -3594,6 +3821,7 @@
         <tag>c</tag>
         <tag>quality</tag>
         <tag>security</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_OVERRUN_write</key>
@@ -3609,6 +3837,7 @@
         <tag>c</tag>
         <tag>quality</tag>
         <tag>security</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_COPY_PASTE_ERROR_none</key>
@@ -3623,6 +3852,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_SELF_ASSIGN_none</key>
@@ -3637,6 +3867,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_NESTING_INDENT_MISMATCH_bad_indentation</key>
@@ -3651,6 +3882,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_NESTING_INDENT_MISMATCH_none</key>
@@ -3665,6 +3897,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_UNINIT_CTOR_none</key>
@@ -3679,6 +3912,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_UNINIT_CTOR_pointer</key>
@@ -3693,6 +3927,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_MISSING_MOVE_ASSIGNMENT_none</key>
@@ -3707,6 +3942,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_OVERFLOW_BEFORE_WIDEN_none</key>
@@ -3721,6 +3957,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_CHROOT_none</key>
@@ -3736,6 +3973,7 @@
         <tag>c</tag>
         <tag>quality</tag>
         <tag>security</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_MISMATCHED_ITERATOR_mismatched_comparison</key>
@@ -3750,6 +3988,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_MISMATCHED_ITERATOR_none</key>
@@ -3764,6 +4003,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_MISMATCHED_ITERATOR_splice_iterator_mismatch</key>
@@ -3778,6 +4018,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_TAINTED_STRING_WARNING_format_string</key>
@@ -3792,6 +4033,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_TAINTED_STRING_WARNING_none</key>
@@ -3806,6 +4048,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_TOCTOU_none</key>
@@ -3821,6 +4064,7 @@
         <tag>c</tag>
         <tag>quality</tag>
         <tag>security</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_PW.UNSIGNED_COMPARE_WITH_NEGATIVE_none</key>
@@ -3849,6 +4093,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_NEGATIVE_RETURNS_array_index_write</key>
@@ -3863,6 +4108,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_NEGATIVE_RETURNS_critical_argument</key>
@@ -3877,6 +4123,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_NEGATIVE_RETURNS_loop_bound</key>
@@ -3891,6 +4138,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_NEGATIVE_RETURNS_none</key>
@@ -3905,6 +4153,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_WEAK_GUARD_dns</key>
@@ -3919,6 +4168,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>security</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_WEAK_GUARD_dns_sensitive_op</key>
@@ -3933,6 +4183,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>security</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_WEAK_GUARD_http_referer</key>
@@ -3947,6 +4198,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>security</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_WEAK_GUARD_http_referer_sensitive_op</key>
@@ -3961,6 +4213,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>security</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_WEAK_GUARD_ip_address</key>
@@ -3975,6 +4228,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>security</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_WEAK_GUARD_ip_address_sensitive_op</key>
@@ -3989,6 +4243,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>security</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_WEAK_GUARD_none</key>
@@ -4003,6 +4258,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>security</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_WEAK_GUARD_os_login</key>
@@ -4017,6 +4273,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>security</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_WEAK_GUARD_os_login_sensitive_op</key>
@@ -4031,6 +4288,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>security</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_WEAK_GUARD_principal_name</key>
@@ -4045,6 +4303,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>security</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_WEAK_GUARD_principal_name_sensitive_op</key>
@@ -4059,6 +4318,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>security</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_COM.BSTR.NE_NON_BSTR_none</key>
@@ -4087,6 +4347,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_IDENTICAL_BRANCHES_chain</key>
@@ -4101,6 +4362,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_IDENTICAL_BRANCHES_if</key>
@@ -4115,6 +4377,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_IDENTICAL_BRANCHES_ternary</key>
@@ -4129,6 +4392,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_IDENTICAL_BRANCHES_none</key>
@@ -4157,6 +4421,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>security</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_MISSING_RESTORE_likely</key>
@@ -4171,6 +4436,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_MISSING_RESTORE_none</key>
@@ -4185,6 +4451,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_MISSING_RESTORE_possible</key>
@@ -4199,6 +4466,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_PW.BRANCH_PAST_INITIALIZATION_none</key>
@@ -4227,6 +4495,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_INCOMPATIBLE_CAST_float_vs_integral</key>
@@ -4241,6 +4510,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_INCOMPATIBLE_CAST_none</key>
@@ -4255,6 +4525,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_INCOMPATIBLE_CAST_overrun</key>
@@ -4269,6 +4540,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_ASSIGN_NOT_RETURNING_STAR_THIS_indirect</key>
@@ -4283,6 +4555,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_ASSIGN_NOT_RETURNING_STAR_THIS_none</key>
@@ -4297,6 +4570,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_ASSIGN_NOT_RETURNING_STAR_THIS_usable_for_chained_assignment</key>
@@ -4311,6 +4585,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_PW.EXPR_HAS_NO_EFFECT_none</key>
@@ -4354,6 +4629,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_PW.INTEGER_OVERFLOW_none</key>
@@ -4425,6 +4701,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_DEADCODE_dead_case_in_switch</key>
@@ -4439,6 +4716,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_DEADCODE_dead_default_in_switch</key>
@@ -4453,6 +4731,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_DEADCODE_effectively_constant</key>
@@ -4467,6 +4746,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_DEADCODE_none</key>
@@ -4481,6 +4761,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_DEADCODE_redundant_test</key>
@@ -4495,6 +4776,7 @@
         <tag>c++</tag>
         <tag>c</tag>
         <tag>quality</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_USER_POINTER_none</key>
@@ -4510,6 +4792,7 @@
         <tag>c</tag>
         <tag>quality</tag>
         <tag>security</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_STRING_NULL_none</key>
@@ -4525,6 +4808,7 @@
         <tag>c</tag>
         <tag>quality</tag>
         <tag>security</tag>
+        <tag>objective-c</tag>
     </rule>
     <rule>
         <key>STATIC_C_PW.BAD_PRINTF_FORMAT_STRING_none</key>
