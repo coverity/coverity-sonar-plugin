@@ -20,6 +20,7 @@ import org.sonar.plugins.coverity.server.CppLanguage;
 import org.sonar.plugins.coverity.server.InternalRule;
 
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.util.*;
 
 public class RulesGenerator {
@@ -70,7 +71,7 @@ public class RulesGenerator {
         JSONParser parser = new JSONParser();
 
         try {
-            Object obj = parser.parse(new FileReader(jsonFile.getAbsolutePath()));
+            Object obj = parser.parse(new InputStreamReader(new FileInputStream(jsonFile.getAbsolutePath()), StandardCharsets.UTF_8));
             JSONArray jsonObject =  (JSONArray) obj;
 
             Iterator<JSONObject> iterator = jsonObject.iterator();
@@ -167,7 +168,8 @@ public class RulesGenerator {
         JSONParser parser = new JSONParser();
 
         try {
-            Object obj = parser.parse(new FileReader(jsonFile.getAbsolutePath()));
+            Object obj = parser.parse(new InputStreamReader(new FileInputStream(jsonFile.getAbsolutePath()), StandardCharsets.UTF_8));
+
             JSONObject root = (JSONObject) obj;
             JSONArray issues =  (JSONArray) root.get("issue_type");
 
@@ -363,8 +365,8 @@ public class RulesGenerator {
         }
 
         // Add rules with "none" subcategory
-        for (String language : missingList.keySet()) {
-            for (InternalRule rule : missingList.get(language)) {
+        for (Map.Entry<String, List<InternalRule>> entry : missingList.entrySet()) {
+            for (InternalRule rule : entry.getValue()) {
                 InternalRule newRule = new InternalRule(
                         rule.getCheckerName() + "_none",
                         rule.getRuleName(),
@@ -373,10 +375,10 @@ public class RulesGenerator {
                         "none",
                         rule.getDescription(),
                         BUG,
-                        language);
+                        entry.getKey());
                 addLanguageTag(newRule);
                 addRuleTypeTag(newRule, true, false);
-                rulesList.get(language).get(newRule.getCheckerName()).add(newRule);
+                rulesList.get(entry.getKey()).get(newRule.getCheckerName()).add(newRule);
             }
         }
     }

@@ -29,13 +29,13 @@ import static org.sonar.plugins.coverity.util.CoverityUtil.getValue;
 
 public class RulesGeneratorTest {
 
-    private final String outputFilePath = "./test";
-    private final String qualityJsonFile = "src/test/java/org/sonar/plugins/coverity/util/quality-checker-properties.json";
-    private final String findbugsJsonFile = "src/test/java/org/sonar/plugins/coverity/util/findbugs-checker-properties.json";
+    private static final String outputFilePath = "./test";
+    private static final String qualityJsonFile = "src/test/java/org/sonar/plugins/coverity/util/quality-checker-properties.json";
+    private static final String findbugsJsonFile = "src/test/java/org/sonar/plugins/coverity/util/findbugs-checker-properties.json";
 
-    private final String javaOutputFilePath = "./test/coverity-java.xml";
-    private final String cppOutputFilePath = "./test/coverity-cov-cpp.xml";
-    private final String csOutputFilePath = "./test/coverity-cs.xml";
+    private static final String javaOutputFilePath = "./test/coverity-java.xml";
+    private static final String cppOutputFilePath = "./test/coverity-cov-cpp.xml";
+    private static final String csOutputFilePath = "./test/coverity-cs.xml";
 
     @Before
     public void setUp() {
@@ -51,10 +51,10 @@ public class RulesGeneratorTest {
             File[] files = testDir.listFiles();
             if (files != null) {
                 for (File file : files) {
-                    file.delete();
+                    Assert.assertTrue(file.delete());
                 }
             }
-            testDir.delete();
+            Assert.assertTrue(testDir.delete());
         }
     }
 
@@ -85,11 +85,11 @@ public class RulesGeneratorTest {
     private void createTestDirectory() {
         File testDir = new File(outputFilePath);
         if (!testDir.exists()) {
-            testDir.mkdir();
+            Assert.assertTrue(testDir.mkdir());
         }
     }
 
-    private void checkCsOutputFile(File outputFile) throws FileNotFoundException {
+    private void checkCsOutputFile(File outputFile) throws IOException {
         NodeList nodes = parseNodeList(outputFile);
         Assert.assertNotNull(nodes);
 
@@ -135,7 +135,7 @@ public class RulesGeneratorTest {
         Assert.assertTrue(general && msvsca && noneSubcategory && testSubcategory);
     }
 
-    private void checkJavaOutputFile(File outputFile) throws FileNotFoundException {
+    private void checkJavaOutputFile(File outputFile) throws IOException {
         NodeList nodes = parseNodeList(outputFile);
         Assert.assertNotNull(nodes);
 
@@ -180,7 +180,7 @@ public class RulesGeneratorTest {
         Assert.assertTrue(general && fbGeneric && noneSubcategory && fbNone);
     }
 
-    private void checkCppOutputFile(File outputFile) throws FileNotFoundException {
+    private void checkCppOutputFile(File outputFile) throws IOException {
         NodeList nodes = parseNodeList(outputFile);
         Assert.assertNotNull(nodes);
 
@@ -241,7 +241,7 @@ public class RulesGeneratorTest {
         Assert.assertTrue(general && noneSubcategory && pwRule && swRule && rwRule && misraRule);
     }
 
-    private NodeList parseNodeList(File outputFile) throws FileNotFoundException {
+    private NodeList parseNodeList(File outputFile) throws IOException {
         InputStream in = new FileInputStream(outputFile);
 
         DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
@@ -255,12 +255,13 @@ public class RulesGeneratorTest {
             return doc.getElementsByTagName("rule");
         } catch (ParserConfigurationException e) {
             e.printStackTrace();
-        }
-        catch (SAXException e) {
+        } catch (SAXException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        in.close();
 
         return null;
     }
