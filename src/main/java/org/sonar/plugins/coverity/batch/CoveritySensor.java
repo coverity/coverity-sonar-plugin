@@ -125,7 +125,7 @@ public class CoveritySensor implements Sensor {
             }            
             LOG.info("Found project: " + covProject + " (" + covProjectObj.getProjectKey() + ")");
 
-        } catch(Exception e) {
+        } catch (IOException | CovRemoteServiceException_Exception e) {
             LOG.error("Error while trying to find project: " + covProject);
             Thread.currentThread().setContextClassLoader(oldCL);
             return;
@@ -268,7 +268,7 @@ public class CoveritySensor implements Sensor {
                     }
                 }
             }
-        } catch(Exception e) {
+        } catch(IOException | CovRemoteServiceException_Exception e) {
             LOG.error("Error fetching defects", e);
         }
 
