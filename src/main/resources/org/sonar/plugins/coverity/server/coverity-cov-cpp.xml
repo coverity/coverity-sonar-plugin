@@ -2349,7 +2349,8 @@
         <type>BUG</type>
         <tag>coverity</tag>
         <tag>misra</tag>
-        <tag>c#</tag>
+        <tag>c++</tag>
+        <tag>c</tag>
         <tag>quality</tag>
     </rule>
     <rule>
