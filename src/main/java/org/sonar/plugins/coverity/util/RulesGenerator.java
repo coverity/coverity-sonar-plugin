@@ -10,7 +10,6 @@
  */
 package org.sonar.plugins.coverity.util;
 
-import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.commons.lang.StringUtils;
 import org.json.simple.JSONArray;
@@ -342,15 +341,11 @@ public class RulesGenerator {
             } else {
                 for(InternalRule rule1 : rulesList.get(lang).get(key)) {
                     if (rule1.equals(rule)) {
-                        Collection<String> tags = CollectionUtils.disjunction(rule1.getTags(), rule.getTags());
-                        Iterator<String> iter = tags.iterator();
-                        while(iter.hasNext()) {
-                            String tag = iter.next();
+                        for (String tag: rule.getTags()) {
                             if (!rule1.getTags().contains(tag)) {
                                 rule1.getTags().add(tag);
                             }
                         }
-
                     }
                 }
             }
