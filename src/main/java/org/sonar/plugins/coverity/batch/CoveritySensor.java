@@ -418,8 +418,13 @@ public class CoveritySensor implements Sensor {
                 rk = CoverityUtil.getRuleKey(lang, "STATIC_JAVA_coverity-java");
                 ar = context.activeRules().find(rk);
             } else if (domain.equals("OTHER") && lang.equals("js")) {
-                rk = CoverityUtil.getRuleKey(lang, "OTHER_coverity-js");
-                ar = context.activeRules().find(rk);
+                if ( ar == null && checkerName.startsWith("JSHINT")) {
+                    rk = CoverityUtil.getRuleKey(lang, "OTHER_JSHINT.*");
+                    ar = context.activeRules().find(rk);
+                } else {
+                    rk = CoverityUtil.getRuleKey(lang, "OTHER_coverity-js");
+                    ar = context.activeRules().find(rk);
+                }
             } else if (domain.equals("OTHER") && lang.equals("py")) {
                 rk = CoverityUtil.getRuleKey(lang, "OTHER_coverity-py");
                 ar = context.activeRules().find(rk);

@@ -104,6 +104,20 @@
         <tag>quality</tag>
     </rule>
     <rule>
+        <key>OTHER_JSHINT.*</key>
+        <name>Coverity JSHINT : JSHint Warning</name>
+        <internalKey>OTHER_JSHINT.*</internalKey>
+        <description>Coverity JSHINT : JSHint Warning</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>jshint</tag>
+        <tag>js</tag>
+        <tag>quality</tag>
+    </rule>
+    <rule>
         <key>OTHER_NO_EFFECT_bool_switch</key>
         <name>Incorrect expression : Switch test assignment</name>
         <internalKey>OTHER_NO_EFFECT_bool_switch</internalKey>

@@ -470,6 +470,19 @@ public class RulesGenerator {
         addAdditionalTag(msvscaRule, "msvsca");
         rules.add(msvscaRule);
 
+        InternalRule jshintRule = new InternalRule(
+                "JSHINT.*",
+                "Coverity JSHINT : JSHint Warning",
+                "JSHINT.*",
+                "MAJOR",
+                "none",
+                "Coverity JSHINT : JSHint Warning",
+                BUG,
+                JAVASCRIPT_LANGUAGE
+        );
+        addAdditionalTag(jshintRule, "jshint");
+        rules.add(jshintRule);
+
         for (InternalRule rule : rules) {
             List<InternalRule> tempList = new ArrayList<InternalRule>();
             addLanguageTag(rule);
@@ -477,6 +490,8 @@ public class RulesGenerator {
             tempList.add(rule);
             if (rule.getKey().equals("MSVSCA.*")) {
                 rulesList.get(CS_LANGUAGE).put(rule.getCheckerName(), tempList);
+            } else if (rule.getKey().equals("JSHINT.*")) {
+                rulesList.get(JAVASCRIPT_LANGUAGE).put(rule.getCheckerName(), tempList);
             } else {
                 rulesList.get(CPP_LANGUAGE).put(rule.getCheckerName(), tempList);
             }
