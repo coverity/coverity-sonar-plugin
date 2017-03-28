@@ -135,7 +135,12 @@
 			<artifactId>guava</artifactId>
 			<version>15.0</version>
 		</dependency>
-	</dependencies>
+        <dependency>
+            <groupId>com.google.code.findbugs</groupId>
+            <artifactId>annotations</artifactId>
+            <version>3.0.0</version>
+        </dependency>
+    </dependencies>
 
 	<build>
 		<plugins>
