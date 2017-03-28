@@ -12,6 +12,7 @@
 package org.sonar.plugins.coverity.batch;
 
 import com.coverity.ws.v9.*;
+import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -287,7 +288,7 @@ public class CoveritySensor implements Sensor {
 
         String description = dido.getLongDescription();
 
-        return description + "\n\nView in Coverity Connect: \n" + url;
+        return StringEscapeUtils.unescapeHtml(description) + "\n\nView in Coverity Connect: \n" + url;
     }
 
     //Replacing "#" for "&" in order to fix bug 62066.
