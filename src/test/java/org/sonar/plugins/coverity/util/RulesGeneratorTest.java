@@ -36,6 +36,7 @@ public class RulesGeneratorTest {
     private static final String javaOutputFilePath = "./test/coverity-java.xml";
     private static final String cppOutputFilePath = "./test/coverity-cov-cpp.xml";
     private static final String csOutputFilePath = "./test/coverity-cs.xml";
+    private static final String jsOutputFilePath = "./test/coverity-js.xml";
 
     @Before
     public void setUp() {
@@ -72,14 +73,17 @@ public class RulesGeneratorTest {
         File javaOutputFile = new File(javaOutputFilePath);
         File cppOutputFile = new File(cppOutputFilePath);
         File csOutputFile = new File(csOutputFilePath);
+        File jsOutputFile = new File(jsOutputFilePath);
 
         Assert.assertTrue(javaOutputFile.exists());
         Assert.assertTrue(cppOutputFile.exists());
         Assert.assertTrue(csOutputFile.exists());
+        Assert.assertTrue(jsOutputFile.exists());
 
         checkCsOutputFile(csOutputFile);
         checkJavaOutputFile(javaOutputFile);
         checkCppOutputFile(cppOutputFile);
+        checkJavaScriptOutputFile(jsOutputFile);
     }
 
     private void createTestDirectory() {
@@ -239,6 +243,52 @@ public class RulesGeneratorTest {
         }
 
         Assert.assertTrue(general && noneSubcategory && pwRule && swRule && rwRule && misraRule);
+    }
+
+    private void checkJavaScriptOutputFile(File outputFile) throws IOException {
+        NodeList nodes = parseNodeList(outputFile);
+        Assert.assertNotNull(nodes);
+
+        boolean noneSubcategory = false;
+        boolean withSubcategory = false;
+        boolean jsHintGeneric = false;
+        boolean general = false;
+
+        Assert.assertEquals(4, nodes.getLength());
+        for (int i = 0 ; i < nodes.getLength() ; i++) {
+            Node node = nodes.item(i);
+            if (node.getNodeType() == Node.ELEMENT_NODE) {
+                Element element = (Element) node;
+                String key = getValue("key", element);
+
+                // OTHER_coverity-js
+                if (key.equals("OTHER_coverity-js")) {
+                    Assert.assertEquals("Coverity General JS", getValue("name", element));
+                    general = true;
+                }
+
+                // OTHER_JSHINT.*
+                else if (key.equals("OTHER_JSHINT.*")) {
+                    Assert.assertEquals("Coverity JSHINT : JSHint Warning", getValue("name", element));
+                    jsHintGeneric = true;
+                }
+
+                // OTHER_JavaScript Example Checker_none
+                else if (key.equals("OTHER_JavaScript Example Checker_none")) {
+                    Assert.assertEquals("JavaScript Example Checker : Short Description", getValue("name", element));
+                    noneSubcategory = true;
+
+                }
+
+                // OTHER_JavaScript Example Checker_subcategory
+                else if (key.equals("OTHER_JavaScript Example Checker_subcategory")) {
+                    Assert.assertEquals("JavaScript Example Checker : Short Description", getValue("name", element));
+                    withSubcategory = true;
+                }
+            }
+        }
+
+        Assert.assertTrue(general && jsHintGeneric && noneSubcategory && withSubcategory);
     }
 
     private NodeList parseNodeList(File outputFile) throws IOException {

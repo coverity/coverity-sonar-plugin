@@ -48,5 +48,21 @@
     "subcategoryLongDescription" : "Long Description",
     "subcategoryShortDescription" : "Short Description",
     "isDocumented" : "true"
-  } 
+  },
+  {
+    "category" : "JavaScript Example Checker",
+    "checkerName" : "JavaScript Example Checker",
+    "cweCategory" : "392",
+    "language" : "JavaScript",
+    "eventSetCaptions" : [],
+    "impact" : "Medium",
+    "qualityKind" : "true",
+    "securityKind" : "false",
+    "testKind" : "false",
+    "subcategory" : "subcategory",
+    "subcategoryLocalEffect" : "JavaScript Example Checker",
+    "subcategoryLongDescription" : "Long Description",
+    "subcategoryShortDescription" : "Short Description",
+    "isDocumented" : "true"
+  }
 ]
