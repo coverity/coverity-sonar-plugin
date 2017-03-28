@@ -106,7 +106,7 @@ public class ClientAuthenticationHandlerWSS implements SOAPHandler<SOAPMessageCo
         return true;
     }
 
-    private class SecurityEnvironmentHandler implements CallbackHandler {
+    private static class SecurityEnvironmentHandler implements CallbackHandler {
 
         public void handle(Callback[] callbacks) throws UnsupportedCallbackException {
 
