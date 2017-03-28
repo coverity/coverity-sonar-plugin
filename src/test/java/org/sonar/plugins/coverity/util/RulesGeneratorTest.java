@@ -36,7 +36,7 @@ public class RulesGeneratorTest {
     private static final String javaOutputFilePath = "./test/coverity-java.xml";
     private static final String cppOutputFilePath = "./test/coverity-cov-cpp.xml";
     private static final String csOutputFilePath = "./test/coverity-cs.xml";
-    private final String jsOutputFilePath = "./test/coverity-js.xml";
+    private static final String jsOutputFilePath = "./test/coverity-js.xml";
 
     @Before
     public void setUp() {
@@ -245,7 +245,7 @@ public class RulesGeneratorTest {
         Assert.assertTrue(general && noneSubcategory && pwRule && swRule && rwRule && misraRule);
     }
 
-    private void checkJavaScriptOutputFile(File outputFile) throws FileNotFoundException {
+    private void checkJavaScriptOutputFile(File outputFile) throws IOException {
         NodeList nodes = parseNodeList(outputFile);
         Assert.assertNotNull(nodes);
 
