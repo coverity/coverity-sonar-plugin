@@ -9,7 +9,7 @@
 
 	<name>Coverity</name>
 	<description>Imports Coverity defects into SonarQube</description>
-	<url>http://docs.codehaus.org/display/SONAR/Coverity+Plugin</url>
+	<url>https://github.com/coverity/coverity-sonar-plugin</url>
 	<inceptionYear>2014</inceptionYear>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -19,8 +19,15 @@
 		<ws.version>v9</ws.version>
 	</properties>
 
+	<licenses>
+		<license>
+			<name>Eclipse Public License</name>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+
 	<organization>
-		<name>Coverity, Inc.</name>
+		<name>Synopsys, Inc.</name>
 		<url>http://www.coverity.com</url>
 	</organization>
 
@@ -377,18 +384,5 @@
             <name>sonar-plugin-local</name>
             <url>http://artifactory.internal.synopsys.com:8081/artifactory/simple/sonar-plugin-local</url>
         </repository>
-		<repository>
-			<id>sonar</id>
-			<name>SonarSource</name>
-			<url>http://repository.sonarsource.org/content/repositories/sonar</url>
-        </repository>
 	</repositories>
-
-	<pluginRepositories>
-		<pluginRepository>
-			<id>sonar</id>
-			<name>SonarSource</name>
-			<url>http://repository.sonarsource.org/content/repositories/sonar</url>
-		</pluginRepository>
-	</pluginRepositories>
 </project>
