@@ -19,6 +19,13 @@
 		<ws.version>v9</ws.version>
 	</properties>
 
+	<licenses>
+		<license>
+			<name>Eclipse Public License</name>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+
 	<organization>
 		<name>Synopsys, Inc.</name>
 		<url>http://www.coverity.com</url>
