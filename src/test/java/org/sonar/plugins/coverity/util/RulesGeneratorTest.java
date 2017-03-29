@@ -40,6 +40,7 @@ public class RulesGeneratorTest {
     private static final String cppOutputFilePath = "./test/coverity-cov-cpp.xml";
     private static final String csOutputFilePath = "./test/coverity-cs.xml";
     private static final String jsOutputFilePath = "./test/coverity-js.xml";
+    private static final String pythonOutputFilePath = "./test/coverity-py.xml";
 
     @Before
     public void setUp() {
@@ -77,16 +78,19 @@ public class RulesGeneratorTest {
         File cppOutputFile = new File(cppOutputFilePath);
         File csOutputFile = new File(csOutputFilePath);
         File jsOutputFile = new File(jsOutputFilePath);
+        File pythonOutpuFile = new File(pythonOutputFilePath);
 
         Assert.assertTrue(javaOutputFile.exists());
         Assert.assertTrue(cppOutputFile.exists());
         Assert.assertTrue(csOutputFile.exists());
         Assert.assertTrue(jsOutputFile.exists());
+        Assert.assertTrue(pythonOutpuFile.exists());
 
         checkCsOutputFile(csOutputFile);
         checkJavaOutputFile(javaOutputFile);
         checkCppOutputFile(cppOutputFile);
         checkJavaScriptOutputFile(jsOutputFile);
+        checkPythonOutputFile(pythonOutpuFile);
     }
 
     private void createTestDirectory() {
@@ -309,6 +313,47 @@ public class RulesGeneratorTest {
         }
 
         Assert.assertTrue(general && jsHintGeneric && noneSubcategory && withSubcategory);
+    }
+
+    private void checkPythonOutputFile(File outputFile) throws IOException {
+        NodeList nodes = parseNodeList(outputFile);
+        Assert.assertNotNull(nodes);
+
+        boolean subcategory = false;
+        boolean noneSubcategory = false;
+        boolean general = false;
+
+        Assert.assertEquals(3, nodes.getLength());
+        for (int i = 0 ; i < nodes.getLength() ; i++) {
+            Node node = nodes.item(i);
+            if (node.getNodeType() == Node.ELEMENT_NODE) {
+                Element element = (Element) node;
+                String key = getValue("key", element);
+
+                // OTHER_coverity-py
+                if (key.equals("OTHER_coverity-py")) {
+                    Assert.assertEquals("Coverity General PY", getValue("name", element));
+                    general = true;
+                    Assert.assertTrue(checkRuleTags(new String[]{"coverity", "python", "quality"}, element));
+                }
+
+                // OTHER_CONSTANT_EXPRESSION_RESULT_bit_and_with_zero
+                else if (key.equals("OTHER_CONSTANT_EXPRESSION_RESULT_bit_and_with_zero")) {
+                    Assert.assertEquals("Integer handling issues : Bitwise-and with zero", getValue("name", element));
+                    subcategory = true;
+                    Assert.assertTrue(checkRuleTags(new String[]{"coverity", "python", "quality"}, element));
+                }
+
+                // OTHER_CONSTANT_EXPRESSION_RESULT_none
+                else if (key.equals("OTHER_CONSTANT_EXPRESSION_RESULT_none")) {
+                    Assert.assertEquals("Integer handling issues : Bitwise-and with zero", getValue("name", element));
+                    noneSubcategory = true;
+                    Assert.assertTrue(checkRuleTags(new String[]{"coverity", "python", "quality"}, element));
+                }
+            }
+        }
+
+        Assert.assertTrue(general && noneSubcategory && subcategory);
     }
 
     private NodeList parseNodeList(File outputFile) throws IOException {

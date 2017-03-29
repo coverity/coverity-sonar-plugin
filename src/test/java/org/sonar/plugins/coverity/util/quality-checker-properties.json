@@ -80,5 +80,22 @@
     "subcategoryLongDescription" : "Long Description",
     "subcategoryShortDescription" : "Short Description",
     "isDocumented" : "true"
+  },
+  {
+    "category" : "Integer handling issues",
+    "checkerName" : "CONSTANT_EXPRESSION_RESULT",
+    "type" : "constant_expression_result",
+    "subtype" : "bit_and_with_zero",
+    "cweCategory" : 569,
+    "language" : "Python",
+    "impact" : "Medium",
+    "qualityKind" : true,
+    "securityKind" : false,
+    "testKind" : false,
+    "subcategory" : "bit_and_with_zero",
+    "subcategoryLocalEffect" : "The expression's value is always zero; construct may indicate an inadvertent logic error.",
+    "subcategoryLongDescription" : "Bitwise-and operation applied to zero always produces zero",
+    "subcategoryShortDescription" : "Bitwise-and with zero",
+    "isDocumented" : true
   }
 ]
