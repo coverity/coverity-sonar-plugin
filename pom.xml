@@ -384,18 +384,5 @@
             <name>sonar-plugin-local</name>
             <url>http://artifactory.internal.synopsys.com:8081/artifactory/simple/sonar-plugin-local</url>
         </repository>
-		<repository>
-			<id>sonar</id>
-			<name>SonarSource</name>
-			<url>http://repository.sonarsource.org/content/repositories/sonar</url>
-        </repository>
 	</repositories>
-
-	<pluginRepositories>
-		<pluginRepository>
-			<id>sonar</id>
-			<name>SonarSource</name>
-			<url>http://repository.sonarsource.org/content/repositories/sonar</url>
-		</pluginRepository>
-	</pluginRepositories>
 </project>
