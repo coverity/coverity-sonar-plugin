@@ -10,6 +10,7 @@
  */
 package org.sonar.plugins.coverity.util;
 
+import edu.emory.mathcs.backport.java.util.Arrays;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -24,6 +25,8 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.sonar.plugins.coverity.util.CoverityUtil.getValue;
 
@@ -113,24 +116,28 @@ public class RulesGeneratorTest {
                 if (key.equals("STATIC_CS_coverity-cs")) {
                     Assert.assertEquals("Coverity General CS", getValue("name", element));
                     general = true;
+                    Assert.assertTrue(checkRuleTags(new String[]{"coverity", "c#", "quality"}, element));
                 }
 
                 // STATIC_CS_MSVSCA.*
                 else if (key.equals("STATIC_CS_MSVSCA.*")) {
                     Assert.assertEquals("Coverity MSVSCA : Microsoft Visual Studio Code Analysis", getValue("name", element));
                     msvsca = true;
+                    Assert.assertTrue(checkRuleTags(new String[]{"coverity", "c#", "quality", "msvsca"}, element));
                 }
 
                 // STATIC_CS_C# Example Checker_none
                 else if (key.equals("STATIC_CS_C# Example Checker_none")) {
                     Assert.assertEquals("C# Example Checker : Short Description", getValue("name", element));
                     noneSubcategory = true;
+                    Assert.assertTrue(checkRuleTags(new String[]{"coverity", "c#", "quality"}, element));
                 }
 
                 // STATIC_CS_C# Example Checker_test-subcategory
                 else if (key.equals("STATIC_CS_C# Example Checker_test-subcategory")) {
                     Assert.assertEquals("C# Example Checker : Short Description", getValue("name", element));
                     testSubcategory = true;
+                    Assert.assertTrue(checkRuleTags(new String[]{"coverity", "c#", "quality"}, element));
                 }
 
             }
@@ -159,24 +166,28 @@ public class RulesGeneratorTest {
                 if (key.equals("STATIC_JAVA_coverity-java")) {
                     Assert.assertEquals("Coverity General JAVA", getValue("name", element));
                     general = true;
+                    Assert.assertTrue(checkRuleTags(new String[]{"coverity", "java", "quality"}, element));
                 }
 
                 // STATIC_JAVA_Java Example Checker_none
                 else if (key.equals("STATIC_JAVA_Java Example Checker_none")) {
                     Assert.assertEquals("Java Example Checker : Short Description", getValue("name", element));
                     noneSubcategory = true;
+                    Assert.assertTrue(checkRuleTags(new String[]{"coverity", "java", "quality"}, element));
                 }
 
                 // STATIC_JAVA_FB.AM_CREATES_EMPTY_JAR_FILE_ENTRY_generic
                 else if (key.equals("STATIC_JAVA_FB.AM_CREATES_EMPTY_JAR_FILE_ENTRY_generic")) {
                     Assert.assertEquals("The code calls putNextEntry(), immediately followed by a call to closeEntry().", getValue("description", element));
                     fbGeneric = true;
+                    Assert.assertTrue(checkRuleTags(new String[]{"coverity", "java", "quality", "findbugs"}, element));
                 }
 
                 // STATIC_JAVA_FB.AM_CREATES_EMPTY_JAR_FILE_ENTRY_none
                 else if (key.equals("STATIC_JAVA_FB.AM_CREATES_EMPTY_JAR_FILE_ENTRY_none")) {
                     Assert.assertEquals("The code calls putNextEntry(), immediately followed by a call to closeEntry().", getValue("description", element));
                     fbNone = true;
+                    Assert.assertTrue(checkRuleTags(new String[]{"coverity", "java", "quality"}, element));
                 }
             }
         }
@@ -207,6 +218,7 @@ public class RulesGeneratorTest {
                 if (key.equals("STATIC_C_coverity-cov-cpp")) {
                     Assert.assertEquals("Coverity General COV-CPP", getValue("name", element));
                     general = true;
+                    Assert.assertTrue(checkRuleTags(new String[]{"coverity", "c", "c++", "quality"}, element));
                 }
 
                 // STATIC_C_CPP Example Checker_none
@@ -214,30 +226,35 @@ public class RulesGeneratorTest {
                     Assert.assertEquals("CPP Example Checker : Short Description", getValue("name", element));
                     Assert.assertEquals("VULNERABILITY", getValue("type", element));
                     noneSubcategory = true;
+                    Assert.assertTrue(checkRuleTags(new String[]{"coverity", "c", "c++", "objective-c", "quality", "security"}, element));
                 }
 
                 // STATIC_C_PW.*
                 else if (key.equals("STATIC_C_PW.*")) {
                     Assert.assertEquals("Coverity PW : Parse Warnings", getValue("name", element));
                     pwRule = true;
+                    Assert.assertTrue(checkRuleTags(new String[]{"coverity", "c", "c++", "quality", "parse-warning"}, element));
                 }
 
                 // STATIC_C_SW.*
                 else if (key.equals("STATIC_C_SW.*")) {
                     Assert.assertEquals("Coverity SW : Semantic Warnings", getValue("name", element));
                     swRule = true;
+                    Assert.assertTrue(checkRuleTags(new String[]{"coverity", "c", "c++", "quality", "semantic-warning"}, element));
                 }
 
                 // STATIC_C_RW.*
                 else if (key.equals("STATIC_C_RW.*")) {
                     Assert.assertEquals("Coverity RW : Recovery Warnings", getValue("name", element));
                     rwRule = true;
+                    Assert.assertTrue(checkRuleTags(new String[]{"coverity", "c", "c++", "quality", "recovery-warning"}, element));
                 }
 
                 // STATIC_C_MISRA.*
                 else if (key.equals("STATIC_C_MISRA.*")) {
                     Assert.assertEquals("Coverity MISRA : Coding Standard Violation", getValue("name", element));
                     misraRule = true;
+                    Assert.assertTrue(checkRuleTags(new String[]{"coverity", "c", "c++", "quality", "misra"}, element));
                 }
             }
         }
@@ -265,25 +282,28 @@ public class RulesGeneratorTest {
                 if (key.equals("OTHER_coverity-js")) {
                     Assert.assertEquals("Coverity General JS", getValue("name", element));
                     general = true;
+                    Assert.assertTrue(checkRuleTags(new String[]{"coverity", "js", "quality"}, element));
                 }
 
                 // OTHER_JSHINT.*
                 else if (key.equals("OTHER_JSHINT.*")) {
                     Assert.assertEquals("Coverity JSHINT : JSHint Warning", getValue("name", element));
                     jsHintGeneric = true;
+                    Assert.assertTrue(checkRuleTags(new String[]{"coverity", "js", "quality", "jshint"}, element));
                 }
 
                 // OTHER_JavaScript Example Checker_none
                 else if (key.equals("OTHER_JavaScript Example Checker_none")) {
                     Assert.assertEquals("JavaScript Example Checker : Short Description", getValue("name", element));
                     noneSubcategory = true;
-
+                    Assert.assertTrue(checkRuleTags(new String[]{"coverity", "js", "quality"}, element));
                 }
 
                 // OTHER_JavaScript Example Checker_subcategory
                 else if (key.equals("OTHER_JavaScript Example Checker_subcategory")) {
                     Assert.assertEquals("JavaScript Example Checker : Short Description", getValue("name", element));
                     withSubcategory = true;
+                    Assert.assertTrue(checkRuleTags(new String[]{"coverity", "js", "quality"}, element));
                 }
             }
         }
@@ -314,5 +334,30 @@ public class RulesGeneratorTest {
         in.close();
 
         return null;
+    }
+
+    private boolean checkRuleTags(String[] expectedTags, Element element) {
+        NodeList tags = element.getElementsByTagName("tag");
+
+        if (tags == null || tags.getLength() == 0) {
+            return false;
+        }
+
+        if (expectedTags.length != tags.getLength()) {
+            return false;
+        }
+
+        List<String> ruleTags = new ArrayList<>();
+        for (int i = 0 ; i < tags.getLength() ; i++) {
+            ruleTags.add(tags.item(i).getFirstChild().getNodeValue());
+        }
+
+        for (String expectedTag : expectedTags) {
+            if (!ruleTags.contains(expectedTag)) {
+                return false;
+            }
+        }
+
+        return true;
     }
 }
