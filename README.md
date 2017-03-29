@@ -6,9 +6,9 @@ The Coverity Sonar Plugin automatically import issues from Coverity Connect into
 Coverity® Sonar Plug-in Installation and Configuration Guide
 ============================================================
 
-Version 1.5.0
+Version 1.6.0
 
-Released February 26, 2016
+Released April 28, 2017
 
 This guide is intended to assist you with the installation and
 configuration of the Coverity Sonar plug-in. Once completed, you will be
@@ -212,6 +212,8 @@ addressed in future releases.
 
 Changelog
 =========
+* __1.6.0__
+  * RNs go here.
 
 * __1.5.0__
   * Upgraded web services from v6 to v9.
