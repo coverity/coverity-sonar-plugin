@@ -9,7 +9,7 @@
 
 	<name>Coverity</name>
 	<description>Imports Coverity defects into SonarQube</description>
-	<url>http://docs.codehaus.org/display/SONAR/Coverity+Plugin</url>
+	<url>https://github.com/coverity/coverity-sonar-plugin</url>
 	<inceptionYear>2014</inceptionYear>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
