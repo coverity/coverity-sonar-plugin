@@ -421,23 +421,16 @@ public class RulesGeneratorTest {
     private void checkRuleTags(String[] expectedTags, Element element) {
         NodeList tags = element.getElementsByTagName("tag");
 
-        if (tags == null || tags.getLength() == 0) {
+        Assert.assertNotNull(tags);
+        Assert.assertEquals(expectedTags.length, tags.getLength());
 
-        }
-
-        if (expectedTags.length != tags.getLength()) {
-            Assert.fail("Number of tags is different");
-        }
-
-        List<String> ruleTags = new ArrayList<>();
+        String[] ruleTags = new String[tags.getLength()];
         for (int i = 0 ; i < tags.getLength() ; i++) {
-            ruleTags.add(tags.item(i).getFirstChild().getNodeValue());
+            ruleTags[i] = tags.item(i).getFirstChild().getNodeValue();
         }
 
-        for (String expectedTag : expectedTags) {
-            if (!ruleTags.contains(expectedTag)) {
-                Assert.fail(expectedTag + " is not in Rule Tags");
-            }
-        }
+        Arrays.sort(expectedTags);
+        Arrays.sort(ruleTags);
+        Assert.assertArrayEquals(expectedTags, ruleTags);
     }
 }
