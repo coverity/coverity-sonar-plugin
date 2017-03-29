@@ -41,6 +41,7 @@ public class RulesGeneratorTest {
     private static final String csOutputFilePath = "./test/coverity-cs.xml";
     private static final String jsOutputFilePath = "./test/coverity-js.xml";
     private static final String pythonOutputFilePath = "./test/coverity-py.xml";
+    private static final String phpOutputFilePath = "./test/coverity-php.xml";
 
     @Before
     public void setUp() {
@@ -78,19 +79,22 @@ public class RulesGeneratorTest {
         File cppOutputFile = new File(cppOutputFilePath);
         File csOutputFile = new File(csOutputFilePath);
         File jsOutputFile = new File(jsOutputFilePath);
-        File pythonOutpuFile = new File(pythonOutputFilePath);
+        File pythonOutputFile = new File(pythonOutputFilePath);
+        File phpOutputFile = new File(phpOutputFilePath);
 
         Assert.assertTrue(javaOutputFile.exists());
         Assert.assertTrue(cppOutputFile.exists());
         Assert.assertTrue(csOutputFile.exists());
         Assert.assertTrue(jsOutputFile.exists());
-        Assert.assertTrue(pythonOutpuFile.exists());
+        Assert.assertTrue(pythonOutputFile.exists());
+        Assert.assertTrue(phpOutputFile.exists());
 
         checkCsOutputFile(csOutputFile);
         checkJavaOutputFile(javaOutputFile);
         checkCppOutputFile(cppOutputFile);
         checkJavaScriptOutputFile(jsOutputFile);
-        checkPythonOutputFile(pythonOutpuFile);
+        checkPythonOutputFile(pythonOutputFile);
+        checkPhpOutputFile(phpOutputFile);
     }
 
     private void createTestDirectory() {
@@ -354,6 +358,39 @@ public class RulesGeneratorTest {
         }
 
         Assert.assertTrue(general && noneSubcategory && subcategory);
+    }
+
+    private void checkPhpOutputFile(File outputFile) throws IOException {
+        NodeList nodes = parseNodeList(outputFile);
+        Assert.assertNotNull(nodes);
+
+        boolean noneSubcategory = false;
+        boolean general = false;
+
+        Assert.assertEquals(2, nodes.getLength());
+        for (int i = 0 ; i < nodes.getLength() ; i++) {
+            Node node = nodes.item(i);
+            if (node.getNodeType() == Node.ELEMENT_NODE) {
+                Element element = (Element) node;
+                String key = getValue("key", element);
+
+                // OTHER_coverity-php
+                if (key.equals("OTHER_coverity-php")) {
+                    Assert.assertEquals("Coverity General PHP", getValue("name", element));
+                    general = true;
+                    Assert.assertTrue(checkRuleTags(new String[]{"coverity", "php", "quality"}, element));
+                }
+
+                // OTHER_COPY_PASTE_ERROR_none
+                else if (key.equals("OTHER_COPY_PASTE_ERROR_none")) {
+                    Assert.assertEquals("Incorrect expression : Copy-paste error", getValue("name", element));
+                    noneSubcategory = true;
+                    Assert.assertTrue(checkRuleTags(new String[]{"coverity", "php", "quality"}, element));
+                }
+            }
+        }
+
+        Assert.assertTrue(general && noneSubcategory);
     }
 
     private NodeList parseNodeList(File outputFile) throws IOException {

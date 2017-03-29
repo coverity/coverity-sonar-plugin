@@ -97,5 +97,21 @@
     "subcategoryLongDescription" : "Bitwise-and operation applied to zero always produces zero",
     "subcategoryShortDescription" : "Bitwise-and with zero",
     "isDocumented" : true
+  },
+  {
+    "category" : "Incorrect expression",
+    "checkerName" : "COPY_PASTE_ERROR",
+    "type" : "copy_paste_error",
+    "cweCategory" : 398,
+    "language" : "PHP",
+    "impact" : "Medium",
+    "qualityKind" : true,
+    "securityKind" : false,
+    "testKind" : false,
+    "subcategory" : "none",
+    "subcategoryLocalEffect" : "The copied code will not have its intended effect.",
+    "subcategoryLongDescription" : "A copied piece of code is inconsistent with the original",
+    "subcategoryShortDescription" : "Copy-paste error",
+    "isDocumented" : true
   }
 ]
