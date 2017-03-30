@@ -237,9 +237,9 @@ public class CoveritySensorTest {
 
         final ActiveRulesBuilder rulesBuilder = new ActiveRulesBuilder();
         final RuleKey ruleKey = RuleKey.of(repoKey, domain + "_" + key);
-        final NewActiveRule pyChecker = rulesBuilder.create(ruleKey);
+        final NewActiveRule activeRule = rulesBuilder.create(ruleKey);
         sensorContextTester
-                .setActiveRules(new DefaultActiveRules(Arrays.asList(pyChecker)));
+                .setActiveRules(new DefaultActiveRules(Arrays.asList(activeRule)));
 
         ActiveRule rule = sensor.findActiveRule(sensorContextTester, domain, checkerName, subcategory, lang);
         assertEquals(domain + "_" + key, rule.ruleKey().rule());
