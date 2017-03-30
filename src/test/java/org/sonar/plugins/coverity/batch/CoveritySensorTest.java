@@ -90,6 +90,7 @@ public class CoveritySensorTest {
 
         properties.put(CoverityPlugin.COVERITY_PROJECT, projectName);
         properties.put(CoverityPlugin.COVERITY_ENABLE, "true");
+        properties.put("sonar.sources", "src");
         sensorContextTester
                 .settings()
                 .addProperties(properties);
@@ -230,6 +231,41 @@ public class CoveritySensorTest {
         verifyFindActiveRule("TEST_CHECKER", "OTHER", "coverity-js", "coverity-js", "", "js");
         verifyFindActiveRule("TEST_CHECKER", "OTHER", "coverity-py", "coverity-py", "", "py");
         verifyFindActiveRule("TEST_CHECKER", "OTHER", "coverity-php", "coverity-php", "", "php");
+    }
+
+    @Test
+    public void testExecute_CoverityProjectNotSpecified() throws Exception {
+
+        final SensorContextTester sensorContextTester = SensorContextTester.create(new File("src"));
+        final HashMap<String, String> properties = new HashMap<>();
+
+        properties.put(CoverityPlugin.COVERITY_ENABLE, "true");
+        sensorContextTester
+                .settings()
+                .addProperties(properties);
+
+        sensor.execute(sensorContextTester);
+
+        final Collection<Issue> issues = sensorContextTester.allIssues();
+        assertEquals(0, issues.size());
+    }
+
+    @Test
+    public void testExecute_CoverityProjectNotExist() throws Exception {
+
+        final SensorContextTester sensorContextTester = SensorContextTester.create(new File("src"));
+        final HashMap<String, String> properties = new HashMap<>();
+
+        properties.put(CoverityPlugin.COVERITY_ENABLE, "true");
+        properties.put(CoverityPlugin.COVERITY_PROJECT, "test-project");
+        sensorContextTester
+                .settings()
+                .addProperties(properties);
+
+        sensor.execute(sensorContextTester);
+
+        final Collection<Issue> issues = sensorContextTester.allIssues();
+        assertEquals(0, issues.size());
     }
 
     private void verifyFindActiveRule(String checkerName, String domain, String repoKey, String key, String subcategory, String lang) throws Exception {
