@@ -378,7 +378,7 @@ public class CoveritySensor implements Sensor {
                 .save();
     }
 
-    private ActiveRule findActiveRule(SensorContext context, String domain, String checkerName, String subCategory, String lang) {
+    protected ActiveRule findActiveRule(SensorContext context, String domain, String checkerName, String subCategory, String lang) {
         String key = domain + "_" + checkerName;
         RuleKey rk = CoverityUtil.getRuleKey(lang, key + "_" + subCategory);
 
