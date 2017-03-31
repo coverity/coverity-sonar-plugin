@@ -39,6 +39,7 @@ import java.util.*;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.fail;
 import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
@@ -278,6 +279,12 @@ public class CoveritySensorTest {
                 .setActiveRules(new DefaultActiveRules(Arrays.asList(activeRule)));
 
         ActiveRule rule = sensor.findActiveRule(sensorContextTester, domain, checkerName, subcategory, lang);
-        assertEquals(domain + "_" + key, rule.ruleKey().rule());
+        if (rule != null) {
+            assertEquals(domain + "_" + key, rule.ruleKey().rule());
+        } else {
+            fail("Rule cannot be null. CheckerName: " + checkerName + " Domain: " + domain + " RepoKey: " + repoKey
+                + " Subcategory: " + subcategory + " Language: " + lang);
+        }
+
     }
 }
