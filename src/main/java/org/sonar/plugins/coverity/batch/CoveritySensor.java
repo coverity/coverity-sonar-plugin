@@ -183,7 +183,7 @@ public class CoveritySensor implements Sensor {
                     }
                 }
 
-                if ("Dismissed".equals(status) || "Fixed".equals(status)) {
+                if ("Dismissed".equals(status) || "Fixed".equals(status) || "Absent Dismissed".equals(status)) {
                     LOG.info("Skipping resolved defect (CID " + mddo.getCid() + ", status '" + status + "')");
                     continue;
                 }

@@ -37,7 +37,7 @@ public class CoverityRules implements RulesDefinition {
     @Override
     public void define(Context context) {
         for(String language : CoverityPlugin.COVERITY_LANGUAGES){
-            NewRepository repository = context.createRepository(CoverityPlugin.REPOSITORY_KEY + "-" + language, language).setName(language + "-repository");
+            NewRepository repository = context.createRepository(CoverityPlugin.REPOSITORY_KEY + "-" + language, language).setName("coverity-" + language);
             String fileDir = "coverity-" + language + ".xml";
             InputStream in = getClass().getResourceAsStream(fileDir);
             xmlLoader.load(repository, in, "UTF-8");

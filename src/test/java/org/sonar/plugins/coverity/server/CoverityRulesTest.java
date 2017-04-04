@@ -46,7 +46,7 @@ public class CoverityRulesTest {
         assertArrayEquals(expectedRepositoryKeys.toArray(), repositoryKeys.toArray());
 
         List<String> expectedRepositoryNames =
-                CoverityPlugin.COVERITY_LANGUAGES.stream().map(l-> l + "-repository").collect(Collectors.toList());
+                CoverityPlugin.COVERITY_LANGUAGES.stream().map(l-> "coverity-" + l).collect(Collectors.toList());
         List<String> repositoryNames =
                 repositoryList.stream().map(r->r.name()).collect(Collectors.toList());
         Collections.sort(expectedRepositoryNames);
