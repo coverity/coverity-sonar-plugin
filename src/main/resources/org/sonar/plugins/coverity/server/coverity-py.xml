@@ -10,7 +10,7 @@
         <type>BUG</type>
         <tag>coverity</tag>
         <tag>python</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
         <key>OTHER_IDENTICAL_BRANCHES_chain</key>
@@ -23,7 +23,7 @@
         <type>BUG</type>
         <tag>coverity</tag>
         <tag>python</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
         <key>OTHER_IDENTICAL_BRANCHES_if</key>
@@ -36,7 +36,7 @@
         <type>BUG</type>
         <tag>coverity</tag>
         <tag>python</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
         <key>OTHER_IDENTICAL_BRANCHES_ternary</key>
@@ -49,7 +49,7 @@
         <type>BUG</type>
         <tag>coverity</tag>
         <tag>python</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
         <key>OTHER_IDENTICAL_BRANCHES_none</key>
@@ -62,7 +62,7 @@
         <type>BUG</type>
         <tag>coverity</tag>
         <tag>python</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
         <key>OTHER_FORWARD_NULL_bad_null_value_use</key>
@@ -75,7 +75,7 @@
         <type>BUG</type>
         <tag>coverity</tag>
         <tag>python</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
         <key>OTHER_FORWARD_NULL_deref_constant_null</key>
@@ -88,7 +88,7 @@
         <type>BUG</type>
         <tag>coverity</tag>
         <tag>python</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
         <key>OTHER_FORWARD_NULL_needs_null_check</key>
@@ -101,7 +101,7 @@
         <type>BUG</type>
         <tag>coverity</tag>
         <tag>python</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
         <key>OTHER_FORWARD_NULL_none</key>
@@ -114,7 +114,7 @@
         <type>BUG</type>
         <tag>coverity</tag>
         <tag>python</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
         <key>OTHER_CONSTANT_EXPRESSION_RESULT_bit_and_with_zero</key>
@@ -127,7 +127,7 @@
         <type>BUG</type>
         <tag>coverity</tag>
         <tag>python</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
         <key>OTHER_CONSTANT_EXPRESSION_RESULT_extra_high_bits</key>
@@ -140,7 +140,7 @@
         <type>BUG</type>
         <tag>coverity</tag>
         <tag>python</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
         <key>OTHER_CONSTANT_EXPRESSION_RESULT_logical_vs_bitwise</key>
@@ -153,7 +153,7 @@
         <type>BUG</type>
         <tag>coverity</tag>
         <tag>python</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
         <key>OTHER_CONSTANT_EXPRESSION_RESULT_missing_parentheses</key>
@@ -166,7 +166,7 @@
         <type>BUG</type>
         <tag>coverity</tag>
         <tag>python</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
         <key>OTHER_CONSTANT_EXPRESSION_RESULT_none</key>
@@ -179,7 +179,7 @@
         <type>BUG</type>
         <tag>coverity</tag>
         <tag>python</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
         <key>OTHER_CONSTANT_EXPRESSION_RESULT_operator_confusion</key>
@@ -192,7 +192,7 @@
         <type>BUG</type>
         <tag>coverity</tag>
         <tag>python</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
         <key>OTHER_CONSTANT_EXPRESSION_RESULT_pointless_string_compare</key>
@@ -205,7 +205,7 @@
         <type>BUG</type>
         <tag>coverity</tag>
         <tag>python</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
         <key>OTHER_CONSTANT_EXPRESSION_RESULT_result_independent_of_operands</key>
@@ -218,7 +218,7 @@
         <type>BUG</type>
         <tag>coverity</tag>
         <tag>python</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
         <key>OTHER_CONSTANT_EXPRESSION_RESULT_same_on_both_sides</key>
@@ -231,7 +231,7 @@
         <type>BUG</type>
         <tag>coverity</tag>
         <tag>python</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
         <key>OTHER_CONSTANT_EXPRESSION_RESULT_typeof_misuse</key>
@@ -244,7 +244,7 @@
         <type>BUG</type>
         <tag>coverity</tag>
         <tag>python</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
         <key>OTHER_CONSTANT_EXPRESSION_RESULT_unnecessary_op_assign</key>
@@ -257,7 +257,7 @@
         <type>BUG</type>
         <tag>coverity</tag>
         <tag>python</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
         <key>OTHER_CONSTANT_EXPRESSION_RESULT_number_as_truth_value</key>
@@ -270,7 +270,7 @@
         <type>BUG</type>
         <tag>coverity</tag>
         <tag>python</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
         <key>OTHER_DEADCODE_dead_case_in_switch</key>
@@ -283,7 +283,7 @@
         <type>BUG</type>
         <tag>coverity</tag>
         <tag>python</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
         <key>OTHER_DEADCODE_dead_default_in_switch</key>
@@ -296,7 +296,7 @@
         <type>BUG</type>
         <tag>coverity</tag>
         <tag>python</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
         <key>OTHER_DEADCODE_effectively_constant</key>
@@ -309,7 +309,7 @@
         <type>BUG</type>
         <tag>coverity</tag>
         <tag>python</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
         <key>OTHER_DEADCODE_none</key>
@@ -322,7 +322,7 @@
         <type>BUG</type>
         <tag>coverity</tag>
         <tag>python</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
         <key>OTHER_DEADCODE_redundant_test</key>
@@ -335,7 +335,7 @@
         <type>BUG</type>
         <tag>coverity</tag>
         <tag>python</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
         <key>OTHER_coverity-py</key>
@@ -348,7 +348,7 @@
         <type>BUG</type>
         <tag>coverity</tag>
         <tag>python</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
         <key>OTHER_REVERSE_INULL_none</key>
@@ -361,7 +361,7 @@
         <type>BUG</type>
         <tag>coverity</tag>
         <tag>python</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
         <key>OTHER_COPY_PASTE_ERROR_none</key>
@@ -374,7 +374,7 @@
         <type>BUG</type>
         <tag>coverity</tag>
         <tag>python</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
         <key>OTHER_IDENTIFIER_TYPO_none</key>
@@ -387,7 +387,7 @@
         <type>BUG</type>
         <tag>coverity</tag>
         <tag>python</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
         <key>OTHER_UNREACHABLE_none</key>
@@ -400,6 +400,6 @@
         <type>BUG</type>
         <tag>coverity</tag>
         <tag>python</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
 </rules>

@@ -551,11 +551,11 @@ public class RulesGenerator {
 
     public static void addRuleTypeTag(InternalRule rule, boolean qualityKind, boolean securityKind) {
         if (qualityKind) {
-            rule.getTags().add("quality");
+            rule.getTags().add("coverity-quality");
         }
 
         if (securityKind) {
-            rule.getTags().add("security");
+            rule.getTags().add("coverity-security");
         }
     }
 }
