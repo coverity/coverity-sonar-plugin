@@ -11,7 +11,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
         <key>STATIC_C_SLEEP_none</key>
@@ -25,7 +25,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -40,7 +40,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
         <key>STATIC_C_MISSING_LOCK_none</key>
@@ -54,7 +54,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -69,7 +69,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -84,7 +84,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -99,7 +99,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -115,7 +115,7 @@
         <tag>semantic-warning</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
         <key>STATIC_C_LOCK_double_lock</key>
@@ -129,7 +129,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -144,7 +144,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -159,7 +159,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -174,7 +174,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -189,7 +189,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -204,7 +204,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -219,7 +219,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -234,7 +234,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -249,7 +249,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -264,7 +264,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -279,7 +279,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
         <key>STATIC_C_DC.WEAK_CRYPTO_none</key>
@@ -293,7 +293,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>security</tag>
+        <tag>coverity-security</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -308,8 +308,8 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
-        <tag>security</tag>
+        <tag>coverity-quality</tag>
+        <tag>coverity-security</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -324,8 +324,8 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
-        <tag>security</tag>
+        <tag>coverity-quality</tag>
+        <tag>coverity-security</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -340,8 +340,8 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
-        <tag>security</tag>
+        <tag>coverity-quality</tag>
+        <tag>coverity-security</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -356,8 +356,8 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
-        <tag>security</tag>
+        <tag>coverity-quality</tag>
+        <tag>coverity-security</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -372,8 +372,8 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
-        <tag>security</tag>
+        <tag>coverity-quality</tag>
+        <tag>coverity-security</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -388,8 +388,8 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
-        <tag>security</tag>
+        <tag>coverity-quality</tag>
+        <tag>coverity-security</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -404,8 +404,8 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
-        <tag>security</tag>
+        <tag>coverity-quality</tag>
+        <tag>coverity-security</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -420,7 +420,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -435,7 +435,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>security</tag>
+        <tag>coverity-security</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -450,7 +450,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>security</tag>
+        <tag>coverity-security</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -465,7 +465,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>security</tag>
+        <tag>coverity-security</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -480,7 +480,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>security</tag>
+        <tag>coverity-security</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -495,7 +495,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>security</tag>
+        <tag>coverity-security</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -510,7 +510,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>security</tag>
+        <tag>coverity-security</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -526,7 +526,7 @@
         <tag>parse-warning</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
         <key>STATIC_C_PW.INCLUDE_RECURSION_none</key>
@@ -540,7 +540,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
         <key>STATIC_C_PW.ASSIGN_WHERE_COMPARE_MEANT_none</key>
@@ -554,7 +554,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
         <key>STATIC_C_STREAM_FORMAT_STATE_none</key>
@@ -568,7 +568,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -583,7 +583,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -598,7 +598,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -613,7 +613,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -628,7 +628,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -643,7 +643,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -658,7 +658,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -673,7 +673,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -688,7 +688,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -703,7 +703,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -718,7 +718,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -733,7 +733,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -748,7 +748,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -763,7 +763,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
         <key>STATIC_C_PW.INTEGER_TOO_LARGE_none</key>
@@ -777,7 +777,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
         <key>STATIC_C_CONSTANT_EXPRESSION_RESULT_bit_and_with_zero</key>
@@ -791,7 +791,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -806,7 +806,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -821,7 +821,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -836,7 +836,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -851,7 +851,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -866,7 +866,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -881,7 +881,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -896,7 +896,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -911,7 +911,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -926,7 +926,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -941,7 +941,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -956,7 +956,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>security</tag>
+        <tag>coverity-security</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -971,7 +971,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>security</tag>
+        <tag>coverity-security</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -986,7 +986,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>security</tag>
+        <tag>coverity-security</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -1001,7 +1001,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>security</tag>
+        <tag>coverity-security</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -1016,7 +1016,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
         <key>STATIC_C_INVALIDATE_ITERATOR_none</key>
@@ -1030,7 +1030,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -1045,7 +1045,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
         <key>STATIC_C_STACK_USE_none</key>
@@ -1059,7 +1059,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -1074,7 +1074,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -1089,8 +1089,8 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
-        <tag>security</tag>
+        <tag>coverity-quality</tag>
+        <tag>coverity-security</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -1105,8 +1105,8 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
-        <tag>security</tag>
+        <tag>coverity-quality</tag>
+        <tag>coverity-security</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -1121,7 +1121,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -1136,7 +1136,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -1151,7 +1151,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -1166,7 +1166,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -1181,8 +1181,8 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
-        <tag>security</tag>
+        <tag>coverity-quality</tag>
+        <tag>coverity-security</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -1197,8 +1197,8 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
-        <tag>security</tag>
+        <tag>coverity-quality</tag>
+        <tag>coverity-security</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -1213,8 +1213,8 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
-        <tag>security</tag>
+        <tag>coverity-quality</tag>
+        <tag>coverity-security</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -1229,7 +1229,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -1244,8 +1244,8 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
-        <tag>security</tag>
+        <tag>coverity-quality</tag>
+        <tag>coverity-security</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -1260,7 +1260,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -1275,7 +1275,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -1290,7 +1290,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
         <key>STATIC_C_WEAK_PASSWORD_HASH_none</key>
@@ -1304,7 +1304,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>security</tag>
+        <tag>coverity-security</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -1319,7 +1319,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>security</tag>
+        <tag>coverity-security</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -1334,7 +1334,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>security</tag>
+        <tag>coverity-security</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -1349,7 +1349,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>security</tag>
+        <tag>coverity-security</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -1364,7 +1364,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>security</tag>
+        <tag>coverity-security</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -1379,7 +1379,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -1394,7 +1394,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -1409,7 +1409,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -1424,7 +1424,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -1439,7 +1439,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -1454,7 +1454,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -1469,7 +1469,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -1484,7 +1484,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -1499,7 +1499,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -1514,7 +1514,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -1529,7 +1529,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -1544,7 +1544,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -1559,7 +1559,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -1574,7 +1574,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -1589,7 +1589,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -1604,7 +1604,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -1619,7 +1619,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -1634,7 +1634,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
         <key>STATIC_C_OPEN_ARGS_none</key>
@@ -1648,8 +1648,8 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
-        <tag>security</tag>
+        <tag>coverity-quality</tag>
+        <tag>coverity-security</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -1664,8 +1664,8 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
-        <tag>security</tag>
+        <tag>coverity-quality</tag>
+        <tag>coverity-security</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -1680,8 +1680,8 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
-        <tag>security</tag>
+        <tag>coverity-quality</tag>
+        <tag>coverity-security</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -1696,8 +1696,8 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
-        <tag>security</tag>
+        <tag>coverity-quality</tag>
+        <tag>coverity-security</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -1712,8 +1712,8 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
-        <tag>security</tag>
+        <tag>coverity-quality</tag>
+        <tag>coverity-security</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -1728,8 +1728,8 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
-        <tag>security</tag>
+        <tag>coverity-quality</tag>
+        <tag>coverity-security</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -1744,7 +1744,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -1759,7 +1759,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -1774,7 +1774,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -1789,7 +1789,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -1804,7 +1804,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -1819,8 +1819,8 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
-        <tag>security</tag>
+        <tag>coverity-quality</tag>
+        <tag>coverity-security</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -1835,8 +1835,8 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
-        <tag>security</tag>
+        <tag>coverity-quality</tag>
+        <tag>coverity-security</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -1851,7 +1851,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -1866,7 +1866,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -1881,7 +1881,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -1896,7 +1896,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -1911,7 +1911,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -1926,7 +1926,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -1941,7 +1941,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
         <key>STATIC_C_COM.BSTR.ALLOC_free_uninit</key>
@@ -1955,7 +1955,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
         <key>STATIC_C_COM.BSTR.ALLOC_leak</key>
@@ -1969,7 +1969,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
         <key>STATIC_C_COM.BSTR.ALLOC_none</key>
@@ -1983,7 +1983,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
         <key>STATIC_C_COM.BSTR.ALLOC_use_after_free</key>
@@ -1997,7 +1997,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
         <key>STATIC_C_COM.BSTR.ALLOC_use_uninit</key>
@@ -2011,7 +2011,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
         <key>STATIC_C_ATOMICITY_none</key>
@@ -2025,7 +2025,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -2040,7 +2040,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
         <key>STATIC_C_BUFFER_SIZE_fixed_size_dest</key>
@@ -2054,8 +2054,8 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
-        <tag>security</tag>
+        <tag>coverity-quality</tag>
+        <tag>coverity-security</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -2070,8 +2070,8 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
-        <tag>security</tag>
+        <tag>coverity-quality</tag>
+        <tag>coverity-security</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -2086,8 +2086,8 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
-        <tag>security</tag>
+        <tag>coverity-quality</tag>
+        <tag>coverity-security</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -2102,8 +2102,8 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
-        <tag>security</tag>
+        <tag>coverity-quality</tag>
+        <tag>coverity-security</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -2118,8 +2118,8 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
-        <tag>security</tag>
+        <tag>coverity-quality</tag>
+        <tag>coverity-security</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -2134,7 +2134,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -2149,7 +2149,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -2164,7 +2164,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -2179,7 +2179,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -2194,7 +2194,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -2209,7 +2209,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -2224,7 +2224,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>security</tag>
+        <tag>coverity-security</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -2239,7 +2239,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -2254,7 +2254,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -2269,7 +2269,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -2284,7 +2284,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -2299,7 +2299,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -2314,7 +2314,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -2329,7 +2329,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -2344,7 +2344,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -2359,7 +2359,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
         <key>STATIC_C_ENUM_AS_BOOLEAN_none</key>
@@ -2373,7 +2373,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -2388,7 +2388,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -2403,7 +2403,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -2418,8 +2418,8 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
-        <tag>security</tag>
+        <tag>coverity-quality</tag>
+        <tag>coverity-security</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -2434,7 +2434,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -2449,7 +2449,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -2464,7 +2464,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -2479,7 +2479,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -2495,7 +2495,7 @@
         <tag>misra</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
         <key>STATIC_C_RETURN_LOCAL_escape_local_addr_to_fields_or_globals</key>
@@ -2509,7 +2509,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -2524,7 +2524,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -2539,7 +2539,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
         <key>STATIC_C_SWAPPED_ARGUMENTS_none</key>
@@ -2553,7 +2553,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -2568,7 +2568,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -2583,7 +2583,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
         <key>STATIC_C_DELETE_ARRAY_non_array_delete</key>
@@ -2597,7 +2597,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -2612,7 +2612,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -2627,7 +2627,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -2642,7 +2642,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -2657,8 +2657,8 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
-        <tag>security</tag>
+        <tag>coverity-quality</tag>
+        <tag>coverity-security</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -2673,7 +2673,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -2688,7 +2688,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -2703,7 +2703,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -2718,7 +2718,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>security</tag>
+        <tag>coverity-security</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -2733,7 +2733,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>security</tag>
+        <tag>coverity-security</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -2748,7 +2748,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>security</tag>
+        <tag>coverity-security</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -2763,7 +2763,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -2778,7 +2778,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -2793,7 +2793,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -2808,7 +2808,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -2823,7 +2823,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -2838,7 +2838,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -2853,7 +2853,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -2868,7 +2868,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -2883,7 +2883,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -2898,7 +2898,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -2913,7 +2913,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -2928,7 +2928,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -2943,7 +2943,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -2958,7 +2958,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -2973,7 +2973,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
         <key>STATIC_C_DELETE_VOID_none</key>
@@ -2987,7 +2987,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -3002,8 +3002,8 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
-        <tag>security</tag>
+        <tag>coverity-quality</tag>
+        <tag>coverity-security</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -3018,8 +3018,8 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
-        <tag>security</tag>
+        <tag>coverity-quality</tag>
+        <tag>coverity-security</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -3034,8 +3034,8 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
-        <tag>security</tag>
+        <tag>coverity-quality</tag>
+        <tag>coverity-security</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -3050,8 +3050,8 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
-        <tag>security</tag>
+        <tag>coverity-quality</tag>
+        <tag>coverity-security</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -3066,8 +3066,8 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
-        <tag>security</tag>
+        <tag>coverity-quality</tag>
+        <tag>coverity-security</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -3082,8 +3082,8 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
-        <tag>security</tag>
+        <tag>coverity-quality</tag>
+        <tag>coverity-security</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -3098,8 +3098,8 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
-        <tag>security</tag>
+        <tag>coverity-quality</tag>
+        <tag>coverity-security</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -3114,8 +3114,8 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
-        <tag>security</tag>
+        <tag>coverity-quality</tag>
+        <tag>coverity-security</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -3130,8 +3130,8 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
-        <tag>security</tag>
+        <tag>coverity-quality</tag>
+        <tag>coverity-security</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -3146,8 +3146,8 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
-        <tag>security</tag>
+        <tag>coverity-quality</tag>
+        <tag>coverity-security</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -3162,8 +3162,8 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
-        <tag>security</tag>
+        <tag>coverity-quality</tag>
+        <tag>coverity-security</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -3178,8 +3178,8 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
-        <tag>security</tag>
+        <tag>coverity-quality</tag>
+        <tag>coverity-security</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -3194,8 +3194,8 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
-        <tag>security</tag>
+        <tag>coverity-quality</tag>
+        <tag>coverity-security</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -3210,8 +3210,8 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
-        <tag>security</tag>
+        <tag>coverity-quality</tag>
+        <tag>coverity-security</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -3226,7 +3226,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -3241,7 +3241,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -3256,7 +3256,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -3271,7 +3271,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -3286,7 +3286,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -3301,7 +3301,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -3316,7 +3316,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -3331,7 +3331,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -3346,7 +3346,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -3361,7 +3361,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -3376,7 +3376,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -3391,7 +3391,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -3406,7 +3406,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -3421,7 +3421,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -3436,7 +3436,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -3451,7 +3451,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -3466,7 +3466,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -3481,7 +3481,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -3496,7 +3496,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -3511,7 +3511,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -3526,7 +3526,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -3541,7 +3541,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -3556,7 +3556,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -3571,7 +3571,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -3586,7 +3586,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -3601,8 +3601,8 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
-        <tag>security</tag>
+        <tag>coverity-quality</tag>
+        <tag>coverity-security</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -3617,8 +3617,8 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
-        <tag>security</tag>
+        <tag>coverity-quality</tag>
+        <tag>coverity-security</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -3633,8 +3633,8 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
-        <tag>security</tag>
+        <tag>coverity-quality</tag>
+        <tag>coverity-security</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -3649,8 +3649,8 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
-        <tag>security</tag>
+        <tag>coverity-quality</tag>
+        <tag>coverity-security</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -3665,8 +3665,8 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
-        <tag>security</tag>
+        <tag>coverity-quality</tag>
+        <tag>coverity-security</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -3681,7 +3681,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -3696,7 +3696,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -3711,7 +3711,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -3726,7 +3726,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -3741,7 +3741,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -3756,7 +3756,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -3771,8 +3771,8 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
-        <tag>security</tag>
+        <tag>coverity-quality</tag>
+        <tag>coverity-security</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -3787,8 +3787,8 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
-        <tag>security</tag>
+        <tag>coverity-quality</tag>
+        <tag>coverity-security</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -3803,8 +3803,8 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
-        <tag>security</tag>
+        <tag>coverity-quality</tag>
+        <tag>coverity-security</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -3819,8 +3819,8 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
-        <tag>security</tag>
+        <tag>coverity-quality</tag>
+        <tag>coverity-security</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -3835,8 +3835,8 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
-        <tag>security</tag>
+        <tag>coverity-quality</tag>
+        <tag>coverity-security</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -3851,7 +3851,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -3866,7 +3866,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -3881,7 +3881,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -3896,7 +3896,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -3911,7 +3911,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -3926,7 +3926,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -3941,7 +3941,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -3956,7 +3956,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -3971,8 +3971,8 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
-        <tag>security</tag>
+        <tag>coverity-quality</tag>
+        <tag>coverity-security</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -3987,7 +3987,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -4002,7 +4002,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -4017,7 +4017,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -4032,7 +4032,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -4047,7 +4047,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -4062,8 +4062,8 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
-        <tag>security</tag>
+        <tag>coverity-quality</tag>
+        <tag>coverity-security</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -4078,7 +4078,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
         <key>STATIC_C_NEGATIVE_RETURNS_array_index_read</key>
@@ -4092,7 +4092,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -4107,7 +4107,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -4122,7 +4122,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -4137,7 +4137,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -4152,7 +4152,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -4167,7 +4167,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>security</tag>
+        <tag>coverity-security</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -4182,7 +4182,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>security</tag>
+        <tag>coverity-security</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -4197,7 +4197,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>security</tag>
+        <tag>coverity-security</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -4212,7 +4212,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>security</tag>
+        <tag>coverity-security</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -4227,7 +4227,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>security</tag>
+        <tag>coverity-security</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -4242,7 +4242,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>security</tag>
+        <tag>coverity-security</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -4257,7 +4257,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>security</tag>
+        <tag>coverity-security</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -4272,7 +4272,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>security</tag>
+        <tag>coverity-security</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -4287,7 +4287,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>security</tag>
+        <tag>coverity-security</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -4302,7 +4302,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>security</tag>
+        <tag>coverity-security</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -4317,7 +4317,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>security</tag>
+        <tag>coverity-security</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -4332,7 +4332,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
         <key>STATIC_C_IDENTICAL_BRANCHES_case</key>
@@ -4346,7 +4346,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -4361,7 +4361,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -4376,7 +4376,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -4391,7 +4391,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -4406,7 +4406,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
         <key>STATIC_C_DC.STRING_BUFFER_none</key>
@@ -4420,7 +4420,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>security</tag>
+        <tag>coverity-security</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -4435,7 +4435,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -4450,7 +4450,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -4465,7 +4465,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -4480,7 +4480,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
         <key>STATIC_C_INCOMPATIBLE_CAST_endianness</key>
@@ -4494,7 +4494,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -4509,7 +4509,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -4524,7 +4524,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -4539,7 +4539,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -4554,7 +4554,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -4569,7 +4569,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -4584,7 +4584,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -4599,7 +4599,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
         <key>STATIC_C_SECURE_TEMP_none</key>
@@ -4613,8 +4613,8 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
-        <tag>security</tag>
+        <tag>coverity-quality</tag>
+        <tag>coverity-security</tag>
     </rule>
     <rule>
         <key>STATIC_C_BAD_OVERRIDE_none</key>
@@ -4628,7 +4628,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -4643,7 +4643,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
         <key>STATIC_C_RW.*</key>
@@ -4658,7 +4658,7 @@
         <tag>recovery-warning</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
         <key>STATIC_C_COM.BSTR.BAD_COMPARE_none</key>
@@ -4672,7 +4672,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
         <key>STATIC_C_PW.DIVIDE_BY_ZERO_none</key>
@@ -4686,7 +4686,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
         <key>STATIC_C_COPY_WITHOUT_ASSIGN_none</key>
@@ -4700,7 +4700,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -4715,7 +4715,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -4730,7 +4730,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -4745,7 +4745,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -4760,7 +4760,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -4775,7 +4775,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -4790,8 +4790,8 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
-        <tag>security</tag>
+        <tag>coverity-quality</tag>
+        <tag>coverity-security</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -4806,8 +4806,8 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
-        <tag>security</tag>
+        <tag>coverity-quality</tag>
+        <tag>coverity-security</tag>
         <tag>objective-c</tag>
     </rule>
     <rule>
@@ -4822,7 +4822,7 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
         <key>STATIC_C_PW.BAD_CAST_none</key>
@@ -4836,6 +4836,6 @@
         <tag>coverity</tag>
         <tag>c++</tag>
         <tag>c</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
 </rules>

@@ -10,7 +10,7 @@
         <type>VULNERABILITY</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>security</tag>
+        <tag>coverity-security</tag>
     </rule>
     <rule>
         <key>STATIC_CS_RISKY_CRYPTO_hashing</key>
@@ -23,7 +23,7 @@
         <type>VULNERABILITY</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>security</tag>
+        <tag>coverity-security</tag>
     </rule>
     <rule>
         <key>STATIC_CS_RISKY_CRYPTO_none</key>
@@ -36,7 +36,7 @@
         <type>VULNERABILITY</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>security</tag>
+        <tag>coverity-security</tag>
     </rule>
     <rule>
         <key>STATIC_CS_RISKY_CRYPTO_ssl_protocol</key>
@@ -49,7 +49,7 @@
         <type>VULNERABILITY</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>security</tag>
+        <tag>coverity-security</tag>
     </rule>
     <rule>
         <key>STATIC_CS_DIVIDE_BY_ZERO_float_divisor</key>
@@ -62,7 +62,7 @@
         <type>BUG</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_DIVIDE_BY_ZERO_none</key>
@@ -75,7 +75,7 @@
         <type>BUG</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_UNINTENDED_INTEGER_DIVISION_none</key>
@@ -88,7 +88,7 @@
         <type>BUG</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_SCRIPT_CODE_INJECTION_none</key>
@@ -101,7 +101,7 @@
         <type>VULNERABILITY</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>security</tag>
+        <tag>coverity-security</tag>
     </rule>
     <rule>
         <key>STATIC_CS_UNKNOWN_LANGUAGE_INJECTION_none</key>
@@ -114,7 +114,7 @@
         <type>VULNERABILITY</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>security</tag>
+        <tag>coverity-security</tag>
     </rule>
     <rule>
         <key>STATIC_CS_OPEN_REDIRECT_none</key>
@@ -127,7 +127,7 @@
         <type>VULNERABILITY</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>security</tag>
+        <tag>coverity-security</tag>
     </rule>
     <rule>
         <key>STATIC_CS_XML_INJECTION_none</key>
@@ -140,7 +140,7 @@
         <type>VULNERABILITY</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>security</tag>
+        <tag>coverity-security</tag>
     </rule>
     <rule>
         <key>STATIC_CS_UNSAFE_DESERIALIZATION_none</key>
@@ -153,7 +153,7 @@
         <type>VULNERABILITY</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>security</tag>
+        <tag>coverity-security</tag>
     </rule>
     <rule>
         <key>STATIC_CS_BAD_EQ_none</key>
@@ -166,7 +166,7 @@
         <type>BUG</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_BAD_EQ_referential</key>
@@ -179,7 +179,7 @@
         <type>BUG</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_BAD_EQ_structural</key>
@@ -192,7 +192,7 @@
         <type>BUG</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_BAD_EQ_TYPES_none</key>
@@ -205,7 +205,7 @@
         <type>BUG</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_RESOURCE_LEAK_channel</key>
@@ -218,7 +218,7 @@
         <type>BUG</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_RESOURCE_LEAK_database</key>
@@ -231,7 +231,7 @@
         <type>BUG</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_RESOURCE_LEAK_exceptional_path</key>
@@ -244,7 +244,7 @@
         <type>BUG</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_RESOURCE_LEAK_none</key>
@@ -257,7 +257,7 @@
         <type>BUG</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_RESOURCE_LEAK_socket</key>
@@ -270,7 +270,7 @@
         <type>BUG</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_RESOURCE_LEAK_stream</key>
@@ -283,7 +283,7 @@
         <type>BUG</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_GUARDED_BY_VIOLATION_none</key>
@@ -296,7 +296,7 @@
         <type>BUG</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_UNRESTRICTED_DISPATCH_none</key>
@@ -309,7 +309,7 @@
         <type>VULNERABILITY</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>security</tag>
+        <tag>coverity-security</tag>
     </rule>
     <rule>
         <key>STATIC_CS_CALL_SUPER_none</key>
@@ -322,7 +322,7 @@
         <type>BUG</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_STRAY_SEMICOLON_none</key>
@@ -335,7 +335,7 @@
         <type>BUG</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_CONFIG.ASPNET_VERSION_HEADER_none</key>
@@ -348,7 +348,7 @@
         <type>VULNERABILITY</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>security</tag>
+        <tag>coverity-security</tag>
     </rule>
     <rule>
         <key>STATIC_CS_coverity-cs</key>
@@ -361,7 +361,7 @@
         <type>BUG</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_UNENCRYPTED_SENSITIVE_DATA_cleartext_in_classpath</key>
@@ -374,7 +374,7 @@
         <type>VULNERABILITY</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>security</tag>
+        <tag>coverity-security</tag>
     </rule>
     <rule>
         <key>STATIC_CS_UNENCRYPTED_SENSITIVE_DATA_cleartext_in_cookie</key>
@@ -387,7 +387,7 @@
         <type>VULNERABILITY</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>security</tag>
+        <tag>coverity-security</tag>
     </rule>
     <rule>
         <key>STATIC_CS_UNENCRYPTED_SENSITIVE_DATA_cleartext_in_database</key>
@@ -400,7 +400,7 @@
         <type>VULNERABILITY</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>security</tag>
+        <tag>coverity-security</tag>
     </rule>
     <rule>
         <key>STATIC_CS_UNENCRYPTED_SENSITIVE_DATA_cleartext_in_file</key>
@@ -413,7 +413,7 @@
         <type>VULNERABILITY</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>security</tag>
+        <tag>coverity-security</tag>
     </rule>
     <rule>
         <key>STATIC_CS_UNENCRYPTED_SENSITIVE_DATA_cleartext_transmission</key>
@@ -426,7 +426,7 @@
         <type>VULNERABILITY</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>security</tag>
+        <tag>coverity-security</tag>
     </rule>
     <rule>
         <key>STATIC_CS_UNENCRYPTED_SENSITIVE_DATA_none</key>
@@ -439,7 +439,7 @@
         <type>VULNERABILITY</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>security</tag>
+        <tag>coverity-security</tag>
     </rule>
     <rule>
         <key>STATIC_CS_NOSQL_QUERY_INJECTION_none</key>
@@ -452,7 +452,7 @@
         <type>VULNERABILITY</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>security</tag>
+        <tag>coverity-security</tag>
     </rule>
     <rule>
         <key>STATIC_CS_MISSING_AUTHZ_none</key>
@@ -465,7 +465,7 @@
         <type>VULNERABILITY</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>security</tag>
+        <tag>coverity-security</tag>
     </rule>
     <rule>
         <key>STATIC_CS_FORWARD_NULL_deref_constant_null</key>
@@ -478,7 +478,7 @@
         <type>BUG</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_FORWARD_NULL_deref_constant_zero</key>
@@ -491,7 +491,7 @@
         <type>BUG</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_FORWARD_NULL_dynamic_cast</key>
@@ -504,7 +504,7 @@
         <type>BUG</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_FORWARD_NULL_none</key>
@@ -517,7 +517,7 @@
         <type>BUG</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_FORWARD_NULL_null_from_as</key>
@@ -530,7 +530,7 @@
         <type>BUG</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_LDAP_INJECTION_none</key>
@@ -543,7 +543,7 @@
         <type>VULNERABILITY</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>security</tag>
+        <tag>coverity-security</tag>
     </rule>
     <rule>
         <key>STATIC_CS_UNUSED_VALUE_adjacent</key>
@@ -556,7 +556,7 @@
         <type>BUG</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_UNUSED_VALUE_none</key>
@@ -569,7 +569,7 @@
         <type>BUG</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_CONFIG.COOKIES_MISSING_HTTPONLY_none</key>
@@ -582,7 +582,7 @@
         <type>VULNERABILITY</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>security</tag>
+        <tag>coverity-security</tag>
     </rule>
     <rule>
         <key>STATIC_CS_ASPNET_MVC_VERSION_HEADER_none</key>
@@ -595,7 +595,7 @@
         <type>VULNERABILITY</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>security</tag>
+        <tag>coverity-security</tag>
     </rule>
     <rule>
         <key>STATIC_CS_REVERSE_INULL_none</key>
@@ -608,7 +608,7 @@
         <type>BUG</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_COPY_PASTE_ERROR_none</key>
@@ -621,7 +621,7 @@
         <type>BUG</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_CONFIG.MISSING_CUSTOM_ERROR_PAGE_none</key>
@@ -634,7 +634,7 @@
         <type>VULNERABILITY</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>security</tag>
+        <tag>coverity-security</tag>
     </rule>
     <rule>
         <key>STATIC_CS_NESTING_INDENT_MISMATCH_bad_indentation</key>
@@ -647,7 +647,7 @@
         <type>BUG</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_NESTING_INDENT_MISMATCH_none</key>
@@ -660,7 +660,7 @@
         <type>BUG</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_USELESS_CALL_none</key>
@@ -673,7 +673,7 @@
         <type>BUG</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_MSVSCA.*</key>
@@ -687,7 +687,7 @@
         <tag>coverity</tag>
         <tag>msvsca</tag>
         <tag>c#</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_VOLATILE_ATOMICITY_compare</key>
@@ -700,7 +700,7 @@
         <type>BUG</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_VOLATILE_ATOMICITY_none</key>
@@ -713,7 +713,7 @@
         <type>BUG</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_VOLATILE_ATOMICITY_semantic</key>
@@ -726,7 +726,7 @@
         <type>BUG</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_VOLATILE_ATOMICITY_threshold</key>
@@ -739,7 +739,7 @@
         <type>BUG</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_OVERFLOW_BEFORE_WIDEN_none</key>
@@ -752,7 +752,7 @@
         <type>BUG</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_XML_EXTERNAL_ENTITY_entity_expansion</key>
@@ -765,7 +765,7 @@
         <type>VULNERABILITY</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>security</tag>
+        <tag>coverity-security</tag>
     </rule>
     <rule>
         <key>STATIC_CS_XML_EXTERNAL_ENTITY_external_entities</key>
@@ -778,7 +778,7 @@
         <type>VULNERABILITY</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>security</tag>
+        <tag>coverity-security</tag>
     </rule>
     <rule>
         <key>STATIC_CS_XML_EXTERNAL_ENTITY_unrestricted_dtds</key>
@@ -791,7 +791,7 @@
         <type>VULNERABILITY</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>security</tag>
+        <tag>coverity-security</tag>
     </rule>
     <rule>
         <key>STATIC_CS_XML_EXTERNAL_ENTITY_none</key>
@@ -804,7 +804,7 @@
         <type>BUG</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_CONSTANT_EXPRESSION_RESULT_bit_and_with_zero</key>
@@ -817,7 +817,7 @@
         <type>BUG</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_CONSTANT_EXPRESSION_RESULT_extra_high_bits</key>
@@ -830,7 +830,7 @@
         <type>BUG</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_CONSTANT_EXPRESSION_RESULT_logical_vs_bitwise</key>
@@ -843,7 +843,7 @@
         <type>BUG</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_CONSTANT_EXPRESSION_RESULT_missing_parentheses</key>
@@ -856,7 +856,7 @@
         <type>BUG</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_CONSTANT_EXPRESSION_RESULT_none</key>
@@ -869,7 +869,7 @@
         <type>BUG</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_CONSTANT_EXPRESSION_RESULT_operator_confusion</key>
@@ -882,7 +882,7 @@
         <type>BUG</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_CONSTANT_EXPRESSION_RESULT_result_independent_of_operands</key>
@@ -895,7 +895,7 @@
         <type>BUG</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_CONSTANT_EXPRESSION_RESULT_same_on_both_sides</key>
@@ -908,7 +908,7 @@
         <type>BUG</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_CONSTANT_EXPRESSION_RESULT_unnecessary_op_assign</key>
@@ -921,7 +921,7 @@
         <type>BUG</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_HARDCODED_CREDENTIALS_hardcoded_credential_crypto</key>
@@ -934,7 +934,7 @@
         <type>VULNERABILITY</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>security</tag>
+        <tag>coverity-security</tag>
     </rule>
     <rule>
         <key>STATIC_CS_HARDCODED_CREDENTIALS_hardcoded_credential_passwd</key>
@@ -947,7 +947,7 @@
         <type>VULNERABILITY</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>security</tag>
+        <tag>coverity-security</tag>
     </rule>
     <rule>
         <key>STATIC_CS_HARDCODED_CREDENTIALS_hardcoded_credential_token</key>
@@ -960,7 +960,7 @@
         <type>VULNERABILITY</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>security</tag>
+        <tag>coverity-security</tag>
     </rule>
     <rule>
         <key>STATIC_CS_HARDCODED_CREDENTIALS_none</key>
@@ -973,7 +973,7 @@
         <type>VULNERABILITY</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>security</tag>
+        <tag>coverity-security</tag>
     </rule>
     <rule>
         <key>STATIC_CS_HARDCODED_CREDENTIALS_hardcoded_credential_connection_string</key>
@@ -986,7 +986,7 @@
         <type>VULNERABILITY</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>security</tag>
+        <tag>coverity-security</tag>
     </rule>
     <rule>
         <key>STATIC_CS_LOCK_INVERSION_none</key>
@@ -999,7 +999,7 @@
         <type>BUG</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_XSS_none</key>
@@ -1012,7 +1012,7 @@
         <type>VULNERABILITY</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>security</tag>
+        <tag>coverity-security</tag>
     </rule>
     <rule>
         <key>STATIC_CS_XSS_stored_xss</key>
@@ -1025,7 +1025,7 @@
         <type>VULNERABILITY</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>security</tag>
+        <tag>coverity-security</tag>
     </rule>
     <rule>
         <key>STATIC_CS_CSRF_database_update</key>
@@ -1038,7 +1038,7 @@
         <type>VULNERABILITY</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>security</tag>
+        <tag>coverity-security</tag>
     </rule>
     <rule>
         <key>STATIC_CS_CSRF_filesystem_modification</key>
@@ -1051,7 +1051,7 @@
         <type>VULNERABILITY</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>security</tag>
+        <tag>coverity-security</tag>
     </rule>
     <rule>
         <key>STATIC_CS_CSRF_none</key>
@@ -1064,7 +1064,7 @@
         <type>VULNERABILITY</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>security</tag>
+        <tag>coverity-security</tag>
     </rule>
     <rule>
         <key>STATIC_CS_BAD_SHIFT_none</key>
@@ -1077,7 +1077,7 @@
         <type>BUG</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_CONFIG.ASP_VIEWSTATE_MAC_none</key>
@@ -1090,7 +1090,7 @@
         <type>VULNERABILITY</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>security</tag>
+        <tag>coverity-security</tag>
     </rule>
     <rule>
         <key>STATIC_CS_INFINITE_LOOP_no_escape</key>
@@ -1103,7 +1103,7 @@
         <type>BUG</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_INFINITE_LOOP_none</key>
@@ -1116,7 +1116,7 @@
         <type>BUG</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_CONFIG.DEAD_AUTHORIZATION_RULE_dead_deny_rule</key>
@@ -1129,7 +1129,7 @@
         <type>VULNERABILITY</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>security</tag>
+        <tag>coverity-security</tag>
     </rule>
     <rule>
         <key>STATIC_CS_CONFIG.DEAD_AUTHORIZATION_RULE_dead_allow_rule</key>
@@ -1142,7 +1142,7 @@
         <type>VULNERABILITY</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>security</tag>
+        <tag>coverity-security</tag>
     </rule>
     <rule>
         <key>STATIC_CS_CONFIG.DEAD_AUTHORIZATION_RULE_none</key>
@@ -1155,7 +1155,7 @@
         <type>BUG</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_MS.*_none</key>
@@ -1168,7 +1168,7 @@
         <type>BUG</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_OS_CMD_INJECTION_command_argument</key>
@@ -1181,7 +1181,7 @@
         <type>VULNERABILITY</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>security</tag>
+        <tag>coverity-security</tag>
     </rule>
     <rule>
         <key>STATIC_CS_OS_CMD_INJECTION_executable_file</key>
@@ -1194,7 +1194,7 @@
         <type>VULNERABILITY</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>security</tag>
+        <tag>coverity-security</tag>
     </rule>
     <rule>
         <key>STATIC_CS_OS_CMD_INJECTION_none</key>
@@ -1207,7 +1207,7 @@
         <type>VULNERABILITY</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>security</tag>
+        <tag>coverity-security</tag>
     </rule>
     <rule>
         <key>STATIC_CS_WEAK_PASSWORD_HASH_none</key>
@@ -1220,7 +1220,7 @@
         <type>VULNERABILITY</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>security</tag>
+        <tag>coverity-security</tag>
     </rule>
     <rule>
         <key>STATIC_CS_WEAK_PASSWORD_HASH_weak_hash</key>
@@ -1233,7 +1233,7 @@
         <type>VULNERABILITY</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>security</tag>
+        <tag>coverity-security</tag>
     </rule>
     <rule>
         <key>STATIC_CS_WEAK_PASSWORD_HASH_weak_hash_no_salt</key>
@@ -1246,7 +1246,7 @@
         <type>VULNERABILITY</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>security</tag>
+        <tag>coverity-security</tag>
     </rule>
     <rule>
         <key>STATIC_CS_WEAK_PASSWORD_HASH_weak_hash_weak_salt</key>
@@ -1259,7 +1259,7 @@
         <type>VULNERABILITY</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>security</tag>
+        <tag>coverity-security</tag>
     </rule>
     <rule>
         <key>STATIC_CS_WEAK_PASSWORD_HASH_weak_salt</key>
@@ -1272,7 +1272,7 @@
         <type>VULNERABILITY</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>security</tag>
+        <tag>coverity-security</tag>
     </rule>
     <rule>
         <key>STATIC_CS_PATH_MANIPULATION_none</key>
@@ -1285,7 +1285,7 @@
         <type>VULNERABILITY</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>security</tag>
+        <tag>coverity-security</tag>
     </rule>
     <rule>
         <key>STATIC_CS_IDENTICAL_BRANCHES_case</key>
@@ -1298,7 +1298,7 @@
         <type>BUG</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_IDENTICAL_BRANCHES_chain</key>
@@ -1311,7 +1311,7 @@
         <type>BUG</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_IDENTICAL_BRANCHES_if</key>
@@ -1324,7 +1324,7 @@
         <type>BUG</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_IDENTICAL_BRANCHES_ternary</key>
@@ -1337,7 +1337,7 @@
         <type>BUG</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_IDENTICAL_BRANCHES_none</key>
@@ -1350,7 +1350,7 @@
         <type>BUG</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_CONFIG.CONNECTION_STRING_PASSWORD_none</key>
@@ -1363,7 +1363,7 @@
         <type>VULNERABILITY</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>security</tag>
+        <tag>coverity-security</tag>
     </rule>
     <rule>
         <key>STATIC_CS_MISSING_THROW_none</key>
@@ -1376,7 +1376,7 @@
         <type>BUG</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_ATOMICITY_none</key>
@@ -1389,7 +1389,7 @@
         <type>BUG</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_MISSING_RESTORE_likely</key>
@@ -1402,7 +1402,7 @@
         <type>BUG</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_MISSING_RESTORE_none</key>
@@ -1415,7 +1415,7 @@
         <type>BUG</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_MISSING_RESTORE_possible</key>
@@ -1428,7 +1428,7 @@
         <type>BUG</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_SENSITIVE_DATA_LEAK_cleartext_exception_storage_in_gui</key>
@@ -1441,7 +1441,7 @@
         <type>VULNERABILITY</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>security</tag>
+        <tag>coverity-security</tag>
     </rule>
     <rule>
         <key>STATIC_CS_SENSITIVE_DATA_LEAK_cleartext_storage_in_cookie</key>
@@ -1454,7 +1454,7 @@
         <type>VULNERABILITY</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>security</tag>
+        <tag>coverity-security</tag>
     </rule>
     <rule>
         <key>STATIC_CS_SENSITIVE_DATA_LEAK_cleartext_storage_in_database</key>
@@ -1467,7 +1467,7 @@
         <type>VULNERABILITY</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>security</tag>
+        <tag>coverity-security</tag>
     </rule>
     <rule>
         <key>STATIC_CS_SENSITIVE_DATA_LEAK_cleartext_storage_in_file</key>
@@ -1480,7 +1480,7 @@
         <type>VULNERABILITY</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>security</tag>
+        <tag>coverity-security</tag>
     </rule>
     <rule>
         <key>STATIC_CS_SENSITIVE_DATA_LEAK_cleartext_storage_in_gui</key>
@@ -1493,7 +1493,7 @@
         <type>VULNERABILITY</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>security</tag>
+        <tag>coverity-security</tag>
     </rule>
     <rule>
         <key>STATIC_CS_SENSITIVE_DATA_LEAK_cleartext_storage_in_log</key>
@@ -1506,7 +1506,7 @@
         <type>VULNERABILITY</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>security</tag>
+        <tag>coverity-security</tag>
     </rule>
     <rule>
         <key>STATIC_CS_SENSITIVE_DATA_LEAK_cleartext_storage_in_registry</key>
@@ -1519,7 +1519,7 @@
         <type>VULNERABILITY</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>security</tag>
+        <tag>coverity-security</tag>
     </rule>
     <rule>
         <key>STATIC_CS_SENSITIVE_DATA_LEAK_cleartext_transmission</key>
@@ -1532,7 +1532,7 @@
         <type>VULNERABILITY</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>security</tag>
+        <tag>coverity-security</tag>
     </rule>
     <rule>
         <key>STATIC_CS_SENSITIVE_DATA_LEAK_none</key>
@@ -1545,7 +1545,7 @@
         <type>VULNERABILITY</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>security</tag>
+        <tag>coverity-security</tag>
     </rule>
     <rule>
         <key>STATIC_CS_NON_STATIC_GUARDING_STATIC_none</key>
@@ -1558,7 +1558,7 @@
         <type>BUG</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_CONFIG.ENABLED_TRACE_MODE_none</key>
@@ -1571,7 +1571,7 @@
         <type>VULNERABILITY</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>security</tag>
+        <tag>coverity-security</tag>
     </rule>
     <rule>
         <key>STATIC_CS_NULL_RETURNS_none</key>
@@ -1584,7 +1584,7 @@
         <type>BUG</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_NULL_RETURNS_unimpl</key>
@@ -1597,7 +1597,7 @@
         <type>BUG</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_XPATH_INJECTION_none</key>
@@ -1610,7 +1610,7 @@
         <type>VULNERABILITY</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>security</tag>
+        <tag>coverity-security</tag>
     </rule>
     <rule>
         <key>STATIC_CS_HEADER_INJECTION_none</key>
@@ -1623,7 +1623,7 @@
         <type>VULNERABILITY</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>security</tag>
+        <tag>coverity-security</tag>
     </rule>
     <rule>
         <key>STATIC_CS_SWAPPED_ARGUMENTS_none</key>
@@ -1636,7 +1636,7 @@
         <type>BUG</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_CONFIG.ENABLED_DEBUG_MODE_none</key>
@@ -1649,7 +1649,7 @@
         <type>VULNERABILITY</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>security</tag>
+        <tag>coverity-security</tag>
     </rule>
     <rule>
         <key>STATIC_CS_BAD_LOCK_OBJECT_boxed_lock</key>
@@ -1662,7 +1662,7 @@
         <type>BUG</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_BAD_LOCK_OBJECT_interned_string_lock</key>
@@ -1675,7 +1675,7 @@
         <type>BUG</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_BAD_LOCK_OBJECT_none</key>
@@ -1688,7 +1688,7 @@
         <type>BUG</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_BAD_LOCK_OBJECT_single_thread_lock</key>
@@ -1701,7 +1701,7 @@
         <type>BUG</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_BAD_LOCK_OBJECT_unsafe_assign_to_locked_field</key>
@@ -1714,7 +1714,7 @@
         <type>BUG</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_DEADCODE_dead_case_in_switch</key>
@@ -1727,7 +1727,7 @@
         <type>BUG</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_DEADCODE_dead_default_in_switch</key>
@@ -1740,7 +1740,7 @@
         <type>BUG</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_DEADCODE_effectively_constant</key>
@@ -1753,7 +1753,7 @@
         <type>BUG</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_DEADCODE_none</key>
@@ -1766,7 +1766,7 @@
         <type>BUG</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_DEADCODE_redundant_test</key>
@@ -1779,7 +1779,7 @@
         <type>BUG</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_REGEX_INJECTION_none</key>
@@ -1792,7 +1792,7 @@
         <type>VULNERABILITY</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>security</tag>
+        <tag>coverity-security</tag>
     </rule>
     <rule>
         <key>STATIC_CS_INSECURE_RANDOM_insecure_random_used</key>
@@ -1805,8 +1805,8 @@
         <type>BUG</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>quality</tag>
-        <tag>security</tag>
+        <tag>coverity-quality</tag>
+        <tag>coverity-security</tag>
     </rule>
     <rule>
         <key>STATIC_CS_INSECURE_RANDOM_insecure_random_value</key>
@@ -1819,8 +1819,8 @@
         <type>BUG</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>quality</tag>
-        <tag>security</tag>
+        <tag>coverity-quality</tag>
+        <tag>coverity-security</tag>
     </rule>
     <rule>
         <key>STATIC_CS_INSECURE_RANDOM_none</key>
@@ -1833,7 +1833,7 @@
         <type>BUG</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_SQLI_none</key>
@@ -1846,7 +1846,7 @@
         <type>VULNERABILITY</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>security</tag>
+        <tag>coverity-security</tag>
     </rule>
     <rule>
         <key>STATIC_CS_SQLI_nosink</key>
@@ -1859,7 +1859,7 @@
         <type>VULNERABILITY</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>security</tag>
+        <tag>coverity-security</tag>
     </rule>
     <rule>
         <key>STATIC_CS_SQLI_sink</key>
@@ -1872,7 +1872,7 @@
         <type>VULNERABILITY</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>security</tag>
+        <tag>coverity-security</tag>
     </rule>
     <rule>
         <key>STATIC_CS_LOCK_EVASION_none</key>
@@ -1885,7 +1885,7 @@
         <type>BUG</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_TAINT_ASSERT_none</key>
@@ -1898,7 +1898,7 @@
         <type>VULNERABILITY</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>security</tag>
+        <tag>coverity-security</tag>
     </rule>
     <rule>
         <key>STATIC_CS_UNREACHABLE_none</key>
@@ -1911,6 +1911,6 @@
         <type>BUG</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>quality</tag>
+        <tag>coverity-quality</tag>
     </rule>
 </rules>
