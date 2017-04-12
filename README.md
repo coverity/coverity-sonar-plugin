@@ -6,9 +6,9 @@ The Coverity Sonar Plugin automatically import issues from Coverity Connect into
 Coverity® Sonar Plug-in Installation and Configuration Guide
 ============================================================
 
-Version 1.5.0
+Version 1.6.0
 
-Released February 26, 2016
+Released April 28, 2017
 
 This guide is intended to assist you with the installation and
 configuration of the Coverity Sonar plug-in. Once completed, you will be
@@ -22,8 +22,8 @@ Sonar plug-in.
 
 | **Software**     | **Supported versions** |
 |------------------|------------------------|
-| SonarQube        | 5.3                    |
-| SonarRunner      | 2.4                    |
+| SonarQube        | 5.6.6+                 |
+| SonarQube Scanner| 3.0                    |
 | Coverity Connect | 7.6+                   |
 
 Installing the Coverity Sonar Plug-in
@@ -31,9 +31,9 @@ Installing the Coverity Sonar Plug-in
 
 To install the Coverity Sonar plug-in, complete the following steps.
 
-1.  Ensure that you have SonarQube v5.3 and SonarRunner v2.4 installed.
+1.  Ensure that you have SonarQube v5.6.6+ and SonarQube Scanner v3.0 installed.
     Sonar installation and setup instructions are located at
-    <http://docs.codehaus.org/display/SONAR/Setup+and+Upgrade>.
+    <http://docs.sonarqube.org/display/SONAR/Setup+and+Upgrade>.
 
 2.  Download and unzip the Coverity Sonar plug-in to the Sonar plugins
     folder:
@@ -41,6 +41,9 @@ To install the Coverity Sonar plug-in, complete the following steps.
     &lt;SonarInstallDirectory&gt;/extensions/plugins
 
 3.  Restart SonarQube.
+
+Note: After upgrading SonarQube, reset the quality profile for the languages which use Coverity
+(in **Quality Profiles**, select **Restore Built-in Profiles**, and select the language.)
 
 Configuring the Coverity Sonar Plug-in
 ======================================
@@ -50,13 +53,17 @@ general use.
 
 1.  Log in to SonarQube as an administrator.
 
-2.  Navigate to the **Settings &gt; Coverity** page.
+2.  Click on **Administration**.
 
-3.  Enter the appropriate information in each of the fields for your
+3.  Choose **Configuration &gt; General Settings**.
+
+4.  Choose **Coverity**.
+
+5.  Enter the appropriate information in each of the fields for your
     Coverity Connect instance. Ensure that the **Enable Coverity**
     option is set to “True” to allow the import of Coverity data.
 
-4.  Click **Save Coverity Settings** to complete the
+6.  Click **Save Coverity Settings** to complete the
     basic configuration.
 
 Configuring your Project Settings
@@ -69,25 +76,27 @@ projects.
 1.  Log in to SonarQube as an administrator.
 
 2.  Ensure that you have uploaded your project at least once (with
-    sonar-runner), and select the project in SonarQube.
+    SonarQube Scanner), and select the project in SonarQube.
 
-3.  Navigate to the **Configuration &gt; Quality Profiles** menu.
+3.  Click on **Quality Profiles**.
 
 4.  Change the Quality Profile option for your project to
     *Coverity (&lt;language&gt;)*, and click **Update.**
 
-5.  Navigate to the **Configuration &gt; Settings &gt; Coverity** page.
+5.  Choose **Configuration &gt; General Settings**.
 
-6.  Ensure that the **Enable Coverity** option is set to “True” to allow
+6.  Choose **Coverity**.
+
+7.  Ensure that the **Enable Coverity** option is set to “True” to allow
     the import of Coverity data.
 
-7.  Enter the name of the Coverity Connect project that corresponds to
+8.  Enter the name of the Coverity Connect project that corresponds to
     the current Sonar project.
 
-8.  Click **Save Coverity Settings. **
+9.  Click **Save Coverity Settings. **
 
 Once completed, SonarQube will pull the current Coverity Analysis data
-whenever you run sonar-runner on the specified project. This
+whenever you run SonarQube Scanner on the specified project. This
 configuration must be completed for each project you wish to link with
 Coverity Connect.
 
@@ -106,9 +115,7 @@ On windows it might look like this:
 
 > sonar.sources=C:\\\\Users\\\\gwen\\\\source\\\\ces-tools\\\\src\\\\main\\\\java
 
-See below for a complete example sonar-project.properties file. Note
-that you must explicitly set the sonar.language value to your project’s
-language:
+See below for a complete example sonar-project.properties file. 
 
 > \# Required metadata
 >
@@ -127,10 +134,6 @@ language:
 > \# Comma-separated paths to directories with sources (required)
 >
 > sonar.sources=.
->
-> \# Language
->
-> sonar.language=c
 >
 > \# The profile used by sonar can be specified either on the UI or by:
 >
@@ -156,13 +159,18 @@ language:
 >
 > \# sonar.coverity.prefix=MyOptionalPrefix
 
+*Note*: When using the Coverity plug-in, use the language key "cov-cpp" instead of "c", "c++", or "cpp". This language key prevents conflicts with non_Coverity plug-ins.
+
+To specify the language key: 
+-   Add "sonar.language=cov-cpp" (or another preferred language) to the properties file.
+-   in **Administration &gt; Coverity &gt; Languages**, configure "C/C++ source files suffixes" appropriately.
+-   Configure the source file suffixes for the other language plug-ins to avoid conflicts.
+
 The Coverity Widget
 ===================
 
 The Coverity plug-in includes a Coverity widget that displays
-Coverity-specific measures. For example,
-
-![Alt text](media/image1.png)
+Coverity-specific measures. The Coverity widget is available with SonarQube versions before version 6.2.
 
 -   The Coverity logo and the Coverity Project are both clickable links
     that take you to the Coverity Connect instance. There, you can view
@@ -173,6 +181,12 @@ Coverity-specific measures. For example,
 
 -   The other three counts are the numbers of issues at each of
     Coverity’s three impact levels.
+
+-   The Coverity widget is no longer supported as of SonarQube v6.2. The metrics that 
+    were displayed by the widget are shown in SonarQube under **Measures**.
+
+-   The Coverity widget can be added to the Dashboard by two different routes: as Admin,
+go to **Dashboards &gt; Manage dashboards**, or in a Project, go to **Dashboard** and add it there. 
 
 Limitations
 ===========
@@ -203,7 +217,7 @@ addressed in future releases.
     Analysis, you may remove the beginning of the filename to make it
     relative to Sonar’s project root.
 
-> To do so, navigate to the “Configuration -&gt; Settings -&gt;
+> To do so, navigate to the “Configuration -&gt; General Settings -&gt;
 > Coverity” menu, and specify the prefix to be removed in the “Coverity
 > Files Prefix” field.
 
@@ -212,6 +226,15 @@ addressed in future releases.
 
 Changelog
 =========
+* __1.6.0__
+  * The SonarQube Coverity plugin now uses tags for each rule to provide easy filtering and lookup. (BZ 96223)
+  * The SonarQube Coverity plugin now uses the prefix to match the file location in the Windows operating system. (BZ 90691)
+  * Updated to support SonarQube version 5.6 and newer. (BZ 90540)
+  * Added support for Coverity JavaScript, Python, PHP, and Objective-C/C++ language checkers. (BZ 90023, 90056, 90061, 90188)
+  * SonarQube Coverity plugin now imports DC.WEAK_CRYPTO, TOCTOU, and RESOURCE_LEAK defects from CIM and creates SonarQube issues. (BZ 89850)
+  * Removed conflict with other C++ plugins for SonarQube by using a unique language (key="cov-cpp") for Coverity C languages. (BZ 88234)
+  * The Coverity SonarQube plugin will try to match the any "Parse Warnings" defects from Coverity Connect with the rules the plugin provides upfront to the SonarQube server. If none of the rules match, then it will create a general "Parse Warnings" rule so that there are corresponding SonarQube issues. (BZ 83997)
+
 
 * __1.5.0__
   * Upgraded web services from v6 to v9.
