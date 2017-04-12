@@ -22,7 +22,7 @@ Sonar plug-in.
 
 | **Software**     | **Supported versions** |
 |------------------|------------------------|
-| SonarQube        | 5.5.6+                 |
+| SonarQube        | 5.6.6+                 |
 | SonarQube Scanner| 3.0                    |
 | Coverity Connect | 7.6+                   |
 
@@ -31,7 +31,7 @@ Installing the Coverity Sonar Plug-in
 
 To install the Coverity Sonar plug-in, complete the following steps.
 
-1.  Ensure that you have SonarQube v5.5.6+ and SonarQube Scanner v3.0 installed.
+1.  Ensure that you have SonarQube v5.6.6+ and SonarQube Scanner v3.0 installed.
     Sonar installation and setup instructions are located at
     <http://docs.sonarqube.org/display/SONAR/Setup+and+Upgrade>.
 
@@ -227,8 +227,11 @@ addressed in future releases.
 Changelog
 =========
 * __1.6.0__
+  * The SonarQube Coverity plugin now uses tags for each rule to provide easy filtering and lookup. (BZ 96223)
+  * The SonarQube Coverity plugin now uses the prefix to match the file location in the Windows operating system. (BZ 90691)
   * Updated to support SonarQube version 5.6 and newer. (BZ 90540)
   * Added support for Coverity JavaScript, Python, PHP, and Objective-C/C++ language checkers. (BZ 90023, 90056, 90061, 90188)
+  * SonarQube Coverity plugin now imports DC.WEAK_CRYPTO, TOCTOU, and RESOURCE_LEAK defects from CIM and creates SonarQube issues. (BZ 89850)
   * Removed conflict with other C++ plugins for SonarQube by using a unique language (key="cov-cpp") for Coverity C languages. (BZ 88234)
   * The Coverity SonarQube plugin will try to match the any "Parse Warnings" defects from Coverity Connect with the rules the plugin provides upfront to the SonarQube server. If none of the rules match, then it will create a general "Parse Warnings" rule so that there are corresponding SonarQube issues. (BZ 83997)
 
