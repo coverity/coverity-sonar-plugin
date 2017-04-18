@@ -137,7 +137,7 @@ See below for a complete example sonar-project.properties file.
 >
 > \# The profile used by sonar can be specified either on the UI or by:
 >
-> \# sonar.profile=Coverity(c++)
+> \# sonar.profile=Coverity(cov-cpp)
 >
 > \# Encoding of the source files
 >
