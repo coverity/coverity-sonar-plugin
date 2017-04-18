@@ -24,7 +24,7 @@ Sonar plug-in.
 |------------------|------------------------|
 | SonarQube        | 5.6.6+                 |
 | SonarQube Scanner| 3.0                    |
-| Coverity Connect | 7.6+                   |
+| Coverity Connect | 7.7+                   |
 
 Installing the Coverity Sonar Plug-in
 =====================================
@@ -137,7 +137,7 @@ See below for a complete example sonar-project.properties file.
 >
 > \# The profile used by sonar can be specified either on the UI or by:
 >
-> \# sonar.profile=Coverity(c++)
+> \# sonar.profile=Coverity(cov-cpp)
 >
 > \# Encoding of the source files
 >
