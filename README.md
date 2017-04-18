@@ -24,7 +24,7 @@ Sonar plug-in.
 |------------------|------------------------|
 | SonarQube        | 5.6.6+                 |
 | SonarQube Scanner| 3.0                    |
-| Coverity Connect | 7.6+                   |
+| Coverity Connect | 7.7+                   |
 
 Installing the Coverity Sonar Plug-in
 =====================================
