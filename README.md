@@ -166,6 +166,11 @@ To specify the language key:
 -   in **Administration &gt; Coverity &gt; Languages**, configure "C/C++ source files suffixes" appropriately.
 -   Configure the source file suffixes for the other language plug-ins to avoid conflicts.
 
+*Note*: The "sonar.coverity.prefix" property is used to help locate files when anlyzing with the sonar scanner. The prefix value will be removed from the "File path" value on the Coverity Connect issue.
+-   the value must match exactly, if having trouble finding the source files look at the Coverity Connect issues "File" column 
+-   when running analysis on windows Coverity Connect returns values with linux path separators
+-   by using --strip-path during analysis this property can be avoided
+
 The Coverity Widget
 ===================
 
