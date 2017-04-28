@@ -1,6 +1,6 @@
 /*
  * Coverity Sonar Plugin
- * Copyright (c) 2014 Coverity, Inc
+ * Copyright (c) 2017 Synopsys, Inc
  * support@coverity.com
  *
  * All rights reserved. This program and the accompanying materials are made
@@ -13,32 +13,34 @@ package org.sonar.plugins.coverity.server;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.sonar.api.ExtensionPoint;
 import org.sonar.api.ExtensionProvider;
-import org.sonar.api.ServerExtension;
 import org.sonar.api.profiles.ProfileDefinition;
 import org.sonar.api.profiles.RulesProfile;
 import org.sonar.api.rules.Rule;
+import org.sonar.api.rules.RuleFinder;
+import org.sonar.api.rules.RuleQuery;
+import org.sonar.api.server.ServerSide;
 import org.sonar.api.utils.ValidationMessages;
+import org.sonar.plugins.coverity.CoverityPlugin;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class CoverityProfiles extends ExtensionProvider implements ServerExtension {
+@ServerSide
+@ExtensionPoint
+public class CoverityProfiles extends ExtensionProvider {
     private static final Logger LOG = LoggerFactory.getLogger(CoverityProfiles.class);
-    List<String> languages = new ArrayList<String>();
+    private RuleFinder ruleFinder;
 
-    public CoverityProfiles() {
-        languages.add("java");
-        languages.add("cpp");
-        languages.add("cs");
-        languages.add("c++");
-        languages.add("c");
+    public CoverityProfiles(RuleFinder ruleFinder) {
+        this.ruleFinder = ruleFinder;
     }
 
     @Override
     public List<CoverityProfile> provide() {
         List<CoverityProfile> list = new ArrayList<CoverityProfile>();
-        for(String language : languages) {
+        for(String language : CoverityPlugin.COVERITY_LANGUAGES) {
             list.add(new CoverityProfile(language));
         }
         return list;
@@ -55,10 +57,8 @@ public class CoverityProfiles extends ExtensionProvider implements ServerExtensi
         public RulesProfile createProfile(ValidationMessages validation) {
             final RulesProfile profile = RulesProfile.create("Coverity(" + language + ")", language);
 
-            for(Object rule1 : CoverityRules.mapOfRuleMaps.get(language).values()){
-                Rule rule = (Rule) rule1;
-                //Fix Bug 80500
-                profile.activateRule(Rule.create("coverity-" + language, rule.getKey()), rule.getSeverity() );
+            for(Rule rule : ruleFinder.findAll(RuleQuery.create().withRepositoryKey(CoverityPlugin.REPOSITORY_KEY + "-" + language))){
+                profile.activateRule(Rule.create("coverity-" + language, rule.getKey()), rule.getSeverity());
             }
 
             return profile;

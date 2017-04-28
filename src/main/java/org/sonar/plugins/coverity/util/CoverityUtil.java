@@ -1,6 +1,6 @@
 /*
  * Coverity Sonar Plugin
- * Copyright (c) 2014 Coverity, Inc
+ * Copyright (c) 2017 Synopsys, Inc
  * support@coverity.com
  *
  * All rights reserved. This program and the accompanying materials are made
@@ -12,12 +12,9 @@
 package org.sonar.plugins.coverity.util;
 
 import com.coverity.ws.v9.DefectInstanceDataObj;
-import com.coverity.ws.v9.MergedDefectDataObj;
 import org.sonar.api.config.Settings;
 import org.sonar.api.rule.RuleKey;
 import org.sonar.plugins.coverity.CoverityPlugin;
-//import org.sonar.plugins.coverity.server.CoverityRulesRepositories;
-import org.sonar.plugins.coverity.server.CoverityRulesRepositories;
 import org.sonar.plugins.coverity.ws.CIMClient;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;

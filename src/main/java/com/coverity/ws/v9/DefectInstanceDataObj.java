@@ -34,6 +34,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="issueKinds" type="{http://ws.coverity.com/v9}localizedValueDataObj" maxOccurs="unbounded" minOccurs="0"/>
  *         &lt;element name="localEffect" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="longDescription" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="subcategory" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="type" type="{http://ws.coverity.com/v9}localizedValueDataObj" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
@@ -60,6 +61,7 @@ import javax.xml.bind.annotation.XmlType;
     "issueKinds",
     "localEffect",
     "longDescription",
+    "subcategory",
     "type"
 })
 public class DefectInstanceDataObj {
@@ -83,6 +85,7 @@ public class DefectInstanceDataObj {
     protected List<LocalizedValueDataObj> issueKinds;
     protected String localEffect;
     protected String longDescription;
+    protected String subcategory;
     protected LocalizedValueDataObj type;
 
     /**
@@ -463,6 +466,30 @@ public class DefectInstanceDataObj {
      */
     public void setLongDescription(String value) {
         this.longDescription = value;
+    }
+
+    /**
+     * Gets the value of the subcategory property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getSubcategory() {
+        return subcategory;
+    }
+
+    /**
+     * Sets the value of the subcategory property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setSubcategory(String value) {
+        this.subcategory = value;
     }
 
     /**

@@ -17,6 +17,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
  *         &lt;element name="allowPasswordRecovery" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+ *         &lt;element name="authenticationMethod" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="disableLocalPasswordAuth" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element name="enableLdapAuth" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element name="enableSessionTimeout" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
@@ -36,6 +37,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "signInSettingsDataObj", propOrder = {
     "allowPasswordRecovery",
+    "authenticationMethod",
     "disableLocalPasswordAuth",
     "enableLdapAuth",
     "enableSessionTimeout",
@@ -48,6 +50,7 @@ import javax.xml.bind.annotation.XmlType;
 public class SignInSettingsDataObj {
 
     protected Boolean allowPasswordRecovery;
+    protected String authenticationMethod;
     protected Boolean disableLocalPasswordAuth;
     protected Boolean enableLdapAuth;
     protected Boolean enableSessionTimeout;
@@ -79,6 +82,30 @@ public class SignInSettingsDataObj {
      */
     public void setAllowPasswordRecovery(Boolean value) {
         this.allowPasswordRecovery = value;
+    }
+
+    /**
+     * Gets the value of the authenticationMethod property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getAuthenticationMethod() {
+        return authenticationMethod;
+    }
+
+    /**
+     * Sets the value of the authenticationMethod property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setAuthenticationMethod(String value) {
+        this.authenticationMethod = value;
     }
 
     /**

@@ -1,6 +1,6 @@
 /*
  * Coverity Sonar Plugin
- * Copyright (c) 2014 Coverity, Inc
+ * Copyright (c) 2017 Synopsys, Inc
  * support@coverity.com
  *
  * All rights reserved. This program and the accompanying materials are made
@@ -109,21 +109,21 @@ public class CIMClient {
      */
     public DefectService getDefectService() throws IOException {
         synchronized(this) {
-            if(defectServiceService == null) {
+            if (defectServiceService == null) {
                 defectServiceService = new DefectServiceService(
                         new URL(getURL(), DEFECT_SERVICE_WSDL),
                         new QName(COVERITY_NAMESPACE, "DefectServiceService"));
             }
-        }
 
-        ClassLoader cl = Thread.currentThread().getContextClassLoader();
-        try {
-            DefectService defectService = defectServiceService.getDefectServicePort();
-            attachAuthenticationHandler((BindingProvider)defectService);
+            ClassLoader cl = Thread.currentThread().getContextClassLoader();
+            try {
+                DefectService defectService = defectServiceService.getDefectServicePort();
+                attachAuthenticationHandler((BindingProvider) defectService);
 
-            return defectService;
-        } finally {
-            Thread.currentThread().setContextClassLoader(cl);
+                return defectService;
+            } finally {
+                Thread.currentThread().setContextClassLoader(cl);
+            }
         }
     }
 
@@ -139,22 +139,22 @@ public class CIMClient {
      */
     public ConfigurationService getConfigurationService() throws IOException {
         synchronized(this) {
-            if(configurationServiceService == null) {
+            if (configurationServiceService == null) {
                 // Create a Web Services port to the server
                 configurationServiceService = new ConfigurationServiceService(
                         new URL(getURL(), CONFIGURATION_SERVICE_WSDL),
                         new QName(COVERITY_NAMESPACE, "ConfigurationServiceService"));
             }
-        }
 
-        ClassLoader cl = Thread.currentThread().getContextClassLoader();
-        try {
-            ConfigurationService configurationService = configurationServiceService.getConfigurationServicePort();
-            attachAuthenticationHandler((BindingProvider)configurationService);
+            ClassLoader cl = Thread.currentThread().getContextClassLoader();
+            try {
+                ConfigurationService configurationService = configurationServiceService.getConfigurationServicePort();
+                attachAuthenticationHandler((BindingProvider)configurationService);
 
-            return configurationService;
-        } finally {
-            Thread.currentThread().setContextClassLoader(cl);
+                return configurationService;
+            } finally {
+                Thread.currentThread().setContextClassLoader(cl);
+            }
         }
     }
 

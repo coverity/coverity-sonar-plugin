@@ -1,5 +1,8 @@
 package org.sonar.plugins.coverity.server;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * InternalRule.class is used to produce objects containing all the information necessary to define a Sonarqube rule.
  * This informaition will be printed out to an XML file. When reading the resulting file, the DocumentBuilder parser has
@@ -7,61 +10,62 @@ package org.sonar.plugins.coverity.server;
  * setters of this class.
  */
 public class InternalRule{
-    String key = "";
-    String name = "";
-    String severity = "";
-    String description = "";
-    String language = "";
+    private String key = "";
+    private String ruleName = "";
+    private String severity = "";
+    private List<String> tags;
+    private String subcategory;
+    private String description;
+    private String ruleType = "";
+    private String checkerName = "";
+    private String language = "";
+
+    public InternalRule(String key, String ruleName, String checkerName, String severity, String subcategory, String description, String ruleType, String language){
+        this.key = key;
+        this.ruleName = ruleName;
+        this.severity = severity;
+        this.subcategory = subcategory;
+        this.description = description;
+        this.checkerName = checkerName;
+        this.ruleType = ruleType;
+        this.language = language;
+        this.tags = new ArrayList<>();
+        this.tags.add("coverity");
+    }
 
     public String getKey() {
         return key;
     }
 
-    public void setKey(String key) {
-        this.key = key;
+    public String getRuleName() {
+        return ruleName;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
+    public String getCheckerName() {
+        return checkerName;
     }
 
     public String getSeverity() {
         return severity;
     }
 
-    public void setSeverity(String severity) {
-        this.severity = severity;
+    public String getSubcategory() {
+        return subcategory;
     }
 
     public String getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public List<String> getTags() {
+        return tags;
     }
 
-    public String getLanguage() {
-        return language;
+    public String getRuleType() {
+        return this.ruleType;
     }
 
-    public void setLanguage(String language) {
-        this.language = language;
-    }
-
-    public InternalRule(){};
-
-    public InternalRule(String key, String name, String severity, String description, String language){
-        this.key = key;
-        this.name = name;
-        this.severity = severity;
-        this.description = description;
-        this.language = language;
-    }
+    public String getLanguage() { return this.language; }
 
     @Override
     public boolean equals(Object obj) {
@@ -75,6 +79,7 @@ public class InternalRule{
         if (!this.key.equals(other.key)) {
             return false;
         }
+
         return true;
     }
 

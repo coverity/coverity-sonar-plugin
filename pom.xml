@@ -2,40 +2,50 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<parent>
-		<groupId>org.codehaus.sonar-plugins</groupId>
-		<artifactId>parent</artifactId>
-		<version>17</version>
-	</parent>
-
 	<groupId>org.sonar.plugins.coverity</groupId>
 	<artifactId>coverity-sonar-plugin</artifactId>
 	<packaging>sonar-plugin</packaging>
-	<version>1.5.0</version>
+	<version>1.6.0</version>
 
 	<name>Coverity</name>
 	<description>Imports Coverity defects into SonarQube</description>
-	<url>http://docs.codehaus.org/display/SONAR/Coverity+Plugin</url>
+	<url>https://github.com/coverity/coverity-sonar-plugin</url>
 	<inceptionYear>2014</inceptionYear>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<sonar.version>5.1</sonar.version>
-		<jdk.min.version>1.6</jdk.min.version>
-		<cxf.version>2.6.1</cxf.version>
-		<license.title>Coverity Sonar Plugin</license.title>
-		<license.mailto>support@coverity.com</license.mailto>
+		<sonar.version>5.6</sonar.version>
+		<jdk.min.version>1.8</jdk.min.version>
+		<cim.url></cim.url>
+		<ws.version>v9</ws.version>
 	</properties>
 
+	<licenses>
+		<license>
+			<name>Eclipse Public License</name>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+
 	<organization>
-		<name>Coverity, Inc.</name>
+		<name>Synopsys, Inc.</name>
 		<url>http://www.coverity.com</url>
 	</organization>
 
 	<developers>
 		<developer>
-			<id>frossi</id>
-			<name>Franco Rossi</name>
-			<timezone>-8</timezone>
+			<id>ahcho0819</id>
+			<name>Andrew Cho</name>
+			<email>acho@synopsys.com</email>
+		</developer>
+		<developer>
+			<id>jbriggs</id>
+			<name>Joel Briggs</name>
+			<email>jbriggs@synopsys.com</email>
+		</developer>
+		<developer>
+			<id>shami</id>
+			<name>Shami Willms</name>
+			<email>kwillms@synopsys.com</email>
 		</developer>
 	</developers>
 
@@ -48,7 +58,7 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>org.codehaus.sonar</groupId>
+			<groupId>org.sonarsource.sonarqube</groupId>
 			<artifactId>sonar-plugin-api</artifactId>
 			<version>${sonar.version}</version>
 			<scope>provided</scope>
@@ -56,7 +66,7 @@
 
 		<!-- unit tests -->
 		<dependency>
-			<groupId>org.codehaus.sonar</groupId>
+			<groupId>org.sonarsource.sonarqube</groupId>
 			<artifactId>sonar-testing-harness</artifactId>
 			<version>${sonar.version}</version>
 			<scope>test</scope>
@@ -123,42 +133,29 @@
 			<version>1.7.12</version>
 		</dependency>
 		<dependency>
-			<groupId>org.codehaus.sonar</groupId>
-			<artifactId>sonar-maven-plugin</artifactId>
-			<version>5.1</version>
-		</dependency>
-		<dependency>
 			<groupId>com.googlecode.json-simple</groupId>
 			<artifactId>json-simple</artifactId>
 			<version>1.1.1</version>
 		</dependency>
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<version>15.0</version>
+		</dependency>
+        <dependency>
+            <groupId>com.google.code.findbugs</groupId>
+            <artifactId>annotations</artifactId>
+            <version>3.0.0</version>
+        </dependency>
     </dependencies>
 
 	<build>
 		<plugins>
+
 			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>build-helper-maven-plugin</artifactId>
-				<version>1.5</version>
-				<executions>
-					<execution>
-						<id>test</id>
-						<phase>generate-sources</phase>
-						<goals>
-							<goal>add-source</goal>
-						</goals>
-						<configuration>
-							<sources>
-								<source>${project.basedir}/target/generated-sources</source>
-							</sources>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<groupId>org.codehaus.sonar</groupId>
+				<groupId>org.sonarsource.sonar-packaging-maven-plugin</groupId>
 				<artifactId>sonar-packaging-maven-plugin</artifactId>
-				<version>1.9</version>
+				<version>1.15</version>
 				<extensions>true</extensions>
 				<configuration>
 					<pluginClass>org.sonar.plugins.coverity.CoverityPlugin</pluginClass>
@@ -174,7 +171,6 @@
 				</configuration>
 			</plugin>
 			<plugin>
-				<!-- UTF-8 bundles are not supported by Java, so they must be converted during build -->
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>native2ascii-maven-plugin</artifactId>
 				<version>1.0-beta-1</version>
@@ -186,23 +182,201 @@
 					</execution>
 				</executions>
 			</plugin>
-
-            <plugin>
-
-                <groupId>com.mycila.maven-license-plugin</groupId>
-                <artifactId>maven-license-plugin</artifactId>
-                <configuration>
-                    <skip>true</skip>
-                </configuration>
-            </plugin>
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>sonar-maven-plugin</artifactId>
-				<version>2.6</version>
-			</plugin>
-
 		</plugins>
 	</build>
+
+	<profiles>
+		<profile>
+			<id>jacoco</id>
+			<activation>
+				<property>
+					<name>ENABLE_JACOCO</name>
+					<value>true</value>
+				</property>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.jacoco</groupId>
+						<artifactId>jacoco-maven-plugin</artifactId>
+						<version>0.7.9</version>
+						<executions>
+							<execution>
+								<goals>
+									<goal>prepare-agent</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+					<!--
+                        Using JaCoCo through Ant due to limitations in jacoco-maven-plugin:
+                        https://github.com/jacoco/jacoco/issues/271
+                        https://github.com/jacoco/jacoco/issues/430
+                        https://github.com/jacoco/jacoco/issues/493
+                    -->
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-antrun-plugin</artifactId>
+						<version>1.8</version>
+						<dependencies>
+							<dependency>
+								<groupId>org.jacoco</groupId>
+								<artifactId>org.jacoco.ant</artifactId>
+								<version>0.7.9</version>
+							</dependency>
+							<dependency>
+								<groupId>ant-contrib</groupId>
+								<artifactId>ant-contrib</artifactId>
+								<version>20020829</version>
+							</dependency>
+						</dependencies>
+						<executions>
+							<execution>
+								<id>jacoco-report</id>
+								<phase>verify</phase>
+								<goals>
+									<goal>run</goal>
+								</goals>
+								<configuration>
+									<target>
+										<taskdef name="jacoco-report" classname="org.jacoco.ant.ReportTask"
+												 classpathref="maven.plugin.classpath"/>
+										<taskdef classpathref="maven.runtime.classpath"
+												 resource="net/sf/antcontrib/antcontrib.properties"/>
+										<available file="${project.build.directory}/jacoco.exec"
+												   property="jacoco.exec.file.exists"/>
+										<echo message="${project.build.directory}/jacoco.exec"/>
+										<if>
+											<equals arg1="${jacoco.exec.file.exists}" arg2="true"/>
+											<then>
+												<echo message="Executing jacoco report"/>
+												<trycatch>
+													<try>
+														<jacoco-report>
+															<executiondata>
+																<file file="${project.build.directory}/jacoco.exec"/>
+															</executiondata>
+															<structure name="Coverity">
+																<classfiles>
+																	<fileset dir="${project.build.outputDirectory}"/>
+																	<fileset
+																			dir="${project.build.testOutputDirectory}"/>
+																</classfiles>
+																<sourcefiles encoding="${project.build.sourceEncoding}">
+																	<fileset dir="${project.build.sourceDirectory}"/>
+																	<fileset
+																			dir="${project.build.testSourceDirectory}"/>
+																</sourcefiles>
+															</structure>
+															<html
+																	destdir="${project.reporting.outputDirectory}/jacoco"/>
+															<xml
+																	destfile="${project.reporting.outputDirectory}/jacoco/jacoco.xml"/>
+														</jacoco-report>
+													</try>
+													<catch>
+														<echo>skipping</echo>
+													</catch>
+												</trycatch>
+											</then>
+											<else>
+												<echo message="No jacoco.exec file found."/>
+											</else>
+										</if>
+									</target>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+
+		<!--
+		This profile is used to generate webservice calls.
+		The maven command should be as follow:
+		mvn -P wsimport clean generate-sources "Dcim.url=$CIM_URL_WITH_PORT"
+		-->
+
+		<profile>
+			<id>wsimport</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-resources-plugin</artifactId>
+						<version>2.7</version>
+						<executions>
+							<execution>
+								<id>copy-branding-files</id>
+								<phase>generate-sources</phase>
+								<goals>
+									<goal>copy-resources</goal>
+								</goals>
+								<configuration>
+									<outputDirectory>${project.build.directory}/jaxws-bindings</outputDirectory>
+									<resources>
+										<resource>
+											<directory>jaxws</directory>
+											<filtering>true</filtering>
+										</resource>
+									</resources>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+					<plugin>
+						<groupId>org.jvnet.jax-ws-commons</groupId>
+						<artifactId>jaxws-maven-plugin</artifactId>
+						<version>2.3</version>
+						<configuration>
+							<args>
+								<arg>-target</arg>
+								<arg>2.1</arg>
+							</args>
+							<bindingDirectory>${project.build.directory}/jaxws-bindings</bindingDirectory>
+							<sourceDestDir>${project.basedir}/src/main/java</sourceDestDir>
+							<xnoAddressingDataBinding>true</xnoAddressingDataBinding>
+							<vmArgs>
+								<vmArg>-Djavax.xml.accessExternalSchema=all</vmArg>
+							</vmArgs>
+						</configuration>
+						<executions>
+							<execution>
+								<!-- Process files found in webservices-rt.jar/WEB-INF/wsdl first so they aren't processed below. -->
+								<id>wsimport-ignored</id>
+								<goals>
+									<goal>wsimport</goal>
+								</goals>
+								<phase>generate-sources</phase>
+								<configuration>
+									<sourceDestDir>${project.build.directory}/ignored-sources</sourceDestDir>
+								</configuration>
+							</execution>
+							<execution>
+								<id>wsimport-public</id>
+								<goals>
+									<goal>wsimport</goal>
+								</goals>
+								<phase>generate-sources</phase>
+								<configuration>
+									<packageName>com.coverity.ws.v9</packageName>
+									<wsdlUrls>
+										<wsdlUrl>${cim.url}/ws/${ws.version}/configurationservice?wsdl</wsdlUrl>
+										<wsdlUrl>${cim.url}/ws/${ws.version}/defectservice?wsdl</wsdlUrl>
+									</wsdlUrls>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+
+	</profiles>
 
 	<repositories>
         <repository>
@@ -210,18 +384,5 @@
             <name>sonar-plugin-local</name>
             <url>http://artifactory.internal.synopsys.com:8081/artifactory/simple/sonar-plugin-local</url>
         </repository>
-		<repository>
-			<id>sonar</id>
-			<name>SonarSource</name>
-			<url>http://repository.sonarsource.org/content/repositories/sonar</url>
-        </repository>
 	</repositories>
-
-	<pluginRepositories>
-		<pluginRepository>
-			<id>sonar</id>
-			<name>SonarSource</name>
-			<url>http://repository.sonarsource.org/content/repositories/sonar</url>
-		</pluginRepository>
-	</pluginRepositories>
 </project>

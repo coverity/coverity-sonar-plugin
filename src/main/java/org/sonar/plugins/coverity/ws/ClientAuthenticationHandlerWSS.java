@@ -1,6 +1,6 @@
 /*
  * Coverity Sonar Plugin
- * Copyright (c) 2014 Coverity, Inc
+ * Copyright (c) 2017 Synopsys, Inc
  * support@coverity.com
  *
  * All rights reserved. This program and the accompanying materials are made
@@ -28,6 +28,7 @@ import javax.xml.ws.handler.soap.SOAPHandler;
 import javax.xml.ws.handler.soap.SOAPMessageContext;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -52,7 +53,7 @@ public class ClientAuthenticationHandlerWSS implements SOAPHandler<SOAPMessageCo
                 "password=\"" + quote(password) + "\" " +
                 "useNonce=\"false\" digestPassword=\"false\"/>  " +
                 "</xwss:SecurityConfiguration>";
-        InputStream xwssConfig = new ByteArrayInputStream(xwssConfigText.getBytes());
+        InputStream xwssConfig = new ByteArrayInputStream(xwssConfigText.getBytes(StandardCharsets.UTF_8));
         ClassLoader oldCCL = Thread.currentThread().getContextClassLoader();
         try {
             Thread.currentThread().setContextClassLoader(getClass().getClassLoader());
@@ -105,7 +106,7 @@ public class ClientAuthenticationHandlerWSS implements SOAPHandler<SOAPMessageCo
         return true;
     }
 
-    private class SecurityEnvironmentHandler implements CallbackHandler {
+    private static class SecurityEnvironmentHandler implements CallbackHandler {
 
         public void handle(Callback[] callbacks) throws UnsupportedCallbackException {
 
