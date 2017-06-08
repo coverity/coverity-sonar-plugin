@@ -18,7 +18,6 @@ import javax.xml.datatype.DatatypeConfigurationException;
 import javax.xml.datatype.DatatypeFactory;
 import javax.xml.datatype.XMLGregorianCalendar;
 import java.io.IOException;
-import java.net.URL;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -54,8 +53,8 @@ public class TestCIMClient extends CIMClient {
         testConfigurationService.setupProject(projectName);
     }
 
-    public void setupDefect(String domain, String checkerName, String filePath) {
-        testDefectService.addDefect(domain, checkerName, filePath);
+    public void setupDefect(String domain, String checkerName, String filePath, String streamName) {
+        testDefectService.addDefect(domain, checkerName, filePath, streamName);
     }
 
     public static class TestConfigurationService implements ConfigurationService {
@@ -502,7 +501,7 @@ public class TestCIMClient extends CIMClient {
         private List<MergedDefectIdDataObj> mergedDefectIds = new ArrayList<>();
         private List<MergedDefectDataObj> mergedDefects = new ArrayList<>();
 
-        public void addDefect(String domain, String checkerName, String filePath) {
+        public void addDefect(String domain, String checkerName, String filePath, String streamName) {
             MergedDefectIdDataObj idDataObj = new MergedDefectIdDataObj();
             final long cid = (long) mergedDefects.size() + 1;
             idDataObj.setCid(cid);
@@ -525,6 +524,7 @@ public class TestCIMClient extends CIMClient {
             defectDataObj.getDefectStateAttributeValues().add(newAttribute("Severity", "Unspecified"));
             defectDataObj.setDisplayImpact("Low");
             defectDataObj.setComponentName("Default.Other");
+            defectDataObj.setLastDetectedStream(streamName);
 
             try {
                 GregorianCalendar calender = new GregorianCalendar();
@@ -572,13 +572,18 @@ public class TestCIMClient extends CIMClient {
 
             for (MergedDefectDataObj mergedDefectDataObj : mergedDefects) {
                 StreamDefectDataObj streamDataObj = new StreamDefectDataObj();
-                StreamDefectIdDataObj streamIdDataObj = new StreamDefectIdDataObj();
-                streamIdDataObj.setId(mergedDefectDataObj.getCid());
+                StreamDefectIdDataObj streamDefectIdDataObj = new StreamDefectIdDataObj();
+                StreamIdDataObj streamIdDataObj = new StreamIdDataObj();
 
-                streamDataObj.setId(streamIdDataObj);
+                streamDefectIdDataObj.setId(mergedDefectDataObj.getCid());
+
+                streamDataObj.setId(streamDefectIdDataObj);
                 streamDataObj.setCid(mergedDefectDataObj.getCid());
                 streamDataObj.setCheckerName(mergedDefectDataObj.getCheckerName());
                 streamDataObj.setDomain(mergedDefectDataObj.getDomain());
+
+                streamIdDataObj.setName(mergedDefectDataObj.getLastDetectedStream());
+                streamDataObj.setStreamId(streamIdDataObj);
 
                 DefectInstanceDataObj defectInstanceDataObj = new DefectInstanceDataObj();
                 defectInstanceDataObj.setCheckerName(mergedDefectDataObj.getCheckerName());
