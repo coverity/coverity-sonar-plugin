@@ -240,7 +240,11 @@ public class CIMClient {
             List<StreamDefectDataObj> temp = getDefectService().getStreamDefects(sliceMergedDefectIdDataObj, filter);
 
             for(StreamDefectDataObj sddo : temp) {
-                if (cids.get(sddo.getCid()).getLastDetectedStream().equals(sddo.getStreamId().getName())) {
+                MergedDefectDataObj curMergedDefectDataObj = cids.get(sddo.getCid());
+                StreamIdDataObj curStreamIdDataObj = sddo.getStreamId();
+
+                if (curMergedDefectDataObj != null && curStreamIdDataObj != null
+                        && curMergedDefectDataObj.getLastDetectedStream().equals(curStreamIdDataObj.getName())) {
                     sddos.put(sddo.getCid(), sddo);
                 }
             }
