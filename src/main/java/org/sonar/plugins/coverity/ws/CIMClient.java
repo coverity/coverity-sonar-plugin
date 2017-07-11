@@ -19,11 +19,7 @@ import javax.xml.ws.handler.Handler;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Represents one Coverity Integrity Manager server. Abstracts functions like getting streams and defects.
@@ -210,10 +206,11 @@ public class CIMClient {
      */
     public Map<Long, StreamDefectDataObj> getStreamDefectsForMergedDefects(List<MergedDefectDataObj> defects) throws IOException, CovRemoteServiceException_Exception {
         Map<Long, MergedDefectDataObj> cids = new HashMap<Long, MergedDefectDataObj>();
-
         Map<Long, StreamDefectDataObj> sddos = new HashMap<Long, StreamDefectDataObj>();
-
         Map<Long, MergedDefectIdDataObj> mdidos = new HashMap<Long, MergedDefectIdDataObj>();
+
+        StreamDefectFilterSpecDataObj filter = new StreamDefectFilterSpecDataObj();
+        Set<String> streamList = new HashSet<String>();
 
         for(MergedDefectDataObj mddo : defects) {
             cids.put(mddo.getCid(), mddo);
@@ -221,9 +218,14 @@ public class CIMClient {
             mdido.setCid(mddo.getCid());
             mdido.setMergeKey(mddo.getMergeKey());
             mdidos.put(mddo.getCid(), mdido);
+            streamList.add(mddo.getLastDetectedStream());
         }
 
-        StreamDefectFilterSpecDataObj filter = new StreamDefectFilterSpecDataObj();
+        for (String stream : streamList) {
+            StreamIdDataObj streamIdDataObj = new StreamIdDataObj();
+            streamIdDataObj.setName(stream);
+            filter.getStreamIdList().add(streamIdDataObj);
+        }
         filter.setIncludeDefectInstances(true);
 
         List<Long> cidList = new ArrayList<Long>(cids.keySet());
@@ -238,7 +240,13 @@ public class CIMClient {
             List<StreamDefectDataObj> temp = getDefectService().getStreamDefects(sliceMergedDefectIdDataObj, filter);
 
             for(StreamDefectDataObj sddo : temp) {
-                sddos.put(sddo.getCid(), sddo);
+                MergedDefectDataObj curMergedDefectDataObj = cids.get(sddo.getCid());
+                StreamIdDataObj curStreamIdDataObj = sddo.getStreamId();
+
+                if (curMergedDefectDataObj != null && curStreamIdDataObj != null
+                        && curMergedDefectDataObj.getLastDetectedStream().equals(curStreamIdDataObj.getName())) {
+                    sddos.put(sddo.getCid(), sddo);
+                }
             }
         }
 

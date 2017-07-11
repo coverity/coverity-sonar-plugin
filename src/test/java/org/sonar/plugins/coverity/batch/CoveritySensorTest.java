@@ -87,6 +87,7 @@ public class CoveritySensorTest {
         final HashMap<String, String> properties = new HashMap<>();
 
         final String projectName = "my-cov-project";
+        final String streamName = "my-cov-stream";
         testCimClient.setupProject(projectName);
 
         properties.put(CoverityPlugin.COVERITY_PROJECT, projectName);
@@ -106,7 +107,7 @@ public class CoveritySensorTest {
         sensorContextTester
                 .setActiveRules(new DefaultActiveRules(Arrays.asList(javaTestChecker)));
 
-        testCimClient.setupDefect(domain, checkerName, filePath);
+        testCimClient.setupDefect(domain, checkerName, filePath, streamName);
 
         sensor.execute(sensorContextTester);
 
