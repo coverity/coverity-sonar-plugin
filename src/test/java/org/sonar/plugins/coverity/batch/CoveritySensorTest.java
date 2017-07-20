@@ -120,6 +120,49 @@ public class CoveritySensorTest {
     }
 
     @Test
+    public void testExecute_savesNoIssue_NoInputFileLanguage() throws Exception {
+
+        final SensorContextTester sensorContextTester = SensorContextTester.create(new File("src"));
+        final String filePath = "src/class1.cs";
+        final DefaultInputFile inputFile = new DefaultInputFile("myProjectKey", filePath)
+                .setLanguage(null)
+                .initMetadata("public class class1 {\n}");
+        sensorContextTester
+                .fileSystem()
+                .add(inputFile);
+        final HashMap<String, String> properties = new HashMap<>();
+
+        final String projectName = "my-cov-project";
+        final String streamName = "my-cov-stream";
+        testCimClient.setupProject(projectName);
+
+        properties.put(CoverityPlugin.COVERITY_PROJECT, projectName);
+        properties.put(CoverityPlugin.COVERITY_ENABLE, "true");
+        properties.put("sonar.sources", "src");
+        sensorContextTester
+                .settings()
+                .addProperties(properties);
+
+        final String checkerName = "TEST_CHECKER";
+        final String domain = "STATIC_CS";
+        final String subcategory = "none";
+
+        final ActiveRulesBuilder rulesBuilder = new ActiveRulesBuilder();
+        final RuleKey ruleKey = RuleKey.of("coverity-cs", domain + "_" + checkerName + "_" + subcategory);
+        final NewActiveRule javaTestChecker = rulesBuilder.create(ruleKey);
+        sensorContextTester
+                .setActiveRules(new DefaultActiveRules(Arrays.asList(javaTestChecker)));
+
+        testCimClient.setupDefect(domain, checkerName, filePath, streamName);
+
+        sensor.execute(sensorContextTester);
+
+        final Collection<Issue> issues = sensorContextTester.allIssues();
+        assertNotNull(issues);
+        assertEquals(0, issues.size());
+    }
+
+    @Test
     public void testGetDefectURL() throws Exception {
         CIMClient instance = mock(CIMClient.class);
         ProjectDataObj projectObj = mock(ProjectDataObj.class);
