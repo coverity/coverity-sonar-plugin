@@ -308,6 +308,49 @@ public class CoveritySensorTest {
         assertEquals(0, issues.size());
     }
 
+    @Test
+    public void testGetIssueMessage_WhenMainEventExist(){
+        CIMClient instance = mock(CIMClient.class);
+        ProjectDataObj projectObj = mock(ProjectDataObj.class);
+        MergedDefectDataObj mddo = mock(MergedDefectDataObj.class);
+        EventDataObj mainEvent = mock(EventDataObj.class);
+
+        when(instance.getHost()).thenReturn("&&HOST&&");
+        when(instance.getPort()).thenReturn(999999);
+        when(projectObj.getProjectKey()).thenReturn(888888L);
+        when(mddo.getCid()).thenReturn(777777L);
+        when(mddo.getDisplayType()).thenReturn("Checker Type");
+        when(mainEvent.getEventTag()).thenReturn("Event Tag");
+        when(mainEvent.getEventDescription()).thenReturn("Event Description");
+
+        final String target = "http://&&HOST&&:999999/sourcebrowser.htm?projectId=888888&mergedDefectId=777777";
+        final String expectedIssueMessage =
+                "[Checker Type] Event Tag: Event Description ( CID 777777 : " + target + " )";
+
+        assertEquals(expectedIssueMessage, sensor.getIssueMessage(instance, projectObj, mainEvent, null, mddo));
+    }
+
+    @Test
+    public void testGetIssueMessage_WhenMainEventNotExist(){
+        CIMClient instance = mock(CIMClient.class);
+        ProjectDataObj projectObj = mock(ProjectDataObj.class);
+        MergedDefectDataObj mddo = mock(MergedDefectDataObj.class);
+        DefectInstanceDataObj dido = mock(DefectInstanceDataObj.class);
+
+        when(instance.getHost()).thenReturn("&&HOST&&");
+        when(instance.getPort()).thenReturn(999999);
+        when(projectObj.getProjectKey()).thenReturn(888888L);
+        when(mddo.getCid()).thenReturn(777777L);
+        when(mddo.getDisplayType()).thenReturn("Checker Type");
+        when(dido.getLongDescription()).thenReturn("Long Description");
+
+        final String target = "http://&&HOST&&:999999/sourcebrowser.htm?projectId=888888&mergedDefectId=777777";
+        final String expectedIssueMessage =
+                "[Checker Type] Long Description ( CID 777777 : " + target + " )";
+
+        assertEquals(expectedIssueMessage, sensor.getIssueMessage(instance, projectObj, null, dido, mddo));
+    }
+
     private void verifyFindActiveRule(String checkerName, String domain, String repoKey, String key, String subcategory, String lang) throws Exception {
         final SensorContextTester sensorContextTester = SensorContextTester.create(new File("src"));
 
