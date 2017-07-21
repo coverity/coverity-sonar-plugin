@@ -229,7 +229,7 @@ public class CoveritySensor implements Sensor {
                 }
 
                 if (StringUtils.isEmpty(inputFile.language())){
-                    LOG.info("Cannot fine the language of the file '" + inputFile.absolutePath() + "', skipping defect (CID " + mddo.getCid() + ")");
+                    LOG.info("Cannot find the language of the file '" + inputFile.absolutePath() + "', skipping defect (CID " + mddo.getCid() + ")");
                     continue;
                 }
 
