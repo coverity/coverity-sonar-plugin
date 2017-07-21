@@ -123,17 +123,19 @@ public class CoveritySensorTest {
     public void testExecute_savesNoIssue_NoInputFileLanguage() throws Exception {
 
         final SensorContextTester sensorContextTester = SensorContextTester.create(new File("src"));
-        final String filePath = "src/class1.cs";
+        final String filePath = "src/ruby.rb";
         final DefaultInputFile inputFile = new DefaultInputFile("myProjectKey", filePath)
                 .setLanguage(null)
-                .initMetadata("public class class1 {\n}");
+                .initMetadata("def test(val)\n" +
+                        "  z() if ~(s == 0)  # A CONSTANT_EXPRESSION_RESULT here. '!(s == 0)' is intended.\n" +
+                        "end");
         sensorContextTester
                 .fileSystem()
                 .add(inputFile);
         final HashMap<String, String> properties = new HashMap<>();
 
-        final String projectName = "my-cov-project";
-        final String streamName = "my-cov-stream";
+        final String projectName = "my-ruby-project";
+        final String streamName = "my-ruby-stream";
         testCimClient.setupProject(projectName);
 
         properties.put(CoverityPlugin.COVERITY_PROJECT, projectName);
@@ -144,14 +146,7 @@ public class CoveritySensorTest {
                 .addProperties(properties);
 
         final String checkerName = "TEST_CHECKER";
-        final String domain = "STATIC_CS";
-        final String subcategory = "none";
-
-        final ActiveRulesBuilder rulesBuilder = new ActiveRulesBuilder();
-        final RuleKey ruleKey = RuleKey.of("coverity-cs", domain + "_" + checkerName + "_" + subcategory);
-        final NewActiveRule javaTestChecker = rulesBuilder.create(ruleKey);
-        sensorContextTester
-                .setActiveRules(new DefaultActiveRules(Arrays.asList(javaTestChecker)));
+        final String domain = "OTHER";
 
         testCimClient.setupDefect(domain, checkerName, filePath, streamName);
 
