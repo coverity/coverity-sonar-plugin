@@ -228,6 +228,11 @@ public class CoveritySensor implements Sensor {
                     continue;
                 }
 
+                if (StringUtils.isEmpty(inputFile.language())){
+                    LOG.info("Cannot find the language of the file '" + inputFile.absolutePath() + "', skipping defect (CID " + mddo.getCid() + ")");
+                    continue;
+                }
+
                 for(DefectInstanceDataObj dido : didos) {
                     //find the main event, so we can use its line number
                     EventDataObj mainEvent = getMainEvent(dido);
@@ -249,7 +254,6 @@ public class CoveritySensor implements Sensor {
                         String message = getIssueMessage(instance, covProjectObj, mddo, dido);
 
                         final DefaultTextPointer start = new DefaultTextPointer(mainEvent.getLineNumber(), 0);
-
 
                         NewIssue issue = context.newIssue();
 

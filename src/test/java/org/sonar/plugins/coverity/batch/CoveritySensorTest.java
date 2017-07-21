@@ -120,6 +120,44 @@ public class CoveritySensorTest {
     }
 
     @Test
+    public void testExecute_savesNoIssue_NoInputFileLanguage() throws Exception {
+
+        final SensorContextTester sensorContextTester = SensorContextTester.create(new File("src"));
+        final String filePath = "src/ruby.rb";
+        final DefaultInputFile inputFile = new DefaultInputFile("myProjectKey", filePath)
+                .setLanguage(null)
+                .initMetadata("def test(val)\n" +
+                        "  z() if ~(s == 0)  # A CONSTANT_EXPRESSION_RESULT here. '!(s == 0)' is intended.\n" +
+                        "end");
+        sensorContextTester
+                .fileSystem()
+                .add(inputFile);
+        final HashMap<String, String> properties = new HashMap<>();
+
+        final String projectName = "my-ruby-project";
+        final String streamName = "my-ruby-stream";
+        testCimClient.setupProject(projectName);
+
+        properties.put(CoverityPlugin.COVERITY_PROJECT, projectName);
+        properties.put(CoverityPlugin.COVERITY_ENABLE, "true");
+        properties.put("sonar.sources", "src");
+        sensorContextTester
+                .settings()
+                .addProperties(properties);
+
+        final String checkerName = "TEST_CHECKER";
+        final String domain = "OTHER";
+
+        testCimClient.setupDefect(domain, checkerName, filePath, streamName);
+
+        sensor.execute(sensorContextTester);
+
+        final Collection<Issue> issues = sensorContextTester.allIssues();
+        assertNotNull(issues);
+        assertEquals(0, issues.size());
+    }
+
+    @Test
     public void testGetDefectURL() throws Exception {
         CIMClient instance = mock(CIMClient.class);
         ProjectDataObj projectObj = mock(ProjectDataObj.class);
