@@ -15,6 +15,7 @@ import com.coverity.ws.v9.DefectInstanceDataObj;
 import com.coverity.ws.v9.EventDataObj;
 import com.coverity.ws.v9.MergedDefectDataObj;
 import com.coverity.ws.v9.ProjectDataObj;
+import org.apache.commons.lang.StringUtils;
 import org.junit.Before;
 import org.junit.Test;
 import org.sonar.api.batch.fs.internal.DefaultInputFile;
@@ -106,6 +107,8 @@ public class CoveritySensorTest {
         final NewActiveRule javaTestChecker = rulesBuilder.create(ruleKey);
         sensorContextTester
                 .setActiveRules(new DefaultActiveRules(Arrays.asList(javaTestChecker)));
+        final String expectedIssueMessage =
+                "[TEST_CHECKER(type)] Event Tag: Event Description ( CID 1 : https://test-host:8443/sourcebrowser.htm?projectId=0&mergedDefectId=1 )";
 
         testCimClient.setupDefect(domain, checkerName, filePath, streamName);
 
@@ -117,6 +120,7 @@ public class CoveritySensorTest {
         final Issue issue = issues.iterator().next();
         assertEquals(ruleKey, issue.ruleKey());
         assertEquals(inputFile, issue.primaryLocation().inputComponent());
+        assertEquals(expectedIssueMessage, issue.primaryLocation().message());
     }
 
     @Test
@@ -306,6 +310,55 @@ public class CoveritySensorTest {
 
         final Collection<Issue> issues = sensorContextTester.allIssues();
         assertEquals(0, issues.size());
+    }
+
+    @Test
+    public void testGetIssueMessage_WhenMainEventNotExist(){
+        final SensorContextTester sensorContextTester = SensorContextTester.create(new File("src"));
+        final String filePath = "src/Class1.cs";
+        final DefaultInputFile inputFile = new DefaultInputFile("myProjectKey", filePath)
+                .setLanguage("cs")
+                .initMetadata("public class Class1 {\n}");
+        sensorContextTester
+                .fileSystem()
+                .add(inputFile);
+        final HashMap<String, String> properties = new HashMap<>();
+
+        final String projectName = "my-cov-project";
+        final String streamName = "my-cov-stream";
+        testCimClient.setupProject(projectName);
+
+        properties.put(CoverityPlugin.COVERITY_PROJECT, projectName);
+        properties.put(CoverityPlugin.COVERITY_ENABLE, "true");
+        properties.put("sonar.sources", "src");
+        sensorContextTester
+                .settings()
+                .addProperties(properties);
+
+        final String checkerName = "TEST_CHECKER";
+        final String domain = "STATIC_CS";
+        final String subcategory = "none";
+
+        final ActiveRulesBuilder rulesBuilder = new ActiveRulesBuilder();
+        final RuleKey ruleKey = RuleKey.of("coverity-cs", domain + "_" + checkerName + "_" + subcategory);
+        final NewActiveRule csTestChecker = rulesBuilder.create(ruleKey);
+        sensorContextTester
+                .setActiveRules(new DefaultActiveRules(Arrays.asList(csTestChecker)));
+        final String expectedIssueMessage =
+                "[TEST_CHECKER(type)] Defect Long Description ( CID 1 : https://test-host:8443/sourcebrowser.htm?projectId=0&mergedDefectId=1 )";
+
+        testCimClient.setupDefect(domain, checkerName, filePath, streamName);
+        testCimClient.configureMainEvent(StringUtils.EMPTY, StringUtils.EMPTY);
+
+        sensor.execute(sensorContextTester);
+
+        final Collection<Issue> issues = sensorContextTester.allIssues();
+        assertNotNull(issues);
+        assertEquals(1, issues.size());
+        final Issue issue = issues.iterator().next();
+        assertEquals(ruleKey, issue.ruleKey());
+        assertEquals(inputFile, issue.primaryLocation().inputComponent());
+        assertEquals(expectedIssueMessage, issue.primaryLocation().message());
     }
 
     private void verifyFindActiveRule(String checkerName, String domain, String repoKey, String key, String subcategory, String lang) throws Exception {

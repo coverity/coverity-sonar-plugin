@@ -251,7 +251,7 @@ public class CoveritySensor implements Sensor {
                         LOG.debug("covProjectObj=" + covProjectObj);
                         LOG.debug("mddo=" + mddo);
                         LOG.debug("dido=" + dido);
-                        String message = getIssueMessage(instance, covProjectObj, mddo, dido);
+                        String message = getIssueMessage(instance, covProjectObj, mainEvent, dido, mddo);
 
                         final DefaultTextPointer start = new DefaultTextPointer(mainEvent.getLineNumber(), 0);
 
@@ -287,15 +287,23 @@ public class CoveritySensor implements Sensor {
         getCoverityLogoMeasures(context, instance, covProjectObj);
     }
 
-    protected String getIssueMessage(CIMClient instance, ProjectDataObj covProjectObj, MergedDefectDataObj mddo, DefectInstanceDataObj dido) throws CovRemoteServiceException_Exception, IOException {
+    protected String getIssueMessage(CIMClient instance, ProjectDataObj covProjectObj, EventDataObj mainEvent, DefectInstanceDataObj dido, MergedDefectDataObj mddo) {
         String url = getDefectURL(instance, covProjectObj, mddo);
 
-        String description = dido.getLongDescription();
+        StringBuilder message = new StringBuilder();
+        message.append("[" + mddo.getDisplayType() + "] ");
 
-        return StringEscapeUtils.unescapeHtml(description) + "\n\nView in Coverity Connect: \n" + url;
+        if (mainEvent == null
+                || StringUtils.isEmpty(mainEvent.getEventDescription())
+                || StringUtils.isEmpty(mainEvent.getEventTag())){
+            message.append(dido.getLongDescription());
+        } else{
+            message.append(mainEvent.getEventTag() + ": " + mainEvent.getEventDescription());
+        }
+
+        return StringEscapeUtils.unescapeHtml(message.toString()) + " ( CID " + mddo.getCid() + " : " + url + " )";
     }
 
-    //Replacing "#" for "&" in order to fix bug 62066.
     protected String getDefectURL(CIMClient instance, ProjectDataObj covProjectObj, MergedDefectDataObj mddo) {
         return String.format("%s://%s:%d/sourcebrowser.htm?projectId=%s&mergedDefectId=%d",
                 instance.isUseSSL() ? "https" : "http", instance.getHost(), instance.getPort(), covProjectObj.getProjectKey(), mddo.getCid());

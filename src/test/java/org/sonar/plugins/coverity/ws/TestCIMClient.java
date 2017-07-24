@@ -57,6 +57,10 @@ public class TestCIMClient extends CIMClient {
         testDefectService.addDefect(domain, checkerName, filePath, streamName);
     }
 
+    public void configureMainEvent(String eventTag, String eventDescription){
+        testDefectService.configureMainEvent(eventTag, eventDescription);
+    }
+
     public static class TestConfigurationService implements ConfigurationService {
         private List<ProjectDataObj> projects;
 
@@ -500,6 +504,13 @@ public class TestCIMClient extends CIMClient {
     public static class TestDefectService implements DefectService {
         private List<MergedDefectIdDataObj> mergedDefectIds = new ArrayList<>();
         private List<MergedDefectDataObj> mergedDefects = new ArrayList<>();
+        private String mainEventTag;
+        private String mainEventDescription;
+
+        public TestDefectService(){
+            this.mainEventDescription = "Event Description";
+            this.mainEventTag = "Event Tag";
+        }
 
         public void addDefect(String domain, String checkerName, String filePath, String streamName) {
             MergedDefectIdDataObj idDataObj = new MergedDefectIdDataObj();
@@ -551,6 +562,11 @@ public class TestCIMClient extends CIMClient {
             return attributeValueDataObj;
         }
 
+        public void configureMainEvent(String eventTag, String eventDescription){
+            this.mainEventTag = eventTag;
+            this.mainEventDescription = eventDescription;
+        }
+
         @Override
         public void updateDefectInstanceProperties(DefectInstanceIdDataObj defectInstanceId, List<PropertySpecDataObj> properties) throws CovRemoteServiceException_Exception {
             throw new NotImplementedException();
@@ -592,9 +608,12 @@ public class TestCIMClient extends CIMClient {
                 impact.setName(mergedDefectDataObj.getDisplayImpact());
                 impact.setDisplayName(mergedDefectDataObj.getDisplayImpact());
                 defectInstanceDataObj.setImpact(impact);
+                defectInstanceDataObj.setLongDescription("Defect Long Description");
 
                 EventDataObj event = new EventDataObj();
                 event.setLineNumber(1);
+                event.setEventTag(mainEventTag);
+                event.setEventDescription(mainEventDescription);
                 defectInstanceDataObj.getEvents().add(event);
 
                 streamDataObj.getDefectInstances().add(defectInstanceDataObj);
