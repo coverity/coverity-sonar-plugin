@@ -12,6 +12,8 @@
 package org.sonar.plugins.coverity.ws;
 
 import com.coverity.ws.v9.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.xml.namespace.QName;
 import javax.xml.ws.BindingProvider;
@@ -19,6 +21,7 @@ import javax.xml.ws.handler.Handler;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.text.MessageFormat;
 import java.util.*;
 
 /**
@@ -31,6 +34,8 @@ public class CIMClient {
     public static final String DEFECT_SERVICE_WSDL = "/ws/" + COVERITY_WS_VERSION + "/defectservice?wsdl";
 
     private static final int GET_STREAM_DEFECTS_MAX_CIDS = 100;
+
+    private static final Logger LOG = LoggerFactory.getLogger(CIMClient.class);
 
     /**
      * The host name for the CIM server
@@ -163,7 +168,7 @@ public class CIMClient {
         ProjectIdDataObj projectId = new ProjectIdDataObj();
         projectId.setName(project);
         PageSpecDataObj pageSpec = new PageSpecDataObj();
-        pageSpec.setPageSize(2500);
+        pageSpec.setPageSize(1000);
 
         List<MergedDefectDataObj> result = new ArrayList<MergedDefectDataObj>();
         int defectCount = 0;
@@ -173,6 +178,8 @@ public class CIMClient {
             defects = getDefectService().getMergedDefectsForProjectScope(projectId, filterSpec, pageSpec);
             result.addAll(defects.getMergedDefects());
             defectCount += defects.getMergedDefects().size();
+            LOG.info(MessageFormat.format("Fetching coverity defects for project \"{0}\" (fetched {1} of {2})",
+                    project, defectCount, defects.getTotalNumberOfRecords()));
         } while(defectCount < defects.getTotalNumberOfRecords());
 
         return result;
@@ -190,13 +197,6 @@ public class CIMClient {
         } else {
             return projects.get(0);
         }
-    }
-
-    /**
-     * Returns all projects on the current cim instance.
-     */
-    public List<ProjectDataObj> getProjects() throws IOException, CovRemoteServiceException_Exception {
-        return getConfigurationService().getProjects(new ProjectFilterSpecDataObj());
     }
 
     /**
@@ -248,6 +248,9 @@ public class CIMClient {
                     sddos.put(sddo.getCid(), sddo);
                 }
             }
+
+            LOG.info(MessageFormat.format("Fetching coverity defect details (fetched {0} of {1})",
+                    sddos.size(), cidList.size()));
         }
 
         return sddos;
