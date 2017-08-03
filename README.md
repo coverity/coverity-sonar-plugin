@@ -227,6 +227,10 @@ addressed in future releases.
 -   There are no immediate plans for localization to languages other
     than English.
 
+Support
+=======
+If you have any questions or issues with the Coverity plugin, contact coverity-support@synopsys.com
+
 Changelog
 =========
 
@@ -253,8 +257,3 @@ Changelog
   * More rules definitions for all supported languages.
   * Fixed bug of C++ headers not being scanned.
   * Fixed bug of Coverity defects with no main event not being counted.
-
-
-Support
-=======
-If you have any questions or issues with the Coverity plugin, contact coverity-support@synopsys.com
