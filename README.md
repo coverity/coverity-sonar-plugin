@@ -6,9 +6,7 @@ The Coverity Sonar Plugin automatically import issues from Coverity Connect into
 Coverity® Sonar Plug-in Installation and Configuration Guide
 ============================================================
 
-Version 1.6.0
-
-Released April 28, 2017
+Version 1.6.1
 
 This guide is intended to assist you with the installation and
 configuration of the Coverity Sonar plug-in. Once completed, you will be
@@ -23,8 +21,8 @@ Sonar plug-in.
 | **Software**     | **Supported versions** |
 |------------------|------------------------|
 | SonarQube        | 5.6.6+                 |
-| SonarQube Scanner| 3.0                    |
-| Coverity Connect | 7.7+                   |
+| SonarQube Scanner| 3.0+                    |
+| Coverity Connect | 8.0+                   |
 
 Installing the Coverity Sonar Plug-in
 =====================================
@@ -231,6 +229,13 @@ addressed in future releases.
 
 Changelog
 =========
+
+* __1.6.1__
+  * Fixed an issue where the SonarQube issues' line number is different compared to the defects' line number from the Coverity Connect. (BZ 105639)
+  * SonarQube coverity plugin creates the sonarqube issue with similar description, compared to the defect description displayed in the Coverity Connect. (BZ 105640)
+  * Added logging to console on the progress of retrieving coverity defects from Coverity Connect. (BZ 107598)
+
+
 * __1.6.0__
   * The SonarQube Coverity plugin now uses tags for each rule to provide easy filtering and lookup. (BZ 96223)
   * The SonarQube Coverity plugin now uses the prefix to match the file location in the Windows operating system. (BZ 90691)
@@ -249,3 +254,7 @@ Changelog
   * Fixed bug of C++ headers not being scanned.
   * Fixed bug of Coverity defects with no main event not being counted.
 
+
+Support
+=======
+If you have any questions or issues with the Coverity plugin, contact coverity-support@synopsys.com
