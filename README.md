@@ -235,9 +235,9 @@ Changelog
 =========
 
 * __1.6.1__
-  * Fixed an issue where the SonarQube issues' line number is different compared to the defects' line number from the Coverity Connect. (BZ 105639)
-  * SonarQube coverity plugin creates the sonarqube issue with similar description, compared to the defect description displayed in the Coverity Connect. (BZ 105640)
-  * Added logging to console on the progress of retrieving coverity defects from Coverity Connect. (BZ 107598)
+  * Fixed an issue where the SonarQube issue's line number is different compared to the defect's line number from the Coverity Connect. (BZ 105639)
+  * SonarQube Coverity plugin creates the Sonarqube issue with similar description, compared to the defect description displayed in the Coverity Connect. (BZ 105640)
+  * Added logging to console on the progress of retrieving Coverity defects from Coverity Connect. (BZ 107598)
 
 
 * __1.6.0__
