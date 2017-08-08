@@ -229,7 +229,7 @@ addressed in future releases.
 
 Support
 =======
-If you have any questions or issues with the Coverity plugin, contact coverity-support@synopsys.com
+If you have any questions or issues with the Coverity plugin, contact <coverity-support@synopsys.com>
 
 Changelog
 =========
