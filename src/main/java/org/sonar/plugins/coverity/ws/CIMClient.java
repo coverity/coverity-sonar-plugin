@@ -12,6 +12,8 @@
 package org.sonar.plugins.coverity.ws;
 
 import com.coverity.ws.v9.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.xml.namespace.QName;
 import javax.xml.ws.BindingProvider;
@@ -19,11 +21,8 @@ import javax.xml.ws.handler.Handler;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.text.MessageFormat;
+import java.util.*;
 
 /**
  * Represents one Coverity Integrity Manager server. Abstracts functions like getting streams and defects.
@@ -35,6 +34,8 @@ public class CIMClient {
     public static final String DEFECT_SERVICE_WSDL = "/ws/" + COVERITY_WS_VERSION + "/defectservice?wsdl";
 
     private static final int GET_STREAM_DEFECTS_MAX_CIDS = 100;
+
+    private static final Logger LOG = LoggerFactory.getLogger(CIMClient.class);
 
     /**
      * The host name for the CIM server
@@ -167,7 +168,7 @@ public class CIMClient {
         ProjectIdDataObj projectId = new ProjectIdDataObj();
         projectId.setName(project);
         PageSpecDataObj pageSpec = new PageSpecDataObj();
-        pageSpec.setPageSize(2500);
+        pageSpec.setPageSize(1000);
 
         List<MergedDefectDataObj> result = new ArrayList<MergedDefectDataObj>();
         int defectCount = 0;
@@ -177,6 +178,8 @@ public class CIMClient {
             defects = getDefectService().getMergedDefectsForProjectScope(projectId, filterSpec, pageSpec);
             result.addAll(defects.getMergedDefects());
             defectCount += defects.getMergedDefects().size();
+            LOG.info(MessageFormat.format("Fetching coverity defects for project \"{0}\" (fetched {1} of {2})",
+                    project, defectCount, defects.getTotalNumberOfRecords()));
         } while(defectCount < defects.getTotalNumberOfRecords());
 
         return result;
@@ -197,23 +200,17 @@ public class CIMClient {
     }
 
     /**
-     * Returns all projects on the current cim instance.
-     */
-    public List<ProjectDataObj> getProjects() throws IOException, CovRemoteServiceException_Exception {
-        return getConfigurationService().getProjects(new ProjectFilterSpecDataObj());
-    }
-
-    /**
      * Returns a map of <CID, StreamDefectDataObj>. It essentially calls getDefectService().getStreamDefects() on a
      * specific list of MergedDefectDataObj. Then it takes the resulting List<StreamDefectDataObj> and creates a map
      * with the CID of each element on that list as the key, and the actual object as value.
      */
     public Map<Long, StreamDefectDataObj> getStreamDefectsForMergedDefects(List<MergedDefectDataObj> defects) throws IOException, CovRemoteServiceException_Exception {
         Map<Long, MergedDefectDataObj> cids = new HashMap<Long, MergedDefectDataObj>();
-
         Map<Long, StreamDefectDataObj> sddos = new HashMap<Long, StreamDefectDataObj>();
-
         Map<Long, MergedDefectIdDataObj> mdidos = new HashMap<Long, MergedDefectIdDataObj>();
+
+        StreamDefectFilterSpecDataObj filter = new StreamDefectFilterSpecDataObj();
+        Set<String> streamList = new HashSet<String>();
 
         for(MergedDefectDataObj mddo : defects) {
             cids.put(mddo.getCid(), mddo);
@@ -221,9 +218,14 @@ public class CIMClient {
             mdido.setCid(mddo.getCid());
             mdido.setMergeKey(mddo.getMergeKey());
             mdidos.put(mddo.getCid(), mdido);
+            streamList.add(mddo.getLastDetectedStream());
         }
 
-        StreamDefectFilterSpecDataObj filter = new StreamDefectFilterSpecDataObj();
+        for (String stream : streamList) {
+            StreamIdDataObj streamIdDataObj = new StreamIdDataObj();
+            streamIdDataObj.setName(stream);
+            filter.getStreamIdList().add(streamIdDataObj);
+        }
         filter.setIncludeDefectInstances(true);
 
         List<Long> cidList = new ArrayList<Long>(cids.keySet());
@@ -238,8 +240,17 @@ public class CIMClient {
             List<StreamDefectDataObj> temp = getDefectService().getStreamDefects(sliceMergedDefectIdDataObj, filter);
 
             for(StreamDefectDataObj sddo : temp) {
-                sddos.put(sddo.getCid(), sddo);
+                MergedDefectDataObj curMergedDefectDataObj = cids.get(sddo.getCid());
+                StreamIdDataObj curStreamIdDataObj = sddo.getStreamId();
+
+                if (curMergedDefectDataObj != null && curStreamIdDataObj != null
+                        && curMergedDefectDataObj.getLastDetectedStream().equals(curStreamIdDataObj.getName())) {
+                    sddos.put(sddo.getCid(), sddo);
+                }
             }
+
+            LOG.info(MessageFormat.format("Fetching coverity defect details (fetched {0} of {1})",
+                    sddos.size(), cidList.size()));
         }
 
         return sddos;
