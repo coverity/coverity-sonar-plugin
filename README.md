@@ -3,6 +3,8 @@ Coverity Sonar Plugin
 
 The Coverity Sonar Plugin automatically import issues from Coverity Connect into SonarQube.
 
+![Coverity Scan Build Status](https://scan.coverity.com/projects/13562/badge.svg "Coverity Scan Build Status")
+
 Coverity® Sonar Plug-in Installation and Configuration Guide
 ============================================================
 
