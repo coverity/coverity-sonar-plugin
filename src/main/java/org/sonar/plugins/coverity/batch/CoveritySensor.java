@@ -55,10 +55,12 @@ public class CoveritySensor implements Sensor {
 
     private String platform;
     private CIMClientFactory cimClientFactory;
+    private HashMap<String, InputFile> localInputFiles;
 
     public CoveritySensor(CIMClientFactory cimClientFactory) {
         this.cimClientFactory = cimClientFactory;
         platform = System.getProperty("os.name");
+        localInputFiles = new HashMap<String, InputFile>();
     }
 
     @Override
@@ -201,7 +203,9 @@ public class CoveritySensor implements Sensor {
                     } else{
                         String mainEventFilePath = getMainEventFilePath(mainEvent);
                         if (StringUtils.isEmpty(mainEventFilePath)){
-                            continue;
+                            // In case main event's file path is missing,
+                            // use MergeDefectDataObj's file path as default
+                            mainEventFilePath = mddo.getFilePathname();
                         }
 
                         inputFile = findLocalFile(context, mainEventFilePath, listOfFiles);
@@ -437,6 +441,11 @@ public class CoveritySensor implements Sensor {
     }
 
     protected InputFile findLocalFile(SensorContext context, String filePath, List<File> listOfFiles){
+
+        if (localInputFiles.containsKey(filePath)){
+            return localInputFiles.get(filePath);
+        }
+
         InputFile inputFile;
         String currentDir = System.getProperty("user.dir");
         File currentDirFile = new File(currentDir);
@@ -478,6 +487,8 @@ public class CoveritySensor implements Sensor {
             LOG.info("Cannot find the language of the file '" + inputFile.absolutePath() + "', skipping defect (CID " + cid + ")");
             return false;
         }
+
+        localInputFiles.put(filePath, inputFile);
 
         return true;
     }
