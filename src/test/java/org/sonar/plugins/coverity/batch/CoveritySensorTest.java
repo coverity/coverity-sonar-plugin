@@ -110,7 +110,7 @@ public class CoveritySensorTest {
         final String expectedIssueMessage =
                 "[TEST_CHECKER(type)] Event Tag: Event Description ( CID 1 : https://test-host:8443/sourcebrowser.htm?projectId=0&mergedDefectId=1 )";
 
-        testCimClient.setupDefect(domain, checkerName, filePath, streamName);
+        testCimClient.setupDefect(domain, checkerName, streamName, Arrays.asList(filePath));
 
         sensor.execute(sensorContextTester);
 
@@ -152,7 +152,7 @@ public class CoveritySensorTest {
         final String checkerName = "TEST_CHECKER";
         final String domain = "OTHER";
 
-        testCimClient.setupDefect(domain, checkerName, filePath, streamName);
+        testCimClient.setupDefect(domain, checkerName, streamName, Arrays.asList(filePath));
 
         sensor.execute(sensorContextTester);
 
@@ -347,7 +347,7 @@ public class CoveritySensorTest {
         final String expectedIssueMessage =
                 "[TEST_CHECKER(type)] Defect Long Description ( CID 1 : https://test-host:8443/sourcebrowser.htm?projectId=0&mergedDefectId=1 )";
 
-        testCimClient.setupDefect(domain, checkerName, filePath, streamName);
+        testCimClient.setupDefect(domain, checkerName, streamName, Arrays.asList(filePath));
         testCimClient.configureMainEvent(StringUtils.EMPTY, StringUtils.EMPTY);
 
         sensor.execute(sensorContextTester);
@@ -359,6 +359,70 @@ public class CoveritySensorTest {
         assertEquals(ruleKey, issue.ruleKey());
         assertEquals(inputFile, issue.primaryLocation().inputComponent());
         assertEquals(expectedIssueMessage, issue.primaryLocation().message());
+    }
+
+    @Test
+    public void testExecute_savesIssue_WithMultiOccurrence_WithDifferentFilePaths() throws Exception {
+
+        final SensorContextTester sensorContextTester = SensorContextTester.create(new File("src"));
+        final String filePath1 = "src/Foo1.java";
+        final DefaultInputFile inputFile1 = new DefaultInputFile("myProjectKey", filePath1)
+                .setLanguage("java")
+                .initMetadata("public class Foo1 {\n}");
+        sensorContextTester
+                .fileSystem()
+                .add(inputFile1);
+
+        final String filePath2 = "src/Foo2.java";
+        final DefaultInputFile inputFile2 = new DefaultInputFile("myProjectKey", filePath2)
+                .setLanguage("java")
+                .initMetadata("public class Foo2 {\n}");
+        sensorContextTester
+                .fileSystem()
+                .add(inputFile2);
+
+        final HashMap<String, String> properties = new HashMap<>();
+
+        final String projectName = "my-cov-project";
+        final String streamName = "my-cov-stream";
+        testCimClient.setupProject(projectName);
+
+        properties.put(CoverityPlugin.COVERITY_PROJECT, projectName);
+        properties.put(CoverityPlugin.COVERITY_ENABLE, "true");
+        properties.put("sonar.sources", "src");
+        sensorContextTester
+                .settings()
+                .addProperties(properties);
+
+        final String checkerName = "TEST_CHECKER";
+        final String domain = "STATIC_JAVA";
+        final String subcategory = "none";
+
+        final ActiveRulesBuilder rulesBuilder = new ActiveRulesBuilder();
+        final RuleKey ruleKey = RuleKey.of("coverity-java", domain + "_" + checkerName + "_" + subcategory);
+        final NewActiveRule javaTestChecker = rulesBuilder.create(ruleKey);
+        sensorContextTester
+                .setActiveRules(new DefaultActiveRules(Arrays.asList(javaTestChecker)));
+        final String expectedIssueMessage =
+                "[TEST_CHECKER(type)] Event Tag: Event Description ( CID 1 : https://test-host:8443/sourcebrowser.htm?projectId=0&mergedDefectId=1 )";
+
+        testCimClient.setupDefect(domain, checkerName, streamName, Arrays.asList(filePath1, filePath2));
+
+        sensor.execute(sensorContextTester);
+
+        final Collection<Issue> issues = sensorContextTester.allIssues();
+        assertNotNull(issues);
+        assertEquals(2, issues.size());
+
+        Issue issue1 = issues.iterator().next();
+        assertEquals(ruleKey, issue1.ruleKey());
+        assertEquals(inputFile1, issue1.primaryLocation().inputComponent());
+        assertEquals(expectedIssueMessage, issue1.primaryLocation().message());
+
+        Issue issue2 = issues.iterator().next();
+        assertEquals(ruleKey, issue2.ruleKey());
+        assertEquals(inputFile1, issue2.primaryLocation().inputComponent());
+        assertEquals(expectedIssueMessage, issue2.primaryLocation().message());
     }
 
     private void verifyFindActiveRule(String checkerName, String domain, String repoKey, String key, String subcategory, String lang) throws Exception {
