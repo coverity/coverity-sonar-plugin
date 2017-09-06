@@ -60,7 +60,6 @@ public class CoveritySensor implements Sensor {
     public CoveritySensor(CIMClientFactory cimClientFactory) {
         this.cimClientFactory = cimClientFactory;
         platform = System.getProperty("os.name");
-        localInputFiles = new HashMap<String, InputFile>();
     }
 
     @Override
@@ -81,6 +80,7 @@ public class CoveritySensor implements Sensor {
     @Override
     public void execute(SensorContext context) {
         Settings settings = context.settings();
+        localInputFiles = new HashMap<String, InputFile>();
 
         boolean enabled = settings.getBoolean(CoverityPlugin.COVERITY_ENABLE);
 
