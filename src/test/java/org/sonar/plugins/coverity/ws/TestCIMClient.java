@@ -617,7 +617,7 @@ public class TestCIMClient extends CIMClient {
                     defectInstanceDataObj.setLongDescription("Defect Long Description");
 
                     EventDataObj event = new EventDataObj();
-                    event.setLineNumber(1);
+                    event.setLineNumber(i+1);
                     event.setEventTag(mainEventTag);
                     event.setEventDescription(mainEventDescription);
                     event.setMain(true);

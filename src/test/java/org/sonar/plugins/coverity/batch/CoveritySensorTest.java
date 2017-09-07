@@ -368,7 +368,7 @@ public class CoveritySensorTest {
         final String filePath1 = "src/Foo1.java";
         final DefaultInputFile inputFile1 = new DefaultInputFile("myProjectKey", filePath1)
                 .setLanguage("java")
-                .initMetadata("public class Foo1 {\n}");
+                .initMetadata("public class Foo1 {\n public void createDefect(){\n}}");
         sensorContextTester
                 .fileSystem()
                 .add(inputFile1);
@@ -406,23 +406,30 @@ public class CoveritySensorTest {
         final String expectedIssueMessage =
                 "[TEST_CHECKER(type)] Event Tag: Event Description ( CID 1 : https://test-host:8443/sourcebrowser.htm?projectId=0&mergedDefectId=1 )";
 
-        testCimClient.setupDefect(domain, checkerName, streamName, Arrays.asList(filePath1, filePath2));
+        testCimClient.setupDefect(domain, checkerName, streamName, Arrays.asList(filePath1, filePath2, filePath1));
 
         sensor.execute(sensorContextTester);
 
         final Collection<Issue> issues = sensorContextTester.allIssues();
         assertNotNull(issues);
-        assertEquals(2, issues.size());
+        assertEquals(3, issues.size());
 
-        Issue issue1 = issues.iterator().next();
+        final Iterator<Issue> iterator = issues.iterator();
+
+        Issue issue1 = iterator.next();
         assertEquals(ruleKey, issue1.ruleKey());
         assertEquals(inputFile1, issue1.primaryLocation().inputComponent());
         assertEquals(expectedIssueMessage, issue1.primaryLocation().message());
 
-        Issue issue2 = issues.iterator().next();
+        Issue issue2 = iterator.next();
         assertEquals(ruleKey, issue2.ruleKey());
-        assertEquals(inputFile1, issue2.primaryLocation().inputComponent());
+        assertEquals(inputFile2, issue2.primaryLocation().inputComponent());
         assertEquals(expectedIssueMessage, issue2.primaryLocation().message());
+
+        Issue issue3 = iterator.next();
+        assertEquals(ruleKey, issue3.ruleKey());
+        assertEquals(inputFile1, issue3.primaryLocation().inputComponent());
+        assertEquals(expectedIssueMessage, issue3.primaryLocation().message());
     }
 
     private void verifyFindActiveRule(String checkerName, String domain, String repoKey, String key, String subcategory, String lang) throws Exception {
