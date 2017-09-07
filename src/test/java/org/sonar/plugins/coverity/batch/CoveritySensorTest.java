@@ -474,20 +474,22 @@ public class CoveritySensorTest {
         final String expectedIssueMessage =
                 "[TEST_CHECKER(type)] Event Tag: Event Description ( CID 1 : https://test-host:8443/sourcebrowser.htm?projectId=0&mergedDefectId=1 )";
 
-        testCimClient.setupDefect(domain, checkerName, streamName, Arrays.asList(stripPath + filePath));
+        try{
+            testCimClient.setupDefect(domain, checkerName, streamName, Arrays.asList(stripPath + filePath));
 
-        sensor.execute(sensorContextTester);
+            sensor.execute(sensorContextTester);
 
-        final Collection<Issue> issues = sensorContextTester.allIssues();
-        assertNotNull(issues);
-        assertEquals(1, issues.size());
-        final Issue issue = issues.iterator().next();
-        assertEquals(ruleKey, issue.ruleKey());
-        assertEquals(inputFile, issue.primaryLocation().inputComponent());
-        assertEquals(expectedIssueMessage, issue.primaryLocation().message());
-
-        System.setProperty("user.dir", originalUserDir);
-        System.setProperty("os.name", originalOsName);
+            final Collection<Issue> issues = sensorContextTester.allIssues();
+            assertNotNull(issues);
+            assertEquals(1, issues.size());
+            final Issue issue = issues.iterator().next();
+            assertEquals(ruleKey, issue.ruleKey());
+            assertEquals(inputFile, issue.primaryLocation().inputComponent());
+            assertEquals(expectedIssueMessage, issue.primaryLocation().message());
+        } finally {
+            System.setProperty("user.dir", originalUserDir);
+            System.setProperty("os.name", originalOsName);
+        }
     }
 
     @Test
