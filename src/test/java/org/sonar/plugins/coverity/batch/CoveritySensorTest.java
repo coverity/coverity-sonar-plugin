@@ -368,7 +368,7 @@ public class CoveritySensorTest {
         final String filePath1 = "src/Foo1.java";
         final DefaultInputFile inputFile1 = new DefaultInputFile("myProjectKey", filePath1)
                 .setLanguage("java")
-                .initMetadata("public class Foo1 {\n}");
+                .initMetadata("public class Foo1 {\n public void createDefect(){\n}}");
         sensorContextTester
                 .fileSystem()
                 .add(inputFile1);
@@ -406,23 +406,126 @@ public class CoveritySensorTest {
         final String expectedIssueMessage =
                 "[TEST_CHECKER(type)] Event Tag: Event Description ( CID 1 : https://test-host:8443/sourcebrowser.htm?projectId=0&mergedDefectId=1 )";
 
-        testCimClient.setupDefect(domain, checkerName, streamName, Arrays.asList(filePath1, filePath2));
+        testCimClient.setupDefect(domain, checkerName, streamName, Arrays.asList(filePath1, filePath2, filePath1));
 
         sensor.execute(sensorContextTester);
 
         final Collection<Issue> issues = sensorContextTester.allIssues();
         assertNotNull(issues);
-        assertEquals(2, issues.size());
+        assertEquals(3, issues.size());
 
-        Issue issue1 = issues.iterator().next();
+        final Iterator<Issue> iterator = issues.iterator();
+
+        Issue issue1 = iterator.next();
         assertEquals(ruleKey, issue1.ruleKey());
         assertEquals(inputFile1, issue1.primaryLocation().inputComponent());
         assertEquals(expectedIssueMessage, issue1.primaryLocation().message());
 
-        Issue issue2 = issues.iterator().next();
+        Issue issue2 = iterator.next();
         assertEquals(ruleKey, issue2.ruleKey());
-        assertEquals(inputFile1, issue2.primaryLocation().inputComponent());
+        assertEquals(inputFile2, issue2.primaryLocation().inputComponent());
         assertEquals(expectedIssueMessage, issue2.primaryLocation().message());
+
+        Issue issue3 = iterator.next();
+        assertEquals(ruleKey, issue3.ruleKey());
+        assertEquals(inputFile1, issue3.primaryLocation().inputComponent());
+        assertEquals(expectedIssueMessage, issue3.primaryLocation().message());
+    }
+
+    @Test
+    public void testExecute_savesIssue_WithStripPrefix() throws Exception {
+
+        final SensorContextTester sensorContextTester = SensorContextTester.create(new File("src"));
+        String originalUserDir = System.getProperty("user.dir");
+        String originalOsName = System.getProperty("os.name");
+        System.setProperty("user.dir", sensorContextTester.fileSystem().baseDir().getAbsolutePath());
+        System.setProperty("os.name", "Windows 10");
+        final String stripPath = "stripPath/";
+        final String filePath = "src/Foo.java";
+        final DefaultInputFile inputFile = new DefaultInputFile("myProjectKey", filePath)
+                .setLanguage("java")
+                .initMetadata("public class Foo {\n}");
+        sensorContextTester
+                .fileSystem()
+                .add(inputFile);
+        final HashMap<String, String> properties = new HashMap<>();
+
+        final String projectName = "my-cov-project";
+        final String streamName = "my-cov-stream";
+        testCimClient.setupProject(projectName);
+
+        properties.put(CoverityPlugin.COVERITY_PROJECT, projectName);
+        properties.put(CoverityPlugin.COVERITY_ENABLE, "true");
+        properties.put(CoverityPlugin.COVERITY_PREFIX, stripPath);
+        properties.put("sonar.sources", "src");
+        sensorContextTester
+                .settings()
+                .addProperties(properties);
+
+        final String checkerName = "TEST_CHECKER";
+        final String domain = "STATIC_JAVA";
+        final String subcategory = "none";
+
+        final ActiveRulesBuilder rulesBuilder = new ActiveRulesBuilder();
+        final RuleKey ruleKey = RuleKey.of("coverity-java", domain + "_" + checkerName + "_" + subcategory);
+        final NewActiveRule javaTestChecker = rulesBuilder.create(ruleKey);
+        sensorContextTester
+                .setActiveRules(new DefaultActiveRules(Arrays.asList(javaTestChecker)));
+        final String expectedIssueMessage =
+                "[TEST_CHECKER(type)] Event Tag: Event Description ( CID 1 : https://test-host:8443/sourcebrowser.htm?projectId=0&mergedDefectId=1 )";
+
+        try{
+            testCimClient.setupDefect(domain, checkerName, streamName, Arrays.asList(stripPath + filePath));
+
+            sensor.execute(sensorContextTester);
+
+            final Collection<Issue> issues = sensorContextTester.allIssues();
+            assertNotNull(issues);
+            assertEquals(1, issues.size());
+            final Issue issue = issues.iterator().next();
+            assertEquals(ruleKey, issue.ruleKey());
+            assertEquals(inputFile, issue.primaryLocation().inputComponent());
+            assertEquals(expectedIssueMessage, issue.primaryLocation().message());
+        } finally {
+            System.setProperty("user.dir", originalUserDir);
+            System.setProperty("os.name", originalOsName);
+        }
+    }
+
+    @Test
+    public void testExecute_savesIssue_WithNoInputFile() throws Exception {
+
+        final SensorContextTester sensorContextTester = SensorContextTester.create(new File("src"));
+        final String filePath = "src/Foo.java";
+        final HashMap<String, String> properties = new HashMap<>();
+
+        final String projectName = "my-cov-project";
+        final String streamName = "my-cov-stream";
+        testCimClient.setupProject(projectName);
+
+        properties.put(CoverityPlugin.COVERITY_PROJECT, projectName);
+        properties.put(CoverityPlugin.COVERITY_ENABLE, "true");
+        properties.put("sonar.sources", "src");
+        sensorContextTester
+                .settings()
+                .addProperties(properties);
+
+        final String checkerName = "TEST_CHECKER";
+        final String domain = "STATIC_JAVA";
+        final String subcategory = "none";
+
+        final ActiveRulesBuilder rulesBuilder = new ActiveRulesBuilder();
+        final RuleKey ruleKey = RuleKey.of("coverity-java", domain + "_" + checkerName + "_" + subcategory);
+        final NewActiveRule javaTestChecker = rulesBuilder.create(ruleKey);
+        sensorContextTester
+                .setActiveRules(new DefaultActiveRules(Arrays.asList(javaTestChecker)));
+        testCimClient.setupDefect(domain, checkerName, streamName, Arrays.asList(filePath));
+
+        sensor.execute(sensorContextTester);
+
+        final Collection<Issue> issues = sensorContextTester.allIssues();
+        assertNotNull(issues);
+        assertEquals(0, issues.size());
     }
 
     private void verifyFindActiveRule(String checkerName, String domain, String repoKey, String key, String subcategory, String lang) throws Exception {
