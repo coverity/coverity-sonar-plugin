@@ -53,8 +53,9 @@ public class TestCIMClient extends CIMClient {
         testConfigurationService.setupProject(projectName);
     }
 
-    public void setupDefect(String domain, String checkerName, String filePath, String streamName) {
-        testDefectService.addDefect(domain, checkerName, filePath, streamName);
+    public void setupDefect(String domain, String checkerName, String streamName, List<String> filePathsForEvents) {
+        testDefectService.setFilePathsForEvents(filePathsForEvents);
+        testDefectService.addDefect(domain, checkerName, streamName);
     }
 
     public void configureMainEvent(String eventTag, String eventDescription){
@@ -506,13 +507,18 @@ public class TestCIMClient extends CIMClient {
         private List<MergedDefectDataObj> mergedDefects = new ArrayList<>();
         private String mainEventTag;
         private String mainEventDescription;
+        private List<String> filePaths;
 
         public TestDefectService(){
             this.mainEventDescription = "Event Description";
             this.mainEventTag = "Event Tag";
         }
 
-        public void addDefect(String domain, String checkerName, String filePath, String streamName) {
+        public void setFilePathsForEvents(List<String> filePaths){
+            this.filePaths = filePaths;
+        }
+
+        public void addDefect(String domain, String checkerName, String streamName) {
             MergedDefectIdDataObj idDataObj = new MergedDefectIdDataObj();
             final long cid = (long) mergedDefects.size() + 1;
             idDataObj.setCid(cid);
@@ -526,7 +532,6 @@ public class TestCIMClient extends CIMClient {
             defectDataObj.setDomain(domain);
             defectDataObj.setDisplayCategory(checkerName + "(category)");
             defectDataObj.setDisplayType(checkerName + "(type)");
-            defectDataObj.setFilePathname(filePath);
             defectDataObj.setFunctionDisplayName("defect_function_" + cid + "()");
 
             // set default attribute values for filtering
@@ -601,22 +606,30 @@ public class TestCIMClient extends CIMClient {
                 streamIdDataObj.setName(mergedDefectDataObj.getLastDetectedStream());
                 streamDataObj.setStreamId(streamIdDataObj);
 
-                DefectInstanceDataObj defectInstanceDataObj = new DefectInstanceDataObj();
-                defectInstanceDataObj.setCheckerName(mergedDefectDataObj.getCheckerName());
-                defectInstanceDataObj.setDomain(mergedDefectDataObj.getDomain());
-                final LocalizedValueDataObj impact = new LocalizedValueDataObj();
-                impact.setName(mergedDefectDataObj.getDisplayImpact());
-                impact.setDisplayName(mergedDefectDataObj.getDisplayImpact());
-                defectInstanceDataObj.setImpact(impact);
-                defectInstanceDataObj.setLongDescription("Defect Long Description");
+                for (int i = 0 ; i < this.filePaths.size() ; i++){
+                    DefectInstanceDataObj defectInstanceDataObj = new DefectInstanceDataObj();
+                    defectInstanceDataObj.setCheckerName(mergedDefectDataObj.getCheckerName());
+                    defectInstanceDataObj.setDomain(mergedDefectDataObj.getDomain());
+                    final LocalizedValueDataObj impact = new LocalizedValueDataObj();
+                    impact.setName(mergedDefectDataObj.getDisplayImpact());
+                    impact.setDisplayName(mergedDefectDataObj.getDisplayImpact());
+                    defectInstanceDataObj.setImpact(impact);
+                    defectInstanceDataObj.setLongDescription("Defect Long Description");
 
-                EventDataObj event = new EventDataObj();
-                event.setLineNumber(1);
-                event.setEventTag(mainEventTag);
-                event.setEventDescription(mainEventDescription);
-                defectInstanceDataObj.getEvents().add(event);
+                    EventDataObj event = new EventDataObj();
+                    event.setLineNumber(i+1);
+                    event.setEventTag(mainEventTag);
+                    event.setEventDescription(mainEventDescription);
+                    event.setMain(true);
 
-                streamDataObj.getDefectInstances().add(defectInstanceDataObj);
+                    FileIdDataObj fileIdDataObj = new FileIdDataObj();
+                    fileIdDataObj.setFilePathname(filePaths.get(i));
+                    event.setFileId(fileIdDataObj);
+
+                    defectInstanceDataObj.getEvents().add(event);
+
+                    streamDataObj.getDefectInstances().add(defectInstanceDataObj);
+                }
 
                 streamDefectDataObjs.add(streamDataObj);
             }

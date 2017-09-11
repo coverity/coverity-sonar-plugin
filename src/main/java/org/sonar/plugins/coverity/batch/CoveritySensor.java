@@ -55,6 +55,7 @@ public class CoveritySensor implements Sensor {
 
     private String platform;
     private CIMClientFactory cimClientFactory;
+    private HashMap<String, InputFile> localInputFiles;
 
     public CoveritySensor(CIMClientFactory cimClientFactory) {
         this.cimClientFactory = cimClientFactory;
@@ -79,6 +80,7 @@ public class CoveritySensor implements Sensor {
     @Override
     public void execute(SensorContext context) {
         Settings settings = context.settings();
+        localInputFiles = new HashMap<String, InputFile>();
 
         boolean enabled = settings.getBoolean(CoverityPlugin.COVERITY_ENABLE);
 
@@ -101,7 +103,7 @@ public class CoveritySensor implements Sensor {
         System.setProperty("javax.xml.soap.MetaFactory", "com.sun.xml.messaging.saaj.soap.SAAJMetaFactoryImpl");
 
         String covProject = settings.getString(CoverityPlugin.COVERITY_PROJECT);
-        String stripPrefix = settings.getString(CoverityPlugin.COVERITY_PREFIX);
+
         String covSrcDir = settings.getString(CoverityPlugin.COVERITY_SOURCE_DIRECTORY);
 
         /**
@@ -134,16 +136,9 @@ public class CoveritySensor implements Sensor {
 
         try {
             LOG.info("Fetching defects for project: " + covProject);
-
             List<MergedDefectDataObj> defects = instance.getDefects(covProject);
-
             Map<Long, StreamDefectDataObj> streamDefects = instance.getStreamDefectsForMergedDefects(defects);
-
             LOG.info("Found " + streamDefects.size() + " defects");
-
-            String currentDir = System.getProperty("user.dir");
-            File currenDirFile = new File(currentDir);
-            LOG.info("Current Directory: " + currentDir);
 
             List<File> listOfFiles = new ArrayList<File>();
             String sonarSourcesString = null;
@@ -188,21 +183,6 @@ public class CoveritySensor implements Sensor {
                     continue;
                 }
 
-                InputFile inputFile;
-                String filePath = mddo.getFilePathname();
-                if (stripPrefix != null && !stripPrefix.isEmpty() && filePath.startsWith(stripPrefix)){
-                    String strippedFilePath = filePath.substring(stripPrefix.length());
-                    filePath = new File(currenDirFile, strippedFilePath).getAbsolutePath();
-                    LOG.info("Full path after prefix being stripped: " + filePath);
-                }
-
-                if (platform.startsWith("Windows")) {
-                    filePath = filePath.replace("/", "\\");
-                }
-
-                final FileSystem fileSystem = context.fileSystem();
-                inputFile = fileSystem.inputFile(fileSystem.predicates().hasPath(filePath));
-
                 if(impact != null){
                     totalDefectsCounter++;
                     if (impact.equals(HIGH)) {
@@ -214,28 +194,26 @@ public class CoveritySensor implements Sensor {
                     }
                 }
 
-                if(inputFile == null) {
-                    for(File possibleFile : listOfFiles){
-                        if(possibleFile.getAbsolutePath().endsWith(filePath)){
-                            inputFile = fileSystem.inputFile(fileSystem.predicates().hasPath(possibleFile.getAbsolutePath()));
-                            break;
-                        }
-                    }
-                }
-
-                if(inputFile == null) {
-                    LOG.info("Cannot find the file '" + filePath + "', skipping defect (CID " + mddo.getCid() + ")");
-                    continue;
-                }
-
-                if (StringUtils.isEmpty(inputFile.language())){
-                    LOG.info("Cannot find the language of the file '" + inputFile.absolutePath() + "', skipping defect (CID " + mddo.getCid() + ")");
-                    continue;
-                }
-
                 for(DefectInstanceDataObj dido : didos) {
+                    InputFile inputFile;
                     //find the main event, so we can use its line number
                     EventDataObj mainEvent = getMainEvent(dido);
+                    if (mainEvent == null){
+                        continue;
+                    } else{
+                        String mainEventFilePath = getMainEventFilePath(mainEvent);
+                        if (StringUtils.isEmpty(mainEventFilePath)){
+                            // In case main event's file path is missing,
+                            // use MergeDefectDataObj's file path as default
+                            mainEventFilePath = mddo.getFilePathname();
+                        }
+
+                        inputFile = findLocalFile(context, mainEventFilePath, listOfFiles);
+                        if (!validateInputFile(inputFile, mainEventFilePath, mddo.getCid())){
+                            continue;
+                        }
+                    }
+
                     String subcategory = dido.getSubcategory();
 
                     if (StringUtils.isEmpty(subcategory)) {
@@ -244,9 +222,8 @@ public class CoveritySensor implements Sensor {
 
                     ActiveRule ar = findActiveRule(context, dido.getDomain(), dido.getCheckerName(), subcategory, inputFile.language());
 
-                    LOG.debug("mainEvent=" + mainEvent);
                     LOG.debug("ar=" + ar);
-                    if(mainEvent != null && ar != null) {
+                    if(ar != null) {
                         LOG.debug("instance=" + instance);
                         LOG.debug("covProjectObj=" + covProjectObj);
                         LOG.debug("mddo=" + mddo);
@@ -320,6 +297,19 @@ public class CoveritySensor implements Sensor {
             return dido.getEvents().get(0);
         }
         return null;
+    }
+
+    protected String getMainEventFilePath(EventDataObj mainEvent){
+        String mainEventFilePath = StringUtils.EMPTY;
+
+        if (mainEvent != null){
+            FileIdDataObj fileIdDataObj = mainEvent.getFileId();
+            if (fileIdDataObj != null){
+                mainEventFilePath = fileIdDataObj.getFilePathname();
+            }
+        }
+
+        return mainEventFilePath;
     }
 
     @Override
@@ -449,4 +439,58 @@ public class CoveritySensor implements Sensor {
 
         return ar;
     }
+
+    protected InputFile findLocalFile(SensorContext context, String filePath, List<File> listOfFiles){
+
+        if (localInputFiles.containsKey(filePath)){
+            return localInputFiles.get(filePath);
+        }
+
+        InputFile inputFile;
+        String currentDir = System.getProperty("user.dir");
+        File currentDirFile = new File(currentDir);
+        LOG.info("Current Directory: " + currentDir);
+        String stripPrefix = context.settings().getString(CoverityPlugin.COVERITY_PREFIX);
+
+        if (stripPrefix != null && !stripPrefix.isEmpty() && filePath.startsWith(stripPrefix)){
+            String strippedFilePath = filePath.substring(stripPrefix.length());
+            filePath = new File(currentDirFile, strippedFilePath).getAbsolutePath();
+            LOG.info("Full path after prefix being stripped: " + filePath);
+        }
+
+        if (platform.startsWith("Windows")) {
+            filePath = filePath.replace("/", "\\");
+        }
+
+        final FileSystem fileSystem = context.fileSystem();
+        inputFile = fileSystem.inputFile(fileSystem.predicates().hasPath(filePath));
+
+        if(inputFile == null) {
+            for(File possibleFile : listOfFiles){
+                if(possibleFile.getAbsolutePath().endsWith(filePath)){
+                    inputFile = fileSystem.inputFile(fileSystem.predicates().hasPath(possibleFile.getAbsolutePath()));
+                    break;
+                }
+            }
+        }
+
+        return inputFile;
+    }
+
+    protected boolean validateInputFile(InputFile inputFile, String filePath, long cid){
+        if(inputFile == null) {
+            LOG.info("Cannot find the file '" + filePath + "', skipping defect (CID " + cid + ")");
+            return false;
+        }
+
+        if (StringUtils.isEmpty(inputFile.language())){
+            LOG.info("Cannot find the language of the file '" + inputFile.absolutePath() + "', skipping defect (CID " + cid + ")");
+            return false;
+        }
+
+        localInputFiles.put(filePath, inputFile);
+
+        return true;
+    }
+
 }
