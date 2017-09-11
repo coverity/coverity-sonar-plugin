@@ -8,7 +8,7 @@ The Coverity Sonar Plugin automatically import issues from Coverity Connect into
 Coverity® Sonar Plug-in Installation and Configuration Guide
 ============================================================
 
-Version 1.6.1
+Version 1.6.2
 
 This guide is intended to assist you with the installation and
 configuration of the Coverity Sonar plug-in. Once completed, you will be
@@ -235,6 +235,10 @@ If you have any questions or issues with the Coverity plugin, contact <coverity-
 
 Changelog
 =========
+
+* __1.6.2__
+  * The Coverity SonarQube plugin handles the multiple occurrences of Coverity defects where each occurrence has different file path. (BZ 108516)
+
 
 * __1.6.1__
   * Fixed an issue where the SonarQube issue's line number is different compared to the defect's line number from the Coverity Connect. (BZ 105639)
