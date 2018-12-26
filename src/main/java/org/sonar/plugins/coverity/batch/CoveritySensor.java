@@ -449,9 +449,10 @@ public class CoveritySensor implements Sensor {
         File currentDirFile = new File(currentDir);
         LOG.info("Current Directory: " + currentDir);
         String stripPrefix = context.settings().getString(CoverityPlugin.COVERITY_PREFIX);
+        String strippedFilePath = StringUtils.EMPTY;
 
         if (stripPrefix != null && !stripPrefix.isEmpty() && filePath.startsWith(stripPrefix)){
-            String strippedFilePath = filePath.substring(stripPrefix.length());
+            strippedFilePath = filePath.substring(stripPrefix.length());
             filePath = new File(currentDirFile, strippedFilePath).getAbsolutePath();
             LOG.info("Full path after prefix being stripped: " + filePath);
         }
@@ -461,13 +462,11 @@ public class CoveritySensor implements Sensor {
         }
 
         final FileSystem fileSystem = context.fileSystem();
-        inputFile = fileSystem.inputFile(fileSystem.predicates().hasPath(filePath));
-
-        if (inputFile == null){
-            inputFile = fileSystem.inputFile(fileSystem.predicates().hasAbsolutePath(filePath));
+        if (StringUtils.isEmpty(strippedFilePath)){
+            inputFile = fileSystem.inputFile(fileSystem.predicates().hasPath(filePath));
+        } else{
+            inputFile = fileSystem.inputFile(fileSystem.predicates().hasPath(strippedFilePath));
         }
-
-
 
         if(inputFile == null) {
             for(File possibleFile : listOfFiles){

@@ -41,10 +41,6 @@ import org.sonar.plugins.coverity.ws.TestCIMClient;
 
 import java.io.File;
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.*;
 
 import static org.junit.Assert.assertEquals;
@@ -468,26 +464,19 @@ public class CoveritySensorTest {
 
     @Test
     public void testExecute_savesIssue_WithStripPrefix() throws IOException {
-        final Path baseDir = Paths.get("src");
-        final SensorContextTester sensorContextTester = SensorContextTester.create(baseDir);
-        String originalUserDir = System.getProperty("user.dir");
         String originalOsName = System.getProperty("os.name");
-        System.setProperty("user.dir", sensorContextTester.fileSystem().baseDir().getAbsolutePath());
         System.setProperty("os.name", "Windows 10");
-        final String stripPath = "stripPath/";
-        final String filePath = "Foo.java";
 
-//        Path baseDir = temp.newFolder().toPath();
-        Path testFile = baseDir.resolve("Foo.java");
-        Files.createDirectories(testFile.getParent());
-        final String content = "public class Foo {\n}";
-        Files.write(testFile, content.getBytes(StandardCharsets.UTF_8));
+        final SensorContextTester sensorContextTester = SensorContextTester.create(new File("src"));
+        final String filePath = "src/Foo.java";
+        String content = "public class Foo {\n}";
 
         final Metadata metadata = new Metadata(1, 1, "", new int[1], 0);
         final DefaultIndexedFile indexedFile = new DefaultIndexedFile(StringUtils.EMPTY,
                 sensorContextTester.fileSystem().baseDirPath(), filePath, "java");
-
         final DefaultInputFile inputFile = new DefaultInputFile(indexedFile, f -> f.setMetadata(metadata), content);
+
+        final String stripPath = "stripPath/";
 
         sensorContextTester
                 .fileSystem()
@@ -501,7 +490,7 @@ public class CoveritySensorTest {
         properties.put(CoverityPlugin.COVERITY_PROJECT, projectName);
         properties.put(CoverityPlugin.COVERITY_ENABLE, "true");
         properties.put(CoverityPlugin.COVERITY_PREFIX, stripPath);
-        properties.put("sonar.sources", sensorContextTester.fileSystem().baseDirPath().toAbsolutePath().toString());
+        properties.put("sonar.sources", "src");
         sensorContextTester
                 .settings()
                 .addProperties(properties);
@@ -531,9 +520,7 @@ public class CoveritySensorTest {
             assertEquals(inputFile, issue.primaryLocation().inputComponent());
             assertEquals(expectedIssueMessage, issue.primaryLocation().message());
         } finally {
-            System.setProperty("user.dir", originalUserDir);
             System.setProperty("os.name", originalOsName);
-//            Files.delete(testFile);
         }
     }
 
