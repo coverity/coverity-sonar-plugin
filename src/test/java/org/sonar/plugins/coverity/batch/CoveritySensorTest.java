@@ -17,8 +17,12 @@ import com.coverity.ws.v9.MergedDefectDataObj;
 import com.coverity.ws.v9.ProjectDataObj;
 import org.apache.commons.lang.StringUtils;
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.TemporaryFolder;
+import org.sonar.api.batch.fs.internal.DefaultIndexedFile;
 import org.sonar.api.batch.fs.internal.DefaultInputFile;
+import org.sonar.api.batch.fs.internal.Metadata;
 import org.sonar.api.batch.rule.internal.ActiveRulesBuilder;
 import org.sonar.api.batch.rule.internal.DefaultActiveRules;
 import org.sonar.api.batch.rule.internal.NewActiveRule;
@@ -36,6 +40,11 @@ import org.sonar.plugins.coverity.ws.CIMClientFactory;
 import org.sonar.plugins.coverity.ws.TestCIMClient;
 
 import java.io.File;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.*;
 
 import static org.junit.Assert.assertEquals;
@@ -46,6 +55,10 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 public class CoveritySensorTest {
+
+    @Rule
+    public TemporaryFolder temp = new TemporaryFolder();
+
     private CoveritySensor sensor;
     private TestCIMClient testCimClient;
 
@@ -71,17 +84,19 @@ public class CoveritySensorTest {
                 CoverityPlugin.REPOSITORY_KEY + "-php",
                 CoverityPlugin.REPOSITORY_KEY + "-" + CppLanguage.KEY);
         assertEquals(expectedRepositories, descriptor.ruleRepositories());
-        assertEquals(Arrays.asList(CoverityPlugin.COVERITY_PROJECT), descriptor.properties());
     }
 
     @Test
-    public void testExecute_savesIssue() throws Exception {
-
+    public void testExecute_savesIssue() {
         final SensorContextTester sensorContextTester = SensorContextTester.create(new File("src"));
         final String filePath = "src/Foo.java";
-        final DefaultInputFile inputFile = new DefaultInputFile("myProjectKey", filePath)
-                .setLanguage("java")
-                .initMetadata("public class Foo {\n}");
+        String content = "public class Foo {\n}";
+
+        final Metadata metadata = new Metadata(1, 1, "", new int[1], 0);
+        final DefaultIndexedFile indexedFile = new DefaultIndexedFile(StringUtils.EMPTY,
+                sensorContextTester.fileSystem().baseDirPath(), filePath, "java");
+        final DefaultInputFile inputFile = new DefaultInputFile(indexedFile, f -> f.setMetadata(metadata), content);
+
         sensorContextTester
                 .fileSystem()
                 .add(inputFile);
@@ -124,15 +139,18 @@ public class CoveritySensorTest {
     }
 
     @Test
-    public void testExecute_savesNoIssue_NoInputFileLanguage() throws Exception {
-
+    public void testExecute_savesNoIssue_NoInputFileLanguage() {
         final SensorContextTester sensorContextTester = SensorContextTester.create(new File("src"));
         final String filePath = "src/ruby.rb";
-        final DefaultInputFile inputFile = new DefaultInputFile("myProjectKey", filePath)
-                .setLanguage(null)
-                .initMetadata("def test(val)\n" +
-                        "  z() if ~(s == 0)  # A CONSTANT_EXPRESSION_RESULT here. '!(s == 0)' is intended.\n" +
-                        "end");
+        String content = "def test(val)\n" +
+                "  z() if ~(s == 0)  # A CONSTANT_EXPRESSION_RESULT here. '!(s == 0)' is intended.\n" +
+                "end";
+
+        final Metadata metadata = new Metadata(1, 1, "", new int[1], 0);
+        final DefaultIndexedFile indexedFile = new DefaultIndexedFile(StringUtils.EMPTY,
+                sensorContextTester.fileSystem().baseDirPath(), filePath, "ruby");
+        final DefaultInputFile inputFile = new DefaultInputFile(indexedFile, f -> f.setMetadata(metadata), content);
+
         sensorContextTester
                 .fileSystem()
                 .add(inputFile);
@@ -162,7 +180,7 @@ public class CoveritySensorTest {
     }
 
     @Test
-    public void testGetDefectURL() throws Exception {
+    public void testGetDefectURL() {
         CIMClient instance = mock(CIMClient.class);
         ProjectDataObj projectObj = mock(ProjectDataObj.class);
         MergedDefectDataObj mddo = mock(MergedDefectDataObj.class);
@@ -179,7 +197,7 @@ public class CoveritySensorTest {
     }
 
     @Test
-    public void testGetMainEvent() throws Exception {
+    public void testGetMainEvent() {
         DefectInstanceDataObj dido = new DefectInstanceDataObj();
 
         EventDataObj em = new EventDataObj();
@@ -200,20 +218,24 @@ public class CoveritySensorTest {
 
     @Test
     public void testExecute_SetsCoverityLogoMeasures() throws Exception {
-
         final SensorContextTester sensorContextTester = SensorContextTester.create(new File("src"));
-        final DefaultInputFile inputFile = new DefaultInputFile("myProjectKey", "src/Foo.java")
-                .setLanguage("java")
-                .initMetadata("public class Foo {\n}");
+        final String filePath = "src/Foo.java";
+        String content = "public class Foo {\n}";
+
+        final Metadata metadata = new Metadata(1, 1, "", new int[1], 0);
+        final DefaultIndexedFile indexedFile = new DefaultIndexedFile(StringUtils.EMPTY,
+                sensorContextTester.fileSystem().baseDirPath(), filePath, "java");
+        final DefaultInputFile inputFile = new DefaultInputFile(indexedFile, f -> f.setMetadata(metadata), content);
+
         sensorContextTester
                 .fileSystem()
                 .add(inputFile);
+        final HashMap<String, String> properties = new HashMap<>();
 
         final String projectName = "my-cov-project";
         testCimClient.setupProject("first-project");
         testCimClient.setupProject(projectName);
 
-        final HashMap<String, String> properties = new HashMap<>();
         properties.put(CoverityPlugin.COVERITY_PROJECT, projectName);
         properties.put(CoverityPlugin.COVERITY_ENABLE, "true");
         sensorContextTester
@@ -237,7 +259,7 @@ public class CoveritySensorTest {
     }
 
     @Test
-    public void testExecute_CoverityDisabled() throws Exception {
+    public void testExecute_CoverityDisabled() {
 
         final SensorContextTester sensorContextTester = SensorContextTester.create(new File("src"));
         final HashMap<String, String> properties = new HashMap<>();
@@ -278,7 +300,7 @@ public class CoveritySensorTest {
     }
 
     @Test
-    public void testExecute_CoverityProjectNotSpecified() throws Exception {
+    public void testExecute_CoverityProjectNotSpecified() {
 
         final SensorContextTester sensorContextTester = SensorContextTester.create(new File("src"));
         final HashMap<String, String> properties = new HashMap<>();
@@ -295,7 +317,7 @@ public class CoveritySensorTest {
     }
 
     @Test
-    public void testExecute_CoverityProjectNotExist() throws Exception {
+    public void testExecute_CoverityProjectNotExist() {
 
         final SensorContextTester sensorContextTester = SensorContextTester.create(new File("src"));
         final HashMap<String, String> properties = new HashMap<>();
@@ -313,12 +335,16 @@ public class CoveritySensorTest {
     }
 
     @Test
-    public void testGetIssueMessage_WhenMainEventNotExist(){
+    public void testGetIssueMessage_WhenMainEventNotExist() throws IOException {
         final SensorContextTester sensorContextTester = SensorContextTester.create(new File("src"));
         final String filePath = "src/Class1.cs";
-        final DefaultInputFile inputFile = new DefaultInputFile("myProjectKey", filePath)
-                .setLanguage("cs")
-                .initMetadata("public class Class1 {\n}");
+        String content = "public class Class1 {\n}";
+
+        final Metadata metadata = new Metadata(1, 1, "", new int[1], 0);
+        final DefaultIndexedFile indexedFile = new DefaultIndexedFile(StringUtils.EMPTY,
+                sensorContextTester.fileSystem().baseDirPath(), filePath, "cs");
+        final DefaultInputFile inputFile = new DefaultInputFile(indexedFile, f -> f.setMetadata(metadata), content);
+
         sensorContextTester
                 .fileSystem()
                 .add(inputFile);
@@ -363,20 +389,28 @@ public class CoveritySensorTest {
 
     @Test
     public void testExecute_savesIssue_WithMultiOccurrence_WithDifferentFilePaths() throws Exception {
-
         final SensorContextTester sensorContextTester = SensorContextTester.create(new File("src"));
-        final String filePath1 = "src/Foo1.java";
-        final DefaultInputFile inputFile1 = new DefaultInputFile("myProjectKey", filePath1)
-                .setLanguage("java")
-                .initMetadata("public class Foo1 {\n public void createDefect(){\n}}");
+
+        final String filePath1 = "Foo1.java";
+        String content1 = "public class Foo1 {\n public void createDefect(){\n}}";
+
+        final Metadata metadata1 = new Metadata(3, 1, "", new int[] {0,1,0}, 0);
+        final DefaultIndexedFile indexedFile1 = new DefaultIndexedFile(StringUtils.EMPTY,
+                sensorContextTester.fileSystem().baseDirPath(), filePath1, "java");
+        final DefaultInputFile inputFile1 = new DefaultInputFile(indexedFile1, f -> f.setMetadata(metadata1), content1);
+
         sensorContextTester
                 .fileSystem()
                 .add(inputFile1);
 
-        final String filePath2 = "src/Foo2.java";
-        final DefaultInputFile inputFile2 = new DefaultInputFile("myProjectKey", filePath2)
-                .setLanguage("java")
-                .initMetadata("public class Foo2 {\n}");
+        final String filePath2 = "Foo2.java";
+        String content2 = "public class Foo2 {\n}";
+
+        final Metadata metadata2 = new Metadata(2, 2, "", new int[2], 0);
+        final DefaultIndexedFile indexedFile2 = new DefaultIndexedFile(StringUtils.EMPTY,
+                sensorContextTester.fileSystem().baseDirPath(), filePath2, "java");
+        final DefaultInputFile inputFile2 = new DefaultInputFile(indexedFile2, f -> f.setMetadata(metadata2), content2);
+
         sensorContextTester
                 .fileSystem()
                 .add(inputFile2);
@@ -433,18 +467,28 @@ public class CoveritySensorTest {
     }
 
     @Test
-    public void testExecute_savesIssue_WithStripPrefix() throws Exception {
-
-        final SensorContextTester sensorContextTester = SensorContextTester.create(new File("src"));
+    public void testExecute_savesIssue_WithStripPrefix() throws IOException {
+        final Path baseDir = Paths.get("src");
+        final SensorContextTester sensorContextTester = SensorContextTester.create(baseDir);
         String originalUserDir = System.getProperty("user.dir");
         String originalOsName = System.getProperty("os.name");
         System.setProperty("user.dir", sensorContextTester.fileSystem().baseDir().getAbsolutePath());
         System.setProperty("os.name", "Windows 10");
         final String stripPath = "stripPath/";
-        final String filePath = "src/Foo.java";
-        final DefaultInputFile inputFile = new DefaultInputFile("myProjectKey", filePath)
-                .setLanguage("java")
-                .initMetadata("public class Foo {\n}");
+        final String filePath = "Foo.java";
+
+//        Path baseDir = temp.newFolder().toPath();
+        Path testFile = baseDir.resolve("Foo.java");
+        Files.createDirectories(testFile.getParent());
+        final String content = "public class Foo {\n}";
+        Files.write(testFile, content.getBytes(StandardCharsets.UTF_8));
+
+        final Metadata metadata = new Metadata(1, 1, "", new int[1], 0);
+        final DefaultIndexedFile indexedFile = new DefaultIndexedFile(StringUtils.EMPTY,
+                sensorContextTester.fileSystem().baseDirPath(), filePath, "java");
+
+        final DefaultInputFile inputFile = new DefaultInputFile(indexedFile, f -> f.setMetadata(metadata), content);
+
         sensorContextTester
                 .fileSystem()
                 .add(inputFile);
@@ -457,7 +501,7 @@ public class CoveritySensorTest {
         properties.put(CoverityPlugin.COVERITY_PROJECT, projectName);
         properties.put(CoverityPlugin.COVERITY_ENABLE, "true");
         properties.put(CoverityPlugin.COVERITY_PREFIX, stripPath);
-        properties.put("sonar.sources", "src");
+        properties.put("sonar.sources", sensorContextTester.fileSystem().baseDirPath().toAbsolutePath().toString());
         sensorContextTester
                 .settings()
                 .addProperties(properties);
@@ -489,11 +533,12 @@ public class CoveritySensorTest {
         } finally {
             System.setProperty("user.dir", originalUserDir);
             System.setProperty("os.name", originalOsName);
+//            Files.delete(testFile);
         }
     }
 
     @Test
-    public void testExecute_savesIssue_WithNoInputFile() throws Exception {
+    public void testExecute_savesIssue_WithNoInputFile() {
 
         final SensorContextTester sensorContextTester = SensorContextTester.create(new File("src"));
         final String filePath = "src/Foo.java";
