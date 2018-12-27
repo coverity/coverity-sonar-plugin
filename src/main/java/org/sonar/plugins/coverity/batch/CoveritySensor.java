@@ -320,7 +320,7 @@ public class CoveritySensor implements Sensor {
     * saves the measures into sensorContext. This method is called by analyse().
     * */
     private void getCoverityLogoMeasures(SensorContext sensorContext, CIMClient client, ProjectDataObj covProjectObj) {
-        String covProject = sensorContext.settings().getString(CoverityPlugin.COVERITY_PROJECT);
+        String covProject = sensorContext.config().get(CoverityPlugin.COVERITY_PROJECT).orElse(null);
         if (covProject != null) {
             sensorContext
                     .<String>newMeasure()
@@ -448,10 +448,10 @@ public class CoveritySensor implements Sensor {
         String currentDir = System.getProperty("user.dir");
         File currentDirFile = new File(currentDir);
         LOG.info("Current Directory: " + currentDir);
-        String stripPrefix = context.settings().getString(CoverityPlugin.COVERITY_PREFIX);
+        String stripPrefix = context.config().get(CoverityPlugin.COVERITY_PREFIX).orElse(StringUtils.EMPTY);
         String strippedFilePath = StringUtils.EMPTY;
 
-        if (stripPrefix != null && !stripPrefix.isEmpty() && filePath.startsWith(stripPrefix)){
+        if (!StringUtils.isEmpty(stripPrefix)&& filePath.startsWith(stripPrefix)){
             strippedFilePath = filePath.substring(stripPrefix.length());
             filePath = new File(currentDirFile, strippedFilePath).getAbsolutePath();
             LOG.info("Full path after prefix being stripped: " + filePath);
@@ -482,8 +482,6 @@ public class CoveritySensor implements Sensor {
             }
         }
 
-
-
         return inputFile;
     }
 
@@ -494,7 +492,7 @@ public class CoveritySensor implements Sensor {
         }
 
         if (StringUtils.isEmpty(inputFile.language())){
-            LOG.info("Cannot find the language of the file '" + inputFile.absolutePath() + "', skipping defect (CID " + cid + ")");
+            LOG.info("Cannot find the language of the file '" + inputFile.toString() + "', skipping defect (CID " + cid + ")");
             return false;
         }
 
