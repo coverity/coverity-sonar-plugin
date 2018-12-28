@@ -32,7 +32,7 @@ import static org.sonar.plugins.coverity.util.CoverityUtil.getValue;
 public class CoverityRules implements RulesDefinition {
 
     private RulesDefinitionXmlLoader xmlLoader = new RulesDefinitionXmlLoader();
-    public static Map<String, Collection<NewRule>> loadedRules = new HashMap<>();
+    public static Map<String, Collection<NewRule>> LOADED_RULES = new HashMap<>();
     private static final Logger LOG = LoggerFactory.getLogger(CoverityRules.class);
 
     public CoverityRules(RulesDefinitionXmlLoader xmlLoader) {
@@ -41,8 +41,6 @@ public class CoverityRules implements RulesDefinition {
 
     @Override
     public void define(Context context) {
-
-        LOG.error("Andrew Cho -> CoverityRules.define started");
         for(String language : CoverityPlugin.COVERITY_LANGUAGES){
             NewRepository repository = context.createRepository(CoverityPlugin.REPOSITORY_KEY + "-" + language, language).setName("coverity-" + language);
             String fileDir = "coverity-" + language + ".xml";
@@ -51,11 +49,11 @@ public class CoverityRules implements RulesDefinition {
             repository.done();
 
 
-            if (!loadedRules.containsKey(language)){
-                loadedRules.put(language, new ArrayList<NewRule>());
+            if (!LOADED_RULES.containsKey(language)){
+                LOADED_RULES.put(language, new ArrayList<NewRule>());
             }
 
-            loadedRules.get(language).addAll(repository.rules());
+            LOADED_RULES.get(language).addAll(repository.rules());
         }
     }
 }
