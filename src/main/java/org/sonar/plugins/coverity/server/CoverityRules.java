@@ -11,12 +11,15 @@
 
 package org.sonar.plugins.coverity.server;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.sonar.api.ExtensionPoint;
 import org.sonar.api.server.ServerSide;
 import org.sonar.api.server.rule.RulesDefinition;
 import org.sonar.api.server.rule.RulesDefinitionXmlLoader;
 import org.sonar.plugins.coverity.CoverityPlugin;
 import java.io.*;
+import java.util.*;
 
 import static org.sonar.plugins.coverity.util.CoverityUtil.getValue;
 
@@ -29,6 +32,8 @@ import static org.sonar.plugins.coverity.util.CoverityUtil.getValue;
 public class CoverityRules implements RulesDefinition {
 
     private RulesDefinitionXmlLoader xmlLoader = new RulesDefinitionXmlLoader();
+    public static Map<String, Collection<NewRule>> loadedRules = new HashMap<>();
+    private static final Logger LOG = LoggerFactory.getLogger(CoverityRules.class);
 
     public CoverityRules(RulesDefinitionXmlLoader xmlLoader) {
         this.xmlLoader = xmlLoader;
@@ -36,14 +41,22 @@ public class CoverityRules implements RulesDefinition {
 
     @Override
     public void define(Context context) {
+
+        LOG.error("Andrew Cho -> CoverityRules.define started");
         for(String language : CoverityPlugin.COVERITY_LANGUAGES){
             NewRepository repository = context.createRepository(CoverityPlugin.REPOSITORY_KEY + "-" + language, language).setName("coverity-" + language);
             String fileDir = "coverity-" + language + ".xml";
             InputStream in = getClass().getResourceAsStream(fileDir);
             xmlLoader.load(repository, in, "UTF-8");
             repository.done();
-        }
 
+
+            if (!loadedRules.containsKey(language)){
+                loadedRules.put(language, new ArrayList<NewRule>());
+            }
+
+            loadedRules.get(language).addAll(repository.rules());
+        }
     }
 }
 
