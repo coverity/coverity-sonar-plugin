@@ -470,15 +470,10 @@ public class CoveritySensor implements Sensor {
 
         if(inputFile == null) {
             for(File possibleFile : listOfFiles){
-                if (possibleFile.getName().equalsIgnoreCase("Foo.java")){
-                    int i = 0;
-                }
                 if(possibleFile.getAbsolutePath().endsWith(filePath)){
                     inputFile = fileSystem.inputFile(fileSystem.predicates().hasPath(possibleFile.getAbsolutePath()));
                     break;
                 }
-
-
             }
         }
 
