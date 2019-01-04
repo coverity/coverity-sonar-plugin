@@ -16,7 +16,6 @@ import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.sonar.api.CoreProperties;
 import org.sonar.api.batch.fs.FileSystem;
 import org.sonar.api.batch.fs.InputFile;
 import org.sonar.api.batch.fs.internal.DefaultTextPointer;
@@ -27,7 +26,7 @@ import org.sonar.api.batch.sensor.SensorContext;
 import org.sonar.api.batch.sensor.SensorDescriptor;
 import org.sonar.api.batch.sensor.issue.NewIssue;
 import org.sonar.api.batch.sensor.issue.NewIssueLocation;
-import org.sonar.api.config.Settings;
+import org.sonar.api.config.Configuration;
 import org.sonar.api.rule.RuleKey;
 import org.sonar.plugins.coverity.CoverityPlugin;
 import org.sonar.plugins.coverity.base.CoverityPluginMetrics;
@@ -79,10 +78,10 @@ public class CoveritySensor implements Sensor {
 
     @Override
     public void execute(SensorContext context) {
-        Settings settings = context.settings();
+        Configuration config = context.config();
         localInputFiles = new HashMap<String, InputFile>();
 
-        boolean enabled = settings.getBoolean(CoverityPlugin.COVERITY_ENABLE);
+        boolean enabled = config.getBoolean(CoverityPlugin.COVERITY_ENABLE).orElse(false);
 
         int totalDefectsCounter = 0;
         int highImpactDefectsCounter = 0;
@@ -102,9 +101,8 @@ public class CoveritySensor implements Sensor {
 
         System.setProperty("javax.xml.soap.MetaFactory", "com.sun.xml.messaging.saaj.soap.SAAJMetaFactoryImpl");
 
-        String covProject = settings.getString(CoverityPlugin.COVERITY_PROJECT);
-
-        String covSrcDir = settings.getString(CoverityPlugin.COVERITY_SOURCE_DIRECTORY);
+        String covProject = config.get(CoverityPlugin.COVERITY_PROJECT).orElse(StringUtils.EMPTY);
+        String covSrcDir = config.get(CoverityPlugin.COVERITY_SOURCE_DIRECTORY).orElse(StringUtils.EMPTY);
 
         /**
          * Checks whether a project has been specified.
@@ -115,7 +113,7 @@ public class CoveritySensor implements Sensor {
             return;
         }
 
-        CIMClient instance = cimClientFactory.create(settings);
+        CIMClient instance = cimClientFactory.create(config);
 
         //find the configured project
         ProjectDataObj covProjectObj = null;
@@ -145,7 +143,7 @@ public class CoveritySensor implements Sensor {
             if(covSrcDir != null && !covSrcDir.isEmpty()){
                 sonarSourcesString = covSrcDir;
             } else {
-                sonarSourcesString = settings.getString("sonar.sources");
+                sonarSourcesString = config.get("sonar.sources").orElse(StringUtils.EMPTY);
             }
             if(sonarSourcesString != null && !sonarSourcesString.isEmpty()){
                 List<String> sonarSources = Arrays.asList(sonarSourcesString.split(","));
@@ -322,7 +320,7 @@ public class CoveritySensor implements Sensor {
     * saves the measures into sensorContext. This method is called by analyse().
     * */
     private void getCoverityLogoMeasures(SensorContext sensorContext, CIMClient client, ProjectDataObj covProjectObj) {
-        String covProject = sensorContext.settings().getString(CoverityPlugin.COVERITY_PROJECT);
+        String covProject = sensorContext.config().get(CoverityPlugin.COVERITY_PROJECT).orElse(null);
         if (covProject != null) {
             sensorContext
                     .<String>newMeasure()
@@ -450,10 +448,11 @@ public class CoveritySensor implements Sensor {
         String currentDir = System.getProperty("user.dir");
         File currentDirFile = new File(currentDir);
         LOG.info("Current Directory: " + currentDir);
-        String stripPrefix = context.settings().getString(CoverityPlugin.COVERITY_PREFIX);
+        String stripPrefix = context.config().get(CoverityPlugin.COVERITY_PREFIX).orElse(StringUtils.EMPTY);
+        String strippedFilePath = StringUtils.EMPTY;
 
-        if (stripPrefix != null && !stripPrefix.isEmpty() && filePath.startsWith(stripPrefix)){
-            String strippedFilePath = filePath.substring(stripPrefix.length());
+        if (!StringUtils.isEmpty(stripPrefix)&& filePath.startsWith(stripPrefix)){
+            strippedFilePath = filePath.substring(stripPrefix.length());
             filePath = new File(currentDirFile, strippedFilePath).getAbsolutePath();
             LOG.info("Full path after prefix being stripped: " + filePath);
         }
@@ -463,7 +462,11 @@ public class CoveritySensor implements Sensor {
         }
 
         final FileSystem fileSystem = context.fileSystem();
-        inputFile = fileSystem.inputFile(fileSystem.predicates().hasPath(filePath));
+        if (StringUtils.isEmpty(strippedFilePath)){
+            inputFile = fileSystem.inputFile(fileSystem.predicates().hasPath(filePath));
+        } else{
+            inputFile = fileSystem.inputFile(fileSystem.predicates().hasPath(strippedFilePath));
+        }
 
         if(inputFile == null) {
             for(File possibleFile : listOfFiles){
@@ -484,7 +487,7 @@ public class CoveritySensor implements Sensor {
         }
 
         if (StringUtils.isEmpty(inputFile.language())){
-            LOG.info("Cannot find the language of the file '" + inputFile.absolutePath() + "', skipping defect (CID " + cid + ")");
+            LOG.info("Cannot find the language of the file '" + inputFile.toString() + "', skipping defect (CID " + cid + ")");
             return false;
         }
 
