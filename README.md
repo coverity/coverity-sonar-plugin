@@ -8,7 +8,7 @@ The Coverity Sonar Plugin automatically import issues from Coverity Connect into
 Coverity® Sonar Plug-in Installation and Configuration Guide
 ============================================================
 
-Version 1.6.2
+Version 1.7.0
 
 This guide is intended to assist you with the installation and
 configuration of the Coverity Sonar plug-in. Once completed, you will be
@@ -22,8 +22,8 @@ Sonar plug-in.
 
 | **Software**     | **Supported versions** |
 |------------------|------------------------|
-| SonarQube        | 5.6.6+                 |
-| SonarQube Scanner| 3.0+                    |
+| SonarQube        | 6.7.5+                 |
+| SonarQube Scanner| 3.0+                   |
 | Coverity Connect | 8.0+                   |
 
 Installing the Coverity Sonar Plug-in
@@ -31,7 +31,7 @@ Installing the Coverity Sonar Plug-in
 
 To install the Coverity Sonar plug-in, complete the following steps.
 
-1.  Ensure that you have SonarQube v5.6.6+ and SonarQube Scanner v3.0 installed.
+1.  Ensure that you have SonarQube v6.7.5+ and SonarQube Scanner v3.0 installed.
     Sonar installation and setup instructions are located at
     <http://docs.sonarqube.org/display/SONAR/Setup+and+Upgrade>.
 
@@ -235,6 +235,9 @@ If you have any questions or issues with the Coverity plugin, contact <coverity-
 
 Changelog
 =========
+
+* __1.7.0__
+  * Minimum support version of SonarQube has been changed to version 6.7.5. (SQP-121)
 
 * __1.6.2__
   * The Coverity SonarQube plugin handles the multiple occurrences of Coverity defects where each occurrence has different file path. (BZ 108516)
