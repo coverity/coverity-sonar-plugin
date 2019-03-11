@@ -5,7 +5,7 @@
 	<groupId>org.sonar.plugins.coverity</groupId>
 	<artifactId>coverity-sonar-plugin</artifactId>
 	<packaging>sonar-plugin</packaging>
-	<version>1.6.2</version>
+	<version>1.7.0</version>
 
 	<name>Coverity</name>
 	<description>Imports Coverity defects into SonarQube</description>
@@ -13,7 +13,7 @@
 	<inceptionYear>2014</inceptionYear>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<sonar.version>5.6</sonar.version>
+		<sonar.version>6.7.5</sonar.version>
 		<jdk.min.version>1.8</jdk.min.version>
 		<cim.url></cim.url>
 		<ws.version>v9</ws.version>

@@ -1,6 +1,6 @@
 /*
  * Coverity Sonar Plugin
- * Copyright (c) 2017 Synopsys, Inc
+ * Copyright (c) 2019 Synopsys, Inc
  * support@coverity.com
  *
  * All rights reserved. This program and the accompanying materials are made
@@ -12,7 +12,8 @@
 package org.sonar.plugins.coverity.util;
 
 import com.coverity.ws.v9.DefectInstanceDataObj;
-import org.sonar.api.config.Settings;
+import org.apache.commons.lang.StringUtils;
+import org.sonar.api.config.Configuration;
 import org.sonar.api.rule.RuleKey;
 import org.sonar.plugins.coverity.CoverityPlugin;
 import org.sonar.plugins.coverity.ws.CIMClient;
@@ -44,16 +45,16 @@ public class CoverityUtil {
         return createURL(client.getHost(), client.getPort(), client.isUseSSL());
     }
 
-    public static String createURL(Settings settings) {
-        String host = settings.getString(CoverityPlugin.COVERITY_CONNECT_HOSTNAME);
-        int port = settings.getInt(CoverityPlugin.COVERITY_CONNECT_PORT);
-        boolean ssl = settings.getBoolean(CoverityPlugin.COVERITY_CONNECT_SSL);
+    public static String createURL(Configuration config) {
+        String host = config.get(CoverityPlugin.COVERITY_CONNECT_HOSTNAME).orElse(StringUtils.EMPTY);
+        int port = config.getInt(CoverityPlugin.COVERITY_CONNECT_PORT).orElse(0);
+        boolean ssl = config.getBoolean(CoverityPlugin.COVERITY_CONNECT_SSL).orElse(false);
 
         return createURL(host, port, ssl);
     }
 
     public static String createURL(String host, int port, boolean ssl) {
-        if(host == null || port == 0) {
+        if(StringUtils.isEmpty(host) || port == 0) {
             return null;
         }
         return String.format("http%s://%s:%d/", (ssl ? "s" : ""), host, port);

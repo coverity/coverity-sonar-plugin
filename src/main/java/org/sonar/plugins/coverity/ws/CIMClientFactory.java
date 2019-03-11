@@ -1,6 +1,6 @@
 /*
  * Coverity Sonar Plugin
- * Copyright (c) 2017 Synopsys, Inc
+ * Copyright (c) 2019 Synopsys, Inc
  * support@coverity.com
  *
  * All rights reserved. This program and the accompanying materials are made
@@ -10,24 +10,25 @@
  */
 package org.sonar.plugins.coverity.ws;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.Validate;
-import org.sonar.api.batch.BatchSide;
-import org.sonar.api.config.Settings;
+import org.sonar.api.batch.ScannerSide;
+import org.sonar.api.config.Configuration;
 import org.sonar.plugins.coverity.CoverityPlugin;
 
 import javax.annotation.Nonnull;
 
-@BatchSide
+@ScannerSide
 public class CIMClientFactory {
 
-    public CIMClient create(@Nonnull Settings settings) {
-        Validate.notNull(settings);
+    public CIMClient create(@Nonnull Configuration config) {
+        Validate.notNull(config);
 
-        String host = settings.getString(CoverityPlugin.COVERITY_CONNECT_HOSTNAME);
-        int port = settings.getInt(CoverityPlugin.COVERITY_CONNECT_PORT);
-        String user = settings.getString(CoverityPlugin.COVERITY_CONNECT_USERNAME);
-        String password = settings.getString(CoverityPlugin.COVERITY_CONNECT_PASSWORD);
-        boolean ssl = settings.getBoolean(CoverityPlugin.COVERITY_CONNECT_SSL);
+        String host = config.get(CoverityPlugin.COVERITY_CONNECT_HOSTNAME).orElse(StringUtils.EMPTY);
+        int port = config.getInt(CoverityPlugin.COVERITY_CONNECT_PORT).orElse(0);
+        String user = config.get(CoverityPlugin.COVERITY_CONNECT_USERNAME).orElse(StringUtils.EMPTY);
+        String password = config.get(CoverityPlugin.COVERITY_CONNECT_PASSWORD).orElse(StringUtils.EMPTY);
+        boolean ssl = config.getBoolean(CoverityPlugin.COVERITY_CONNECT_SSL).orElse(false);
 
         return new CIMClient(host, port, user, password, ssl);
     }

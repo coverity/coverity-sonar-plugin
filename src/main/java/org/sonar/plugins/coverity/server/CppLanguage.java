@@ -1,6 +1,6 @@
 /*
  * Coverity Sonar Plugin
- * Copyright (c) 2017 Synopsys, Inc
+ * Copyright (c) 2019 Synopsys, Inc
  * support@coverity.com
  *
  * All rights reserved. This program and the accompanying materials are made
@@ -12,7 +12,7 @@
 package org.sonar.plugins.coverity.server;
 
 import org.sonar.api.ExtensionPoint;
-import org.sonar.api.config.Settings;
+import org.sonar.api.config.Configuration;
 import org.sonar.api.resources.AbstractLanguage;
 import org.sonar.api.server.ServerSide;
 import org.sonar.plugins.coverity.CoverityPlugin;
@@ -46,10 +46,10 @@ public class CppLanguage extends AbstractLanguage {
     /**
      * Default constructor
      */
-    public CppLanguage(Settings settings) {
+    public CppLanguage(Configuration config) {
         super(KEY, NAME);
 
-        String[] configuredSuffixes = settings.getStringArray(CoverityPlugin.COVERITY_C_CPP_SOURCE_FILE_SUFFIXES);
+        String[] configuredSuffixes = config.getStringArray(CoverityPlugin.COVERITY_C_CPP_SOURCE_FILE_SUFFIXES);
         if (configuredSuffixes != null && configuredSuffixes.length > 0) {
             covSuffixes = configuredSuffixes;
         } else {
