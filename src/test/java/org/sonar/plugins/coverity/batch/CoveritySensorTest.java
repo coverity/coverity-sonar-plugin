@@ -466,9 +466,11 @@ public class CoveritySensorTest {
     public void testExecute_savesIssue_WithStripPrefix() throws IOException {
         String originalOsName = System.getProperty("os.name");
         System.setProperty("os.name", "Windows 10");
+        String originalUserDir = System.getProperty("user.dir");
+        System.setProperty("user.dir", ".");
 
         final SensorContextTester sensorContextTester = SensorContextTester.create(new File("src"));
-        final String filePath = "src/Foo.java";
+        final String filePath = "Foo.java";
         String content = "public class Foo {\n}";
 
         final Metadata metadata = new Metadata(1, 1, "", new int[1], 0);
@@ -521,6 +523,7 @@ public class CoveritySensorTest {
             assertEquals(expectedIssueMessage, issue.primaryLocation().message());
         } finally {
             System.setProperty("os.name", originalOsName);
+            System.setProperty("user.dir", originalUserDir);
         }
     }
 
