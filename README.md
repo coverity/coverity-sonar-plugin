@@ -8,7 +8,7 @@ The Coverity Sonar Plugin automatically import issues from Coverity Connect into
 Coverity® Sonar Plug-in Installation and Configuration Guide
 ============================================================
 
-Version 1.7.0
+Version 1.7.1
 
 This guide is intended to assist you with the installation and
 configuration of the Coverity Sonar plug-in. Once completed, you will be
@@ -235,6 +235,9 @@ If you have any questions or issues with the Coverity plugin, contact <coverity-
 
 Changelog
 =========
+
+* __1.7.1__
+  * Fixed an issue finding the physical source file via sonar.coverity.prefix in the sonar-project.properties file. (SQP-128)
 
 * __1.7.0__
   * Minimum support version of SonarQube has been changed to version 6.7.5. (SQP-121)
