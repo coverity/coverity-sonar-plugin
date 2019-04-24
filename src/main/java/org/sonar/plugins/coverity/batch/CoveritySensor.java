@@ -462,11 +462,7 @@ public class CoveritySensor implements Sensor {
         }
 
         final FileSystem fileSystem = context.fileSystem();
-        if (StringUtils.isEmpty(strippedFilePath)){
-            inputFile = fileSystem.inputFile(fileSystem.predicates().hasPath(filePath));
-        } else{
-            inputFile = fileSystem.inputFile(fileSystem.predicates().hasPath(strippedFilePath));
-        }
+        inputFile = fileSystem.inputFile(fileSystem.predicates().hasPath(filePath));
 
         if(inputFile == null) {
             for(File possibleFile : listOfFiles){
