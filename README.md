@@ -63,6 +63,8 @@ general use.
     Coverity Connect instance. Ensure that the **Enable Coverity**
     option is set to “True” to allow the import of Coverity data.
 
+![Administration Coverity](https://live.staticflickr.com/65535/48267692692_8b96ae0666_k.jpg)
+
 6.  Click **Save Coverity Settings** to complete the
     basic configuration.
 
@@ -99,6 +101,8 @@ Once completed, SonarQube will pull the current Coverity Analysis data
 whenever you run SonarQube Scanner on the specified project. This
 configuration must be completed for each project you wish to link with
 Coverity Connect.
+
+![Source Level](https://live.staticflickr.com/65535/48267616871_1006152cbc_k.jpg)
 
 Setting Up sonar-project.properties
 ===================================
