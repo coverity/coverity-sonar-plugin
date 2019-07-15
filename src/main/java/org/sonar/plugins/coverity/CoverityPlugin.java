@@ -34,6 +34,7 @@ public final class CoverityPlugin implements Plugin {
     public static final String COVERITY_CONNECT_USERNAME = "sonar.coverity.connect.username";
     public static final String COVERITY_CONNECT_PASSWORD = "sonar.coverity.connect.password";
     public static final String COVERITY_PROJECT = "sonar.coverity.project";
+    public static final String COVERITY_STREAM = "sonar.coverity.stream";
     public static final String COVERITY_PREFIX = "sonar.coverity.prefix";
     public static final String COVERITY_SOURCE_DIRECTORY = "sonar.coverity.sources.directory";
     public static final String COVERITY_CONNECT_SSL = "sonar.coverity.ssl";
