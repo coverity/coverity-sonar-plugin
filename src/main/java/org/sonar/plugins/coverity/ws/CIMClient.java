@@ -237,20 +237,38 @@ public class CIMClient {
                 sliceMergedDefectIdDataObj.add(mdidos.get(cid));
             }
 
-            List<StreamDefectDataObj> temp = getDefectService().getStreamDefects(sliceMergedDefectIdDataObj, filter);
+            try{
+                List<StreamDefectDataObj> temp = getDefectService().getStreamDefects(sliceMergedDefectIdDataObj, filter);
 
-            for(StreamDefectDataObj sddo : temp) {
-                MergedDefectDataObj curMergedDefectDataObj = cids.get(sddo.getCid());
-                StreamIdDataObj curStreamIdDataObj = sddo.getStreamId();
+                for(StreamDefectDataObj sddo : temp) {
+                    MergedDefectDataObj curMergedDefectDataObj = cids.get(sddo.getCid());
+                    StreamIdDataObj curStreamIdDataObj = sddo.getStreamId();
 
-                if (curMergedDefectDataObj != null && curStreamIdDataObj != null
-                        && curMergedDefectDataObj.getLastDetectedStream().equals(curStreamIdDataObj.getName())) {
-                    sddos.put(sddo.getCid(), sddo);
+                    if (curMergedDefectDataObj != null && curStreamIdDataObj != null
+                            && curMergedDefectDataObj.getLastDetectedStream().equals(curStreamIdDataObj.getName())) {
+                        sddos.put(sddo.getCid(), sddo);
+                    }
                 }
+
+                LOG.info(MessageFormat.format("Fetching coverity defect details (fetched {0} of {1})",
+                        sddos.size(), cidList.size()));
+            } catch (Exception ex) {
+                LOG.error("Error occurred while fetching defect details.", ex);
+
+                LOG.debug("===== MergeDefectIdDataObj information =====");
+                LOG.debug("Size of SliceMergedDefectIdDataObj: " + sliceMergedDefectIdDataObj.size());
+                for (MergedDefectIdDataObj mergedDefectIdDataObj : sliceMergedDefectIdDataObj) {
+                    LOG.debug(MessageFormat.format("[Coverity] CID: {0}", mergedDefectIdDataObj.getCid()));
+                }
+
+                LOG.debug("\n====== StreamDefectFilterSpecDataObj information =====");
+                for (StreamIdDataObj streamIdDataObj : filter.getStreamIdList()) {
+                    LOG.debug(MessageFormat.format("[Coverity] Stream: {0}", streamIdDataObj.getName()));
+                }
+
+                break;
             }
 
-            LOG.info(MessageFormat.format("Fetching coverity defect details (fetched {0} of {1})",
-                    sddos.size(), cidList.size()));
         }
 
         return sddos;
