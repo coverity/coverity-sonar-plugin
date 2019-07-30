@@ -70,10 +70,7 @@ public class CoveritySensor implements Sensor {
         }
 
         descriptor.name(this.toString())
-                .createIssuesForRuleRepositories(repositories)
-                // Coverity project is the only required value which does not provide a default (other properties validates at runtime)
-                .requireProperties(CoverityPlugin.COVERITY_PROJECT);
-
+                .createIssuesForRuleRepositories(repositories);
     }
 
     @Override
@@ -101,40 +98,73 @@ public class CoveritySensor implements Sensor {
 
         System.setProperty("javax.xml.soap.MetaFactory", "com.sun.xml.messaging.saaj.soap.SAAJMetaFactoryImpl");
 
+        String covStream = config.get(CoverityPlugin.COVERITY_STREAM).orElse(StringUtils.EMPTY);
         String covProject = config.get(CoverityPlugin.COVERITY_PROJECT).orElse(StringUtils.EMPTY);
         String covSrcDir = config.get(CoverityPlugin.COVERITY_SOURCE_DIRECTORY).orElse(StringUtils.EMPTY);
 
-        /**
-         * Checks whether a project has been specified.
-         */
-        if(covProject == null || covProject.isEmpty()) {
-            LOG.error("Couldn't find project: " + covProject);
-            Thread.currentThread().setContextClassLoader(oldCL);
-            return;
-        }
-
+        StreamDataObj covStreamObj = null;
+        ProjectDataObj covProjectObj = null;
         CIMClient instance = cimClientFactory.create(config);
 
-        //find the configured project
-        ProjectDataObj covProjectObj = null;
-        try {
-            covProjectObj = instance.getProject(covProject);
-            if(covProjectObj == null) {
+        /**
+         * Checks whether a stream has been specified.
+         */
+        if (covStream != null && !covStream.isEmpty()){
+            // Find specified stream
+            try{
+
+                covStreamObj = instance.getStream(covStream);
+                if(covStreamObj == null) {
+                    LOG.error("Couldn't find stream: " + covStream);
+                    Thread.currentThread().setContextClassLoader(oldCL);
+                    return;
+                }
+                LOG.info("Found stream: " + covStream + " (" + covStreamObj.getId() + ")");
+
+            } catch (IOException | CovRemoteServiceException_Exception e) {
+                LOG.error("Error while trying to find stream: " + covStream);
+                Thread.currentThread().setContextClassLoader(oldCL);
+                return;
+            }
+        } else{
+            LOG.debug("Stream has not been specified. Proceed with checking project");
+
+            /**
+             * Checks whether a project has been specified.
+             */
+            if(covProject == null || covProject.isEmpty()) {
                 LOG.error("Couldn't find project: " + covProject);
                 Thread.currentThread().setContextClassLoader(oldCL);
                 return;
-            }            
-            LOG.info("Found project: " + covProject + " (" + covProjectObj.getProjectKey() + ")");
+            }
 
-        } catch (IOException | CovRemoteServiceException_Exception e) {
-            LOG.error("Error while trying to find project: " + covProject);
-            Thread.currentThread().setContextClassLoader(oldCL);
-            return;
+            // Find specified project
+            try {
+                covProjectObj = instance.getProject(covProject);
+                if(covProjectObj == null) {
+                    LOG.error("Couldn't find project: " + covProject);
+                    Thread.currentThread().setContextClassLoader(oldCL);
+                    return;
+                }
+                LOG.info("Found project: " + covProject + " (" + covProjectObj.getProjectKey() + ")");
+
+            } catch (IOException | CovRemoteServiceException_Exception e) {
+                LOG.error("Error while trying to find project: " + covProject);
+                Thread.currentThread().setContextClassLoader(oldCL);
+                return;
+            }
         }
 
         try {
-            LOG.info("Fetching defects for project: " + covProject);
-            List<MergedDefectDataObj> defects = instance.getDefects(covProject);
+            List<MergedDefectDataObj> defects = null;
+            if (covStream != null && !covStream.isEmpty()){
+                LOG.info("Fetching defects for stream: " + covStream);
+                defects = instance.getDefectsFromStream(covStream);
+            } else {
+                LOG.info("Fetching defects for project: " + covProject);
+                defects = instance.getDefectsFromProject(covProject);
+            }
+
             Map<Long, StreamDefectDataObj> streamDefects = instance.getStreamDefectsForMergedDefects(defects);
             LOG.info("Found " + streamDefects.size() + " defects");
 
@@ -226,7 +256,7 @@ public class CoveritySensor implements Sensor {
                         LOG.debug("covProjectObj=" + covProjectObj);
                         LOG.debug("mddo=" + mddo);
                         LOG.debug("dido=" + dido);
-                        String message = getIssueMessage(instance, covProjectObj, mainEvent, dido, mddo);
+                        String message = getIssueMessage(instance, covStreamObj, covProjectObj, mainEvent, dido, mddo);
 
                         final DefaultTextPointer start = new DefaultTextPointer(mainEvent.getLineNumber(), 0);
 
@@ -262,8 +292,8 @@ public class CoveritySensor implements Sensor {
         getCoverityLogoMeasures(context, instance, covProjectObj);
     }
 
-    protected String getIssueMessage(CIMClient instance, ProjectDataObj covProjectObj, EventDataObj mainEvent, DefectInstanceDataObj dido, MergedDefectDataObj mddo) {
-        String url = getDefectURL(instance, covProjectObj, mddo);
+    protected String getIssueMessage(CIMClient instance, StreamDataObj covStreamObj, ProjectDataObj covProjectObj, EventDataObj mainEvent, DefectInstanceDataObj dido, MergedDefectDataObj mddo) {
+        String url = getDefectURL(instance, covStreamObj, covProjectObj, mddo);
 
         StringBuilder message = new StringBuilder();
         message.append("[" + mddo.getDisplayType() + "] ");
@@ -272,16 +302,27 @@ public class CoveritySensor implements Sensor {
                 || StringUtils.isEmpty(mainEvent.getEventDescription())
                 || StringUtils.isEmpty(mainEvent.getEventTag())){
             message.append(dido.getLongDescription());
-        } else{
+        } else {
             message.append(mainEvent.getEventTag() + ": " + mainEvent.getEventDescription());
         }
 
         return StringEscapeUtils.unescapeHtml(message.toString()) + " ( CID " + mddo.getCid() + " : " + url + " )";
     }
 
-    protected String getDefectURL(CIMClient instance, ProjectDataObj covProjectObj, MergedDefectDataObj mddo) {
-        return String.format("%s://%s:%d/sourcebrowser.htm?projectId=%s&mergedDefectId=%d",
-                instance.isUseSSL() ? "https" : "http", instance.getHost(), instance.getPort(), covProjectObj.getProjectKey(), mddo.getCid());
+    protected String getDefectURL(CIMClient instance, StreamDataObj covStreamObj, ProjectDataObj covProjectObj, MergedDefectDataObj mddo) {
+
+        StringBuilder url = new StringBuilder();
+        url.append(String.format("%s://%s:%d/query/defects.htm?", instance.isUseSSL() ? "https" : "http", instance.getHost(), instance.getPort()));
+
+        if (covStreamObj != null){
+            url.append(String.format("stream=%s", covStreamObj.getId().getName()));
+        } else{
+            url.append(String.format("projectId=%s", covProjectObj.getProjectKey()));
+        }
+
+        url.append(String.format("&mergeKey=%s", mddo.getMergeKey()));
+
+        return url.toString();
     }
 
     protected EventDataObj getMainEvent(DefectInstanceDataObj dido) {
@@ -321,6 +362,8 @@ public class CoveritySensor implements Sensor {
     * */
     private void getCoverityLogoMeasures(SensorContext sensorContext, CIMClient client, ProjectDataObj covProjectObj) {
         String covProject = sensorContext.config().get(CoverityPlugin.COVERITY_PROJECT).orElse(null);
+        String covStream = sensorContext.config().get(CoverityPlugin.COVERITY_STREAM).orElse(null);
+
         if (covProject != null) {
             sensorContext
                     .<String>newMeasure()
@@ -330,24 +373,26 @@ public class CoveritySensor implements Sensor {
                     .save();
         }
 
-        String ProjectUrl = createURL(client);
-        if (ProjectUrl != null) {
+        String projectUrl  = createURL(client);
+        if (projectUrl != null) {
             sensorContext
                     .<String>newMeasure()
                     .forMetric(CoverityPluginMetrics.COVERITY_URL_CIM_METRIC)
                     .on(sensorContext.module())
-                    .withValue(ProjectUrl)
+                    .withValue(projectUrl)
                     .save();
         }
 
-        String ProductKey= String.valueOf(covProjectObj.getProjectKey());
-        ProjectUrl = ProjectUrl+"reports.htm#p"+ProductKey;
-        sensorContext
-            .<String>newMeasure()
-            .forMetric(CoverityPluginMetrics.COVERITY_PROJECT_URL)
-            .on(sensorContext.module())
-            .withValue(ProjectUrl)
-            .save();
+        if (covProjectObj != null){
+            String ProductKey= String.valueOf(covProjectObj.getProjectKey());
+            projectUrl = projectUrl+"reports.htm#p"+ProductKey;
+            sensorContext
+                    .<String>newMeasure()
+                    .forMetric(CoverityPluginMetrics.COVERITY_PROJECT_URL)
+                    .on(sensorContext.module())
+                    .withValue(projectUrl)
+                    .save();
+        }
 
         sensorContext
                 .<Integer>newMeasure()

@@ -11,10 +11,7 @@
 
 package org.sonar.plugins.coverity.batch;
 
-import com.coverity.ws.v9.DefectInstanceDataObj;
-import com.coverity.ws.v9.EventDataObj;
-import com.coverity.ws.v9.MergedDefectDataObj;
-import com.coverity.ws.v9.ProjectDataObj;
+import com.coverity.ws.v9.*;
 import org.apache.commons.lang.StringUtils;
 import org.junit.Before;
 import org.junit.Rule;
@@ -83,7 +80,7 @@ public class CoveritySensorTest {
     }
 
     @Test
-    public void testExecute_savesIssue() {
+    public void testExecute_savesIssue_FromProject() {
         final SensorContextTester sensorContextTester = SensorContextTester.create(new File("src"));
         final String filePath = "src/Foo.java";
         String content = "public class Foo {\n}";
@@ -119,7 +116,58 @@ public class CoveritySensorTest {
         sensorContextTester
                 .setActiveRules(new DefaultActiveRules(Arrays.asList(javaTestChecker)));
         final String expectedIssueMessage =
-                "[TEST_CHECKER(type)] Event Tag: Event Description ( CID 1 : https://test-host:8443/sourcebrowser.htm?projectId=0&mergedDefectId=1 )";
+                "[TEST_CHECKER(type)] Event Tag: Event Description ( CID 1 : https://test-host:8443/query/defects.htm?projectId=0&mergeKey=MK_1 )";
+
+        testCimClient.setupDefect(domain, checkerName, streamName, Arrays.asList(filePath));
+
+        sensor.execute(sensorContextTester);
+
+        final Collection<Issue> issues = sensorContextTester.allIssues();
+        assertNotNull(issues);
+        assertEquals(1, issues.size());
+        final Issue issue = issues.iterator().next();
+        assertEquals(ruleKey, issue.ruleKey());
+        assertEquals(inputFile, issue.primaryLocation().inputComponent());
+        assertEquals(expectedIssueMessage, issue.primaryLocation().message());
+    }
+
+    @Test
+    public void testExecute_savesIssue_FromStream() {
+        final SensorContextTester sensorContextTester = SensorContextTester.create(new File("src"));
+        final String filePath = "src/Foo.java";
+        String content = "public class Foo {\n}";
+
+        final Metadata metadata = new Metadata(1, 1, "", new int[1], 0);
+        final DefaultIndexedFile indexedFile = new DefaultIndexedFile(StringUtils.EMPTY,
+                sensorContextTester.fileSystem().baseDirPath(), filePath, "java");
+        final DefaultInputFile inputFile = new DefaultInputFile(indexedFile, f -> f.setMetadata(metadata), content);
+
+        sensorContextTester
+                .fileSystem()
+                .add(inputFile);
+        final HashMap<String, String> properties = new HashMap<>();
+
+        final String streamName = "my-cov-stream";
+        testCimClient.setupStream(streamName);
+
+        properties.put(CoverityPlugin.COVERITY_STREAM, streamName);
+        properties.put(CoverityPlugin.COVERITY_ENABLE, "true");
+        properties.put("sonar.sources", "src");
+        sensorContextTester
+                .settings()
+                .addProperties(properties);
+
+        final String checkerName = "TEST_CHECKER";
+        final String domain = "STATIC_JAVA";
+        final String subcategory = "none";
+
+        final ActiveRulesBuilder rulesBuilder = new ActiveRulesBuilder();
+        final RuleKey ruleKey = RuleKey.of("coverity-java", domain + "_" + checkerName + "_" + subcategory);
+        final NewActiveRule javaTestChecker = rulesBuilder.create(ruleKey);
+        sensorContextTester
+                .setActiveRules(new DefaultActiveRules(Arrays.asList(javaTestChecker)));
+        final String expectedIssueMessage =
+                "[TEST_CHECKER(type)] Event Tag: Event Description ( CID 1 : https://test-host:8443/query/defects.htm?stream=my-cov-stream&mergeKey=MK_1 )";
 
         testCimClient.setupDefect(domain, checkerName, streamName, Arrays.asList(filePath));
 
@@ -176,18 +224,37 @@ public class CoveritySensorTest {
     }
 
     @Test
-    public void testGetDefectURL() {
+    public void testGetDefectURLForProject() {
         CIMClient instance = mock(CIMClient.class);
         ProjectDataObj projectObj = mock(ProjectDataObj.class);
         MergedDefectDataObj mddo = mock(MergedDefectDataObj.class);
 
-        String target = "http://&&HOST&&:999999/sourcebrowser.htm?projectId=888888&mergedDefectId=777777";
+        String target = "http://&&HOST&&:999999/query/defects.htm?projectId=888888&mergeKey=777777";
 
         when(instance.getHost()).thenReturn("&&HOST&&");
         when(instance.getPort()).thenReturn(999999);
         when(projectObj.getProjectKey()).thenReturn(888888L);
-        when(mddo.getCid()).thenReturn(777777L);
-        String url = sensor.getDefectURL(instance, projectObj, mddo);
+        when(mddo.getMergeKey()).thenReturn("777777");
+        String url = sensor.getDefectURL(instance, null, projectObj, mddo);
+
+        assertEquals(target, url);
+    }
+
+    @Test
+    public void testGetDefectURLForStream() {
+        CIMClient instance = mock(CIMClient.class);
+        StreamDataObj streamObj = mock(StreamDataObj.class);
+        StreamIdDataObj streamIdObj = mock(StreamIdDataObj.class);
+        MergedDefectDataObj mddo = mock(MergedDefectDataObj.class);
+
+        String target = "http://&&HOST&&:999999/query/defects.htm?stream=TestStream&mergeKey=777777";
+
+        when(instance.getHost()).thenReturn("&&HOST&&");
+        when(instance.getPort()).thenReturn(999999);
+        when(streamIdObj.getName()).thenReturn("TestStream");
+        when(streamObj.getId()).thenReturn(streamIdObj);
+        when(mddo.getMergeKey()).thenReturn("777777");
+        String url = sensor.getDefectURL(instance, streamObj, null, mddo);
 
         assertEquals(target, url);
     }
@@ -247,9 +314,6 @@ public class CoveritySensorTest {
 
         final ProjectDataObj project = testCimClient.getProject(projectName);
         assertNotNull(project);
-        final long projectId = project.getProjectKey();
-        expectedUrl = expectedUrl + "reports.htm#p" + projectId;
-        measure = sensorContextTester.measure("projectKey", CoverityPluginMetrics.COVERITY_PROJECT_URL);
 
         assertEquals(expectedUrl, measure.value());
     }
@@ -367,7 +431,7 @@ public class CoveritySensorTest {
         sensorContextTester
                 .setActiveRules(new DefaultActiveRules(Arrays.asList(csTestChecker)));
         final String expectedIssueMessage =
-                "[TEST_CHECKER(type)] Defect Long Description ( CID 1 : https://test-host:8443/sourcebrowser.htm?projectId=0&mergedDefectId=1 )";
+                "[TEST_CHECKER(type)] Defect Long Description ( CID 1 : https://test-host:8443/query/defects.htm?projectId=0&mergeKey=MK_1 )";
 
         testCimClient.setupDefect(domain, checkerName, streamName, Arrays.asList(filePath));
         testCimClient.configureMainEvent(StringUtils.EMPTY, StringUtils.EMPTY);
@@ -434,7 +498,7 @@ public class CoveritySensorTest {
         sensorContextTester
                 .setActiveRules(new DefaultActiveRules(Arrays.asList(javaTestChecker)));
         final String expectedIssueMessage =
-                "[TEST_CHECKER(type)] Event Tag: Event Description ( CID 1 : https://test-host:8443/sourcebrowser.htm?projectId=0&mergedDefectId=1 )";
+                "[TEST_CHECKER(type)] Event Tag: Event Description ( CID 1 : https://test-host:8443/query/defects.htm?projectId=0&mergeKey=MK_1 )";
 
         testCimClient.setupDefect(domain, checkerName, streamName, Arrays.asList(filePath1, filePath2, filePath1));
 
@@ -507,7 +571,7 @@ public class CoveritySensorTest {
         sensorContextTester
                 .setActiveRules(new DefaultActiveRules(Arrays.asList(javaTestChecker)));
         final String expectedIssueMessage =
-                "[TEST_CHECKER(type)] Event Tag: Event Description ( CID 1 : https://test-host:8443/sourcebrowser.htm?projectId=0&mergedDefectId=1 )";
+                "[TEST_CHECKER(type)] Event Tag: Event Description ( CID 1 : https://test-host:8443/query/defects.htm?projectId=0&mergeKey=MK_1 )";
 
         try{
             testCimClient.setupDefect(domain, checkerName, streamName, Arrays.asList(stripPath + filePath));

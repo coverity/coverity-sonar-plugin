@@ -53,6 +53,10 @@ public class TestCIMClient extends CIMClient {
         testConfigurationService.setupProject(projectName);
     }
 
+    public void setupStream(String streamName){
+        testConfigurationService.setupStream(streamName);
+    }
+
     public void setupDefect(String domain, String checkerName, String streamName, List<String> filePathsForEvents) {
         testDefectService.setFilePathsForEvents(filePathsForEvents);
         testDefectService.addDefect(domain, checkerName, streamName);
@@ -64,10 +68,12 @@ public class TestCIMClient extends CIMClient {
 
     public static class TestConfigurationService implements ConfigurationService {
         private List<ProjectDataObj> projects;
+        private List<StreamDataObj> streams;
 
         public TestConfigurationService() {
 
             this.projects = new ArrayList<>();
+            this.streams = new ArrayList<>();
         }
 
         public void setupProject(String projectName) {
@@ -84,6 +90,15 @@ public class TestCIMClient extends CIMClient {
             projectDataObj.getStreams().add(streamDataObj);
 
             projects.add(projectDataObj);
+        }
+
+        public void setupStream(String streamName){
+            StreamDataObj streamDataObj = new StreamDataObj();
+            StreamIdDataObj streamIdDataObj = new StreamIdDataObj();
+            streamIdDataObj.setName(streamName);
+            streamDataObj.setId(streamIdDataObj);
+
+            streams.add(streamDataObj);
         }
 
         @Override
@@ -202,11 +217,6 @@ public class TestCIMClient extends CIMClient {
         }
 
         @Override
-        public List<StreamDataObj> getStreams(StreamFilterSpecDataObj filterSpec) throws CovRemoteServiceException_Exception {
-            throw new NotImplementedException();
-        }
-
-        @Override
         public void mergeTriageStores(List<TriageStoreIdDataObj> srcTriageStoreIds, TriageStoreIdDataObj triageStoreId, boolean deleteSourceStores, boolean assignStreamsToTargetStore) throws CovRemoteServiceException_Exception {
             throw new NotImplementedException();
         }
@@ -289,6 +299,21 @@ public class TestCIMClient extends CIMClient {
             }
 
             return projects;
+        }
+
+        @Override
+        public List<StreamDataObj> getStreams(StreamFilterSpecDataObj filterSpec) throws CovRemoteServiceException_Exception {
+            if (!StringUtils.isEmpty(filterSpec.getNamePattern()))
+            {
+                List<StreamDataObj> matchingStreams = new ArrayList<>();
+                for (StreamDataObj stream : streams) {
+                    if (stream.getId().getName().equals(filterSpec.getNamePattern()))
+                        matchingStreams.add(stream);
+                }
+                return matchingStreams;
+            }
+
+            return streams;
         }
 
         @Override
@@ -639,7 +664,22 @@ public class TestCIMClient extends CIMClient {
 
         @Override
         public MergedDefectsPageDataObj getMergedDefectsForStreams(List<StreamIdDataObj> streamIds, MergedDefectFilterSpecDataObj filterSpec, PageSpecDataObj pageSpec, SnapshotScopeSpecDataObj snapshotScope) throws CovRemoteServiceException_Exception {
-            throw new NotImplementedException();
+            MergedDefectsPageDataObj mergedDefectsPageDataObj = new MergedDefectsPageDataObj();
+
+            final int totalRecords = mergedDefects.size();
+            mergedDefectsPageDataObj.setTotalNumberOfRecords(totalRecords);
+
+            int toIndex = pageSpec.getStartIndex() + pageSpec.getPageSize();
+            if (toIndex > mergedDefects.size())
+                toIndex = mergedDefects.size();
+
+            List<MergedDefectIdDataObj> defectIds = mergedDefectIds.subList(pageSpec.getStartIndex(), toIndex);
+            mergedDefectsPageDataObj.getMergedDefectIds().addAll(defectIds);
+
+            List<MergedDefectDataObj> defects = mergedDefects.subList(pageSpec.getStartIndex(), toIndex);
+            mergedDefectsPageDataObj.getMergedDefects().addAll(defects);
+
+            return mergedDefectsPageDataObj;
         }
 
         @Override
