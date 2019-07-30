@@ -153,6 +153,8 @@ See below for a complete example sonar-project.properties file.
 >
 > sonar.projectVersion=1.5.0
 >
+> sonar.coverity.stream=MyStream
+>
 > sonar.coverity.project=MyProject
 >
 > sonar.coverity.enable=true
@@ -170,6 +172,11 @@ To specify the language key:
 -   the value must match exactly, if having trouble finding the source files look at the Coverity Connect issues "File" column 
 -   when running analysis on windows Coverity Connect returns values with linux path separators
 -   by using --strip-path during analysis this property can be avoided
+
+*Note*: Coverity SonarQube Plugin now supports both stream and project. 
+-	If **sonar.coverity.stream** is configured, then the plugin will only fetch defects from configured stream, regardless **sonar.coverity.project** is configured. 
+-	If **sonar.coverity.stream** is not configured, then the plugin will use **sonar.coverity.project** to fetch defects from.
+
 
 The Coverity Widget
 ===================

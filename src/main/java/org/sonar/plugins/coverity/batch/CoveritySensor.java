@@ -373,13 +373,24 @@ public class CoveritySensor implements Sensor {
                     .save();
         }
 
-        String cimUrl = createURL(client);
-        if (cimUrl != null) {
+        String projectUrl  = createURL(client);
+        if (projectUrl != null) {
             sensorContext
                     .<String>newMeasure()
                     .forMetric(CoverityPluginMetrics.COVERITY_URL_CIM_METRIC)
                     .on(sensorContext.module())
-                    .withValue(cimUrl)
+                    .withValue(projectUrl)
+                    .save();
+        }
+
+        if (covProjectObj != null){
+            String ProductKey= String.valueOf(covProjectObj.getProjectKey());
+            projectUrl = projectUrl+"reports.htm#p"+ProductKey;
+            sensorContext
+                    .<String>newMeasure()
+                    .forMetric(CoverityPluginMetrics.COVERITY_PROJECT_URL)
+                    .on(sensorContext.module())
+                    .withValue(projectUrl)
                     .save();
         }
 
