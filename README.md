@@ -8,7 +8,7 @@ The Coverity Sonar Plugin automatically import issues from Coverity Connect into
 Coverity® Sonar Plug-in Installation and Configuration Guide
 ============================================================
 
-Version 1.7.1
+Version 1.7.2
 
 This guide is intended to assist you with the installation and
 configuration of the Coverity Sonar plug-in. Once completed, you will be
@@ -242,6 +242,10 @@ If you have any questions or issues with the Coverity plugin, contact <coverity-
 
 Changelog
 =========
+
+* __1.7.2__
+  * Coverity SonarQube plugin now support importing defects from configured stream. (SQP-130, SQP-131)
+  * Coverity SonarQube plugin now support SonarQube 7.9LTS. (SQP-137)
 
 * __1.7.1__
   * Fixed an issue finding the physical source file via sonar.coverity.prefix in the sonar-project.properties file. (SQP-128)
