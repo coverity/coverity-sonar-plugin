@@ -163,7 +163,7 @@ public class CIMClient {
     /**
      * Returns all merged defects on a given project.
      */
-    public List<MergedDefectDataObj> getDefects(String project) throws IOException, CovRemoteServiceException_Exception {
+    public List<MergedDefectDataObj> getDefectsFromProject(String project) throws IOException, CovRemoteServiceException_Exception {
         ProjectScopeDefectFilterSpecDataObj filterSpec = new ProjectScopeDefectFilterSpecDataObj();
         ProjectIdDataObj projectId = new ProjectIdDataObj();
         projectId.setName(project);
@@ -186,6 +186,35 @@ public class CIMClient {
     }
 
     /**
+     * Returns all merged defects on a given project.
+     */
+    public List<MergedDefectDataObj> getDefectsFromStream(String stream) throws IOException, CovRemoteServiceException_Exception {
+        MergedDefectFilterSpecDataObj filterSpec = new MergedDefectFilterSpecDataObj();
+        SnapshotScopeSpecDataObj snapshotScopeSpecDataObj = new SnapshotScopeSpecDataObj();
+        PageSpecDataObj pageSpec = new PageSpecDataObj();
+        pageSpec.setPageSize(1000);
+
+        List<StreamIdDataObj> streamIdList = new ArrayList<>();
+        StreamIdDataObj streamIdDataObj = new StreamIdDataObj();
+        streamIdDataObj.setName(stream);
+        streamIdList.add(streamIdDataObj);
+
+        List<MergedDefectDataObj> result = new ArrayList<MergedDefectDataObj>();
+        int defectCount = 0;
+        MergedDefectsPageDataObj defects = null;
+        do {
+            pageSpec.setStartIndex(defectCount);
+            defects = getDefectService().getMergedDefectsForStreams(streamIdList, filterSpec, pageSpec, snapshotScopeSpecDataObj);
+            result.addAll(defects.getMergedDefects());
+            defectCount += defects.getMergedDefects().size();
+            LOG.info(MessageFormat.format("Fetching coverity defects for stream \"{0}\" (fetched {1} of {2})",
+                    stream, defectCount, defects.getTotalNumberOfRecords()));
+        } while(defectCount < defects.getTotalNumberOfRecords());
+
+        return result;
+    }
+
+    /**
      * Returns a ProjectDataObj for a given project id.
      */
     public ProjectDataObj getProject(String projectId) throws IOException, CovRemoteServiceException_Exception {
@@ -196,6 +225,24 @@ public class CIMClient {
             return null;
         } else {
             return projects.get(0);
+        }
+    }
+
+    /**
+     *
+     * @param streamId
+     * @return a StreamDataObj for a give stream id.
+     * @throws IOException
+     * @throws CovRemoteServiceException_Exception
+     */
+    public StreamDataObj getStream(String streamId) throws IOException, CovRemoteServiceException_Exception {
+        StreamFilterSpecDataObj filterSpec = new StreamFilterSpecDataObj();
+        filterSpec.setNamePattern(streamId);
+        List<StreamDataObj> streams = getConfigurationService().getStreams(filterSpec);
+        if(streams.size() == 0){
+            return null;
+        } else {
+            return streams.get(0);
         }
     }
 
@@ -237,20 +284,38 @@ public class CIMClient {
                 sliceMergedDefectIdDataObj.add(mdidos.get(cid));
             }
 
-            List<StreamDefectDataObj> temp = getDefectService().getStreamDefects(sliceMergedDefectIdDataObj, filter);
+            try{
+                List<StreamDefectDataObj> temp = getDefectService().getStreamDefects(sliceMergedDefectIdDataObj, filter);
 
-            for(StreamDefectDataObj sddo : temp) {
-                MergedDefectDataObj curMergedDefectDataObj = cids.get(sddo.getCid());
-                StreamIdDataObj curStreamIdDataObj = sddo.getStreamId();
+                for(StreamDefectDataObj sddo : temp) {
+                    MergedDefectDataObj curMergedDefectDataObj = cids.get(sddo.getCid());
+                    StreamIdDataObj curStreamIdDataObj = sddo.getStreamId();
 
-                if (curMergedDefectDataObj != null && curStreamIdDataObj != null
-                        && curMergedDefectDataObj.getLastDetectedStream().equals(curStreamIdDataObj.getName())) {
-                    sddos.put(sddo.getCid(), sddo);
+                    if (curMergedDefectDataObj != null && curStreamIdDataObj != null
+                            && curMergedDefectDataObj.getLastDetectedStream().equals(curStreamIdDataObj.getName())) {
+                        sddos.put(sddo.getCid(), sddo);
+                    }
                 }
+
+                LOG.info(MessageFormat.format("Fetching coverity defect details (fetched {0} of {1})",
+                        sddos.size(), cidList.size()));
+            } catch (Exception ex) {
+                LOG.error("Error occurred while fetching defect details.", ex);
+
+                LOG.debug("===== MergeDefectIdDataObj information =====");
+                LOG.debug("Size of SliceMergedDefectIdDataObj: " + sliceMergedDefectIdDataObj.size());
+                for (MergedDefectIdDataObj mergedDefectIdDataObj : sliceMergedDefectIdDataObj) {
+                    LOG.debug(MessageFormat.format("[Coverity] CID: {0}", mergedDefectIdDataObj.getCid()));
+                }
+
+                LOG.debug("\n====== StreamDefectFilterSpecDataObj information =====");
+                for (StreamIdDataObj streamIdDataObj : filter.getStreamIdList()) {
+                    LOG.debug(MessageFormat.format("[Coverity] Stream: {0}", streamIdDataObj.getName()));
+                }
+
+                break;
             }
 
-            LOG.info(MessageFormat.format("Fetching coverity defect details (fetched {0} of {1})",
-                    sddos.size(), cidList.size()));
         }
 
         return sddos;

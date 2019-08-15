@@ -8,7 +8,7 @@ The Coverity Sonar Plugin automatically import issues from Coverity Connect into
 Coverity® Sonar Plug-in Installation and Configuration Guide
 ============================================================
 
-Version 1.7.1
+Version 1.7.2
 
 This guide is intended to assist you with the installation and
 configuration of the Coverity Sonar plug-in. Once completed, you will be
@@ -153,6 +153,8 @@ See below for a complete example sonar-project.properties file.
 >
 > sonar.projectVersion=1.5.0
 >
+> sonar.coverity.stream=MyStream
+>
 > sonar.coverity.project=MyProject
 >
 > sonar.coverity.enable=true
@@ -170,6 +172,11 @@ To specify the language key:
 -   the value must match exactly, if having trouble finding the source files look at the Coverity Connect issues "File" column 
 -   when running analysis on windows Coverity Connect returns values with linux path separators
 -   by using --strip-path during analysis this property can be avoided
+
+*Note*: Coverity SonarQube Plugin now supports both stream and project. 
+-	If **sonar.coverity.stream** is configured, then the plugin will only fetch defects from configured stream, regardless **sonar.coverity.project** is configured. 
+-	If **sonar.coverity.stream** is not configured, then the plugin will use **sonar.coverity.project** to fetch defects from.
+
 
 The Coverity Widget
 ===================
@@ -235,6 +242,10 @@ If you have any questions or issues with the Coverity plugin, contact <coverity-
 
 Changelog
 =========
+
+* __1.7.2__
+  * Coverity SonarQube plugin now support importing defects from configured stream. (SQP-130, SQP-131)
+  * Coverity SonarQube plugin now support SonarQube 7.9LTS. (SQP-137)
 
 * __1.7.1__
   * Fixed an issue finding the physical source file via sonar.coverity.prefix in the sonar-project.properties file. (SQP-128)
