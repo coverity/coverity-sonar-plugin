@@ -108,7 +108,7 @@ public final class CoverityPlugin implements Plugin {
                         .description("Comma-separated list of source file suffixes to retrieve issues from Coverity Connect.")
                         .defaultValue(CppLanguage.DEFAULT_SUFFIXES)
                         .subCategory("Languages")
-                        .type(PropertyType.STRING)
+                        .multiValues(true)
                         .index(1)
                         .build(),
                 /*
