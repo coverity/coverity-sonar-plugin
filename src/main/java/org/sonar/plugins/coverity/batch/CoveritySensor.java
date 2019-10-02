@@ -27,6 +27,7 @@ import org.sonar.api.batch.sensor.SensorDescriptor;
 import org.sonar.api.batch.sensor.issue.NewIssue;
 import org.sonar.api.batch.sensor.issue.NewIssueLocation;
 import org.sonar.api.config.Configuration;
+import org.sonar.api.measures.CoreMetrics;
 import org.sonar.api.rule.RuleKey;
 import org.sonar.plugins.coverity.CoverityPlugin;
 import org.sonar.plugins.coverity.base.CoverityPluginMetrics;
@@ -55,6 +56,7 @@ public class CoveritySensor implements Sensor {
     private String platform;
     private CIMClientFactory cimClientFactory;
     private HashMap<String, InputFile> localInputFiles;
+    private HashMap<String, Integer> inputFileLines;
 
     public CoveritySensor(CIMClientFactory cimClientFactory) {
         this.cimClientFactory = cimClientFactory;
@@ -77,6 +79,7 @@ public class CoveritySensor implements Sensor {
     public void execute(SensorContext context) {
         Configuration config = context.config();
         localInputFiles = new HashMap<String, InputFile>();
+        inputFileLines = new HashMap<String, Integer>();
 
         boolean enabled = config.getBoolean(CoverityPlugin.COVERITY_ENABLE).orElse(false);
 
@@ -84,6 +87,8 @@ public class CoveritySensor implements Sensor {
         int highImpactDefectsCounter = 0;
         int mediumImpactDefectsCounter = 0;
         int lowImpactDefectsCounter = 0;
+
+        HashSet<String> inputFileSet = new HashSet<String>();
 
         LOG.info(CoverityPlugin.COVERITY_ENABLE + "=" + enabled);
 
@@ -240,6 +245,8 @@ public class CoveritySensor implements Sensor {
                         if (!validateInputFile(inputFile, mainEventFilePath, mddo.getCid())){
                             continue;
                         }
+
+
                     }
 
                     String subcategory = dido.getSubcategory();
@@ -249,6 +256,7 @@ public class CoveritySensor implements Sensor {
                     }
 
                     ActiveRule ar = findActiveRule(context, dido.getDomain(), dido.getCheckerName(), subcategory, inputFile.language());
+
 
                     LOG.debug("ar=" + ar);
                     if(ar != null) {
@@ -421,6 +429,15 @@ public class CoveritySensor implements Sensor {
                 .on(sensorContext.module())
                 .withValue(lowImpactDefects)
                 .save();
+
+        int lines = 0;
+        Iterator iterator = inputFileLines.entrySet().iterator();
+        while (iterator.hasNext()){
+            Map.Entry mapElement = (Map.Entry)iterator.next();
+            lines = lines + (int)mapElement.getValue();
+        }
+
+        sensorContext.<Integer>newMeasure().forMetric(CoreMetrics.NCLOC).on(sensorContext.module()).withValue(lines).save();
     }
 
     protected ActiveRule findActiveRule(SensorContext context, String domain, String checkerName, String subCategory, String lang) {
@@ -516,6 +533,10 @@ public class CoveritySensor implements Sensor {
                     break;
                 }
             }
+        }
+
+        if (inputFile != null && !inputFileLines.containsKey(filePath)){
+            inputFileLines.put(filePath, inputFile.lines());
         }
 
         return inputFile;
