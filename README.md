@@ -81,7 +81,7 @@ projects.
 3.  Click on **Quality Profiles**.
 
 4.  Change the Quality Profile option for your project to
-    *Coverity (&lt;language&gt;)*, and click **Update.**
+    *Coverity(&lt;language&gt;)*, and click **Update.**
 
 5.  Choose **Configuration &gt; General Settings**.
 
