@@ -28,6 +28,7 @@ import org.sonar.api.batch.sensor.internal.DefaultSensorDescriptor;
 import org.sonar.api.batch.sensor.internal.SensorContextTester;
 import org.sonar.api.batch.sensor.issue.Issue;
 import org.sonar.api.batch.sensor.measure.Measure;
+import org.sonar.api.measures.CoreMetrics;
 import org.sonar.api.rule.RuleKey;
 import org.sonar.plugins.coverity.CoverityPlugin;
 import org.sonar.plugins.coverity.base.CoverityPluginMetrics;
@@ -180,6 +181,10 @@ public class CoveritySensorTest {
         assertEquals(ruleKey, issue.ruleKey());
         assertEquals(inputFile, issue.primaryLocation().inputComponent());
         assertEquals(expectedIssueMessage, issue.primaryLocation().message());
+
+        Measure measure = sensorContextTester.measure("projectKey", CoreMetrics.NCLOC);
+        assertNotNull(measure);
+        assertEquals(inputFile.lines(), measure.value());
     }
 
     @Test
