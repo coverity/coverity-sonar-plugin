@@ -8,7 +8,7 @@ The Coverity Sonar Plugin automatically import issues from Coverity Connect into
 Coverity® Sonar Plug-in Installation and Configuration Guide
 ============================================================
 
-Version 1.7.2
+Version 1.7.3
 
 This guide is intended to assist you with the installation and
 configuration of the Coverity Sonar plug-in. Once completed, you will be
@@ -22,8 +22,8 @@ Sonar plug-in.
 
 | **Software**     | **Supported versions** |
 |------------------|------------------------|
-| SonarQube        | 6.7.5+                 |
-| SonarQube Scanner| 3.0+                   |
+| SonarQube        | 6.7.5 - 7.9.1          |
+| SonarQube Scanner| 3.0 - 4.0              |
 | Coverity Connect | 8.0+                   |
 
 Installing the Coverity Sonar Plug-in
@@ -31,7 +31,7 @@ Installing the Coverity Sonar Plug-in
 
 To install the Coverity Sonar plug-in, complete the following steps.
 
-1.  Ensure that you have SonarQube v6.7.5+ and SonarQube Scanner v3.0 installed.
+1.  Ensure that you have SonarQube(v6.7.5 ~ v7.9.1) and SonarQube Scanner(v3.0 ~ v4.0) installed.
     Sonar installation and setup instructions are located at
     <http://docs.sonarqube.org/display/SONAR/Setup+and+Upgrade>.
 
@@ -134,10 +134,6 @@ See below for a complete example sonar-project.properties file.
 > \# Comma-separated paths to directories with sources (required)
 >
 > sonar.sources=.
->
-> \# The profile used by sonar can be specified either on the UI or by:
->
-> \# sonar.profile=Coverity(cov-cpp)
 >
 > \# Encoding of the source files
 >
@@ -242,6 +238,10 @@ If you have any questions or issues with the Coverity plugin, contact <coverity-
 
 Changelog
 =========
+
+* __1.7.3__
+  * Fixed an issue where C/C++ project is displayed as an empty project in the SonarQube after running Coverity SonarQube plugin. (SQP-144)
+  * "sonar.coverity.cov-cpp.suffixes" property is declared as multi-value property. (SQP-136)
 
 * __1.7.2__
   * Coverity SonarQube plugin now support importing defects from configured stream. (SQP-130, SQP-131)
