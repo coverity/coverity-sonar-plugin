@@ -131,7 +131,7 @@
     </rule>
     <rule>
         <key>STATIC_CS_XML_INJECTION_none</key>
-        <name>Low impact security : XML injection</name>
+        <name>Audit impact security : XML injection</name>
         <internalKey>STATIC_CS_XML_INJECTION_none</internalKey>
         <description>User-controllable data is parsed as XML.</description>
         <severity>MAJOR</severity>
@@ -141,6 +141,45 @@
         <tag>coverity</tag>
         <tag>c#</tag>
         <tag>coverity-security</tag>
+    </rule>
+    <rule>
+        <key>STATIC_CS_SQL_NOT_CONSTANT_concat</key>
+        <name>Audit impact security : Non-constant SQL</name>
+        <internalKey>STATIC_CS_SQL_NOT_CONSTANT_concat</internalKey>
+        <description>An SQL statement is constructed by concatenating a non-constant string.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>coverity-security</tag>
+    </rule>
+    <rule>
+        <key>STATIC_CS_SQL_NOT_CONSTANT_sink</key>
+        <name>Audit impact security : Non-constant SQL</name>
+        <internalKey>STATIC_CS_SQL_NOT_CONSTANT_sink</internalKey>
+        <description>An SQL query or command is executed that is not a constant string.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>coverity-security</tag>
+    </rule>
+    <rule>
+        <key>STATIC_CS_SQL_NOT_CONSTANT_none</key>
+        <name>Audit impact security : Non-constant SQL</name>
+        <internalKey>STATIC_CS_SQL_NOT_CONSTANT_none</internalKey>
+        <description>An SQL query or command is executed that is not a constant string.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_UNSAFE_DESERIALIZATION_none</key>
@@ -156,19 +195,6 @@
         <tag>coverity-security</tag>
     </rule>
     <rule>
-        <key>STATIC_CS_BAD_EQ_none</key>
-        <name>Incorrect expression : Wrong kind of equality</name>
-        <internalKey>STATIC_CS_BAD_EQ_none</internalKey>
-        <description>Using wrong equality operation (Equals or the equivalent method vs &quot;==&quot;) for this type</description>
-        <severity>CRITICAL</severity>
-        <cardinality>SINGLE</cardinality>
-        <status>READY</status>
-        <type>BUG</type>
-        <tag>coverity</tag>
-        <tag>c#</tag>
-        <tag>coverity-quality</tag>
-    </rule>
-    <rule>
         <key>STATIC_CS_BAD_EQ_referential</key>
         <name>Incorrect expression : Wrong equality (referential)</name>
         <internalKey>STATIC_CS_BAD_EQ_referential</internalKey>
@@ -182,10 +208,10 @@
         <tag>coverity-quality</tag>
     </rule>
     <rule>
-        <key>STATIC_CS_BAD_EQ_structural</key>
-        <name>Incorrect expression : Wrong equality (structural)</name>
-        <internalKey>STATIC_CS_BAD_EQ_structural</internalKey>
-        <description>Using Equals (or equivalent method) equality when &quot;==&quot; is the norm for this type</description>
+        <key>STATIC_CS_BAD_EQ_none</key>
+        <name>Incorrect expression : Wrong equality (referential)</name>
+        <internalKey>STATIC_CS_BAD_EQ_none</internalKey>
+        <description>Using referential equality when value equality is the norm for this type</description>
         <severity>CRITICAL</severity>
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
@@ -302,7 +328,7 @@
         <key>STATIC_CS_UNRESTRICTED_DISPATCH_none</key>
         <name>Medium impact security : Unrestricted dispatch</name>
         <internalKey>STATIC_CS_UNRESTRICTED_DISPATCH_none</internalKey>
-        <description>A user-controllable string is used as a view dispatch path.</description>
+        <description>A user-controllable string is used as a servlet dispatch path.</description>
         <severity>CRITICAL</severity>
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
@@ -364,19 +390,6 @@
         <tag>coverity-quality</tag>
     </rule>
     <rule>
-        <key>STATIC_CS_UNENCRYPTED_SENSITIVE_DATA_cleartext_in_classpath</key>
-        <name>Low impact security : Cleartext sensitive data in a JAR file</name>
-        <internalKey>STATIC_CS_UNENCRYPTED_SENSITIVE_DATA_cleartext_in_classpath</internalKey>
-        <description>Reading sensitive data from a resource in the classpath.</description>
-        <severity>MAJOR</severity>
-        <cardinality>SINGLE</cardinality>
-        <status>READY</status>
-        <type>VULNERABILITY</type>
-        <tag>coverity</tag>
-        <tag>c#</tag>
-        <tag>coverity-security</tag>
-    </rule>
-    <rule>
         <key>STATIC_CS_UNENCRYPTED_SENSITIVE_DATA_cleartext_in_cookie</key>
         <name>High impact security : Cleartext sensitive data in a cookie</name>
         <internalKey>STATIC_CS_UNENCRYPTED_SENSITIVE_DATA_cleartext_in_cookie</internalKey>
@@ -430,10 +443,23 @@
     </rule>
     <rule>
         <key>STATIC_CS_UNENCRYPTED_SENSITIVE_DATA_none</key>
-        <name>High impact security : Missing encryption of sensitive data</name>
+        <name>High impact security : Cleartext transmission of sensitive data</name>
         <internalKey>STATIC_CS_UNENCRYPTED_SENSITIVE_DATA_none</internalKey>
-        <description>Retrieving or receiving unencrypted sensitive data.</description>
+        <description>Receiving sensitive data in cleartext from the network.</description>
         <severity>BLOCKER</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>STATIC_CS_MISSING_AUTHZ_none</key>
+        <name>Medium impact security : Missing authorization check</name>
+        <internalKey>STATIC_CS_MISSING_AUTHZ_none</internalKey>
+        <description>Calling a method that performs a sensitive action without first checking authorization, as is done elsewhere.</description>
+        <severity>CRITICAL</severity>
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>VULNERABILITY</type>
@@ -446,19 +472,6 @@
         <name>Medium impact security : NoSQL query injection</name>
         <internalKey>STATIC_CS_NOSQL_QUERY_INJECTION_none</internalKey>
         <description>A user-controllable string is injected into a NoSQL query.</description>
-        <severity>CRITICAL</severity>
-        <cardinality>SINGLE</cardinality>
-        <status>READY</status>
-        <type>VULNERABILITY</type>
-        <tag>coverity</tag>
-        <tag>c#</tag>
-        <tag>coverity-security</tag>
-    </rule>
-    <rule>
-        <key>STATIC_CS_MISSING_AUTHZ_none</key>
-        <name>Medium impact security : Missing authorization check</name>
-        <internalKey>STATIC_CS_MISSING_AUTHZ_none</internalKey>
-        <description>Calling a method that performs a sensitive action without first checking authorization, as is done elsewhere.</description>
         <severity>CRITICAL</severity>
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
@@ -524,6 +537,19 @@
         <name>Null pointer dereferences : Unchecked &quot;as&quot; conversion</name>
         <internalKey>STATIC_CS_FORWARD_NULL_null_from_as</internalKey>
         <description>The &quot;as&quot; conversion may fail and return null if the type cast is incompatible</description>
+        <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>STATIC_CS_FORWARD_NULL_throws_on_null</key>
+        <name>Null pointer dereferences : Null value leads to thrown exception</name>
+        <internalKey>STATIC_CS_FORWARD_NULL_throws_on_null</internalKey>
+        <description>A null value is passed to a function that throws an exception in that case</description>
         <severity>CRITICAL</severity>
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
@@ -924,6 +950,32 @@
         <tag>coverity-quality</tag>
     </rule>
     <rule>
+        <key>STATIC_CS_CONFIG.DYNAMIC_DATA_HTML_COMMENT_none</key>
+        <name>Low impact security : Dynamic data in HTML comment</name>
+        <internalKey>STATIC_CS_CONFIG.DYNAMIC_DATA_HTML_COMMENT_none</internalKey>
+        <description>Dynamic data is output in HTML comments.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>coverity-security</tag>
+    </rule>
+    <rule>
+        <key>STATIC_CS_HARDCODED_CREDENTIALS_hardcoded_credential_connection_string</key>
+        <name>Medium impact security : Use of hard-coded connection string password</name>
+        <internalKey>STATIC_CS_HARDCODED_CREDENTIALS_hardcoded_credential_connection_string</internalKey>
+        <description>A connection string password is stored directly in the source code.</description>
+        <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>coverity-security</tag>
+    </rule>
+    <rule>
         <key>STATIC_CS_HARDCODED_CREDENTIALS_hardcoded_credential_crypto</key>
         <name>Medium impact security : Use of hard-coded cryptographic key</name>
         <internalKey>STATIC_CS_HARDCODED_CREDENTIALS_hardcoded_credential_crypto</internalKey>
@@ -976,10 +1028,10 @@
         <tag>coverity-security</tag>
     </rule>
     <rule>
-        <key>STATIC_CS_HARDCODED_CREDENTIALS_hardcoded_credential_connection_string</key>
-        <name>Medium impact security : Use of hard-coded connection string password</name>
-        <internalKey>STATIC_CS_HARDCODED_CREDENTIALS_hardcoded_credential_connection_string</internalKey>
-        <description>A connection string password is stored directly in the source code.</description>
+        <key>STATIC_CS_HARDCODED_CREDENTIALS_uri</key>
+        <name>Medium impact security : Use of hard-coded URI password</name>
+        <internalKey>STATIC_CS_HARDCODED_CREDENTIALS_uri</internalKey>
+        <description>A URI with a password component is stored directly in the source code.</description>
         <severity>CRITICAL</severity>
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
@@ -1005,7 +1057,7 @@
         <key>STATIC_CS_XSS_none</key>
         <name>High impact security : Cross-site scripting</name>
         <internalKey>STATIC_CS_XSS_none</internalKey>
-        <description>Untrusted user-supplied data is inserted into a context that can execute JavaScript without adequate validation, escaping, or filtering</description>
+        <description>Untrusted user-supplied data is inserted into a context that can execute JavaScript without adequate validation, escaping, or filtering.</description>
         <severity>BLOCKER</severity>
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
@@ -1018,7 +1070,7 @@
         <key>STATIC_CS_XSS_stored_xss</key>
         <name>High impact security : Cross-site scripting (stored)</name>
         <internalKey>STATIC_CS_XSS_stored_xss</internalKey>
-        <description>Untrusted user-supplied data is stored in a database and subsequently read back and included in a context that can execute JavaScript without adequate validation, escaping, or filtering</description>
+        <description>Untrusted user-supplied data is stored in a database and subsequently read back and included in a context that can execute JavaScript without adequate validation, escaping, or filtering.</description>
         <severity>BLOCKER</severity>
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
@@ -1119,19 +1171,6 @@
         <tag>coverity-quality</tag>
     </rule>
     <rule>
-        <key>STATIC_CS_CONFIG.DEAD_AUTHORIZATION_RULE_dead_deny_rule</key>
-        <name>Medium impact security : Dead Deny Rule</name>
-        <internalKey>STATIC_CS_CONFIG.DEAD_AUTHORIZATION_RULE_dead_deny_rule</internalKey>
-        <description>A deny rule has no effect</description>
-        <severity>CRITICAL</severity>
-        <cardinality>SINGLE</cardinality>
-        <status>READY</status>
-        <type>VULNERABILITY</type>
-        <tag>coverity</tag>
-        <tag>c#</tag>
-        <tag>coverity-security</tag>
-    </rule>
-    <rule>
         <key>STATIC_CS_CONFIG.DEAD_AUTHORIZATION_RULE_dead_allow_rule</key>
         <name>Low impact security : Dead Allow Rule</name>
         <internalKey>STATIC_CS_CONFIG.DEAD_AUTHORIZATION_RULE_dead_allow_rule</internalKey>
@@ -1145,24 +1184,24 @@
         <tag>coverity-security</tag>
     </rule>
     <rule>
-        <key>STATIC_CS_CONFIG.DEAD_AUTHORIZATION_RULE_none</key>
-        <name>Low impact security : Dead Allow Rule</name>
-        <internalKey>STATIC_CS_CONFIG.DEAD_AUTHORIZATION_RULE_none</internalKey>
-        <description>An allow rule has no effect</description>
-        <severity>MAJOR</severity>
+        <key>STATIC_CS_CONFIG.DEAD_AUTHORIZATION_RULE_dead_deny_rule</key>
+        <name>Medium impact security : Dead Deny Rule</name>
+        <internalKey>STATIC_CS_CONFIG.DEAD_AUTHORIZATION_RULE_dead_deny_rule</internalKey>
+        <description>A deny rule has no effect</description>
+        <severity>CRITICAL</severity>
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
-        <type>BUG</type>
+        <type>VULNERABILITY</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>coverity-quality</tag>
+        <tag>coverity-security</tag>
     </rule>
     <rule>
-        <key>STATIC_CS_MS.*_none</key>
-        <name>Microsoft: Miscellaneous : MS Code Analysis warning</name>
-        <internalKey>STATIC_CS_MS.*_none</internalKey>
-        <description>Unclassified warning from Microsoft Code Analysis</description>
-        <severity>MAJOR</severity>
+        <key>STATIC_CS_CONFIG.DEAD_AUTHORIZATION_RULE_none</key>
+        <name>Medium impact security : Dead Deny Rule</name>
+        <internalKey>STATIC_CS_CONFIG.DEAD_AUTHORIZATION_RULE_none</internalKey>
+        <description>A deny rule has no effect</description>
+        <severity>CRITICAL</severity>
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>BUG</type>
@@ -1288,6 +1327,19 @@
         <tag>coverity-security</tag>
     </rule>
     <rule>
+        <key>STATIC_CS_CONFIG.CONNECTION_STRING_PASSWORD_none</key>
+        <name>Low impact security : Unencrypted connection string password</name>
+        <internalKey>STATIC_CS_CONFIG.CONNECTION_STRING_PASSWORD_none</internalKey>
+        <description>A configuration file connection string includes a plaintext password.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>coverity-security</tag>
+    </rule>
+    <rule>
         <key>STATIC_CS_IDENTICAL_BRANCHES_case</key>
         <name>Incorrect expression : Identical code for different cases</name>
         <internalKey>STATIC_CS_IDENTICAL_BRANCHES_case</internalKey>
@@ -1353,36 +1405,10 @@
         <tag>coverity-quality</tag>
     </rule>
     <rule>
-        <key>STATIC_CS_CONFIG.CONNECTION_STRING_PASSWORD_none</key>
-        <name>Low impact security : Unencrypted connection string password</name>
-        <internalKey>STATIC_CS_CONFIG.CONNECTION_STRING_PASSWORD_none</internalKey>
-        <description>A configuration file connection string includes a plaintext password.</description>
-        <severity>MAJOR</severity>
-        <cardinality>SINGLE</cardinality>
-        <status>READY</status>
-        <type>VULNERABILITY</type>
-        <tag>coverity</tag>
-        <tag>c#</tag>
-        <tag>coverity-security</tag>
-    </rule>
-    <rule>
         <key>STATIC_CS_MISSING_THROW_none</key>
         <name>Error handling issues : Exception not thrown</name>
         <internalKey>STATIC_CS_MISSING_THROW_none</internalKey>
         <description>An object of exception type is created but neither thrown nor stored anywhere; the developer likely intended to throw the exception.</description>
-        <severity>CRITICAL</severity>
-        <cardinality>SINGLE</cardinality>
-        <status>READY</status>
-        <type>BUG</type>
-        <tag>coverity</tag>
-        <tag>c#</tag>
-        <tag>coverity-quality</tag>
-    </rule>
-    <rule>
-        <key>STATIC_CS_ATOMICITY_none</key>
-        <name>Concurrent data access violations : Value not atomically updated</name>
-        <internalKey>STATIC_CS_ATOMICITY_none</internalKey>
-        <description>Critical section does not protect read-update-write of a concurrently shared value</description>
         <severity>CRITICAL</severity>
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
@@ -1423,6 +1449,19 @@
         <internalKey>STATIC_CS_MISSING_RESTORE_possible</internalKey>
         <description>Handles classes of flow where a function is either saving some external value, modifying the external value, and then possibly intending to restore it to its original state but not doing so along one of many paths; or else is checking whether an external has some expected value, modifying the external value, then possibly intending to restore it to the expected value but not doing so along a path.  Such code is only incorrect if the intent really was to restore along all paths.</description>
         <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>STATIC_CS_PROPERTY_MIXUP_none</key>
+        <name>Incorrect expression : Property getter or setter mixup</name>
+        <internalKey>STATIC_CS_PROPERTY_MIXUP_none</internalKey>
+        <description>This method appears to be getting or setting the wrong member.</description>
+        <severity>CRITICAL</severity>
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>BUG</type>
@@ -1536,16 +1575,68 @@
     </rule>
     <rule>
         <key>STATIC_CS_SENSITIVE_DATA_LEAK_none</key>
-        <name>High impact security : Leak of sensitive data</name>
+        <name>High impact security : Cleartext transmission of sensitive data</name>
         <internalKey>STATIC_CS_SENSITIVE_DATA_LEAK_none</internalKey>
-        <description>Sensitive data is stored or transmitted without encrypting it</description>
+        <description>Transmitting sensitive data in cleartext.</description>
         <severity>BLOCKER</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>STATIC_CS_UNEXPECTED_CONTROL_FLOW_continue_in_do_while_false</key>
+        <name>Control flow issues : Unexpected control flow</name>
+        <internalKey>STATIC_CS_UNEXPECTED_CONTROL_FLOW_continue_in_do_while_false</internalKey>
+        <description>Loop body does not re-execute on &apos;continue&apos; statement</description>
+        <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>STATIC_CS_UNEXPECTED_CONTROL_FLOW_none</key>
+        <name>Control flow issues : Unexpected control flow</name>
+        <internalKey>STATIC_CS_UNEXPECTED_CONTROL_FLOW_none</internalKey>
+        <description>Loop body does not re-execute on &apos;continue&apos; statement</description>
+        <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>STATIC_CS_UNLOGGED_SECURITY_EXCEPTION_unlogged_security_exception</key>
+        <name>Medium impact security : Unlogged security exception</name>
+        <internalKey>STATIC_CS_UNLOGGED_SECURITY_EXCEPTION_unlogged_security_exception</internalKey>
+        <description>A security exception is caught but not logged.</description>
+        <severity>CRITICAL</severity>
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>VULNERABILITY</type>
         <tag>coverity</tag>
         <tag>c#</tag>
         <tag>coverity-security</tag>
+    </rule>
+    <rule>
+        <key>STATIC_CS_UNLOGGED_SECURITY_EXCEPTION_none</key>
+        <name>Medium impact security : Unlogged security exception</name>
+        <internalKey>STATIC_CS_UNLOGGED_SECURITY_EXCEPTION_none</internalKey>
+        <description>A security exception is caught but not logged.</description>
+        <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
         <key>STATIC_CS_NON_STATIC_GUARDING_STATIC_none</key>
@@ -1643,6 +1734,19 @@
         <name>Low impact security : Debug mode enabled</name>
         <internalKey>STATIC_CS_CONFIG.ENABLED_DEBUG_MODE_none</internalKey>
         <description>ASP.NET debug mode is enabled.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>coverity-security</tag>
+    </rule>
+    <rule>
+        <key>STATIC_CS_LOG_INJECTION_none</key>
+        <name>Audit impact security : Log injection</name>
+        <internalKey>STATIC_CS_LOG_INJECTION_none</internalKey>
+        <description>User-controllable data is stored in logs.</description>
         <severity>MAJOR</severity>
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
@@ -1782,19 +1886,6 @@
         <tag>coverity-quality</tag>
     </rule>
     <rule>
-        <key>STATIC_CS_REGEX_INJECTION_none</key>
-        <name>Low impact security : Regular expression injection</name>
-        <internalKey>STATIC_CS_REGEX_INJECTION_none</internalKey>
-        <description>A regular expression is constructed from a user-controllable string.</description>
-        <severity>MAJOR</severity>
-        <cardinality>SINGLE</cardinality>
-        <status>READY</status>
-        <type>VULNERABILITY</type>
-        <tag>coverity</tag>
-        <tag>c#</tag>
-        <tag>coverity-security</tag>
-    </rule>
-    <rule>
         <key>STATIC_CS_INSECURE_RANDOM_insecure_random_used</key>
         <name>Insecure random category : Insecure random value used in security context</name>
         <internalKey>STATIC_CS_INSECURE_RANDOM_insecure_random_used</internalKey>
@@ -1802,10 +1893,9 @@
         <severity>CRITICAL</severity>
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
-        <type>BUG</type>
+        <type>VULNERABILITY</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>coverity-quality</tag>
         <tag>coverity-security</tag>
     </rule>
     <rule>
@@ -1816,10 +1906,9 @@
         <severity>CRITICAL</severity>
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
-        <type>BUG</type>
+        <type>VULNERABILITY</type>
         <tag>coverity</tag>
         <tag>c#</tag>
-        <tag>coverity-quality</tag>
         <tag>coverity-security</tag>
     </rule>
     <rule>
@@ -1836,10 +1925,36 @@
         <tag>coverity-quality</tag>
     </rule>
     <rule>
+        <key>STATIC_CS_REGEX_INJECTION_none</key>
+        <name>Low impact security : Regular expression injection</name>
+        <internalKey>STATIC_CS_REGEX_INJECTION_none</internalKey>
+        <description>A regular expression is constructed from a user-controllable string.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>coverity-security</tag>
+    </rule>
+    <rule>
+        <key>STATIC_CS_UNSAFE_NAMED_QUERY_none</key>
+        <name>Low impact security : Unsafe named query</name>
+        <internalKey>STATIC_CS_UNSAFE_NAMED_QUERY_none</internalKey>
+        <description>A user-controllable string is used to select a named database query.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>c#</tag>
+        <tag>coverity-security</tag>
+    </rule>
+    <rule>
         <key>STATIC_CS_SQLI_none</key>
         <name>High impact security : SQL injection</name>
         <internalKey>STATIC_CS_SQLI_none</internalKey>
-        <description>Untrusted user-supplied data is inserted into a SQL statement without adequate validation, escaping, or filtering</description>
+        <description>Untrusted user-supplied data is inserted into a SQL statement without adequate validation, escaping, or filtering.</description>
         <severity>BLOCKER</severity>
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
@@ -1852,7 +1967,7 @@
         <key>STATIC_CS_SQLI_nosink</key>
         <name>Medium impact security : SQL injection</name>
         <internalKey>STATIC_CS_SQLI_nosink</internalKey>
-        <description>Untrusted user-supplied data is inserted into an apparent SQL statement without adequate validation, escaping, or filtering</description>
+        <description>Untrusted user-supplied data is inserted into an apparent SQL statement without adequate validation, escaping, or filtering.</description>
         <severity>CRITICAL</severity>
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
@@ -1865,7 +1980,7 @@
         <key>STATIC_CS_SQLI_sink</key>
         <name>High impact security : SQL injection</name>
         <internalKey>STATIC_CS_SQLI_sink</internalKey>
-        <description>Untrusted user-supplied data is inserted into a SQL statement without adequate validation, escaping, or filtering</description>
+        <description>Untrusted user-supplied data is inserted into a SQL statement without adequate validation, escaping, or filtering.</description>
         <severity>BLOCKER</severity>
         <cardinality>SINGLE</cardinality>
         <status>READY</status>

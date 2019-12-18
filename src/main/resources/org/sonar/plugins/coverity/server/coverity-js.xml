@@ -1,5 +1,551 @@
 <rules>
     <rule>
+        <key>OTHER_AWS_INSUFFICIENT_PRESIGNED_URL_TIMEOUT_aws_insufficient_presigned_url_timeout</key>
+        <name>Low impact security : AWS insufficient presigned url timeout</name>
+        <internalKey>OTHER_AWS_INSUFFICIENT_PRESIGNED_URL_TIMEOUT_aws_insufficient_presigned_url_timeout</internalKey>
+        <description>The expiration time of the presigned request in S3 service is too long.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-security</tag>
+    </rule>
+    <rule>
+        <key>OTHER_AWS_INSUFFICIENT_PRESIGNED_URL_TIMEOUT_none</key>
+        <name>Low impact security : AWS insufficient presigned url timeout</name>
+        <internalKey>OTHER_AWS_INSUFFICIENT_PRESIGNED_URL_TIMEOUT_none</internalKey>
+        <description>The expiration time of the presigned request in S3 service is too long.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_EXPLICIT_THIS_EXPECTED_none</key>
+        <name>API usage errors : Explicit this expected</name>
+        <internalKey>OTHER_EXPLICIT_THIS_EXPECTED_none</internalKey>
+        <description>The called function may expect an explicit this argument.</description>
+        <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_JSHINT.W028_none</key>
+        <name>JSHint : JSHint Warning</name>
+        <internalKey>OTHER_JSHINT.W028_none</internalKey>
+        <description>Label &apos;&lt;something&gt;&apos; on {b} statement.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_JSHINT.W027_none</key>
+        <name>JSHint : JSHint Warning</name>
+        <internalKey>OTHER_JSHINT.W027_none</internalKey>
+        <description>Unreachable &apos;&lt;something&gt;&apos; after &apos;{b}&apos;.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_INSUFFICIENT_LOGGING_logging_obligation</key>
+        <name>Low impact security : Insufficient logging</name>
+        <internalKey>OTHER_INSUFFICIENT_LOGGING_logging_obligation</internalKey>
+        <description>The code handles a security error. The event should be logged but is not.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-security</tag>
+    </rule>
+    <rule>
+        <key>OTHER_INSUFFICIENT_LOGGING_none</key>
+        <name>Low impact security : Insufficient logging</name>
+        <internalKey>OTHER_INSUFFICIENT_LOGGING_none</internalKey>
+        <description>The code handles a security error. The event should be logged but is not.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_JSHINT.W024_none</key>
+        <name>JSHint : JSHint Warning</name>
+        <internalKey>OTHER_JSHINT.W024_none</internalKey>
+        <description>Expected an identifier and instead saw &apos;&lt;something&gt;&apos; (a reserved word).</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_JSHINT.W023_none</key>
+        <name>JSHint : JSHint Warning</name>
+        <internalKey>OTHER_JSHINT.W023_none</internalKey>
+        <description>Expected an identifier in an assignment and instead saw a function invocation.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_JSHINT.W026_none</key>
+        <name>JSHint : JSHint Warning</name>
+        <internalKey>OTHER_JSHINT.W026_none</internalKey>
+        <description>Inner functions should be listed at the top of the outer function.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_JSHINT.W025_none</key>
+        <name>JSHint : JSHint Warning</name>
+        <internalKey>OTHER_JSHINT.W025_none</internalKey>
+        <description>Missing name in function declaration.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_JSHINT.W020_none</key>
+        <name>JSHint : JSHint Warning</name>
+        <internalKey>OTHER_JSHINT.W020_none</internalKey>
+        <description>Read only.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_COOKIE_INJECTION_none</key>
+        <name>Low impact security : Cookie injection</name>
+        <internalKey>OTHER_COOKIE_INJECTION_none</internalKey>
+        <description>A user-controllable string is used to construct a cookie.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-security</tag>
+    </rule>
+    <rule>
+        <key>OTHER_JSHINT.W022_none</key>
+        <name>JSHint : JSHint Warning</name>
+        <internalKey>OTHER_JSHINT.W022_none</internalKey>
+        <description>Do not assign to the exception parameter.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_JSHINT.W140_none</key>
+        <name>JSHint : JSHint Warning</name>
+        <internalKey>OTHER_JSHINT.W140_none</internalKey>
+        <description>Missing comma.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_JSHINT.W021_none</key>
+        <name>JSHint : JSHint Warning</name>
+        <internalKey>OTHER_JSHINT.W021_none</internalKey>
+        <description>Reassignment of &apos;&lt;something&gt;&apos;, which is is a {b}. Use &apos;var&apos; or &apos;let&apos; to declare bindings that may change.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_NOSQL_QUERY_INJECTION_none</key>
+        <name>Medium impact security : NoSQL query injection</name>
+        <internalKey>OTHER_NOSQL_QUERY_INJECTION_none</internalKey>
+        <description>A user-controllable string is injected into a NoSQL query.</description>
+        <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-security</tag>
+    </rule>
+    <rule>
+        <key>OTHER_UNCHECKED_ORIGIN_none</key>
+        <name>Medium impact security : Unchecked origin of message event</name>
+        <internalKey>OTHER_UNCHECKED_ORIGIN_none</internalKey>
+        <description>A &apos;message&apos; handler does not check the origin of its received message event.</description>
+        <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-security</tag>
+    </rule>
+    <rule>
+        <key>OTHER_INSECURE_SALT_hardcoded</key>
+        <name>Medium impact security : Predictable salt used with cryptographic hash function</name>
+        <internalKey>OTHER_INSECURE_SALT_hardcoded</internalKey>
+        <description>Using a cryptographic hash function with an insecure salt.</description>
+        <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-security</tag>
+    </rule>
+    <rule>
+        <key>OTHER_INSECURE_SALT_none</key>
+        <name>Medium impact security : Predictable salt used with cryptographic hash function</name>
+        <internalKey>OTHER_INSECURE_SALT_none</internalKey>
+        <description>Using a cryptographic hash function with an insecure salt.</description>
+        <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_CSRF_MISCONFIGURATION_HAPI_CRUMB_hapi_crumb_cookie_name</key>
+        <name>Medium impact security : Misconfiguration of CSRF protection</name>
+        <internalKey>OTHER_CSRF_MISCONFIGURATION_HAPI_CRUMB_hapi_crumb_cookie_name</internalKey>
+        <description>CSRF checks always pass due to a misconfiguration of the crumb plugin to Hapi.js.</description>
+        <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-security</tag>
+    </rule>
+    <rule>
+        <key>OTHER_CSRF_MISCONFIGURATION_HAPI_CRUMB_hapi_crumb_no_validation</key>
+        <name>Low impact security : CSRF token not validated</name>
+        <internalKey>OTHER_CSRF_MISCONFIGURATION_HAPI_CRUMB_hapi_crumb_no_validation</internalKey>
+        <description>The CSRF token is not validated.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-security</tag>
+    </rule>
+    <rule>
+        <key>OTHER_CSRF_MISCONFIGURATION_HAPI_CRUMB_insecure_cookie</key>
+        <name>Medium impact security : Insecure CSRF cookie</name>
+        <internalKey>OTHER_CSRF_MISCONFIGURATION_HAPI_CRUMB_insecure_cookie</internalKey>
+        <description>Sending a CSRF token in a cookie without the &apos;Secure&apos; attribute.</description>
+        <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-security</tag>
+    </rule>
+    <rule>
+        <key>OTHER_CSRF_MISCONFIGURATION_HAPI_CRUMB_insufficient_token_entropy</key>
+        <name>Low impact security : Small CSRF token</name>
+        <internalKey>OTHER_CSRF_MISCONFIGURATION_HAPI_CRUMB_insufficient_token_entropy</internalKey>
+        <description>Generating a CSRF token with too few random bits.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-security</tag>
+    </rule>
+    <rule>
+        <key>OTHER_CSRF_MISCONFIGURATION_HAPI_CRUMB_none</key>
+        <name>Low impact security : Small CSRF token</name>
+        <internalKey>OTHER_CSRF_MISCONFIGURATION_HAPI_CRUMB_none</internalKey>
+        <description>Generating a CSRF token with too few random bits.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_REVERSE_INULL_none</key>
+        <name>Null pointer dereferences : Property access or function call before check for null or undefined</name>
+        <internalKey>OTHER_REVERSE_INULL_none</internalKey>
+        <description>All paths that lead to this comparison against null or undefined already use the value earlier for accessing a property or as a function call</description>
+        <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_IDENTIFIER_TYPO_none</key>
+        <name>Incorrect expression : Typo in identifier</name>
+        <internalKey>OTHER_IDENTIFIER_TYPO_none</internalKey>
+        <description>This code uniquely references a named entity that is suspiciously close in spelling to another, more commonly referenced entity.</description>
+        <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_CONFIG.MYSQL_SSL_VERIFY_DISABLED_mysql_ssl_verify_disabled</key>
+        <name>Low impact security : MySQL SSL verification disabled</name>
+        <internalKey>OTHER_CONFIG.MYSQL_SSL_VERIFY_DISABLED_mysql_ssl_verify_disabled</internalKey>
+        <description>The module used for MySQL communication establishes a connection over SSL, but does not validate the SSL certificate. The &apos;rejectUnauthorized&apos; setting is set to &apos;false&apos;, and therefore, an invalid or a malicious certificate can be used to establish an SSL connection. This may lead to man-in-the-middle attacks and leaking sensitive data.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-security</tag>
+    </rule>
+    <rule>
+        <key>OTHER_CONFIG.MYSQL_SSL_VERIFY_DISABLED_none</key>
+        <name>Low impact security : MySQL SSL verification disabled</name>
+        <internalKey>OTHER_CONFIG.MYSQL_SSL_VERIFY_DISABLED_none</internalKey>
+        <description>The module used for MySQL communication establishes a connection over SSL, but does not validate the SSL certificate. The &apos;rejectUnauthorized&apos; setting is set to &apos;false&apos;, and therefore, an invalid or a malicious certificate can be used to establish an SSL connection. This may lead to man-in-the-middle attacks and leaking sensitive data.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_JSHINT.W039_none</key>
+        <name>JSHint : JSHint Warning</name>
+        <internalKey>OTHER_JSHINT.W039_none</internalKey>
+        <description>&apos;&lt;something&gt;&apos; is not allowed.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_JSHINT.W038_none</key>
+        <name>JSHint : JSHint Warning</name>
+        <internalKey>OTHER_JSHINT.W038_none</internalKey>
+        <description>&apos;&lt;something&gt;&apos; used out of scope.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_JSHINT.W035_none</key>
+        <name>JSHint : JSHint Warning</name>
+        <internalKey>OTHER_JSHINT.W035_none</internalKey>
+        <description>Empty block.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_JSHINT.W034_none</key>
+        <name>JSHint : JSHint Warning</name>
+        <internalKey>OTHER_JSHINT.W034_none</internalKey>
+        <description>Unnecessary directive &quot;&lt;something&gt;&quot;.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_JSHINT.W037_none</key>
+        <name>JSHint : JSHint Warning</name>
+        <internalKey>OTHER_JSHINT.W037_none</internalKey>
+        <description>&apos;&lt;something&gt;&apos; is a statement label.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_HARDCODED_CREDENTIALS_none</key>
+        <name>Medium impact security : Use of hard-coded credentials</name>
+        <internalKey>OTHER_HARDCODED_CREDENTIALS_none</internalKey>
+        <description>Credentials are stored directly in the source code</description>
+        <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-security</tag>
+    </rule>
+    <rule>
+        <key>OTHER_HARDCODED_CREDENTIALS_uri</key>
+        <name>Medium impact security : Use of hard-coded URI password</name>
+        <internalKey>OTHER_HARDCODED_CREDENTIALS_uri</internalKey>
+        <description>A URI with a password component is stored directly in the source code.</description>
+        <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-security</tag>
+    </rule>
+    <rule>
+        <key>OTHER_JSHINT.W036_none</key>
+        <name>JSHint : JSHint Warning</name>
+        <internalKey>OTHER_JSHINT.W036_none</internalKey>
+        <description>Unexpected /*member &apos;&lt;something&gt;&apos;.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_JSHINT.W031_none</key>
+        <name>JSHint : JSHint Warning</name>
+        <internalKey>OTHER_JSHINT.W031_none</internalKey>
+        <description>Do not use &apos;new&apos; for side effects.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_JSHINT.W030_none</key>
+        <name>JSHint : JSHint Warning</name>
+        <internalKey>OTHER_JSHINT.W030_none</internalKey>
+        <description>Expected an assignment or function call and instead saw an expression.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_JSHINT.W033_none</key>
+        <name>JSHint : JSHint Warning</name>
+        <internalKey>OTHER_JSHINT.W033_none</internalKey>
+        <description>Missing semicolon.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_JSHINT.W032_none</key>
+        <name>JSHint : JSHint Warning</name>
+        <internalKey>OTHER_JSHINT.W032_none</internalKey>
+        <description>Unnecessary semicolon.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_URL_MANIPULATION_none</key>
+        <name>Low impact security : URL manipulation</name>
+        <internalKey>OTHER_URL_MANIPULATION_none</internalKey>
+        <description>Constructing an HTTP request URL using a user-controllable string.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-security</tag>
+    </rule>
+    <rule>
         <key>OTHER_MISSING_BREAK_none</key>
         <name>Control flow issues : Missing break in switch</name>
         <internalKey>OTHER_MISSING_BREAK_none</internalKey>
@@ -26,11 +572,622 @@
         <tag>coverity-quality</tag>
     </rule>
     <rule>
-        <key>OTHER_OS_CMD_INJECTION_none</key>
-        <name>High impact security : OS Command Injection</name>
-        <internalKey>OTHER_OS_CMD_INJECTION_none</internalKey>
-        <description>Untrusted user-supplied data is inserted into an operating system command without adequate validation, escaping, or filtering. This inserted data can change the intent of the operating system command. The change to the operating system command may result in the unauthorized disclosure, destruction, or modification of sensitive data or operating system resources.</description>
+        <key>OTHER_JSHINT.W049_none</key>
+        <name>JSHint : JSHint Warning</name>
+        <internalKey>OTHER_JSHINT.W049_none</internalKey>
+        <description>Unexpected escaped character &apos;&lt;something&gt;&apos; in regular expression.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_EXPRESS_SESSION_UNSAFE_MEMORYSTORE_express_session_unsafe_memorystore</key>
+        <name>Low impact security : Insecure session storage mechanism used</name>
+        <internalKey>OTHER_EXPRESS_SESSION_UNSAFE_MEMORYSTORE_express_session_unsafe_memorystore</internalKey>
+        <description>The session storage that &apos;express-session&apos; module explicitly (or by default) provided is insecure.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-security</tag>
+    </rule>
+    <rule>
+        <key>OTHER_EXPRESS_SESSION_UNSAFE_MEMORYSTORE_none</key>
+        <name>Low impact security : Insecure session storage mechanism used</name>
+        <internalKey>OTHER_EXPRESS_SESSION_UNSAFE_MEMORYSTORE_none</internalKey>
+        <description>The session storage that &apos;express-session&apos; module explicitly (or by default) provided is insecure.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_JSHINT.W046_none</key>
+        <name>JSHint : JSHint Warning</name>
+        <internalKey>OTHER_JSHINT.W046_none</internalKey>
+        <description>Don&apos;t use extra leading zeros &apos;&lt;something&gt;&apos;.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_JSHINT.W045_none</key>
+        <name>JSHint : JSHint Warning</name>
+        <internalKey>OTHER_JSHINT.W045_none</internalKey>
+        <description>Bad number &apos;&lt;something&gt;&apos;.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_JSHINT.W048_none</key>
+        <name>JSHint : JSHint Warning</name>
+        <internalKey>OTHER_JSHINT.W048_none</internalKey>
+        <description>Unexpected control character in regular expression.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_JSHINT.W047_none</key>
+        <name>JSHint : JSHint Warning</name>
+        <internalKey>OTHER_JSHINT.W047_none</internalKey>
+        <description>A trailing decimal point can be confused with a dot: &apos;&lt;something&gt;&apos;.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_JSHINT.W042_none</key>
+        <name>JSHint : JSHint Warning</name>
+        <internalKey>OTHER_JSHINT.W042_none</internalKey>
+        <description>Avoid EOL escaping.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_JSHINT.W041_none</key>
+        <name>JSHint : JSHint Warning</name>
+        <internalKey>OTHER_JSHINT.W041_none</internalKey>
+        <description>null</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_JSHINT.W044_none</key>
+        <name>JSHint : JSHint Warning</name>
+        <internalKey>OTHER_JSHINT.W044_none</internalKey>
+        <description>Bad or unnecessary escaping.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_JSHINT.W043_none</key>
+        <name>JSHint : JSHint Warning</name>
+        <internalKey>OTHER_JSHINT.W043_none</internalKey>
+        <description>Bad escaping of EOL. Use option multistr if needed.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_JSHINT.W040_none</key>
+        <name>JSHint : JSHint Warning</name>
+        <internalKey>OTHER_JSHINT.W040_none</internalKey>
+        <description>If a strict mode function is executed using function invocation, its &apos;this&apos; value will be undefined.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_SENSITIVE_DATA_LEAK_cleartext_exception_storage_in_gui</key>
+        <name>Medium impact security : Exception leaked to user interface</name>
+        <internalKey>OTHER_SENSITIVE_DATA_LEAK_cleartext_exception_storage_in_gui</internalKey>
+        <description>Displaying an exception message or stack trace in the user interface.</description>
+        <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-security</tag>
+    </rule>
+    <rule>
+        <key>OTHER_SENSITIVE_DATA_LEAK_cleartext_storage_in_cookie</key>
+        <name>High impact security : Cleartext sensitive data in a cookie</name>
+        <internalKey>OTHER_SENSITIVE_DATA_LEAK_cleartext_storage_in_cookie</internalKey>
+        <description>Storing unencrypted sensitive data in a cookie.</description>
         <severity>BLOCKER</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-security</tag>
+    </rule>
+    <rule>
+        <key>OTHER_SENSITIVE_DATA_LEAK_cleartext_storage_in_database</key>
+        <name>Medium impact security : Cleartext sensitive data in a database</name>
+        <internalKey>OTHER_SENSITIVE_DATA_LEAK_cleartext_storage_in_database</internalKey>
+        <description>Storing unencrypted sensitive data to a database.</description>
+        <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-security</tag>
+    </rule>
+    <rule>
+        <key>OTHER_SENSITIVE_DATA_LEAK_cleartext_storage_in_file</key>
+        <name>Low impact security : Cleartext sensitive data in a file</name>
+        <internalKey>OTHER_SENSITIVE_DATA_LEAK_cleartext_storage_in_file</internalKey>
+        <description>Storing unencrypted sensitive data to a file.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-security</tag>
+    </rule>
+    <rule>
+        <key>OTHER_SENSITIVE_DATA_LEAK_cleartext_storage_in_gui</key>
+        <name>High impact security : Display of sensitive data in the user interface</name>
+        <internalKey>OTHER_SENSITIVE_DATA_LEAK_cleartext_storage_in_gui</internalKey>
+        <description>Displaying sensitive data in the user interface.</description>
+        <severity>BLOCKER</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-security</tag>
+    </rule>
+    <rule>
+        <key>OTHER_SENSITIVE_DATA_LEAK_cleartext_storage_in_log</key>
+        <name>Low impact security : Information exposure to log file</name>
+        <internalKey>OTHER_SENSITIVE_DATA_LEAK_cleartext_storage_in_log</internalKey>
+        <description>Logging sensitive data.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-security</tag>
+    </rule>
+    <rule>
+        <key>OTHER_SENSITIVE_DATA_LEAK_cleartext_storage_in_registry</key>
+        <name>Medium impact security : Cleartext sensitive data in the registry</name>
+        <internalKey>OTHER_SENSITIVE_DATA_LEAK_cleartext_storage_in_registry</internalKey>
+        <description>Storing unencrypted sensitive data in the system registry.</description>
+        <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-security</tag>
+    </rule>
+    <rule>
+        <key>OTHER_SENSITIVE_DATA_LEAK_cleartext_transmission</key>
+        <name>High impact security : Cleartext transmission of sensitive data</name>
+        <internalKey>OTHER_SENSITIVE_DATA_LEAK_cleartext_transmission</internalKey>
+        <description>Transmitting sensitive data in cleartext.</description>
+        <severity>BLOCKER</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-security</tag>
+    </rule>
+    <rule>
+        <key>OTHER_SENSITIVE_DATA_LEAK_none</key>
+        <name>High impact security : Cleartext transmission of sensitive data</name>
+        <internalKey>OTHER_SENSITIVE_DATA_LEAK_none</internalKey>
+        <description>Transmitting sensitive data in cleartext.</description>
+        <severity>BLOCKER</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_TAINTED_ENVIRONMENT_WITH_EXECUTION_none</key>
+        <name>Low impact security : Tainted environment variable for subprocess</name>
+        <internalKey>OTHER_TAINTED_ENVIRONMENT_WITH_EXECUTION_none</internalKey>
+        <description>A user-controllable string is passed into the environment of a process that is executed.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-security</tag>
+    </rule>
+    <rule>
+        <key>OTHER_JSHINT.W057_none</key>
+        <name>JSHint : JSHint Warning</name>
+        <internalKey>OTHER_JSHINT.W057_none</internalKey>
+        <description>Weird construction. Is &apos;new&apos; necessary?</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_JSHINT.W056_none</key>
+        <name>JSHint : JSHint Warning</name>
+        <internalKey>OTHER_JSHINT.W056_none</internalKey>
+        <description>Bad constructor.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_JSHINT.W059_none</key>
+        <name>JSHint : JSHint Warning</name>
+        <internalKey>OTHER_JSHINT.W059_none</internalKey>
+        <description>Avoid arguments.&lt;something&gt;.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_JSHINT.W058_none</key>
+        <name>JSHint : JSHint Warning</name>
+        <internalKey>OTHER_JSHINT.W058_none</internalKey>
+        <description>Missing &apos;()&apos; invoking a constructor.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_JSHINT.W053_none</key>
+        <name>JSHint : JSHint Warning</name>
+        <internalKey>OTHER_JSHINT.W053_none</internalKey>
+        <description>Do not use &lt;something&gt; as a constructor.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_JSHINT.W052_none</key>
+        <name>JSHint : JSHint Warning</name>
+        <internalKey>OTHER_JSHINT.W052_none</internalKey>
+        <description>Unexpected &apos;&lt;something&gt;&apos;.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_JSHINT.W055_none</key>
+        <name>JSHint : JSHint Warning</name>
+        <internalKey>OTHER_JSHINT.W055_none</internalKey>
+        <description>A constructor name should start with an uppercase letter.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_DOM_XSS_none</key>
+        <name>High impact security : DOM-based cross-site scripting</name>
+        <internalKey>OTHER_DOM_XSS_none</internalKey>
+        <description>Untrusted user-supplied data is inserted into a context that can execute JavaScript.</description>
+        <severity>BLOCKER</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-security</tag>
+    </rule>
+    <rule>
+        <key>OTHER_JSHINT.W054_none</key>
+        <name>JSHint : JSHint Warning</name>
+        <internalKey>OTHER_JSHINT.W054_none</internalKey>
+        <description>The Function constructor is a form of eval.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_CORS_MISCONFIGURATION_cors_configured_globally</key>
+        <name>Low impact security : CORS is enabled on all endpoints</name>
+        <internalKey>OTHER_CORS_MISCONFIGURATION_cors_configured_globally</internalKey>
+        <description>The CORS policies are applied globally.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-security</tag>
+    </rule>
+    <rule>
+        <key>OTHER_CORS_MISCONFIGURATION_cors_origin_string</key>
+        <name>Audit impact security : Origin set to a single string</name>
+        <internalKey>OTHER_CORS_MISCONFIGURATION_cors_origin_string</internalKey>
+        <description>The CORS configuration sets the origin property to a single string value.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-security</tag>
+    </rule>
+    <rule>
+        <key>OTHER_CORS_MISCONFIGURATION_cors_with_credentials_all_origin</key>
+        <name>High impact security : Credentials sent to all origins</name>
+        <internalKey>OTHER_CORS_MISCONFIGURATION_cors_with_credentials_all_origin</internalKey>
+        <description>The CORS policy is set to allow credentials and it reflects any origin in the Access-Control-Allow-Origin header.</description>
+        <severity>BLOCKER</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-security</tag>
+    </rule>
+    <rule>
+        <key>OTHER_CORS_MISCONFIGURATION_cors_with_credentials_http_origin</key>
+        <name>Low impact security : Unencrypted origin trusted for credentialed requests</name>
+        <internalKey>OTHER_CORS_MISCONFIGURATION_cors_with_credentials_http_origin</internalKey>
+        <description>The CORS policy shares responses to credentialed requests with non-HTTPS origins.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-security</tag>
+    </rule>
+    <rule>
+        <key>OTHER_CORS_MISCONFIGURATION_cors_with_credentials_null_origin</key>
+        <name>High impact security : Responses for credentialed CORS requests shared with null origin</name>
+        <internalKey>OTHER_CORS_MISCONFIGURATION_cors_with_credentials_null_origin</internalKey>
+        <description>The CORS policy shares sensitive responses with the null origin by setting the Access-Control-Allow-Origin header &apos;null&apos;.</description>
+        <severity>BLOCKER</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-security</tag>
+    </rule>
+    <rule>
+        <key>OTHER_CORS_MISCONFIGURATION_cors_with_credentials_subdomain_origin</key>
+        <name>Low impact security : Credentials sent to all subdomain origins</name>
+        <internalKey>OTHER_CORS_MISCONFIGURATION_cors_with_credentials_subdomain_origin</internalKey>
+        <description>The CORS policy is set to allow credentials and it reflects any subdomain origin in the Access-Control-Allow-Origin header.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-security</tag>
+    </rule>
+    <rule>
+        <key>OTHER_CORS_MISCONFIGURATION_cors_without_credentials_permissive_origin</key>
+        <name>Audit impact security : CORS requests allowed from all origins</name>
+        <internalKey>OTHER_CORS_MISCONFIGURATION_cors_without_credentials_permissive_origin</internalKey>
+        <description>The Access-Control-Allow-Origin header is set to share the requested resource with any origin.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-security</tag>
+    </rule>
+    <rule>
+        <key>OTHER_CORS_MISCONFIGURATION_none</key>
+        <name>Audit impact security : CORS requests allowed from all origins</name>
+        <internalKey>OTHER_CORS_MISCONFIGURATION_none</internalKey>
+        <description>The Access-Control-Allow-Origin header is set to share the requested resource with any origin.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_SQLI_none</key>
+        <name>High impact security : SQL injection</name>
+        <internalKey>OTHER_SQLI_none</internalKey>
+        <description>Untrusted user-supplied data is inserted into a SQL statement without adequate validation, escaping, or filtering.</description>
+        <severity>BLOCKER</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-security</tag>
+    </rule>
+    <rule>
+        <key>OTHER_SQLI_nosink</key>
+        <name>Medium impact security : SQL injection</name>
+        <internalKey>OTHER_SQLI_nosink</internalKey>
+        <description>Untrusted user-supplied data is inserted into an apparent SQL statement without adequate validation, escaping, or filtering.</description>
+        <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-security</tag>
+    </rule>
+    <rule>
+        <key>OTHER_SQLI_sink</key>
+        <name>High impact security : SQL injection</name>
+        <internalKey>OTHER_SQLI_sink</internalKey>
+        <description>Untrusted user-supplied data is inserted into a SQL statement without adequate validation, escaping, or filtering.</description>
+        <severity>BLOCKER</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-security</tag>
+    </rule>
+    <rule>
+        <key>OTHER_JSHINT.W051_none</key>
+        <name>JSHint : JSHint Warning</name>
+        <internalKey>OTHER_JSHINT.W051_none</internalKey>
+        <description>Variables should not be deleted.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_JSHINT.W050_none</key>
+        <name>JSHint : JSHint Warning</name>
+        <internalKey>OTHER_JSHINT.W050_none</internalKey>
+        <description>JavaScript URL.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_UNREACHABLE_none</key>
+        <name>Control flow issues : Structurally dead code</name>
+        <internalKey>OTHER_UNREACHABLE_none</internalKey>
+        <description>Code block is unreachable because of the syntactic structure of the code</description>
+        <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_RISKY_CRYPTO_custom</key>
+        <name>Medium impact security : Violation of user-specified RISKY_CRYPTO policy</name>
+        <internalKey>OTHER_RISKY_CRYPTO_custom</internalKey>
+        <description>A cryptographic function was used in such a way as to violate the user-specified RISKY_CRYPTO policy. This violation may indicate that an attacker could decrypt or otherwise interfere with the encrypted or hashed data.</description>
+        <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-security</tag>
+    </rule>
+    <rule>
+        <key>OTHER_RISKY_CRYPTO_hashing</key>
+        <name>Medium impact security : Risky cryptographic hashing function</name>
+        <internalKey>OTHER_RISKY_CRYPTO_hashing</internalKey>
+        <description>A risky hashing function was used. This may allow an attacker to produce collisions on the hash or execute length extension attacks.</description>
+        <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-security</tag>
+    </rule>
+    <rule>
+        <key>OTHER_RISKY_CRYPTO_none</key>
+        <name>Medium impact security : Risky cryptographic function</name>
+        <internalKey>OTHER_RISKY_CRYPTO_none</internalKey>
+        <description>A risky cryptographic function was used. This may allow an attacker to decrypt encrypted data as the quality of the cryptographic protection is suspect.</description>
+        <severity>CRITICAL</severity>
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>VULNERABILITY</type>
@@ -43,6 +1200,695 @@
         <name>High impact security : Angular Expression Injection</name>
         <internalKey>OTHER_ANGULAR_EXPRESSION_INJECTION_none</internalKey>
         <description>An untrusted value is used to construct an Angular expression.</description>
+        <severity>BLOCKER</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-security</tag>
+    </rule>
+    <rule>
+        <key>OTHER_SCRIPT_CODE_INJECTION_none</key>
+        <name>High impact security : Script code injection</name>
+        <internalKey>OTHER_SCRIPT_CODE_INJECTION_none</internalKey>
+        <description>Script code interpreted or executed on the server is constructed from user-controllable data.</description>
+        <severity>BLOCKER</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-security</tag>
+    </rule>
+    <rule>
+        <key>OTHER_JSONWEBTOKEN_IGNORED_EXPIRATION_TIME_jwt_exipration</key>
+        <name>Medium impact security : Ignoring JSON web token expiration time</name>
+        <internalKey>OTHER_JSONWEBTOKEN_IGNORED_EXPIRATION_TIME_jwt_exipration</internalKey>
+        <description>Ignoring the expiration time for a JSON web token means it is valid forever.</description>
+        <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-security</tag>
+    </rule>
+    <rule>
+        <key>OTHER_JSONWEBTOKEN_IGNORED_EXPIRATION_TIME_jwt_not_before</key>
+        <name>Low impact security : Ignoring the notBefore time of a JSON web token</name>
+        <internalKey>OTHER_JSONWEBTOKEN_IGNORED_EXPIRATION_TIME_jwt_not_before</internalKey>
+        <description>Ignoring the notBefore setting of a JSON web token means it is valid immediately.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-security</tag>
+    </rule>
+    <rule>
+        <key>OTHER_JSONWEBTOKEN_IGNORED_EXPIRATION_TIME_none</key>
+        <name>Low impact security : Ignoring the notBefore time of a JSON web token</name>
+        <internalKey>OTHER_JSONWEBTOKEN_IGNORED_EXPIRATION_TIME_none</internalKey>
+        <description>Ignoring the notBefore setting of a JSON web token means it is valid immediately.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_JSHINT.W106_none</key>
+        <name>JSHint : JSHint Warning</name>
+        <internalKey>OTHER_JSHINT.W106_none</internalKey>
+        <description>Identifier &apos;&lt;something&gt;&apos; is not in camel case.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_JSHINT.W107_none</key>
+        <name>JSHint : JSHint Warning</name>
+        <internalKey>OTHER_JSHINT.W107_none</internalKey>
+        <description>Script URL.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_CORS_MISCONFIGURATION_AUDIT_cors_expose_sensitive_header</key>
+        <name>Audit impact security : Exposing sensitive headers</name>
+        <internalKey>OTHER_CORS_MISCONFIGURATION_AUDIT_cors_expose_sensitive_header</internalKey>
+        <description>The CORS is configured to expose sensitive headers.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-security</tag>
+    </rule>
+    <rule>
+        <key>OTHER_CORS_MISCONFIGURATION_AUDIT_cors_headers_allowed</key>
+        <name>Audit impact security : List of allowed headers not restricted</name>
+        <internalKey>OTHER_CORS_MISCONFIGURATION_AUDIT_cors_headers_allowed</internalKey>
+        <description>The CORS policy does not restrict the list of allowed headers in the Access-Control-Allowed-Headers HTTP header. By default, any header requested in a preflight request will be allowed.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-security</tag>
+    </rule>
+    <rule>
+        <key>OTHER_CORS_MISCONFIGURATION_AUDIT_cors_methods_allowed</key>
+        <name>Audit impact security : List of allowed methods not restricted</name>
+        <internalKey>OTHER_CORS_MISCONFIGURATION_AUDIT_cors_methods_allowed</internalKey>
+        <description>The CORS policy does not restrict the list of allowed methods.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-security</tag>
+    </rule>
+    <rule>
+        <key>OTHER_CORS_MISCONFIGURATION_AUDIT_cors_origin_string</key>
+        <name>Audit impact security : Origin set to a single string</name>
+        <internalKey>OTHER_CORS_MISCONFIGURATION_AUDIT_cors_origin_string</internalKey>
+        <description>The CORS configuration sets the origin property to a single string value.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-security</tag>
+    </rule>
+    <rule>
+        <key>OTHER_CORS_MISCONFIGURATION_AUDIT_cors_preflight_age_too_long</key>
+        <name>Audit impact security : Caching time for the preflight response is too long</name>
+        <internalKey>OTHER_CORS_MISCONFIGURATION_AUDIT_cors_preflight_age_too_long</internalKey>
+        <description>The CORS preflight response caching time is too long.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-security</tag>
+    </rule>
+    <rule>
+        <key>OTHER_CORS_MISCONFIGURATION_AUDIT_cors_with_credentials_all_origin</key>
+        <name>High impact security : Credentials sent to all origins</name>
+        <internalKey>OTHER_CORS_MISCONFIGURATION_AUDIT_cors_with_credentials_all_origin</internalKey>
+        <description>The CORS policy is set to allow credentials and it reflects any origin in the Access-Control-Allow-Origin header.</description>
+        <severity>BLOCKER</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-security</tag>
+    </rule>
+    <rule>
+        <key>OTHER_CORS_MISCONFIGURATION_AUDIT_cors_with_credentials_http_origin</key>
+        <name>Low impact security : Unencrypted origin trusted for credentialed requests</name>
+        <internalKey>OTHER_CORS_MISCONFIGURATION_AUDIT_cors_with_credentials_http_origin</internalKey>
+        <description>The CORS policy shares responses to credentialed requests with non-HTTPS origins.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-security</tag>
+    </rule>
+    <rule>
+        <key>OTHER_CORS_MISCONFIGURATION_AUDIT_cors_with_credentials_null_origin</key>
+        <name>High impact security : Responses for credentialed CORS requests shared with null origin</name>
+        <internalKey>OTHER_CORS_MISCONFIGURATION_AUDIT_cors_with_credentials_null_origin</internalKey>
+        <description>The CORS policy shares sensitive responses with the null origin by setting the Access-Control-Allow-Origin header &apos;null&apos;.</description>
+        <severity>BLOCKER</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-security</tag>
+    </rule>
+    <rule>
+        <key>OTHER_CORS_MISCONFIGURATION_AUDIT_cors_with_credentials_subdomain_origin</key>
+        <name>Low impact security : Credentials sent to all subdomain origins</name>
+        <internalKey>OTHER_CORS_MISCONFIGURATION_AUDIT_cors_with_credentials_subdomain_origin</internalKey>
+        <description>The CORS policy is set to allow credentials and it reflects any subdomain origin in the Access-Control-Allow-Origin header.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-security</tag>
+    </rule>
+    <rule>
+        <key>OTHER_CORS_MISCONFIGURATION_AUDIT_cors_without_credentials_permissive_origin</key>
+        <name>Audit impact security : CORS requests allowed from all origins</name>
+        <internalKey>OTHER_CORS_MISCONFIGURATION_AUDIT_cors_without_credentials_permissive_origin</internalKey>
+        <description>The Access-Control-Allow-Origin header is set to share the requested resource with any origin.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-security</tag>
+    </rule>
+    <rule>
+        <key>OTHER_CORS_MISCONFIGURATION_AUDIT_none</key>
+        <name>Audit impact security : CORS requests allowed from all origins</name>
+        <internalKey>OTHER_CORS_MISCONFIGURATION_AUDIT_none</internalKey>
+        <description>The Access-Control-Allow-Origin header is set to share the requested resource with any origin.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_JSHINT.W104_none</key>
+        <name>JSHint : JSHint Warning</name>
+        <internalKey>OTHER_JSHINT.W104_none</internalKey>
+        <description>&apos;&lt;something&gt;&apos; is available in ES{b} (use &apos;esversion: {b}&apos;) or Mozilla JS extensions (use moz).</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_JSHINT.W105_none</key>
+        <name>JSHint : JSHint Warning</name>
+        <internalKey>OTHER_JSHINT.W105_none</internalKey>
+        <description>Unexpected &lt;something&gt; in &apos;{b}&apos;.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_JSHINT.W102_none</key>
+        <name>JSHint : JSHint Warning</name>
+        <internalKey>OTHER_JSHINT.W102_none</internalKey>
+        <description>null</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_TEMPLATE_INJECTION_none</key>
+        <name>High impact security : Remote code execution via template source injection</name>
+        <internalKey>OTHER_TEMPLATE_INJECTION_none</internalKey>
+        <description>Untrusted user-supplied data is inserted into a context that can execute JavaScript code.</description>
+        <severity>BLOCKER</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-security</tag>
+    </rule>
+    <rule>
+        <key>OTHER_JSHINT.W103_none</key>
+        <name>JSHint : JSHint Warning</name>
+        <internalKey>OTHER_JSHINT.W103_none</internalKey>
+        <description>The &apos;&lt;something&gt;&apos; property is deprecated.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_JSHINT.W100_none</key>
+        <name>JSHint : JSHint Warning</name>
+        <internalKey>OTHER_JSHINT.W100_none</internalKey>
+        <description>This character may get silently deleted by one or more browsers.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_JSHINT.W101_none</key>
+        <name>JSHint : JSHint Warning</name>
+        <internalKey>OTHER_JSHINT.W101_none</internalKey>
+        <description>Line is too long.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_STRAY_SEMICOLON_none</key>
+        <name>Control flow issues : Stray semicolon</name>
+        <internalKey>OTHER_STRAY_SEMICOLON_none</internalKey>
+        <description>The code contains a semicolon where it is probably not intended, such as between a &apos;for&apos;, &apos;while&apos;, or &apos;if&apos; and a code block.</description>
+        <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_JSONWEBTOKEN_UNTRUSTED_DECODE_jwt_untrusted_decode</key>
+        <name>Medium impact security : JsonWebToken Decoded Not Verified</name>
+        <internalKey>OTHER_JSONWEBTOKEN_UNTRUSTED_DECODE_jwt_untrusted_decode</internalKey>
+        <description>The application decodes a JWT using the &apos;decode()&apos; function, but does not verify the token signature beforehand. Thus, a forged token will be accepted by the application.</description>
+        <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-security</tag>
+    </rule>
+    <rule>
+        <key>OTHER_JSONWEBTOKEN_UNTRUSTED_DECODE_none</key>
+        <name>Medium impact security : JsonWebToken Decoded Not Verified</name>
+        <internalKey>OTHER_JSONWEBTOKEN_UNTRUSTED_DECODE_none</internalKey>
+        <description>The application decodes a JWT using the &apos;decode()&apos; function, but does not verify the token signature beforehand. Thus, a forged token will be accepted by the application.</description>
+        <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_COPY_PASTE_ERROR_none</key>
+        <name>Incorrect expression : Copy-paste error</name>
+        <internalKey>OTHER_COPY_PASTE_ERROR_none</internalKey>
+        <description>A copied piece of code is inconsistent with the original</description>
+        <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_NESTING_INDENT_MISMATCH_bad_indentation</key>
+        <name>Code maintainability issues : Indentation does not match nesting level</name>
+        <internalKey>OTHER_NESTING_INDENT_MISMATCH_bad_indentation</internalKey>
+        <description>The indentation of this code does not reflect its syntactic nesting level.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_NESTING_INDENT_MISMATCH_none</key>
+        <name>Control flow issues : Nesting level does not match indentation</name>
+        <internalKey>OTHER_NESTING_INDENT_MISMATCH_none</internalKey>
+        <description>The indentation of this code suggests it is nested when it is not.</description>
+        <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_JSHINT.W108_none</key>
+        <name>JSHint : JSHint Warning</name>
+        <internalKey>OTHER_JSHINT.W108_none</internalKey>
+        <description>Strings must use doublequote.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_JSHINT.W109_none</key>
+        <name>JSHint : JSHint Warning</name>
+        <internalKey>OTHER_JSHINT.W109_none</internalKey>
+        <description>Strings must use singlequote.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_JSHINT.W117_none</key>
+        <name>JSHint : JSHint Warning</name>
+        <internalKey>OTHER_JSHINT.W117_none</internalKey>
+        <description>&apos;&lt;something&gt;&apos; is not defined.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_JSHINT.W118_none</key>
+        <name>JSHint : JSHint Warning</name>
+        <internalKey>OTHER_JSHINT.W118_none</internalKey>
+        <description>&apos;&lt;something&gt;&apos; is only available in Mozilla JavaScript extensions (use moz option).</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_CONFIG.VUE_ROUTER_PARAMS_EXPOSED_TO_PROPS_vuerouter_exposed_params</key>
+        <name>Low impact security : All VueRouter parameters are exposed to component props</name>
+        <internalKey>OTHER_CONFIG.VUE_ROUTER_PARAMS_EXPOSED_TO_PROPS_vuerouter_exposed_params</internalKey>
+        <description>The &apos;VueRouter&apos; passes all route parameters into the &apos;props&apos; of a component or subcomponent on a route, without checking if the component actually needs every parameter. Thus, the component may have access to parameters that were not intended for the component&apos;s use.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-security</tag>
+    </rule>
+    <rule>
+        <key>OTHER_CONFIG.VUE_ROUTER_PARAMS_EXPOSED_TO_PROPS_none</key>
+        <name>Low impact security : All VueRouter parameters are exposed to component props</name>
+        <internalKey>OTHER_CONFIG.VUE_ROUTER_PARAMS_EXPOSED_TO_PROPS_none</internalKey>
+        <description>The &apos;VueRouter&apos; passes all route parameters into the &apos;props&apos; of a component or subcomponent on a route, without checking if the component actually needs every parameter. Thus, the component may have access to parameters that were not intended for the component&apos;s use.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_JSHINT.W115_none</key>
+        <name>JSHint : JSHint Warning</name>
+        <internalKey>OTHER_JSHINT.W115_none</internalKey>
+        <description>Octal literals are not allowed in strict mode.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_BUSBOY_MISCONFIGURATION_busboy_misconfiguration_of_fields</key>
+        <name>Low impact security : Number of file/non-file fields not restricted</name>
+        <internalKey>OTHER_BUSBOY_MISCONFIGURATION_busboy_misconfiguration_of_fields</internalKey>
+        <description>The &apos;busboy&apos; module does not restrict the number of file/non-file fields in a single request.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-security</tag>
+    </rule>
+    <rule>
+        <key>OTHER_BUSBOY_MISCONFIGURATION_busboy_misconfiguration_of_file_path</key>
+        <name>Medium impact security : User specified path used</name>
+        <internalKey>OTHER_BUSBOY_MISCONFIGURATION_busboy_misconfiguration_of_file_path</internalKey>
+        <description>The &apos;busboy&apos; module allows users to provide their own paths for storing uploaded files.</description>
+        <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-security</tag>
+    </rule>
+    <rule>
+        <key>OTHER_BUSBOY_MISCONFIGURATION_busboy_misconfiguration_of_filesize</key>
+        <name>Low impact security : Filesize not restricted for the uploaded file</name>
+        <internalKey>OTHER_BUSBOY_MISCONFIGURATION_busboy_misconfiguration_of_filesize</internalKey>
+        <description>The &apos;busboy&apos; module does not restrict the size of the uploaded file.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-security</tag>
+    </rule>
+    <rule>
+        <key>OTHER_BUSBOY_MISCONFIGURATION_none</key>
+        <name>Low impact security : Filesize not restricted for the uploaded file</name>
+        <internalKey>OTHER_BUSBOY_MISCONFIGURATION_none</internalKey>
+        <description>The &apos;busboy&apos; module does not restrict the size of the uploaded file.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_JSHINT.W116_none</key>
+        <name>JSHint : JSHint Warning</name>
+        <internalKey>OTHER_JSHINT.W116_none</internalKey>
+        <description>Expected &apos;&lt;something&gt;&apos; and instead saw &apos;{b}&apos;.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_JSHINT.W113_none</key>
+        <name>JSHint : JSHint Warning</name>
+        <internalKey>OTHER_JSHINT.W113_none</internalKey>
+        <description>Control character in string: &lt;something&gt;.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_JSHINT.W114_none</key>
+        <name>JSHint : JSHint Warning</name>
+        <internalKey>OTHER_JSHINT.W114_none</internalKey>
+        <description>Avoid &lt;something&gt;.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_JSHINT.W112_none</key>
+        <name>JSHint : JSHint Warning</name>
+        <internalKey>OTHER_JSHINT.W112_none</internalKey>
+        <description>Unclosed string.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_JSHINT.W110_none</key>
+        <name>JSHint : JSHint Warning</name>
+        <internalKey>OTHER_JSHINT.W110_none</internalKey>
+        <description>Mixed double and single quotes.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_XSS_none</key>
+        <name>High impact security : Cross-site scripting</name>
+        <internalKey>OTHER_XSS_none</internalKey>
+        <description>Untrusted user-supplied data is inserted into a context that can execute JavaScript without adequate validation, escaping, or filtering.</description>
+        <severity>BLOCKER</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-security</tag>
+    </rule>
+    <rule>
+        <key>OTHER_CSRF_database_update</key>
+        <name>High impact security : Cross-site request forgery</name>
+        <internalKey>OTHER_CSRF_database_update</internalKey>
+        <description>The web application controller modifies data or state and is unprotected from cross-site request forgery.</description>
+        <severity>BLOCKER</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-security</tag>
+    </rule>
+    <rule>
+        <key>OTHER_CSRF_filesystem_modification</key>
+        <name>Medium impact security : Cross-site request forgery</name>
+        <internalKey>OTHER_CSRF_filesystem_modification</internalKey>
+        <description>The web application controller modifies data or state and is unprotected from cross-site request forgery.</description>
+        <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-security</tag>
+    </rule>
+    <rule>
+        <key>OTHER_CSRF_none</key>
+        <name>High impact security : Cross-site request forgery</name>
+        <internalKey>OTHER_CSRF_none</internalKey>
+        <description>The web application controller modifies data or state and is unprotected from cross-site request forgery.</description>
+        <severity>BLOCKER</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-security</tag>
+    </rule>
+    <rule>
+        <key>OTHER_MISSING_IFRAME_SANDBOX_none</key>
+        <name>Medium impact security : Missing iframe sandbox for remote site</name>
+        <internalKey>OTHER_MISSING_IFRAME_SANDBOX_none</internalKey>
+        <description>A remote website is loaded in an iframe without any sandbox.</description>
+        <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-security</tag>
+    </rule>
+    <rule>
+        <key>OTHER_CONFIG.HANA_XS_PREVENT_XSRF_DISABLED_none</key>
+        <name>Medium impact security : XSRF prevention disabled</name>
+        <internalKey>OTHER_CONFIG.HANA_XS_PREVENT_XSRF_DISABLED_none</internalKey>
+        <description>The configuration file does not enable cross-site request forgery prevention.</description>
+        <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-security</tag>
+    </rule>
+    <rule>
+        <key>OTHER_OS_CMD_INJECTION_none</key>
+        <name>High impact security : OS Command Injection</name>
+        <internalKey>OTHER_OS_CMD_INJECTION_none</internalKey>
+        <description>Untrusted user-supplied data is inserted into an operating system command without adequate validation, escaping, or filtering. This inserted data can change the intent of the operating system command. The change to the operating system command may result in the unauthorized disclosure, destruction, or modification of sensitive data or operating system resources.</description>
         <severity>BLOCKER</severity>
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
@@ -65,64 +1911,999 @@
         <tag>coverity-quality</tag>
     </rule>
     <rule>
-        <key>OTHER_SCRIPT_CODE_INJECTION_none</key>
-        <name>High impact security : Script code injection</name>
-        <internalKey>OTHER_SCRIPT_CODE_INJECTION_none</internalKey>
-        <description>Script code interpreted or executed on the server is constructed from user-controllable data.</description>
-        <severity>BLOCKER</severity>
-        <cardinality>SINGLE</cardinality>
-        <status>READY</status>
-        <type>VULNERABILITY</type>
-        <tag>coverity</tag>
-        <tag>js</tag>
-        <tag>coverity-security</tag>
-    </rule>
-    <rule>
-        <key>OTHER_PATH_MANIPULATION_none</key>
-        <name>High impact security : Filesystem path, filename, or URI manipulation</name>
-        <internalKey>OTHER_PATH_MANIPULATION_none</internalKey>
-        <description>A user-controllable string is used as part or all of a filesystem path, filename, or URI (uniform resource identifier).</description>
-        <severity>BLOCKER</severity>
-        <cardinality>SINGLE</cardinality>
-        <status>READY</status>
-        <type>VULNERABILITY</type>
-        <tag>coverity</tag>
-        <tag>js</tag>
-        <tag>coverity-security</tag>
-    </rule>
-    <rule>
-        <key>OTHER_EXPLICIT_THIS_EXPECTED_none</key>
-        <name>API usage errors : Explicit this expected</name>
-        <internalKey>OTHER_EXPLICIT_THIS_EXPECTED_none</internalKey>
-        <description>The called function may expect an explicit this argument.</description>
-        <severity>CRITICAL</severity>
-        <cardinality>SINGLE</cardinality>
-        <status>READY</status>
-        <type>BUG</type>
-        <tag>coverity</tag>
-        <tag>js</tag>
-        <tag>coverity-quality</tag>
-    </rule>
-    <rule>
-        <key>OTHER_JSHINT.*</key>
-        <name>Coverity JSHINT : JSHint Warning</name>
-        <internalKey>OTHER_JSHINT.*</internalKey>
-        <description>Coverity JSHINT : JSHint Warning</description>
+        <key>OTHER_JSHINT.W119_none</key>
+        <name>JSHint : JSHint Warning</name>
+        <internalKey>OTHER_JSHINT.W119_none</internalKey>
+        <description>&apos;&lt;something&gt;&apos; is only available in ES{b} (use &apos;esversion: {b}&apos;).</description>
         <severity>MAJOR</severity>
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>BUG</type>
         <tag>coverity</tag>
-        <tag>jshint</tag>
         <tag>js</tag>
         <tag>coverity-quality</tag>
     </rule>
     <rule>
-        <key>OTHER_NO_EFFECT_bool_switch</key>
-        <name>Incorrect expression : Switch test assignment</name>
-        <internalKey>OTHER_NO_EFFECT_bool_switch</internalKey>
-        <description>A boolean test within a switch condition is likely an intended assignment</description>
+        <key>OTHER_JSHINT.W006_none</key>
+        <name>JSHint : JSHint Warning</name>
+        <internalKey>OTHER_JSHINT.W006_none</internalKey>
+        <description>Confusing minuses.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_JSHINT.W128_none</key>
+        <name>JSHint : JSHint Warning</name>
+        <internalKey>OTHER_JSHINT.W128_none</internalKey>
+        <description>Empty array elements require elision=true.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_JSHINT.W005_none</key>
+        <name>JSHint : JSHint Warning</name>
+        <internalKey>OTHER_JSHINT.W005_none</internalKey>
+        <description>A dot following a number can be confused with a decimal point.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_JSHINT.W129_none</key>
+        <name>JSHint : JSHint Warning</name>
+        <internalKey>OTHER_JSHINT.W129_none</internalKey>
+        <description>&apos;&lt;something&gt;&apos; is defined in a future version of JavaScript. Use a different variable name to avoid migration issues.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_JSHINT.W008_none</key>
+        <name>JSHint : JSHint Warning</name>
+        <internalKey>OTHER_JSHINT.W008_none</internalKey>
+        <description>A leading decimal point can be confused with a dot: &apos;&lt;something&gt;&apos;.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_JSHINT.W126_none</key>
+        <name>JSHint : JSHint Warning</name>
+        <internalKey>OTHER_JSHINT.W126_none</internalKey>
+        <description>Unnecessary grouping operator.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_JSHINT.W007_none</key>
+        <name>JSHint : JSHint Warning</name>
+        <internalKey>OTHER_JSHINT.W007_none</internalKey>
+        <description>Confusing plusses.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_JSHINT.W127_none</key>
+        <name>JSHint : JSHint Warning</name>
+        <internalKey>OTHER_JSHINT.W127_none</internalKey>
+        <description>Unexpected use of a comma operator.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_JSHINT.W002_none</key>
+        <name>JSHint : JSHint Warning</name>
+        <internalKey>OTHER_JSHINT.W002_none</internalKey>
+        <description>Value of &apos;&lt;something&gt;&apos; may be overwritten in IE 8 and earlier.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_JSHINT.W124_none</key>
+        <name>JSHint : JSHint Warning</name>
+        <internalKey>OTHER_JSHINT.W124_none</internalKey>
+        <description>A generator function should contain at least one yield expression.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_JSHINT.W001_none</key>
+        <name>JSHint : JSHint Warning</name>
+        <internalKey>OTHER_JSHINT.W001_none</internalKey>
+        <description>&apos;hasOwnProperty&apos; is a really bad name.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_JSHINT.W125_none</key>
+        <name>JSHint : JSHint Warning</name>
+        <internalKey>OTHER_JSHINT.W125_none</internalKey>
+        <description>This line contains non-breaking spaces: http://jshint.com/docs/options/#nonbsp</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_JSHINT.W004_none</key>
+        <name>JSHint : JSHint Warning</name>
+        <internalKey>OTHER_JSHINT.W004_none</internalKey>
+        <description>&apos;&lt;something&gt;&apos; is already defined.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_JSHINT.W122_none</key>
+        <name>JSHint : JSHint Warning</name>
+        <internalKey>OTHER_JSHINT.W122_none</internalKey>
+        <description>Invalid typeof value &apos;&lt;something&gt;&apos;</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_JSHINT.W003_none</key>
+        <name>JSHint : JSHint Warning</name>
+        <internalKey>OTHER_JSHINT.W003_none</internalKey>
+        <description>&apos;&lt;something&gt;&apos; was used before it was defined.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_JSHINT.W123_none</key>
+        <name>JSHint : JSHint Warning</name>
+        <internalKey>OTHER_JSHINT.W123_none</internalKey>
+        <description>&apos;&lt;something&gt;&apos; is already defined in outer scope.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_JSHINT.W120_none</key>
+        <name>JSHint : JSHint Warning</name>
+        <internalKey>OTHER_JSHINT.W120_none</internalKey>
+        <description>You might be leaking a variable (&lt;something&gt;) here.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_JSHINT.W121_none</key>
+        <name>JSHint : JSHint Warning</name>
+        <internalKey>OTHER_JSHINT.W121_none</internalKey>
+        <description>Extending prototype of native object: &apos;&lt;something&gt;&apos;.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_EXPRESS_WINSTON_SENSITIVE_LOGGING_error_logger</key>
+        <name>Audit impact security : Error logger with sensitive logging</name>
+        <internalKey>OTHER_EXPRESS_WINSTON_SENSITIVE_LOGGING_error_logger</internalKey>
+        <description>The error logger uses an insecure whitelist.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-security</tag>
+    </rule>
+    <rule>
+        <key>OTHER_EXPRESS_WINSTON_SENSITIVE_LOGGING_meta_data</key>
+        <name>Audit impact security : Logging meta data containing sensitive information</name>
+        <internalKey>OTHER_EXPRESS_WINSTON_SENSITIVE_LOGGING_meta_data</internalKey>
+        <description>The application uses express-winston and logs sensitive meta data.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-security</tag>
+    </rule>
+    <rule>
+        <key>OTHER_EXPRESS_WINSTON_SENSITIVE_LOGGING_request_logger</key>
+        <name>Audit impact security : Request logger with sensitive logging</name>
+        <internalKey>OTHER_EXPRESS_WINSTON_SENSITIVE_LOGGING_request_logger</internalKey>
+        <description>The request logger uses an insecure whitelist or blacklist.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-security</tag>
+    </rule>
+    <rule>
+        <key>OTHER_EXPRESS_WINSTON_SENSITIVE_LOGGING_none</key>
+        <name>Audit impact security : Request logger with sensitive logging</name>
+        <internalKey>OTHER_EXPRESS_WINSTON_SENSITIVE_LOGGING_none</internalKey>
+        <description>The request logger uses an insecure whitelist or blacklist.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_VUE_TEMPLATE_UNSAFE_VHTML_DIRECTIVE_vue_unsafe_vhtml_directive</key>
+        <name>Audit impact security : Outputting HTML unsafely through v-html</name>
+        <internalKey>OTHER_VUE_TEMPLATE_UNSAFE_VHTML_DIRECTIVE_vue_unsafe_vhtml_directive</internalKey>
+        <description>The &apos;v-html&apos; directive outputs raw HTML, which is not sanitized in any form. And thus, the browser will interpret it as is.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-security</tag>
+    </rule>
+    <rule>
+        <key>OTHER_VUE_TEMPLATE_UNSAFE_VHTML_DIRECTIVE_none</key>
+        <name>Audit impact security : Outputting HTML unsafely through v-html</name>
+        <internalKey>OTHER_VUE_TEMPLATE_UNSAFE_VHTML_DIRECTIVE_none</internalKey>
+        <description>The &apos;v-html&apos; directive outputs raw HTML, which is not sanitized in any form. And thus, the browser will interpret it as is.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_JSHINT.W009_none</key>
+        <name>JSHint : JSHint Warning</name>
+        <internalKey>OTHER_JSHINT.W009_none</internalKey>
+        <description>The array literal notation [] is preferable.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_JSHINT.W017_none</key>
+        <name>JSHint : JSHint Warning</name>
+        <internalKey>OTHER_JSHINT.W017_none</internalKey>
+        <description>Bad operand.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_JSHINT.W139_none</key>
+        <name>JSHint : JSHint Warning</name>
+        <internalKey>OTHER_JSHINT.W139_none</internalKey>
+        <description>Function expressions should not be used as the second operand to instanceof.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_JSHINT.W016_none</key>
+        <name>JSHint : JSHint Warning</name>
+        <internalKey>OTHER_JSHINT.W016_none</internalKey>
+        <description>Unexpected use of &apos;&lt;something&gt;&apos;.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_JSHINT.W019_none</key>
+        <name>JSHint : JSHint Warning</name>
+        <internalKey>OTHER_JSHINT.W019_none</internalKey>
+        <description>Use the isNaN function to compare with NaN.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_JSHINT.W137_none</key>
+        <name>JSHint : JSHint Warning</name>
+        <internalKey>OTHER_JSHINT.W137_none</internalKey>
+        <description>Empty destructuring.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_JSHINT.W018_none</key>
+        <name>JSHint : JSHint Warning</name>
+        <internalKey>OTHER_JSHINT.W018_none</internalKey>
+        <description>Confusing use of &apos;&lt;something&gt;&apos;.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_JSHINT.W138_none</key>
+        <name>JSHint : JSHint Warning</name>
+        <internalKey>OTHER_JSHINT.W138_none</internalKey>
+        <description>Regular parameters should not come after default parameters.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_JSHINT.W013_none</key>
+        <name>JSHint : JSHint Warning</name>
+        <internalKey>OTHER_JSHINT.W013_none</internalKey>
+        <description>null</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_JSHINT.W135_none</key>
+        <name>JSHint : JSHint Warning</name>
+        <internalKey>OTHER_JSHINT.W135_none</internalKey>
+        <description>&lt;something&gt; may not be supported by non-browser environments.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_JSHINT.W012_none</key>
+        <name>JSHint : JSHint Warning</name>
+        <internalKey>OTHER_JSHINT.W012_none</internalKey>
+        <description>null</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_JSHINT.W136_none</key>
+        <name>JSHint : JSHint Warning</name>
+        <internalKey>OTHER_JSHINT.W136_none</internalKey>
+        <description>&apos;&lt;something&gt;&apos; must be in function scope.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_JSHINT.W015_none</key>
+        <name>JSHint : JSHint Warning</name>
+        <internalKey>OTHER_JSHINT.W015_none</internalKey>
+        <description>null</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_JSHINT.W133_none</key>
+        <name>JSHint : JSHint Warning</name>
+        <internalKey>OTHER_JSHINT.W133_none</internalKey>
+        <description>Invalid for-&lt;something&gt; loop left-hand-side: {b}.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_UNRESTRICTED_MESSAGE_TARGET_none</key>
+        <name>Low impact security : Unrestricted target for cross-origin message</name>
+        <internalKey>OTHER_UNRESTRICTED_MESSAGE_TARGET_none</internalKey>
+        <description>Sending a cross-origin message without restricting the origin that can receive it.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-security</tag>
+    </rule>
+    <rule>
+        <key>OTHER_ANGULAR_ELEMENT_REFERENCE_none</key>
+        <name>Audit impact security : Angular element reference</name>
+        <internalKey>OTHER_ANGULAR_ELEMENT_REFERENCE_none</internalKey>
+        <description>Accessing a DOM element by direct reference.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-security</tag>
+    </rule>
+    <rule>
+        <key>OTHER_DEADCODE_none</key>
+        <name>Control flow issues : Logically dead code</name>
+        <internalKey>OTHER_DEADCODE_none</internalKey>
+        <description>Code can never be reached because of a logical contradiction</description>
         <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_DEADCODE_redundant_test</key>
+        <name>Possible Control flow issues : Redundant test</name>
+        <internalKey>OTHER_DEADCODE_redundant_test</internalKey>
+        <description>Test always evaluates the same</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_INSECURE_RANDOM_insecure_random_used</key>
+        <name>Medium impact security : Insecure random value used in security context</name>
+        <internalKey>OTHER_INSECURE_RANDOM_insecure_random_used</internalKey>
+        <description>Random value generated using a cryptographically insecure pseudo-random number generator, and used in a security-sensitive context</description>
+        <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-security</tag>
+    </rule>
+    <rule>
+        <key>OTHER_INSECURE_RANDOM_insecure_random_value</key>
+        <name>Low impact security : Cryptographically weak PRNG</name>
+        <internalKey>OTHER_INSECURE_RANDOM_insecure_random_value</internalKey>
+        <description>Random value generated using a cryptographically insecure pseudo-random number generator</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-security</tag>
+    </rule>
+    <rule>
+        <key>OTHER_INSECURE_RANDOM_none</key>
+        <name>Low impact security : Cryptographically weak PRNG</name>
+        <internalKey>OTHER_INSECURE_RANDOM_none</internalKey>
+        <description>Random value generated using a cryptographically insecure pseudo-random number generator</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_JSHINT.W014_none</key>
+        <name>JSHint : JSHint Warning</name>
+        <internalKey>OTHER_JSHINT.W014_none</internalKey>
+        <description>Misleading line break before &apos;&lt;something&gt;&apos;; readers may interpret this as an expression boundary.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_JSHINT.W134_none</key>
+        <name>JSHint : JSHint Warning</name>
+        <internalKey>OTHER_JSHINT.W134_none</internalKey>
+        <description>The &apos;&lt;something&gt;&apos; option is only available when linting ECMAScript {b} code.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_REGEX_INJECTION_none</key>
+        <name>Low impact security : Regular expression injection</name>
+        <internalKey>OTHER_REGEX_INJECTION_none</internalKey>
+        <description>A regular expression is constructed from a user-controllable string.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-security</tag>
+    </rule>
+    <rule>
+        <key>OTHER_JSHINT.W131_none</key>
+        <name>JSHint : JSHint Warning</name>
+        <internalKey>OTHER_JSHINT.W131_none</internalKey>
+        <description>Invalid parameter after rest parameter.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_JSHINT.W132_none</key>
+        <name>JSHint : JSHint Warning</name>
+        <internalKey>OTHER_JSHINT.W132_none</internalKey>
+        <description>`var` declarations are forbidden. Use `let` or `const` instead.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_JSHINT.W011_none</key>
+        <name>JSHint : JSHint Warning</name>
+        <internalKey>OTHER_JSHINT.W011_none</internalKey>
+        <description>null</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_JSHINT.W010_none</key>
+        <name>JSHint : JSHint Warning</name>
+        <internalKey>OTHER_JSHINT.W010_none</internalKey>
+        <description>The object literal notation {} is preferable.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_JSHINT.W130_none</key>
+        <name>JSHint : JSHint Warning</name>
+        <internalKey>OTHER_JSHINT.W130_none</internalKey>
+        <description>Invalid element after rest element.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_CONFIG.UNSAFE_SESSION_TIMEOUT_client_sessions_unsafe_session_timeout</key>
+        <name>Low impact security : Client-sessions unsafe session timeout</name>
+        <internalKey>OTHER_CONFIG.UNSAFE_SESSION_TIMEOUT_client_sessions_unsafe_session_timeout</internalKey>
+        <description>Session life is too long</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-security</tag>
+    </rule>
+    <rule>
+        <key>OTHER_CONFIG.UNSAFE_SESSION_TIMEOUT_none</key>
+        <name>Low impact security : Client-sessions unsafe session timeout</name>
+        <internalKey>OTHER_CONFIG.UNSAFE_SESSION_TIMEOUT_none</internalKey>
+        <description>Session life is too long</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_CONFIG.CSURF_IGNORE_METHODS_csurf_ignore_methods</key>
+        <name>Medium impact security : Csurf ignores HTTP methods that change state</name>
+        <internalKey>OTHER_CONFIG.CSURF_IGNORE_METHODS_csurf_ignore_methods</internalKey>
+        <description>The &apos;csurf&apos; method by default protects HTTP methods that change server state. The current configuration of &apos;ignoreMethods&apos; does not protect some of the methods changing state from CSRF attacks. Therefore, an attacker may be able to submit forged requests on user&apos;s behalf.</description>
+        <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-security</tag>
+    </rule>
+    <rule>
+        <key>OTHER_CONFIG.CSURF_IGNORE_METHODS_none</key>
+        <name>Medium impact security : Csurf ignores HTTP methods that change state</name>
+        <internalKey>OTHER_CONFIG.CSURF_IGNORE_METHODS_none</internalKey>
+        <description>The &apos;csurf&apos; method by default protects HTTP methods that change server state. The current configuration of &apos;ignoreMethods&apos; does not protect some of the methods changing state from CSRF attacks. Therefore, an attacker may be able to submit forged requests on user&apos;s behalf.</description>
+        <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_UNSAFE_DESERIALIZATION_none</key>
+        <name>High impact security : Unsafe deserialization</name>
+        <internalKey>OTHER_UNSAFE_DESERIALIZATION_none</internalKey>
+        <description>A user-controllable string is deserialized.</description>
+        <severity>BLOCKER</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-security</tag>
+    </rule>
+    <rule>
+        <key>OTHER_LOCALSTORAGE_MANIPULATION_none</key>
+        <name>Low impact security : localStorage manipulation</name>
+        <internalKey>OTHER_LOCALSTORAGE_MANIPULATION_none</internalKey>
+        <description>A user-controllable string is used to construct a key in localStorage.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-security</tag>
+    </rule>
+    <rule>
+        <key>OTHER_XML_EXTERNAL_ENTITY_entity_expansion</key>
+        <name>Medium impact security : Unrestricted entity expansion</name>
+        <internalKey>OTHER_XML_EXTERNAL_ENTITY_entity_expansion</internalKey>
+        <description>Passing tainted input data with possibly arbitrary entity references to a weakly configured XML parser that does not limit entity expansion.</description>
+        <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-security</tag>
+    </rule>
+    <rule>
+        <key>OTHER_XML_EXTERNAL_ENTITY_external_entities</key>
+        <name>Medium impact security : Unrestricted external entity references</name>
+        <internalKey>OTHER_XML_EXTERNAL_ENTITY_external_entities</internalKey>
+        <description>Passing tainted input data with possibly arbitrary external entity references to a weakly configured XML parser.</description>
+        <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-security</tag>
+    </rule>
+    <rule>
+        <key>OTHER_XML_EXTERNAL_ENTITY_none</key>
+        <name>Medium impact security : Unrestricted external entity references</name>
+        <internalKey>OTHER_XML_EXTERNAL_ENTITY_none</internalKey>
+        <description>Passing tainted input data with possibly arbitrary external entity references to a weakly configured XML parser.</description>
+        <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_CONFIG.SOCKETIO_MAXHTTPBUFFERSIZE_SET_TOO_LARGE_socketio_max_buffer_size</key>
+        <name>Low impact security : Socket.IO Max HTTP Buffer Size Too Large</name>
+        <internalKey>OTHER_CONFIG.SOCKETIO_MAXHTTPBUFFERSIZE_SET_TOO_LARGE_socketio_max_buffer_size</internalKey>
+        <description>The &apos;maxHttpBufferSize&apos; property in configuration of the &apos;socket.io&apos; module sets the upper limit on how many bytes a message can contain when polling, before the session is forcibly closed. Setting the buffer size too large may cause a denial of service situation when extremely long messages are sent to the server in a polling fashion, exhausting server resources to poll for new messages.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-security</tag>
+    </rule>
+    <rule>
+        <key>OTHER_CONFIG.SOCKETIO_MAXHTTPBUFFERSIZE_SET_TOO_LARGE_none</key>
+        <name>Low impact security : Socket.IO Max HTTP Buffer Size Too Large</name>
+        <internalKey>OTHER_CONFIG.SOCKETIO_MAXHTTPBUFFERSIZE_SET_TOO_LARGE_none</internalKey>
+        <description>The &apos;maxHttpBufferSize&apos; property in configuration of the &apos;socket.io&apos; module sets the upper limit on how many bytes a message can contain when polling, before the session is forcibly closed. Setting the buffer size too large may cause a denial of service situation when extremely long messages are sent to the server in a polling fashion, exhausting server resources to poll for new messages.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_LOCALSTORAGE_WRITE_none</key>
+        <name>Audit impact security : localStorage write</name>
+        <internalKey>OTHER_LOCALSTORAGE_WRITE_none</internalKey>
+        <description>Writing data to localStorage</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-security</tag>
+    </rule>
+    <rule>
+        <key>OTHER_CONSTANT_EXPRESSION_RESULT_bit_and_with_zero</key>
+        <name>Integer handling issues : Bitwise-and with zero</name>
+        <internalKey>OTHER_CONSTANT_EXPRESSION_RESULT_bit_and_with_zero</internalKey>
+        <description>Bitwise-and (&apos;&amp;amp;&apos;) operation applied to zero always produces zero</description>
+        <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_CONSTANT_EXPRESSION_RESULT_logical_vs_bitwise</key>
+        <name>Integer handling issues : Logical vs. bitwise operator</name>
+        <internalKey>OTHER_CONSTANT_EXPRESSION_RESULT_logical_vs_bitwise</internalKey>
+        <description>Logical operator used in place of bitwise operator or vice versa</description>
+        <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_CONSTANT_EXPRESSION_RESULT_missing_parentheses</key>
+        <name>Incorrect expression : Missing parentheses</name>
+        <internalKey>OTHER_CONSTANT_EXPRESSION_RESULT_missing_parentheses</internalKey>
+        <description>Missing parentheses caused unintended operator precedence</description>
+        <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_CONSTANT_EXPRESSION_RESULT_none</key>
+        <name>Integer handling issues : Constant expression result</name>
+        <internalKey>OTHER_CONSTANT_EXPRESSION_RESULT_none</internalKey>
+        <description>An operation with non-constant operands that computes a result with constant value</description>
+        <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_CONSTANT_EXPRESSION_RESULT_operator_confusion</key>
+        <name>Integer handling issues : Wrong operator used</name>
+        <internalKey>OTHER_CONSTANT_EXPRESSION_RESULT_operator_confusion</internalKey>
+        <description>Wrong operator used in expression</description>
+        <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_CONSTANT_EXPRESSION_RESULT_result_independent_of_operands</key>
+        <name>Integer handling issues : Operands don&apos;t affect result</name>
+        <internalKey>OTHER_CONSTANT_EXPRESSION_RESULT_result_independent_of_operands</internalKey>
+        <description>An operation with non-constant operands that computes a result with constant value</description>
+        <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_CONSTANT_EXPRESSION_RESULT_same_on_both_sides</key>
+        <name>Incorrect expression : Same on both sides</name>
+        <internalKey>OTHER_CONSTANT_EXPRESSION_RESULT_same_on_both_sides</internalKey>
+        <description>The same expression occurs on both sides of an operator.</description>
+        <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_CONSTANT_EXPRESSION_RESULT_typeof_misuse</key>
+        <name>Incorrect expression : Misuse of typeof</name>
+        <internalKey>OTHER_CONSTANT_EXPRESSION_RESULT_typeof_misuse</internalKey>
+        <description>Meaningless check against the result of a typeof operation</description>
+        <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_CONSTANT_EXPRESSION_RESULT_unnecessary_op_assign</key>
+        <name>Integer handling issues : Suspicious &amp;= or |=</name>
+        <internalKey>OTHER_CONSTANT_EXPRESSION_RESULT_unnecessary_op_assign</internalKey>
+        <description>Using a bitwise assignment operator to assign a constant value</description>
+        <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_CONFIG.COOKIE_SIGNING_DISABLED_cookie_session_signing_disabled</key>
+        <name>Low impact security : Cookie signing disabled</name>
+        <internalKey>OTHER_CONFIG.COOKIE_SIGNING_DISABLED_cookie_session_signing_disabled</internalKey>
+        <description>The &apos;cookie-session&apos; module disables the signing of the cookie.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-security</tag>
+    </rule>
+    <rule>
+        <key>OTHER_CONFIG.COOKIE_SIGNING_DISABLED_none</key>
+        <name>Low impact security : Cookie signing disabled</name>
+        <internalKey>OTHER_CONFIG.COOKIE_SIGNING_DISABLED_none</internalKey>
+        <description>The &apos;cookie-session&apos; module disables the signing of the cookie.</description>
+        <severity>MAJOR</severity>
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>BUG</type>
@@ -155,6 +2936,631 @@
         <tag>coverity</tag>
         <tag>js</tag>
         <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_CONFIG.SEQUELIZE_INSECURE_CONNECTION_sequelize_insecure_connection</key>
+        <name>Low impact security : Connection to the database without SSL</name>
+        <internalKey>OTHER_CONFIG.SEQUELIZE_INSECURE_CONNECTION_sequelize_insecure_connection</internalKey>
+        <description>The sequelize module sets the ssl option to false, which is the default value. With that setting sequelize establishes an unencrypted connection with the database. This may result in leaking sensitive data since every query is transmitted over an insecure channel.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-security</tag>
+    </rule>
+    <rule>
+        <key>OTHER_CONFIG.SEQUELIZE_INSECURE_CONNECTION_none</key>
+        <name>Low impact security : Connection to the database without SSL</name>
+        <internalKey>OTHER_CONFIG.SEQUELIZE_INSECURE_CONNECTION_none</internalKey>
+        <description>The sequelize module sets the ssl option to false, which is the default value. With that setting sequelize establishes an unencrypted connection with the database. This may result in leaking sensitive data since every query is transmitted over an insecure channel.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_NULL_RETURNS_none</key>
+        <name>Null pointer dereferences : Bad use of null-like value</name>
+        <internalKey>OTHER_NULL_RETURNS_none</internalKey>
+        <description>Using the return value of a function that can return null or undefined without checking it for null or undefined.</description>
+        <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_HEADER_INJECTION_none</key>
+        <name>Medium impact security : HTTP header injection</name>
+        <internalKey>OTHER_HEADER_INJECTION_none</internalKey>
+        <description>A user-controllable string is used to construct an HTTP header name.</description>
+        <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-security</tag>
+    </rule>
+    <rule>
+        <key>OTHER_REVERSE_TABNABBING_react_target_blank</key>
+        <name>Low impact security : Redirecting Main Site from Third-party Link</name>
+        <internalKey>OTHER_REVERSE_TABNABBING_react_target_blank</internalKey>
+        <description>The anchor tag is generated dynamically and sets the &apos;target&apos; attribute to &apos;_blank&apos;. The page opened from that link will have access to the &apos;location&apos; object of the original page through &apos;window.opener.location&apos;.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-security</tag>
+    </rule>
+    <rule>
+        <key>OTHER_REVERSE_TABNABBING_none</key>
+        <name>Low impact security : Redirecting Main Site from Third-party Link</name>
+        <internalKey>OTHER_REVERSE_TABNABBING_none</internalKey>
+        <description>The anchor tag is generated dynamically and sets the &apos;target&apos; attribute to &apos;_blank&apos;. The page opened from that link will have access to the &apos;location&apos; object of the original page through &apos;window.opener.location&apos;.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_OPEN_REDIRECT_none</key>
+        <name>Medium impact security : Open redirect</name>
+        <internalKey>OTHER_OPEN_REDIRECT_none</internalKey>
+        <description>User-controlled input is used to specify an address that is used as a URL redirect or forward. An attacker can create a link to the trusted site that redirects to a malicious Web site. This could enable the attacker to steal user credentials.</description>
+        <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-security</tag>
+    </rule>
+    <rule>
+        <key>OTHER_CONFIG.JSONWEBTOKEN_NON_EXPIRING_TOKEN_jwt_non_expiring_token</key>
+        <name>Low impact security : No Expiration Time on JsonWebToken</name>
+        <internalKey>OTHER_CONFIG.JSONWEBTOKEN_NON_EXPIRING_TOKEN_jwt_non_expiring_token</internalKey>
+        <description>A JWT is created without an expiration time. When the &apos;expiresIn&apos; field is not set in the &apos;options&apos; argument to the &apos;sign()&apos; method, the returned token is valid forever.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-security</tag>
+    </rule>
+    <rule>
+        <key>OTHER_CONFIG.JSONWEBTOKEN_NON_EXPIRING_TOKEN_none</key>
+        <name>Low impact security : No Expiration Time on JsonWebToken</name>
+        <internalKey>OTHER_CONFIG.JSONWEBTOKEN_NON_EXPIRING_TOKEN_none</internalKey>
+        <description>A JWT is created without an expiration time. When the &apos;expiresIn&apos; field is not set in the &apos;options&apos; argument to the &apos;sign()&apos; method, the returned token is valid forever.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_JSHINT.W068_none</key>
+        <name>JSHint : JSHint Warning</name>
+        <internalKey>OTHER_JSHINT.W068_none</internalKey>
+        <description>Wrapping non-IIFE function literals in parens is unnecessary.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_JSHINT.W067_none</key>
+        <name>JSHint : JSHint Warning</name>
+        <internalKey>OTHER_JSHINT.W067_none</internalKey>
+        <description>Bad invocation.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_JSHINT.W069_none</key>
+        <name>JSHint : JSHint Warning</name>
+        <internalKey>OTHER_JSHINT.W069_none</internalKey>
+        <description>[&apos;&lt;something&gt;&apos;] is better written in dot notation.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_JSHINT.W064_none</key>
+        <name>JSHint : JSHint Warning</name>
+        <internalKey>OTHER_JSHINT.W064_none</internalKey>
+        <description>Missing &apos;new&apos; prefix when invoking a constructor.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_JSHINT.W063_none</key>
+        <name>JSHint : JSHint Warning</name>
+        <internalKey>OTHER_JSHINT.W063_none</internalKey>
+        <description>Math is not a function.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_JSHINT.W066_none</key>
+        <name>JSHint : JSHint Warning</name>
+        <internalKey>OTHER_JSHINT.W066_none</internalKey>
+        <description>Implied eval. Consider passing a function instead of a string.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_JSHINT.W065_none</key>
+        <name>JSHint : JSHint Warning</name>
+        <internalKey>OTHER_JSHINT.W065_none</internalKey>
+        <description>Missing radix parameter.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_JSHINT.W060_none</key>
+        <name>JSHint : JSHint Warning</name>
+        <internalKey>OTHER_JSHINT.W060_none</internalKey>
+        <description>document.write can be a form of eval.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_CONFIG.SEQUELIZE_ENABLED_LOGGING_sequelize_logging_enabled</key>
+        <name>Low impact security : Logging of SQL queries enabled with Sequelize</name>
+        <internalKey>OTHER_CONFIG.SEQUELIZE_ENABLED_LOGGING_sequelize_logging_enabled</internalKey>
+        <description>The &apos;sequelize&apos; module sets the logging option to &apos;console.log&apos;, which is the default value. With that setting &apos;sequelize&apos; logs every query to the console. This may result in leaking sensitive data since console outputs are often streamed to log files when the application is deployed.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-security</tag>
+    </rule>
+    <rule>
+        <key>OTHER_CONFIG.SEQUELIZE_ENABLED_LOGGING_none</key>
+        <name>Low impact security : Logging of SQL queries enabled with Sequelize</name>
+        <internalKey>OTHER_CONFIG.SEQUELIZE_ENABLED_LOGGING_none</internalKey>
+        <description>The &apos;sequelize&apos; module sets the logging option to &apos;console.log&apos;, which is the default value. With that setting &apos;sequelize&apos; logs every query to the console. This may result in leaking sensitive data since console outputs are often streamed to log files when the application is deployed.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_JSHINT.W062_none</key>
+        <name>JSHint : JSHint Warning</name>
+        <internalKey>OTHER_JSHINT.W062_none</internalKey>
+        <description>Wrap an immediate function invocation in parens to assist the reader in understanding that the expression is the result of a function, and not the function itself.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_JSHINT.W061_none</key>
+        <name>JSHint : JSHint Warning</name>
+        <internalKey>OTHER_JSHINT.W061_none</internalKey>
+        <description>eval can be harmful.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_MISSING_AUTHZ_none</key>
+        <name>Medium impact security : Missing authorization check</name>
+        <internalKey>OTHER_MISSING_AUTHZ_none</internalKey>
+        <description>Calling a method that performs a sensitive action without first checking authorization, as is done elsewhere.</description>
+        <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-security</tag>
+    </rule>
+    <rule>
+        <key>OTHER_FORWARD_NULL_bad_null_value_use</key>
+        <name>Null pointer dereferences : Bad use of null-like value</name>
+        <internalKey>OTHER_FORWARD_NULL_bad_null_value_use</internalKey>
+        <description>Performing an operation that would be invalid on a null or undefined value.</description>
+        <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_FORWARD_NULL_none</key>
+        <name>Null pointer dereferences : Bad use of null-like value</name>
+        <internalKey>OTHER_FORWARD_NULL_none</internalKey>
+        <description>Performing an operation that would be invalid on a null or undefined value.</description>
+        <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_EXPRESS_X_POWERED_BY_ENABLED_x_powered_by_http_header</key>
+        <name>Low impact security : Sending X-Powered-By header</name>
+        <internalKey>OTHER_EXPRESS_X_POWERED_BY_ENABLED_x_powered_by_http_header</internalKey>
+        <description>HTTP responses contain an X-Powered-By header that reveals information about the server.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-security</tag>
+    </rule>
+    <rule>
+        <key>OTHER_EXPRESS_X_POWERED_BY_ENABLED_none</key>
+        <name>Low impact security : Sending X-Powered-By header</name>
+        <internalKey>OTHER_EXPRESS_X_POWERED_BY_ENABLED_none</internalKey>
+        <description>HTTP responses contain an X-Powered-By header that reveals information about the server.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_JSHINT.W079_none</key>
+        <name>JSHint : JSHint Warning</name>
+        <internalKey>OTHER_JSHINT.W079_none</internalKey>
+        <description>Redefinition of &apos;&lt;something&gt;&apos;.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_JSHINT.W078_none</key>
+        <name>JSHint : JSHint Warning</name>
+        <internalKey>OTHER_JSHINT.W078_none</internalKey>
+        <description>Setter is defined without getter.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_SESSIONSTORAGE_MANIPULATION_none</key>
+        <name>Low impact security : sessionStorage manipulation</name>
+        <internalKey>OTHER_SESSIONSTORAGE_MANIPULATION_none</internalKey>
+        <description>A user-controllable string is used to construct a key in sessionStorage.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-security</tag>
+    </rule>
+    <rule>
+        <key>OTHER_JSHINT.W075_none</key>
+        <name>JSHint : JSHint Warning</name>
+        <internalKey>OTHER_JSHINT.W075_none</internalKey>
+        <description>Duplicate &lt;something&gt; &apos;{b}&apos;.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_INSECURE_COOKIE_client_sessions_express_session</key>
+        <name>Audit impact security : Session cookie without the &apos;httpOnly&apos; attribute</name>
+        <internalKey>OTHER_INSECURE_COOKIE_client_sessions_express_session</internalKey>
+        <description>The client-sessions or express-session configuration does not set the &apos;httpOnly&apos; attribute of the session cookie.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-security</tag>
+    </rule>
+    <rule>
+        <key>OTHER_INSECURE_COOKIE_hapi_server_session</key>
+        <name>Audit impact security : Session cookie without the &apos;httpOnly&apos; attribute</name>
+        <internalKey>OTHER_INSECURE_COOKIE_hapi_server_session</internalKey>
+        <description>The Hapi.js configuration does not set the &apos;httpOnly&apos; attribute of the session cookie.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-security</tag>
+    </rule>
+    <rule>
+        <key>OTHER_INSECURE_COOKIE_none</key>
+        <name>Audit impact security : Session cookie without the &apos;httpOnly&apos; attribute</name>
+        <internalKey>OTHER_INSECURE_COOKIE_none</internalKey>
+        <description>The Hapi.js configuration does not set the &apos;httpOnly&apos; attribute of the session cookie.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_JSHINT.W074_none</key>
+        <name>JSHint : JSHint Warning</name>
+        <internalKey>OTHER_JSHINT.W074_none</internalKey>
+        <description>This function&apos;s cyclomatic complexity is too high. (&lt;something&gt;)</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_JSHINT.W077_none</key>
+        <name>JSHint : JSHint Warning</name>
+        <internalKey>OTHER_JSHINT.W077_none</internalKey>
+        <description>Expected a single parameter in set &lt;something&gt; function.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_JSHINT.W076_none</key>
+        <name>JSHint : JSHint Warning</name>
+        <internalKey>OTHER_JSHINT.W076_none</internalKey>
+        <description>Unexpected parameter &apos;&lt;something&gt;&apos; in get {b} function.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_JSHINT.W071_none</key>
+        <name>JSHint : JSHint Warning</name>
+        <internalKey>OTHER_JSHINT.W071_none</internalKey>
+        <description>This function has too many statements. (&lt;something&gt;)</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_JSHINT.W070_none</key>
+        <name>JSHint : JSHint Warning</name>
+        <internalKey>OTHER_JSHINT.W070_none</internalKey>
+        <description>Extra comma. (it breaks older versions of IE)</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_JSHINT.W073_none</key>
+        <name>JSHint : JSHint Warning</name>
+        <internalKey>OTHER_JSHINT.W073_none</internalKey>
+        <description>Blocks are nested too deeply. (&lt;something&gt;)</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_JSHINT.W072_none</key>
+        <name>JSHint : JSHint Warning</name>
+        <internalKey>OTHER_JSHINT.W072_none</internalKey>
+        <description>This function has too many parameters. (&lt;something&gt;)</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_JSHINT.W080_none</key>
+        <name>JSHint : JSHint Warning</name>
+        <internalKey>OTHER_JSHINT.W080_none</internalKey>
+        <description>It&apos;s not necessary to initialize &apos;&lt;something&gt;&apos; to &apos;undefined&apos;.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_PATH_MANIPULATION_none</key>
+        <name>High impact security : Filesystem path, filename, or URI manipulation</name>
+        <internalKey>OTHER_PATH_MANIPULATION_none</internalKey>
+        <description>A user-controllable string is used as part or all of a filesystem path, filename, or URI (uniform resource identifier).</description>
+        <severity>BLOCKER</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-security</tag>
+    </rule>
+    <rule>
+        <key>OTHER_REACT_DANGEROUS_INNERHTML_react_set_unsafe_html</key>
+        <name>Audit impact security : Using dangerouslySetInnerHTML in React</name>
+        <internalKey>OTHER_REACT_DANGEROUS_INNERHTML_react_set_unsafe_html</internalKey>
+        <description>Setting raw HTML content to the innerHTML property of a DOM element by using the dangerouslySetInnerHTML attribute.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-security</tag>
+    </rule>
+    <rule>
+        <key>OTHER_REACT_DANGEROUS_INNERHTML_none</key>
+        <name>Audit impact security : Using dangerouslySetInnerHTML in React</name>
+        <internalKey>OTHER_REACT_DANGEROUS_INNERHTML_none</internalKey>
+        <description>Setting raw HTML content to the innerHTML property of a DOM element by using the dangerouslySetInnerHTML attribute.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_CONFIG.REQUEST_STRICTSSL_DISABLED_request_strictssl_disabled</key>
+        <name>Low impact security : SSL Certificate Verification Disabled in Request</name>
+        <internalKey>OTHER_CONFIG.REQUEST_STRICTSSL_DISABLED_request_strictssl_disabled</internalKey>
+        <description>The &apos;request&apos; module establishes a connection over SSL, but does not validate the SSL certificate. The &apos;strictSSL&apos; setting is set to &apos;false&apos;, and therefore, a rogue certificate will be trusted.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-security</tag>
+    </rule>
+    <rule>
+        <key>OTHER_CONFIG.REQUEST_STRICTSSL_DISABLED_none</key>
+        <name>Low impact security : SSL Certificate Verification Disabled in Request</name>
+        <internalKey>OTHER_CONFIG.REQUEST_STRICTSSL_DISABLED_none</internalKey>
+        <description>The &apos;request&apos; module establishes a connection over SSL, but does not validate the SSL certificate. The &apos;strictSSL&apos; setting is set to &apos;false&apos;, and therefore, a rogue certificate will be trusted.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_JSHINT.*</key>
+        <name>Coverity JSHINT : JSHint Warning</name>
+        <internalKey>OTHER_JSHINT.*</internalKey>
+        <description>Coverity JSHINT : JSHint Warning</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>jshint</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_ANGULAR_BYPASS_SECURITY_none</key>
+        <name>Audit impact security : Angular bypass security</name>
+        <internalKey>OTHER_ANGULAR_BYPASS_SECURITY_none</internalKey>
+        <description>Bypassing angular sanitization by calling bypassSecurityTrust*</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-security</tag>
     </rule>
     <rule>
         <key>OTHER_IDENTICAL_BRANCHES_case</key>
@@ -222,179 +3628,10 @@
         <tag>coverity-quality</tag>
     </rule>
     <rule>
-        <key>OTHER_COOKIE_INJECTION_none</key>
-        <name>Low impact security : Cookie injection</name>
-        <internalKey>OTHER_COOKIE_INJECTION_none</internalKey>
-        <description>A user-controllable string is used to construct a cookie.</description>
-        <severity>MAJOR</severity>
-        <cardinality>SINGLE</cardinality>
-        <status>READY</status>
-        <type>VULNERABILITY</type>
-        <tag>coverity</tag>
-        <tag>js</tag>
-        <tag>coverity-security</tag>
-    </rule>
-    <rule>
-        <key>OTHER_STRAY_SEMICOLON_none</key>
-        <name>Control flow issues : Stray semicolon</name>
-        <internalKey>OTHER_STRAY_SEMICOLON_none</internalKey>
-        <description>The code contains a semicolon where it is probably not intended, such as between a &apos;for&apos;, &apos;while&apos;, or &apos;if&apos; and a code block.</description>
-        <severity>CRITICAL</severity>
-        <cardinality>SINGLE</cardinality>
-        <status>READY</status>
-        <type>BUG</type>
-        <tag>coverity</tag>
-        <tag>js</tag>
-        <tag>coverity-quality</tag>
-    </rule>
-    <rule>
-        <key>OTHER_NOSQL_QUERY_INJECTION_none</key>
-        <name>Medium impact security : NoSQL query injection</name>
-        <internalKey>OTHER_NOSQL_QUERY_INJECTION_none</internalKey>
-        <description>A user-controllable string is injected into a NoSQL query.</description>
-        <severity>CRITICAL</severity>
-        <cardinality>SINGLE</cardinality>
-        <status>READY</status>
-        <type>VULNERABILITY</type>
-        <tag>coverity</tag>
-        <tag>js</tag>
-        <tag>coverity-security</tag>
-    </rule>
-    <rule>
-        <key>OTHER_UNCHECKED_ORIGIN_none</key>
-        <name>Medium impact security : Unchecked origin of message event</name>
-        <internalKey>OTHER_UNCHECKED_ORIGIN_none</internalKey>
-        <description>A &apos;message&apos; handler does not check the origin of its received message event.</description>
-        <severity>CRITICAL</severity>
-        <cardinality>SINGLE</cardinality>
-        <status>READY</status>
-        <type>VULNERABILITY</type>
-        <tag>coverity</tag>
-        <tag>js</tag>
-        <tag>coverity-security</tag>
-    </rule>
-    <rule>
-        <key>OTHER_FORWARD_NULL_bad_null_value_use</key>
-        <name>Null pointer dereferences : Bad use of null-like value</name>
-        <internalKey>OTHER_FORWARD_NULL_bad_null_value_use</internalKey>
-        <description>Performing an operation that would be invalid on a null or undefined value.</description>
-        <severity>CRITICAL</severity>
-        <cardinality>SINGLE</cardinality>
-        <status>READY</status>
-        <type>BUG</type>
-        <tag>coverity</tag>
-        <tag>js</tag>
-        <tag>coverity-quality</tag>
-    </rule>
-    <rule>
-        <key>OTHER_FORWARD_NULL_deref_constant_null</key>
-        <name>Null pointer dereferences : Explicit null dereferenced</name>
-        <internalKey>OTHER_FORWARD_NULL_deref_constant_null</internalKey>
-        <description>Dereference of an explicit null value</description>
-        <severity>CRITICAL</severity>
-        <cardinality>SINGLE</cardinality>
-        <status>READY</status>
-        <type>BUG</type>
-        <tag>coverity</tag>
-        <tag>js</tag>
-        <tag>coverity-quality</tag>
-    </rule>
-    <rule>
-        <key>OTHER_FORWARD_NULL_needs_null_check</key>
-        <name>Null pointer dereferences : Dereference null argument</name>
-        <internalKey>OTHER_FORWARD_NULL_needs_null_check</internalKey>
-        <description>A method parameter that is allowed to be null is dereferenced without a check</description>
-        <severity>CRITICAL</severity>
-        <cardinality>SINGLE</cardinality>
-        <status>READY</status>
-        <type>BUG</type>
-        <tag>coverity</tag>
-        <tag>js</tag>
-        <tag>coverity-quality</tag>
-    </rule>
-    <rule>
-        <key>OTHER_FORWARD_NULL_none</key>
-        <name>Null pointer dereferences : Dereference after null check</name>
-        <internalKey>OTHER_FORWARD_NULL_none</internalKey>
-        <description>Reference is checked against null but then dereferenced anyway</description>
-        <severity>CRITICAL</severity>
-        <cardinality>SINGLE</cardinality>
-        <status>READY</status>
-        <type>BUG</type>
-        <tag>coverity</tag>
-        <tag>js</tag>
-        <tag>coverity-quality</tag>
-    </rule>
-    <rule>
-        <key>OTHER_NULL_RETURNS_none</key>
-        <name>Null pointer dereferences : Bad use of null-like value</name>
-        <internalKey>OTHER_NULL_RETURNS_none</internalKey>
-        <description>Using the return value of a function that can return null or undefined without checking it for null or undefined.</description>
-        <severity>CRITICAL</severity>
-        <cardinality>SINGLE</cardinality>
-        <status>READY</status>
-        <type>BUG</type>
-        <tag>coverity</tag>
-        <tag>js</tag>
-        <tag>coverity-quality</tag>
-    </rule>
-    <rule>
-        <key>OTHER_REVERSE_INULL_none</key>
-        <name>Null pointer dereferences : Property access or function call before check for null or undefined</name>
-        <internalKey>OTHER_REVERSE_INULL_none</internalKey>
-        <description>All paths that lead to this comparison against null or undefined already use the value earlier for accessing a property or as a function call</description>
-        <severity>CRITICAL</severity>
-        <cardinality>SINGLE</cardinality>
-        <status>READY</status>
-        <type>BUG</type>
-        <tag>coverity</tag>
-        <tag>js</tag>
-        <tag>coverity-quality</tag>
-    </rule>
-    <rule>
-        <key>OTHER_COPY_PASTE_ERROR_none</key>
-        <name>Incorrect expression : Copy-paste error</name>
-        <internalKey>OTHER_COPY_PASTE_ERROR_none</internalKey>
-        <description>A copied piece of code is inconsistent with the original</description>
-        <severity>CRITICAL</severity>
-        <cardinality>SINGLE</cardinality>
-        <status>READY</status>
-        <type>BUG</type>
-        <tag>coverity</tag>
-        <tag>js</tag>
-        <tag>coverity-quality</tag>
-    </rule>
-    <rule>
-        <key>OTHER_IDENTIFIER_TYPO_none</key>
-        <name>Incorrect expression : Typo in identifier</name>
-        <internalKey>OTHER_IDENTIFIER_TYPO_none</internalKey>
-        <description>This code uniquely references a named entity that is suspiciously close in spelling to another, more commonly referenced entity.</description>
-        <severity>CRITICAL</severity>
-        <cardinality>SINGLE</cardinality>
-        <status>READY</status>
-        <type>BUG</type>
-        <tag>coverity</tag>
-        <tag>js</tag>
-        <tag>coverity-quality</tag>
-    </rule>
-    <rule>
-        <key>OTHER_HEADER_INJECTION_none</key>
-        <name>Low impact security : HTTP header injection</name>
-        <internalKey>OTHER_HEADER_INJECTION_none</internalKey>
-        <description>A user-controllable string is used to construct an HTTP header name.</description>
-        <severity>MAJOR</severity>
-        <cardinality>SINGLE</cardinality>
-        <status>READY</status>
-        <type>VULNERABILITY</type>
-        <tag>coverity</tag>
-        <tag>js</tag>
-        <tag>coverity-security</tag>
-    </rule>
-    <rule>
-        <key>OTHER_NESTING_INDENT_MISMATCH_bad_indentation</key>
-        <name>Code maintainability issues : Indentation does not match nesting level</name>
-        <internalKey>OTHER_NESTING_INDENT_MISMATCH_bad_indentation</internalKey>
-        <description>The indentation of this code does not reflect its syntactic nesting level.</description>
+        <key>OTHER_JSHINT.W089_none</key>
+        <name>JSHint : JSHint Warning</name>
+        <internalKey>OTHER_JSHINT.W089_none</internalKey>
+        <description>The body of a for in should be wrapped in an if statement to filter unwanted properties from the prototype.</description>
         <severity>MAJOR</severity>
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
@@ -404,179 +3641,23 @@
         <tag>coverity-quality</tag>
     </rule>
     <rule>
-        <key>OTHER_NESTING_INDENT_MISMATCH_none</key>
-        <name>Control flow issues : Nesting level does not match indentation</name>
-        <internalKey>OTHER_NESTING_INDENT_MISMATCH_none</internalKey>
-        <description>The indentation of this code suggests it is nested when it is not.</description>
+        <key>OTHER_CSS_INJECTION_none</key>
+        <name>Medium impact security : CSS Injection</name>
+        <internalKey>OTHER_CSS_INJECTION_none</internalKey>
+        <description>A user-controllable string is used as part of a CSS directive.</description>
         <severity>CRITICAL</severity>
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
-        <type>BUG</type>
+        <type>VULNERABILITY</type>
         <tag>coverity</tag>
         <tag>js</tag>
-        <tag>coverity-quality</tag>
+        <tag>coverity-security</tag>
     </rule>
     <rule>
-        <key>OTHER_CONSTANT_EXPRESSION_RESULT_bit_and_with_zero</key>
-        <name>Integer handling issues : Bitwise-and with zero</name>
-        <internalKey>OTHER_CONSTANT_EXPRESSION_RESULT_bit_and_with_zero</internalKey>
-        <description>Bitwise-and (&apos;&amp;amp;&apos;) operation applied to zero always produces zero</description>
-        <severity>CRITICAL</severity>
-        <cardinality>SINGLE</cardinality>
-        <status>READY</status>
-        <type>BUG</type>
-        <tag>coverity</tag>
-        <tag>js</tag>
-        <tag>coverity-quality</tag>
-    </rule>
-    <rule>
-        <key>OTHER_CONSTANT_EXPRESSION_RESULT_extra_high_bits</key>
-        <name>Integer handling issues : Extra high-order bits</name>
-        <internalKey>OTHER_CONSTANT_EXPRESSION_RESULT_extra_high_bits</internalKey>
-        <description>In an operation, the high-order bits of wider operand do not affect the narrower operand</description>
-        <severity>CRITICAL</severity>
-        <cardinality>SINGLE</cardinality>
-        <status>READY</status>
-        <type>BUG</type>
-        <tag>coverity</tag>
-        <tag>js</tag>
-        <tag>coverity-quality</tag>
-    </rule>
-    <rule>
-        <key>OTHER_CONSTANT_EXPRESSION_RESULT_logical_vs_bitwise</key>
-        <name>Integer handling issues : Logical vs. bitwise operator</name>
-        <internalKey>OTHER_CONSTANT_EXPRESSION_RESULT_logical_vs_bitwise</internalKey>
-        <description>Logical operator used in place of bitwise operator or vice versa</description>
-        <severity>CRITICAL</severity>
-        <cardinality>SINGLE</cardinality>
-        <status>READY</status>
-        <type>BUG</type>
-        <tag>coverity</tag>
-        <tag>js</tag>
-        <tag>coverity-quality</tag>
-    </rule>
-    <rule>
-        <key>OTHER_CONSTANT_EXPRESSION_RESULT_missing_parentheses</key>
-        <name>Incorrect expression : Missing parentheses</name>
-        <internalKey>OTHER_CONSTANT_EXPRESSION_RESULT_missing_parentheses</internalKey>
-        <description>Missing parentheses caused unintended operator precedence</description>
-        <severity>CRITICAL</severity>
-        <cardinality>SINGLE</cardinality>
-        <status>READY</status>
-        <type>BUG</type>
-        <tag>coverity</tag>
-        <tag>js</tag>
-        <tag>coverity-quality</tag>
-    </rule>
-    <rule>
-        <key>OTHER_CONSTANT_EXPRESSION_RESULT_none</key>
-        <name>Integer handling issues : Constant expression result</name>
-        <internalKey>OTHER_CONSTANT_EXPRESSION_RESULT_none</internalKey>
-        <description>An operation with non-constant operands that computes a result with constant value</description>
-        <severity>CRITICAL</severity>
-        <cardinality>SINGLE</cardinality>
-        <status>READY</status>
-        <type>BUG</type>
-        <tag>coverity</tag>
-        <tag>js</tag>
-        <tag>coverity-quality</tag>
-    </rule>
-    <rule>
-        <key>OTHER_CONSTANT_EXPRESSION_RESULT_operator_confusion</key>
-        <name>Integer handling issues : Wrong operator used</name>
-        <internalKey>OTHER_CONSTANT_EXPRESSION_RESULT_operator_confusion</internalKey>
-        <description>Wrong operator used in expression</description>
-        <severity>CRITICAL</severity>
-        <cardinality>SINGLE</cardinality>
-        <status>READY</status>
-        <type>BUG</type>
-        <tag>coverity</tag>
-        <tag>js</tag>
-        <tag>coverity-quality</tag>
-    </rule>
-    <rule>
-        <key>OTHER_CONSTANT_EXPRESSION_RESULT_pointless_string_compare</key>
-        <name>Incorrect expression : Pointless string comparison</name>
-        <internalKey>OTHER_CONSTANT_EXPRESSION_RESULT_pointless_string_compare</internalKey>
-        <description>A string is compared against itself with strcmp or strncmp.</description>
-        <severity>CRITICAL</severity>
-        <cardinality>SINGLE</cardinality>
-        <status>READY</status>
-        <type>BUG</type>
-        <tag>coverity</tag>
-        <tag>js</tag>
-        <tag>coverity-quality</tag>
-    </rule>
-    <rule>
-        <key>OTHER_CONSTANT_EXPRESSION_RESULT_result_independent_of_operands</key>
-        <name>Integer handling issues : Operands don&apos;t affect result</name>
-        <internalKey>OTHER_CONSTANT_EXPRESSION_RESULT_result_independent_of_operands</internalKey>
-        <description>An operation with non-constant operands that computes a result with constant value</description>
-        <severity>CRITICAL</severity>
-        <cardinality>SINGLE</cardinality>
-        <status>READY</status>
-        <type>BUG</type>
-        <tag>coverity</tag>
-        <tag>js</tag>
-        <tag>coverity-quality</tag>
-    </rule>
-    <rule>
-        <key>OTHER_CONSTANT_EXPRESSION_RESULT_same_on_both_sides</key>
-        <name>Incorrect expression : Same on both sides</name>
-        <internalKey>OTHER_CONSTANT_EXPRESSION_RESULT_same_on_both_sides</internalKey>
-        <description>The same expression occurs on both sides of an operator.</description>
-        <severity>CRITICAL</severity>
-        <cardinality>SINGLE</cardinality>
-        <status>READY</status>
-        <type>BUG</type>
-        <tag>coverity</tag>
-        <tag>js</tag>
-        <tag>coverity-quality</tag>
-    </rule>
-    <rule>
-        <key>OTHER_CONSTANT_EXPRESSION_RESULT_typeof_misuse</key>
-        <name>Incorrect expression : Misuse of typeof</name>
-        <internalKey>OTHER_CONSTANT_EXPRESSION_RESULT_typeof_misuse</internalKey>
-        <description>Meaningless check against the result of a typeof operation</description>
-        <severity>CRITICAL</severity>
-        <cardinality>SINGLE</cardinality>
-        <status>READY</status>
-        <type>BUG</type>
-        <tag>coverity</tag>
-        <tag>js</tag>
-        <tag>coverity-quality</tag>
-    </rule>
-    <rule>
-        <key>OTHER_CONSTANT_EXPRESSION_RESULT_unnecessary_op_assign</key>
-        <name>Integer handling issues : Suspicious &amp;= or |=</name>
-        <internalKey>OTHER_CONSTANT_EXPRESSION_RESULT_unnecessary_op_assign</internalKey>
-        <description>Using a bitwise assignment operator to assign a constant value</description>
-        <severity>CRITICAL</severity>
-        <cardinality>SINGLE</cardinality>
-        <status>READY</status>
-        <type>BUG</type>
-        <tag>coverity</tag>
-        <tag>js</tag>
-        <tag>coverity-quality</tag>
-    </rule>
-    <rule>
-        <key>OTHER_CONSTANT_EXPRESSION_RESULT_number_as_truth_value</key>
-        <name>Integer handling issues : Number used as truth value</name>
-        <internalKey>OTHER_CONSTANT_EXPRESSION_RESULT_number_as_truth_value</internalKey>
-        <description>A numerical value is used where a Boolean value is expected, and it will always evaluate to true.</description>
-        <severity>CRITICAL</severity>
-        <cardinality>SINGLE</cardinality>
-        <status>READY</status>
-        <type>BUG</type>
-        <tag>coverity</tag>
-        <tag>js</tag>
-        <tag>coverity-quality</tag>
-    </rule>
-    <rule>
-        <key>OTHER_DEADCODE_dead_case_in_switch</key>
-        <name>Possible Control flow issues : Dead case in switch</name>
-        <internalKey>OTHER_DEADCODE_dead_case_in_switch</internalKey>
-        <description>Switch never goes directly to this case</description>
+        <key>OTHER_JSHINT.W086_none</key>
+        <name>JSHint : JSHint Warning</name>
+        <internalKey>OTHER_JSHINT.W086_none</internalKey>
+        <description>Expected a &apos;break&apos; statement before &apos;&lt;something&gt;&apos;.</description>
         <severity>MAJOR</severity>
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
@@ -586,36 +3667,23 @@
         <tag>coverity-quality</tag>
     </rule>
     <rule>
-        <key>OTHER_DEADCODE_dead_default_in_switch</key>
-        <name>Possible Control flow issues : Dead default in switch</name>
-        <internalKey>OTHER_DEADCODE_dead_default_in_switch</internalKey>
-        <description>Default in switch statement is dead code</description>
-        <severity>MAJOR</severity>
+        <key>OTHER_UNLESS_CASE_SENSITIVE_ROUTE_MATCHING_express_unless_case_sensitive_route_matching</key>
+        <name>Medium impact security : Case sensitive route matching</name>
+        <internalKey>OTHER_UNLESS_CASE_SENSITIVE_ROUTE_MATCHING_express_unless_case_sensitive_route_matching</internalKey>
+        <description>The &apos;path&apos; parameter of the &apos;express-unless&apos; middleware includes a case-sensitive negative regex.</description>
+        <severity>CRITICAL</severity>
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
-        <type>BUG</type>
+        <type>VULNERABILITY</type>
         <tag>coverity</tag>
         <tag>js</tag>
-        <tag>coverity-quality</tag>
+        <tag>coverity-security</tag>
     </rule>
     <rule>
-        <key>OTHER_DEADCODE_effectively_constant</key>
-        <name>Possible Control flow issues : &apos;Constant&apos; variable guards dead code</name>
-        <internalKey>OTHER_DEADCODE_effectively_constant</internalKey>
-        <description>Variable assigned once to a constant guards dead code.</description>
-        <severity>MAJOR</severity>
-        <cardinality>SINGLE</cardinality>
-        <status>READY</status>
-        <type>BUG</type>
-        <tag>coverity</tag>
-        <tag>js</tag>
-        <tag>coverity-quality</tag>
-    </rule>
-    <rule>
-        <key>OTHER_DEADCODE_none</key>
-        <name>Control flow issues : Logically dead code</name>
-        <internalKey>OTHER_DEADCODE_none</internalKey>
-        <description>Code can never be reached because of a logical contradiction</description>
+        <key>OTHER_UNLESS_CASE_SENSITIVE_ROUTE_MATCHING_none</key>
+        <name>Medium impact security : Case sensitive route matching</name>
+        <internalKey>OTHER_UNLESS_CASE_SENSITIVE_ROUTE_MATCHING_none</internalKey>
+        <description>The &apos;path&apos; parameter of the &apos;express-unless&apos; middleware includes a case-sensitive negative regex.</description>
         <severity>CRITICAL</severity>
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
@@ -625,10 +3693,10 @@
         <tag>coverity-quality</tag>
     </rule>
     <rule>
-        <key>OTHER_DEADCODE_redundant_test</key>
-        <name>Possible Control flow issues : Redundant test</name>
-        <internalKey>OTHER_DEADCODE_redundant_test</internalKey>
-        <description>Test always evaluates the same</description>
+        <key>OTHER_JSHINT.W085_none</key>
+        <name>JSHint : JSHint Warning</name>
+        <internalKey>OTHER_JSHINT.W085_none</internalKey>
+        <description>Don&apos;t use &apos;with&apos;.</description>
         <severity>MAJOR</severity>
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
@@ -638,10 +3706,36 @@
         <tag>coverity-quality</tag>
     </rule>
     <rule>
-        <key>OTHER_REGEX_INJECTION_none</key>
-        <name>Low impact security : Regular expression injection</name>
-        <internalKey>OTHER_REGEX_INJECTION_none</internalKey>
-        <description>A regular expression is constructed from a user-controllable string.</description>
+        <key>OTHER_JSHINT.W088_none</key>
+        <name>JSHint : JSHint Warning</name>
+        <internalKey>OTHER_JSHINT.W088_none</internalKey>
+        <description>Creating global &apos;for&apos; variable. Should be &apos;for (var &lt;something&gt; ...&apos;.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_JSHINT.W087_none</key>
+        <name>JSHint : JSHint Warning</name>
+        <internalKey>OTHER_JSHINT.W087_none</internalKey>
+        <description>Forgotten &apos;debugger&apos; statement?</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_CONFIG.SOCKETIO_ORIGINS_ACCEPT_ALL_socketio_all_origins</key>
+        <name>Low impact security : Socket accepts connections from all origins</name>
+        <internalKey>OTHER_CONFIG.SOCKETIO_ORIGINS_ACCEPT_ALL_socketio_all_origins</internalKey>
+        <description>The Socket.IO server is configured to accept requests from any origin. Having the connection open to anyone may lead to malicious server connecting to the Socket.IO server, exhausting its resources and causing denial of service, or gaining sensitive information from the server.</description>
         <severity>MAJOR</severity>
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
@@ -651,50 +3745,206 @@
         <tag>coverity-security</tag>
     </rule>
     <rule>
-        <key>OTHER_XSS_none</key>
-        <name>High impact security : Cross-site scripting</name>
-        <internalKey>OTHER_XSS_none</internalKey>
-        <description>Untrusted user-supplied data is inserted into a context that can execute JavaScript without adequate validation, escaping, or filtering</description>
-        <severity>BLOCKER</severity>
+        <key>OTHER_CONFIG.SOCKETIO_ORIGINS_ACCEPT_ALL_none</key>
+        <name>Low impact security : Socket accepts connections from all origins</name>
+        <internalKey>OTHER_CONFIG.SOCKETIO_ORIGINS_ACCEPT_ALL_none</internalKey>
+        <description>The Socket.IO server is configured to accept requests from any origin. Having the connection open to anyone may lead to malicious server connecting to the Socket.IO server, exhausting its resources and causing denial of service, or gaining sensitive information from the server.</description>
+        <severity>MAJOR</severity>
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
-        <type>VULNERABILITY</type>
+        <type>BUG</type>
         <tag>coverity</tag>
         <tag>js</tag>
-        <tag>coverity-security</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
-        <key>OTHER_DOM_XSS_none</key>
-        <name>High impact security : DOM-based cross-site scripting</name>
-        <internalKey>OTHER_DOM_XSS_none</internalKey>
-        <description>Untrusted user-supplied data is inserted into a context that can execute JavaScript.</description>
-        <severity>BLOCKER</severity>
+        <key>OTHER_JSHINT.W082_none</key>
+        <name>JSHint : JSHint Warning</name>
+        <internalKey>OTHER_JSHINT.W082_none</internalKey>
+        <description>Function declarations should not be placed in blocks. Use a function expression or move the statement to the top of the outer function.</description>
+        <severity>MAJOR</severity>
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
-        <type>VULNERABILITY</type>
+        <type>BUG</type>
         <tag>coverity</tag>
         <tag>js</tag>
-        <tag>coverity-security</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
-        <key>OTHER_SQLI_none</key>
-        <name>High impact security : SQL injection</name>
-        <internalKey>OTHER_SQLI_none</internalKey>
-        <description>Untrusted user-supplied data is inserted into a SQL statement without adequate validation, escaping, or filtering</description>
-        <severity>BLOCKER</severity>
+        <key>OTHER_JSHINT.W081_none</key>
+        <name>JSHint : JSHint Warning</name>
+        <internalKey>OTHER_JSHINT.W081_none</internalKey>
+        <description>null</description>
+        <severity>MAJOR</severity>
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
-        <type>VULNERABILITY</type>
+        <type>BUG</type>
         <tag>coverity</tag>
         <tag>js</tag>
-        <tag>coverity-security</tag>
+        <tag>coverity-quality</tag>
     </rule>
     <rule>
-        <key>OTHER_UNREACHABLE_none</key>
-        <name>Control flow issues : Structurally dead code</name>
-        <internalKey>OTHER_UNREACHABLE_none</internalKey>
-        <description>Code block is unreachable because of the syntactic structure of the code</description>
+        <key>OTHER_JSHINT.W084_none</key>
+        <name>JSHint : JSHint Warning</name>
+        <internalKey>OTHER_JSHINT.W084_none</internalKey>
+        <description>Expected a conditional expression and instead saw an assignment.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_UNEXPECTED_CONTROL_FLOW_continue_in_do_while_false</key>
+        <name>Control flow issues : Unexpected control flow</name>
+        <internalKey>OTHER_UNEXPECTED_CONTROL_FLOW_continue_in_do_while_false</internalKey>
+        <description>Loop body does not re-execute on &apos;continue&apos; statement</description>
         <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_UNEXPECTED_CONTROL_FLOW_none</key>
+        <name>Control flow issues : Unexpected control flow</name>
+        <internalKey>OTHER_UNEXPECTED_CONTROL_FLOW_none</internalKey>
+        <description>Loop body does not re-execute on &apos;continue&apos; statement</description>
+        <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_JSHINT.W083_none</key>
+        <name>JSHint : JSHint Warning</name>
+        <internalKey>OTHER_JSHINT.W083_none</internalKey>
+        <description>Functions declared within loops referencing an outer scoped variable may lead to confusing semantics.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_JSHINT.W091_none</key>
+        <name>JSHint : JSHint Warning</name>
+        <internalKey>OTHER_JSHINT.W091_none</internalKey>
+        <description>null</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_JSHINT.W090_none</key>
+        <name>JSHint : JSHint Warning</name>
+        <internalKey>OTHER_JSHINT.W090_none</internalKey>
+        <description>&apos;&lt;something&gt;&apos; is not a statement label.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_JSHINT.W097_none</key>
+        <name>JSHint : JSHint Warning</name>
+        <internalKey>OTHER_JSHINT.W097_none</internalKey>
+        <description>Use the function form of &quot;use strict&quot;.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_JSHINT.W096_none</key>
+        <name>JSHint : JSHint Warning</name>
+        <internalKey>OTHER_JSHINT.W096_none</internalKey>
+        <description>The &apos;&lt;something&gt;&apos; key may produce unexpected results.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_JSHINT.W099_none</key>
+        <name>JSHint : JSHint Warning</name>
+        <internalKey>OTHER_JSHINT.W099_none</internalKey>
+        <description>null</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_JSHINT.W098_none</key>
+        <name>JSHint : JSHint Warning</name>
+        <internalKey>OTHER_JSHINT.W098_none</internalKey>
+        <description>&apos;&lt;something&gt;&apos; is defined but never used.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_JSHINT.W093_none</key>
+        <name>JSHint : JSHint Warning</name>
+        <internalKey>OTHER_JSHINT.W093_none</internalKey>
+        <description>Did you mean to return a conditional instead of an assignment?</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_JSHINT.W095_none</key>
+        <name>JSHint : JSHint Warning</name>
+        <internalKey>OTHER_JSHINT.W095_none</internalKey>
+        <description>Expected a string and instead saw &lt;something&gt;.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>js</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_JSHINT.W094_none</key>
+        <name>JSHint : JSHint Warning</name>
+        <internalKey>OTHER_JSHINT.W094_none</internalKey>
+        <description>Unexpected comma.</description>
+        <severity>MAJOR</severity>
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>BUG</type>
