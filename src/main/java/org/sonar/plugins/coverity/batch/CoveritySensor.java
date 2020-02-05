@@ -30,7 +30,8 @@ import org.sonar.api.config.Configuration;
 import org.sonar.api.measures.CoreMetrics;
 import org.sonar.api.rule.RuleKey;
 import org.sonar.plugins.coverity.CoverityPlugin;
-import org.sonar.plugins.coverity.base.CoverityPluginMetrics;
+import org.sonar.plugins.coverity.metrics.CoverityPluginMetrics;
+import org.sonar.plugins.coverity.metrics.MetricService;
 import org.sonar.plugins.coverity.util.CoverityUtil;
 import org.sonar.plugins.coverity.ws.CIMClient;
 import org.sonar.plugins.coverity.ws.CIMClientFactory;
@@ -373,62 +374,49 @@ public class CoveritySensor implements Sensor {
         String covStream = sensorContext.config().get(CoverityPlugin.COVERITY_STREAM).orElse(null);
 
         if (covProject != null) {
-            sensorContext
-                    .<String>newMeasure()
-                    .forMetric(CoverityPluginMetrics.COVERITY_PROJECT_NAME)
-                    .on(sensorContext.module())
-                    .withValue(covProject)
-                    .save();
+            MetricService.addMetric(sensorContext,
+                    CoverityPluginMetrics.COVERITY_PROJECT_NAME,
+                    covProject,
+                    sensorContext.module());
         }
 
         String projectUrl  = createURL(client);
         if (projectUrl != null) {
-            sensorContext
-                    .<String>newMeasure()
-                    .forMetric(CoverityPluginMetrics.COVERITY_URL_CIM_METRIC)
-                    .on(sensorContext.module())
-                    .withValue(projectUrl)
-                    .save();
+            MetricService.addMetric(sensorContext,
+                    CoverityPluginMetrics.COVERITY_URL_CIM_METRIC,
+                    projectUrl,
+                    sensorContext.module());
         }
 
         if (covProjectObj != null){
             String ProductKey= String.valueOf(covProjectObj.getProjectKey());
             projectUrl = projectUrl+"reports.htm#p"+ProductKey;
-            sensorContext
-                    .<String>newMeasure()
-                    .forMetric(CoverityPluginMetrics.COVERITY_PROJECT_URL)
-                    .on(sensorContext.module())
-                    .withValue(projectUrl)
-                    .save();
+
+            MetricService.addMetric(sensorContext,
+                    CoverityPluginMetrics.COVERITY_PROJECT_URL,
+                    projectUrl,
+                    sensorContext.module());
         }
 
-        sensorContext
-                .<Integer>newMeasure()
-                .forMetric(CoverityPluginMetrics.COVERITY_OUTSTANDING_ISSUES)
-                .on(sensorContext.module())
-                .withValue(totalDefects)
-                .save();
+        MetricService.addMetric(sensorContext,
+                CoverityPluginMetrics.COVERITY_OUTSTANDING_ISSUES,
+                totalDefects,
+                sensorContext.module());
 
-        sensorContext
-                .<Integer>newMeasure()
-                .forMetric(CoverityPluginMetrics.COVERITY_HIGH_IMPACT)
-                .on(sensorContext.module())
-                .withValue(highImpactDefects)
-                .save();
+        MetricService.addMetric(sensorContext,
+                CoverityPluginMetrics.COVERITY_HIGH_IMPACT,
+                highImpactDefects,
+                sensorContext.module());
 
-        sensorContext
-                .<Integer>newMeasure()
-                .forMetric(CoverityPluginMetrics.COVERITY_MEDIUM_IMPACT)
-                .on(sensorContext.module())
-                .withValue(mediumImpactDefects)
-                .save();
+        MetricService.addMetric(sensorContext,
+                CoverityPluginMetrics.COVERITY_MEDIUM_IMPACT,
+                mediumImpactDefects,
+                sensorContext.module());
 
-        sensorContext
-                .<Integer>newMeasure()
-                .forMetric(CoverityPluginMetrics.COVERITY_LOW_IMPACT)
-                .on(sensorContext.module())
-                .withValue(lowImpactDefects)
-                .save();
+        MetricService.addMetric(sensorContext,
+                CoverityPluginMetrics.COVERITY_LOW_IMPACT,
+                lowImpactDefects,
+                sensorContext.module());
 
         int lines = 0;
         Iterator iterator = inputFileLines.entrySet().iterator();
@@ -437,7 +425,10 @@ public class CoveritySensor implements Sensor {
             lines = lines + (int)mapElement.getValue();
         }
 
-        sensorContext.<Integer>newMeasure().forMetric(CoreMetrics.NCLOC).on(sensorContext.module()).withValue(lines).save();
+        MetricService.addMetric(sensorContext,
+                CoreMetrics.NCLOC,
+                lines,
+                sensorContext.module());
     }
 
     protected ActiveRule findActiveRule(SensorContext context, String domain, String checkerName, String subCategory, String lang) {

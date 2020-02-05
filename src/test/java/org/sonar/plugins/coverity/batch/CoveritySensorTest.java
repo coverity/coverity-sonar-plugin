@@ -31,7 +31,7 @@ import org.sonar.api.batch.sensor.measure.Measure;
 import org.sonar.api.measures.CoreMetrics;
 import org.sonar.api.rule.RuleKey;
 import org.sonar.plugins.coverity.CoverityPlugin;
-import org.sonar.plugins.coverity.base.CoverityPluginMetrics;
+import org.sonar.plugins.coverity.metrics.CoverityPluginMetrics;
 import org.sonar.plugins.coverity.server.CppLanguage;
 import org.sonar.plugins.coverity.ws.CIMClient;
 import org.sonar.plugins.coverity.ws.CIMClientFactory;
