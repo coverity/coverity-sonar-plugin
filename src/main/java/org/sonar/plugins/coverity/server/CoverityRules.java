@@ -21,8 +21,6 @@ import org.sonar.plugins.coverity.CoverityPlugin;
 import java.io.*;
 import java.util.*;
 
-import static org.sonar.plugins.coverity.util.CoverityUtil.getValue;
-
 /* From Sonarqube-4.3+ the interface RulesDefinition replaces the (previously deprecated and currently dropped) RulesRepository.
  * This class loads rules into the server by means of an XmlLoader. However we still need to activate these rules under
  * a profile and then again in CoveritySensor.
