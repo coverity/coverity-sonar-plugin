@@ -459,6 +459,7 @@ public class CoveritySensorTest {
         String originalOsName = System.getProperty("os.name");
         System.setProperty("os.name", "Windows 10");
         String originalUserDir = System.getProperty("user.dir");
+        System.setProperty("user.dir", ".");
 
         final SensorContextTester sensorContextTester = SensorContextTester.create(new File("src"));
         final String filePath = "Foo.java";
@@ -469,7 +470,6 @@ public class CoveritySensorTest {
                 sensorContextTester.fileSystem().baseDirPath(), filePath, "java");
         final DefaultInputFile inputFile = new DefaultInputFile(indexedFile, f -> f.setMetadata(metadata), content);
 
-        System.setProperty("user.dir", sensorContextTester.fileSystem().baseDir().getAbsolutePath());
         final String stripPath = "stripPath/";
 
         sensorContextTester
