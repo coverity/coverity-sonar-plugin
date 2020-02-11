@@ -23,14 +23,14 @@ import org.sonar.api.batch.sensor.SensorContext;
 import org.sonar.api.batch.sensor.issue.NewIssue;
 import org.sonar.api.batch.sensor.issue.NewIssueLocation;
 import org.sonar.api.measures.CoreMetrics;
+import org.sonar.plugins.coverity.CoverityPlugin;
 import org.sonar.plugins.coverity.defect.CoverityDefect;
 import org.sonar.plugins.coverity.metrics.MetricService;
 import org.sonar.plugins.coverity.util.CoverityRuleUtil;
+import org.sonar.plugins.coverity.util.CoverityUtil;
 
 import java.io.File;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class CoverityParser {
     private static final Logger LOG = LoggerFactory.getLogger(CoverityParser.class);
@@ -38,6 +38,7 @@ public class CoverityParser {
     private SensorContext sensorContext;
     private FileSystem fileSystem;
     private HashMap<String, List<CoverityDefect>> coverityDefectsMap;
+    private HashSet<InputFile> foundInputFiles;
 
     public CoverityParser(SensorContext sensorContext, List<CoverityDefect> coverityDefects){
         this.sensorContext = sensorContext;
@@ -49,21 +50,27 @@ public class CoverityParser {
 
     public void scanFiles(){
         Iterable<InputFile> inputFiles = fileSystem.inputFiles(fileSystem.predicates().all());
+        foundInputFiles = new HashSet<>();
+        addCoverityIssues();
 
         for(InputFile inputFile : inputFiles){
-            if (inputFile.isFile()){
-                scan(inputFile);
+            if (inputFile.isFile()
+                && !foundInputFiles.contains(inputFile)
+                && !StringUtils.isEmpty(inputFile.language())){
+                MetricService.addMetric(sensorContext, CoreMetrics.NCLOC, inputFile.lines(), inputFile);
             }
         }
     }
 
-    private void scan(InputFile inputFile){
-        String inputFilePath = (new File(inputFile.uri())).getAbsolutePath();
-        LOG.debug("[Coverity] InputFile Path: " + inputFilePath);
+    private void addCoverityIssues(){
+        for (String defectPath : coverityDefectsMap.keySet()){
+            InputFile inputFile = findInputFile(defectPath);
+            if (inputFile == null){
+                LOG.error("[Coverity] Could not find the local input file");
+                continue;
+            }
 
-        if (coverityDefectsMap.containsKey(inputFilePath)){
-            for (CoverityDefect defect : coverityDefectsMap.get(inputFilePath)){
-
+            for (CoverityDefect defect : coverityDefectsMap.get(defectPath)){
                 ActiveRule activeRule = CoverityRuleUtil.findActiveRule(
                         sensorContext,
                         defect.getDomain(),
@@ -91,11 +98,9 @@ public class CoverityParser {
 
                 issue.save();
             }
-        }
 
-        // Only add metrics if inputFile's language is known
-        if (!StringUtils.isEmpty(inputFile.language())){
             MetricService.addMetric(sensorContext, CoreMetrics.NCLOC, inputFile.lines(), inputFile);
+            foundInputFiles.add(inputFile);
         }
     }
 
@@ -108,5 +113,42 @@ public class CoverityParser {
             coverityDefectsMap.get(defect.getEventPath()).add(defect);
             LOG.debug("[Coverity] CID: " + defect.getCid() + "\tEventPath: " + defect.getEventPath());
         }
+    }
+
+    private InputFile findInputFile(String defectPath){
+        final FileSystem fileSystem = sensorContext.fileSystem();
+        InputFile inputFile = fileSystem.inputFile(fileSystem.predicates().hasPath(defectPath));
+
+        if(inputFile == null) {
+            for(File possibleFile : getListOfLocalFiles()){
+                if(possibleFile.getAbsolutePath().endsWith(defectPath)) {
+                    inputFile = fileSystem.inputFile(fileSystem.predicates().hasPath(possibleFile.getAbsolutePath()));
+                    break;
+                }
+            }
+        }
+
+        return inputFile;
+    }
+
+    private List<File> getListOfLocalFiles(){
+        String covSrcDir = sensorContext.config().get(CoverityPlugin.COVERITY_SOURCE_DIRECTORY).orElse(StringUtils.EMPTY);
+        List<File> listOfFiles = new ArrayList<File>();
+        String sonarSourcesString = null;
+
+        if(covSrcDir != null && !covSrcDir.isEmpty()){
+            sonarSourcesString = covSrcDir;
+        } else {
+            sonarSourcesString = sensorContext.config().get("sonar.sources").orElse(StringUtils.EMPTY);
+        }
+        if(sonarSourcesString != null && !sonarSourcesString.isEmpty()){
+            List<String> sonarSources = Arrays.asList(sonarSourcesString.split(","));
+            for(String dir : sonarSources){
+                File folder = new File(dir);
+                listOfFiles.addAll(CoverityUtil.listFiles(folder));
+            }
+        }
+
+        return listOfFiles;
     }
 }

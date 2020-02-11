@@ -121,7 +121,7 @@ public class CoveritySensorTest {
         final String expectedIssueMessage =
                 "[TEST_CHECKER(type)] Event Tag: Event Description ( CID 1 : https://test-host:8443/query/defects.htm?projectId=0&mergeKey=MK_1 )";
 
-        testCimClient.setupDefect(domain, checkerName, streamName, Arrays.asList((new File(inputFile.uri()).getAbsolutePath())));
+        testCimClient.setupDefect(domain, checkerName, streamName, Arrays.asList(filePath));
 
         sensor.execute(sensorContextTester);
 
@@ -172,7 +172,7 @@ public class CoveritySensorTest {
         final String expectedIssueMessage =
                 "[TEST_CHECKER(type)] Event Tag: Event Description ( CID 1 : https://test-host:8443/query/defects.htm?stream=my-cov-stream&mergeKey=MK_1 )";
 
-        testCimClient.setupDefect(domain, checkerName, streamName, Arrays.asList((new File(inputFile.uri()).getAbsolutePath())));
+        testCimClient.setupDefect(domain, checkerName, streamName, Arrays.asList(filePath));
 
         sensor.execute(sensorContextTester);
 
@@ -360,7 +360,7 @@ public class CoveritySensorTest {
         final String expectedIssueMessage =
                 "[TEST_CHECKER(type)] Defect Long Description ( CID 1 : https://test-host:8443/query/defects.htm?projectId=0&mergeKey=MK_1 )";
 
-        testCimClient.setupDefect(domain, checkerName, streamName, Arrays.asList((new File(inputFile.uri()).getAbsolutePath())));
+        testCimClient.setupDefect(domain, checkerName, streamName, Arrays.asList(filePath));
         testCimClient.configureMainEvent(StringUtils.EMPTY, StringUtils.EMPTY);
 
         sensor.execute(sensorContextTester);
@@ -427,10 +427,7 @@ public class CoveritySensorTest {
         final String expectedIssueMessage =
                 "[TEST_CHECKER(type)] Event Tag: Event Description ( CID 1 : https://test-host:8443/query/defects.htm?projectId=0&mergeKey=MK_1 )";
 
-        testCimClient.setupDefect(domain, checkerName, streamName, Arrays.asList(
-                (new File(inputFile1.uri()).getAbsolutePath()),
-                (new File(inputFile2.uri()).getAbsolutePath()),
-                (new File(inputFile1.uri()).getAbsolutePath()))
+        testCimClient.setupDefect(domain, checkerName, streamName, Arrays.asList(filePath1, filePath2, filePath1)
         );
 
         sensor.execute(sensorContextTester);
