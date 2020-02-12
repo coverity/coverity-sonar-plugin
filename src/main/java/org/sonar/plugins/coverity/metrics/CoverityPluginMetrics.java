@@ -9,7 +9,7 @@
  * http://www.eclipse.org/legal/epl-v10.html.
  */
 
-package org.sonar.plugins.coverity.base;
+package org.sonar.plugins.coverity.metrics;
 
 import org.sonar.api.measures.Metric;
 import org.sonar.api.measures.Metrics;

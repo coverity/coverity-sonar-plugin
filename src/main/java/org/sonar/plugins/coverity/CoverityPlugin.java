@@ -16,7 +16,7 @@ import org.sonar.api.Plugin;
 import org.sonar.api.PropertyType;
 import org.sonar.api.config.PropertyDefinition;
 import org.sonar.api.resources.Qualifiers;
-import org.sonar.plugins.coverity.base.CoverityPluginMetrics;
+import org.sonar.plugins.coverity.metrics.CoverityPluginMetrics;
 import org.sonar.plugins.coverity.batch.CoveritySensor;
 import org.sonar.plugins.coverity.server.CoverityProfiles;
 import org.sonar.plugins.coverity.server.CoverityRules;
