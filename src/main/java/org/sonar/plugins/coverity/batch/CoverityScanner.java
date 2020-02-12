@@ -32,15 +32,19 @@ import org.sonar.plugins.coverity.util.CoverityUtil;
 import java.io.File;
 import java.util.*;
 
-public class CoverityParser {
-    private static final Logger LOG = LoggerFactory.getLogger(CoverityParser.class);
+/*
+    CoverityScanner is responsible for adding coverity defects as SonarQube issues.
+    Also, it provides metrics at the InputFile level
+ */
+public class CoverityScanner {
+    private static final Logger LOG = LoggerFactory.getLogger(CoverityScanner.class);
 
     private SensorContext sensorContext;
     private FileSystem fileSystem;
     private HashMap<String, List<CoverityDefect>> coverityDefectsMap;
     private HashSet<InputFile> foundInputFiles;
 
-    public CoverityParser(SensorContext sensorContext, List<CoverityDefect> coverityDefects){
+    public CoverityScanner(SensorContext sensorContext, List<CoverityDefect> coverityDefects){
         this.sensorContext = sensorContext;
         this.fileSystem = sensorContext.fileSystem();
 
@@ -53,6 +57,9 @@ public class CoverityParser {
         foundInputFiles = new HashSet<>();
         addCoverityIssues();
 
+        // Following codes are required to add CoreMetrics.NCLOC metrics for any input files
+        // that coverity defects free. Without below logic, some input files will not have
+        // any lines of codes for particular files in SonarQube.
         for(InputFile inputFile : inputFiles){
             if (inputFile.isFile()
                 && !foundInputFiles.contains(inputFile)

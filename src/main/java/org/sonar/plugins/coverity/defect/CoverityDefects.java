@@ -30,6 +30,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+/*
+    CoverityDefects class is responsible of connecting to CoverityConnect to retrieve Coverity defects
+    Also, it is responsible for adding custom metrics at SensorContext.module level
+ */
 public class CoverityDefects {
     private static final Logger LOG = LoggerFactory.getLogger(CoverityDefects.class);
 

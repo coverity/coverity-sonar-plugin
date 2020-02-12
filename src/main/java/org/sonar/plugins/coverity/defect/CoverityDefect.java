@@ -14,6 +14,10 @@ package org.sonar.plugins.coverity.defect;
 import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.commons.lang.StringUtils;
 
+/*
+    CoverityDefect is a wrapper class hold information about each coverity defect from Coverity connect.
+    This will be useful once Coverity SonarQube plugin supports different type of sources, such as Polaris, etc
+ */
 public class CoverityDefect {
     public static String DEFAULT_SUBCATEGORY = "none";
     public static String SEVERITY_HIGH = "High";

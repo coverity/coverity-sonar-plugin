@@ -63,8 +63,8 @@ public class CoveritySensor implements Sensor {
         }
 
         List<CoverityDefect> defects = coverityDefects.retrieveCoverityDefects();
-        CoverityParser parser = new CoverityParser(context, defects);
-        parser.scanFiles();
+        CoverityScanner scanner = new CoverityScanner(context, defects);
+        scanner.scanFiles();
         coverityDefects.addCoverityMeasures();
     }
 
