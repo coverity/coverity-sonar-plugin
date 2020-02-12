@@ -32,6 +32,7 @@ import org.sonar.api.rule.RuleKey;
 import org.sonar.plugins.coverity.CoverityPlugin;
 import org.sonar.plugins.coverity.metrics.CoverityPluginMetrics;
 import org.sonar.plugins.coverity.metrics.MetricService;
+import org.sonar.plugins.coverity.util.CoverityRuleUtil;
 import org.sonar.plugins.coverity.util.CoverityUtil;
 import org.sonar.plugins.coverity.ws.CIMClient;
 import org.sonar.plugins.coverity.ws.CIMClientFactory;
@@ -256,7 +257,7 @@ public class CoveritySensor implements Sensor {
                         subcategory = "none";
                     }
 
-                    ActiveRule ar = findActiveRule(context, dido.getDomain(), dido.getCheckerName(), subcategory, inputFile.language());
+                    ActiveRule ar = CoverityRuleUtil.findActiveRule(context, dido.getDomain(), dido.getCheckerName(), subcategory, inputFile.language());
 
 
                     LOG.debug("ar=" + ar);
@@ -429,66 +430,6 @@ public class CoveritySensor implements Sensor {
                 CoreMetrics.NCLOC,
                 lines,
                 sensorContext.module());
-    }
-
-    protected ActiveRule findActiveRule(SensorContext context, String domain, String checkerName, String subCategory, String lang) {
-        String key = domain + "_" + checkerName;
-        RuleKey rk = CoverityUtil.getRuleKey(lang, key + "_" + subCategory);
-
-        ActiveRule ar = context.activeRules().find(rk);
-
-        if(ar == null && !subCategory.equals("none")){
-            rk = CoverityUtil.getRuleKey(lang, key + "_" + "none");
-            ar = context.activeRules().find(rk);
-        }
-
-        if (ar == null) {
-            if (domain.equals("STATIC_C")) {
-                if (ar == null && checkerName.startsWith("MISRA C")) {
-                    rk = CoverityUtil.getRuleKey(lang, "STATIC_C_MISRA.*");
-                    ar = context.activeRules().find(rk);
-                } else if (ar == null && checkerName.startsWith("PW.")) {
-                    rk = CoverityUtil.getRuleKey(lang, "STATIC_C_PW.*");
-                    ar = context.activeRules().find(rk);
-                } else if (ar == null && checkerName.startsWith("SW.")) {
-                    rk = CoverityUtil.getRuleKey(lang, "STATIC_C_SW.*");
-                    ar = context.activeRules().find(rk);
-                } else if (ar == null && checkerName.startsWith("RW.")) {
-                    rk = CoverityUtil.getRuleKey(lang, "STATIC_C_RW.*");
-                    ar = context.activeRules().find(rk);
-                } else {
-                    rk = CoverityUtil.getRuleKey(lang, "STATIC_C_coverity-cpp");
-                    ar = context.activeRules().find(rk);
-                }
-            } else if (domain.equals("STATIC_CS")) {
-                if ( ar == null && checkerName.startsWith("MSVSCA")) {
-                    rk = CoverityUtil.getRuleKey(lang, "STATIC_CS_MSVSCA.*");
-                    ar = context.activeRules().find(rk);
-                } else {
-                    rk = CoverityUtil.getRuleKey(lang, "STATIC_CS_coverity-cs");
-                    ar = context.activeRules().find(rk);
-                }
-            } else if (domain.equals("STATIC_JAVA")) {
-                rk = CoverityUtil.getRuleKey(lang, "STATIC_JAVA_coverity-java");
-                ar = context.activeRules().find(rk);
-            } else if (domain.equals("OTHER") && lang.equals("js")) {
-                if ( ar == null && checkerName.startsWith("JSHINT")) {
-                    rk = CoverityUtil.getRuleKey(lang, "OTHER_JSHINT.*");
-                    ar = context.activeRules().find(rk);
-                } else {
-                    rk = CoverityUtil.getRuleKey(lang, "OTHER_coverity-js");
-                    ar = context.activeRules().find(rk);
-                }
-            } else if (domain.equals("OTHER") && lang.equals("py")) {
-                rk = CoverityUtil.getRuleKey(lang, "OTHER_coverity-py");
-                ar = context.activeRules().find(rk);
-            } else if (domain.equals("OTHER") && lang.equals("php")) {
-                rk = CoverityUtil.getRuleKey(lang, "OTHER_coverity-php");
-                ar = context.activeRules().find(rk);
-            }
-        }
-
-        return ar;
     }
 
     protected InputFile findLocalFile(SensorContext context, String filePath, List<File> listOfFiles){
