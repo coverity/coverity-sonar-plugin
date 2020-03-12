@@ -8,7 +8,7 @@ The Coverity Sonar Plugin automatically import issues from Coverity Connect into
 Coverity® Sonar Plug-in Installation and Configuration Guide
 ============================================================
 
-Version 1.7.3
+Version 1.7.4
 
 This guide is intended to assist you with the installation and
 configuration of the Coverity Sonar plug-in. Once completed, you will be
@@ -183,18 +183,23 @@ Coverity-specific measures. The Coverity widget is available with SonarQube vers
 -   The Coverity logo and the Coverity Project are both clickable links
     that take you to the Coverity Connect instance. There, you can view
     the Coverity project that contributes data to your Sonar project.
-
 -   The Outstanding Issues count is the number of outstanding Coverity
     issues found in the most recent scan.
-
 -   The other three counts are the numbers of issues at each of
     Coverity’s three impact levels.
-
 -   The Coverity widget is no longer supported as of SonarQube v6.2. The metrics that 
     were displayed by the widget are shown in SonarQube under **Measures**.
-
 -   The Coverity widget can be added to the Dashboard by two different routes: as Admin,
 go to **Dashboards &gt; Manage dashboards**, or in a Project, go to **Dashboard** and add it there. 
+
+Sonar Scanner with SSL
+===================
+
+Coverity SonarQube Plugin provides a connection to Coverity Connect through SSL. The certificates should be imported to the java key chain where Sonar Scanner is running from. 
+
+Sonar Scanner provides its own jre bundle as part of Sonar Scanner. This means that if a user java installed locally, the certificates need to be imported to the jre which is bundled with Sonar Scanner. 
+
+keytool -importcert -keystore <PATH_TO_SONAR_SCANNER>/jre/lib/security/cacerts -storepass changeit -file <CERT_FILE> -alias <ALIAS>
 
 Limitations
 ===========
@@ -239,20 +244,20 @@ If you have any questions or issues with the Coverity plugin, contact <coverity-
 Changelog
 =========
 
+* __1.7.4__
+  * Fixed an issue where C/C++ doesn't show up under 'languages' filter in the Projects page. (SQP-134)
+  * Fixed an issue where lines of code not reporting consistently for c/c++ in SonarQube. (SQP-135)
+* Enhancement Request - addition of Coverity c/c++ rules into SonarQube plugin (SQP-133)
 * __1.7.3__
   * Fixed an issue where C/C++ project is displayed as an empty project in the SonarQube after running Coverity SonarQube plugin. (SQP-144)
   * "sonar.coverity.cov-cpp.suffixes" property is declared as multi-value property. (SQP-136)
-
 * __1.7.2__
   * Coverity SonarQube plugin now support importing defects from configured stream. (SQP-130, SQP-131)
   * Coverity SonarQube plugin now support SonarQube 7.9LTS. (SQP-137)
-
 * __1.7.1__
   * Fixed an issue finding the physical source file via sonar.coverity.prefix in the sonar-project.properties file. (SQP-128)
-
 * __1.7.0__
   * Minimum support version of SonarQube has been changed to version 6.7.5. (SQP-121)
-
 * __1.6.2__
   * The Coverity SonarQube plugin handles the multiple occurrences of Coverity defects where each occurrence has different file path. (BZ 108516)
 
