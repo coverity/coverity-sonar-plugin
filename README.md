@@ -197,7 +197,7 @@ Sonar Scanner with SSL
 
 Coverity SonarQube Plugin provides a connection to Coverity Connect through SSL. The certificates should be imported to the java key chain where Sonar Scanner is running from. 
 
-Sonar Scanner provides its own jre bundle as part of Sonar Scanner. This means that if a user java installed locally, the certificates need to be imported to the jre which is bundled with Sonar Scanner. 
+Sonar Scanner provides its own jre bundle as part of Sonar Scanner. This means that if a user installed java locally, the certificates need to be imported to the jre which is bundled with Sonar Scanner. 
 
 keytool -importcert -keystore <PATH_TO_SONAR_SCANNER>/jre/lib/security/cacerts -storepass changeit -file <CERT_FILE> -alias <ALIAS>
 
