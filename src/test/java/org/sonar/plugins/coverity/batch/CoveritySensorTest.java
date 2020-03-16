@@ -1,6 +1,6 @@
 /*
  * Coverity Sonar Plugin
- * Copyright (c) 2019 Synopsys, Inc
+ * Copyright (c) 2020 Synopsys, Inc
  * support@coverity.com
  *
  * All rights reserved. This program and the accompanying materials are made
@@ -23,7 +23,6 @@ import org.sonar.api.batch.fs.internal.Metadata;
 import org.sonar.api.batch.rule.internal.ActiveRulesBuilder;
 import org.sonar.api.batch.rule.internal.DefaultActiveRules;
 import org.sonar.api.batch.rule.internal.NewActiveRule;
-import org.sonar.api.batch.rule.ActiveRule;
 import org.sonar.api.batch.sensor.internal.DefaultSensorDescriptor;
 import org.sonar.api.batch.sensor.internal.SensorContextTester;
 import org.sonar.api.batch.sensor.issue.Issue;
@@ -31,9 +30,8 @@ import org.sonar.api.batch.sensor.measure.Measure;
 import org.sonar.api.measures.CoreMetrics;
 import org.sonar.api.rule.RuleKey;
 import org.sonar.plugins.coverity.CoverityPlugin;
-import org.sonar.plugins.coverity.base.CoverityPluginMetrics;
+import org.sonar.plugins.coverity.metrics.CoverityPluginMetrics;
 import org.sonar.plugins.coverity.server.CppLanguage;
-import org.sonar.plugins.coverity.ws.CIMClient;
 import org.sonar.plugins.coverity.ws.CIMClientFactory;
 import org.sonar.plugins.coverity.ws.TestCIMClient;
 
@@ -43,7 +41,6 @@ import java.util.*;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.fail;
 import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
@@ -86,10 +83,15 @@ public class CoveritySensorTest {
         final String filePath = "src/Foo.java";
         String content = "public class Foo {\n}";
 
+        sensorContextTester.fileSystem().baseDir().getAbsolutePath();
+
         final Metadata metadata = new Metadata(1, 1, "", new int[1], 0);
-        final DefaultIndexedFile indexedFile = new DefaultIndexedFile(StringUtils.EMPTY,
-                sensorContextTester.fileSystem().baseDirPath(), filePath, "java");
-        final DefaultInputFile inputFile = new DefaultInputFile(indexedFile, f -> f.setMetadata(metadata), content);
+        final DefaultIndexedFile indexedFile = new DefaultIndexedFile(
+                StringUtils.EMPTY,
+                sensorContextTester.fileSystem().baseDirPath(),
+                filePath,
+                "java");
+        DefaultInputFile inputFile = new DefaultInputFile(indexedFile, f -> f.setMetadata(metadata), content);
 
         sensorContextTester
                 .fileSystem()
@@ -182,7 +184,7 @@ public class CoveritySensorTest {
         assertEquals(inputFile, issue.primaryLocation().inputComponent());
         assertEquals(expectedIssueMessage, issue.primaryLocation().message());
 
-        Measure measure = sensorContextTester.measure("projectKey", CoreMetrics.NCLOC);
+        Measure measure = sensorContextTester.measure(":" + filePath, CoreMetrics.NCLOC);
         assertNotNull(measure);
         assertEquals(inputFile.lines(), measure.value());
     }
@@ -219,69 +221,13 @@ public class CoveritySensorTest {
         final String checkerName = "TEST_CHECKER";
         final String domain = "OTHER";
 
-        testCimClient.setupDefect(domain, checkerName, streamName, Arrays.asList(filePath));
+        testCimClient.setupDefect(domain, checkerName, streamName, Arrays.asList((new File(inputFile.uri()).getAbsolutePath())));
 
         sensor.execute(sensorContextTester);
 
         final Collection<Issue> issues = sensorContextTester.allIssues();
         assertNotNull(issues);
         assertEquals(0, issues.size());
-    }
-
-    @Test
-    public void testGetDefectURLForProject() {
-        CIMClient instance = mock(CIMClient.class);
-        ProjectDataObj projectObj = mock(ProjectDataObj.class);
-        MergedDefectDataObj mddo = mock(MergedDefectDataObj.class);
-
-        String target = "http://&&HOST&&:999999/query/defects.htm?projectId=888888&mergeKey=777777";
-
-        when(instance.getHost()).thenReturn("&&HOST&&");
-        when(instance.getPort()).thenReturn(999999);
-        when(projectObj.getProjectKey()).thenReturn(888888L);
-        when(mddo.getMergeKey()).thenReturn("777777");
-        String url = sensor.getDefectURL(instance, null, projectObj, mddo);
-
-        assertEquals(target, url);
-    }
-
-    @Test
-    public void testGetDefectURLForStream() {
-        CIMClient instance = mock(CIMClient.class);
-        StreamDataObj streamObj = mock(StreamDataObj.class);
-        StreamIdDataObj streamIdObj = mock(StreamIdDataObj.class);
-        MergedDefectDataObj mddo = mock(MergedDefectDataObj.class);
-
-        String target = "http://&&HOST&&:999999/query/defects.htm?stream=TestStream&mergeKey=777777";
-
-        when(instance.getHost()).thenReturn("&&HOST&&");
-        when(instance.getPort()).thenReturn(999999);
-        when(streamIdObj.getName()).thenReturn("TestStream");
-        when(streamObj.getId()).thenReturn(streamIdObj);
-        when(mddo.getMergeKey()).thenReturn("777777");
-        String url = sensor.getDefectURL(instance, streamObj, null, mddo);
-
-        assertEquals(target, url);
-    }
-
-    @Test
-    public void testGetMainEvent() {
-        DefectInstanceDataObj dido = new DefectInstanceDataObj();
-
-        EventDataObj em = new EventDataObj();
-        em.setMain(true);
-
-        dido.getEvents().add(em);
-
-        int n = 10;
-        for(int i = 0; i < n; i++) {
-            dido.getEvents().add(new EventDataObj());
-        }
-
-        Collections.swap(dido.getEvents(), 0, n / 2);
-
-        EventDataObj result = sensor.getMainEvent(dido);
-        assertEquals("Found wrong event", em, result);
     }
 
     @Test
@@ -338,30 +284,6 @@ public class CoveritySensorTest {
 
         final Collection<Issue> issues = sensorContextTester.allIssues();
         assertEquals(0, issues.size());
-    }
-
-    @Test
-    public void testFindActiveRule() throws Exception {
-        // Java
-        verifyFindActiveRule("TEST_CHECKER", "STATIC_JAVA", "coverity-java", "coverity-java", "", "java");
-        verifyFindActiveRule("TEST_CHECKER", "STATIC_JAVA", "coverity-java", "TEST_CHECKER_none", "testSubcategory", "java");
-
-        // C#
-        verifyFindActiveRule("MSVSCA.TestParseWarning", "STATIC_CS", "coverity-cs", "MSVSCA.*", "", "cs");
-        verifyFindActiveRule("TEST_CHECKER", "STATIC_CS", "coverity-cs", "coverity-cs", "", "cs");
-
-        // C++ (MISRA, ParseWarning, SemanticWarning, RecoveryWarning)
-        verifyFindActiveRule("MISRA C RULE 10", "STATIC_C", "coverity-cpp", "MISRA.*", "", "cpp");
-        verifyFindActiveRule("PW.TestParseWarning", "STATIC_C", "coverity-cpp", "PW.*", "", "cpp");
-        verifyFindActiveRule("SW.TestParseWarning", "STATIC_C", "coverity-cpp", "SW.*", "", "cpp");
-        verifyFindActiveRule("RW.TestParseWarning", "STATIC_C", "coverity-cpp", "RW.*", "", "cpp");
-        verifyFindActiveRule("TEST_CHECKER", "STATIC_C", "coverity-cpp", "coverity-cpp", "", "cpp");
-
-        // JavaScript, Python, PHP
-        verifyFindActiveRule("JSHINT.TestParseWarning", "OTHER", "coverity-js", "JSHINT.*", "", "js");
-        verifyFindActiveRule("TEST_CHECKER", "OTHER", "coverity-js", "coverity-js", "", "js");
-        verifyFindActiveRule("TEST_CHECKER", "OTHER", "coverity-py", "coverity-py", "", "py");
-        verifyFindActiveRule("TEST_CHECKER", "OTHER", "coverity-php", "coverity-php", "", "php");
     }
 
     @Test
@@ -505,7 +427,8 @@ public class CoveritySensorTest {
         final String expectedIssueMessage =
                 "[TEST_CHECKER(type)] Event Tag: Event Description ( CID 1 : https://test-host:8443/query/defects.htm?projectId=0&mergeKey=MK_1 )";
 
-        testCimClient.setupDefect(domain, checkerName, streamName, Arrays.asList(filePath1, filePath2, filePath1));
+        testCimClient.setupDefect(domain, checkerName, streamName, Arrays.asList(filePath1, filePath2, filePath1)
+        );
 
         sensor.execute(sensorContextTester);
 
@@ -522,12 +445,12 @@ public class CoveritySensorTest {
 
         Issue issue2 = iterator.next();
         assertEquals(ruleKey, issue2.ruleKey());
-        assertEquals(inputFile2, issue2.primaryLocation().inputComponent());
+        assertEquals(inputFile1, issue2.primaryLocation().inputComponent());
         assertEquals(expectedIssueMessage, issue2.primaryLocation().message());
 
         Issue issue3 = iterator.next();
         assertEquals(ruleKey, issue3.ruleKey());
-        assertEquals(inputFile1, issue3.primaryLocation().inputComponent());
+        assertEquals(inputFile2, issue3.primaryLocation().inputComponent());
         assertEquals(expectedIssueMessage, issue3.primaryLocation().message());
     }
 
@@ -630,24 +553,5 @@ public class CoveritySensorTest {
         final Collection<Issue> issues = sensorContextTester.allIssues();
         assertNotNull(issues);
         assertEquals(0, issues.size());
-    }
-
-    private void verifyFindActiveRule(String checkerName, String domain, String repoKey, String key, String subcategory, String lang) throws Exception {
-        final SensorContextTester sensorContextTester = SensorContextTester.create(new File("src"));
-
-        final ActiveRulesBuilder rulesBuilder = new ActiveRulesBuilder();
-        final RuleKey ruleKey = RuleKey.of(repoKey, domain + "_" + key);
-        final NewActiveRule activeRule = rulesBuilder.create(ruleKey);
-        sensorContextTester
-                .setActiveRules(new DefaultActiveRules(Arrays.asList(activeRule)));
-
-        ActiveRule rule = sensor.findActiveRule(sensorContextTester, domain, checkerName, subcategory, lang);
-        if (rule != null) {
-            assertEquals(domain + "_" + key, rule.ruleKey().rule());
-        } else {
-            fail("Rule cannot be null. CheckerName: " + checkerName + " Domain: " + domain + " RepoKey: " + repoKey
-                + " Subcategory: " + subcategory + " Language: " + lang);
-        }
-
     }
 }

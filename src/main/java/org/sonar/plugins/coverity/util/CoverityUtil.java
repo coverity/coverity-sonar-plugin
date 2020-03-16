@@ -1,6 +1,6 @@
 /*
  * Coverity Sonar Plugin
- * Copyright (c) 2019 Synopsys, Inc
+ * Copyright (c) 2020 Synopsys, Inc
  * support@coverity.com
  *
  * All rights reserved. This program and the accompanying materials are made
@@ -27,18 +27,11 @@ import java.util.Arrays;
 import java.util.List;
 
 public class CoverityUtil {
-    public static RuleKey getRuleKey(String language, String key) {
-        return RuleKey.of(CoverityPlugin.REPOSITORY_KEY + "-" + language, key);
-    }
 
     public static String getValue(String tag, Element element) {
         NodeList nodes = element.getElementsByTagName(tag).item(0).getChildNodes();
         Node node = (Node) nodes.item(0);
         return node.getNodeValue();
-    }
-
-    public static String flattenDefectInstanceCheckerName(DefectInstanceDataObj dido) {
-        return dido.getDomain() + "_" + dido.getCheckerName();
     }
 
     public static String createURL(CIMClient client) {

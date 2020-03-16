@@ -1,6 +1,6 @@
 /*
  * Coverity Sonar Plugin
- * Copyright (c) 2019 Synopsys, Inc
+ * Copyright (c) 2020 Synopsys, Inc
  * support@coverity.com
  *
  * All rights reserved. This program and the accompanying materials are made
@@ -9,7 +9,7 @@
  * http://www.eclipse.org/legal/epl-v10.html.
  */
 
-package org.sonar.plugins.coverity.base;
+package org.sonar.plugins.coverity.metrics;
 
 import org.sonar.api.measures.Metric;
 import org.sonar.api.measures.Metrics;

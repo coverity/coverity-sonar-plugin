@@ -1,9 +1,35 @@
 <rules>
     <rule>
-        <key>OTHER_IDENTICAL_BRANCHES_case</key>
-        <name>Incorrect expression : Identical code for different cases</name>
-        <internalKey>OTHER_IDENTICAL_BRANCHES_case</internalKey>
-        <description>The same code is executed for two cases in the same switch statement</description>
+        <key>OTHER_MISSING_AUTHZ_none</key>
+        <name>Medium impact security : Missing authorization check</name>
+        <internalKey>OTHER_MISSING_AUTHZ_none</internalKey>
+        <description>Calling a method that performs a sensitive action without first checking authorization, as is done elsewhere.</description>
+        <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>python</tag>
+        <tag>coverity-security</tag>
+    </rule>
+    <rule>
+        <key>OTHER_NOSQL_QUERY_INJECTION_none</key>
+        <name>Medium impact security : NoSQL query injection</name>
+        <internalKey>OTHER_NOSQL_QUERY_INJECTION_none</internalKey>
+        <description>A user-controllable string is injected into a NoSQL query.</description>
+        <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>python</tag>
+        <tag>coverity-security</tag>
+    </rule>
+    <rule>
+        <key>OTHER_FORWARD_NULL_bad_null_value_use</key>
+        <name>Null pointer dereferences : Bad use of null-like value</name>
+        <internalKey>OTHER_FORWARD_NULL_bad_null_value_use</internalKey>
+        <description>Performing an operation that would be invalid on a null or undefined value.</description>
         <severity>CRITICAL</severity>
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
@@ -11,6 +37,136 @@
         <tag>coverity</tag>
         <tag>python</tag>
         <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_FORWARD_NULL_none</key>
+        <name>Null pointer dereferences : Bad use of null-like value</name>
+        <internalKey>OTHER_FORWARD_NULL_none</internalKey>
+        <description>Performing an operation that would be invalid on a null or undefined value.</description>
+        <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>python</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_OS_CMD_INJECTION_none</key>
+        <name>High impact security : OS Command Injection</name>
+        <internalKey>OTHER_OS_CMD_INJECTION_none</internalKey>
+        <description>Untrusted user-supplied data is inserted into an operating system command without adequate validation, escaping, or filtering. This inserted data can change the intent of the operating system command. The change to the operating system command may result in the unauthorized disclosure, destruction, or modification of sensitive data or operating system resources.</description>
+        <severity>BLOCKER</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>python</tag>
+        <tag>coverity-security</tag>
+    </rule>
+    <rule>
+        <key>OTHER_coverity-py</key>
+        <name>Coverity General PY</name>
+        <internalKey>OTHER_coverity-py</internalKey>
+        <description>Coverity General PY</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>python</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_REVERSE_INULL_none</key>
+        <name>Null pointer dereferences : Attribute/item access or function call before check for None or undefined</name>
+        <internalKey>OTHER_REVERSE_INULL_none</internalKey>
+        <description>All paths that lead to this comparison against None or undefined already use the value earlier for accessing an attribute/item or as a function call</description>
+        <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>python</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_SCRIPT_CODE_INJECTION_none</key>
+        <name>High impact security : Script code injection</name>
+        <internalKey>OTHER_SCRIPT_CODE_INJECTION_none</internalKey>
+        <description>Script code interpreted or executed on the server is constructed from user-controllable data.</description>
+        <severity>BLOCKER</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>python</tag>
+        <tag>coverity-security</tag>
+    </rule>
+    <rule>
+        <key>OTHER_COPY_PASTE_ERROR_none</key>
+        <name>Incorrect expression : Copy-paste error</name>
+        <internalKey>OTHER_COPY_PASTE_ERROR_none</internalKey>
+        <description>A copied piece of code is inconsistent with the original</description>
+        <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>python</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_PATH_MANIPULATION_none</key>
+        <name>High impact security : Filesystem path, filename, or URI manipulation</name>
+        <internalKey>OTHER_PATH_MANIPULATION_none</internalKey>
+        <description>A user-controllable string is used as part or all of a filesystem path, filename, or URI (uniform resource identifier).</description>
+        <severity>BLOCKER</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>python</tag>
+        <tag>coverity-security</tag>
+    </rule>
+    <rule>
+        <key>OTHER_IDENTIFIER_TYPO_none</key>
+        <name>Incorrect expression : Typo in identifier</name>
+        <internalKey>OTHER_IDENTIFIER_TYPO_none</internalKey>
+        <description>This code uniquely references a named entity that is suspiciously close in spelling to another, more commonly referenced entity.</description>
+        <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>BUG</type>
+        <tag>coverity</tag>
+        <tag>python</tag>
+        <tag>coverity-quality</tag>
+    </rule>
+    <rule>
+        <key>OTHER_OPEN_REDIRECT_none</key>
+        <name>Medium impact security : Open redirect</name>
+        <internalKey>OTHER_OPEN_REDIRECT_none</internalKey>
+        <description>User-controlled input is used to specify an address that is used as a URL redirect or forward. An attacker can create a link to the trusted site that redirects to a malicious Web site. This could enable the attacker to steal user credentials.</description>
+        <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>python</tag>
+        <tag>coverity-security</tag>
+    </rule>
+    <rule>
+        <key>OTHER_UNSAFE_DESERIALIZATION_none</key>
+        <name>High impact security : Unsafe deserialization</name>
+        <internalKey>OTHER_UNSAFE_DESERIALIZATION_none</internalKey>
+        <description>A user-controllable string is deserialized.</description>
+        <severity>BLOCKER</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>python</tag>
+        <tag>coverity-security</tag>
     </rule>
     <rule>
         <key>OTHER_IDENTICAL_BRANCHES_chain</key>
@@ -65,49 +221,23 @@
         <tag>coverity-quality</tag>
     </rule>
     <rule>
-        <key>OTHER_FORWARD_NULL_bad_null_value_use</key>
-        <name>Null pointer dereferences : Bad use of null-like value</name>
-        <internalKey>OTHER_FORWARD_NULL_bad_null_value_use</internalKey>
-        <description>Performing an operation that would be invalid on a null or undefined value.</description>
+        <key>OTHER_XML_EXTERNAL_ENTITY_external_entities</key>
+        <name>Medium impact security : Unrestricted external entity references</name>
+        <internalKey>OTHER_XML_EXTERNAL_ENTITY_external_entities</internalKey>
+        <description>Passing tainted input data with possibly arbitrary external entity references to a weakly configured XML parser.</description>
         <severity>CRITICAL</severity>
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
-        <type>BUG</type>
+        <type>VULNERABILITY</type>
         <tag>coverity</tag>
         <tag>python</tag>
-        <tag>coverity-quality</tag>
+        <tag>coverity-security</tag>
     </rule>
     <rule>
-        <key>OTHER_FORWARD_NULL_deref_constant_null</key>
-        <name>Null pointer dereferences : Explicit null dereferenced</name>
-        <internalKey>OTHER_FORWARD_NULL_deref_constant_null</internalKey>
-        <description>Dereference of an explicit null value</description>
-        <severity>CRITICAL</severity>
-        <cardinality>SINGLE</cardinality>
-        <status>READY</status>
-        <type>BUG</type>
-        <tag>coverity</tag>
-        <tag>python</tag>
-        <tag>coverity-quality</tag>
-    </rule>
-    <rule>
-        <key>OTHER_FORWARD_NULL_needs_null_check</key>
-        <name>Null pointer dereferences : Dereference null argument</name>
-        <internalKey>OTHER_FORWARD_NULL_needs_null_check</internalKey>
-        <description>A method parameter that is allowed to be null is dereferenced without a check</description>
-        <severity>CRITICAL</severity>
-        <cardinality>SINGLE</cardinality>
-        <status>READY</status>
-        <type>BUG</type>
-        <tag>coverity</tag>
-        <tag>python</tag>
-        <tag>coverity-quality</tag>
-    </rule>
-    <rule>
-        <key>OTHER_FORWARD_NULL_none</key>
-        <name>Null pointer dereferences : Dereference after null check</name>
-        <internalKey>OTHER_FORWARD_NULL_none</internalKey>
-        <description>Reference is checked against null but then dereferenced anyway</description>
+        <key>OTHER_XML_EXTERNAL_ENTITY_none</key>
+        <name>Medium impact security : Unrestricted external entity references</name>
+        <internalKey>OTHER_XML_EXTERNAL_ENTITY_none</internalKey>
+        <description>Passing tainted input data with possibly arbitrary external entity references to a weakly configured XML parser.</description>
         <severity>CRITICAL</severity>
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
@@ -121,19 +251,6 @@
         <name>Integer handling issues : Bitwise-and with zero</name>
         <internalKey>OTHER_CONSTANT_EXPRESSION_RESULT_bit_and_with_zero</internalKey>
         <description>Bitwise-and (&apos;&amp;amp;&apos;) operation applied to zero always produces zero</description>
-        <severity>CRITICAL</severity>
-        <cardinality>SINGLE</cardinality>
-        <status>READY</status>
-        <type>BUG</type>
-        <tag>coverity</tag>
-        <tag>python</tag>
-        <tag>coverity-quality</tag>
-    </rule>
-    <rule>
-        <key>OTHER_CONSTANT_EXPRESSION_RESULT_extra_high_bits</key>
-        <name>Integer handling issues : Extra high-order bits</name>
-        <internalKey>OTHER_CONSTANT_EXPRESSION_RESULT_extra_high_bits</internalKey>
-        <description>In an operation, the high-order bits of wider operand do not affect the narrower operand</description>
         <severity>CRITICAL</severity>
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
@@ -195,19 +312,6 @@
         <tag>coverity-quality</tag>
     </rule>
     <rule>
-        <key>OTHER_CONSTANT_EXPRESSION_RESULT_pointless_string_compare</key>
-        <name>Incorrect expression : Pointless string comparison</name>
-        <internalKey>OTHER_CONSTANT_EXPRESSION_RESULT_pointless_string_compare</internalKey>
-        <description>A string is compared against itself with strcmp or strncmp.</description>
-        <severity>CRITICAL</severity>
-        <cardinality>SINGLE</cardinality>
-        <status>READY</status>
-        <type>BUG</type>
-        <tag>coverity</tag>
-        <tag>python</tag>
-        <tag>coverity-quality</tag>
-    </rule>
-    <rule>
         <key>OTHER_CONSTANT_EXPRESSION_RESULT_result_independent_of_operands</key>
         <name>Integer handling issues : Operands don&apos;t affect result</name>
         <internalKey>OTHER_CONSTANT_EXPRESSION_RESULT_result_independent_of_operands</internalKey>
@@ -234,76 +338,11 @@
         <tag>coverity-quality</tag>
     </rule>
     <rule>
-        <key>OTHER_CONSTANT_EXPRESSION_RESULT_typeof_misuse</key>
-        <name>Incorrect expression : Misuse of typeof</name>
-        <internalKey>OTHER_CONSTANT_EXPRESSION_RESULT_typeof_misuse</internalKey>
-        <description>Meaningless check against the result of a typeof operation</description>
-        <severity>CRITICAL</severity>
-        <cardinality>SINGLE</cardinality>
-        <status>READY</status>
-        <type>BUG</type>
-        <tag>coverity</tag>
-        <tag>python</tag>
-        <tag>coverity-quality</tag>
-    </rule>
-    <rule>
         <key>OTHER_CONSTANT_EXPRESSION_RESULT_unnecessary_op_assign</key>
         <name>Integer handling issues : Suspicious &amp;= or |=</name>
         <internalKey>OTHER_CONSTANT_EXPRESSION_RESULT_unnecessary_op_assign</internalKey>
         <description>Using a bitwise assignment operator to assign a constant value</description>
         <severity>CRITICAL</severity>
-        <cardinality>SINGLE</cardinality>
-        <status>READY</status>
-        <type>BUG</type>
-        <tag>coverity</tag>
-        <tag>python</tag>
-        <tag>coverity-quality</tag>
-    </rule>
-    <rule>
-        <key>OTHER_CONSTANT_EXPRESSION_RESULT_number_as_truth_value</key>
-        <name>Integer handling issues : Number used as truth value</name>
-        <internalKey>OTHER_CONSTANT_EXPRESSION_RESULT_number_as_truth_value</internalKey>
-        <description>A numerical value is used where a Boolean value is expected, and it will always evaluate to true.</description>
-        <severity>CRITICAL</severity>
-        <cardinality>SINGLE</cardinality>
-        <status>READY</status>
-        <type>BUG</type>
-        <tag>coverity</tag>
-        <tag>python</tag>
-        <tag>coverity-quality</tag>
-    </rule>
-    <rule>
-        <key>OTHER_DEADCODE_dead_case_in_switch</key>
-        <name>Possible Control flow issues : Dead case in switch</name>
-        <internalKey>OTHER_DEADCODE_dead_case_in_switch</internalKey>
-        <description>Switch never goes directly to this case</description>
-        <severity>MAJOR</severity>
-        <cardinality>SINGLE</cardinality>
-        <status>READY</status>
-        <type>BUG</type>
-        <tag>coverity</tag>
-        <tag>python</tag>
-        <tag>coverity-quality</tag>
-    </rule>
-    <rule>
-        <key>OTHER_DEADCODE_dead_default_in_switch</key>
-        <name>Possible Control flow issues : Dead default in switch</name>
-        <internalKey>OTHER_DEADCODE_dead_default_in_switch</internalKey>
-        <description>Default in switch statement is dead code</description>
-        <severity>MAJOR</severity>
-        <cardinality>SINGLE</cardinality>
-        <status>READY</status>
-        <type>BUG</type>
-        <tag>coverity</tag>
-        <tag>python</tag>
-        <tag>coverity-quality</tag>
-    </rule>
-    <rule>
-        <key>OTHER_DEADCODE_effectively_constant</key>
-        <name>Possible Control flow issues : &apos;Constant&apos; variable guards dead code</name>
-        <internalKey>OTHER_DEADCODE_effectively_constant</internalKey>
-        <description>Variable assigned once to a constant guards dead code.</description>
-        <severity>MAJOR</severity>
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>BUG</type>
@@ -338,50 +377,219 @@
         <tag>coverity-quality</tag>
     </rule>
     <rule>
-        <key>OTHER_coverity-py</key>
-        <name>Coverity General PY</name>
-        <internalKey>OTHER_coverity-py</internalKey>
-        <description>Coverity General PY</description>
+        <key>OTHER_HARDCODED_CREDENTIALS_none</key>
+        <name>Medium impact security : Use of hard-coded credentials</name>
+        <internalKey>OTHER_HARDCODED_CREDENTIALS_none</internalKey>
+        <description>Credentials are stored directly in the source code</description>
+        <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>python</tag>
+        <tag>coverity-security</tag>
+    </rule>
+    <rule>
+        <key>OTHER_HARDCODED_CREDENTIALS_uri</key>
+        <name>Medium impact security : Use of hard-coded URI password</name>
+        <internalKey>OTHER_HARDCODED_CREDENTIALS_uri</internalKey>
+        <description>A URI with a password component is stored directly in the source code.</description>
+        <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>python</tag>
+        <tag>coverity-security</tag>
+    </rule>
+    <rule>
+        <key>OTHER_XSS_none</key>
+        <name>High impact security : Cross-site scripting</name>
+        <internalKey>OTHER_XSS_none</internalKey>
+        <description>Untrusted user-supplied data is inserted into a context that can execute JavaScript without adequate validation, escaping, or filtering.</description>
+        <severity>BLOCKER</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>python</tag>
+        <tag>coverity-security</tag>
+    </rule>
+    <rule>
+        <key>OTHER_CSRF_database_update</key>
+        <name>High impact security : Cross-site request forgery</name>
+        <internalKey>OTHER_CSRF_database_update</internalKey>
+        <description>The web application controller modifies data or state and is unprotected from cross-site request forgery.</description>
+        <severity>BLOCKER</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>python</tag>
+        <tag>coverity-security</tag>
+    </rule>
+    <rule>
+        <key>OTHER_CSRF_none</key>
+        <name>High impact security : Cross-site request forgery</name>
+        <internalKey>OTHER_CSRF_none</internalKey>
+        <description>The web application controller modifies data or state and is unprotected from cross-site request forgery.</description>
+        <severity>BLOCKER</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>python</tag>
+        <tag>coverity-security</tag>
+    </rule>
+    <rule>
+        <key>OTHER_SQLI_none</key>
+        <name>High impact security : SQL injection</name>
+        <internalKey>OTHER_SQLI_none</internalKey>
+        <description>Untrusted user-supplied data is inserted into a SQL statement without adequate validation, escaping, or filtering.</description>
+        <severity>BLOCKER</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>python</tag>
+        <tag>coverity-security</tag>
+    </rule>
+    <rule>
+        <key>OTHER_SQLI_nosink</key>
+        <name>Medium impact security : SQL injection</name>
+        <internalKey>OTHER_SQLI_nosink</internalKey>
+        <description>Untrusted user-supplied data is inserted into an apparent SQL statement without adequate validation, escaping, or filtering.</description>
+        <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>python</tag>
+        <tag>coverity-security</tag>
+    </rule>
+    <rule>
+        <key>OTHER_SQLI_sink</key>
+        <name>High impact security : SQL injection</name>
+        <internalKey>OTHER_SQLI_sink</internalKey>
+        <description>Untrusted user-supplied data is inserted into a SQL statement without adequate validation, escaping, or filtering.</description>
+        <severity>BLOCKER</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>python</tag>
+        <tag>coverity-security</tag>
+    </rule>
+    <rule>
+        <key>OTHER_SENSITIVE_DATA_LEAK_cleartext_exception_storage_in_gui</key>
+        <name>Medium impact security : Exception leaked to user interface</name>
+        <internalKey>OTHER_SENSITIVE_DATA_LEAK_cleartext_exception_storage_in_gui</internalKey>
+        <description>Displaying an exception message or stack trace in the user interface.</description>
+        <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>python</tag>
+        <tag>coverity-security</tag>
+    </rule>
+    <rule>
+        <key>OTHER_SENSITIVE_DATA_LEAK_cleartext_storage_in_cookie</key>
+        <name>High impact security : Cleartext sensitive data in a cookie</name>
+        <internalKey>OTHER_SENSITIVE_DATA_LEAK_cleartext_storage_in_cookie</internalKey>
+        <description>Storing unencrypted sensitive data in a cookie.</description>
+        <severity>BLOCKER</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>python</tag>
+        <tag>coverity-security</tag>
+    </rule>
+    <rule>
+        <key>OTHER_SENSITIVE_DATA_LEAK_cleartext_storage_in_database</key>
+        <name>Medium impact security : Cleartext sensitive data in a database</name>
+        <internalKey>OTHER_SENSITIVE_DATA_LEAK_cleartext_storage_in_database</internalKey>
+        <description>Storing unencrypted sensitive data to a database.</description>
+        <severity>CRITICAL</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>python</tag>
+        <tag>coverity-security</tag>
+    </rule>
+    <rule>
+        <key>OTHER_SENSITIVE_DATA_LEAK_cleartext_storage_in_file</key>
+        <name>Low impact security : Cleartext sensitive data in a file</name>
+        <internalKey>OTHER_SENSITIVE_DATA_LEAK_cleartext_storage_in_file</internalKey>
+        <description>Storing unencrypted sensitive data to a file.</description>
         <severity>MAJOR</severity>
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
-        <type>BUG</type>
+        <type>VULNERABILITY</type>
         <tag>coverity</tag>
         <tag>python</tag>
-        <tag>coverity-quality</tag>
+        <tag>coverity-security</tag>
     </rule>
     <rule>
-        <key>OTHER_REVERSE_INULL_none</key>
-        <name>Null pointer dereferences : Attribute/item access or function call before check for None or undefined</name>
-        <internalKey>OTHER_REVERSE_INULL_none</internalKey>
-        <description>All paths that lead to this comparison against None or undefined already use the value earlier for accessing an attribute/item or as a function call</description>
+        <key>OTHER_SENSITIVE_DATA_LEAK_cleartext_storage_in_gui</key>
+        <name>High impact security : Display of sensitive data in the user interface</name>
+        <internalKey>OTHER_SENSITIVE_DATA_LEAK_cleartext_storage_in_gui</internalKey>
+        <description>Displaying sensitive data in the user interface.</description>
+        <severity>BLOCKER</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>python</tag>
+        <tag>coverity-security</tag>
+    </rule>
+    <rule>
+        <key>OTHER_SENSITIVE_DATA_LEAK_cleartext_storage_in_log</key>
+        <name>Low impact security : Information exposure to log file</name>
+        <internalKey>OTHER_SENSITIVE_DATA_LEAK_cleartext_storage_in_log</internalKey>
+        <description>Logging sensitive data.</description>
+        <severity>MAJOR</severity>
+        <cardinality>SINGLE</cardinality>
+        <status>READY</status>
+        <type>VULNERABILITY</type>
+        <tag>coverity</tag>
+        <tag>python</tag>
+        <tag>coverity-security</tag>
+    </rule>
+    <rule>
+        <key>OTHER_SENSITIVE_DATA_LEAK_cleartext_storage_in_registry</key>
+        <name>Medium impact security : Cleartext sensitive data in the registry</name>
+        <internalKey>OTHER_SENSITIVE_DATA_LEAK_cleartext_storage_in_registry</internalKey>
+        <description>Storing unencrypted sensitive data in the system registry.</description>
         <severity>CRITICAL</severity>
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
-        <type>BUG</type>
+        <type>VULNERABILITY</type>
         <tag>coverity</tag>
         <tag>python</tag>
-        <tag>coverity-quality</tag>
+        <tag>coverity-security</tag>
     </rule>
     <rule>
-        <key>OTHER_COPY_PASTE_ERROR_none</key>
-        <name>Incorrect expression : Copy-paste error</name>
-        <internalKey>OTHER_COPY_PASTE_ERROR_none</internalKey>
-        <description>A copied piece of code is inconsistent with the original</description>
-        <severity>CRITICAL</severity>
+        <key>OTHER_SENSITIVE_DATA_LEAK_cleartext_transmission</key>
+        <name>High impact security : Cleartext transmission of sensitive data</name>
+        <internalKey>OTHER_SENSITIVE_DATA_LEAK_cleartext_transmission</internalKey>
+        <description>Transmitting sensitive data in cleartext.</description>
+        <severity>BLOCKER</severity>
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
-        <type>BUG</type>
+        <type>VULNERABILITY</type>
         <tag>coverity</tag>
         <tag>python</tag>
-        <tag>coverity-quality</tag>
+        <tag>coverity-security</tag>
     </rule>
     <rule>
-        <key>OTHER_IDENTIFIER_TYPO_none</key>
-        <name>Incorrect expression : Typo in identifier</name>
-        <internalKey>OTHER_IDENTIFIER_TYPO_none</internalKey>
-        <description>This code uniquely references a named entity that is suspiciously close in spelling to another, more commonly referenced entity.</description>
-        <severity>CRITICAL</severity>
+        <key>OTHER_SENSITIVE_DATA_LEAK_none</key>
+        <name>High impact security : Cleartext transmission of sensitive data</name>
+        <internalKey>OTHER_SENSITIVE_DATA_LEAK_none</internalKey>
+        <description>Transmitting sensitive data in cleartext.</description>
+        <severity>BLOCKER</severity>
         <cardinality>SINGLE</cardinality>
         <status>READY</status>
         <type>BUG</type>

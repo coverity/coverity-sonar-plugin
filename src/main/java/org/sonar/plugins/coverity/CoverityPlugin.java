@@ -1,6 +1,6 @@
 /*
  * Coverity Sonar Plugin
- * Copyright (c) 2019 Synopsys, Inc
+ * Copyright (c) 2020 Synopsys, Inc
  * support@coverity.com
  *
  * All rights reserved. This program and the accompanying materials are made
@@ -16,7 +16,7 @@ import org.sonar.api.Plugin;
 import org.sonar.api.PropertyType;
 import org.sonar.api.config.PropertyDefinition;
 import org.sonar.api.resources.Qualifiers;
-import org.sonar.plugins.coverity.base.CoverityPluginMetrics;
+import org.sonar.plugins.coverity.metrics.CoverityPluginMetrics;
 import org.sonar.plugins.coverity.batch.CoveritySensor;
 import org.sonar.plugins.coverity.server.CoverityProfiles;
 import org.sonar.plugins.coverity.server.CoverityRules;
