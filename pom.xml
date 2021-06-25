@@ -393,11 +393,36 @@
 
 	</profiles>
 
+	<pluginRepositories>
+		<pluginRepository>
+			<id>central</id>
+			<name>Central Repository</name>
+			<url>https://repo.maven.apache.org/maven2</url>
+			<layout>default</layout>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+			<releases>
+				<updatePolicy>never</updatePolicy>
+			</releases>
+		</pluginRepository>
+	</pluginRepositories>
+	
 	<repositories>
-        <repository>
-            <id>sonar-plugin-local</id>
-            <name>sonar-plugin-local</name>
-            <url>http://artifactory.internal.synopsys.com:8081/artifactory/simple/sonar-plugin-local</url>
-        </repository>
+		<repository>
+			<id>central</id>
+			<name>Central Repository</name>
+			<url>https://repo.maven.apache.org/maven2</url>
+			<layout>default</layout>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>sonar-plugin-local</id>
+			<name>sonar-plugin-local</name>
+			<url>http://artifactory.internal.synopsys.com:8081/artifactory/simple/sonar-plugin-local</url>
+		</repository>
 	</repositories>
+
 </project>
