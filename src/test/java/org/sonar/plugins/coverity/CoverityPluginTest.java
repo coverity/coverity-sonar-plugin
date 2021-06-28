@@ -26,7 +26,7 @@ import static org.junit.Assert.assertTrue;
 public class CoverityPluginTest {
     @Test
     public void testGetExtensions() throws Exception {
-        SonarRuntime runTime = SonarRuntimeImpl.forSonarQube(Version.create(6, 7, 5),
+        SonarRuntime runTime = SonarRuntimeImpl.forSonarQube(Version.create(7, 9, 6),
                 SonarQubeSide.SCANNER, SonarEdition.COMMUNITY);
         Plugin.Context context = new Plugin.Context(runTime);
         final CoverityPlugin coverityPlugin = new CoverityPlugin();
