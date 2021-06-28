@@ -384,7 +384,7 @@ public class CoveritySensorTest {
         final String filePath1 = "Foo1.java";
         String content1 = "public class Foo1 {\n public void createDefect(){\n}}";
 
-        final Metadata metadata1 = new Metadata(3, 1, "", new int[] {0,1,0}, new int[0], 0);
+        final Metadata metadata1 = new Metadata(3, 1, "", new int[] {0,1,0}, new int[] {0,1,0}, 0);
         final DefaultIndexedFile indexedFile1 = new DefaultIndexedFile(StringUtils.EMPTY,
                 sensorContextTester.fileSystem().baseDirPath(), filePath1, "java");
         final DefaultInputFile inputFile1 = new DefaultInputFile(indexedFile1, f -> f.setMetadata(metadata1), content1);
@@ -469,7 +469,7 @@ public class CoveritySensorTest {
         final String filePath = "Foo.java";
         String content = "public class Foo {\n}";
 
-        final Metadata metadata = new Metadata(1, 1, "", new int[1], new int[0], 0);
+        final Metadata metadata = new Metadata(1, 1, "", new int[1], new int[1], 0);
         final DefaultIndexedFile indexedFile = new DefaultIndexedFile(StringUtils.EMPTY,
                 sensorContextTester.fileSystem().baseDirPath(), filePath, "java");
         final DefaultInputFile inputFile = new DefaultInputFile(indexedFile, f -> f.setMetadata(metadata), content);

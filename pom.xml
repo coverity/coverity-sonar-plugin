@@ -28,7 +28,7 @@
 
 	<organization>
 		<name>Synopsys, Inc.</name>
-		<url>http://www.coverity.com</url>
+		<url>https://www.synopsys.com/</url>
 	</organization>
 
 	<developers>
@@ -36,11 +36,6 @@
 			<id>ahcho0819</id>
 			<name>Andrew Cho</name>
 			<email>acho@synopsys.com</email>
-		</developer>
-		<developer>
-			<id>jbriggs</id>
-			<name>Joel Briggs</name>
-			<email>jbriggs@synopsys.com</email>
 		</developer>
 		<developer>
 			<id>shami</id>
@@ -162,7 +157,13 @@
 			<artifactId>jaxws-api</artifactId>
 			<version>2.3.1</version>
 		</dependency>
-    </dependencies>
+		<dependency>
+			<groupId>org.codehaus.staxmate</groupId>
+			<artifactId>staxmate</artifactId>
+			<version>2.0.1</version>
+		</dependency>
+
+	</dependencies>
 
 	<build>
 		<plugins>
