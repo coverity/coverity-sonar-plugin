@@ -13,6 +13,7 @@ package org.sonar.plugins.coverity;
 
 import org.junit.Test;
 import org.sonar.api.Plugin;
+import org.sonar.api.SonarEdition;
 import org.sonar.api.SonarQubeSide;
 import org.sonar.api.SonarRuntime;
 import org.sonar.api.internal.SonarRuntimeImpl;
@@ -25,7 +26,8 @@ import static org.junit.Assert.assertTrue;
 public class CoverityPluginTest {
     @Test
     public void testGetExtensions() throws Exception {
-        SonarRuntime runTime = SonarRuntimeImpl.forSonarQube(Version.create(6, 7, 5), SonarQubeSide.SCANNER);
+        SonarRuntime runTime = SonarRuntimeImpl.forSonarQube(Version.create(6, 7, 5),
+                SonarQubeSide.SCANNER, SonarEdition.COMMUNITY);
         Plugin.Context context = new Plugin.Context(runTime);
         final CoverityPlugin coverityPlugin = new CoverityPlugin();
         coverityPlugin.define(context);
