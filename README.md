@@ -1,55 +1,50 @@
-Coverity Sonar Plugin
-=====================
+# Coverity® Sonar Plugin
 
-The Coverity Sonar Plugin automatically import issues from Coverity Connect into SonarQube.
+The Coverity Sonar Plug-in automatically imports issues from Coverity Connect into SonarQube.
+
+**Current Version**: 1.7.5
 
 ![Coverity Scan Build Status](https://scan.coverity.com/projects/13562/badge.svg "Coverity Scan Build Status")
 
-Coverity® Sonar Plug-in Installation and Configuration Guide
-============================================================
-
-Version 1.7.4
+# Coverity Sonar Plug-in Installation and Configuration Guide
 
 This guide is intended to assist you with the installation and
 configuration of the Coverity Sonar plug-in. Once completed, you will be
 able to view Coverity Analysis issues within the SonarQube environment.
 
-Compatibility
-=============
+## Compatibility Matrix
+-----------------------
 
 The table below displays the software versions supported by the Coverity
 Sonar plug-in.
 
 | **Software**     | **Supported versions** |
 |------------------|------------------------|
-| SonarQube        | 6.7.5 - 7.9.1          |
+| SonarQube        | 7.9.1 - 8.9            |
 | SonarQube Scanner| 3.0 - 4.0              |
 | Coverity Connect | 8.0+                   |
 
-Installing the Coverity Sonar Plug-in
-=====================================
+## Installing the Coverity Sonar Plug-in
+----------------------------------------
 
 To install the Coverity Sonar plug-in, complete the following steps.
 
-1.  Ensure that you have SonarQube(v6.7.5 ~ v7.9.1) and SonarQube Scanner(v3.0 ~ v4.0) installed.
-    Sonar installation and setup instructions are located at
+1.  Ensure that you have a supported version of SonarQube and SonarQube Scanner installed.
+    <br>Sonar installation and setup instructions are located at 
     <http://docs.sonarqube.org/display/SONAR/Setup+and+Upgrade>.
 
 2.  Download and unzip the Coverity Sonar plug-in to the Sonar plugins
-    folder:
-
-    &lt;SonarInstallDirectory&gt;/extensions/plugins
+    folder: &lt;SonarInstallDirectory&gt;/extensions/plugins
 
 3.  Restart SonarQube.
 
 Note: After upgrading SonarQube, reset the quality profile for the languages which use Coverity
 (in **Quality Profiles**, select **Restore Built-in Profiles**, and select the language.)
 
-Configuring the Coverity Sonar Plug-in
-======================================
+## Configuring the Coverity Sonar Plug-in
+-----------------------------------------
 
-Once installed, you must configure the Coverity Sonar plug-in for
-general use.
+Once installed, you must configure the Coverity Sonar plug-in for general use.
 
 1.  Log in to SonarQube as an administrator.
 
@@ -66,8 +61,8 @@ general use.
 6.  Click **Save Coverity Settings** to complete the
     basic configuration.
 
-Configuring your Project Settings
-=================================
+## Configuring your Project Settings
+------------------------------------
 
 After configuring the general plug-in settings, you must select the
 correct Coverity Connect project to associate with each of your Sonar
@@ -100,8 +95,8 @@ whenever you run SonarQube Scanner on the specified project. This
 configuration must be completed for each project you wish to link with
 Coverity Connect.
 
-Setting Up sonar-project.properties
-===================================
+## Setting Up sonar-project.properties
+--------------------------------------
 
 For the plug-in to successfully display Coverity defects, the correct
 source paths must be entered in the sonar-project.properties file at the
@@ -174,8 +169,7 @@ To specify the language key:
 -	If **sonar.coverity.stream** is not configured, then the plugin will use **sonar.coverity.project** to fetch defects from.
 
 
-The Coverity Widget
-===================
+# The Coverity Widget
 
 The Coverity plug-in includes a Coverity widget that displays
 Coverity-specific measures. The Coverity widget is available with SonarQube versions before version 6.2.
@@ -192,8 +186,7 @@ Coverity-specific measures. The Coverity widget is available with SonarQube vers
 -   The Coverity widget can be added to the Dashboard by two different routes: as Admin,
 go to **Dashboards &gt; Manage dashboards**, or in a Project, go to **Dashboard** and add it there. 
 
-Sonar Scanner with SSL
-===================
+# Sonar Scanner with SSL
 
 Coverity SonarQube Plugin provides a connection to Coverity Connect through SSL. The certificates should be imported to the java key chain where Sonar Scanner is running from. 
 
@@ -201,8 +194,7 @@ Sonar Scanner provides its own jre bundle as part of Sonar Scanner. This means t
 
 keytool -importcert -keystore <PATH_TO_SONAR_SCANNER>/jre/lib/security/cacerts -storepass changeit -file <CERT_FILE> -alias <ALIAS>
 
-Limitations
-===========
+# Limitations
 
 The Coverity Sonar plug-in has the following limitations, which may be
 addressed in future releases.
@@ -237,17 +229,20 @@ addressed in future releases.
 -   There are no immediate plans for localization to languages other
     than English.
 
-Support
-=======
-If you have any questions or issues with the Coverity plugin, contact <coverity-support@synopsys.com>
+# Support
 
-Changelog
-=========
+If you have questions or issues with the Coverity plugin, please contact <coverity-support@synopsys.com>
 
+# Changelog
+
+* __1.7.5__
+  * Fixed crash on start up of plug-in (SQP-156)
+  * Updated minimum supported version of SonarQube to 7.9.1 (SQP-141)
+  * Added support for SonarQube 8.* (SQP-148)
 * __1.7.4__
   * Fixed an issue where C/C++ doesn't show up under 'languages' filter in the Projects page. (SQP-134)
   * Fixed an issue where lines of code not reporting consistently for c/c++ in SonarQube. (SQP-135)
-* Enhancement Request - addition of Coverity c/c++ rules into SonarQube plugin (SQP-133)
+  * Enhancement Request - addition of Coverity c/c++ rules into SonarQube plugin (SQP-133)
 * __1.7.3__
   * Fixed an issue where C/C++ project is displayed as an empty project in the SonarQube after running Coverity SonarQube plugin. (SQP-144)
   * "sonar.coverity.cov-cpp.suffixes" property is declared as multi-value property. (SQP-136)
