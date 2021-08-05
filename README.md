@@ -157,12 +157,12 @@ See below for a complete example sonar-project.properties file.
 >
 > \# sonar.coverity.prefix=MyOptionalPrefix
 
-*Note*: When using the Coverity plug-in, use the language key "cov-cpp" instead of "c", "c++", or "cpp". This language key prevents conflicts with non_Coverity plug-ins.
+*Note*: When using the Coverity plug-in, use the language key "cov-cpp" instead of "c", "c++", or "cpp". This language key prevents conflicts with non-Coverity plug-ins.
 
 To specify the language key: 
--   Add "sonar.language=cov-cpp" (or another preferred language) to the properties file.
--   in **Administration &gt; Coverity &gt; Languages**, configure "C/C++ source files suffixes" appropriately.
--   Configure the source file suffixes for the other language plug-ins to avoid conflicts.
+-   In **Administration &gt; Coverity &gt; Languages**, configure "C/C++ source files suffixes" appropriately.
+-   Make sure that **Administration &gt; Configuration &gt; Languages** and your project level settings (**Project Settings &gt; General Settings &gt; Languages**) don't contain the suffixes that you configured above to avoid conflicts. For example, if your Coverity language configuration includes <code>\*\*./\*.cpp </code>, make sure to remove <code>\*\*./\*.cpp </code> everywhere else.
+-   See https://community.sonarsource.com/t/language-of-file-dal-db2-vb-can-not-be-decided-as-the-file-matches-patterns-of-2-languages/21998 and https://community.sonarsource.com/t/language-of-file-can-not-be-decided-as-the-file-matches-patterns/16246 to see example conflicts.
 
 *Note*: The "sonar.coverity.prefix" property is used to help locate files when anlyzing with the sonar scanner. The prefix value will be removed from the "File path" value on the Coverity Connect issue.
 -   the value must match exactly, if having trouble finding the source files look at the Coverity Connect issues "File" column 
