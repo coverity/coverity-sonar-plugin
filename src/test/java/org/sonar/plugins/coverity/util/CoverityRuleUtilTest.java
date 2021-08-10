@@ -1,6 +1,6 @@
 /*
  * Coverity Sonar Plugin
- * Copyright (c) 2020 Synopsys, Inc
+ * Copyright (c) 2021 Synopsys, Inc
  * support@coverity.com
  *
  * All rights reserved. This program and the accompanying materials are made
@@ -54,9 +54,10 @@ public class CoverityRuleUtilTest {
     private void verifyFindActiveRule(String checkerName, String domain, String repoKey, String key, String subcategory, String lang) throws Exception {
         final SensorContextTester sensorContextTester = SensorContextTester.create(new File("src"));
 
-        final ActiveRulesBuilder rulesBuilder = new ActiveRulesBuilder();
         final RuleKey ruleKey = RuleKey.of(repoKey, domain + "_" + key);
-        final NewActiveRule activeRule = rulesBuilder.create(ruleKey);
+        final NewActiveRule.Builder ruleBuilder = new NewActiveRule.Builder();
+        ruleBuilder.setRuleKey(ruleKey);
+        final NewActiveRule activeRule = ruleBuilder.build();
         sensorContextTester
                 .setActiveRules(new DefaultActiveRules(Arrays.asList(activeRule)));
 

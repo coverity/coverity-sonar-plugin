@@ -5,7 +5,7 @@
 	<groupId>org.sonar.plugins.coverity</groupId>
 	<artifactId>coverity-sonar-plugin</artifactId>
 	<packaging>sonar-plugin</packaging>
-	<version>1.7.4</version>
+	<version>1.7.5</version>
 
 	<name>Coverity</name>
 	<description>Imports Coverity defects into SonarQube</description>
@@ -13,7 +13,7 @@
 	<inceptionYear>2014</inceptionYear>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<sonar.version>6.7.5</sonar.version>
+		<sonar.version>7.9.6</sonar.version>
 		<jdk.min.version>1.8</jdk.min.version>
 		<cim.url></cim.url>
 		<ws.version>v9</ws.version>
@@ -28,7 +28,7 @@
 
 	<organization>
 		<name>Synopsys, Inc.</name>
-		<url>http://www.coverity.com</url>
+		<url>https://www.synopsys.com/</url>
 	</organization>
 
 	<developers>
@@ -36,11 +36,6 @@
 			<id>ahcho0819</id>
 			<name>Andrew Cho</name>
 			<email>acho@synopsys.com</email>
-		</developer>
-		<developer>
-			<id>jbriggs</id>
-			<name>Joel Briggs</name>
-			<email>jbriggs@synopsys.com</email>
 		</developer>
 		<developer>
 			<id>shami</id>
@@ -162,7 +157,13 @@
 			<artifactId>jaxws-api</artifactId>
 			<version>2.3.1</version>
 		</dependency>
-    </dependencies>
+		<dependency>
+			<groupId>org.codehaus.staxmate</groupId>
+			<artifactId>staxmate</artifactId>
+			<version>2.0.1</version>
+		</dependency>
+
+	</dependencies>
 
 	<build>
 		<plugins>
@@ -393,11 +394,36 @@
 
 	</profiles>
 
+	<pluginRepositories>
+		<pluginRepository>
+			<id>central</id>
+			<name>Central Repository</name>
+			<url>https://repo.maven.apache.org/maven2</url>
+			<layout>default</layout>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+			<releases>
+				<updatePolicy>never</updatePolicy>
+			</releases>
+		</pluginRepository>
+	</pluginRepositories>
+
 	<repositories>
-        <repository>
-            <id>sonar-plugin-local</id>
-            <name>sonar-plugin-local</name>
-            <url>http://artifactory.internal.synopsys.com:8081/artifactory/simple/sonar-plugin-local</url>
-        </repository>
+		<repository>
+			<id>central</id>
+			<name>Central Repository</name>
+			<url>https://repo.maven.apache.org/maven2</url>
+			<layout>default</layout>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>sonar-plugin-local</id>
+			<name>sonar-plugin-local</name>
+			<url>http://artifactory.internal.synopsys.com:8081/artifactory/simple/sonar-plugin-local</url>
+		</repository>
 	</repositories>
+
 </project>

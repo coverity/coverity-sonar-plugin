@@ -1,6 +1,6 @@
 /*
  * Coverity Sonar Plugin
- * Copyright (c) 2020 Synopsys, Inc
+ * Copyright (c) 2021 Synopsys, Inc
  * support@coverity.com
  *
  * All rights reserved. This program and the accompanying materials are made
@@ -20,7 +20,6 @@ import org.sonar.plugins.coverity.metrics.CoverityPluginMetrics;
 import org.sonar.plugins.coverity.batch.CoveritySensor;
 import org.sonar.plugins.coverity.server.CoverityProfiles;
 import org.sonar.plugins.coverity.server.CoverityRules;
-import org.sonar.plugins.coverity.ui.CoverityWidget;
 import org.sonar.plugins.coverity.server.CppLanguage;
 import org.sonar.plugins.coverity.ws.CIMClientFactory;
 
@@ -151,9 +150,6 @@ public final class CoverityPlugin implements Plugin {
                 CoverityRules.class,
                 CoverityProfiles.class,
                 CppLanguage.class,
-
-                //UI
-                CoverityWidget.class,
 
                 //Base
                 CoverityPluginMetrics.class
