@@ -13,7 +13,6 @@ configuration of the Coverity Sonar plug-in. Once completed, you will be
 able to view Coverity Analysis issues within the SonarQube environment.
 
 ## Compatibility Matrix
------------------------
 
 The table below displays the software versions supported by the Coverity
 Sonar plug-in.
@@ -25,7 +24,6 @@ Sonar plug-in.
 | Coverity Connect | 8.0+                   |
 
 ## Installing the Coverity Sonar Plug-in
-----------------------------------------
 
 To install the Coverity Sonar plug-in, complete the following steps.
 
@@ -42,7 +40,6 @@ Note: After upgrading SonarQube, reset the quality profile for the languages whi
 (in **Quality Profiles**, select **Restore Built-in Profiles**, and select the language.)
 
 ## Configuring the Coverity Sonar Plug-in
------------------------------------------
 
 Once installed, you must configure the Coverity Sonar plug-in for general use.
 
@@ -62,7 +59,6 @@ Once installed, you must configure the Coverity Sonar plug-in for general use.
     basic configuration.
 
 ## Configuring your Project Settings
-------------------------------------
 
 After configuring the general plug-in settings, you must select the
 correct Coverity Connect project to associate with each of your Sonar
@@ -96,7 +92,6 @@ configuration must be completed for each project you wish to link with
 Coverity Connect.
 
 ## Setting Up sonar-project.properties
---------------------------------------
 
 For the plug-in to successfully display Coverity defects, the correct
 source paths must be entered in the sonar-project.properties file at the
