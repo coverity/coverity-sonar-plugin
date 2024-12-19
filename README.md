@@ -4,7 +4,7 @@ The Coverity Sonar Plug-in automatically imports issues from Coverity Connect in
 
 **Current Version**: 1.7.5
 
-![Coverity Scan Build Status](https://scan.coverity.com/projects/13562/badge.svg "Coverity Scan Build Status")
+![Coverity Scan Build Status](https://scan.coverity.com/projects/13562/badge.svg "Coverity Scan Build Status") 
 
 # Coverity Sonar Plug-in Installation and Configuration Guide
 
