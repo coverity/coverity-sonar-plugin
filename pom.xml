@@ -27,20 +27,15 @@
 	</licenses>
 
 	<organization>
-		<name>Synopsys, Inc.</name>
-		<url>https://www.synopsys.com/</url>
+		<name>Black Duck Software, Inc.</name>
+		<url>https://www.blackduck.com/</url>
 	</organization>
 
 	<developers>
 		<developer>
-			<id>ahcho0819</id>
-			<name>Andrew Cho</name>
-			<email>acho@synopsys.com</email>
-		</developer>
-		<developer>
-			<id>shami</id>
-			<name>Shami Willms</name>
-			<email>kwillms@synopsys.com</email>
+			<id>luispDesktop</id>
+			<name>Luis Pizarro</name>
+			<email>luisp@blackduck.com</email>
 		</developer>
 	</developers>
 
