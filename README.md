@@ -227,10 +227,6 @@ addressed in future releases.
 -   There are no immediate plans for localization to languages other
     than English.
 
-# Support
-
-If you have questions or issues with the Coverity plugin, please contact <coverity-support@synopsys.com>
-
 # Changelog
 
 * __1.7.5__
