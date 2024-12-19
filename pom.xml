@@ -422,7 +422,7 @@
 		<repository>
 			<id>sonar-plugin-local</id>
 			<name>sonar-plugin-local</name>
-			<url>http://artifactory.internal.synopsys.com:8081/artifactory/simple/sonar-plugin-local</url>
+			<url>https://artifactory.tools.duckutil.net/artifactory/simple/sonar-plugin-local</url>
 		</repository>
 	</repositories>
 
