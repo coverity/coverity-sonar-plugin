@@ -1,3 +1,6 @@
+> [!IMPORTANT]
+> The Coverity® Sonar Plugin has been End-of-Lifed. It is no longer supported or maintained.
+
 # Coverity® Sonar Plugin
 
 The Coverity Sonar Plug-in automatically imports issues from Coverity Connect into SonarQube.
